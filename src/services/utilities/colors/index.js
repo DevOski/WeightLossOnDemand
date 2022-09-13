@@ -21,4 +21,5 @@ export const colors = {
     appBgColor2: '#E6E6E6',
     appBgColorPrimary: '#1D3932',
     appBgColor3: '#23a455',
+    blue:"#2b8fda"
   };
