@@ -13,6 +13,7 @@ import images from '../utilities/images';
 import {sizes} from '../utilities';
 import GetCare from '../../screens/GetCare';
 import MyHealth from '../../screens/MyHealth';
+import Setting from '../../screens/Setting';
 
 const Stack = createNativeStackNavigator();
 
@@ -22,6 +23,8 @@ export default function MainNavigator() {
     <NavigationContainer>
       <Stack.Navigator screenOptions={{headerShown: false}}>
         <Stack.Screen name="BottomNavs" component={MyTabs} />
+        <Stack.Screen name="Setting" component={Setting} />
+        
       </Stack.Navigator>
     </NavigationContainer>
   );

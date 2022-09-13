@@ -12,7 +12,7 @@ import GetCare from '../../components/GetCare';
 import images from '../../services/utilities/images';
 import {styles} from './style';
 
-export default function Home() {
+export default function Home({navigation}) {
   const [userName, setUserName] = useState('Tester');
   const [item, setItem] = useState([
     'Text1',
@@ -43,7 +43,7 @@ export default function Home() {
             <Text style={styles.welcomeText}> Welcome back</Text>
           </View>
           <View style={styles.transparentView}></View>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={()=>navigation.navigate("Setting")}>
             <Image source={images.setting} style={styles.settingIcon} />
           </TouchableOpacity>
         </View>
