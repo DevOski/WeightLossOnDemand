@@ -171,7 +171,7 @@ export const styles = StyleSheet.create({
   paddingLeft: {
     padding: sizes.TinyMargin,
     paddingTop: sizes.screenHeight * 0.02,
-    paddingLeft: sizes.screenWidth * 0.03,
+    // paddingLeft: sizes.screenWidth * 0.03,
     paddingBottom:0
   },
   providerHead: {
@@ -188,5 +188,8 @@ export const styles = StyleSheet.create({
     height: sizes.screenHeight * 0.085,
     width: sizes.screenWidth * 0.17,
 
+  },
+  paddingBottom:{
+    paddingBottom:sizes.screenHeight * 0.1
   }
 });

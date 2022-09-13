@@ -57,7 +57,7 @@ export default function Home() {
             return (
               <View style={styles.cardView}>
                 {index == 0 && (
-                  <ImageBackground source={images.bg1} style={styles.bg}>
+                  <ImageBackground key={index} source={images.bg1} style={styles.bg}>
                     <TouchableOpacity>
                       <View style={styles.playBtn}>
                         <Image
@@ -80,7 +80,7 @@ export default function Home() {
                   </ImageBackground>
                 )}
                 {index == 1 && (
-                  <View style={styles.padding}>
+                  <View key={index} style={styles.padding}>
                     <Text style={[styles.heading, styles.top]}>Medical</Text>
                     <Text style={styles.providerText}>
                       Our providers can treat hundreds of issues,including:
@@ -120,7 +120,7 @@ export default function Home() {
                   </View>
                 )}
                 {index == 2 && (
-                  <View style={styles.padding}>
+                  <View key={index} style={styles.padding}>
                     <Text style={[styles.heading, styles.top]}>
                       Mental health
                     </Text>
@@ -155,15 +155,8 @@ export default function Home() {
                   </View>
                 )}
                 {index == 3 && (
-                  <ImageBackground source={images.bg2} style={styles.bg}>
-                    <TouchableOpacity>
-                      <View style={styles.playBtn}>
-                        <Image
-                          source={images.playIcon}
-                          style={styles.playIcon}
-                        />
-                      </View>
-                    </TouchableOpacity>
+                  <ImageBackground key={index} source={images.bg2} style={styles.bg}>
+                     <View style={styles.paddingBottom}></View>
                     <View style={styles.proudView}>
                       <Text style={styles.text}>
                         We're proud beyond {"              "} Pride
@@ -179,7 +172,7 @@ export default function Home() {
                   </ImageBackground>
                 )}
                 {index == 4 && (
-                  <View style={styles.padding}>
+                  <View key={index} style={styles.padding}>
                     <Text style={[styles.heading, styles.top]}>
                       Meet Our Providers
                     </Text>
