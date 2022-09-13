@@ -184,15 +184,49 @@ export default function Home() {
                       Meet Our Providers
                     </Text>
                    
-                    <View style={styles.row2}>
-                      <Text style={styles.addIcon}>✚</Text>
+                    <View style={[styles.row2,styles.paddingLeft]}>
+                      <Image source={images.provider1} style={styles.providerImg}/>
                       <View>
-                      <Text style={styles.addText}>{" "} Depression & anxiety</Text>
-                      <Text style={styles.addText}>{" "} Depression & anxiety</Text>
+                      <Text style={styles.providerHead}>{"  "} Kiki Lwin, MD</Text>
+                      <Text style={styles.providerProfession}>{"   "} Medical Doctor</Text>
                       </View>
                     </View>
-                   
-                    <View style={styles.btnTop2}>
+                    <View style={[styles.row2,styles.paddingLeft]}>
+                      <Image source={images.provider2} style={styles.providerImg2}/>
+                      <View>
+                      <Text style={styles.providerHead}>{"  "} Kiki Lwin, MD</Text>
+                      <Text style={styles.providerProfession}>{"   "} Medical Doctor</Text>
+                      </View>
+                    </View>
+                    <View style={[styles.row2,styles.paddingLeft]}>
+                      <Image source={images.provider3} style={styles.providerImg2}/>
+                      <View>
+                      <Text style={styles.providerHead}>{"  "} Kiki Lwin, MD</Text>
+                      <Text style={styles.providerProfession}>{"   "} Medical Doctor</Text>
+                      </View>
+                    </View>
+                    <View style={[styles.row2,styles.paddingLeft]}>
+                      <Image source={images.provider4} style={styles.providerImg2}/>
+                      <View>
+                      <Text style={styles.providerHead}>{"  "} Kiki Lwin, MD</Text>
+                      <Text style={styles.providerProfession}>{"   "} Medical Doctor</Text>
+                      </View>
+                    </View>
+                    <View style={[styles.row2,styles.paddingLeft]}>
+                      <Image source={images.provider5} style={styles.providerImg2}/>
+                      <View>
+                      <Text style={styles.providerHead}>{"  "} Kiki Lwin, MD</Text>
+                      <Text style={styles.providerProfession}>{"   "} Medical Doctor</Text>
+                      </View>
+                    </View>
+                    <View style={[styles.row2,styles.paddingLeft]}>
+                      <Image source={images.provider6} style={styles.providerImg2}/>
+                      <View>
+                      <Text style={styles.providerHead}>{"  "} Kiki Lwin, MD</Text>
+                      <Text style={styles.providerProfession}>{"   "} Medical Doctor</Text>
+                      </View>
+                    </View>
+                    <View style={styles.seeBtn}>
                       <TouchableOpacity>
                         <View style={[styles.learnMoreBtn,styles.row2]}>
                           <Text style={styles.learnMoreText}>See all of our providers </Text>

@@ -54,7 +54,7 @@ export const styles = StyleSheet.create({
     width: sizes.screenWidth * 0.96,
   },
   cardView: {
-    height: sizes.screenHeight * 0.75,
+    height: sizes.screenHeight * 0.77,
     width: sizes.screenWidth * 0.9,
     backgroundColor: colors.white,
     marginRight: sizes.screenWidth * 0.02,
@@ -69,7 +69,7 @@ export const styles = StyleSheet.create({
     elevation: 5,
   },
   bg: {
-    height: sizes.screenHeight * 0.75,
+    height: sizes.screenHeight * 0.77,
     width: sizes.screenWidth * 0.9,
   },
   playBtn: {
@@ -95,10 +95,9 @@ export const styles = StyleSheet.create({
     top: sizes.screenHeight * 0.43,
     paddingBottom: 0,
   },
-  learnMoreView:{
+  learnMoreView: {
     top: sizes.screenHeight * 0.42,
     padding: sizes.baseMargin,
-
   },
   semiTextView: {
     padding: sizes.baseMargin,
@@ -158,7 +157,6 @@ export const styles = StyleSheet.create({
     fontSize: fontSize.h6,
     fontWeight: '500',
     color: colors.btnColor,
-    
   },
   letUsText: {
     color: colors.white,
@@ -166,4 +164,29 @@ export const styles = StyleSheet.create({
     fontWeight: '300',
     top: sizes.TinyMargin,
   },
+  providerImg: {
+    height: sizes.screenHeight * 0.09,
+    width: sizes.screenWidth * 0.15,
+  },
+  paddingLeft: {
+    padding: sizes.TinyMargin,
+    paddingTop: sizes.screenHeight * 0.02,
+    paddingLeft: sizes.screenWidth * 0.03,
+    paddingBottom:0
+  },
+  providerHead: {
+    fontSize: fontSize.h5,
+    fontWeight: '400',
+    color: colors.black,
+  },
+  providerProfession: {
+    fontWeight: '400',
+    color: colors.black,
+    fontSize: fontSize.h6,
+  },
+  providerImg2:{
+    height: sizes.screenHeight * 0.085,
+    width: sizes.screenWidth * 0.17,
+
+  }
 });
