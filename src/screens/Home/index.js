@@ -187,35 +187,35 @@ export default function Home({navigation}) {
                     <View style={[styles.row2,styles.paddingLeft]}>
                       <Image source={images.provider2} style={styles.providerImg2}/>
                       <View>
-                      <Text style={styles.providerHead}>{"  "} Kiki Lwin, MD</Text>
-                      <Text style={styles.providerProfession}>{"   "} Medical Doctor</Text>
+                      <Text style={styles.providerHead}>{"  "} Elizabeth Curlin, PhD</Text>
+                      <Text style={styles.providerProfession}>{"   "} Psychologist</Text>
                       </View>
                     </View>
                     <View style={[styles.row2,styles.paddingLeft]}>
                       <Image source={images.provider3} style={styles.providerImg2}/>
                       <View>
-                      <Text style={styles.providerHead}>{"  "} Kiki Lwin, MD</Text>
-                      <Text style={styles.providerProfession}>{"   "} Medical Doctor</Text>
+                      <Text style={styles.providerHead}>{"  "} Tracie DeJarnette-Holl...</Text>
+                      <Text style={styles.providerProfession}>{"   "} Psychiatrist</Text>
                       </View>
                     </View>
                     <View style={[styles.row2,styles.paddingLeft]}>
                       <Image source={images.provider4} style={styles.providerImg2}/>
                       <View>
-                      <Text style={styles.providerHead}>{"  "} Kiki Lwin, MD</Text>
+                      <Text style={styles.providerHead}>{"  "} Diana Malone, MD</Text>
                       <Text style={styles.providerProfession}>{"   "} Medical Doctor</Text>
                       </View>
                     </View>
                     <View style={[styles.row2,styles.paddingLeft]}>
                       <Image source={images.provider5} style={styles.providerImg2}/>
                       <View>
-                      <Text style={styles.providerHead}>{"  "} Kiki Lwin, MD</Text>
+                      <Text style={styles.providerHead}>{"  "} Aline Daou, MD</Text>
                       <Text style={styles.providerProfession}>{"   "} Medical Doctor</Text>
                       </View>
                     </View>
                     <View style={[styles.row2,styles.paddingLeft]}>
                       <Image source={images.provider6} style={styles.providerImg2}/>
                       <View>
-                      <Text style={styles.providerHead}>{"  "} Kiki Lwin, MD</Text>
+                      <Text style={styles.providerHead}>{"  "} Melissa Colbern, MD</Text>
                       <Text style={styles.providerProfession}>{"   "} Medical Doctor</Text>
                       </View>
                     </View>

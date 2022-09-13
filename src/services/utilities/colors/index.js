@@ -23,4 +23,6 @@ export const colors = {
   appBgColor3: '#23a455',
   dot: '#f1ad4c',
   btnColor: '#2b8fda',
+  secondary:'#be1d2d',
+  primary:'#161616'
 };

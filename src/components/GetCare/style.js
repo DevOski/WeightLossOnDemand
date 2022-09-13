@@ -4,7 +4,7 @@ import {colors, fontFamily, fontSize, sizes} from '../../services';
 
 export const styles = StyleSheet.create({
   buttonView: {
-    backgroundColor: colors.btnColor,
+    backgroundColor: colors.secondary,
     height: sizes.screenHeight * 0.06,
     width: sizes.screenWidth * 0.8,
     alignItems: 'center',

@@ -1,4 +1,4 @@
-import icon from '../../../assets/icon.png';
+import icon from '../../../assets/lightIcon.png';
 import setting from '../../../assets/setting.png';
 import playIcon from '../../../assets/playIcon.png';
 import bg1 from '../../../assets/bg1.jpeg';

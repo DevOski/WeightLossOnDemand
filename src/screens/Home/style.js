@@ -24,7 +24,7 @@ export const styles = StyleSheet.create({
   heading: {
     fontSize: fontSize.h5,
     fontWeight: 'bold',
-    color: colors.black,
+    color: colors.secondary,
   },
   welcomeText: {
     fontSize: fontSize.h6,
@@ -39,11 +39,11 @@ export const styles = StyleSheet.create({
   },
   dotActive: {
     margin: 3,
-    color: colors.dot,
+    color: colors.secondary,
   },
   dot: {
     margin: 3,
-    color: colors.dot,
+    color: colors.secondary,
     opacity: 0.6,
   },
   wrapDot: {
@@ -109,7 +109,7 @@ export const styles = StyleSheet.create({
     fontWeight: '500',
   },
   semiText: {
-    color: colors.white,
+    color: colors.secondary,
     fontWeight: '500',
     fontSize: fontSize.h6,
   },
@@ -118,7 +118,7 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
   },
   symbol: {
-    color: colors.dot,
+    color: colors.secondary,
     fontSize: fontSize.h4,
     bottom: 1,
   },
@@ -133,7 +133,7 @@ export const styles = StyleSheet.create({
     paddingTop: sizes.TinyMargin,
   },
   addIcon: {
-    color: colors.dot,
+    color: colors.secondary,
     fontWeight: 'bold',
     paddingBottom: sizes.screenHeight * 0.02,
   },
@@ -156,7 +156,7 @@ export const styles = StyleSheet.create({
   learnMoreText: {
     fontSize: fontSize.h6,
     fontWeight: '500',
-    color: colors.btnColor,
+    color: colors.secondary,
   },
   letUsText: {
     color: colors.white,
@@ -176,8 +176,8 @@ export const styles = StyleSheet.create({
   },
   providerHead: {
     fontSize: fontSize.h5,
-    fontWeight: '400',
-    color: colors.black,
+    fontWeight: '500',
+    color: colors.secondary,
   },
   providerProfession: {
     fontWeight: '400',
