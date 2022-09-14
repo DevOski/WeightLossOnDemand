@@ -1,11 +1,14 @@
 import React from 'react';
 import {Text, View} from 'react-native';
-import Introslider from './src/screens/introSliderScreen';
+import Intro from './src/screens/Introsliderscreen';
+import {SignUp} from './src/screens/signupscreen';
 
 export default function App() {
   return (
     <View>
-      <Introslider/>
+      {/* <Text>umair</Text> */}
+     {/* <Intro/> */}
+     <SignUp/>
     </View>
   );
 }
