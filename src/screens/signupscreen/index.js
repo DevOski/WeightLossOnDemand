@@ -91,7 +91,7 @@ export const SignUp = ({navigation}) => {
                setChecked(!checked);
             }}
             color={'#be1d2d'}
-            uncheckColor={'red'}
+            uncheckColor={colors.secondary}
          />
          <View style={styles.ddemand}>
             <Text style={styles.text}>I agree to the Doctor On Demands</Text>
@@ -99,7 +99,7 @@ export const SignUp = ({navigation}) => {
          </View>
           </View>
           <View style={styles.filedconbutton}>
-          <TouchableOpacity style={styles.but}>
+          <TouchableOpacity style={styles.but} onPress={()=>navigation.navigate("BottomNavs")}>
             <Text style={{color: '#fff',fontSize:20}}>Create Account</Text>
           </TouchableOpacity>
           </View>
@@ -149,7 +149,7 @@ const styles = StyleSheet.create({
     // fontWeight: '400',
   },
   but: {
-    backgroundColor: 'red',
+    backgroundColor: colors.secondary,
     width: deviceWidth * 0.7,
     height: deviceHeight * 0.07,
     justifyContent: 'center',

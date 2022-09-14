@@ -4,6 +4,7 @@ import {
   ImageBackground,
   SafeAreaView,
   ScrollView,
+  Switch,
   Text,
   TouchableOpacity,
   View,
@@ -18,9 +19,13 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
 import {colors} from '../../services';
 
-export default function Setting() {
+export default function Setting({navigation}) {
   const [userName, setUserName] = useState('Tester Jazzy');
   const [email, setEmail] = useState('tester586@gmail.com');
+  const [isEnabled, setIsEnabled] = useState(false);
+
+  const toggleSwitch = () => setIsEnabled(previousState => !previousState);
+
   return (
     <SafeAreaView>
       <ScrollView style={styles.color}>
@@ -37,7 +42,7 @@ export default function Setting() {
           <Text style={[styles.signOutText, styles.left]}>{email}</Text>
         </View>
         <View style={styles.padding}>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate('SharePromo')}>
             <View style={styles.row}>
               <MaterialCommunityIcons
                 name="gift"
@@ -52,25 +57,18 @@ export default function Setting() {
           <Text style={styles.head}>PAYMENT</Text>
         </View>
         <View style={styles.padding}>
-          <TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => navigation.navigate('PaymentMethod')}>
             <View style={styles.row}>
-              <Ionicons
-                name="card-sharp"
-                color={colors.secondary}
-                size={25}
-              />
+              <Ionicons name="card-sharp" color={colors.secondary} size={25} />
               <Text style={styles.btnText}>Payment Method</Text>
             </View>
           </TouchableOpacity>
         </View>
         <View style={styles.padding}>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate('ApplyCoupon')}>
             <View style={styles.row}>
-              <Ionicons
-                name="pricetag"
-                color={colors.secondary}
-                size={25}
-              />
+              <Ionicons name="pricetag" color={colors.secondary} size={25} />
               <Text style={styles.btnText}>Apply Coupon</Text>
             </View>
           </TouchableOpacity>
@@ -81,11 +79,7 @@ export default function Setting() {
         <View style={styles.padding}>
           <TouchableOpacity>
             <View style={styles.row}>
-              <FontAwesome
-                name="vcard-o"
-                color={colors.secondary}
-                size={25}
-              />
+              <FontAwesome name="vcard-o" color={colors.secondary} size={25} />
               <Text style={styles.btnText}>Contact Information</Text>
             </View>
           </TouchableOpacity>
@@ -133,16 +127,21 @@ export default function Setting() {
           </TouchableOpacity>
         </View>
         <View style={styles.padding}>
-          <TouchableOpacity>
-            <View style={styles.row}>
-              <Ionicons
-                name="finger-print"
-                color={colors.secondary}
-                size={25}
+          <View style={[styles.row, styles.justifyCenter]}>
+            <Ionicons name="finger-print" color={colors.secondary} size={25} />
+            <Text style={styles.fingerprintText}>
+              Enable Fingerprint for login
+            </Text>
+            <View style={{alignSelf: 'flex-end'}}>
+              <Switch
+                trackColor={{false: '#767577', true: colors.secondary}}
+                thumbColor={isEnabled ? colors.primary : '#f4f3f4'}
+                ios_backgroundColor="#3e3e3e"
+                onValueChange={toggleSwitch}
+                value={isEnabled}
               />
-              <Text style={styles.btnText}>Enable Fingerprint for login</Text>
             </View>
-          </TouchableOpacity>
+          </View>
         </View>
         <View style={[styles.left, styles.top]}>
           <Text style={styles.head}>CARE COORDINATION</Text>
@@ -150,10 +149,9 @@ export default function Setting() {
         <View style={styles.padding}>
           <TouchableOpacity>
             <View style={styles.row}>
-              <FontAwesome5
-                name="boxes"
-                color={colors.secondary}
-                size={25}
+              <Image
+                source={images.medicalRecords}
+                style={styles.medicalIcon}
               />
               <Text style={styles.btnText}>Medical Records</Text>
             </View>
@@ -162,11 +160,7 @@ export default function Setting() {
         <View style={styles.padding}>
           <TouchableOpacity>
             <View style={styles.row}>
-              <MaterialCommunityIcons
-                name="gift"
-                color={colors.secondary}
-                size={25}
-              />
+              <FontAwesome name="heart" color={colors.secondary} size={25} />
               <Text style={styles.btnText}>Google Fit</Text>
             </View>
           </TouchableOpacity>
@@ -178,13 +172,36 @@ export default function Setting() {
           <TouchableOpacity>
             <View style={styles.row}>
               <MaterialCommunityIcons
-                name="gift"
+                name="chat-question"
                 color={colors.secondary}
                 size={25}
               />
               <Text style={styles.btnText}>Customer Support</Text>
             </View>
           </TouchableOpacity>
+        </View>
+        <View style={styles.padding}>
+          <TouchableOpacity>
+            <View style={styles.row}>
+              <Image source={images.feedback} style={styles.medicalIcon} />
+
+              <Text style={styles.btnText}>Send Feedback</Text>
+            </View>
+          </TouchableOpacity>
+        </View>
+        <View style={[styles.left, styles.top]}>
+          <Text style={styles.head}>LEGAL</Text>
+        </View>
+        <View style={styles.padding}>
+          <TouchableOpacity>
+            <View style={styles.row}>
+              <Image source={images.terms} style={styles.medicalIcon} />
+              <Text style={styles.btnText}>Terms and Conditions</Text>
+            </View>
+          </TouchableOpacity>
+        </View>
+        <View style={[styles.right, styles.top]}>
+          <Text style={styles.version}>VERSION 3.66.0</Text>
         </View>
       </ScrollView>
     </SafeAreaView>

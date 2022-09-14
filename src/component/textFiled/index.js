@@ -16,7 +16,7 @@ import { colors } from '../../services';
         onChangeText={setValue}
         autoCapitalize={'none'}
         secureTextEntry={secureTextEntry}
-        activeUnderlineColor={'red'}
+        activeUnderlineColor={colors.secondary}
         style={{backgroundColor:colors.white,fontSize:20}}
         />
         </>

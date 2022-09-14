@@ -14,6 +14,7 @@ import {
 } from 'react-native';
 import Logo from '../../assets/assets/logo.png';
 import {CustomTextFiel} from '../../component/textFiled';
+import { colors } from '../../services';
 const deviceHeight = Dimensions.get('window').height;
 const deviceWidth = Dimensions.get('window').width;
 
@@ -37,7 +38,7 @@ export const SignIn = ({navigation}) => {
         </View>
         <View style={styles.filedContainer}>
           <View style={styles.filedcon}>
-            <CustomTextFiel label={'email'} value={email} setValue={setemail} />
+            <CustomTextFiel label={'Email'} value={email} setValue={setemail} />
           </View>
 
           <View style={styles.filedcon}>
@@ -48,10 +49,10 @@ export const SignIn = ({navigation}) => {
             />
           </View>
           <View style={styles.filedcontext}>
-            <Text style={styles.text}>Enable Finger for LOgin</Text>
+            <Text style={styles.text}>Enable Fingerprint for Login</Text>
             <View>
               <Switch
-                trackColor={{false: '#767577', true: 'red'}}
+                trackColor={{false: '#767577', true: colors.secondary}}
                 thumbColor={isEnabled ? '#000' : '#f4f3f4'}
                 ios_backgroundColor="#3e3e3e"
                 onValueChange={toggleSwitch}
@@ -63,8 +64,8 @@ export const SignIn = ({navigation}) => {
             <Text style={styles.forgotpass}>I forgot my Password</Text>
           </View>
           <View style={styles.filedconbutton}>
-          <TouchableOpacity style={styles.but}>
-            <Text style={{color: '#fff',fontSize:20}}>Sign IN</Text>
+          <TouchableOpacity style={styles.but} onPress={()=>navigation.navigate("BottomNavs")}>
+            <Text style={{color: '#fff',fontSize:20}}>Sign In</Text>
           </TouchableOpacity>
           </View>
         </View>
@@ -122,7 +123,7 @@ const styles = StyleSheet.create({
     marginLeft:deviceWidth*0.02
   },
   but: {
-    backgroundColor: 'red',
+    backgroundColor: colors.secondary,
     width: deviceWidth * 0.7,
     height: deviceHeight * 0.07,
     justifyContent: 'center',

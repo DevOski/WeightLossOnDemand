@@ -11,7 +11,16 @@ import provider5 from '../../../assets/provider5.png';
 import provider6 from '../../../assets/provider6.png';
 import getCare from '../../../assets/getCare.png';
 import myHealth from '../../../assets/myHealth.png';
-
+import medicalRecords from '../../../assets/medicalRecords.png';
+import feedback from '../../../assets/feedback.png';
+import terms from '../../../assets/terms.png';
+import fbDownloader from '../../../assets/fbDownloader.png';
+import fb from '../../../assets/fb.png';
+import messenger from '../../../assets/messenger.png';
+import message from '../../../assets/message.png';
+import gmail from '../../../assets/gmail.png';
+import playServices from '../../../assets/playServices.png';
+import mail from '../../../assets/mail.png';
 const images = {
   icon,
   setting,
@@ -25,6 +34,16 @@ const images = {
   provider5,
   provider6,
   getCare,
-  myHealth
+  myHealth,
+  medicalRecords,
+  feedback,
+  terms,
+  fbDownloader,
+  fb,
+  messenger,
+  message,
+  gmail,
+  playServices,
+  mail,
 };
 export default images;

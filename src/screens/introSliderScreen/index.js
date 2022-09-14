@@ -26,6 +26,10 @@
    Componentthrd,
    ComponentFour,
  } from '../../component/IntrComponent';
+import { colors, fontSize, sizes } from '../../services';
+// FontAwesome
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
+
  const Intro = () => {
    const slides = [
      {id: 1, name: <Component />},
@@ -33,19 +37,32 @@
      {id: 3, name: <Componentthrd />},
      {id: 4, name: <ComponentFour />},
    ];
-   const [hideButton, setHideButton] = useState(false);
-   let test;
+   const [imgActive, setImgActive] = useState(0);
+
+   const onchange = nativeEvent => {
+     if (nativeEvent) {
+       const slide = Math.ceil(
+         nativeEvent.contentOffset.x / nativeEvent.layoutMeasurement.width,
+       );
+       if (slide != imgActive) {
+         setImgActive(slide);
+       }
+     }
+   };
    return (
      <SafeAreaView>
        <ScrollView
+         onScroll={({nativeEvent}) => onchange(nativeEvent)}
          horizontal
+         pagingEnabled
+         showsHorizontalScrollIndicator={false}
          style={styles.srollwidth}
          disableIntervalMomentum={true}>
          {slides.map((item, index) => {
            return <View>{item.name}</View>;
          })}
        </ScrollView>
-       {slides?.map((item, index) => {
+       {/* {slides?.map((item, index) => {
          console.log(item.id);
          return (
            <>
@@ -68,7 +85,21 @@
              ) : null}
            </>
          );
-       })}
+       })} */}
+       <View style={styles.wrapDot}>
+          {slides?.map((item, index) => {
+            return (
+              <View>
+                  <Text
+                    // key={index}
+                    style={imgActive == index ? styles.dotActive : styles.dot}>
+                   ◉
+                  </Text>
+                  
+              </View>
+            );
+          })}
+        </View>
      </SafeAreaView>
    );
  };
@@ -107,17 +138,29 @@
      justifyContent: 'center',
      alignItems: 'center',
    },
+ 
+   
    dot: {
-     width: deviceWidth * 0.04,
-     height: deviceHeight * 0.02,
-     backgroundColor: 'red',
-     borderRadius: deviceWidth * 0.5,
-     marginLeft: deviceWidth * 0.02,
-   },
-   fontsiginandsignup: {
-     fontSize: 25,
-     color: 'red',
-   },
+    margin: 3,
+    color: colors.secondary,
+    opacity: 0.6,
+    fontSize:fontSize.h2
+
+  },
+  wrapDot: {
+    flexDirection: 'row',
+    alignSelf: 'center',
+    position:'absolute',
+    top:sizes.screenHeight * 0.92,
+  },
+  wrap: {
+    width: sizes.screenWidth * 0.96,
+  },
+  dotActive: {
+    margin: 3,
+    color: colors.secondary,
+    fontSize:fontSize.h2
+  },
  });
  
  export default Intro;
