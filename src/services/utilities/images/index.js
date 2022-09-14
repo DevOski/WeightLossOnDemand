@@ -14,7 +14,13 @@ import myHealth from '../../../assets/myHealth.png';
 import medicalRecords from '../../../assets/medicalRecords.png';
 import feedback from '../../../assets/feedback.png';
 import terms from '../../../assets/terms.png';
-
+import fbDownloader from '../../../assets/fbDownloader.png';
+import fb from '../../../assets/fb.png';
+import messenger from '../../../assets/messenger.png';
+import message from '../../../assets/message.png';
+import gmail from '../../../assets/gmail.png';
+import playServices from '../../../assets/playServices.png';
+import mail from '../../../assets/mail.png';
 const images = {
   icon,
   setting,
@@ -31,6 +37,13 @@ const images = {
   myHealth,
   medicalRecords,
   feedback,
-  terms
+  terms,
+  fbDownloader,
+  fb,
+  messenger,
+  message,
+  gmail,
+  playServices,
+  mail,
 };
 export default images;

@@ -14,6 +14,7 @@ import {sizes} from '../utilities';
 import GetCare from '../../screens/GetCare';
 import MyHealth from '../../screens/MyHealth';
 import Setting from '../../screens/Setting';
+import SharePromo from '../../screens/SharePromo';
 
 const Stack = createNativeStackNavigator();
 
@@ -23,6 +24,7 @@ export default function MainNavigator() {
     <NavigationContainer>
       <Stack.Navigator screenOptions={{headerShown: false}}>
         <Stack.Screen name="Setting" component={Setting} />
+        <Stack.Screen name="SharePromo" component={SharePromo} />
         <Stack.Screen name="BottomNavs" component={MyTabs} />
         
       </Stack.Navigator>

@@ -19,7 +19,7 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
 import {colors} from '../../services';
 
-export default function Setting() {
+export default function Setting({navigation}) {
   const [userName, setUserName] = useState('Tester Jazzy');
   const [email, setEmail] = useState('tester586@gmail.com');
   const [isEnabled, setIsEnabled] = useState(false);
@@ -42,7 +42,7 @@ export default function Setting() {
           <Text style={[styles.signOutText, styles.left]}>{email}</Text>
         </View>
         <View style={styles.padding}>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={()=>navigation.navigate("SharePromo")}>
             <View style={styles.row}>
               <MaterialCommunityIcons
                 name="gift"
