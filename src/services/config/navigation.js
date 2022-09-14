@@ -22,8 +22,8 @@ export default function MainNavigator() {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{headerShown: false}}>
-        <Stack.Screen name="BottomNavs" component={MyTabs} />
         <Stack.Screen name="Setting" component={Setting} />
+        <Stack.Screen name="BottomNavs" component={MyTabs} />
         
       </Stack.Navigator>
     </NavigationContainer>

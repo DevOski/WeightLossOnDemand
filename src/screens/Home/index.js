@@ -43,7 +43,7 @@ export default function Home({navigation}) {
             <Text style={styles.welcomeText}> Welcome back</Text>
           </View>
           <View style={styles.transparentView}></View>
-          <TouchableOpacity onPress={()=>navigation.navigate("Setting")}>
+          <TouchableOpacity onPress={() => navigation.navigate('Setting')}>
             <Image source={images.setting} style={styles.settingIcon} />
           </TouchableOpacity>
         </View>
@@ -57,7 +57,10 @@ export default function Home({navigation}) {
             return (
               <View style={styles.cardView}>
                 {index == 0 && (
-                  <ImageBackground key={index} source={images.bg1} style={styles.bg}>
+                  <ImageBackground
+                    key={index}
+                    source={images.bg1}
+                    style={styles.bg}>
                     <TouchableOpacity>
                       <View style={styles.playBtn}>
                         <Image
@@ -68,7 +71,7 @@ export default function Home({navigation}) {
                     </TouchableOpacity>
                     <View style={styles.textView}>
                       <Text style={styles.text}>
-                        What to expect in your first {"    "}visit
+                        What to expect in your first {'    '}visit
                       </Text>
                     </View>
                     <TouchableOpacity>
@@ -87,27 +90,27 @@ export default function Home({navigation}) {
                     </Text>
                     <View style={styles.row2}>
                       <Text style={styles.addIcon}>✚</Text>
-                      <Text style={styles.addText}>{" "} Sinus infections</Text>
+                      <Text style={styles.addText}> Sinus infections</Text>
                     </View>
                     <View style={styles.row2}>
                       <Text style={styles.addIcon}>✚</Text>
-                      <Text style={styles.addText}>{" "} Cold & Flu</Text>
+                      <Text style={styles.addText}> Cold & Flu</Text>
                     </View>
                     <View style={styles.row2}>
                       <Text style={styles.addIcon}>✚</Text>
-                      <Text style={styles.addText}>{" "} Heartburn</Text>
+                      <Text style={styles.addText}> Heartburn</Text>
                     </View>
                     <View style={styles.row2}>
                       <Text style={styles.addIcon}>✚</Text>
-                      <Text style={styles.addText}>{" "} Sports Injuries</Text>
+                      <Text style={styles.addText}> Sports Injuries</Text>
                     </View>
                     <View style={styles.row2}>
                       <Text style={styles.addIcon}>✚</Text>
-                      <Text style={styles.addText}>{" "} High cholesterol</Text>
+                      <Text style={styles.addText}> High cholesterol</Text>
                     </View>
                     <View style={styles.row2}>
                       <Text style={styles.addIcon}>✚</Text>
-                      <Text style={styles.addText}>{" "} Rashes & skin issues</Text>
+                      <Text style={styles.addText}> Rashes & skin issues</Text>
                     </View>
                     <View style={styles.btnTop}>
                       <GetCare />
@@ -130,19 +133,19 @@ export default function Home({navigation}) {
                     </Text>
                     <View style={styles.row2}>
                       <Text style={styles.addIcon}>✚</Text>
-                      <Text style={styles.addText}>{" "} Depression & anxiety</Text>
+                      <Text style={styles.addText}> Depression & anxiety</Text>
                     </View>
                     <View style={styles.row2}>
                       <Text style={styles.addIcon}>✚</Text>
-                      <Text style={styles.addText}>{" "} Workplace stress</Text>
+                      <Text style={styles.addText}> Workplace stress</Text>
                     </View>
                     <View style={styles.row2}>
                       <Text style={styles.addIcon}>✚</Text>
-                      <Text style={styles.addText}>{" "} Addiction</Text>
+                      <Text style={styles.addText}> Addiction</Text>
                     </View>
                     <View style={styles.row2}>
                       <Text style={styles.addIcon}>✚</Text>
-                      <Text style={styles.addText}>{" "} Trauma & loss</Text>
+                      <Text style={styles.addText}> Trauma & loss</Text>
                     </View>
                     <View style={styles.btnTop2}>
                       <GetCare />
@@ -155,13 +158,19 @@ export default function Home({navigation}) {
                   </View>
                 )}
                 {index == 3 && (
-                  <ImageBackground key={index} source={images.bg2} style={styles.bg}>
-                     <View style={styles.paddingBottom}></View>
+                  <ImageBackground
+                    key={index}
+                    source={images.bg2}
+                    style={styles.bg}>
+                    <View style={styles.paddingBottom}></View>
                     <View style={styles.proudView}>
                       <Text style={styles.text}>
-                        We're proud beyond {"              "} Pride
+                        We're proud beyond {'              '} Pride
                       </Text>
-                      <Text style={styles.letUsText}>Let us help you find the right {"        "} LGBQTQ+ friendly doctor</Text>
+                      <Text style={styles.letUsText}>
+                        Let us help you find the right {'        '} LGBQTQ+
+                        friendly doctor
+                      </Text>
                     </View>
                     <TouchableOpacity>
                       <View style={[styles.learnMoreView, styles.row2]}>
@@ -176,54 +185,98 @@ export default function Home({navigation}) {
                     <Text style={[styles.heading, styles.top]}>
                       Meet Our Providers
                     </Text>
-                   
-                    <View style={[styles.row2,styles.paddingLeft]}>
-                      <Image source={images.provider1} style={styles.providerImg}/>
+
+                    <View style={[styles.row2, styles.paddingLeft]}>
+                      <Image
+                        source={images.provider1}
+                        style={styles.providerImg}
+                      />
                       <View>
-                      <Text style={styles.providerHead}>{"  "} Kiki Lwin, MD</Text>
-                      <Text style={styles.providerProfession}>{"   "} Medical Doctor</Text>
+                        <Text style={styles.providerHead}>
+                          {'  '} Kiki Lwin, MD
+                        </Text>
+                        <Text style={styles.providerProfession}>
+                          {'   '} Medical Doctor
+                        </Text>
                       </View>
                     </View>
-                    <View style={[styles.row2,styles.paddingLeft]}>
-                      <Image source={images.provider2} style={styles.providerImg2}/>
+                    <View style={[styles.row2, styles.paddingLeft]}>
+                      <Image
+                        source={images.provider2}
+                        style={styles.providerImg2}
+                      />
                       <View>
-                      <Text style={styles.providerHead}>{"  "} Elizabeth Curlin, PhD</Text>
-                      <Text style={styles.providerProfession}>{"   "} Psychologist</Text>
+                        <Text style={styles.providerHead}>
+                          {'  '} Elizabeth Curlin, PhD
+                        </Text>
+                        <Text style={styles.providerProfession}>
+                          {'   '} Psychologist
+                        </Text>
                       </View>
                     </View>
-                    <View style={[styles.row2,styles.paddingLeft]}>
-                      <Image source={images.provider3} style={styles.providerImg2}/>
+                    <View style={[styles.row2, styles.paddingLeft]}>
+                      <Image
+                        source={images.provider3}
+                        style={styles.providerImg2}
+                      />
                       <View>
-                      <Text style={styles.providerHead}>{"  "} Tracie DeJarnette-Holl...</Text>
-                      <Text style={styles.providerProfession}>{"   "} Psychiatrist</Text>
+                        <Text style={styles.providerHead}>
+                          {'  '} Tracie DeJarnette-Holl...
+                        </Text>
+                        <Text style={styles.providerProfession}>
+                          {'   '} Psychiatrist
+                        </Text>
                       </View>
                     </View>
-                    <View style={[styles.row2,styles.paddingLeft]}>
-                      <Image source={images.provider4} style={styles.providerImg2}/>
+                    <View style={[styles.row2, styles.paddingLeft]}>
+                      <Image
+                        source={images.provider4}
+                        style={styles.providerImg2}
+                      />
                       <View>
-                      <Text style={styles.providerHead}>{"  "} Diana Malone, MD</Text>
-                      <Text style={styles.providerProfession}>{"   "} Medical Doctor</Text>
+                        <Text style={styles.providerHead}>
+                          {'  '} Diana Malone, MD
+                        </Text>
+                        <Text style={styles.providerProfession}>
+                          {'   '} Medical Doctor
+                        </Text>
                       </View>
                     </View>
-                    <View style={[styles.row2,styles.paddingLeft]}>
-                      <Image source={images.provider5} style={styles.providerImg2}/>
+                    <View style={[styles.row2, styles.paddingLeft]}>
+                      <Image
+                        source={images.provider5}
+                        style={styles.providerImg2}
+                      />
                       <View>
-                      <Text style={styles.providerHead}>{"  "} Aline Daou, MD</Text>
-                      <Text style={styles.providerProfession}>{"   "} Medical Doctor</Text>
+                        <Text style={styles.providerHead}>
+                          {'  '} Aline Daou, MD
+                        </Text>
+                        <Text style={styles.providerProfession}>
+                          {'   '} Medical Doctor
+                        </Text>
                       </View>
                     </View>
-                    <View style={[styles.row2,styles.paddingLeft]}>
-                      <Image source={images.provider6} style={styles.providerImg2}/>
+                    <View style={[styles.row2, styles.paddingLeft]}>
+                      <Image
+                        source={images.provider6}
+                        style={styles.providerImg2}
+                      />
                       <View>
-                      <Text style={styles.providerHead}>{"  "} Melissa Colbern, MD</Text>
-                      <Text style={styles.providerProfession}>{"   "} Medical Doctor</Text>
+                        <Text style={styles.providerHead}>
+                          {'  '} Melissa Colbern, MD
+                        </Text>
+                        <Text style={styles.providerProfession}>
+                          {'   '} Medical Doctor
+                        </Text>
                       </View>
                     </View>
                     <View style={styles.seeBtn}>
                       <TouchableOpacity>
-                        <View style={[styles.learnMoreBtn,styles.row2]}>
-                          <Text style={styles.learnMoreText}>See all of our providers </Text>
-                        <Text style={styles.symbol}> ›</Text>
+                        <View style={[styles.learnMoreBtn, styles.row2]}>
+                          <Text style={styles.learnMoreText}>
+                            See all of our providers{' '}
+                          </Text>
+                          <Text style={styles.symbol}> ›</Text>
                         </View>
                       </TouchableOpacity>
                     </View>
@@ -236,11 +289,13 @@ export default function Home({navigation}) {
         <View style={styles.wrapDot}>
           {item?.map((item, index) => {
             return (
-              <Text
-                key={index}
-                style={imgActive == index ? styles.dotActive : styles.dot}>
-                ▂▂
-              </Text>
+              <View>
+                  <Text
+                    key={index}
+                    style={imgActive == index ? styles.dotActive : styles.dot}>
+                    ▂▂
+                  </Text>
+              </View>
             );
           })}
         </View>
