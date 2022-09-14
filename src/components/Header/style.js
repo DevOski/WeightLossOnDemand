@@ -23,4 +23,7 @@ export const styles = StyleSheet.create({
   bold: {
     fontWeight: 'bold',
   },
+  left:{
+    right:sizes.screenWidth * 0.05
+  }
 });
