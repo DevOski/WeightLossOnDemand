@@ -16,4 +16,11 @@ export const styles = StyleSheet.create({
     left: sizes.screenWidth * 0.05,
     fontSize: fontSize.h6,
   },
+  skipView: {
+    left: sizes.screenHeight * 0.2,
+  },
+  skipIcon: {left: sizes.baseMargin},
+  bold: {
+    fontWeight: 'bold',
+  },
 });

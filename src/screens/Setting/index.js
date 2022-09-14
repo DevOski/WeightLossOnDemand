@@ -42,7 +42,7 @@ export default function Setting({navigation}) {
           <Text style={[styles.signOutText, styles.left]}>{email}</Text>
         </View>
         <View style={styles.padding}>
-          <TouchableOpacity onPress={()=>navigation.navigate("SharePromo")}>
+          <TouchableOpacity onPress={() => navigation.navigate('SharePromo')}>
             <View style={styles.row}>
               <MaterialCommunityIcons
                 name="gift"
@@ -57,7 +57,8 @@ export default function Setting({navigation}) {
           <Text style={styles.head}>PAYMENT</Text>
         </View>
         <View style={styles.padding}>
-          <TouchableOpacity onPress={()=>navigation.navigate("PaymentMethod")}>
+          <TouchableOpacity
+            onPress={() => navigation.navigate('PaymentMethod')}>
             <View style={styles.row}>
               <Ionicons name="card-sharp" color={colors.secondary} size={25} />
               <Text style={styles.btnText}>Payment Method</Text>
@@ -65,7 +66,7 @@ export default function Setting({navigation}) {
           </TouchableOpacity>
         </View>
         <View style={styles.padding}>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate('ApplyCoupon')}>
             <View style={styles.row}>
               <Ionicons name="pricetag" color={colors.secondary} size={25} />
               <Text style={styles.btnText}>Apply Coupon</Text>

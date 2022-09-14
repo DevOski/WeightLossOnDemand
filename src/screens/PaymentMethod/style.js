@@ -18,6 +18,7 @@ export const styles = StyleSheet.create({
   card: {
     backgroundColor: colors.white,
     padding: sizes.screenHeight * 0.03,
+    marginBottom:sizes.TinyMargin
   },
   row: {
     flexDirection: 'row',
