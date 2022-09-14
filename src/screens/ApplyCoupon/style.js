@@ -9,7 +9,7 @@ export const styles = StyleSheet.create({
   },
   padding: {
     padding: sizes.baseMargin,
-    height:10000
+    height:sizes.screenHeight
   },
   couponHead: {
     fontSize: fontSize.h6,
