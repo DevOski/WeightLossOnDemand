@@ -42,14 +42,33 @@ export const styles = StyleSheet.create({
     color: colors.black,
     // fontWeight:'400'
   },
+  fingerprintText: {
+    right: sizes.screenWidth * 0.05,
+    fontSize: fontSize.h6,
+    color: colors.black,
+  },
   top: {
     top: sizes.TinyMargin,
   },
-  head:{
-    color:colors.primary,
-    fontWeight:'bold'
+  head: {
+    color: colors.primary,
+    fontWeight: 'bold',
   },
-  redText:{
-    color:colors.secondary
-  }
+  version:{
+    color: colors.secondary,
+    fontWeight: 'bold',
+  },
+  redText: {
+    color: colors.secondary,
+  },
+  medicalIcon: {
+    height: sizes.screenHeight * 0.03,
+    width: sizes.screenHeight * 0.03,
+  },
+  justifyCenter: {justifyContent: 'space-between'},
+  right: {
+    alignSelf: 'flex-end',
+    paddingRight: sizes.screenWidth * 0.08,
+    paddingBottom:sizes.baseMargin,
+  },
 });

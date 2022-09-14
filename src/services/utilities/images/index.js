@@ -11,6 +11,9 @@ import provider5 from '../../../assets/provider5.png';
 import provider6 from '../../../assets/provider6.png';
 import getCare from '../../../assets/getCare.png';
 import myHealth from '../../../assets/myHealth.png';
+import medicalRecords from '../../../assets/medicalRecords.png';
+import feedback from '../../../assets/feedback.png';
+import terms from '../../../assets/terms.png';
 
 const images = {
   icon,
@@ -25,6 +28,9 @@ const images = {
   provider5,
   provider6,
   getCare,
-  myHealth
+  myHealth,
+  medicalRecords,
+  feedback,
+  terms
 };
 export default images;
