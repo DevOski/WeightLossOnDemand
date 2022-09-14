@@ -14,6 +14,9 @@ import {sizes} from '../utilities';
 import GetCare from '../../screens/GetCare';
 import MyHealth from '../../screens/MyHealth';
 import Setting from '../../screens/Setting';
+import SharePromo from '../../screens/SharePromo';
+import PaymentMethod from '../../screens/PaymentMethod';
+import ApplyCoupon from '../../screens/ApplyCoupon';
 
 const Stack = createNativeStackNavigator();
 
@@ -24,7 +27,9 @@ export default function MainNavigator() {
       <Stack.Navigator screenOptions={{headerShown: false}}>
         <Stack.Screen name="Setting" component={Setting} />
         <Stack.Screen name="BottomNavs" component={MyTabs} />
-        
+        <Stack.Screen name="SharePromo" component={SharePromo} />
+        <Stack.Screen name="PaymentMethod" component={PaymentMethod} />
+        <Stack.Screen name="ApplyCoupon" component={ApplyCoupon} />
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -41,7 +46,7 @@ function MyTabs() {
         component={Home}
         options={{
           tabBarLabel: 'Home',
-         
+
           tabBarIcon: ({color}) => (
             <Image
               source={images.icon}
