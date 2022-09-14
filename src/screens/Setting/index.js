@@ -57,7 +57,7 @@ export default function Setting({navigation}) {
           <Text style={styles.head}>PAYMENT</Text>
         </View>
         <View style={styles.padding}>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={()=>navigation.navigate("PaymentMethod")}>
             <View style={styles.row}>
               <Ionicons name="card-sharp" color={colors.secondary} size={25} />
               <Text style={styles.btnText}>Payment Method</Text>
