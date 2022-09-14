@@ -19,7 +19,7 @@ import { SignUp } from '../../screens/signupscreen';
 import SharePromo from '../../screens/SharePromo';
 import PaymentMethod from '../../screens/PaymentMethod';
 import ApplyCoupon from '../../screens/ApplyCoupon';
-import Intro from '../../screens/Introsliderscreen'
+import Intro from '../../screens/introSliderScreen'
 const Stack = createNativeStackNavigator();
 
 const Tab = createMaterialBottomTabNavigator();
