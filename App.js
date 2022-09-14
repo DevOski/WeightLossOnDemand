@@ -1,14 +1,17 @@
 import React from 'react';
-import {Text, View} from 'react-native';
-import Intro from './src/screens/Introsliderscreen';
-import {SignUp} from './src/screens/signupscreen';
+import {StyleSheet, Text, View} from 'react-native';
+import Home from './src/screens/Home';
+import MainNavigator from './src/services/config/navigation';
 
 export default function App() {
   return (
-    <View>
-      {/* <Text>umair</Text> */}
-     {/* <Intro/> */}
-     <SignUp/>
+    <View style={styles.container}>
+      <MainNavigator />
     </View>
   );
 }
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+});

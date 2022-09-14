@@ -1,9 +1,10 @@
 import React, {useState} from 'react';
+import { TextInput } from 'react-native-paper';
+import {View, StyleSheet, Text, } from 'react-native';
+import { colors } from '../../services';
 
-import {View, StyleSheet, Text, TextInput} from 'react-native';
 
-
- export const CustomTextFiel = ({value,placeholder,setValue,secureTextEntry}) => {
+ export const CustomTextFiel = ({value,label,setValue,secureTextEntry}) => {
     return (
     //   <View style={styles.container}>
     <>
@@ -11,10 +12,12 @@ import {View, StyleSheet, Text, TextInput} from 'react-native';
         mode='contain'
         //   style={styles.input}
         value={value}
-        placeholder={placeholder}
+        label={label}
         onChangeText={setValue}
         autoCapitalize={'none'}
         secureTextEntry={secureTextEntry}
+        activeUnderlineColor={'red'}
+        style={{backgroundColor:colors.white,fontSize:20}}
         />
         </>
      
