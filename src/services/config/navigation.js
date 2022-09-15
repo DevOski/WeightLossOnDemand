@@ -34,14 +34,13 @@ const Tab = createMaterialBottomTabNavigator();
 export default function MainNavigator() {
   return (
     <NavigationContainer>
-
       <Stack.Navigator screenOptions={{headerShown: false}}>
-      <Stack.Screen name="BottomNavs" component={MyTabs} />
-
         <Stack.Screen name="Introsliderscreen" component={Intro} />
         <Stack.Screen name="signupscreen" component={SignUp} />
         <Stack.Screen name="signinscreen" component={SignIn} />
-        <Stack.Screen name="Setting" component={Setting} />
+        <Stack.Screen name="BottomNavs" component={MyTabs} />
+      <Stack.Screen name="Setting" component={Setting} />
+
         <Stack.Screen name="SharePromo" component={SharePromo} />
         <Stack.Screen name="PaymentMethod" component={PaymentMethod} />
         <Stack.Screen name="ApplyCoupon" component={ApplyCoupon} />
@@ -52,7 +51,10 @@ export default function MainNavigator() {
         <Stack.Screen name="MedicalRecords" component={MedicalRecords} />
         <Stack.Screen name="GoogleFit" component={GoogleFit} />
         <Stack.Screen name="ContactSupport" component={ContactSupport} />
-        <Stack.Screen name="TermsAndConditions" component={TermsAndConditions} />
+        <Stack.Screen
+          name="TermsAndConditions"
+          component={TermsAndConditions}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
