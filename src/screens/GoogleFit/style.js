@@ -18,4 +18,56 @@ export const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: colors.primary,
   },
+  googleFit: {
+    alignSelf: 'center',
+    height: sizes.screenHeight * 0.15,
+    width: sizes.screenWidth * 0.8,
+  },
+  top: {
+    paddingTop: sizes.baseMargin,
+    paddingBottom: sizes.baseMargin,
+  },
+  padding: {
+    padding: sizes.baseMargin,
+  },
+  text: {
+    color: colors.primary,
+    fontSize: fontSize.h6,
+  },
+  row: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-around',
+  },
+  right: {
+    right: sizes.screenHeight * 0.1,
+    width: sizes.screenWidth * 0.4,
+  },
+  top2: {
+    paddingTop: sizes.screenHeight * 0.01,
+  },
+  learnMoreBtn: {
+    marginTop: sizes.screenHeight * 0.02,
+    alignItems: 'center',
+  },
+  learnMoreText: {
+    fontSize: fontSize.h6,
+    fontWeight: 'bold',
+    color: colors.secondary,
+  },
+  buttonView: {
+    alignSelf: 'center',
+    backgroundColor: colors.secondary,
+    height: sizes.screenHeight * 0.06,
+    width: sizes.screenWidth * 0.9,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  buttonText: {
+    color: colors.white,
+    fontSize: fontSize.h6,
+  },
+  btnTop:{
+    paddingTop:sizes.screenHeight * 0.1
+  }
 });
