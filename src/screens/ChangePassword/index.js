@@ -16,7 +16,8 @@ import {TextInput} from 'react-native-paper';
 import {colors} from '../../services';
 
 export default function ChangePassword() {
-  const [showPassword, setShowPassword] = useState(false);
+  const [showPassword, setShowPassword] = useState(true);
+  const [password, setPassword] = useState('');
   return (
     <SafeAreaView>
       <ScrollView style={styles.color}>
@@ -38,7 +39,9 @@ export default function ChangePassword() {
             label={'Enter password'}
             activeUnderlineColor={colors.secondary}
             style={styles.field}
-            secureTextEntry={showPassword}
+            onChangeText={text => setPassword(text)}
+            value={password}
+            secureTextEntry={!showPassword}
             right={
               <TextInput.Icon
                 icon={showPassword ? 'eye' : 'eye-off'}
@@ -47,8 +50,11 @@ export default function ChangePassword() {
             }
           />
           <View style={styles.paddingTop}>
-            <TouchableOpacity>
-              <View style={styles.buttonView}>
+            <TouchableOpacity disabled={password !== '' ? false : true}>
+              <View
+                style={
+                  password !== '' ? styles.buttonView : styles.disabledView
+                }>
                 <Text style={styles.buttonText}> Verify Password</Text>
               </View>
             </TouchableOpacity>

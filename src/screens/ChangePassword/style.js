@@ -48,4 +48,13 @@ export const styles = StyleSheet.create({
   paddingTop: {
     paddingTop: sizes.screenHeight * 0.05,
   },
+  disabledView:{
+    alignSelf: 'center',
+    backgroundColor: colors.disabledBg,
+    height: sizes.screenHeight * 0.06,
+    width: sizes.screenWidth * 0.9,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+ 
 });
