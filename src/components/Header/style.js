@@ -4,8 +4,11 @@ import {colors, fontFamily, fontSize, sizes} from '../../services';
 
 export const styles = StyleSheet.create({
   headerView: {
-    backgroundColor: colors.secondary,
     padding: sizes.screenHeight * 0.02,
+  },
+  headerBg:{
+    backgroundColor: colors.secondary,
+
   },
   row: {
     flexDirection: 'row',

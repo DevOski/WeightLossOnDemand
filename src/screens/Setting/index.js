@@ -77,7 +77,7 @@ export default function Setting({navigation}) {
           <Text style={styles.head}>UPDATE PROFILE</Text>
         </View>
         <View style={styles.padding}>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate('ContactInfo')}>
             <View style={styles.row}>
               <FontAwesome name="vcard-o" color={colors.secondary} size={25} />
               <Text style={styles.btnText}>Contact Information</Text>

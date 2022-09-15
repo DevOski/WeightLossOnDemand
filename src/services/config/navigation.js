@@ -14,12 +14,13 @@ import {sizes} from '../utilities';
 import GetCare from '../../screens/GetCare';
 import MyHealth from '../../screens/MyHealth';
 import Setting from '../../screens/Setting';
-import { SignIn } from '../../screens/signinscreen';
-import { SignUp } from '../../screens/signupscreen';
+import {SignIn} from '../../screens/signinscreen';
+import {SignUp} from '../../screens/signupscreen';
 import SharePromo from '../../screens/SharePromo';
 import PaymentMethod from '../../screens/PaymentMethod';
 import ApplyCoupon from '../../screens/ApplyCoupon';
-import Intro from '../../screens/introSliderScreen'
+import Intro from '../../screens/introSliderScreen';
+import ContactInfo from '../../screens/ContactInfo';
 const Stack = createNativeStackNavigator();
 
 const Tab = createMaterialBottomTabNavigator();
@@ -27,14 +28,15 @@ export default function MainNavigator() {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{headerShown: false}}>
-      <Stack.Screen name="Introsliderscreen" component={Intro} />
-      <Stack.Screen name="signupscreen" component={SignUp} />
-      <Stack.Screen name="signinscreen" component={SignIn} />
-        <Stack.Screen name="BottomNavs" component={MyTabs} />
         <Stack.Screen name="Setting" component={Setting} />
+        <Stack.Screen name="Introsliderscreen" component={Intro} />
+        <Stack.Screen name="signupscreen" component={SignUp} />
+        <Stack.Screen name="signinscreen" component={SignIn} />
+        <Stack.Screen name="BottomNavs" component={MyTabs} />
         <Stack.Screen name="SharePromo" component={SharePromo} />
         <Stack.Screen name="PaymentMethod" component={PaymentMethod} />
         <Stack.Screen name="ApplyCoupon" component={ApplyCoupon} />
+        <Stack.Screen name="ContactInfo" component={ContactInfo} />
       </Stack.Navigator>
     </NavigationContainer>
   );
