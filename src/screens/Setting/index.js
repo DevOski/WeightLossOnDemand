@@ -98,7 +98,8 @@ export default function Setting({navigation}) {
           </TouchableOpacity>
         </View>
         <View style={styles.padding}>
-          <TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => navigation.navigate('Insurance')}>
             <View style={styles.row}>
               <MaterialCommunityIcons
                 name="clipboard-text"
