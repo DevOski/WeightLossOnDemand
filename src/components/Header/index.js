@@ -26,7 +26,7 @@ export default function Header({title, skip}) {
       {skip && (
         <View style={styles.skipView}>
           <TouchableOpacity onPress={() => navigation.goBack()}>
-            <View style={styles.row}>
+            <View style={[styles.row,styles.left]}>
               <Text style={styles.title}>{'   '}Skip </Text>
               <MaterialIcons
                 name="keyboard-arrow-right"

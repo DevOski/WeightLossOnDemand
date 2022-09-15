@@ -18,7 +18,7 @@ export const styles = StyleSheet.create({
   card: {
     backgroundColor: colors.white,
     padding: sizes.screenHeight * 0.03,
-    marginBottom:sizes.TinyMargin
+    marginBottom: sizes.TinyMargin,
   },
   row: {
     flexDirection: 'row',
@@ -27,12 +27,12 @@ export const styles = StyleSheet.create({
   symbol: {
     color: colors.secondary,
     fontSize: fontSize.h4,
-    left: sizes.screenWidth * 0.35,
+    left: sizes.screenWidth * 0.3,
     bottom: 1,
   },
 
   cardText: {
-    width: sizes.screenWidth * 0.4,
-    color:colors.primary
+    width: sizes.screenWidth * 0.42,
+    color: colors.primary,
   },
 });
