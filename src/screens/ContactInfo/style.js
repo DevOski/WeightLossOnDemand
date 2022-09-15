@@ -35,6 +35,7 @@ export const styles = StyleSheet.create({
     backgroundColor: colors.white,
     padding: sizes.screenHeight * 0.03,
     marginBottom: sizes.TinyMargin,
+    
   },
   head: {
     color: colors.primary,

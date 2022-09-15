@@ -27,10 +27,18 @@ export const styles = StyleSheet.create({
     backgroundColor: colors.white,
     padding: sizes.screenHeight * 0.01,
     marginBottom: sizes.TinyMargin,
-    alignSelf:'center',
-    width:sizes.screenWidth *0.9,
-    borderWidth:1,
-    borderColor:colors.disabledBg
+    alignSelf: 'center',
+    width: sizes.screenWidth * 0.9,
+    borderWidth: 1,
+    borderColor: colors.disabledBg,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
   },
   cardText: {
     color: colors.primary,

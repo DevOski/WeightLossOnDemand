@@ -48,7 +48,7 @@ export default function ContactInfo() {
           <View style={[styles.row, styles.card]}>
             <View style={styles.width}>
               <Text style={styles.head}>PHONE</Text>
-              <Text style={styles.text}>Tester jazzy</Text>
+              <Text style={styles.text}>(365) 154-1736</Text>
             </View>
             <View>
               <Text style={styles.symbol}> ›</Text>
