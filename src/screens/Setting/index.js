@@ -148,7 +148,8 @@ export default function Setting({navigation}) {
           <Text style={styles.head}>CARE COORDINATION</Text>
         </View>
         <View style={styles.padding}>
-          <TouchableOpacity onPress={() => navigation.navigate('MedicalRecords')}>
+          <TouchableOpacity
+            onPress={() => navigation.navigate('MedicalRecords')}>
             <View style={styles.row}>
               <Image
                 source={images.medicalRecords}
@@ -159,7 +160,8 @@ export default function Setting({navigation}) {
           </TouchableOpacity>
         </View>
         <View style={styles.padding}>
-          <TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => navigation.navigate('GoogleFit')}>
             <View style={styles.row}>
               <FontAwesome name="heart" color={colors.secondary} size={25} />
               <Text style={styles.btnText}>Google Fit</Text>
@@ -194,7 +196,7 @@ export default function Setting({navigation}) {
           <Text style={styles.head}>LEGAL</Text>
         </View>
         <View style={styles.padding}>
-          <TouchableOpacity>
+          <TouchableOpacity  onPress={() => navigation.navigate('TermsAndConditions')}>
             <View style={styles.row}>
               <Image source={images.terms} style={styles.medicalIcon} />
               <Text style={styles.btnText}>Terms and Conditions</Text>

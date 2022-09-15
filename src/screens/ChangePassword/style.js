@@ -7,9 +7,7 @@ export const styles = StyleSheet.create({
     backgroundColor: '#fafafa',
     height: sizes.screenHeight,
   },
-  paddingLeft: {
-    paddingLeft: sizes.baseMargin,
-  },
+  
   paddingBottom: {
     paddingBottom: sizes.baseMargin,
   },

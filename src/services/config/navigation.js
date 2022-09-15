@@ -25,6 +25,8 @@ import ChangePassword from '../../screens/ChangePassword';
 import Insurance from '../../screens/Insurance';
 import Employer from '../../screens/Employer';
 import MedicalRecords from '../../screens/MedicalRecords';
+import GoogleFit from '../../screens/GoogleFit';
+import TermsAndConditions from '../../screens/TermsAndConditions';
 const Stack = createNativeStackNavigator();
 
 const Tab = createMaterialBottomTabNavigator();
@@ -45,6 +47,8 @@ export default function MainNavigator() {
         <Stack.Screen name="Insurance" component={Insurance} />
         <Stack.Screen name="Employer" component={Employer} />
         <Stack.Screen name="MedicalRecords" component={MedicalRecords} />
+        <Stack.Screen name="GoogleFit" component={GoogleFit} />
+        <Stack.Screen name="TermsAndConditions" component={TermsAndConditions} />
       </Stack.Navigator>
     </NavigationContainer>
   );
