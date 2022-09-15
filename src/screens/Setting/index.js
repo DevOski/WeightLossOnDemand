@@ -148,7 +148,7 @@ export default function Setting({navigation}) {
           <Text style={styles.head}>CARE COORDINATION</Text>
         </View>
         <View style={styles.padding}>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate('MedicalRecords')}>
             <View style={styles.row}>
               <Image
                 source={images.medicalRecords}
