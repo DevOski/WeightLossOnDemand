@@ -11,14 +11,14 @@ import {
   Dimensions,
   TouchableOpacity,
 } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-import intro1 from '../../assets/assets/intro1.jpg'
+import {useNavigation} from '@react-navigation/native';
+import intro1 from '../../assets/assets/intro1.jpg';
 import icon from '../../assets/icon.png';
 import ladyy from '../../assets/assets/ladyy.jpg';
 import ss from '../../assets/assets/ss.png';
 import locationimg from '../../assets/assets/locationimg.png';
 import kiid from '../../assets/assets/kiid.jpg';
-import { colors, fontSize, sizes } from '../../services';
+import {colors, fontSize, sizes} from '../../services';
 const deviceHeight = Dimensions.get('window').height;
 const deviceWidth = Dimensions.get('window').width;
 
@@ -34,11 +34,11 @@ const Component = () => {
       </View>
       <View style={styles.payragraphcon}>
         <Text style={styles.payragraphcontext}>
-          Weight loss on Demand by Included Health makes it easy to see top-rated
-          medical providers, psychiatrists, and therapists on demand.
+          Weight loss on Demand by Included Health makes it easy to see
+          top-rated medical providers, psychiatrists, and therapists on demand.
         </Text>
       </View>
-      <View style={styles.footer}>
+      {/* <View style={styles.footer}>
                  <TouchableOpacity onPress={()=>navigation.navigate("signinscreen")}>
                    <Text style={styles.fontsiginandsignup}>Sign In</Text>
                  </TouchableOpacity>
@@ -47,7 +47,7 @@ const Component = () => {
                  <TouchableOpacity  onPress={()=>navigation.navigate("signupscreen")}>
                    <Text style={styles.fontsiginandsignup}>Sign Up</Text>
                  </TouchableOpacity>
-               </View>
+               </View> */}
     </View>
   );
 };
@@ -93,7 +93,7 @@ const Componentsecond = () => {
           provider within minutes, 24/7, any day of the year
         </Text>
       </View>
-      <View style={{paddingTop:sizes.screenHeight*0.05 }}>
+      {/* <View style={{paddingTop:sizes.screenHeight*0.05 }}>
       <View style={styles.footer}>
                  <TouchableOpacity onPress={()=>navigation.navigate("signinscreen")}>
                    <Text style={styles.fontsiginandsignup}>Sign In</Text>
@@ -104,7 +104,7 @@ const Componentsecond = () => {
                    <Text style={styles.fontsiginandsignup}>Sign Up</Text>
                  </TouchableOpacity>
                </View>
-               </View>
+               </View> */}
     </View>
   );
 };
@@ -123,7 +123,7 @@ const Componentthrd = () => {
           Your provider will send prescriptions to the pharmacy of your choice.
         </Text>
       </View>
-      <View style={{paddingTop:sizes.screenHeight*0.09 }}>
+      {/* <View style={{paddingTop:sizes.screenHeight*0.09 }}>
       <View style={styles.footer}>
                  <TouchableOpacity onPress={()=>navigation.navigate("signinscreen")} >
                    <Text style={styles.fontsiginandsignup}>Sign In</Text>
@@ -134,14 +134,46 @@ const Componentthrd = () => {
                    <Text style={styles.fontsiginandsignup}>Sign Up</Text>
                  </TouchableOpacity>
                </View>
-               </View>
+               </View> */}
     </View>
   );
 };
 const ComponentFour = () => {
   const navigation = useNavigation();
-  return (<>
-    <View style={styles.container}>
+  return (
+    <>
+      <View style={styles.forslid}>
+        <View  style={styles.forslidtext}>
+
+        <Text style={styles.payragraphcontext}>TOTAL VIRTUAL CARE</Text>
+        </View>
+        <View  style={styles.forslidtext}>
+
+        <Text style={styles.payragraphcontext}>
+          Your provider will send prescriptions to the pharmacy of your choice.
+        </Text>
+        </View>
+
+        <View>
+       
+        </View>
+        <View style={styles.kidd}>
+          <Image style={{width: '100%', height: '100%'}} source={kiid} />
+        </View>
+        <View
+          style={{
+            position: 'absolute',
+            top: deviceHeight * 0.82,
+          
+            left: deviceWidth * 0.03,
+          }}>
+          <TouchableOpacity style={styles.but}  onPress={()=>navigation.navigate("signupscreen")}>
+            <Text style={{color: '#fff',fontSize:fontSize.h5}}>SignUp</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
+
+      {/* <View style={styles.container}>
       <View style={styles.payragraphcon}>
         <Text style={styles.payragraphcontext}>TOTAL VIRTUAL CARE</Text>
       </View>
@@ -153,7 +185,7 @@ const ComponentFour = () => {
       </View>
      
     </View>
-    <View style={{position: 'relative', top: deviceHeight * 0.1}}>
+    <View style={{position: 'absolute', top: deviceHeight * 0.10}}>
         <View style={styles.kidd}>
           <Image style={{width: '100%', height: '100%'}} source={kiid} />
         </View>
@@ -167,7 +199,7 @@ const ComponentFour = () => {
             <Text style={{color: '#fff',fontSize:fontSize.h5}}>SignUp</Text>
           </TouchableOpacity>
         </View>
-      </View>
+      </View> */}
     </>
   );
 };
@@ -192,7 +224,8 @@ const styles = StyleSheet.create({
   payragraphcon: {
     paddingLeft: deviceWidth * 0.09,
     paddingRight: deviceHeight * 0.05,
-    marginTop: deviceHeight * 0.10,
+    marginTop: deviceHeight * 0.1,
+    paddingBottom:deviceHeight * 0.1,
   },
   payragraphcontext: {
     fontSize: fontSize.h5,
@@ -224,19 +257,20 @@ const styles = StyleSheet.create({
     height: deviceHeight * 0.4,
   },
   kidd: {
-    width: deviceWidth,
-    height: deviceHeight * 0.7,
+    top:deviceHeight * 0.1,
+    width: deviceWidth ,
+    height: deviceHeight * 0.4,
   },
   but: {
     backgroundColor: colors.secondary,
-    width: deviceWidth * 0.7,
+    width: deviceWidth * 0.95,
     height: deviceHeight * 0.08,
     justifyContent: 'center',
     alignItems: 'center',
-    position:'absolute',
+    position: 'absolute',
   },
   footer: {
-    width:sizes.screenWidth,
+    width: sizes.screenWidth,
     marginTop: deviceHeight * 0.09,
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -249,4 +283,15 @@ const styles = StyleSheet.create({
     fontSize: fontSize.h5,
     color: colors.secondary,
   },
+  forslid: {
+    width: deviceWidth,
+  
+  },
+  forslidtext:{
+    marginTop:deviceHeight *0.08,
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingLeft: deviceWidth * 0.09,
+    paddingRight: deviceHeight * 0.05,
+  }
 });

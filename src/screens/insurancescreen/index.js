@@ -1,0 +1,251 @@
+import React, {useState} from 'react';
+const deviceHeight = Dimensions.get('window').height;
+const deviceWidth = Dimensions.get('window').width;
+import {
+  SafeAreaView,
+  ScrollView,
+  StatusBar,
+  StyleSheet,
+  Text,
+  useColorScheme,
+  View,
+  Image,
+  Dimensions,
+  TouchableOpacity,
+  Button,
+} from 'react-native';
+import {RadioButton} from 'react-native-paper';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import AntDesign from 'react-native-vector-icons/AntDesign';
+
+import {colors, fontSize, sizes} from '../../services';
+import {CustomTextFiel} from '../../component/textFiled';
+import Header from '../../components/Header';
+import medi from '../../assets/medi.png';
+import Modal from 'react-native-modal';
+export const Insurance = () => {
+  const [isModalVisible, setModalVisible] = useState(false);
+
+  const toggleModal = () => {
+    setModalVisible(!isModalVisible);
+  };
+  return (
+    <SafeAreaView style={styles.container}>
+      <ScrollView>
+        <Header dark={true} />
+        <View>
+          <View>
+            <Image source={medi} />
+          </View>
+          <View style={styles.insu}>
+            <Text style={styles.insutext}>We take health insurance</Text>
+          </View>
+          <View style={styles.insu2}>
+            <Text style={styles.insutext2}>
+              Search for your insurance provider to see if you re covered
+            </Text>
+          </View>
+          <View style={styles.srchcont}>
+            <TouchableOpacity>
+              <View style={styles.sb}>
+                <FontAwesome
+                  name="search"
+                  color={colors.secondary}
+                  size={24}
+                  style={styles.seacrchicon}
+                />
+                <Text style={styles.sbt}>Search</Text>
+              </View>
+            </TouchableOpacity>
+            <Text style={styles.sbtd}>e.g Hoghmark, UnitedHealthcare</Text>
+          </View>
+
+          <View style={styles.skipin}>
+            <TouchableOpacity onPress={toggleModal}>
+              <Text style={styles.ski}> Skip Insurance</Text>
+            </TouchableOpacity>
+            <View style={styles.padd}>
+              <Text style={styles.sbtd}>
+                You can see a provider widthout insurance{' '}
+              </Text>
+            </View>
+          </View>
+        </View>
+        <View>
+          {/* <Button title="Show modal" onPress={toggleModal} /> */}
+
+          <Modal isVisible={isModalVisible}>
+            <View style={styles.model}>
+              <View>
+                <Text style={styles.why}>Why are you skipping insurance?</Text>
+              </View>
+              <View>
+                <View style={styles.fle}>
+                  <View>
+                    <AntDesign
+                      name="rightcircle"
+                      color={colors.secondary}
+                      size={24}
+                      style={styles.seacrchicon}
+                    />
+                  </View>
+                  <View>
+                    <TouchableOpacity>
+
+                    <Text style={styles.modalll}>Prefer not to use insurance</Text>
+                    </TouchableOpacity>
+                  </View>
+                </View>
+                <View style={styles.fle}>
+                  <View>
+                    <AntDesign
+                      name="rightcircle"
+                      color={colors.secondary}
+                      size={24}
+                      style={styles.seacrchicon}
+                    />
+                  </View>
+                  <View>
+                    <TouchableOpacity>
+
+                    <Text style={styles.modalll}>Insurance isnt nearby</Text>
+                    </TouchableOpacity>
+                  </View>
+                </View>
+                <View style={styles.fle}>
+                  <View>
+                    <AntDesign
+                      name="rightcircle"
+                      color={colors.secondary}
+                      size={24}
+                      style={styles.seacrchicon}
+                    />
+                  </View>
+                  <View>
+                    <TouchableOpacity>
+
+                    <Text style={styles.modalll}>I'll add it later</Text>
+                    </TouchableOpacity>
+                  </View>
+                </View>
+                <View style={styles.fle}>
+                  <View>
+                    <AntDesign
+                      name="rightcircle"
+                      color={colors.secondary}
+                      size={24}
+                      style={styles.seacrchicon}
+                    />
+                  </View>
+                  <View>
+                    <TouchableOpacity>
+
+                    <Text style={styles.modalll}>Others</Text>
+                    </TouchableOpacity>
+                  </View>
+                </View>
+              </View>
+
+              {/* <Button title="Hide modal" onPress={toggleModal} /> */}
+            </View>
+          </Modal>
+        </View>
+      </ScrollView>
+    </SafeAreaView>
+  );
+};
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  model: {
+    paddingTop: sizes.screenHeight * 0.03,
+    paddingLeft: sizes.screenWidth * 0.05,
+    top: sizes.screenHeight * 0.3,
+    height: sizes.screenHeight * 0.3,
+    backgroundColor: colors.lightGray,
+    // width:sizes.screenWidth,
+  },
+  insu: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingBottom: sizes.screenHeight * 0.02,
+  },
+  insu2: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingLeft: sizes.screenWidth * 0.05,
+    paddingRight: sizes.screenWidth * 0.05,
+  },
+  insutext: {
+    fontSize: fontSize.h4,
+    color: colors.black,
+    fontWeight: '500',
+  },
+  insutext2: {
+    textAlign: 'center',
+    fontSize: fontSize.h5,
+    color: colors.black,
+    fontWeight: '500',
+  },
+  srchcont: {
+    paddingTop: sizes.screenHeight * 0.05,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  sb: {
+    width: sizes.screenWidth * 0.8,
+    backgroundColor: colors.lightGray,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingTop: sizes.screenHeight * 0.02,
+    paddingBottom: sizes.screenHeight * 0.02,
+  },
+  seacrchicon: {
+    right: sizes.screenWidth * 0.05,
+  },
+  sbt: {
+    textAlign: 'center',
+    fontSize: fontSize.h5,
+    color: colors.black,
+    fontWeight: '500',
+  },
+  sbtd: {
+    paddingTop: sizes.screenHeight * 0.01,
+    textAlign: 'center',
+    fontSize: fontSize.medium,
+    color: colors.black,
+    fontWeight: '500',
+  },
+  skipin: {
+    marginTop: sizes.screenHeight * 0.2,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  padd: {
+    paddingLeft: sizes.screenWidth * 0.2,
+    paddingRight: sizes.screenWidth * 0.2,
+  },
+  ski: {
+    textAlign: 'center',
+    fontSize: fontSize.h6,
+    color: colors.secondary,
+    fontWeight: '400',
+  },
+  why: {
+    fontSize: fontSize.large,
+    color: colors.secondary,
+    fontWeight: '400',
+  },
+  fle:{
+    flexDirection:'row',
+    paddingLeft:sizes.screenWidth*0.04,
+    paddingTop:sizes.screenHeight*0.02
+  },
+  modalll:{
+    fontSize: fontSize.large,
+    color: colors.black,
+    fontWeight: '400',
+  }
+});

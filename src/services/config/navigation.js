@@ -20,6 +20,12 @@ import SharePromo from '../../screens/SharePromo';
 import PaymentMethod from '../../screens/PaymentMethod';
 import ApplyCoupon from '../../screens/ApplyCoupon';
 import Intro from '../../screens/Introsliderscreen'
+import BasicInfoScreen from '../../screens/basicInfoscreens';
+import { Insurance } from '../../screens/insurancescreen';
+import { SearchScreen } from '../../screens/searchscreen';
+import { Employerhelp } from '../../screens/employerhelpscreen';
+
+
 const Stack = createNativeStackNavigator();
 
 const Tab = createMaterialBottomTabNavigator();
@@ -27,6 +33,10 @@ export default function MainNavigator() {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{headerShown: false}}>
+      <Stack.Screen name="employerhelpscreen" component={Employerhelp} />
+      <Stack.Screen name="insurancescreen" component={Insurance} />
+      <Stack.Screen name="searchscreen" component={SearchScreen} />
+      <Stack.Screen name="basicInfoscreens" component={BasicInfoScreen} />
       <Stack.Screen name="Introsliderscreen" component={Intro} />
       <Stack.Screen name="signupscreen" component={SignUp} />
       <Stack.Screen name="signinscreen" component={SignIn} />
