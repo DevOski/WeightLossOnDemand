@@ -98,8 +98,7 @@ export default function Setting({navigation}) {
           </TouchableOpacity>
         </View>
         <View style={styles.padding}>
-          <TouchableOpacity
-            onPress={() => navigation.navigate('Insurance')}>
+          <TouchableOpacity onPress={() => navigation.navigate('Insurance')}>
             <View style={styles.row}>
               <MaterialCommunityIcons
                 name="clipboard-text"
@@ -111,7 +110,7 @@ export default function Setting({navigation}) {
           </TouchableOpacity>
         </View>
         <View style={styles.padding}>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate('Employer')}>
             <View style={styles.row}>
               <Ionicons
                 name="briefcase-sharp"

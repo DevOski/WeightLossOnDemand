@@ -23,6 +23,7 @@ import Intro from '../../screens/introSliderScreen';
 import ContactInfo from '../../screens/ContactInfo';
 import ChangePassword from '../../screens/ChangePassword';
 import Insurance from '../../screens/Insurance';
+import Employer from '../../screens/Employer';
 const Stack = createNativeStackNavigator();
 
 const Tab = createMaterialBottomTabNavigator();
@@ -41,6 +42,7 @@ export default function MainNavigator() {
         <Stack.Screen name="ContactInfo" component={ContactInfo} />
         <Stack.Screen name="ChangePassword" component={ChangePassword} />
         <Stack.Screen name="Insurance" component={Insurance} />
+        <Stack.Screen name="Employer" component={Employer} />
       </Stack.Navigator>
     </NavigationContainer>
   );
