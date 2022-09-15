@@ -58,7 +58,7 @@ export const styles = StyleSheet.create({
     width: sizes.screenWidth * 0.9,
     backgroundColor: colors.white,
     marginRight: sizes.screenWidth * 0.02,
-    marginLeft: sizes.screenWidth * 0.05,
+    marginLeft: sizes.screenWidth * 0.04,
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
