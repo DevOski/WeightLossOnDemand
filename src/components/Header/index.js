@@ -26,7 +26,7 @@ export default function Header({title, skip, dark}) {
           size={25}
         />
       </TouchableOpacity>
-      <Text style={[styles.title, styles.bold]}>{title}</Text>
+      <Text style={[dark ?styles.darkTitle : styles.title, styles.bold]}>{title}</Text>
       {skip && (
         <View style={styles.skipView}>
           <TouchableOpacity onPress={() => navigation.goBack()}>

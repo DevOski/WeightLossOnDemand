@@ -160,8 +160,7 @@ export default function Setting({navigation}) {
           </TouchableOpacity>
         </View>
         <View style={styles.padding}>
-          <TouchableOpacity
-            onPress={() => navigation.navigate('GoogleFit')}>
+          <TouchableOpacity onPress={() => navigation.navigate('GoogleFit')}>
             <View style={styles.row}>
               <FontAwesome name="heart" color={colors.secondary} size={25} />
               <Text style={styles.btnText}>Google Fit</Text>
@@ -172,7 +171,8 @@ export default function Setting({navigation}) {
           <Text style={styles.head}>GET IN TOUCH</Text>
         </View>
         <View style={styles.padding}>
-          <TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => navigation.navigate('ContactSupport')}>
             <View style={styles.row}>
               <MaterialCommunityIcons
                 name="chat-question"
@@ -196,7 +196,8 @@ export default function Setting({navigation}) {
           <Text style={styles.head}>LEGAL</Text>
         </View>
         <View style={styles.padding}>
-          <TouchableOpacity  onPress={() => navigation.navigate('TermsAndConditions')}>
+          <TouchableOpacity
+            onPress={() => navigation.navigate('TermsAndConditions')}>
             <View style={styles.row}>
               <Image source={images.terms} style={styles.medicalIcon} />
               <Text style={styles.btnText}>Terms and Conditions</Text>
