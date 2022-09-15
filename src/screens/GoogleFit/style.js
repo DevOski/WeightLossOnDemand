@@ -67,7 +67,7 @@ export const styles = StyleSheet.create({
     color: colors.white,
     fontSize: fontSize.h6,
   },
-  btnTop:{
-    paddingTop:sizes.screenHeight * 0.1
-  }
+  btnTop: {
+    paddingTop: sizes.screenHeight * 0.1,
+  },
 });

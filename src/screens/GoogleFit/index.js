@@ -15,7 +15,7 @@ import {styles} from './style';
 import {colors} from '../../services';
 import Entypo from 'react-native-vector-icons/Entypo';
 
-export default function GoogleFit() {
+export default function GoogleFit({navigation}) {
   return (
     <SafeAreaView>
       <ScrollView style={styles.color}>
@@ -60,7 +60,7 @@ export default function GoogleFit() {
             </View>
           </TouchableOpacity>
           <View style={styles.learnMoreBtn}>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={()=>navigation.goBack()}>
               <Text style={styles.learnMoreText}>Skip</Text>
             </TouchableOpacity>
           </View>
