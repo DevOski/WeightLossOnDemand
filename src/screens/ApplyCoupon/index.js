@@ -31,7 +31,7 @@ export default function ApplyCoupon() {
             mode="contain"
             label={'e.g Coupon594'}
             activeUnderlineColor={colors.secondary}
-            style={{backgroundColor: colors.lightGray, fontSize: 20}}
+            style={styles.field}
           />
           <View style={styles.top}>
           <TouchableOpacity>

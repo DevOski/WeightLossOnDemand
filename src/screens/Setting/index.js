@@ -85,7 +85,8 @@ export default function Setting({navigation}) {
           </TouchableOpacity>
         </View>
         <View style={styles.padding}>
-          <TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => navigation.navigate('ChangePassword')}>
             <View style={styles.row}>
               <MaterialCommunityIcons
                 name="lock"

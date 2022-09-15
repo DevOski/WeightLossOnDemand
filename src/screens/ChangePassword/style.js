@@ -7,19 +7,31 @@ export const styles = StyleSheet.create({
     backgroundColor: '#fafafa',
     height: sizes.screenHeight,
   },
-  padding: {
-    padding: sizes.baseMargin,
-    height: sizes.screenHeight,
+  paddingLeft: {
+    paddingLeft: sizes.baseMargin,
   },
-  couponHead: {
-    fontSize: fontSize.h6,
+  paddingBottom: {
+    paddingBottom: sizes.baseMargin,
+  },
+  addPaymentText: {
+    fontSize: fontSize.h3,
     fontWeight: 'bold',
     color: colors.primary,
   },
-  shareText: {
-    fontSize: fontSize.h6,
-    fontWeight: '300',
+  text: {
+    fontSize: fontSize.large,
     color: colors.primary,
+    fontWeight: '300',
+  },
+  paddingLeft: {
+    paddingLeft: sizes.baseMargin,
+  },
+  field: {
+    backgroundColor: colors.lightGray,
+    fontSize: fontSize.extraLarge,
+  },
+  padding: {
+    padding: sizes.baseMargin,
   },
   buttonView: {
     alignSelf: 'center',
@@ -33,11 +45,7 @@ export const styles = StyleSheet.create({
     color: colors.white,
     fontSize: fontSize.h6,
   },
-  top: {
-    top: sizes.screenHeight * 0.05,
-  },
-  field: {
-    backgroundColor: colors.lightGray,
-    fontSize: fontSize.extraLarge,
+  paddingTop: {
+    paddingTop: sizes.screenHeight * 0.05,
   },
 });

@@ -25,7 +25,6 @@ export const styles = StyleSheet.create({
   symbol: {
     color: colors.secondary,
     fontSize: fontSize.h4,
-    // left: sizes.screenWidth * 0.3,
     bottom: 1,
   },
   cardText: {

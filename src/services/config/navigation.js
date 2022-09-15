@@ -21,6 +21,7 @@ import PaymentMethod from '../../screens/PaymentMethod';
 import ApplyCoupon from '../../screens/ApplyCoupon';
 import Intro from '../../screens/introSliderScreen';
 import ContactInfo from '../../screens/ContactInfo';
+import ChangePassword from '../../screens/ChangePassword';
 const Stack = createNativeStackNavigator();
 
 const Tab = createMaterialBottomTabNavigator();
@@ -37,6 +38,7 @@ export default function MainNavigator() {
         <Stack.Screen name="PaymentMethod" component={PaymentMethod} />
         <Stack.Screen name="ApplyCoupon" component={ApplyCoupon} />
         <Stack.Screen name="ContactInfo" component={ContactInfo} />
+        <Stack.Screen name="ChangePassword" component={ChangePassword} />
       </Stack.Navigator>
     </NavigationContainer>
   );
