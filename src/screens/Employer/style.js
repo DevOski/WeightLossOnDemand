@@ -7,19 +7,27 @@ export const styles = StyleSheet.create({
     backgroundColor: '#fafafa',
     height: sizes.screenHeight,
   },
-  padding: {
-    padding: sizes.baseMargin,
-    height: sizes.screenHeight,
+  paddingLeft: {
+    paddingLeft: sizes.baseMargin,
   },
-  couponHead: {
-    fontSize: fontSize.h6,
+  paddingBottom: {
+    paddingBottom: sizes.baseMargin,
+  },
+  addPaymentText: {
+    fontSize: fontSize.h3,
     fontWeight: 'bold',
     color: colors.primary,
   },
-  shareText: {
+  contentView: {
+    alignItems: 'center',
+    marginTop: sizes.screenHeight * 0.15,
+    padding: sizes.baseMargin,
+  },
+  text: {
+    color: colors.disabledText,
     fontSize: fontSize.h6,
-    fontWeight: '300',
-    color: colors.primary,
+    fontWeight: '500',
+    top: sizes.screenHeight * 0.03,
   },
   buttonView: {
     alignSelf: 'center',
@@ -33,11 +41,7 @@ export const styles = StyleSheet.create({
     color: colors.white,
     fontSize: fontSize.h6,
   },
-  top: {
-    top: sizes.screenHeight * 0.05,
-  },
-  field: {
-    backgroundColor: colors.lightGray,
-    fontSize: fontSize.extraLarge,
+  paddingTop: {
+    paddingTop: sizes.screenHeight * 0.35,
   },
 });

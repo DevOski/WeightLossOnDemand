@@ -196,7 +196,7 @@ const ComponentFour = () => {
             left: deviceWidth * 0.15,
           }}>
           <TouchableOpacity style={styles.but}  onPress={()=>navigation.navigate("signupscreen")}>
-            <Text style={{color: '#fff',fontSize:fontSize.h5}}>SignUp</Text>
+            <Text style={{color: '#fff',fontSize:fontSize.h5}}>Sign Up</Text>
           </TouchableOpacity>
         </View>
       </View> */}
@@ -230,6 +230,7 @@ const styles = StyleSheet.create({
   payragraphcontext: {
     fontSize: fontSize.h5,
     textAlign: 'center',
+    color:colors.primary
   },
   three: {
     width: deviceWidth * 0.3,

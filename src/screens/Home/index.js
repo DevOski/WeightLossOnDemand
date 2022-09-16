@@ -181,7 +181,7 @@ export default function Home({navigation}) {
                   </ImageBackground>
                 )}
                 {index == 4 && (
-                  <View key={index} style={styles.padding}>
+                  <View key={index} style={[styles.padding]}>
                     <Text style={[styles.heading, styles.top]}>
                       Meet Our Providers
                     </Text>

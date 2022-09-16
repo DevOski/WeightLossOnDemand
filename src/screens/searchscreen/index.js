@@ -44,6 +44,9 @@ export const SearchScreen = () => {
         </View>
 
         </View>
+        <View style={styles.eg}>
+        <Text style={styles.sbtd}>e.g HighMark,UnitedHealthcare</Text>
+        </View>
       </ScrollView>
     </SafeAreaView>
   );
@@ -67,5 +70,15 @@ const styles = StyleSheet.create({
   widt:{
     left:10,
     width:sizes.screenWidth*0.5
+  },
+  sbtd: {
+    paddingTop: sizes.screenHeight * 0.01,
+    textAlign:'left',
+    fontSize: fontSize.large,
+    color: colors.black,
+    fontWeight: '600',
+  },
+  eg:{
+    paddingLeft:sizes.screenWidth*0.03
   }
 });

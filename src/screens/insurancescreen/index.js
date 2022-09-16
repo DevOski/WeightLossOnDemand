@@ -23,7 +23,7 @@ import {CustomTextFiel} from '../../component/textFiled';
 import Header from '../../components/Header';
 import medi from '../../assets/medi.png';
 import Modal from 'react-native-modal';
-export const Insurance = () => {
+export const InsuranceScreen = ({navigation}) => {
   const [isModalVisible, setModalVisible] = useState(false);
 
   const toggleModal = () => {
@@ -46,7 +46,7 @@ export const Insurance = () => {
             </Text>
           </View>
           <View style={styles.srchcont}>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={()=>navigation.navigate("searchscreen")}>
               <View style={styles.sb}>
                 <FontAwesome
                   name="search"
@@ -90,7 +90,7 @@ export const Insurance = () => {
                     />
                   </View>
                   <View>
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={()=>{navigation.navigate("employerhelpscreen");setModalVisible(!isModalVisible);}}>
 
                     <Text style={styles.modalll}>Prefer not to use insurance</Text>
                     </TouchableOpacity>
@@ -106,7 +106,7 @@ export const Insurance = () => {
                     />
                   </View>
                   <View>
-                    <TouchableOpacity>
+                  <TouchableOpacity onPress={()=>{navigation.navigate("employerhelpscreen");setModalVisible(!isModalVisible);}}>
 
                     <Text style={styles.modalll}>Insurance isnt nearby</Text>
                     </TouchableOpacity>
@@ -122,7 +122,7 @@ export const Insurance = () => {
                     />
                   </View>
                   <View>
-                    <TouchableOpacity>
+                  <TouchableOpacity onPress={()=>{navigation.navigate("employerhelpscreen");setModalVisible(!isModalVisible);}}>
 
                     <Text style={styles.modalll}>I'll add it later</Text>
                     </TouchableOpacity>
@@ -138,7 +138,7 @@ export const Insurance = () => {
                     />
                   </View>
                   <View>
-                    <TouchableOpacity>
+                  <TouchableOpacity onPress={()=>{navigation.navigate("employerhelpscreen");setModalVisible(!isModalVisible);}}>
 
                     <Text style={styles.modalll}>Others</Text>
                     </TouchableOpacity>
@@ -161,7 +161,7 @@ const styles = StyleSheet.create({
   model: {
     paddingTop: sizes.screenHeight * 0.03,
     paddingLeft: sizes.screenWidth * 0.05,
-    top: sizes.screenHeight * 0.3,
+    top: sizes.screenHeight * 0.35,
     height: sizes.screenHeight * 0.3,
     backgroundColor: colors.lightGray,
     // width:sizes.screenWidth,

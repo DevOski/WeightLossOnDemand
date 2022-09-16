@@ -4,8 +4,10 @@ import {colors, fontFamily, fontSize, sizes} from '../../services';
 
 export const styles = StyleSheet.create({
   headerView: {
-    backgroundColor: colors.secondary,
     padding: sizes.screenHeight * 0.02,
+  },
+  headerBg: {
+    backgroundColor: colors.secondary,
   },
   row: {
     flexDirection: 'row',
@@ -16,6 +18,11 @@ export const styles = StyleSheet.create({
     left: sizes.screenWidth * 0.05,
     fontSize: fontSize.h6,
   },
+  darkTitle: {
+    color: colors.primary,
+    left: sizes.screenWidth * 0.05,
+    fontSize: fontSize.h6,
+  },
   skipView: {
     left: sizes.screenHeight * 0.2,
   },
@@ -23,7 +30,7 @@ export const styles = StyleSheet.create({
   bold: {
     fontWeight: 'bold',
   },
-  left:{
-    right:sizes.screenWidth * 0.05
-  }
+  left: {
+    right: sizes.screenWidth * 0.05,
+  },
 });
