@@ -30,6 +30,7 @@ import TermsAndConditions from '../../screens/TermsAndConditions';
 import ContactSupport from '../../screens/ContactSupport';
 import TermsOfService from '../../screens/TermsOfService';
 import MemberAgreement from '../../screens/MemberAgreement';
+import PrivacyPolicy from '../../screens/PrivacyPolicy';
 const Stack = createNativeStackNavigator();
 
 const Tab = createMaterialBottomTabNavigator();
@@ -60,6 +61,8 @@ export default function MainNavigator() {
         />
         <Stack.Screen name="TermsOfService" component={TermsOfService} />
         <Stack.Screen name="MemberAgreement" component={MemberAgreement} />
+        <Stack.Screen name="PrivacyPolicy" component={PrivacyPolicy} />
+        
       </Stack.Navigator>
     </NavigationContainer>
   );
