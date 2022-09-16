@@ -17,7 +17,7 @@ import {RadioButton} from 'react-native-paper';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {colors, fontSize, sizes} from '../../services';
 import {CustomTextFiel} from '../../component/textFiled';
-const BasicInfoScreen = () => {
+const BasicInfoScreen = ({navigation}) => {
     const [CheckedMale, setCheckedMale] = React.useState();
     const [CheckedFemale, setCheckedFemale] = React.useState();
     const [CheckedOther, setCheckedOther] = React.useState();
@@ -168,7 +168,7 @@ const ShowFiled =()=>{
     </View>
 </View>
 <View style={styles.buttocon}>
-    <TouchableOpacity >
+    <TouchableOpacity onPress={()=>navigation.navigate('insurancescreen')} >
         <View style={styles.buttoconSTYLE} >
             <Text style={styles.continue}>
                 Continue

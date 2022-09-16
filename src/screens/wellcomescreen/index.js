@@ -18,9 +18,11 @@ import {RadioButton} from 'react-native-paper';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import {colors, fontSize, sizes} from '../../services';
 import Octicons from 'react-native-vector-icons/Octicons';
-
-
-const Wellcome = () => {
+import mdoctr from '../../assets/mdoctr.png'
+import fedoctr from '../../assets/fedoctr.png'
+import pick from '../../assets/pick.png'
+import explore from '../../assets/explore.png'
+const Wellcome = ({navigation}) => {
   return (
    <SafeAreaView style={styles.container}>
     <ScrollView>
@@ -30,21 +32,26 @@ const Wellcome = () => {
     <Text style={styles.nexttext}>what's next</Text>
    </View>
    <View style={styles.bcontainer}>
-   <TouchableOpacity>
+   <TouchableOpacity onPress={()=>navigation.navigate("visitforscreen")}>
           <View style={[styles.row, styles.card]}>
-            <Octicons name="question" color={colors.secondary} size={30} />
+            <View style={styles.imagewelllcome} >
+            <Image style={{width:"100%",height:"100%"}}  source={mdoctr}/>
+            </View>
+           
             <View style={{paddingLeft:sizes.screenWidth*0.07}}>
-              <Text style={styles.cardText}>{'   '}see first available medical provider</Text>
-              <Text style={styles.faqText}>{'   '}Curren wait time :3 min</Text>
+              <Text style={[styles.cardText,styles.wit]}>see first available medical provider</Text>
+              <Text style={styles.faqText}>Curren wait time :3 min</Text>
             </View>
             <View>
               <Text style={styles.symbol}> ›</Text>
             </View>
           </View>
         </TouchableOpacity>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={()=>navigation.navigate("visitforscreen")}>
           <View style={[styles.row, styles.card]}>
-            <Octicons name="question" color={colors.secondary} size={30} />
+          <View style={styles.imagewelllcome} >
+          <Image style={{width:"100%",height:"100%"}} source={fedoctr}/>
+          </View>
             <View style={{paddingRight:sizes.screenWidth*0.02}}>
               <Text style={styles.cardText}>{'   '}Book a mental health sessions</Text>
               <Text style={styles.faqText}>{'   '}psychiatry & Therapy</Text>
@@ -54,12 +61,14 @@ const Wellcome = () => {
             </View>
           </View>
         </TouchableOpacity>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={()=>navigation.navigate("searchforpharmacyscreen")}>
           <View style={[styles.row, styles.card]}>
-            <Octicons name="question" color={colors.secondary} size={30} />
+          <View style={styles.imagewelllcome} >
+          <Image style={{width:"100%",height:"100%"}}  source={pick}/>
+            </View>
             <View>
-              <Text style={styles.cardText}>{'   '}Pick Your pharmacy</Text>
-              <Text style={styles.faqText}>{'   '}Nearby prescription pickup</Text>
+              <Text style={styles.cardText}>Pick Your pharmacy</Text>
+              <Text style={styles.faqText}>Nearby prescription pickup</Text>
              
             </View>
             <View>
@@ -67,9 +76,11 @@ const Wellcome = () => {
             </View>
           </View>
         </TouchableOpacity>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={()=>navigation.navigate("BottomNavs")}>
           <View style={[styles.row, styles.card]}>
-            <Octicons name="question" color={colors.secondary} size={30} />
+          <View style={styles.imagewelllcome} >
+          <Image style={{width:"100%",height:"100%"}}   source={explore}/>
+            </View>
             <View>
               <Text style={styles.cardText}>{'   '}Explore the app</Text>
               <Text style={styles.faqText}>{'   '}learn more about our services</Text>
@@ -162,5 +173,12 @@ const styles = StyleSheet.create({
       },
       bcontainer:{
         paddingTop:sizes.screenHeight*0.05
+      },
+      imagewelllcome:{
+        width:sizes.screenWidth*0.12,
+        height:sizes.screenHeight*0.06
+      },
+      wit:{
+        width:sizes.screenWidth*0.6
       }
 })

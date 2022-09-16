@@ -95,11 +95,13 @@ export const SignUp = ({navigation}) => {
          />
          <View style={styles.ddemand}>
             <Text style={styles.text}>I agree to the Doctor On Demands</Text>
+            <TouchableOpacity onPress={()=>navigation.navigate('membershiptermscreens')}>
             <Text style={styles.text1}>Membership Terms</Text>
+            </TouchableOpacity>
          </View>
           </View>
           <View style={styles.filedconbutton}>
-          <TouchableOpacity style={styles.but} onPress={()=>navigation.navigate("BottomNavs")}>
+          <TouchableOpacity style={styles.but} onPress={()=>navigation.navigate("basicInfoscreens")}>
             <Text style={{color: '#fff',fontSize:20}}>Create Account</Text>
           </TouchableOpacity>
           </View>

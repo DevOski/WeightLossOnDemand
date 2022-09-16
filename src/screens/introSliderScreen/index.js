@@ -30,7 +30,7 @@ import {colors, fontSize, sizes} from '../../services';
 // FontAwesome
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
-const Intro = () => {
+const Intro = ({navigation}) => {
   const slides = [
     {id: 1, name: <Component />},
     {id: 2, name: <Componentsecond />},
@@ -101,7 +101,7 @@ const Intro = () => {
           }}>
           {imgActive !== 3 && (
             <View style={styles.footer}>
-              <TouchableOpacity>
+              <TouchableOpacity onPress={()=>navigation.navigate("signinscreen")}>
                 <Text style={styles.fontsiginandsignup}>sign In</Text>
               </TouchableOpacity>
             </View>
@@ -126,7 +126,7 @@ const Intro = () => {
             })}
             {imgActive !== 3 && (
               <View style={[styles.footer, styles.top]}>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={()=>navigation.navigate("signupscreen")}>
                   <Text style={styles.fontsiginandsignup}>signUp</Text>
                 </TouchableOpacity>
               </View>
@@ -194,7 +194,11 @@ const styles = StyleSheet.create({
     fontSize: fontSize.h2,
   },
   top: {
-    top: sizes.screenHeight * 0.03,
+    top: sizes.screenHeight * 0.015,
+  },
+  fontsiginandsignup: {
+    fontSize: fontSize.h5,
+    color: colors.secondary,
   },
 });
 

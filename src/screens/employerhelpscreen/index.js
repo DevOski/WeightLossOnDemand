@@ -23,12 +23,12 @@ import {CustomTextFiel} from '../../component/textFiled';
 import Header from '../../components/Header';
 import medicalCard from '../../assets/medicalCard.png';
 
-export const Employerhelp = () => {
+export const Employerhelp = ({navigation}) => {
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView>
         <View>
-          <Header />
+          <Header dark={true} />
         </View>
         <View style={styles.im}>
           <View>
@@ -47,14 +47,14 @@ export const Employerhelp = () => {
         </View>
         <View style={styles.btncontainer}>
             <View style={styles.gap}>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={()=>navigation.navigate("wellcomescreen")}>
                 <View style={styles.buttonView}>
           <Text style={styles.buttonText}> Yes</Text>
         </View>
                 </TouchableOpacity>
             </View>
             <View>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={()=>navigation.navigate("wellcomescreen")}>
                 <View style={styles.buttonView}>
           <Text style={styles.buttonText}>No</Text>
         </View>

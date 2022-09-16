@@ -35,6 +35,7 @@ import {InsuranceScreen} from '../../screens/insurancescreen';
 import Wellcome from '../../screens/wellcomescreen';
 import { VisitScreen } from '../../screens/visitforscreen';
 import { ForPharmacy } from '../../screens/searchforpharmacyscreen';
+import MemberShipTerms from '../../screens/membershiptermscreens';
 const Stack = createNativeStackNavigator();
 
 const Tab = createMaterialBottomTabNavigator();
@@ -42,17 +43,18 @@ export default function MainNavigator() {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{headerShown: false}}>
-      <Stack.Screen name="searchforpharmacyscreen" component={ForPharmacy} />
-      <Stack.Screen name="visitforscreen" component={VisitScreen} />
-      <Stack.Screen name="wellcomescreen" component={Wellcome} />
-        <Stack.Screen name="insurancescreen" component={InsuranceScreen} />
-
-        <Stack.Screen name="employerhelpscreen" component={Employerhelp} />
-        <Stack.Screen name="searchscreen" component={SearchScreen} />
-        <Stack.Screen name="basicInfoscreens" component={BasicInfoScreen} />
         <Stack.Screen name="Introsliderscreen" component={Intro} />
         <Stack.Screen name="signupscreen" component={SignUp} />
         <Stack.Screen name="signinscreen" component={SignIn} />
+      <Stack.Screen name="wellcomescreen" component={Wellcome} />
+        <Stack.Screen name="basicInfoscreens" component={BasicInfoScreen} />
+      <Stack.Screen name="membershiptermscreens" component={MemberShipTerms} />
+      <Stack.Screen name="searchforpharmacyscreen" component={ForPharmacy} />
+        <Stack.Screen name="employerhelpscreen" component={Employerhelp} />
+      <Stack.Screen name="visitforscreen" component={VisitScreen} />
+        <Stack.Screen name="insurancescreen" component={InsuranceScreen} />
+
+        <Stack.Screen name="searchscreen" component={SearchScreen} />
         <Stack.Screen name="BottomNavs" component={MyTabs} />
         <Stack.Screen name="Setting" component={Setting} />
 
