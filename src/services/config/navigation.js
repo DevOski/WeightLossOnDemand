@@ -19,7 +19,7 @@ import {SignUp} from '../../screens/signupscreen';
 import SharePromo from '../../screens/SharePromo';
 import PaymentMethod from '../../screens/PaymentMethod';
 import ApplyCoupon from '../../screens/ApplyCoupon';
-import Intro from '../../screens/introSliderScreen';
+import Intro from '../../screens/Introsliderscreen';
 import ContactInfo from '../../screens/ContactInfo';
 import ChangePassword from '../../screens/ChangePassword';
 import Insurance from '../../screens/Insurance';
@@ -28,6 +28,17 @@ import MedicalRecords from '../../screens/MedicalRecords';
 import GoogleFit from '../../screens/GoogleFit';
 import TermsAndConditions from '../../screens/TermsAndConditions';
 import ContactSupport from '../../screens/ContactSupport';
+import {Employerhelp} from '../../screens/employerhelpscreen';
+import {SearchScreen} from '../../screens/searchscreen';
+import BasicInfoScreen from '../../screens/basicInfoscreens';
+import {InsuranceScreen} from '../../screens/insurancescreen';
+import Wellcome from '../../screens/wellcomescreen';
+import { VisitScreen } from '../../screens/visitforscreen';
+import { ForPharmacy } from '../../screens/searchforpharmacyscreen';
+import MemberShipTerms from '../../screens/membershiptermscreens';
+import TermsOfService from '../../screens/TermsOfService';
+import MemberAgreement from '../../screens/MemberAgreement';
+import PrivacyPolicy from '../../screens/PrivacyPolicy';
 const Stack = createNativeStackNavigator();
 
 const Tab = createMaterialBottomTabNavigator();
@@ -35,11 +46,21 @@ export default function MainNavigator() {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{headerShown: false}}>
+
         <Stack.Screen name="Introsliderscreen" component={Intro} />
         <Stack.Screen name="signupscreen" component={SignUp} />
         <Stack.Screen name="signinscreen" component={SignIn} />
+      <Stack.Screen name="wellcomescreen" component={Wellcome} />
+        <Stack.Screen name="basicInfoscreens" component={BasicInfoScreen} />
+      <Stack.Screen name="membershiptermscreens" component={MemberShipTerms} />
+      <Stack.Screen name="searchforpharmacyscreen" component={ForPharmacy} />
+        <Stack.Screen name="employerhelpscreen" component={Employerhelp} />
+      <Stack.Screen name="visitforscreen" component={VisitScreen} />
+        <Stack.Screen name="insurancescreen" component={InsuranceScreen} />
+
+        <Stack.Screen name="searchscreen" component={SearchScreen} />
         <Stack.Screen name="BottomNavs" component={MyTabs} />
-      <Stack.Screen name="Setting" component={Setting} />
+        <Stack.Screen name="Setting" component={Setting} />
 
         <Stack.Screen name="SharePromo" component={SharePromo} />
         <Stack.Screen name="PaymentMethod" component={PaymentMethod} />
@@ -55,6 +76,10 @@ export default function MainNavigator() {
           name="TermsAndConditions"
           component={TermsAndConditions}
         />
+        <Stack.Screen name="TermsOfService" component={TermsOfService} />
+        <Stack.Screen name="MemberAgreement" component={MemberAgreement} />
+        <Stack.Screen name="PrivacyPolicy" component={PrivacyPolicy} />
+        
       </Stack.Navigator>
     </NavigationContainer>
   );

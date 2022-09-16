@@ -4,7 +4,7 @@ import {View, StyleSheet, Text, } from 'react-native';
 import { colors } from '../../services';
 
 
- export const CustomTextFiel = ({value,label,setValue,secureTextEntry}) => {
+ export const CustomTextFiel = ({value,label,setValue,secureTextEntry,right}) => {
     return (
     //   <View style={styles.container}>
     <>
@@ -18,6 +18,8 @@ import { colors } from '../../services';
         secureTextEntry={secureTextEntry}
         activeUnderlineColor={colors.secondary}
         style={{backgroundColor:colors.white,fontSize:20}}
+      
+           
         />
         </>
      
