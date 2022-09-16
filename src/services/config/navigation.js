@@ -28,6 +28,7 @@ import MedicalRecords from '../../screens/MedicalRecords';
 import GoogleFit from '../../screens/GoogleFit';
 import TermsAndConditions from '../../screens/TermsAndConditions';
 import ContactSupport from '../../screens/ContactSupport';
+import TermsOfService from '../../screens/TermsOfService';
 const Stack = createNativeStackNavigator();
 
 const Tab = createMaterialBottomTabNavigator();
@@ -35,11 +36,12 @@ export default function MainNavigator() {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{headerShown: false}}>
+        <Stack.Screen name="Setting" component={Setting} />
+
         <Stack.Screen name="Introsliderscreen" component={Intro} />
         <Stack.Screen name="signupscreen" component={SignUp} />
         <Stack.Screen name="signinscreen" component={SignIn} />
         <Stack.Screen name="BottomNavs" component={MyTabs} />
-      <Stack.Screen name="Setting" component={Setting} />
 
         <Stack.Screen name="SharePromo" component={SharePromo} />
         <Stack.Screen name="PaymentMethod" component={PaymentMethod} />
@@ -55,6 +57,7 @@ export default function MainNavigator() {
           name="TermsAndConditions"
           component={TermsAndConditions}
         />
+        <Stack.Screen name="TermsOfService" component={TermsOfService} />
       </Stack.Navigator>
     </NavigationContainer>
   );
