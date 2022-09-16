@@ -24,7 +24,7 @@ export default function TermsAndConditions({navigation}) {
         <View style={[styles.paddingLeft, styles.paddingBottom]}>
           <Text style={styles.addPaymentText}>Terms And Conditions</Text>
         </View>
-        <TouchableOpacity  onPress={() => navigation.navigate('TermsOfService')}>
+        <TouchableOpacity onPress={() => navigation.navigate('TermsOfService')}>
           <View style={[styles.row, styles.card]}>
             <Text style={styles.cardText}>Terms of Service</Text>
             <View>
@@ -32,7 +32,8 @@ export default function TermsAndConditions({navigation}) {
             </View>
           </View>
         </TouchableOpacity>
-        <TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => navigation.navigate('MemberAgreement')}>
           <View style={[styles.row, styles.card]}>
             <Text style={styles.cardText}>Member Services Agreement</Text>
             <View>

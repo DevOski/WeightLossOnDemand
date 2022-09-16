@@ -29,6 +29,7 @@ import GoogleFit from '../../screens/GoogleFit';
 import TermsAndConditions from '../../screens/TermsAndConditions';
 import ContactSupport from '../../screens/ContactSupport';
 import TermsOfService from '../../screens/TermsOfService';
+import MemberAgreement from '../../screens/MemberAgreement';
 const Stack = createNativeStackNavigator();
 
 const Tab = createMaterialBottomTabNavigator();
@@ -58,6 +59,7 @@ export default function MainNavigator() {
           component={TermsAndConditions}
         />
         <Stack.Screen name="TermsOfService" component={TermsOfService} />
+        <Stack.Screen name="MemberAgreement" component={MemberAgreement} />
       </Stack.Navigator>
     </NavigationContainer>
   );
