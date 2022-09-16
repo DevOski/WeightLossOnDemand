@@ -36,6 +36,9 @@ import Wellcome from '../../screens/wellcomescreen';
 import { VisitScreen } from '../../screens/visitforscreen';
 import { ForPharmacy } from '../../screens/searchforpharmacyscreen';
 import MemberShipTerms from '../../screens/membershiptermscreens';
+import TermsOfService from '../../screens/TermsOfService';
+import MemberAgreement from '../../screens/MemberAgreement';
+import PrivacyPolicy from '../../screens/PrivacyPolicy';
 const Stack = createNativeStackNavigator();
 
 const Tab = createMaterialBottomTabNavigator();
@@ -43,6 +46,7 @@ export default function MainNavigator() {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{headerShown: false}}>
+
         <Stack.Screen name="Introsliderscreen" component={Intro} />
         <Stack.Screen name="signupscreen" component={SignUp} />
         <Stack.Screen name="signinscreen" component={SignIn} />
@@ -72,6 +76,10 @@ export default function MainNavigator() {
           name="TermsAndConditions"
           component={TermsAndConditions}
         />
+        <Stack.Screen name="TermsOfService" component={TermsOfService} />
+        <Stack.Screen name="MemberAgreement" component={MemberAgreement} />
+        <Stack.Screen name="PrivacyPolicy" component={PrivacyPolicy} />
+        
       </Stack.Navigator>
     </NavigationContainer>
   );

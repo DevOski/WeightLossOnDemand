@@ -14,7 +14,7 @@ import images from '../../services/utilities/images';
 import {styles} from './style';
 import {colors} from '../../services';
 
-export default function TermsAndConditions() {
+export default function TermsAndConditions({navigation}) {
   return (
     <SafeAreaView>
       <ScrollView style={styles.color}>
@@ -24,7 +24,7 @@ export default function TermsAndConditions() {
         <View style={[styles.paddingLeft, styles.paddingBottom]}>
           <Text style={styles.addPaymentText}>Terms And Conditions</Text>
         </View>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate('TermsOfService')}>
           <View style={[styles.row, styles.card]}>
             <Text style={styles.cardText}>Terms of Service</Text>
             <View>
@@ -32,7 +32,8 @@ export default function TermsAndConditions() {
             </View>
           </View>
         </TouchableOpacity>
-        <TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => navigation.navigate('MemberAgreement')}>
           <View style={[styles.row, styles.card]}>
             <Text style={styles.cardText}>Member Services Agreement</Text>
             <View>
@@ -40,7 +41,7 @@ export default function TermsAndConditions() {
             </View>
           </View>
         </TouchableOpacity>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate('PrivacyPolicy')}>
           <View style={[styles.row, styles.card]}>
             <Text style={styles.cardText}>Privacy Policy</Text>
             <View>
