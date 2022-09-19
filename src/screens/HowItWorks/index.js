@@ -18,7 +18,7 @@ import {WebView} from 'react-native-webview';
 import {colors} from '../../services';
 import Header from '../../components/Header';
 
-export default function HowItWorks({route}) {
+export default function HowItWorks({navigation}) {
   const [showVideo, setShowVideo] = useState(false);
   return (
     <SafeAreaView>
@@ -43,7 +43,7 @@ export default function HowItWorks({route}) {
         )}
 
         <View style={styles.padding}>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={()=>navigation.navigate("HowItWorksVT")}>
             <View style={[styles.top]}>
               <Text style={styles.subHeading}>See transcript for video</Text>
             </View>
