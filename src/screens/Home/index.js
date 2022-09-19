@@ -61,7 +61,12 @@ export default function Home({navigation}) {
                     key={index}
                     source={images.bg1}
                     style={styles.bg}>
-                    <TouchableOpacity>
+                    <TouchableOpacity
+                      onPress={() =>
+                        navigation.navigate('VideoPlayer', {
+                          uri: 'https://www.youtube.com/embed/rCa-TYJabNY',
+                        })
+                      }>
                       <View style={styles.playBtn}>
                         <Image
                           source={images.playIcon}
@@ -74,7 +79,8 @@ export default function Home({navigation}) {
                         What to expect in your first {'    '}visit
                       </Text>
                     </View>
-                    <TouchableOpacity>
+                    <TouchableOpacity
+                      onPress={() => navigation.navigate('HowItWorks')}>
                       <View style={[styles.semiTextView, styles.row2]}>
                         <Text style={styles.semiText}>How It Works</Text>
                         <Text style={styles.symbol}> ›</Text>
@@ -290,11 +296,11 @@ export default function Home({navigation}) {
           {item?.map((item, index) => {
             return (
               <View>
-                  <Text
-                    key={index}
-                    style={imgActive == index ? styles.dotActive : styles.dot}>
-                    ▂▂
-                  </Text>
+                <Text
+                  key={index}
+                  style={imgActive == index ? styles.dotActive : styles.dot}>
+                  ▂▂
+                </Text>
               </View>
             );
           })}
