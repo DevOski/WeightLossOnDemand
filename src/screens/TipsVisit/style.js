@@ -25,7 +25,8 @@ export const styles = StyleSheet.create({
   text: {
     color: colors.primary,
     width: sizes.screenWidth * 0.8,
-    lineHeight:20
+    lineHeight:20,
+    fontSize:fontSize.medium
   },
   row: {
     flexDirection: 'row',
