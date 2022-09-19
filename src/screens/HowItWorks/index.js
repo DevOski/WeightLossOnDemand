@@ -43,13 +43,13 @@ export default function HowItWorks({navigation}) {
         )}
 
         <View style={styles.padding}>
-          <TouchableOpacity onPress={()=>navigation.navigate("HowItWorksVT")}>
+          <TouchableOpacity onPress={() => navigation.navigate('HowItWorksVT')}>
             <View style={[styles.top]}>
               <Text style={styles.subHeading}>See transcript for video</Text>
             </View>
           </TouchableOpacity>
           <View style={styles.padding}>
-            <TouchableOpacity onPress={()=>navigation.navigate("VideoVisit")}>
+            <TouchableOpacity onPress={() => navigation.navigate('VideoVisit')}>
               <View style={[styles.row, styles.card]}>
                 <Text style={styles.cardText}>What is a Video Visit?</Text>
                 <View>
@@ -57,7 +57,7 @@ export default function HowItWorks({navigation}) {
                 </View>
               </View>
             </TouchableOpacity>
-            <TouchableOpacity onPress={()=>navigation.navigate("TipsVisit")}>
+            <TouchableOpacity onPress={() => navigation.navigate('TipsVisit')}>
               <View style={[styles.row, styles.card]}>
                 <Text style={styles.cardText}>Tips for a Successful Visit</Text>
                 <View>
@@ -65,7 +65,8 @@ export default function HowItWorks({navigation}) {
                 </View>
               </View>
             </TouchableOpacity>
-            <TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => navigation.navigate('PrescriptionsAndLab')}>
               <View style={[styles.row, styles.card]}>
                 <Text style={styles.cardText}>Prescriptions and Lab Work</Text>
                 <View>
