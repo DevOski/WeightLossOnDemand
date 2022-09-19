@@ -45,6 +45,7 @@ import HealthInfoAgreement from '../../screens/HealthInfoAgreement';
 import VideoPlayer from '../../components/VideoPlayer';
 import HowItWorks from '../../screens/HowItWorks';
 import HowItWorksVT from '../../screens/HowItWorksVT';
+import VideoVisit from '../../screens/VideoVisit';
 const Stack = createNativeStackNavigator();
 
 const Tab = createMaterialBottomTabNavigator();
@@ -100,6 +101,7 @@ export default function MainNavigator() {
         <Stack.Screen name="VideoPlayer" component={VideoPlayer} />
         <Stack.Screen name="HowItWorks" component={HowItWorks} />
         <Stack.Screen name="HowItWorksVT" component={HowItWorksVT} />
+        <Stack.Screen name="VideoVisit" component={VideoVisit} />
       </Stack.Navigator>
     </NavigationContainer>
   );

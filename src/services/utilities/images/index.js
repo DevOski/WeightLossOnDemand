@@ -24,6 +24,7 @@ import mail from '../../../assets/mail.png';
 import googleFit from '../../../assets/googleFit.png';
 import mother from '../../../assets/mother.jpeg';
 import appIcon from '../../../assets/appIcon.png';
+import visit from '../../../assets/visit.png';
 
 const images = {
   icon,
@@ -51,6 +52,7 @@ const images = {
   mail,
   googleFit,
   mother,
-  appIcon
+  appIcon,
+  visit,
 };
 export default images;

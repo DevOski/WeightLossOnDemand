@@ -49,7 +49,7 @@ export default function HowItWorks({navigation}) {
             </View>
           </TouchableOpacity>
           <View style={styles.padding}>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={()=>navigation.navigate("VideoVisit")}>
               <View style={[styles.row, styles.card]}>
                 <Text style={styles.cardText}>What is a Video Visit?</Text>
                 <View>
