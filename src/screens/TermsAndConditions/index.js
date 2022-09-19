@@ -49,7 +49,8 @@ export default function TermsAndConditions({navigation}) {
             </View>
           </View>
         </TouchableOpacity>
-        <TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => navigation.navigate('NoticeOfPrivacy')}>
           <View style={[styles.row, styles.card]}>
             <Text style={styles.cardText}>Notice of Privacy Practices</Text>
             <View>
