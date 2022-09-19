@@ -39,6 +39,11 @@ import MemberShipTerms from '../../screens/membershiptermscreens';
 import TermsOfService from '../../screens/TermsOfService';
 import MemberAgreement from '../../screens/MemberAgreement';
 import PrivacyPolicy from '../../screens/PrivacyPolicy';
+import { Correct } from '../../screens/correctinfoscreen';
+import { EditInfo } from '../../screens/edityourinformation';
+import { EdiTChildscreen } from '../../screens/editChildscreen';
+import { ChildScreen } from '../../screens/addchildscreen';
+
 const Stack = createNativeStackNavigator();
 
 const Tab = createMaterialBottomTabNavigator();
@@ -46,7 +51,7 @@ export default function MainNavigator() {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{headerShown: false}}>
-
+      
         <Stack.Screen name="Introsliderscreen" component={Intro} />
         <Stack.Screen name="signupscreen" component={SignUp} />
         <Stack.Screen name="signinscreen" component={SignIn} />
@@ -57,7 +62,10 @@ export default function MainNavigator() {
         <Stack.Screen name="employerhelpscreen" component={Employerhelp} />
       <Stack.Screen name="visitforscreen" component={VisitScreen} />
         <Stack.Screen name="insurancescreen" component={InsuranceScreen} />
-
+        <Stack.Screen name="addchildscreen" component={ChildScreen} />
+      <Stack.Screen name="editChildscreen" component={EdiTChildscreen} />
+      <Stack.Screen name="edityourinformation" component={EditInfo} />
+      <Stack.Screen name="correctinfoscreen" component={Correct} />
         <Stack.Screen name="searchscreen" component={SearchScreen} />
         <Stack.Screen name="BottomNavs" component={MyTabs} />
         <Stack.Screen name="Setting" component={Setting} />

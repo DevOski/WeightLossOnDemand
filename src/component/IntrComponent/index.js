@@ -168,7 +168,7 @@ const ComponentFour = () => {
             left: deviceWidth * 0.03,
           }}>
           <TouchableOpacity style={styles.but}  onPress={()=>navigation.navigate("signupscreen")}>
-            <Text style={{color: '#fff',fontSize:fontSize.h5}}>SignUp</Text>
+            <Text style={{color: '#fff',fontSize:fontSize.h5}}>Sign Up</Text>
           </TouchableOpacity>
         </View>
       </View>

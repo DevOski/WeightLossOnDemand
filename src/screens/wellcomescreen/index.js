@@ -39,8 +39,8 @@ const Wellcome = ({navigation}) => {
             </View>
            
             <View style={{paddingLeft:sizes.screenWidth*0.07}}>
-              <Text style={[styles.cardText,styles.wit]}>see first available medical provider</Text>
-              <Text style={styles.faqText}>Curren wait time :3 min</Text>
+              <Text style={[styles.cardText,styles.wit]}>See first available medical provider</Text>
+              <Text style={styles.faqText}>Current wait time: 3 min</Text>
             </View>
             <View>
               <Text style={styles.symbol}> ›</Text>
@@ -54,7 +54,7 @@ const Wellcome = ({navigation}) => {
           </View>
             <View style={{paddingRight:sizes.screenWidth*0.02}}>
               <Text style={styles.cardText}>{'   '}Book a mental health sessions</Text>
-              <Text style={styles.faqText}>{'   '}psychiatry & Therapy</Text>
+              <Text style={styles.faqText}>{'   '}Psychiatry & Therapy</Text>
             </View>
             <View>
               <Text style={styles.symbol}> ›</Text>
@@ -83,7 +83,7 @@ const Wellcome = ({navigation}) => {
             </View>
             <View>
               <Text style={styles.cardText}>{'   '}Explore the app</Text>
-              <Text style={styles.faqText}>{'   '}learn more about our services</Text>
+              <Text style={styles.faqText}>{'   '}Learn more about our services</Text>
              
             </View>
             <View>
