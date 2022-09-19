@@ -57,7 +57,7 @@ export default function HowItWorks({navigation}) {
                 </View>
               </View>
             </TouchableOpacity>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={()=>navigation.navigate("TipsVisit")}>
               <View style={[styles.row, styles.card]}>
                 <Text style={styles.cardText}>Tips for a Successful Visit</Text>
                 <View>
