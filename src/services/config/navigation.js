@@ -48,6 +48,7 @@ import HowItWorksVT from '../../screens/HowItWorksVT';
 import VideoVisit from '../../screens/VideoVisit';
 import TipsVisit from '../../screens/TipsVisit';
 import PrescriptionsAndLab from '../../screens/PrescriptionsAndLab';
+import MyPricing from '../../screens/MyPricing';
 const Stack = createNativeStackNavigator();
 
 const Tab = createMaterialBottomTabNavigator();
@@ -106,6 +107,7 @@ export default function MainNavigator() {
         <Stack.Screen name="VideoVisit" component={VideoVisit} />
         <Stack.Screen name="TipsVisit" component={TipsVisit} />
         <Stack.Screen name="PrescriptionsAndLab" component={PrescriptionsAndLab} />
+        <Stack.Screen name="MyPricing" component={MyPricing} />
       </Stack.Navigator>
     </NavigationContainer>
   );
