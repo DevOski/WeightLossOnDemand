@@ -17,6 +17,7 @@ export const styles = StyleSheet.create({
     fontSize: fontSize.h3,
     fontWeight: 'bold',
     color: colors.primary,
+    left: sizes.TinyMargin,
   },
   padding: {
     padding: sizes.TinyMargin,
@@ -25,6 +26,7 @@ export const styles = StyleSheet.create({
     color: colors.black,
     fontSize: fontSize.h6,
     width: sizes.screenWidth * 0.8,
+    left: sizes.TinyMargin,
   },
   row: {
     flexDirection: 'row',
@@ -92,6 +94,5 @@ export const styles = StyleSheet.create({
     fontSize: fontSize.h6,
     fontWeight: '500',
     color: colors.secondary,
-
   },
 });

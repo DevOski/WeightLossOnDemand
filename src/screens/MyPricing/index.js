@@ -29,7 +29,7 @@ export default function MyPricing() {
             Here's the pricing for your next visit, as of today.
           </Text>
         </View>
-        <TouchableOpacity>
+        <View>
           <View style={[styles.row, styles.card]}>
             <View>
               <Text style={styles.cardText}>{'   '}Medical</Text>
@@ -39,8 +39,8 @@ export default function MyPricing() {
               </View>
             </View>
           </View>
-        </TouchableOpacity>
-        <TouchableOpacity>
+        </View>
+        <View>
           <View style={[styles.row, styles.card]}>
             <View>
               <Text style={styles.cardText}>{'   '}Therapy</Text>
@@ -56,8 +56,8 @@ export default function MyPricing() {
               </View>
             </View>
           </View>
-        </TouchableOpacity>
-        <TouchableOpacity>
+        </View>
+        <View>
           <View style={[styles.row, styles.card]}>
             <View>
               <Text style={styles.cardText}>{'   '}Psychiatry</Text>
@@ -77,7 +77,7 @@ export default function MyPricing() {
               </View>
             </View>
           </View>
-        </TouchableOpacity>
+        </View>
         <View style={styles.top}>
           <TouchableOpacity>
             <View style={styles.buttonView}>
