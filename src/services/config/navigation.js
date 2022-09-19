@@ -42,6 +42,7 @@ import PrivacyPolicy from '../../screens/PrivacyPolicy';
 import NoticeOfPrivacy from '../../screens/NoticeOfPrivacy';
 import MemberEducationProgram from '../../screens/MemberEducationProgram';
 import HealthInfoAgreement from '../../screens/HealthInfoAgreement';
+import VideoPlayer from '../../components/VideoPlayer';
 const Stack = createNativeStackNavigator();
 
 const Tab = createMaterialBottomTabNavigator();
@@ -49,10 +50,9 @@ export default function MainNavigator() {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{headerShown: false}}>
-        <Stack.Screen
-          name="TermsAndConditions"
-          component={TermsAndConditions}
-        />
+
+      <Stack.Screen name="BottomNavs" component={MyTabs} />
+
 
         <Stack.Screen name="Introsliderscreen" component={Intro} />
         <Stack.Screen name="signupscreen" component={SignUp} />
@@ -69,7 +69,6 @@ export default function MainNavigator() {
         <Stack.Screen name="insurancescreen" component={InsuranceScreen} />
 
         <Stack.Screen name="searchscreen" component={SearchScreen} />
-        <Stack.Screen name="BottomNavs" component={MyTabs} />
         <Stack.Screen name="Setting" component={Setting} />
 
         <Stack.Screen name="SharePromo" component={SharePromo} />
@@ -82,13 +81,26 @@ export default function MainNavigator() {
         <Stack.Screen name="MedicalRecords" component={MedicalRecords} />
         <Stack.Screen name="GoogleFit" component={GoogleFit} />
         <Stack.Screen name="ContactSupport" component={ContactSupport} />
-
+        <Stack.Screen
+          name="TermsAndConditions"
+          component={TermsAndConditions}
+        />
         <Stack.Screen name="TermsOfService" component={TermsOfService} />
         <Stack.Screen name="MemberAgreement" component={MemberAgreement} />
         <Stack.Screen name="PrivacyPolicy" component={PrivacyPolicy} />
         <Stack.Screen name="NoticeOfPrivacy" component={NoticeOfPrivacy} />
-        <Stack.Screen name="MemberEducationProgram" component={MemberEducationProgram} />
-        <Stack.Screen name="HealthInfoAgreement" component={HealthInfoAgreement} />
+        <Stack.Screen
+          name="MemberEducationProgram"
+          component={MemberEducationProgram}
+        />
+        <Stack.Screen
+          name="HealthInfoAgreement"
+          component={HealthInfoAgreement}
+        />
+         <Stack.Screen
+          name="VideoPlayer"
+          component={VideoPlayer}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

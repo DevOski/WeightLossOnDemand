@@ -12,7 +12,7 @@ import {
 import Header from '../../components/Header';
 import images from '../../services/utilities/images';
 import {styles} from './style';
-export default function Insurance() {
+export default function Insurance({navigation}) {
   return (
     <SafeAreaView>
       <ScrollView style={styles.color}>
@@ -22,7 +22,9 @@ export default function Insurance() {
         <View style={[styles.paddingLeft, styles.paddingBottom]}>
           <Text style={styles.addPaymentText}>Insurance</Text>
         </View>
-        <TouchableOpacity>
+        <TouchableOpacity
+        // onPress={() => navigation.navigate('insurancescreen')}
+        >
           <View style={[styles.row, styles.card]}>
             <View style={styles.width}>
               <Text style={styles.head}>Tester Jazzy</Text>
