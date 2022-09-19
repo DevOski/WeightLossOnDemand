@@ -102,7 +102,7 @@ const Intro = ({navigation}) => {
           {imgActive !== 3 && (
             <View style={styles.footer}>
               <TouchableOpacity onPress={()=>navigation.navigate("signinscreen")}>
-                <Text style={styles.fontsiginandsignup}>sign In</Text>
+                <Text style={styles.fontsiginandsignup}>Sign In</Text>
               </TouchableOpacity>
             </View>
           )}
@@ -127,7 +127,7 @@ const Intro = ({navigation}) => {
             {imgActive !== 3 && (
               <View style={[styles.footer, styles.top]}>
                 <TouchableOpacity onPress={()=>navigation.navigate("signupscreen")}>
-                  <Text style={styles.fontsiginandsignup}>signUp</Text>
+                  <Text style={styles.fontsiginandsignup}>Sign Up</Text>
                 </TouchableOpacity>
               </View>
             )}

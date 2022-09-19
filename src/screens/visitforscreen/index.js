@@ -19,8 +19,15 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import {colors, fontSize, sizes} from '../../services';
 import Octicons from 'react-native-vector-icons/Octicons';
 import Header from '../../components/Header';
+import Modal from 'react-native-modal';
+import { NavigationHelpersContext } from '@react-navigation/native';
 
-export const VisitScreen = () => {
+export const VisitScreen = ({navigation}) => {
+  const [isModalVisible, setModalVisible] = useState(false);
+
+  const toggleModal = () => {
+    setModalVisible(!isModalVisible);
+  };
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView>
@@ -34,7 +41,7 @@ export const VisitScreen = () => {
 
           <View style={styles.buttondiv}>
             <View style={styles.buttonchilddiv}>
-              <TouchableOpacity>
+              <TouchableOpacity onPress={()=>navigation.navigate("correctinfoscreen")} >
                 <View style={[styles.row, styles.card]}>
                   <View style={styles.namefirt}>
                     <Text style={styles.fname}>J</Text>
@@ -46,7 +53,7 @@ export const VisitScreen = () => {
               </TouchableOpacity>
             </View>
             <View style={styles.buttonchilddiv}>
-              <TouchableOpacity>
+              <TouchableOpacity onPress={()=>navigation.navigate("addchildscreen")}>
                 <View style={[styles.row, styles.card]}>
                   <View style={styles.namefirt}>
                     <Text style={styles.fname}>+</Text>
@@ -59,18 +66,44 @@ export const VisitScreen = () => {
               </TouchableOpacity>
             </View>
             <View style={styles.buttonchilddiv}>
-              <TouchableOpacity>
+              <TouchableOpacity onPress={toggleModal}>
                 <View style={[styles.row, styles.card]}>
                   <View>
-                    <Text style={styles.cardText}>someone Else ?</Text>
+                    <Text style={styles.cardText}>Someone Else ?</Text>
                     <Text style={styles.faqText2}>
-                      if the patient is over 18 ,they need to create their own
+                      If the patient is over 18 ,they need to create their own
                       account ,even if they are dependent on your health plan
                     </Text>
                   </View>
                 </View>
               </TouchableOpacity>
             </View>
+            <Modal style={{width:sizes.screenWidth,height:sizes.screenHeight,backgroundColor: 'rgba(52, 52, 52, 0.8)',marginLeft:sizes.screenWidth*0.01,padding:10}}  isVisible={isModalVisible}>
+           <View style={styles.texcon}>
+            <Text style={styles.text111}>Trying to set Up a visit for Someone else ?</Text>
+           </View>
+           <View style={styles.texcon1}>
+            <Text style={styles.text1}>if the patient is over 18,they need to create their own account.if they are a dependent under your health plan,they can add your insurance to thier account</Text>
+           </View>
+
+           <View style={styles.buttnView}>
+          <TouchableOpacity onPress={()=>navigation.navigate("signupscreen")}>
+            <View style={styles.buttonView}>
+              <Text style={styles.buttonText}>Create new account</Text>
+            </View>
+          </TouchableOpacity>
+        </View>
+        <View style={styles.buttnView}>
+          <TouchableOpacity onPress={toggleModal}>
+            <View style={styles.buttonView1}>
+              <Text style={styles.buttonText}>Go Back</Text>
+            </View>
+          </TouchableOpacity>
+        </View>
+
+          </Modal>
+
+
           </View>
         </View>
       </ScrollView>
@@ -119,7 +152,7 @@ const styles = StyleSheet.create({
   card: {
     backgroundColor: colors.white,
     padding: sizes.screenHeight * 0.03,
-    marginBottom: sizes.TinyMargin,
+    marginBottom: sizes.screenHeight*-0.01,
     width: sizes.screenWidth * 0.9,
     borderRadius: sizes.screenWidth * 0.02,
     alignSelf: 'center',
@@ -149,5 +182,46 @@ const styles = StyleSheet.create({
   },
   buttonchilddiv:{
     marginBottom:sizes.screenHeight*0.03
+  },
+  text111:{
+    fontSize:fontSize.h4,
+    color:colors.white,
+    fontWeight:"bold"
+  },
+  texcon:{
+    bottom:sizes.screenHeight*0.1
+  },
+  texcon1:{
+    bottom:sizes.screenHeight*0.08
+  },
+  text1:{
+    fontSize:fontSize.large,
+    color:colors.white,
+    fontWeight:"bold"
+  },
+  buttnView: {
+    // marginRight:sizes.screenWidth*0.06,
+    marginTop:sizes.screenHeight*0.03,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  buttonText: {
+    color: colors.white,
+    fontSize: fontSize.h6,
+  },
+  buttonView: {
+    backgroundColor: colors.secondary,
+    height: sizes.screenHeight * 0.06,
+    width: sizes.screenWidth * 0.8,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  buttonView1:{
+    borderWidth:1,
+    borderColor:colors.white,
+    height: sizes.screenHeight * 0.06,
+    width: sizes.screenWidth * 0.8,
+    alignItems: 'center',
+    justifyContent: 'center',
   }
 });

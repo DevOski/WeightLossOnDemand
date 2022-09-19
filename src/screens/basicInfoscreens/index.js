@@ -46,12 +46,12 @@ const ShowFiled =()=>{
         </View>
         <View style={styles.spayrainfo}>
           <Text style={styles.basicinfophyra}>
-            please tell us some basic info to complete{' '}
+            Please tell us some basic info to complete{' '}
           </Text>
           <Text style={styles.basicinfophyra}> your profile</Text>
         </View>
         <View>
-        { !Fieldsshowhide ?<View style={styles.filedcon}>
+        {Fieldsshowhide ?<View style={styles.filedcon}>
             <CustomTextFiel
               label={'Prefix'}
               value={Prefix}
@@ -66,7 +66,7 @@ const ShowFiled =()=>{
               setValue={setname}
             />
           </View>
-         {!Fieldsshowhide ? <View style={styles.filedcon}>
+         {Fieldsshowhide ? <View style={styles.filedcon}>
             <CustomTextFiel
               label={'Middle Name'}
               value={Middle}
@@ -81,7 +81,7 @@ const ShowFiled =()=>{
             />
             
           </View>
-          {!Fieldsshowhide ?  <View style={styles.filedcon}>
+          {Fieldsshowhide ?  <View style={styles.filedcon}>
             <CustomTextFiel
               label={'Suffix'}
               value={lastname}
@@ -107,7 +107,7 @@ const ShowFiled =()=>{
                 style={styles.twoitem}
               />
               <MaterialIcons name="expand-more" color={colors.secondary} style={styles.icon} size={20} onPress={toogle} />
-              { !show ?<View style={styles.pap}>
+              { show ?<View style={styles.pap}>
                 <Text style={styles.lstyle} onPress={()=>{setslectnumber('Mobile');setshow(!show)}}>Mobile</Text>
                 <Text style={styles.lstyle} onPress={()=>{setslectnumber('Work');setshow(!show)}}>Work</Text>
                 <Text style={styles.lstyle} onPress={()=>{setslectnumber('Home');setshow(!show)}}>Home</Text>
@@ -266,13 +266,15 @@ fontSize:fontSize.h2
     paddingTop:sizes.screenHeight*0.03
   },
   termspayra:{
-    paddingTop:sizes.screenHeight*0.05
+    paddingTop:sizes.screenHeight*0.06
   },
   tremtext:{
-    fontSize:fontSize.medium
+    fontSize:fontSize.large
   },
   tremtextbutt:{
-    fontSize:fontSize.h6,
+    
+    top:sizes.screenHeight*0.09,
+    fontSize:fontSize.regular,
     color:colors.secondary
   },
   buttocon:{

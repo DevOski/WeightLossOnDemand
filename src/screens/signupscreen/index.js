@@ -73,7 +73,7 @@ export const SignUp = ({navigation}) => {
             </View>
           </View>
           <View style={styles.filedcontext}>
-            <Text style={styles.text}>Enable Finger for LOgin</Text>
+            <Text style={styles.text}>Enable Fingerprint for Login</Text>
             <View>
               <Switch
                 trackColor={{false: '#767577', true: 'red'}}

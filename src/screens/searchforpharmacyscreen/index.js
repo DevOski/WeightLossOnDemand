@@ -25,6 +25,10 @@ export const ForPharmacy = () => {
   const [zipCode, setzipCode] = useState();
   const [Fieldsshowhide, setFieldsshowhide] = useState(false);
   const [checked, setChecked] = React.useState(false);
+  const [retail, setretail] = useState(false)
+  const [mailorder, setmailorder] = useState(false)
+  const [longterm, setlongterm] = useState(false)
+  const [Specialty, setSpecialty] = useState(false)
   const ShowFiled = () => {
     setFieldsshowhide(!Fieldsshowhide);
   };
@@ -59,7 +63,7 @@ export const ForPharmacy = () => {
             </View>
             <View style={styles.filedcon}>
               <CustomTextFiel
-                label={'name (optional)'}
+                label={'Name (optional)'}
                 value={zipCode}
                 setValue={setzipCode}
               />
@@ -76,7 +80,7 @@ export const ForPharmacy = () => {
             <TouchableOpacity onPress={ShowFiled}>
               <View style={styles.fle}>
                 <Text style={styles.filtertext}>SHOW FILTERS</Text>
-                { !Fieldsshowhide ?  <MaterialIcons
+                { Fieldsshowhide ?  <MaterialIcons
                   name="expand-less"
                   style={{color: colors.secondary}}
                   size={25}
@@ -88,7 +92,7 @@ export const ForPharmacy = () => {
                
               </View>
             </TouchableOpacity>
-            { !Fieldsshowhide ? <View>
+            { Fieldsshowhide ? <View>
             <View>
               <View style={styles.checkboxcont}>
                 <Checkbox
@@ -107,9 +111,9 @@ export const ForPharmacy = () => {
                 <Text style={styles.text}>Retail</Text>
                 <View>
                   <Checkbox
-                    status={checked ? 'checked' : 'unchecked'}
+                    status={retail ? 'checked' : 'unchecked'}
                     onPress={() => {
-                      setChecked(!checked);
+                      setretail(!retail);
                     }}
                     color={'#be1d2d'}
                     uncheckColor={colors.secondary}
@@ -120,9 +124,9 @@ export const ForPharmacy = () => {
                 <Text style={styles.text}>Mail Order</Text>
                 <View>
                   <Checkbox
-                    status={checked ? 'checked' : 'unchecked'}
+                    status={mailorder ? 'checked' : 'unchecked'}
                     onPress={() => {
-                      setChecked(!checked);
+                      setmailorder(!mailorder);
                     }}
                     color={'#be1d2d'}
                     uncheckColor={colors.secondary}
@@ -133,9 +137,9 @@ export const ForPharmacy = () => {
                 <Text style={styles.text}>Long Term Care</Text>
                 <View>
                   <Checkbox
-                    status={checked ? 'checked' : 'unchecked'}
+                    status={longterm ? 'checked' : 'unchecked'}
                     onPress={() => {
-                      setChecked(!checked);
+                      setlongterm(!longterm);
                     }}
                     color={'#be1d2d'}
                     uncheckColor={colors.secondary}
@@ -146,9 +150,9 @@ export const ForPharmacy = () => {
                 <Text style={styles.text}>Specialty</Text>
                 <View>
                   <Checkbox
-                    status={checked ? 'checked' : 'unchecked'}
+                    status={Specialty ? 'checked' : 'unchecked'}
                     onPress={() => {
-                      setChecked(!checked);
+                      setSpecialty(!Specialty);
                     }}
                     color={'#be1d2d'}
                     uncheckColor={colors.secondary}
