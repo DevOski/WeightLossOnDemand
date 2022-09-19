@@ -53,6 +53,10 @@ export const styles = StyleSheet.create({
   },
   buttonTop: {
     marginTop: sizes.screenHeight * 0.01,
-
+  },
+  heading: {
+    fontSize: fontSize.h6,
+    paddingBottom: sizes.screenHeight * 0.02,
+    fontWeight: 'bold',
   },
 });

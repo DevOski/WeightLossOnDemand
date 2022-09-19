@@ -69,7 +69,8 @@ export default function TermsAndConditions({navigation}) {
             </View>
           </View>
         </TouchableOpacity>
-        <TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => navigation.navigate('HealthInfoAgreement')}>
           <View style={[styles.row, styles.card]}>
             <Text style={styles.cardText}>
               Use of Health Information Agreement

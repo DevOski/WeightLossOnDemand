@@ -48,7 +48,7 @@ export default function MemberEducationProgram({navigation}) {
               We will not share any information with third parties pursuant to
               this authorization. You have the right to revoke or receive a copy
               of this authorization at any time by providing written notice to
-              <Text style={styles.link}>support@weightlossondemand.com</Text>. However, a revocation of this
+              <Text style={styles.link}> support@weightlossondemand.com</Text>. However, a revocation of this
               authorization will not affect any action taken by us in reliance
               on this authorization. This authorization shall be in force and
               effect for one year from the date this form is signed. Your
