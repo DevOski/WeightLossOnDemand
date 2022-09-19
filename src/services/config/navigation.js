@@ -56,8 +56,6 @@ export default function MainNavigator() {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{headerShown: false}}>
-        <Stack.Screen name="BottomNavs" component={MyTabs} />
-
         <Stack.Screen name="Introsliderscreen" component={Intro} />
         <Stack.Screen name="signupscreen" component={SignUp} />
         <Stack.Screen name="signinscreen" component={SignIn} />
@@ -67,6 +65,8 @@ export default function MainNavigator() {
           name="membershiptermscreens"
           component={MemberShipTerms}
         />
+
+        <Stack.Screen name="BottomNavs" component={MyTabs} />
         <Stack.Screen name="searchforpharmacyscreen" component={ForPharmacy} />
         <Stack.Screen name="employerhelpscreen" component={Employerhelp} />
         <Stack.Screen name="visitforscreen" component={VisitScreen} />
@@ -106,7 +106,10 @@ export default function MainNavigator() {
         <Stack.Screen name="HowItWorksVT" component={HowItWorksVT} />
         <Stack.Screen name="VideoVisit" component={VideoVisit} />
         <Stack.Screen name="TipsVisit" component={TipsVisit} />
-        <Stack.Screen name="PrescriptionsAndLab" component={PrescriptionsAndLab} />
+        <Stack.Screen
+          name="PrescriptionsAndLab"
+          component={PrescriptionsAndLab}
+        />
         <Stack.Screen name="MyPricing" component={MyPricing} />
       </Stack.Navigator>
     </NavigationContainer>
