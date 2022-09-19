@@ -58,7 +58,8 @@ export default function TermsAndConditions({navigation}) {
             </View>
           </View>
         </TouchableOpacity>
-        <TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => navigation.navigate('MemberEducationProgram')}>
           <View style={[styles.row, styles.card]}>
             <Text style={styles.cardText}>
               Member Education Program Agreement

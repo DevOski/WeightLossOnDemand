@@ -26,5 +26,6 @@ export const colors = {
   secondary: '#be1d2d',
   primary: '#161616',
   link: '#0000EE',
-  grayBorder:'#a3a3a3'
+  grayBorder:'#a3a3a3',
+  disabledBg2:'#90949d'
 };
