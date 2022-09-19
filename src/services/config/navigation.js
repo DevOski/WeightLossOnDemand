@@ -43,6 +43,7 @@ import NoticeOfPrivacy from '../../screens/NoticeOfPrivacy';
 import MemberEducationProgram from '../../screens/MemberEducationProgram';
 import HealthInfoAgreement from '../../screens/HealthInfoAgreement';
 import VideoPlayer from '../../components/VideoPlayer';
+import HowItWorks from '../../screens/HowItWorks';
 const Stack = createNativeStackNavigator();
 
 const Tab = createMaterialBottomTabNavigator();
@@ -101,6 +102,11 @@ export default function MainNavigator() {
           name="VideoPlayer"
           component={VideoPlayer}
         />
+        <Stack.Screen
+          name="HowItWorks"
+          component={HowItWorks}
+        />
+        
       </Stack.Navigator>
     </NavigationContainer>
   );

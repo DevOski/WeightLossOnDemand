@@ -79,7 +79,8 @@ export default function Home({navigation}) {
                         What to expect in your first {'    '}visit
                       </Text>
                     </View>
-                    <TouchableOpacity>
+                    <TouchableOpacity
+                      onPress={() => navigation.navigate('HowItWorks')}>
                       <View style={[styles.semiTextView, styles.row2]}>
                         <Text style={styles.semiText}>How It Works</Text>
                         <Text style={styles.symbol}> ›</Text>

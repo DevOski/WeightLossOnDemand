@@ -22,6 +22,7 @@ import gmail from '../../../assets/gmail.png';
 import playServices from '../../../assets/playServices.png';
 import mail from '../../../assets/mail.png';
 import googleFit from '../../../assets/googleFit.png';
+import mother from '../../../assets/mother.jpeg';
 const images = {
   icon,
   setting,
@@ -47,5 +48,6 @@ const images = {
   playServices,
   mail,
   googleFit,
+  mother
 };
 export default images;

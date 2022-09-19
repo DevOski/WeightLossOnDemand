@@ -1,6 +1,6 @@
 import React, {useRef, useState} from 'react';
 import {
-    ActivityIndicator,
+  ActivityIndicator,
   Dimensions,
   Image,
   ImageBackground,
@@ -16,7 +16,7 @@ import images from '../../services/utilities/images';
 import {styles} from './style';
 import {WebView} from 'react-native-webview';
 import Header from '../Header';
-import { colors } from '../../services';
+import {colors} from '../../services';
 
 export default function VideoPlayer({route}) {
   const [loader, setLoader] = useState(false);
@@ -33,11 +33,15 @@ export default function VideoPlayer({route}) {
       <ScrollView style={styles.color}>
         <View>
           <View style={styles.top}>
-            {
-                loader && <ActivityIndicator size="large" color={colors.secondary} style={styles.loader}/>
-            }
+            {loader && (
+              <ActivityIndicator
+                size="large"
+                color={colors.secondary}
+                style={styles.loader}
+              />
+            )}
             <WebView
-              source={{uri:route?.params?.uri }}
+              source={{uri: route?.params?.uri}}
               style={styles.videoView}
               onLoadStart={showLoader}
               onLoadEnd={hideLoader}
