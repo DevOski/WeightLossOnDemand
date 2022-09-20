@@ -12,7 +12,7 @@ import {
 import Header from '../../components/Header';
 import images from '../../services/utilities/images';
 import {styles} from './style';
-export default function ContactInfo() {
+export default function ContactInfo({navigation}) {
   return (
     <SafeAreaView>
       <ScrollView style={styles.color}>
@@ -22,7 +22,7 @@ export default function ContactInfo() {
         <View style={[styles.paddingLeft, styles.paddingBottom]}>
           <Text style={styles.addPaymentText}>Contact Information</Text>
         </View>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={()=>navigation.navigate("EditName")}> 
           <View style={[styles.row, styles.card]}>
             <View style={styles.width}>
               <Text style={styles.head}>NAME</Text>

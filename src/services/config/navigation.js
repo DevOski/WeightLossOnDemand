@@ -56,6 +56,7 @@ import PrescriptionsAndLab from '../../screens/PrescriptionsAndLab';
 import MyPricing from '../../screens/MyPricing';
 import MessageSupport from '../../screens/MessageSupport';
 import HowInfoShare from '../../screens/HowInfoShared';
+import EditName from '../../screens/EditName';
 const Stack = createNativeStackNavigator();
 
 const Tab = createMaterialBottomTabNavigator();
@@ -63,13 +64,15 @@ export default function MainNavigator() {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{headerShown: false}}>
-        <Stack.Screen name="BottomNavs" component={MyTabs} />
+        <Stack.Screen name="ContactInfo" component={ContactInfo} />
 
         <Stack.Screen name="Introsliderscreen" component={Intro} />
         <Stack.Screen name="signupscreen" component={SignUp} />
         <Stack.Screen name="signinscreen" component={SignIn} />
         <Stack.Screen name="wellcomescreen" component={Wellcome} />
         <Stack.Screen name="basicInfoscreens" component={BasicInfoScreen} />
+        <Stack.Screen name="BottomNavs" component={MyTabs} />
+
         <Stack.Screen
           name="membershiptermscreens"
           component={MemberShipTerms}
@@ -88,7 +91,6 @@ export default function MainNavigator() {
         <Stack.Screen name="SharePromo" component={SharePromo} />
         <Stack.Screen name="PaymentMethod" component={PaymentMethod} />
         <Stack.Screen name="ApplyCoupon" component={ApplyCoupon} />
-        <Stack.Screen name="ContactInfo" component={ContactInfo} />
         <Stack.Screen name="ChangePassword" component={ChangePassword} />
         <Stack.Screen name="Insurance" component={Insurance} />
         <Stack.Screen name="Employer" component={Employer} />
@@ -125,6 +127,7 @@ export default function MainNavigator() {
         <Stack.Screen name="MyPricing" component={MyPricing} />
         <Stack.Screen name="MessageSupport" component={MessageSupport} />
         <Stack.Screen name="HowInfoShare" component={HowInfoShare} />
+        <Stack.Screen name="EditName" component={EditName} />
       </Stack.Navigator>
     </NavigationContainer>
   );
