@@ -23,7 +23,7 @@ import {CustomTextFiel} from '../../component/textFiled';
 import Header from '../../components/Header';
 import medi from '../../assets/medi.png';
 import Modal from 'react-native-modal';
-export const InsuranceScreen = ({navigation}) => {
+export const InsuranceScreen = ({navigation, route}) => {
   const [isModalVisible, setModalVisible] = useState(false);
 
   const toggleModal = () => {
@@ -46,7 +46,8 @@ export const InsuranceScreen = ({navigation}) => {
             </Text>
           </View>
           <View style={styles.srchcont}>
-            <TouchableOpacity onPress={()=>navigation.navigate("searchscreen")}>
+            <TouchableOpacity
+              onPress={() => navigation.navigate('searchscreen')}>
               <View style={styles.sb}>
                 <FontAwesome
                   name="search"
@@ -90,9 +91,16 @@ export const InsuranceScreen = ({navigation}) => {
                     />
                   </View>
                   <View>
-                    <TouchableOpacity onPress={()=>{navigation.navigate("employerhelpscreen");setModalVisible(!isModalVisible);}}>
-
-                    <Text style={styles.modalll}>Prefer not to use insurance</Text>
+                    <TouchableOpacity
+                      onPress={() => {
+                        route?.params?.screenName
+                          ? navigation.navigate(route?.params?.screenName)
+                          : navigation.navigate('employerhelpscreen');
+                        setModalVisible(!isModalVisible);
+                      }}>
+                      <Text style={styles.modalll}>
+                        Prefer not to use insurance
+                      </Text>
                     </TouchableOpacity>
                   </View>
                 </View>
@@ -106,9 +114,14 @@ export const InsuranceScreen = ({navigation}) => {
                     />
                   </View>
                   <View>
-                  <TouchableOpacity onPress={()=>{navigation.navigate("employerhelpscreen");setModalVisible(!isModalVisible);}}>
-
-                    <Text style={styles.modalll}>Insurance isnt nearby</Text>
+                    <TouchableOpacity
+                      onPress={() => {
+                        route?.params?.screenName
+                          ? navigation.navigate(route?.params?.screenName)
+                          : navigation.navigate('employerhelpscreen');
+                        setModalVisible(!isModalVisible);
+                      }}>
+                      <Text style={styles.modalll}>Insurance isnt nearby</Text>
                     </TouchableOpacity>
                   </View>
                 </View>
@@ -122,9 +135,14 @@ export const InsuranceScreen = ({navigation}) => {
                     />
                   </View>
                   <View>
-                  <TouchableOpacity onPress={()=>{navigation.navigate("employerhelpscreen");setModalVisible(!isModalVisible);}}>
-
-                    <Text style={styles.modalll}>I'll add it later</Text>
+                    <TouchableOpacity
+                      onPress={() => {
+                        route?.params?.screenName
+                          ? navigation.navigate(route?.params?.screenName)
+                          : navigation.navigate('employerhelpscreen');
+                        setModalVisible(!isModalVisible);
+                      }}>
+                      <Text style={styles.modalll}>I'll add it later</Text>
                     </TouchableOpacity>
                   </View>
                 </View>
@@ -138,9 +156,14 @@ export const InsuranceScreen = ({navigation}) => {
                     />
                   </View>
                   <View>
-                  <TouchableOpacity onPress={()=>{navigation.navigate("employerhelpscreen");setModalVisible(!isModalVisible);}}>
-
-                    <Text style={styles.modalll}>Others</Text>
+                    <TouchableOpacity
+                      onPress={() => {
+                        route?.params?.screenName
+                          ? navigation.navigate(route?.params?.screenName)
+                          : navigation.navigate('employerhelpscreen');
+                        setModalVisible(!isModalVisible);
+                      }}>
+                      <Text style={styles.modalll}>Others</Text>
                     </TouchableOpacity>
                   </View>
                 </View>
@@ -238,14 +261,14 @@ const styles = StyleSheet.create({
     color: colors.secondary,
     fontWeight: '400',
   },
-  fle:{
-    flexDirection:'row',
-    paddingLeft:sizes.screenWidth*0.04,
-    paddingTop:sizes.screenHeight*0.02
+  fle: {
+    flexDirection: 'row',
+    paddingLeft: sizes.screenWidth * 0.04,
+    paddingTop: sizes.screenHeight * 0.02,
   },
-  modalll:{
+  modalll: {
     fontSize: fontSize.large,
     color: colors.black,
     fontWeight: '400',
-  }
+  },
 });

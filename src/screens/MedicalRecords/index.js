@@ -8,12 +8,13 @@ import {
   Text,
   TouchableOpacity,
   View,
+  Linking
 } from 'react-native';
 import Header from '../../components/Header';
 import {colors} from '../../services';
 import images from '../../services/utilities/images';
 import {styles} from './style';
-export default function MedicalRecords() {
+export default function MedicalRecords({navigation}) {
   const [isEnabled, setIsEnabled] = useState(false);
   const [isEnabled2, setIsEnabled2] = useState(false);
 
@@ -66,7 +67,7 @@ export default function MedicalRecords() {
             <Text style={styles.head}>Need more information?</Text>
           </View>
         </View>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={()=>navigation.navigate("HowInfoShare")}>
           <View style={[styles.row, styles.card]}>
             <Text style={styles.cardText}>Learn how your information is shared</Text>
             <View>
@@ -74,7 +75,7 @@ export default function MedicalRecords() {
             </View>
           </View>
         </TouchableOpacity>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={()=>navigation.navigate("TermsAndConditions")}>
           <View style={[styles.row, styles.card]}>
             <Text style={styles.cardText}>View Members Services Agreement</Text>
             <View>

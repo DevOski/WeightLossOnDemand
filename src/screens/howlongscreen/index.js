@@ -18,7 +18,7 @@ import {colors, sizes, fontSize} from '../../services';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Slider from '@react-native-community/slider';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-export const Howlong = () => {
+export const Howlong = ({navigation}) => {
   const [sliderValue, setSliderValue] = useState(15);
   const [slectnumber, setslectnumber] = useState();
   const [show, setshow] = useState(false);
@@ -98,7 +98,7 @@ export const Howlong = () => {
         
       </View>
       <View style={{justifyContent:'center',alignItems:'center'}}>
-      <TouchableOpacity>
+      <TouchableOpacity onPress={()=>{navigation.navigate('temperature')}}>
         <View style={styles.bdiv}>
           <Text style={styles.btext}>></Text>
         </View>

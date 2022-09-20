@@ -15,7 +15,7 @@ import {styles} from './style';
 import {TextInput} from 'react-native-paper';
 import {colors} from '../../services';
 
-export default function ChangePassword() {
+export default function ChangePassword({navigation,route}) {
   const [showPassword, setShowPassword] = useState(true);
   const [password, setPassword] = useState('');
   return (
@@ -50,7 +50,7 @@ export default function ChangePassword() {
             }
           />
           <View style={styles.paddingTop}>
-            <TouchableOpacity disabled={password !== '' ? false : true}>
+            <TouchableOpacity onPress={()=>navigation.navigate(route?.params?.screenName)} disabled={password !== '' ? false : true}>
               <View
                 style={
                   password !== '' ? styles.buttonView : styles.disabledView
