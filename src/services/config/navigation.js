@@ -59,6 +59,7 @@ import HowInfoShare from '../../screens/HowInfoShared';
 import EditName from '../../screens/EditName';
 import EditPhone from '../../screens/EditPhone';
 import EditEmail from '../../screens/EditEmail';
+import EditAddress from '../../screens/EditAddress';
 const Stack = createNativeStackNavigator();
 
 const Tab = createMaterialBottomTabNavigator();
@@ -131,6 +132,7 @@ export default function MainNavigator() {
         <Stack.Screen name="EditName" component={EditName} />
         <Stack.Screen name="EditPhone" component={EditPhone} />
         <Stack.Screen name="EditEmail" component={EditEmail} />
+        <Stack.Screen name="EditAddress" component={EditAddress} />
       </Stack.Navigator>
     </NavigationContainer>
   );
