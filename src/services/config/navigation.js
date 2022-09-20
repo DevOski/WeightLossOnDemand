@@ -61,6 +61,7 @@ import EditPhone from '../../screens/EditPhone';
 import EditEmail from '../../screens/EditEmail';
 import EditAddress from '../../screens/EditAddress';
 import EnterNewPassword from '../../screens/EnterNewPassword';
+import AddPaymentMethod from '../../screens/AddPaymentMethod';
 const Stack = createNativeStackNavigator();
 
 const Tab = createMaterialBottomTabNavigator();
@@ -68,7 +69,6 @@ export default function MainNavigator() {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{headerShown: false}}>
-      <Stack.Screen name="Setting" component={Setting} />
 
         <Stack.Screen name="Introsliderscreen" component={Intro} />
         <Stack.Screen name="signupscreen" component={SignUp} />
@@ -76,6 +76,7 @@ export default function MainNavigator() {
         <Stack.Screen name="wellcomescreen" component={Wellcome} />
         <Stack.Screen name="basicInfoscreens" component={BasicInfoScreen} />
         <Stack.Screen name="BottomNavs" component={MyTabs} />
+        <Stack.Screen name="Setting" component={Setting} />
 
         <Stack.Screen
           name="membershiptermscreens"
@@ -135,6 +136,8 @@ export default function MainNavigator() {
         <Stack.Screen name="EditEmail" component={EditEmail} />
         <Stack.Screen name="EditAddress" component={EditAddress} />
         <Stack.Screen name="EnterNewPassword" component={EnterNewPassword} />
+        <Stack.Screen name="AddPaymentMethod" component={AddPaymentMethod} />
+        
       </Stack.Navigator>
     </NavigationContainer>
   );
