@@ -58,6 +58,7 @@ import MessageSupport from '../../screens/MessageSupport';
 import HowInfoShare from '../../screens/HowInfoShared';
 import EditName from '../../screens/EditName';
 import EditPhone from '../../screens/EditPhone';
+import EditEmail from '../../screens/EditEmail';
 const Stack = createNativeStackNavigator();
 
 const Tab = createMaterialBottomTabNavigator();
@@ -65,7 +66,7 @@ export default function MainNavigator() {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{headerShown: false}}>
-        <Stack.Screen name="ContactInfo" component={ContactInfo} />
+      <Stack.Screen name="Setting" component={Setting} />
 
         <Stack.Screen name="Introsliderscreen" component={Intro} />
         <Stack.Screen name="signupscreen" component={SignUp} />
@@ -78,7 +79,6 @@ export default function MainNavigator() {
           name="membershiptermscreens"
           component={MemberShipTerms}
         />
-
         <Stack.Screen name="searchforpharmacyscreen" component={ForPharmacy} />
         <Stack.Screen name="employerhelpscreen" component={Employerhelp} />
         <Stack.Screen name="visitforscreen" component={VisitScreen} />
@@ -87,7 +87,7 @@ export default function MainNavigator() {
         <Stack.Screen name="edityourinformation" component={EditInfo} />
         <Stack.Screen name="correctinfoscreen" component={Correct} />
         <Stack.Screen name="searchscreen" component={SearchScreen} />
-        <Stack.Screen name="Setting" component={Setting} />
+        <Stack.Screen name="ContactInfo" component={ContactInfo} />
 
         <Stack.Screen name="SharePromo" component={SharePromo} />
         <Stack.Screen name="PaymentMethod" component={PaymentMethod} />
@@ -130,6 +130,7 @@ export default function MainNavigator() {
         <Stack.Screen name="HowInfoShare" component={HowInfoShare} />
         <Stack.Screen name="EditName" component={EditName} />
         <Stack.Screen name="EditPhone" component={EditPhone} />
+        <Stack.Screen name="EditEmail" component={EditEmail} />
       </Stack.Navigator>
     </NavigationContainer>
   );

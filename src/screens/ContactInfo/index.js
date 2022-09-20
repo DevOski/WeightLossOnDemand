@@ -55,7 +55,7 @@ export default function ContactInfo({navigation}) {
             </View>
           </View>
         </TouchableOpacity>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={()=>navigation.navigate("ChangePassword",{screenName:"EditEmail"})}>
           <View style={[styles.row, styles.card]}>
             <View style={styles.width}>
               <Text style={styles.head}>EMAIL</Text>
