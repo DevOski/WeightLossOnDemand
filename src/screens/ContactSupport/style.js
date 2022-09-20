@@ -55,4 +55,8 @@ export const styles = StyleSheet.create({
     shadowRadius: 3.84,
     elevation: 5,
   },
+  callIcon:{
+    height:sizes.screenHeight * 0.04,
+    width:sizes.screenWidth * 0.08
+  }
 });

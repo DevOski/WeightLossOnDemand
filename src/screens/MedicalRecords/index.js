@@ -67,7 +67,7 @@ export default function MedicalRecords({navigation}) {
             <Text style={styles.head}>Need more information?</Text>
           </View>
         </View>
-        <TouchableOpacity >
+        <TouchableOpacity onPress={()=>navigation.navigate("HowInfoShare")}>
           <View style={[styles.row, styles.card]}>
             <Text style={styles.cardText}>Learn how your information is shared</Text>
             <View>

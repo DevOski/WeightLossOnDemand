@@ -62,7 +62,8 @@ export default function ContactSupport({navigation}) {
             Linking.openURL('tel:18009976196');
           }}>
           <View style={[styles.row, styles.card]}>
-            <Octicons name="question" color={colors.secondary} size={30} />
+            <Image source={images.call} style={styles.callIcon}/>
+            {/* <Octicons name="question" color={colors.secondary} size={30} /> */}
             <View>
               <Text style={styles.cardText}>{'   '}Call Support 24/7</Text>
               <Text style={styles.faqText}>{'   '}1(800) 997-6196</Text>

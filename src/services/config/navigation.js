@@ -55,6 +55,7 @@ import TipsVisit from '../../screens/TipsVisit';
 import PrescriptionsAndLab from '../../screens/PrescriptionsAndLab';
 import MyPricing from '../../screens/MyPricing';
 import MessageSupport from '../../screens/MessageSupport';
+import HowInfoShare from '../../screens/HowInfoShared';
 const Stack = createNativeStackNavigator();
 
 const Tab = createMaterialBottomTabNavigator();
@@ -123,6 +124,7 @@ export default function MainNavigator() {
 
         <Stack.Screen name="MyPricing" component={MyPricing} />
         <Stack.Screen name="MessageSupport" component={MessageSupport} />
+        <Stack.Screen name="HowInfoShare" component={HowInfoShare} />
       </Stack.Navigator>
     </NavigationContainer>
   );
