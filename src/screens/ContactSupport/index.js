@@ -2,6 +2,7 @@ import React, {useRef, useState} from 'react';
 import {
   Image,
   ImageBackground,
+  Linking,
   SafeAreaView,
   ScrollView,
   Switch,
@@ -14,13 +15,14 @@ import images from '../../services/utilities/images';
 import {styles} from './style';
 import {colors} from '../../services';
 import Octicons from 'react-native-vector-icons/Octicons';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
-export default function ContactSupport() {
+export default function ContactSupport({navigation}) {
   return (
     <SafeAreaView>
       <ScrollView style={styles.color}>
         <View>
-          <Header dark={true} title={"Help"}/>
+          <Header dark={true} title={'Help'} />
         </View>
         <View style={[styles.paddingLeft, styles.paddingBottom]}>
           <Text style={styles.addPaymentText}>Contact support</Text>
@@ -37,19 +39,28 @@ export default function ContactSupport() {
             </View>
           </View>
         </TouchableOpacity>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate('MessageSupport')}>
           <View style={[styles.row, styles.card]}>
-            <Octicons name="question" color={colors.secondary} size={30} />
+            <MaterialCommunityIcons
+              name="message-text-outline"
+              color={colors.secondary}
+              size={30}
+            />
             <View>
               <Text style={styles.cardText}>{'   '}Message Support</Text>
-              <Text style={styles.faqText}>{'   '}Send us a secure message</Text>
+              <Text style={styles.faqText}>
+                {'   '}Send us a secure message
+              </Text>
             </View>
             <View>
               <Text style={styles.symbol}> ›</Text>
             </View>
           </View>
         </TouchableOpacity>
-        <TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => {
+            Linking.openURL('tel:18009976196');
+          }}>
           <View style={[styles.row, styles.card]}>
             <Octicons name="question" color={colors.secondary} size={30} />
             <View>

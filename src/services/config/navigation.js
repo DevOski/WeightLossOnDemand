@@ -19,7 +19,7 @@ import {SignUp} from '../../screens/signupscreen';
 import SharePromo from '../../screens/SharePromo';
 import PaymentMethod from '../../screens/PaymentMethod';
 import ApplyCoupon from '../../screens/ApplyCoupon';
-import Intro from '../../screens/Introsliderscreen';
+import Intro from '../../screens/introSliderScreen';
 import ContactInfo from '../../screens/ContactInfo';
 import ChangePassword from '../../screens/ChangePassword';
 import Insurance from '../../screens/Insurance';
@@ -54,6 +54,7 @@ import VideoVisit from '../../screens/VideoVisit';
 import TipsVisit from '../../screens/TipsVisit';
 import PrescriptionsAndLab from '../../screens/PrescriptionsAndLab';
 import MyPricing from '../../screens/MyPricing';
+import MessageSupport from '../../screens/MessageSupport';
 const Stack = createNativeStackNavigator();
 
 const Tab = createMaterialBottomTabNavigator();
@@ -61,6 +62,8 @@ export default function MainNavigator() {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{headerShown: false}}>
+        <Stack.Screen name="BottomNavs" component={MyTabs} />
+
         <Stack.Screen name="Introsliderscreen" component={Intro} />
         <Stack.Screen name="signupscreen" component={SignUp} />
         <Stack.Screen name="signinscreen" component={SignIn} />
@@ -71,11 +74,9 @@ export default function MainNavigator() {
           component={MemberShipTerms}
         />
 
-        <Stack.Screen name="BottomNavs" component={MyTabs} />
         <Stack.Screen name="searchforpharmacyscreen" component={ForPharmacy} />
         <Stack.Screen name="employerhelpscreen" component={Employerhelp} />
         <Stack.Screen name="visitforscreen" component={VisitScreen} />
-        <Stack.Screen name="insurancescreen" component={InsuranceScreen} />
         <Stack.Screen name="addchildscreen" component={ChildScreen} />
         <Stack.Screen name="editChildscreen" component={EdiTChildscreen} />
         <Stack.Screen name="edityourinformation" component={EditInfo} />
@@ -118,7 +119,10 @@ export default function MainNavigator() {
           name="PrescriptionsAndLab"
           component={PrescriptionsAndLab}
         />
+        <Stack.Screen name="insurancescreen" component={InsuranceScreen} />
+
         <Stack.Screen name="MyPricing" component={MyPricing} />
+        <Stack.Screen name="MessageSupport" component={MessageSupport} />
       </Stack.Navigator>
     </NavigationContainer>
   );
