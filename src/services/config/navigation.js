@@ -54,6 +54,19 @@ import VideoVisit from '../../screens/VideoVisit';
 import TipsVisit from '../../screens/TipsVisit';
 import PrescriptionsAndLab from '../../screens/PrescriptionsAndLab';
 import MyPricing from '../../screens/MyPricing';
+import { ReasonForDcoctor } from '../../screens/reasonVisit';
+import { OtherReason } from '../../screens/otherreasonscreen';
+import { Howlong } from '../../screens/howlongscreen';
+import { SymtomsScreen } from '../../screens/symptomsscreen';
+import { Temperaturescreen } from '../../screens/temperature';
+import MessageSupport from '../../screens/MessageSupport';
+import HowInfoShare from '../../screens/HowInfoShared';
+import EditName from '../../screens/EditName';
+import EditPhone from '../../screens/EditPhone';
+import EditEmail from '../../screens/EditEmail';
+import EditAddress from '../../screens/EditAddress';
+import EnterNewPassword from '../../screens/EnterNewPassword';
+import AddPaymentMethod from '../../screens/AddPaymentMethod';
 const Stack = createNativeStackNavigator();
 
 const Tab = createMaterialBottomTabNavigator();
@@ -61,32 +74,38 @@ export default function MainNavigator() {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{headerShown: false}}>
+     
+
         <Stack.Screen name="Introsliderscreen" component={Intro} />
         <Stack.Screen name="signupscreen" component={SignUp} />
         <Stack.Screen name="signinscreen" component={SignIn} />
         <Stack.Screen name="wellcomescreen" component={Wellcome} />
         <Stack.Screen name="basicInfoscreens" component={BasicInfoScreen} />
+        <Stack.Screen name="temperature" component={Temperaturescreen} />
+      <Stack.Screen name="symptomsscreen" component={SymtomsScreen} />
+      <Stack.Screen name="howlongscreen" component={Howlong} />
+      <Stack.Screen name="otherreasonscreen" component={OtherReason} />
+      <Stack.Screen name="reasonVisit" component={ReasonForDcoctor} />
+        <Stack.Screen name="BottomNavs" component={MyTabs} />
+        <Stack.Screen name="Setting" component={Setting} />
+
         <Stack.Screen
           name="membershiptermscreens"
           component={MemberShipTerms}
         />
-
-        <Stack.Screen name="BottomNavs" component={MyTabs} />
         <Stack.Screen name="searchforpharmacyscreen" component={ForPharmacy} />
         <Stack.Screen name="employerhelpscreen" component={Employerhelp} />
         <Stack.Screen name="visitforscreen" component={VisitScreen} />
-        <Stack.Screen name="insurancescreen" component={InsuranceScreen} />
         <Stack.Screen name="addchildscreen" component={ChildScreen} />
         <Stack.Screen name="editChildscreen" component={EdiTChildscreen} />
         <Stack.Screen name="edityourinformation" component={EditInfo} />
         <Stack.Screen name="correctinfoscreen" component={Correct} />
         <Stack.Screen name="searchscreen" component={SearchScreen} />
-        <Stack.Screen name="Setting" component={Setting} />
+        <Stack.Screen name="ContactInfo" component={ContactInfo} />
 
         <Stack.Screen name="SharePromo" component={SharePromo} />
         <Stack.Screen name="PaymentMethod" component={PaymentMethod} />
         <Stack.Screen name="ApplyCoupon" component={ApplyCoupon} />
-        <Stack.Screen name="ContactInfo" component={ContactInfo} />
         <Stack.Screen name="ChangePassword" component={ChangePassword} />
         <Stack.Screen name="Insurance" component={Insurance} />
         <Stack.Screen name="Employer" component={Employer} />
@@ -118,7 +137,18 @@ export default function MainNavigator() {
           name="PrescriptionsAndLab"
           component={PrescriptionsAndLab}
         />
+        <Stack.Screen name="insurancescreen" component={InsuranceScreen} />
+
         <Stack.Screen name="MyPricing" component={MyPricing} />
+        <Stack.Screen name="MessageSupport" component={MessageSupport} />
+        <Stack.Screen name="HowInfoShare" component={HowInfoShare} />
+        <Stack.Screen name="EditName" component={EditName} />
+        <Stack.Screen name="EditPhone" component={EditPhone} />
+        <Stack.Screen name="EditEmail" component={EditEmail} />
+        <Stack.Screen name="EditAddress" component={EditAddress} />
+        <Stack.Screen name="EnterNewPassword" component={EnterNewPassword} />
+        <Stack.Screen name="AddPaymentMethod" component={AddPaymentMethod} />
+        
       </Stack.Navigator>
     </NavigationContainer>
   );

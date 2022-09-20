@@ -14,7 +14,7 @@ import images from '../../services/utilities/images';
 import {styles} from './style';
 import {colors} from '../../services';
 import Octicons from 'react-native-vector-icons/Octicons';
-export default function MyPricing() {
+export default function MyPricing({navigation}) {
   return (
     <SafeAreaView>
       <ScrollView style={styles.color}>
@@ -84,7 +84,7 @@ export default function MyPricing() {
               <Text style={styles.buttonText}> Get Care</Text>
             </View>
           </TouchableOpacity>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={()=>navigation.navigate("ContactSupport")}>
             <View style={styles.learnMoreBtn}>
               <Text style={styles.learnMoreText}>Contact support</Text>
             </View>

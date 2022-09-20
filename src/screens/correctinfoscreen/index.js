@@ -49,7 +49,7 @@ export const Correct = ({navigation}) => {
               </View>
             </TouchableOpacity>
             <TouchableOpacity
-              onPress={() => navigation.navigate('employerhelpscreen')}>
+              onPress={() => navigation.navigate('reasonVisit')}>
               <View style={styles.button}>
                 <Text style={styles.btext2}> <AntDesign
                   name="check"

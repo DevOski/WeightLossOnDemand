@@ -23,7 +23,7 @@ export default function Insurance({navigation}) {
           <Text style={styles.addPaymentText}>Insurance</Text>
         </View>
         <TouchableOpacity
-        // onPress={() => navigation.navigate('insurancescreen')}
+        onPress={() => navigation.navigate('insurancescreen',{screenName:'Insurance'})}
         >
           <View style={[styles.row, styles.card]}>
             <View style={styles.width}>

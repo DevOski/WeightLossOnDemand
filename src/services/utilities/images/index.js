@@ -25,6 +25,8 @@ import googleFit from '../../../assets/googleFit.png';
 import mother from '../../../assets/mother.jpeg';
 import appIcon from '../../../assets/appIcon.png';
 import visit from '../../../assets/visit.png';
+import messageIcon from '../../../assets/messageIcon.png';
+import call from '../../../assets/call.png';
 
 const images = {
   icon,
@@ -54,5 +56,7 @@ const images = {
   mother,
   appIcon,
   visit,
+  messageIcon,
+  call
 };
 export default images;

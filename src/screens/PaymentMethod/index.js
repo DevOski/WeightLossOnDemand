@@ -15,7 +15,7 @@ import {styles} from './style';
 import Fontisto from 'react-native-vector-icons/Fontisto';
 import {colors} from '../../services';
 
-export default function PaymentMethod() {
+export default function PaymentMethod({navigation}) {
   return (
     <SafeAreaView>
       <ScrollView style={styles.color}>
@@ -25,7 +25,7 @@ export default function PaymentMethod() {
         <View style={styles.padding}>
           <Text style={styles.addPaymentText}>Add Payment Method</Text>
         </View>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={()=>navigation.navigate("AddPaymentMethod")}>
           <View style={[styles.row, styles.card]}>
             <Fontisto name="credit-card" color={colors.secondary} size={30} />
             <Text style={styles.cardText}>{'   '}Credit Card, FSA, HSA</Text>
