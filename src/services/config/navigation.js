@@ -57,6 +57,7 @@ import MyPricing from '../../screens/MyPricing';
 import MessageSupport from '../../screens/MessageSupport';
 import HowInfoShare from '../../screens/HowInfoShared';
 import EditName from '../../screens/EditName';
+import EditPhone from '../../screens/EditPhone';
 const Stack = createNativeStackNavigator();
 
 const Tab = createMaterialBottomTabNavigator();
@@ -128,6 +129,7 @@ export default function MainNavigator() {
         <Stack.Screen name="MessageSupport" component={MessageSupport} />
         <Stack.Screen name="HowInfoShare" component={HowInfoShare} />
         <Stack.Screen name="EditName" component={EditName} />
+        <Stack.Screen name="EditPhone" component={EditPhone} />
       </Stack.Navigator>
     </NavigationContainer>
   );
