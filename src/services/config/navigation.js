@@ -54,6 +54,11 @@ import VideoVisit from '../../screens/VideoVisit';
 import TipsVisit from '../../screens/TipsVisit';
 import PrescriptionsAndLab from '../../screens/PrescriptionsAndLab';
 import MyPricing from '../../screens/MyPricing';
+import { ReasonForDcoctor } from '../../screens/reasonVisit';
+import { OtherReason } from '../../screens/otherreasonscreen';
+import { Howlong } from '../../screens/howlongscreen';
+import { SymtomsScreen } from '../../screens/symptomsscreen';
+import { Temperaturescreen } from '../../screens/temperature';
 const Stack = createNativeStackNavigator();
 
 const Tab = createMaterialBottomTabNavigator();
@@ -61,6 +66,11 @@ export default function MainNavigator() {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{headerShown: false}}>
+      <Stack.Screen name="temperature" component={Temperaturescreen} />
+      <Stack.Screen name="symptomsscreen" component={SymtomsScreen} />
+      <Stack.Screen name="howlongscreen" component={Howlong} />
+      <Stack.Screen name="otherreasonscreen" component={OtherReason} />
+      <Stack.Screen name="reasonVisit" component={ReasonForDcoctor} />
         <Stack.Screen name="Introsliderscreen" component={Intro} />
         <Stack.Screen name="signupscreen" component={SignUp} />
         <Stack.Screen name="signinscreen" component={SignIn} />
