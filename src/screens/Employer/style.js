@@ -33,7 +33,7 @@ export const styles = StyleSheet.create({
     alignSelf: 'center',
     backgroundColor: colors.secondary,
     height: sizes.screenHeight * 0.06,
-    width: sizes.screenWidth * 0.9,
+    width: sizes.screenWidth * 0.92,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -42,6 +42,8 @@ export const styles = StyleSheet.create({
     fontSize: fontSize.h6,
   },
   paddingTop: {
-    paddingTop: sizes.screenHeight * 0.35,
+    paddingTop: sizes.screenHeight * 0.33,
+    paddingBottom:sizes.screenHeight * 0.05
+    
   },
 });

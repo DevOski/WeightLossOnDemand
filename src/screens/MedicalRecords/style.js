@@ -13,6 +13,7 @@ export const styles = StyleSheet.create({
   text: {
     color: colors.primary,
     fontSize: fontSize.medium,
+    width: sizes.screenWidth * 0.83,
   },
   medicalText: {
     fontSize: fontSize.h6,
@@ -39,8 +40,10 @@ export const styles = StyleSheet.create({
   },
   card: {
     backgroundColor: colors.white,
-    padding: sizes.screenHeight * 0.03,
-    marginBottom: sizes.TinyMargin,
+    padding: sizes.screenHeight * 0.01,
+    paddingLeft: sizes.screenHeight * 0.03,
+    paddingRight: sizes.screenHeight * 0.03,
+    // marginBottom: sizes.TinyMargin,
   },
   symbol: {
     color: colors.secondary,

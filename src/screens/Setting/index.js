@@ -35,7 +35,7 @@ export default function Setting({navigation}) {
         <View style={styles.userView}>
           <View style={styles.signOutBtn}>
             <TouchableOpacity>
-              <Text style={styles.signOutText}>Sign out</Text>
+              <Text style={styles.signOutText}>Sign Out</Text>
             </TouchableOpacity>
           </View>
           <Text style={styles.userName}>{userName}</Text>
@@ -208,7 +208,7 @@ export default function Setting({navigation}) {
             </View>
           </TouchableOpacity>
         </View>
-        <View style={[styles.right, styles.top]}>
+        <View style={[styles.right, styles.top,styles.bottom]}>
           <Text style={styles.version}>VERSION 3.66.0</Text>
         </View>
       </ScrollView>

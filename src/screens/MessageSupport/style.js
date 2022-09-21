@@ -20,13 +20,13 @@ export const styles = StyleSheet.create({
   },
   contentView: {
     alignItems: 'center',
-    top: sizes.screenHeight * 0.15,
+    top: sizes.screenHeight * 0.1,
     padding: sizes.baseMargin,
   },
   text: {
     color: colors.disabledText,
     fontSize: fontSize.h6,
-    fontWeight: '500',
+    // fontWeight: '500',
     top: sizes.screenHeight * 0.02,
   },
   heading:{
@@ -39,7 +39,7 @@ export const styles = StyleSheet.create({
     alignSelf: 'center',
     backgroundColor: colors.secondary,
     height: sizes.screenHeight * 0.06,
-    width: sizes.screenWidth * 0.9,
+    width: sizes.screenWidth * 0.92,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -48,10 +48,12 @@ export const styles = StyleSheet.create({
     fontSize: fontSize.h6,
   },
   paddingTop: {
-    paddingTop: sizes.screenHeight * 0.45,
+    paddingTop: sizes.screenHeight * 0.35,
+    paddingBottom:sizes.screenHeight * 0.05
+
   },
   icon:{
-    height:sizes.screenHeight * 0.2,
+    height:sizes.screenHeight * 0.3,
     width:sizes.screenWidth * 0.5
   }
 });

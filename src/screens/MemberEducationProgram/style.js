@@ -32,7 +32,7 @@ export const styles = StyleSheet.create({
   buttonView: {
     backgroundColor: colors.secondary,
     height: sizes.screenHeight * 0.06,
-    width: sizes.screenWidth * 0.9,
+    width: sizes.screenWidth * 0.92,
     alignItems: 'center',
     justifyContent: 'center',
     alignSelf: 'center',
@@ -41,7 +41,7 @@ export const styles = StyleSheet.create({
   diasbledView: {
     backgroundColor: colors.disabledBg2,
     height: sizes.screenHeight * 0.06,
-    width: sizes.screenWidth * 0.9,
+    width: sizes.screenWidth * 0.92,
     alignItems: 'center',
     justifyContent: 'center',
     alignSelf: 'center',
@@ -53,6 +53,6 @@ export const styles = StyleSheet.create({
   },
   buttonTop: {
     marginTop: sizes.screenHeight * 0.01,
-
+    paddingBottom:sizes.screenWidth * 0.08
   },
 });

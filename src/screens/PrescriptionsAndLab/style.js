@@ -48,6 +48,7 @@ export const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   bottom: {
-    paddingBottom: sizes.baseMargin,
+    paddingBottom:sizes.screenHeight * 0.05
+
   },
 });

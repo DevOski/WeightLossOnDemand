@@ -26,7 +26,7 @@ export default function TipsVisit() {
         <Header title={'Tips for a Successful Visit'} />
         <View style={[styles.padding, styles.coloredView]}>
           <View style={styles.paddingTop}>
-            <Text style={styles.heading}>Tips for a Successful Visit</Text>
+            <Text style={styles.heading}>Tips for a successful video visit</Text>
           </View>
         </View>
         <View style={styles.padding}>
@@ -82,7 +82,7 @@ export default function TipsVisit() {
         <View style={[styles.row, styles.tinyPadding]}>
           <Entypo name="dot-single" color={colors.disabledBg} size={25} />
           <Text style={[styles.text, styles.right]}>
-            <Text style={styles.bold}> Turn off other devices</Text>Reduce
+            <Text style={styles.bold}> Turn off other devices</Text> Reduce
             background noise and distractions from TVs, music, or video games.
           </Text>
         </View>

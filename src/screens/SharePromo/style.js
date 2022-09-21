@@ -21,9 +21,9 @@ export const styles = StyleSheet.create({
     padding: sizes.baseMargin,
   },
   shareText: {
-    fontSize: fontSize.h5,
-    fontWeight: '400',
-    color: colors.primary,
+    fontSize: fontSize.h6,
+    fontWeight: '500',
+    color: colors.lightGray2,
   },
   row: {
     flexDirection: 'row',
@@ -39,9 +39,12 @@ export const styles = StyleSheet.create({
     color: colors.primary,
     top: 2,
   },
-  gmailView: {justifyContent: 'space-between', paddingTop: 0},
+  gmailView: {justifyContent: 'space-around', paddingTop: 0},
   playIcon: {left: sizes.TinyMargin},
   mailRight: {right: sizes.TinyMargin},
-  between: {justifyContent: 'space-between'},
+  around: {justifyContent: 'space-around'},
   alignCenter: {alignItems: 'center'},
+  width:{
+    width:sizes.screenWidth * 0.15
+  }
 });

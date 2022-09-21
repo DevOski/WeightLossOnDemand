@@ -37,13 +37,13 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
   },
   btnText: {
-    left: sizes.screenWidth * 0.05,
+    left: sizes.screenWidth * 0.06,
     fontSize: fontSize.h6,
     color: colors.black,
     // fontWeight:'400'
   },
   fingerprintText: {
-    right: sizes.screenWidth * 0.05,
+    right: sizes.screenWidth * 0.04,
     fontSize: fontSize.h6,
     color: colors.black,
   },
@@ -71,4 +71,7 @@ export const styles = StyleSheet.create({
     paddingRight: sizes.screenWidth * 0.08,
     paddingBottom:sizes.baseMargin,
   },
+  bottom:{
+    paddingBottom:sizes.screenWidth * 0.1
+  }
 });

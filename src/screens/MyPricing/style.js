@@ -43,7 +43,7 @@ export const styles = StyleSheet.create({
   },
   card: {
     backgroundColor: colors.white,
-    padding: sizes.screenHeight * 0.03,
+    padding: sizes.screenHeight * 0.02,
     marginBottom: sizes.TinyMargin,
     width: sizes.screenWidth * 0.9,
     borderRadius: sizes.screenWidth * 0.02,
@@ -84,7 +84,7 @@ export const styles = StyleSheet.create({
     fontSize: fontSize.h6,
   },
   top: {
-    marginTop: sizes.screenHeight * 0.02,
+    marginTop: sizes.screenHeight * 0.035,
   },
   learnMoreBtn: {
     marginTop: sizes.screenHeight * 0.02,

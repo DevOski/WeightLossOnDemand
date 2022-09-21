@@ -16,9 +16,10 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
+    right:sizes.screenWidth * 0.01
   },
   icon: {
-    height: sizes.screenHeight * 0.07,
+    height: sizes.screenHeight * 0.062,
     width: sizes.screenWidth * 0.13,
   },
   heading: {
@@ -33,6 +34,7 @@ export const styles = StyleSheet.create({
   settingIcon: {
     height: sizes.screenHeight * 0.09,
     width: sizes.screenWidth * 0.1,
+    right:sizes.screenWidth * 0.03
   },
   transparentView: {
     width: sizes.screenWidth * 0.4,
@@ -54,9 +56,10 @@ export const styles = StyleSheet.create({
     width: sizes.screenWidth * 0.96,
   },
   cardView: {
-    height: sizes.screenHeight * 0.77,
+    height: sizes.screenHeight * 0.72,
     width: sizes.screenWidth * 0.9,
     backgroundColor: colors.white,
+    marginBottom:sizes.TinyMargin,
     marginRight: sizes.screenWidth * 0.02,
     marginLeft: sizes.screenWidth * 0.04,
     shadowColor: '#000',
@@ -69,7 +72,7 @@ export const styles = StyleSheet.create({
     elevation: 5,
   },
   bg: {
-    height: sizes.screenHeight * 0.77,
+    height: sizes.screenHeight * 0.72,
     width: sizes.screenWidth * 0.9,
   },
   playBtn: {
@@ -92,21 +95,28 @@ export const styles = StyleSheet.create({
   },
   proudView: {
     padding: sizes.baseMargin,
-    top: sizes.screenHeight * 0.43,
+    top: sizes.screenHeight * 0.4,
     paddingBottom: 0,
   },
   learnMoreView: {
-    top: sizes.screenHeight * 0.42,
+    top: sizes.screenHeight * 0.39,
     padding: sizes.baseMargin,
   },
   semiTextView: {
     padding: sizes.baseMargin,
-    top: sizes.screenHeight * 0.44,
+    top: sizes.screenHeight * 0.42,
   },
   text: {
     color: colors.white,
     fontSize: fontSize.h5,
     fontWeight: '500',
+    width:sizes.screenWidth * 0.7
+  },
+  text2:{
+    color: colors.white,
+    fontSize: fontSize.h5,
+    fontWeight: '500',
+    width:sizes.screenWidth * 0.6
   },
   semiText: {
     color: colors.secondary,
@@ -125,9 +135,10 @@ export const styles = StyleSheet.create({
   providerText: {
     paddingTop: sizes.screenHeight * 0.015,
     paddingBottom: sizes.screenHeight * 0.02,
-    fontSize: fontSize.h6,
+    fontSize: fontSize.medium,
     color: colors.black,
     fontWeight: '300',
+    width:sizes.screenWidth * 0.6
   },
   top: {
     paddingTop: sizes.TinyMargin,
@@ -142,15 +153,16 @@ export const styles = StyleSheet.create({
     fontSize: fontSize.h6,
     fontWeight: '400',
     paddingBottom: sizes.screenHeight * 0.02,
+    paddingLeft:sizes.screenWidth * 0.015
   },
   btnTop: {
-    top: sizes.screenHeight * 0.15,
+    top: sizes.screenHeight * 0.13,
   },
   btnTop2: {
-    top: sizes.screenHeight * 0.25,
+    top: sizes.screenHeight * 0.23,
   },
   learnMoreBtn: {
-    marginTop: sizes.screenHeight * 0.03,
+    marginTop: sizes.screenHeight * 0.02,
     alignItems: 'center',
   },
   learnMoreText: {
@@ -163,15 +175,15 @@ export const styles = StyleSheet.create({
     fontSize: fontSize.h6,
     fontWeight: '300',
     top: sizes.TinyMargin,
+    width:sizes.screenWidth * 0.6
   },
   providerImg: {
-    height: sizes.screenHeight * 0.09,
+    height: sizes.screenHeight * 0.08,
     width: sizes.screenWidth * 0.15,
   },
   paddingLeft: {
     padding: sizes.TinyMargin,
     paddingTop: sizes.screenHeight * 0.02,
-    // paddingLeft: sizes.screenWidth * 0.03,
     paddingBottom:0
   },
   providerHead: {
@@ -185,7 +197,7 @@ export const styles = StyleSheet.create({
     fontSize: fontSize.h6,
   },
   providerImg2:{
-    height: sizes.screenHeight * 0.085,
+    height: sizes.screenHeight * 0.08,
     width: sizes.screenWidth * 0.17,
 
   },

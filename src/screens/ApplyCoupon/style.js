@@ -17,6 +17,7 @@ export const styles = StyleSheet.create({
     color: colors.primary,
   },
   shareText: {
+    paddingTop: sizes.screenHeight * 0.01,
     fontSize: fontSize.h6,
     fontWeight: '300',
     color: colors.primary,
@@ -25,7 +26,7 @@ export const styles = StyleSheet.create({
     alignSelf: 'center',
     backgroundColor: colors.secondary,
     height: sizes.screenHeight * 0.06,
-    width: sizes.screenWidth * 0.9,
+    width: sizes.screenWidth * 0.92,
     alignItems: 'center',
     justifyContent: 'center',
   },

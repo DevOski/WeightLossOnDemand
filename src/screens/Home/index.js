@@ -37,7 +37,7 @@ export default function Home({navigation}) {
     <SafeAreaView>
       <ScrollView style={styles.color}>
         <View style={[styles.row, styles.padding]}>
-          <Image source={images.icon} style={styles.icon} />
+          <Image source={images.icon2} style={styles.icon} />
           <View>
             <Text style={styles.heading}> Hi {userName},</Text>
             <Text style={styles.welcomeText}> Welcome back</Text>
@@ -76,7 +76,7 @@ export default function Home({navigation}) {
                     </TouchableOpacity>
                     <View style={styles.textView}>
                       <Text style={styles.text}>
-                        What to expect in your first {'    '}visit
+                        What to expect in your first visit
                       </Text>
                     </View>
                     <TouchableOpacity
@@ -134,7 +134,7 @@ export default function Home({navigation}) {
                       Mental health
                     </Text>
                     <Text style={styles.providerText}>
-                      Our therapists and psychiatrists {'                '} can
+                      Our therapists and psychiatrists can
                       help with:
                     </Text>
                     <View style={styles.row2}>
@@ -170,11 +170,11 @@ export default function Home({navigation}) {
                     style={styles.bg}>
                     <View style={styles.paddingBottom}></View>
                     <View style={styles.proudView}>
-                      <Text style={styles.text}>
-                        We're proud beyond {'              '} Pride
+                      <Text style={styles.text2}>
+                        We're proud beyond Pride
                       </Text>
                       <Text style={styles.letUsText}>
-                        Let us help you find the right {'        '} LGBQTQ+
+                        Let us help you find the right LGBQTQ+
                         friendly doctor
                       </Text>
                     </View>

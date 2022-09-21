@@ -86,7 +86,7 @@ export default function VideoVisit() {
             How our medical doctors treat children
           </Text>
         </View>
-        <View style={styles.padding}>
+        <View style={[styles.padding,styles.paddingBottom]}>
           <Text style={styles.textColor}>
             Our medical doctors are trained to provide care through video visits
             by employing many of the same practices and techniques that are used

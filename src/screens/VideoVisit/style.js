@@ -29,5 +29,8 @@ export const styles = StyleSheet.create({
     color: colors.primary,
     fontSize: fontSize.medium,
     fontWeight: '500',
+  },
+  paddingBottom:{
+    paddingBottom:sizes.screenHeight * 0.05
   }
 });

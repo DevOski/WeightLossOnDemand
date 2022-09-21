@@ -23,7 +23,7 @@ export default function HealthInfoAgreement({navigation}) {
         <View>
           <Header dark={true} />
         </View>
-        <View style={styles.paddingLeft}>
+        <View style={[styles.paddingLeft,styles.paddingRight]}>
           <Text style={[styles.bold, styles.textColor]}>
             Weight Loss On Demand can automatically send records of your visits
             to your doctor.

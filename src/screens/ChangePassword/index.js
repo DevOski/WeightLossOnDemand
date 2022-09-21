@@ -46,6 +46,7 @@ export default function ChangePassword({navigation,route}) {
               <TextInput.Icon
                 icon={showPassword ? 'eye' : 'eye-off'}
                 onPress={() => setShowPassword(!showPassword)}
+                color={colors.disabledBg2}
               />
             }
           />

@@ -5,9 +5,25 @@ import {colors, fontFamily, fontSize, sizes} from '../../services';
 export const styles = StyleSheet.create({
   headerView: {
     padding: sizes.screenHeight * 0.02,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 15,
   },
   headerBg: {
     backgroundColor: colors.secondary,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 15,
   },
   row: {
     flexDirection: 'row',

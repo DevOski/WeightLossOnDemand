@@ -139,7 +139,7 @@ export default function HowInfoShare() {
             </Text>
           </View>
         </View>
-        <View style={styles.padding}>
+        <View style={[styles.padding,styles.bottom]}>
           <Text style={[styles.textColor]}>
             Further details about our privacy practices and related processing
             of your health information can be found in our{' '}

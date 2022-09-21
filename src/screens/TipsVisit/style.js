@@ -18,6 +18,7 @@ export const styles = StyleSheet.create({
     color: colors.white,
     fontSize: fontSize.h5,
     fontWeight: '300',
+    width:sizes.screenWidth * 0.7
   },
   paddingTop: {
     paddingTop: sizes.baseMargin,
@@ -44,6 +45,6 @@ export const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   bottom:{
-    paddingBottom:sizes.baseMargin
+    paddingBottom:sizes.screenHeight * 0.05
   }
 });
