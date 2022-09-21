@@ -24,8 +24,9 @@ export const styles = StyleSheet.create({
   },
   heading: {
     fontSize: fontSize.h5,
-    fontWeight: 'bold',
+    // fontWeight: 'bold',
     color: colors.secondary,
+    // fontFamily:'Montserrat-VariableFont_wght'
   },
   welcomeText: {
     fontSize: fontSize.h6,
