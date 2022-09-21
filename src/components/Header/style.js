@@ -8,22 +8,26 @@ export const styles = StyleSheet.create({
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
-      height: 2,
+      height: 12,
     },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-    elevation: 15,
+    shadowOpacity: 0.58,
+    shadowRadius: 16.0,
+    elevation: 24,
+    bottom: 0,
+    zIndex: 0,
   },
   headerBg: {
     backgroundColor: colors.secondary,
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
-      height: 2,
+      height: 12,
     },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-    elevation: 15,
+    shadowOpacity: 0.58,
+    shadowRadius: 16.0,
+    elevation: 24,
+    bottom: 0,
+    zIndex: 0,
   },
   row: {
     flexDirection: 'row',
@@ -49,4 +53,5 @@ export const styles = StyleSheet.create({
   left: {
     right: sizes.screenWidth * 0.05,
   },
+  card: {},
 });
