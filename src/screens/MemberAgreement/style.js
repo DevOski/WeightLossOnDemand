@@ -34,6 +34,7 @@ export const styles = StyleSheet.create({
     fontSize: fontSize.h5,
     fontWeight: 'bold',
     color: colors.primary,
+    width: sizes.screenWidth * 0.7,
   },
   paddingTop: {
     paddingTop: sizes.screenHeight * 0.015,
@@ -86,7 +87,8 @@ export const styles = StyleSheet.create({
     top: sizes.screenHeight * 0.009,
   },
   paddingBottom2: {
-    paddingBottom: sizes.screenHeight * 0.1,
+    paddingBottom:sizes.screenHeight * 0.15
+
   },
   bottom: {
     bottom: sizes.screenHeight * 0.01,

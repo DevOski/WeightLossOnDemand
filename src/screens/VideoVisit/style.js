@@ -31,6 +31,6 @@ export const styles = StyleSheet.create({
     fontWeight: '500',
   },
   paddingBottom:{
-    paddingBottom:sizes.screenHeight * 0.05
+    paddingBottom:sizes.screenHeight * 0.15
   }
 });

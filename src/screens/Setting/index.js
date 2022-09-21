@@ -28,10 +28,10 @@ export default function Setting({navigation}) {
 
   return (
     <SafeAreaView>
+      <View>
+        <Header title={'My Account'} />
+      </View>
       <ScrollView style={styles.color}>
-        <View>
-          <Header title={'My Account'} />
-        </View>
         <View style={styles.userView}>
           <View style={styles.signOutBtn}>
             <TouchableOpacity>
@@ -89,7 +89,7 @@ export default function Setting({navigation}) {
             onPress={() =>
               navigation.navigate('ChangePassword', {
                 screenName: 'EnterNewPassword',
-                title:"password"
+                title: 'password',
               })
             }>
             <View style={styles.row}>
@@ -209,7 +209,7 @@ export default function Setting({navigation}) {
             </View>
           </TouchableOpacity>
         </View>
-        <View style={[styles.right, styles.top,styles.bottom]}>
+        <View style={[styles.right, styles.top, styles.bottom]}>
           <Text style={styles.version}>VERSION 3.66.0</Text>
         </View>
       </ScrollView>

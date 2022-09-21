@@ -19,10 +19,10 @@ import Entypo from 'react-native-vector-icons/Entypo';
 export default function HowInfoShare() {
   return (
     <SafeAreaView>
-      <ScrollView style={styles.color}>
-        <View>
+       <View>
           <Header title={'Medical Records'} />
         </View>
+      <ScrollView style={styles.color}>
         <View style={styles.padding}>
           <Text style={styles.addPaymentText}>
             How Is My Information Shared?

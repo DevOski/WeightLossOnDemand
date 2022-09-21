@@ -53,5 +53,7 @@ export const styles = StyleSheet.create({
   left: {
     right: sizes.screenWidth * 0.05,
   },
-  card: {},
+  card: {
+    // zIndex: 1,
+  },
 });

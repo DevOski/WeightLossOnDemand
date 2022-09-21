@@ -17,10 +17,10 @@ import {colors} from '../../services';
 export default function TermsOfService() {
   return (
     <SafeAreaView>
-      <ScrollView style={styles.color}>
-        <View>
+       <View>
           <Header dark={true} />
         </View>
+      <ScrollView style={styles.color}>
         <View style={[styles.paddingLeft, styles.paddingBottom]}>
           <Text style={styles.addPaymentText}>
             Weight Loss On Demand by Included Health Terms of Service

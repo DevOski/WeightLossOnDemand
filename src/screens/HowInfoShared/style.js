@@ -39,6 +39,6 @@ export const styles = StyleSheet.create({
     textDecorationLine: 'underline',
   },
   bottom:{
-    paddingBottom:sizes.screenHeight * 0.05
+    paddingBottom:sizes.screenHeight * 0.15
   }
 });

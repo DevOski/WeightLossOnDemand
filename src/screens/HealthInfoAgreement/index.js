@@ -19,10 +19,11 @@ import {colors} from '../../services';
 export default function HealthInfoAgreement({navigation}) {
   return (
     <SafeAreaView>
-      <ScrollView style={styles.color}>
-        <View>
+       <View>
           <Header dark={true} />
         </View>
+      <ScrollView style={styles.color}>
+       
         <View style={[styles.paddingLeft,styles.paddingRight]}>
           <Text style={[styles.bold, styles.textColor]}>
             Weight Loss On Demand can automatically send records of your visits
@@ -54,6 +55,7 @@ export default function HealthInfoAgreement({navigation}) {
               This consent shall be in force and effect for one year from the
               date it is signed.
             </Text>
+            
           </ScrollView>
         </View>
         <View style={styles.buttonTop}>

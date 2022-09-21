@@ -72,6 +72,6 @@ export const styles = StyleSheet.create({
     paddingBottom:sizes.baseMargin,
   },
   bottom:{
-    paddingBottom:sizes.screenWidth * 0.1
+    paddingBottom:sizes.screenWidth * 0.25
   }
 });
