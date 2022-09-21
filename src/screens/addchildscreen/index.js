@@ -15,7 +15,8 @@ import images from '../../services/utilities/images';
 import {CustomTextFiel} from '../../component/textFiled';
 import {colors, sizes, fontSize} from '../../services';
 import {RadioButton} from 'react-native-paper';
-
+import Modal from 'react-native-modal';
+import Entypo from 'react-native-vector-icons/Entypo';
 export const ChildScreen = () => {
   const [CheckedMale, setCheckedMale] = React.useState();
   const [name, setname] = useState();
@@ -23,6 +24,12 @@ export const ChildScreen = () => {
   const [Middle, setMiddle] = useState();
   const [date, setdate] = useState();
   const [sufix, setsufix] = useState();
+
+  const [isModalVisible, setModalVisible] = useState(false);
+
+  const toggleModal = () => {
+    setModalVisible(!isModalVisible);
+  };
   return (
     <SafeAreaView style={styles.container}>
       <View>
@@ -75,7 +82,8 @@ export const ChildScreen = () => {
             />
           </View>
         </View>
-        <View
+       <View style={{flexDirection:'row',alignItems:'center'}}>
+       <View
           style={{flexDirection: 'row', paddingTop: sizes.screenHeight * 0.03}}>
           <View
             style={{
@@ -109,7 +117,10 @@ export const ChildScreen = () => {
               uncheckColor={colors.secondary}
             />
           </View>
-          <View
+          
+        </View>
+       <TouchableOpacity onPress={toggleModal}>
+       <View
             style={{
               justifyContent: 'center',
               alignItems: 'center',
@@ -117,10 +128,13 @@ export const ChildScreen = () => {
               width: sizes.screenWidth * 0.08,
               height: sizes.screenHeight * 0.04,
               borderRadius: sizes.screenWidth * 0.4,
+              bottom:sizes.screenHeight*-0.017
             }}>
             <Text style={styles.lstyle1}>?</Text>
           </View>
-        </View>
+       </TouchableOpacity>
+       </View>
+        
         <View
           style={{
             flexDirection: 'row',
@@ -149,6 +163,34 @@ export const ChildScreen = () => {
           </TouchableOpacity>
         </View>
       </View>
+      <Modal style={{width:sizes.screenWidth,height:sizes.screenHeight,backgroundColor: 'rgba(52, 52, 52, 0.8)',marginLeft:sizes.screenWidth*0.01,padding:10}}  isVisible={isModalVisible}>
+         <TouchableOpacity onPress={toggleModal}>
+         <View style={{position:'relative',bottom:sizes.screenHeight*0.25,left:sizes.screenWidth*0.85}}>
+          <Entypo
+                    name="cross"
+                    color={colors.secondary}
+                    size={30}
+                  />
+          </View>
+         </TouchableOpacity>
+          
+           <View style={styles.texcon}>
+            <Text style={styles.text111}>Why we ask</Text>
+           </View>
+           <View style={styles.texcon1}>
+            <Text style={styles.text1}>weight loss on Deman is accepting of all gender identities.however in order to use your insurance coverage or for your provider to prescribe medication,you need to specify your chlds sex as either Male or Female</Text>
+           </View>
+
+           <View style={styles.buttnView}>
+          <TouchableOpacity onPress={toggleModal}>
+            <View style={styles.buttonView}>
+              <Text style={styles.buttonText}>Done</Text>
+            </View>
+          </TouchableOpacity>
+        </View>
+       
+
+          </Modal>
     </SafeAreaView>
   );
 };
@@ -197,7 +239,7 @@ const styles = StyleSheet.create({
   buttonView: {
     backgroundColor: colors.secondary,
     height: sizes.screenHeight * 0.06,
-    width: sizes.screenWidth * 0.8,
+    width: sizes.screenWidth * 0.92,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -206,9 +248,33 @@ const styles = StyleSheet.create({
     fontSize: fontSize.h6,
   },
   buttnView: {
-    marginRight: sizes.screenWidth * 0.05,
+    // marginRight: sizes.screenWidth * 0.05,
     marginTop: sizes.screenHeight * 0.03,
     justifyContent: 'center',
     alignItems: 'center',
   },
+  buttonView: {
+    backgroundColor: colors.secondary,
+    height: sizes.screenHeight * 0.06,
+    width: sizes.screenWidth * 0.92,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  text111:{
+    fontSize:fontSize.h4,
+    color:colors.white,
+    fontWeight:"bold"
+  },
+  texcon:{
+    bottom:sizes.screenHeight*0.1
+  },
+  texcon1:{
+    bottom:sizes.screenHeight*0.08
+  },
+  text1:{
+    fontSize:fontSize.large,
+    color:colors.white,
+    fontWeight:"bold"
+  },
+  
 });

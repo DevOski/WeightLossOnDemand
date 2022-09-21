@@ -75,8 +75,12 @@ export const InsuranceScreen = ({navigation, route}) => {
         <View>
           {/* <Button title="Show modal" onPress={toggleModal} /> */}
 
-          <Modal isVisible={isModalVisible}>
-            <View style={styles.model}>
+         
+        </View>
+       
+      </ScrollView>
+      <Modal  isVisible={isModalVisible}>
+            <View style={styles.model} >
               <View>
                 <Text style={styles.why}>Why are you skipping insurance?</Text>
               </View>
@@ -172,22 +176,22 @@ export const InsuranceScreen = ({navigation, route}) => {
               {/* <Button title="Hide modal" onPress={toggleModal} /> */}
             </View>
           </Modal>
-        </View>
-      </ScrollView>
     </SafeAreaView>
   );
 };
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    
   },
   model: {
     paddingTop: sizes.screenHeight * 0.03,
     paddingLeft: sizes.screenWidth * 0.05,
     top: sizes.screenHeight * 0.35,
+    right:sizes.screenWidth*0.05,
     height: sizes.screenHeight * 0.3,
     backgroundColor: colors.lightGray,
-    // width:sizes.screenWidth,
+    width:sizes.screenWidth,
   },
   insu: {
     justifyContent: 'center',
@@ -247,6 +251,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   padd: {
+    paddingBottom:sizes.screenHeight*0.1,
     paddingLeft: sizes.screenWidth * 0.2,
     paddingRight: sizes.screenWidth * 0.2,
   },

@@ -17,7 +17,7 @@ import {CustomTextFiel} from '../../component/textFiled';
 import {colors, sizes, fontSize} from '../../services';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
-export const ReasonForDcoctor = () => {
+export const ReasonForDcoctor = ({navigation}) => {
   const [search, setsearch] = useState();
   return (
     <SafeAreaView style={styles.container}>

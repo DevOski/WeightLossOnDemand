@@ -21,10 +21,11 @@ export const EditInfo = ({navigation}) => {
   const [phone, setphone] = useState();
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.container2}>
-        <View>
+      <View>
           <Header dark={true} />
         </View>
+      <View style={styles.container2}>
+        
         <View style={styles.headcontainer}>
           <Text style={styles.hedtext}>Edit your information</Text>
         </View>
@@ -66,10 +67,11 @@ export const EditInfo = ({navigation}) => {
           <Text style={styles.trmcontext}>
             by providing your mobile number,you give us permission to contact
             you via text.
-            <TouchableOpacity>
+            
+          </Text>
+          <TouchableOpacity>
               <Text style={styles.trmtext}>View terms</Text>
             </TouchableOpacity>
-          </Text>
         </View>
 
         <View style={styles.buttnView}>
@@ -101,7 +103,7 @@ const styles = StyleSheet.create({
     paddingTop: sizes.screenHeight * 0.02,
   },
   headcontainer: {
-    paddingLeft: sizes.screenWidth * 0.03,
+    // paddingLeft: sizes.screenWidth * 0.0,
   },
   hedtext: {
     fontSize: fontSize.h3,
@@ -138,6 +140,7 @@ const styles = StyleSheet.create({
   },
   trmcon: {
     marginTop: sizes.screenHeight * 0.05,
+    flexDirection:'row'
   },
   trmcontext: {
     fontSize: fontSize.large,
@@ -148,19 +151,21 @@ const styles = StyleSheet.create({
     fontSize: fontSize.large,
     color: colors.secondary,
     fontWeight: 'bold',
+    top:sizes.screenHeight*0.03,
+    right:sizes.screenWidth*0.2,
     
 },
   buttonView: {
     backgroundColor: colors.secondary,
     height: sizes.screenHeight * 0.06,
-    width: sizes.screenWidth * 0.8,
+    width: sizes.screenWidth * 0.92,
     alignItems: 'center',
     justifyContent: 'center',
   },
   buttonView1: {
     backgroundColor: colors.white,
     height: sizes.screenHeight * 0.06,
-    width: sizes.screenWidth * 0.8,
+    width: sizes.screenWidth * 0.91,
     alignItems: 'center',
     justifyContent: 'center',
     borderWidth:1,

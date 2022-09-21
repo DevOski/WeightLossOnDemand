@@ -87,8 +87,8 @@ const styles = StyleSheet.create({
   headcontainer1: {
     marginTop: sizes.screenHeight * 0.05,
     justifyContent: 'center',
-    paddingLeft: sizes.screenWidth * 0.03,
-    paddingRight: sizes.screenWidth * 0.04,
+    paddingLeft: sizes.screenWidth * 0.06,
+    // paddingRight: sizes.screenWidth * 0.04,
     alignItems:'center'
   },
   hedtext2: {
@@ -123,7 +123,7 @@ const styles = StyleSheet.create({
   buttonView: {
     backgroundColor: colors.secondary,
     height: sizes.screenHeight * 0.06,
-    width: sizes.screenWidth * 0.8,
+    width: sizes.screenWidth * 0.92,
     alignItems: 'center',
     justifyContent: 'center',
   },

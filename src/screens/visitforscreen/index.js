@@ -15,7 +15,7 @@ import {
   TextInput,
 } from 'react-native';
 import {RadioButton} from 'react-native-paper';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import Entypo from 'react-native-vector-icons/Entypo';
 import {colors, fontSize, sizes} from '../../services';
 import Octicons from 'react-native-vector-icons/Octicons';
 import Header from '../../components/Header';
@@ -79,6 +79,16 @@ export const VisitScreen = ({navigation}) => {
               </TouchableOpacity>
             </View>
             <Modal style={{width:sizes.screenWidth,height:sizes.screenHeight,backgroundColor: 'rgba(52, 52, 52, 0.8)',marginLeft:sizes.screenWidth*0.01,padding:10}}  isVisible={isModalVisible}>
+         <TouchableOpacity onPress={toggleModal}>
+         <View style={{position:'relative',bottom:sizes.screenHeight*0.25,left:sizes.screenWidth*0.85}}>
+          <Entypo
+                    name="cross"
+                    color={colors.secondary}
+                    size={30}
+                  />
+          </View>
+         </TouchableOpacity>
+          
            <View style={styles.texcon}>
             <Text style={styles.text111}>Trying to set Up a visit for Someone else ?</Text>
            </View>
@@ -168,8 +178,8 @@ const styles = StyleSheet.create({
   namefirt: {
     justifyContent: 'center',
     alignItems: 'center',
-    width: sizes.screenWidth * 0.1,
-    height: sizes.screenHeight * 0.05,
+    width: sizes.screenWidth * 0.11,
+    height: sizes.screenHeight * 0.06,
     backgroundColor: colors.secondary,
     borderRadius: sizes.screenWidth * 0.5,
   },
@@ -212,7 +222,7 @@ const styles = StyleSheet.create({
   buttonView: {
     backgroundColor: colors.secondary,
     height: sizes.screenHeight * 0.06,
-    width: sizes.screenWidth * 0.8,
+    width: sizes.screenWidth * 0.92,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -220,7 +230,7 @@ const styles = StyleSheet.create({
     borderWidth:1,
     borderColor:colors.white,
     height: sizes.screenHeight * 0.06,
-    width: sizes.screenWidth * 0.8,
+    width: sizes.screenWidth * 0.91,
     alignItems: 'center',
     justifyContent: 'center',
   }

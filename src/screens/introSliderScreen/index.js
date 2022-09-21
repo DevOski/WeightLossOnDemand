@@ -28,7 +28,7 @@ import {
 } from '../../component/IntrComponent';
 import {colors, fontSize, sizes} from '../../services';
 // FontAwesome
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import Entypo from 'react-native-vector-icons/Entypo';
 
 const Intro = ({navigation}) => {
   const slides = [
@@ -100,7 +100,7 @@ const Intro = ({navigation}) => {
             padding: 20,
           }}>
           {imgActive !== 3 && (
-            <View style={styles.footer}>
+            <View style={[styles.footer, styles.top]}>
               <TouchableOpacity onPress={()=>navigation.navigate("signinscreen")}>
                 <Text style={styles.fontsiginandsignup}>Sign In</Text>
               </TouchableOpacity>
@@ -117,7 +117,7 @@ const Intro = ({navigation}) => {
                         style={
                           imgActive == index ? styles.dotActive : styles.dot
                         }>
-                        ◉
+                       <Entypo name="dot-single" color={colors.secondary}  size={30}  />
                       </Text>
                     </View>
                   )}
@@ -194,7 +194,7 @@ const styles = StyleSheet.create({
     fontSize: fontSize.h2,
   },
   top: {
-    top: sizes.screenHeight * 0.015,
+    top: sizes.screenHeight * -0.01,
   },
   fontsiginandsignup: {
     fontSize: fontSize.h5,
