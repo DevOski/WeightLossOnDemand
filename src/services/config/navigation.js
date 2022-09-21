@@ -87,6 +87,7 @@ export default function MainNavigator() {
       <Stack.Screen name="otherreasonscreen" component={OtherReason} />
       <Stack.Screen name="reasonVisit" component={ReasonForDcoctor} />
         <Stack.Screen name="BottomNavs" component={MyTabs} />
+        
         <Stack.Screen name="Setting" component={Setting} />
 
         <Stack.Screen
