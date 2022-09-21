@@ -29,7 +29,7 @@ export default function ChangePassword({navigation,route}) {
         </View>
         <View style={[styles.paddingLeft]}>
           <Text style={styles.text}>
-            In order to update your password, please verify your current
+            In order to update your {route?.params?.title}, please verify your current
             password.
           </Text>
         </View>

@@ -89,6 +89,7 @@ export default function Setting({navigation}) {
             onPress={() =>
               navigation.navigate('ChangePassword', {
                 screenName: 'EnterNewPassword',
+                title:"password"
               })
             }>
             <View style={styles.row}>
