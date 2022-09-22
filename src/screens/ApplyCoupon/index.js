@@ -29,7 +29,7 @@ export default function ApplyCoupon() {
           </Text>
           <TextInput
             mode="contain"
-            label={'e.g Coupon594'}
+            label={'e.g. Coupon594'}
             activeUnderlineColor={colors.secondary}
             style={styles.field}
           />

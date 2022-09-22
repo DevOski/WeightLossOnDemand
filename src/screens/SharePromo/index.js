@@ -31,7 +31,7 @@ export default function SharePromo() {
             off their first visit (not eligible with insurance).
           </Text>
         </View>
-        <View style={[styles.row, styles.padding, styles.between]}>
+        <View style={[styles.row, styles.padding, styles.around]}>
           <View>
             <TouchableOpacity>
               <Image source={images.fbDownloader} style={styles.icon} />
@@ -86,8 +86,7 @@ export default function SharePromo() {
               <Text style={styles.iconText}></Text>
             </TouchableOpacity>
           </View>
-          <View></View>
-          <View></View>
+          <View style={styles.width}></View>
         </View>
       </ScrollView>
     </SafeAreaView>

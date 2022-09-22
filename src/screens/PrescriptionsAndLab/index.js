@@ -22,8 +22,8 @@ import Entypo from 'react-native-vector-icons/Entypo';
 export default function PrescriptionsAndLab() {
   return (
     <SafeAreaView>
+      <Header title={'Prescriptions and Lab Work'} />
       <ScrollView style={styles.color}>
-        <Header title={'Prescriptions and Lab Work'} />
         <View style={[styles.padding, styles.coloredView]}>
           <View style={styles.paddingTop}>
             <Text style={styles.heading}>Prescriptions and Lab Work</Text>
@@ -99,7 +99,7 @@ export default function PrescriptionsAndLab() {
             found in the app.
           </Text>
         </View>
-        <View style={[styles.padding2,styles.bottom]}>
+        <View style={[styles.padding2, styles.bottom]}>
           <Text style={styles.text}>
             3. At the pharmacy, you’ll want to have your ID and insurance card
             available for the pharmacist.4. When ready, the results will first

@@ -5,25 +5,27 @@ import {colors, fontFamily, fontSize, sizes} from '../../services';
 export const styles = StyleSheet.create({
   userView: {
     backgroundColor: colors.secondary,
-    paddingBottom: sizes.screenHeight * 0.02,
+    paddingBottom: sizes.screenHeight * 0.03,
   },
   btnText: {
-    fontSize: fontSize.h6,
+    fontSize: fontSize.medium,
     color: colors.white,
-    fontWeight: '300',
+    fontFamily: fontFamily.appTextLight,
   },
   code: {
     fontSize: fontSize.h5,
     color: colors.white,
     fontWeight: '400',
+    fontFamily: fontFamily.appTextRegular,
   },
   padding: {
     padding: sizes.baseMargin,
   },
   shareText: {
-    fontSize: fontSize.h5,
-    fontWeight: '400',
-    color: colors.primary,
+    fontSize: fontSize.h6,
+    fontWeight: '700',
+    color: colors.lightGray2,
+    fontFamily: fontFamily.appTextLight,
   },
   row: {
     flexDirection: 'row',
@@ -35,13 +37,17 @@ export const styles = StyleSheet.create({
   },
   iconText: {
     textAlign: 'center',
-    fontSize: fontSize.medium,
+    fontSize: fontSize.small,
     color: colors.primary,
-    top: 2,
+    top: 5,
+    fontFamily: fontFamily.appTextRegular,
   },
-  gmailView: {justifyContent: 'space-between', paddingTop: 0},
+  gmailView: {justifyContent: 'space-around', paddingTop: 0},
   playIcon: {left: sizes.TinyMargin},
   mailRight: {right: sizes.TinyMargin},
-  between: {justifyContent: 'space-between'},
+  around: {justifyContent: 'space-around'},
   alignCenter: {alignItems: 'center'},
+  width: {
+    width: sizes.screenWidth * 0.15,
+  },
 });

@@ -20,6 +20,7 @@ export default function AddPaymentMethod() {
   const [cardNum, setCardNum] = useState('');
   const [expirationDate, setExpirationDate] = useState('');
   const [cvv, setCvv] = useState('');
+  const [postalCode, setPostalCode] = useState('');
   const [country, setCountry] = useState('');
   const [showState, setShowState] = useState(false);
 
@@ -75,8 +76,8 @@ export default function AddPaymentMethod() {
             }
             activeUnderlineColor={colors.secondary}
             style={styles.field}
-            onChangeText={text => setExpirationDate(text)}
-            value={expirationDate}
+            onChangeText={text => setPostalCode(text)}
+            value={postalCode}
             keyboardType={'numeric'}
           />
         </View>
@@ -126,7 +127,7 @@ export default function AddPaymentMethod() {
         </View>
         <View style={styles.padding}>
           <Text style={styles.text}>
-            {' '}
+
             <Text style={styles.bold}>Note: </Text> This will replace any
             payment method on file.
           </Text>

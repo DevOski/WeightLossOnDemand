@@ -22,11 +22,13 @@ import Entypo from 'react-native-vector-icons/Entypo';
 export default function TipsVisit() {
   return (
     <SafeAreaView>
+      <Header title={'Tips for a Successful Visit'} />
       <ScrollView style={styles.color}>
-        <Header title={'Tips for a Successful Visit'} />
         <View style={[styles.padding, styles.coloredView]}>
           <View style={styles.paddingTop}>
-            <Text style={styles.heading}>Tips for a Successful Visit</Text>
+            <Text style={styles.heading}>
+              Tips for a successful video visit
+            </Text>
           </View>
         </View>
         <View style={styles.padding}>
@@ -82,7 +84,7 @@ export default function TipsVisit() {
         <View style={[styles.row, styles.tinyPadding]}>
           <Entypo name="dot-single" color={colors.disabledBg} size={25} />
           <Text style={[styles.text, styles.right]}>
-            <Text style={styles.bold}> Turn off other devices</Text>Reduce
+            <Text style={styles.bold}> Turn off other devices</Text> Reduce
             background noise and distractions from TVs, music, or video games.
           </Text>
         </View>
@@ -128,7 +130,7 @@ export default function TipsVisit() {
             devices off and let others know you need privacy.
           </Text>
         </View>
-        <View style={[styles.row, styles.tinyPadding,styles.bottom]}>
+        <View style={[styles.row, styles.tinyPadding, styles.bottom]}>
           <Entypo name="dot-single" color={colors.disabledBg} size={25} />
           <Text style={[styles.text, styles.right]}>
             <Text style={styles.bold}>Share your health concerns.</Text> Your

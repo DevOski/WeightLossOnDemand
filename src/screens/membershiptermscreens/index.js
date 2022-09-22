@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
       paddingBottom: sizes.baseMargin,
     },
     addPaymentText: {
-      fontSize: fontSize.h3,
+      fontSize: fontSize.h4,
       fontWeight: 'bold',
       color: colors.primary,
     },

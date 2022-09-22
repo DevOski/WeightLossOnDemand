@@ -14,9 +14,10 @@ export const styles = StyleSheet.create({
     paddingBottom: sizes.baseMargin,
   },
   addPaymentText: {
-    fontSize: fontSize.h3,
+    fontSize: fontSize.h4,
     fontWeight: 'bold',
     color: colors.primary,
+    fontFamily: fontFamily.appTextHeading,
   },
   row: {
     flexDirection: 'row',
@@ -43,6 +44,7 @@ export const styles = StyleSheet.create({
   cardText: {
     color: colors.primary,
     fontSize: fontSize.medium,
+    fontFamily: fontFamily.appTextHeading,
   },
   symbol: {
     color: colors.secondary,

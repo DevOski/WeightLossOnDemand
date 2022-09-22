@@ -54,11 +54,11 @@ import VideoVisit from '../../screens/VideoVisit';
 import TipsVisit from '../../screens/TipsVisit';
 import PrescriptionsAndLab from '../../screens/PrescriptionsAndLab';
 import MyPricing from '../../screens/MyPricing';
-import { ReasonForDcoctor } from '../../screens/reasonVisit';
-import { OtherReason } from '../../screens/otherreasonscreen';
-import { Howlong } from '../../screens/howlongscreen';
-import { SymtomsScreen } from '../../screens/symptomsscreen';
-import { Temperaturescreen } from '../../screens/temperature';
+import {ReasonForDcoctor} from '../../screens/reasonVisit';
+import {OtherReason} from '../../screens/otherreasonscreen';
+import {Howlong} from '../../screens/howlongscreen';
+import {SymtomsScreen} from '../../screens/symptomsscreen';
+import {Temperaturescreen} from '../../screens/temperature';
 import MessageSupport from '../../screens/MessageSupport';
 import HowInfoShare from '../../screens/HowInfoShared';
 import EditName from '../../screens/EditName';
@@ -87,6 +87,7 @@ export default function MainNavigator() {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{headerShown: false}}>
+      <Stack.Screen name="Introsliderscreen" component={Intro} />
       <Stack.Screen name="whichsurgeri" component={Whichsurgeries} />
       <Stack.Screen name="whichmedicalconditions" component={Whichmedicalconditions} />
       <Stack.Screen name="whichdrugallergi" component={whichdrugallergi} />
@@ -97,16 +98,16 @@ export default function MainNavigator() {
       <Stack.Screen name="drugalergiesscreen" component={Drugallergies} />
       <Stack.Screen name="cureentlytakingmed" component={Currently} />
       <Stack.Screen name="createhelthproscreen" component={Healthpro} />
-        <Stack.Screen name="Introsliderscreen" component={Intro} />
+        
         <Stack.Screen name="signupscreen" component={SignUp} />
         <Stack.Screen name="signinscreen" component={SignIn} />
         <Stack.Screen name="wellcomescreen" component={Wellcome} />
         <Stack.Screen name="basicInfoscreens" component={BasicInfoScreen} />
         <Stack.Screen name="temperature" component={Temperaturescreen} />
-      <Stack.Screen name="symptomsscreen" component={SymtomsScreen} />
-      <Stack.Screen name="howlongscreen" component={Howlong} />
-      <Stack.Screen name="otherreasonscreen" component={OtherReason} />
-      <Stack.Screen name="reasonVisit" component={ReasonForDcoctor} />
+        <Stack.Screen name="symptomsscreen" component={SymtomsScreen} />
+        <Stack.Screen name="howlongscreen" component={Howlong} />
+        <Stack.Screen name="otherreasonscreen" component={OtherReason} />
+        <Stack.Screen name="reasonVisit" component={ReasonForDcoctor} />
         <Stack.Screen name="BottomNavs" component={MyTabs} />
         <Stack.Screen name="Setting" component={Setting} />
 
@@ -169,7 +170,6 @@ export default function MainNavigator() {
         <Stack.Screen name="EditAddress" component={EditAddress} />
         <Stack.Screen name="EnterNewPassword" component={EnterNewPassword} />
         <Stack.Screen name="AddPaymentMethod" component={AddPaymentMethod} />
-        
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -180,7 +180,23 @@ function MyTabs() {
     <Tab.Navigator
       initialRouteName="Home"
       activeColor="#be1d2d"
-      barStyle={{backgroundColor: '#f5f5f5'}}>
+      barStyle={{
+        backgroundColor: '#fff',
+        shadowColor: '#000',
+        shadowOffset: {
+          width: 0,
+          height: 12,
+        },
+        shadowOpacity: 0.58,
+        shadowRadius: 16.0,
+
+        elevation: 24,
+        borderTopLeftRadius: 21,
+        borderTopRightRadius: 21,
+        position: 'absolute',
+        bottom: 0,
+        zIndex: 0,
+      }}>
       <Tab.Screen
         name="Home"
         component={Home}
@@ -189,9 +205,9 @@ function MyTabs() {
 
           tabBarIcon: ({color}) => (
             <Image
-              source={images.icon}
+              source={images.icon2}
               style={{
-                height: sizes.screenHeight * 0.032,
+                height: sizes.screenHeight * 0.033,
                 width: sizes.screenWidth * 0.06,
               }}
             />

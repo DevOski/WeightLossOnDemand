@@ -19,10 +19,10 @@ import Entypo from 'react-native-vector-icons/Entypo';
 export default function HowInfoShare() {
   return (
     <SafeAreaView>
-      <ScrollView style={styles.color}>
-        <View>
+       <View>
           <Header title={'Medical Records'} />
         </View>
+      <ScrollView style={styles.color}>
         <View style={styles.padding}>
           <Text style={styles.addPaymentText}>
             How Is My Information Shared?
@@ -139,7 +139,7 @@ export default function HowInfoShare() {
             </Text>
           </View>
         </View>
-        <View style={styles.padding}>
+        <View style={[styles.padding,styles.bottom]}>
           <Text style={[styles.textColor]}>
             Further details about our privacy practices and related processing
             of your health information can be found in our{' '}

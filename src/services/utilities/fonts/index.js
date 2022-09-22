@@ -6,10 +6,11 @@ const fontFamily = {
   // appTextMedium: 'Raleway-Medium',
   // appTextBold: 'Raleway-Bold',
   // appTextExtraBold: 'Raleway-ExtraBold',
-  appTextLight: 'ReadexPro-Light',
-  appTextRegular: 'ReadexPro-Regular',
-  appTextMedium: 'ReadexPro-Medium',
-  appTextBold: 'ReadexPro-Bold',
+  appTextRegular:'sans-serif',
+  appTextHeading: 'Roboto',
+  appTextLight: 'sans-serif-light',
+  appTextMedium: 'sans-serif-medium',
+  appTextCondensed: 'sans-serif-condensed',
   // appTextExtraBold: 'Roboto-ExtraBold',
 };
 const fontSize = {

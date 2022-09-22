@@ -14,11 +14,13 @@ export const styles = StyleSheet.create({
     fontSize: fontSize.h5,
     fontWeight: 'bold',
     color: colors.primary,
+    fontFamily: fontFamily.appTextHeading,
   },
 
   field: {
     backgroundColor: colors.lightGray,
     fontSize: fontSize.extraLarge,
+    fontFamily: fontFamily.appTextRegular,
   },
   width: {
     width: sizes.screenWidth * 0.9,
@@ -55,6 +57,8 @@ export const styles = StyleSheet.create({
   buttonText: {
     color: colors.white,
     fontSize: fontSize.h6,
+    fontFamily: fontFamily.appTextHeading,
+    fontWeight: '600',
   },
   top: {
     marginTop: sizes.screenHeight * 0.02,
@@ -62,15 +66,18 @@ export const styles = StyleSheet.create({
   text: {
     color: colors.primary,
     fontSize: fontSize.medium,
+    fontFamily: fontFamily.appTextLight,
   },
   bold: {
     fontWeight: 'bold',
+    fontFamily:fontFamily.appTextLight
   },
   listText: {
     padding: sizes.TinyMargin,
     paddingBottom: sizes.screenHeight * 0.02,
     fontSize: fontSize.h6,
     color: colors.primary,
+    fontFamily:fontFamily.appTextRegular
   },
   cardView: {
     position: 'absolute',
@@ -81,7 +88,7 @@ export const styles = StyleSheet.create({
     top: sizes.screenHeight * 0.11,
     marginRight: sizes.screenWidth * 0.02,
     marginLeft: sizes.screenWidth * 0.05,
-    borderRadius:sizes.TinyMargin,
+    borderRadius: sizes.TinyMargin,
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
