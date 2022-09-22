@@ -82,13 +82,13 @@ export default function MainNavigator() {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{headerShown: false}}>
+        <Stack.Screen name="Introsliderscreen" component={Intro} />
       <Stack.Screen name="familymedicalcondition" component={FamilyMedicalconditions} />
       <Stack.Screen name="surgeriesscreen" component={Surgeries} />
       <Stack.Screen name="Medicalcondionscreen" component={MedicalCondition} />
       <Stack.Screen name="drugalergiesscreen" component={Drugallergies} />
       <Stack.Screen name="cureentlytakingmed" component={Currently} />
       <Stack.Screen name="createhelthproscreen" component={Healthpro} />
-        <Stack.Screen name="Introsliderscreen" component={Intro} />
         <Stack.Screen name="signupscreen" component={SignUp} />
         <Stack.Screen name="signinscreen" component={SignIn} />
         <Stack.Screen name="wellcomescreen" component={Wellcome} />
