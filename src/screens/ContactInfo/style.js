@@ -17,6 +17,7 @@ export const styles = StyleSheet.create({
     fontSize: fontSize.h3,
     fontWeight: 'bold',
     color: colors.primary,
+    fontFamily: fontFamily.appTextHeading,
   },
   row: {
     flexDirection: 'row',
@@ -30,18 +31,24 @@ export const styles = StyleSheet.create({
   cardText: {
     width: sizes.screenWidth * 0.42,
     color: colors.primary,
+    fontFamily: fontFamily.appTextCondensed,
   },
   card: {
     backgroundColor: colors.white,
     padding: sizes.screenHeight * 0.03,
     marginBottom: sizes.TinyMargin,
-    
   },
   head: {
     color: colors.primary,
     fontWeight: 'bold',
+    fontFamily: fontFamily.appTextHeading,
   },
-  text: {top: sizes.TinyMargin, fontSize: fontSize.h6, color: colors.black},
+  text: {
+    top: sizes.TinyMargin,
+    fontSize: fontSize.h6,
+    color: colors.black,
+    fontFamily: fontFamily.appTextLight,
+  },
   width: {
     // backgroundColor:'red',
     width: sizes.screenWidth * 0.8,
