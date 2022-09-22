@@ -14,7 +14,7 @@ import {
 } from 'react-native';
 import Logo from '../../assets/assets/logo.png';
 import {CustomTextFiel} from '../../component/textFiled';
-import { colors } from '../../services';
+import { colors, sizes } from '../../services';
 const deviceHeight = Dimensions.get('window').height;
 const deviceWidth = Dimensions.get('window').width;
 
@@ -63,11 +63,13 @@ export const SignIn = ({navigation}) => {
           <View style={styles.filedcon}>
             <Text style={styles.forgotpass}>I forgot my Password</Text>
           </View>
-          <View style={styles.filedconbutton}>
+         <View style={{justifyContent:'center',alignItems:'center'}}>
+         <View style={styles.filedconbutton}>
           <TouchableOpacity style={styles.but} onPress={()=>navigation.navigate("BottomNavs")}>
             <Text style={{color: '#fff',fontSize:20}}>Sign In</Text>
           </TouchableOpacity>
           </View>
+         </View>
         </View>
       </View>
     </SafeAreaView>
@@ -83,10 +85,11 @@ const styles = StyleSheet.create({
     paddingLeft: deviceWidth * 0.02,
     paddingRight: deviceWidth * 0.04,
     paddingTop: deviceHeight * 0.03,
+    
   },
   logoalign: {
     width: deviceWidth * 0.4,
-    height: deviceHeight * 0.05,
+    height: deviceHeight * 0.06,
   },
   hederstyling: {
     flexDirection: 'row',
@@ -99,12 +102,15 @@ const styles = StyleSheet.create({
     fontWeight:"700",
   },
   filedContainer: {
+   
     paddingTop: deviceHeight * 0.05,
   },
   filedcon: {
+    paddingLeft: deviceWidth * 0.01,
     marginBottom: deviceHeight * 0.03,
   },
   filedcontext: {
+    
     marginTop: deviceHeight * 0.03,
     paddingLeft: deviceWidth * 0.01,
     flexDirection: 'row',
@@ -120,16 +126,17 @@ const styles = StyleSheet.create({
     color:"#be1d2d",
     fontSize: 18,
     fontWeight:"700",
-    marginLeft:deviceWidth*0.02
+    marginLeft:deviceWidth*0.01
   },
   but: {
     backgroundColor: colors.secondary,
-    width: deviceWidth * 0.7,
+    width: deviceWidth * 0.9,
     height: deviceHeight * 0.07,
     justifyContent: 'center',
     alignItems: 'center',
   },
   filedconbutton:{
+    width:sizes.screenWidth*0.9,
     paddingTop:deviceHeight*0.0,
     marginBottom: deviceHeight * 0.02,
     justifyContent:'center',

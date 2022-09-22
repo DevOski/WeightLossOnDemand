@@ -19,6 +19,7 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 export const ReasonForDcoctor = ({navigation}) => {
   const [search, setsearch] = useState();
+  const [show, setshow] = useState(false)
   return (
     <SafeAreaView style={styles.container}>
       <View>
@@ -101,6 +102,13 @@ export const ReasonForDcoctor = ({navigation}) => {
             </TouchableOpacity>
         </View>
         <View style={styles.pading}>
+            <TouchableOpacity>
+                <View >
+                    <Text style={styles.addanother}  >See all</Text>
+                </View>
+            </TouchableOpacity>
+        </View>
+        {!show ? <><View style={styles.pading}>
             <TouchableOpacity>
                 <View style={styles.lisbutton}>
                     <Text style={styles.text}  >Acid reflux</Text>
@@ -457,6 +465,8 @@ export const ReasonForDcoctor = ({navigation}) => {
                 </View>
             </TouchableOpacity>
         </View>
+        </>
+        :null}
       </View>
         </ScrollView>
 
@@ -539,5 +549,12 @@ elevation: 15,
   pading:{
    marginBottom:sizes.screenHeight*0.01,
     // paddingTop:sizes.screenHeight*0.02
-  }
+  },
+  addanother: {
+    paddingTop:sizes.screenHeight*0.04,
+    fontSize: fontSize.large,
+    color: colors.secondary,
+    fontWeight: 'bold',
+ alignSelf:'center'  
+},
 });

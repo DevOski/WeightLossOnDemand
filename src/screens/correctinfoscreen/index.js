@@ -19,10 +19,11 @@ import {colors, sizes, fontSize} from '../../services';
 export const Correct = ({navigation}) => {
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.containe2}>
-        <View>
+      <View>
           <Header dark={true} />
         </View>
+      <View style={styles.containe2}>
+        
         <View style={styles.containe3}>
           <Text style={styles.hedtext}>Is this correct ?</Text>
         </View>
@@ -75,7 +76,7 @@ const styles = StyleSheet.create({
     paddingTop: sizes.screenHeight * 0.02,
   },
   containe3: {
-    paddingTop: sizes.screenHeight * 0.02,
+    paddingTop: sizes.screenHeight * 0.01,
     paddingLeft: sizes.screenWidth * 0.05,
   },
   hedtext: {
@@ -86,6 +87,7 @@ const styles = StyleSheet.create({
   context: {
     fontSize: fontSize.large,
     color: colors.black,
+    fontWeight:'bold',lineHeight:sizes.screenHeight*0.06
   },
   context1: {
     fontSize: fontSize.large,

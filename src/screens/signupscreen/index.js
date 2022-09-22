@@ -122,7 +122,7 @@ const styles = StyleSheet.create({
   },
   logoalign: {
     width: deviceWidth * 0.4,
-    height: deviceHeight * 0.05,
+    height: deviceHeight * 0.06,
   },
   hederstyling: {
     flexDirection: 'row',
@@ -138,7 +138,7 @@ const styles = StyleSheet.create({
     paddingTop: deviceHeight * 0.05,
   },
   filedcon: {
-    marginBottom: deviceHeight * 0.03,
+    marginBottom: deviceHeight * 0.02,
   },
   fleix:{
     flexDirection:'row',
@@ -152,7 +152,7 @@ const styles = StyleSheet.create({
   },
   but: {
     backgroundColor: colors.secondary,
-    width: deviceWidth * 0.7,
+    width: deviceWidth * 0.9,
     height: deviceHeight * 0.07,
     justifyContent: 'center',
     alignItems: 'center',

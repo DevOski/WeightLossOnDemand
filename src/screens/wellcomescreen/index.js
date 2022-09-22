@@ -40,7 +40,7 @@ const Wellcome = ({navigation}) => {
            
             <View style={{paddingLeft:sizes.screenWidth*0.07}}>
               <Text style={[styles.cardText,styles.wit]}>See first available medical provider</Text>
-              <Text style={styles.faqText}>Current wait time: 3 min</Text>
+              <Text style={[styles.faqText,styles.wi]}>Current wait time: 3 min</Text>
             </View>
             <View>
               <Text style={styles.symbol}> ›</Text>
@@ -53,8 +53,8 @@ const Wellcome = ({navigation}) => {
           <Image style={{width:"100%",height:"100%"}} source={fedoctr}/>
           </View>
             <View style={{paddingRight:sizes.screenWidth*0.02}}>
-              <Text style={styles.cardText}>{'   '}Book a mental health sessions</Text>
-              <Text style={styles.faqText}>{'   '}Psychiatry & Therapy</Text>
+              <Text style={styles.cardText}>Book a mental health sessions</Text>
+              <Text style={styles.faqText}>Psychiatry & Therapy</Text>
             </View>
             <View>
               <Text style={styles.symbol}> ›</Text>
@@ -67,8 +67,8 @@ const Wellcome = ({navigation}) => {
           <Image style={{width:"100%",height:"100%"}}  source={pick}/>
             </View>
             <View>
-              <Text style={styles.cardText}>Pick Your pharmacy</Text>
-              <Text style={styles.faqText}>Nearby prescription pickup</Text>
+              <Text style={[styles.cardText,styles.wi]}>Pick Your pharmacy</Text>
+              <Text style={[styles.faqText,styles.wi]}>Nearby prescription pickup</Text>
              
             </View>
             <View>
@@ -82,8 +82,8 @@ const Wellcome = ({navigation}) => {
           <Image style={{width:"100%",height:"100%"}}   source={explore}/>
             </View>
             <View>
-              <Text style={styles.cardText}>{'   '}Explore the app</Text>
-              <Text style={styles.faqText}>{'   '}Learn more about our services</Text>
+              <Text style={styles.cardText}>Explore the app</Text>
+              <Text style={styles.faqText}>Learn more about our services</Text>
              
             </View>
             <View>
@@ -175,10 +175,15 @@ const styles = StyleSheet.create({
         paddingTop:sizes.screenHeight*0.05
       },
       imagewelllcome:{
-        width:sizes.screenWidth*0.12,
-        height:sizes.screenHeight*0.06
+        width:sizes.screenWidth*0.13,
+        height:sizes.screenHeight*0.07
       },
       wit:{
+        right:sizes.screenWidth*0.04,
+        // paddingRight:sizes.screenWidth*0.01
         width:sizes.screenWidth*0.6
+      },
+      wi:{
+        right:sizes.screenWidth*0.04
       }
 })

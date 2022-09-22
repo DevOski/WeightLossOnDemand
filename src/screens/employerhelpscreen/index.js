@@ -55,8 +55,8 @@ export const Employerhelp = ({navigation}) => {
             </View>
             <View>
                 <TouchableOpacity onPress={()=>navigation.navigate("wellcomescreen")}>
-                <View style={styles.buttonView}>
-          <Text style={styles.buttonText}>No</Text>
+                <View style={styles.buttonView1}>
+          <Text style={styles.buttonText1}>No</Text>
         </View>
                 </TouchableOpacity>
             </View>
@@ -108,9 +108,21 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  buttonView1: {
+    borderColor:colors.secondary,
+   borderWidth:sizes.screenWidth*0.01,
+    height: sizes.screenHeight * 0.06,
+    width: sizes.screenWidth * 0.8,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
  
   buttonText: {
     color: colors.white,
+    fontSize: fontSize.h6,
+  },
+  buttonText1: {
+    color: colors.secondary,
     fontSize: fontSize.h6,
   },
   btncontainer:{
