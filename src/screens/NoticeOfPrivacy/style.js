@@ -22,10 +22,12 @@ export const styles = StyleSheet.create({
     color: colors.primary,
     textDecorationLine: 'underline',
     width: sizes.screenWidth * 0.8,
+    fontFamily: fontFamily.appTextHeading,
   },
   heading: {
     fontSize: fontSize.medium,
     fontWeight: 'bold',
+    fontFamily: fontFamily.appTextHeading,
     color: colors.primary,
   },
   addPaymentText: {
@@ -33,6 +35,7 @@ export const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: colors.primary,
     width: sizes.screenWidth * 0.7,
+    fontFamily: fontFamily.appTextHeading,
   },
   paddingTop: {
     paddingTop: sizes.screenHeight * 0.015,
@@ -43,6 +46,7 @@ export const styles = StyleSheet.create({
   textColor: {
     color: colors.black,
     fontSize: fontSize.medium,
+    fontFamily: fontFamily.appTextRegular,
   },
   link: {
     color: colors.link,

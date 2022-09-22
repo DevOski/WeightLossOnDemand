@@ -21,6 +21,8 @@ export const styles = StyleSheet.create({
   textColor: {
     color: colors.black,
     fontSize: fontSize.large,
+    fontFamily: fontFamily.appTextRegular,
+    
   },
   link: {
     color: colors.link,
@@ -50,6 +52,8 @@ export const styles = StyleSheet.create({
   buttonText: {
     color: colors.white,
     fontSize: fontSize.h6,
+    fontFamily: fontFamily.appTextHeading,
+    fontWeight: '600',
   },
   buttonTop: {
     marginTop: sizes.screenHeight * 0.01,

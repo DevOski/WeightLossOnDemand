@@ -24,6 +24,7 @@ export const styles = StyleSheet.create({
   textColor: {
     color: colors.black,
     fontSize: fontSize.large,
+    fontFamily: fontFamily.appTextRegular,
   },
   link: {
     color: colors.link,
@@ -53,14 +54,17 @@ export const styles = StyleSheet.create({
   buttonText: {
     color: colors.white,
     fontSize: fontSize.h6,
+    fontFamily: fontFamily.appTextHeading,
+    fontWeight: '600',
   },
   buttonTop: {
-    bottom:sizes.screenHeight * 0.03,
+    bottom: sizes.screenHeight * 0.03,
     paddingBottom: sizes.screenWidth * 0.08,
   },
   heading: {
     fontSize: fontSize.h6,
     paddingBottom: sizes.screenHeight * 0.02,
     fontWeight: 'bold',
+    fontFamily: fontFamily.appTextHeading,
   },
 });
