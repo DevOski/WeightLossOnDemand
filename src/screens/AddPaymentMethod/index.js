@@ -127,7 +127,7 @@ export default function AddPaymentMethod() {
         </View>
         <View style={styles.padding}>
           <Text style={styles.text}>
-            {' '}
+
             <Text style={styles.bold}>Note: </Text> This will replace any
             payment method on file.
           </Text>

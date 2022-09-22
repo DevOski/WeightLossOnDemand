@@ -14,6 +14,7 @@ export const styles = StyleSheet.create({
     fontSize: fontSize.h5,
     fontWeight: 'bold',
     color: colors.primary,
+    fontFamily: fontFamily.appTextHeading,
   },
   card: {
     backgroundColor: colors.white,
@@ -34,5 +35,6 @@ export const styles = StyleSheet.create({
   cardText: {
     width: sizes.screenWidth * 0.42,
     color: colors.primary,
+    fontFamily: fontFamily.appTextRegular,
   },
 });
