@@ -15,12 +15,16 @@ export const styles = StyleSheet.create({
     fontSize: fontSize.h6,
     fontWeight: 'bold',
     color: colors.primary,
+    fontFamily: fontFamily.appTextHeading,
+    paddingLeft: sizes.screenHeight * 0.01,
   },
   shareText: {
     paddingTop: sizes.screenHeight * 0.01,
-    fontSize: fontSize.h6,
-    fontWeight: '300',
+    paddingLeft: sizes.screenHeight * 0.01,
+    fontSize: fontSize.medium,
+    width: sizes.screenWidth * 0.8,
     color: colors.primary,
+    fontFamily: fontFamily.appTextLight,
   },
   buttonView: {
     alignSelf: 'center',
@@ -33,6 +37,8 @@ export const styles = StyleSheet.create({
   buttonText: {
     color: colors.white,
     fontSize: fontSize.h6,
+    fontFamily: fontFamily.appTextHeading,
+    fontWeight: '600',
   },
   top: {
     top: sizes.screenHeight * 0.05,
@@ -40,5 +46,6 @@ export const styles = StyleSheet.create({
   field: {
     backgroundColor: colors.lightGray,
     fontSize: fontSize.extraLarge,
+    fontFamily:fontFamily.appTextRegular
   },
 });
