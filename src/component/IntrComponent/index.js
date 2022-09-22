@@ -286,6 +286,7 @@ const styles = StyleSheet.create({
   },
   forslid: {
     width: deviceWidth,
+    
   
   },
   forslidtext:{

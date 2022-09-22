@@ -17,7 +17,7 @@ import {CustomTextFiel} from '../../component/textFiled';
 import {colors, sizes, fontSize} from '../../services';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
-export const OtherReason = () => {
+export const OtherReason = ({navigation}) => {
   const [text, settext] = useState('');
 
 
@@ -39,7 +39,7 @@ export const OtherReason = () => {
           />
         </View>
 
-       {text ?  <TouchableOpacity>
+       {text ?  <TouchableOpacity onPress={()=>navigation.navigate("temperature")}>
         <View style={styles.bdiv}>
           <Text style={styles.btext}>></Text>
         </View>
