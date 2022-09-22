@@ -17,10 +17,14 @@ export const styles = StyleSheet.create({
     fontSize: fontSize.h3,
     fontWeight: 'bold',
     color: colors.primary,
+    fontFamily: fontFamily.appTextHeading,
+
   },
   field: {
     backgroundColor: colors.lightGray,
-    fontSize: fontSize.extraLarge,
+    fontSize: fontSize.large,
+    fontFamily: fontFamily.appTextRegular,
+
   },
   width:{
     width:sizes.screenWidth * 0.9,
@@ -38,6 +42,8 @@ export const styles = StyleSheet.create({
   buttonText: {
     color: colors.white,
     fontSize: fontSize.h6,
+    fontFamily: fontFamily.appTextHeading,
+    fontWeight: '600',
   },
   top: {
     marginTop: sizes.screenHeight * 0.05,

@@ -17,10 +17,12 @@ export const styles = StyleSheet.create({
     fontSize: fontSize.h3,
     fontWeight: 'bold',
     color: colors.primary,
+    fontFamily: fontFamily.appTextHeading,
   },
   field: {
     backgroundColor: colors.lightGray,
-    fontSize: fontSize.extraLarge,
+    fontSize: fontSize.large,
+    fontFamily: fontFamily.appTextRegular,
   },
   width:{
     width:sizes.screenWidth * 0.9,
@@ -38,17 +40,23 @@ export const styles = StyleSheet.create({
   buttonText: {
     color: colors.white,
     fontSize: fontSize.h6,
+    fontFamily: fontFamily.appTextHeading,
+    fontWeight: '600',
   },
   top: {
     marginTop: sizes.screenHeight * 0.04,
   },
   redText:{
     color:colors.secondary,
-    fontWeight:'bold'
+    fontWeight:'700',
+    fontFamily: fontFamily.appTextLight,
+
   },
   text:{
     color:colors.primary,
     fontSize:fontSize.medium,
-    left:sizes.screenWidth * 0.02
+    left:sizes.screenWidth * 0.02,
+    fontWeight:'600',
+    fontFamily: fontFamily.appTextLight,
   }
 });

@@ -15,18 +15,20 @@ export const styles = StyleSheet.create({
     fontSize: fontSize.h3,
     fontWeight: 'bold',
     color: colors.primary,
+    fontFamily: fontFamily.appTextHeading,
   },
   text: {
     fontSize: fontSize.large,
     color: colors.primary,
-    fontWeight: '300',
+    fontFamily: fontFamily.appTextLight,
   },
   paddingLeft: {
     paddingLeft: sizes.baseMargin,
   },
   field: {
     backgroundColor: colors.lightGray,
-    fontSize: fontSize.extraLarge,
+    fontSize: fontSize.large,
+    fontFamily: fontFamily.appTextRegular,
   },
   padding: {
     padding: sizes.baseMargin,
@@ -42,6 +44,8 @@ export const styles = StyleSheet.create({
   buttonText: {
     color: colors.white,
     fontSize: fontSize.h6,
+    fontFamily: fontFamily.appTextHeading,
+    fontWeight: '600',
   },
   paddingTop: {
     paddingTop: sizes.screenHeight * 0.05,

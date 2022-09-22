@@ -17,15 +17,16 @@ export const styles = StyleSheet.create({
     fontSize: fontSize.h3,
     fontWeight: 'bold',
     color: colors.primary,
+    fontFamily: fontFamily.appTextHeading,
   },
   field: {
     backgroundColor: colors.lightGray,
-    fontSize: fontSize.extraLarge,
+    fontSize: fontSize.large,
   },
-  width:{
-    width:sizes.screenWidth * 0.9,
-    alignSelf:'center',
-    marginBottom:sizes.screenHeight * 0.02
+  width: {
+    width: sizes.screenWidth * 0.9,
+    alignSelf: 'center',
+    marginBottom: sizes.screenHeight * 0.02,
   },
   buttonView: {
     alignSelf: 'center',
@@ -38,16 +39,19 @@ export const styles = StyleSheet.create({
   buttonText: {
     color: colors.white,
     fontSize: fontSize.h6,
+    fontFamily: fontFamily.appTextHeading,
+    fontWeight: '600',
   },
   top: {
     marginTop: sizes.screenHeight * 0.03,
   },
-  redText:{
-    color:colors.secondary,
-    fontWeight:'bold'
+  redText: {
+    color: colors.secondary,
+    fontFamily: fontFamily.appTextLight,
   },
-  text:{
-    color:colors.primary,
-    fontSize:fontSize.medium
-  }
+  text: {
+    color: colors.primary,
+    fontSize: fontSize.medium,
+    fontFamily: fontFamily.appTextLight,
+  },
 });

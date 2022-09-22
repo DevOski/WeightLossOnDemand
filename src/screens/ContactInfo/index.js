@@ -33,7 +33,7 @@ export default function ContactInfo({navigation}) {
             </View>
           </View>
         </TouchableOpacity>
-        <TouchableOpacity onPress={()=>navigation.navigate("EditAddresss")}>
+        <TouchableOpacity onPress={()=>navigation.navigate("EditAddress")}>
           <View style={[styles.row, styles.card]}>
             <View style={styles.width}>
               <Text style={styles.head}>ADDRESS</Text>
