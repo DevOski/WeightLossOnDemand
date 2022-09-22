@@ -73,6 +73,11 @@ import { Drugallergies } from '../../screens/drugalergiesscreen';
 import { MedicalCondition } from '../../screens/Medicalcondionscreen';
 import { Surgeries } from '../../screens/surgeriesscreen';
 import { FamilyMedicalconditions } from '../../screens/familymedicalcondition';
+import { Whichmedication } from '../../screens/whichmedicationscreen';
+import { whichdrugallergi } from '../../screens/whichdrugallergi';
+import { Whichmedicalconditions } from '../../screens/whichmedicalconditions';
+import { Whichsurgeries } from '../../screens/whichsurgeri';
+
 
 
 const Stack = createNativeStackNavigator();
@@ -82,6 +87,10 @@ export default function MainNavigator() {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{headerShown: false}}>
+      <Stack.Screen name="whichsurgeri" component={Whichsurgeries} />
+      <Stack.Screen name="whichmedicalconditions" component={Whichmedicalconditions} />
+      <Stack.Screen name="whichdrugallergi" component={whichdrugallergi} />
+      <Stack.Screen name="whichmedicationscreen" component={Whichmedication} />
       <Stack.Screen name="familymedicalcondition" component={FamilyMedicalconditions} />
       <Stack.Screen name="surgeriesscreen" component={Surgeries} />
       <Stack.Screen name="Medicalcondionscreen" component={MedicalCondition} />
