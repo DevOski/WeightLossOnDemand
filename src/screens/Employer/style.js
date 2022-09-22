@@ -14,9 +14,10 @@ export const styles = StyleSheet.create({
     paddingBottom: sizes.baseMargin,
   },
   addPaymentText: {
-    fontSize: fontSize.h3,
+    fontSize: fontSize.h4,
     fontWeight: 'bold',
     color: colors.primary,
+    fontFamily: fontFamily.appTextHeading,
   },
   contentView: {
     alignItems: 'center',
@@ -28,6 +29,7 @@ export const styles = StyleSheet.create({
     fontSize: fontSize.h6,
     fontWeight: '500',
     top: sizes.screenHeight * 0.03,
+    fontFamily: fontFamily.appTextRegular,
   },
   buttonView: {
     alignSelf: 'center',
@@ -40,10 +42,11 @@ export const styles = StyleSheet.create({
   buttonText: {
     color: colors.white,
     fontSize: fontSize.h6,
+    fontFamily: fontFamily.appTextHeading,
+    fontWeight: '600',
   },
   paddingTop: {
     paddingTop: sizes.screenHeight * 0.33,
-    paddingBottom:sizes.screenHeight * 0.05
-    
+    paddingBottom: sizes.screenHeight * 0.05,
   },
 });

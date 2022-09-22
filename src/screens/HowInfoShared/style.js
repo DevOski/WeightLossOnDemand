@@ -14,6 +14,7 @@ export const styles = StyleSheet.create({
     fontSize: fontSize.h5,
     fontWeight: 'bold',
     color: colors.primary,
+    fontFamily: fontFamily.appTextHeading,
   },
   paddingTop: {
     paddingTop: sizes.screenHeight * 0.015,
@@ -23,6 +24,8 @@ export const styles = StyleSheet.create({
   textColor: {
     color: colors.black,
     fontSize: fontSize.medium,
+    fontFamily: fontFamily.appTextRegular,
+
   },
   row: {
     flexDirection: 'row',
