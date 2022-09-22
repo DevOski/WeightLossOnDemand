@@ -67,18 +67,16 @@ import EditEmail from '../../screens/EditEmail';
 import EditAddress from '../../screens/EditAddress';
 import EnterNewPassword from '../../screens/EnterNewPassword';
 import AddPaymentMethod from '../../screens/AddPaymentMethod';
-import { Healthpro } from '../../screens/createhelthproscreen';
-import { Currently } from '../../screens/cureentlytakingmed';
-import { Drugallergies } from '../../screens/drugalergiesscreen';
-import { MedicalCondition } from '../../screens/Medicalcondionscreen';
-import { Surgeries } from '../../screens/surgeriesscreen';
-import { FamilyMedicalconditions } from '../../screens/familymedicalcondition';
-import { Whichmedication } from '../../screens/whichmedicationscreen';
-import { whichdrugallergi } from '../../screens/whichdrugallergi';
-import { Whichmedicalconditions } from '../../screens/whichmedicalconditions';
-import { Whichsurgeries } from '../../screens/whichsurgeri';
-
-
+import {Healthpro} from '../../screens/createhelthproscreen';
+import {Currently} from '../../screens/cureentlytakingmed';
+import {Drugallergies} from '../../screens/drugalergiesscreen';
+import {MedicalCondition} from '../../screens/Medicalcondionscreen';
+import {Surgeries} from '../../screens/surgeriesscreen';
+import {FamilyMedicalconditions} from '../../screens/familymedicalcondition';
+import {Whichmedication} from '../../screens/whichmedicationscreen';
+import {whichdrugallergi} from '../../screens/whichdrugallergi';
+import {Whichmedicalconditions} from '../../screens/whichmedicalconditions';
+import {Whichsurgeries} from '../../screens/whichsurgeri';
 
 const Stack = createNativeStackNavigator();
 
@@ -87,23 +85,36 @@ export default function MainNavigator() {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{headerShown: false}}>
-      <Stack.Screen name="whichsurgeri" component={Whichsurgeries} />
-      <Stack.Screen name="whichmedicalconditions" component={Whichmedicalconditions} />
-      <Stack.Screen name="whichdrugallergi" component={whichdrugallergi} />
-      <Stack.Screen name="whichmedicationscreen" component={Whichmedication} />
-      {/* <Stack.Screen name="familymedicalcondition" component={FamilyMedicalconditions} /> */}
-      <Stack.Screen name="surgeriesscreen" component={Surgeries} />
-      {/* <Stack.Screen name="Medicalcondionscreen" component={MedicalCondition} /> */}
-      <Stack.Screen name="drugalergiesscreen" component={Drugallergies} />
-      {/* <Stack.Screen name="cureentlytakingmed" component={Currently} /> */}
-      <Stack.Screen name="createhelthproscreen" component={Healthpro} />
         <Stack.Screen name="Introsliderscreen" component={Intro} />
-      <Stack.Screen name="familymedicalcondition" component={FamilyMedicalconditions} />
-      {/* <Stack.Screen name="surgeriesscreen" component={Surgeries} /> */}
-      <Stack.Screen name="Medicalcondionscreen" component={MedicalCondition} />
-      {/* <Stack.Screen name="drugalergiesscreen" component={Drugallergies} /> */}
-      <Stack.Screen name="cureentlytakingmed" component={Currently} />
-      {/* <Stack.Screen name="createhelthproscreen" component={Healthpro} /> */}
+
+        <Stack.Screen name="whichsurgeri" component={Whichsurgeries} />
+        <Stack.Screen
+          name="whichmedicalconditions"
+          component={Whichmedicalconditions}
+        />
+        <Stack.Screen name="whichdrugallergi" component={whichdrugallergi} />
+        <Stack.Screen
+          name="whichmedicationscreen"
+          component={Whichmedication}
+        />
+        {/* <Stack.Screen name="familymedicalcondition" component={FamilyMedicalconditions} /> */}
+        <Stack.Screen name="surgeriesscreen" component={Surgeries} />
+        {/* <Stack.Screen name="Medicalcondionscreen" component={MedicalCondition} /> */}
+        <Stack.Screen name="drugalergiesscreen" component={Drugallergies} />
+        {/* <Stack.Screen name="cureentlytakingmed" component={Currently} /> */}
+        <Stack.Screen name="createhelthproscreen" component={Healthpro} />
+        <Stack.Screen
+          name="familymedicalcondition"
+          component={FamilyMedicalconditions}
+        />
+        {/* <Stack.Screen name="surgeriesscreen" component={Surgeries} /> */}
+        <Stack.Screen
+          name="Medicalcondionscreen"
+          component={MedicalCondition}
+        />
+        {/* <Stack.Screen name="drugalergiesscreen" component={Drugallergies} /> */}
+        <Stack.Screen name="cureentlytakingmed" component={Currently} />
+        {/* <Stack.Screen name="createhelthproscreen" component={Healthpro} /> */}
         <Stack.Screen name="signupscreen" component={SignUp} />
         <Stack.Screen name="signinscreen" component={SignIn} />
         <Stack.Screen name="wellcomescreen" component={Wellcome} />

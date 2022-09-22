@@ -8,12 +8,12 @@ import {
   Text,
   TouchableOpacity,
   View,
-  StyleSheet
+  StyleSheet,
 } from 'react-native';
 import Header from '../../components/Header';
 import images from '../../services/utilities/images';
 
-import {colors,sizes,fontSize} from '../../services';
+import {colors, sizes, fontSize, fontFamily} from '../../services';
 
 export default function MemberShipTerms() {
   return (
@@ -26,9 +26,11 @@ export default function MemberShipTerms() {
           <Text style={styles.addPaymentText}>Membership Terms</Text>
         </View>
         <View style={[styles.paddingLeft, styles.paddingBottom]}>
-          <Text style={styles.addPaymentText2}>Click the link below to view our Membership Terms</Text>
+          <Text style={styles.addPaymentText2}>
+            Click the link below to view our Membership Terms
+          </Text>
         </View>
-        
+
         <TouchableOpacity>
           <View style={[styles.row, styles.card]}>
             <Text style={styles.cardText}>Member Services Agreement</Text>
@@ -61,63 +63,64 @@ export default function MemberShipTerms() {
             </View>
           </View>
         </TouchableOpacity>
-        
       </ScrollView>
     </SafeAreaView>
   );
 }
 const styles = StyleSheet.create({
-    color: {
-      backgroundColor: '#fafafa',
-      height: sizes.screenHeight,
+  color: {
+    backgroundColor: '#fafafa',
+    height: sizes.screenHeight,
+  },
+  paddingLeft: {
+    paddingLeft: sizes.baseMargin,
+  },
+  paddingBottom: {
+    paddingBottom: sizes.baseMargin,
+  },
+  addPaymentText: {
+    fontSize: fontSize.h4,
+    fontWeight: 'bold',
+    color: colors.primary,
+    fontFamily: fontFamily.appTextHeading,
+  },
+  addPaymentText2: {
+    fontSize: fontSize.medium,
+    fontWeight: 'bold',
+    color: colors.primary,
+    // paddingRight: sizes.screenWidth * 0.3,
+    fontFamily: fontFamily.appTextHeading,
+  },
+  row: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  card: {
+    backgroundColor: colors.white,
+    padding: sizes.screenHeight * 0.01,
+    marginBottom: sizes.TinyMargin,
+    alignSelf: 'center',
+    width: sizes.screenWidth * 0.9,
+    borderWidth: 1,
+    borderColor: colors.disabledBg,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
     },
-    paddingLeft: {
-      paddingLeft: sizes.baseMargin,
-    },
-    paddingBottom: {
-      paddingBottom: sizes.baseMargin,
-    },
-    addPaymentText: {
-      fontSize: fontSize.h4,
-      fontWeight: 'bold',
-      color: colors.primary,
-    },
-    addPaymentText2: {
-        fontSize: fontSize.medium,
-        fontWeight: 'bold',
-        color: colors.primary,
-        paddingRight:sizes.screenWidth*0.3
-      },
-    row: {
-      flexDirection: 'row',
-      alignItems: 'center',
-      justifyContent: 'space-between',
-    },
-    card: {
-      backgroundColor: colors.white,
-      padding: sizes.screenHeight * 0.01,
-      marginBottom: sizes.TinyMargin,
-      alignSelf: 'center',
-      width: sizes.screenWidth * 0.9,
-      borderWidth: 1,
-      borderColor: colors.disabledBg,
-      shadowColor: '#000',
-      shadowOffset: {
-        width: 0,
-        height: 2,
-      },
-      shadowOpacity: 0.25,
-      shadowRadius: 3.84,
-      elevation: 5,
-    },
-    cardText: {
-      color: colors.primary,
-      fontSize: fontSize.medium,
-    },
-    symbol: {
-      color: colors.secondary,
-      fontSize: fontSize.h4,
-      bottom: 1,
-    },
-  });
-  
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
+  },
+  cardText: {
+    color: colors.primary,
+    fontSize: fontSize.medium,
+    fontFamily: fontFamily.appTextRegular,
+  },
+  symbol: {
+    color: colors.secondary,
+    fontSize: fontSize.h4,
+    bottom: 1,
+  },
+});

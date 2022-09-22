@@ -16,11 +16,11 @@ import {
 } from 'react-native';
 import {RadioButton} from 'react-native-paper';
 import Entypo from 'react-native-vector-icons/Entypo';
-import {colors, fontSize, sizes} from '../../services';
+import {colors, fontFamily, fontSize, sizes} from '../../services';
 import Octicons from 'react-native-vector-icons/Octicons';
 import Header from '../../components/Header';
 import Modal from 'react-native-modal';
-import { NavigationHelpersContext } from '@react-navigation/native';
+import {NavigationHelpersContext} from '@react-navigation/native';
 
 export const VisitScreen = ({navigation}) => {
   const [isModalVisible, setModalVisible] = useState(false);
@@ -41,7 +41,8 @@ export const VisitScreen = ({navigation}) => {
 
           <View style={styles.buttondiv}>
             <View style={styles.buttonchilddiv}>
-              <TouchableOpacity onPress={()=>navigation.navigate("correctinfoscreen")} >
+              <TouchableOpacity
+                onPress={() => navigation.navigate('correctinfoscreen')}>
                 <View style={[styles.row, styles.card]}>
                   <View style={styles.namefirt}>
                     <Text style={styles.fname}>J</Text>
@@ -53,7 +54,8 @@ export const VisitScreen = ({navigation}) => {
               </TouchableOpacity>
             </View>
             <View style={styles.buttonchilddiv}>
-              <TouchableOpacity onPress={()=>navigation.navigate("addchildscreen")}>
+              <TouchableOpacity
+                onPress={() => navigation.navigate('addchildscreen')}>
                 <View style={[styles.row, styles.card]}>
                   <View style={styles.namefirt}>
                     <Text style={styles.fname}>+</Text>
@@ -71,49 +73,62 @@ export const VisitScreen = ({navigation}) => {
                   <View>
                     <Text style={styles.cardText}>Someone Else ?</Text>
                     <Text style={styles.faqText2}>
-                      If the patient is over 18 ,they need to create their own
-                      account ,even if they are dependent on your health plan
+                      If the patient is over 18, they need to create their own
+                      account, even if they are dependent on your health plan
                     </Text>
                   </View>
                 </View>
               </TouchableOpacity>
             </View>
-            <Modal style={{width:sizes.screenWidth,height:sizes.screenHeight,backgroundColor: 'rgba(52, 52, 52, 0.8)',marginLeft:sizes.screenWidth*0.01,padding:10}}  isVisible={isModalVisible}>
-         <TouchableOpacity onPress={toggleModal}>
-         <View style={{position:'relative',bottom:sizes.screenHeight*0.25,left:sizes.screenWidth*0.85}}>
-          <Entypo
-                    name="cross"
-                    color={colors.secondary}
-                    size={30}
-                  />
-          </View>
-         </TouchableOpacity>
-          
-           <View style={styles.texcon}>
-            <Text style={styles.text111}>Trying to set Up a visit for Someone else ?</Text>
-           </View>
-           <View style={styles.texcon1}>
-            <Text style={styles.text1}>if the patient is over 18,they need to create their own account.if they are a dependent under your health plan,they can add your insurance to thier account</Text>
-           </View>
+            <Modal
+              style={{
+                width: sizes.screenWidth,
+                height: sizes.screenHeight,
+                backgroundColor: 'rgba(52, 52, 52, 0.8)',
+                marginLeft: sizes.screenWidth * 0.01,
+                padding: 10,
+              }}
+              isVisible={isModalVisible}>
+              <TouchableOpacity onPress={toggleModal}>
+                <View
+                  style={{
+                    position: 'relative',
+                    bottom: sizes.screenHeight * 0.25,
+                    left: sizes.screenWidth * 0.85,
+                  }}>
+                  <Entypo name="cross" color={colors.secondary} size={30} />
+                </View>
+              </TouchableOpacity>
 
-           <View style={styles.buttnView}>
-          <TouchableOpacity onPress={()=>navigation.navigate("signupscreen")}>
-            <View style={styles.buttonView}>
-              <Text style={styles.buttonText}>Create new account</Text>
-            </View>
-          </TouchableOpacity>
-        </View>
-        <View style={styles.buttnView}>
-          <TouchableOpacity onPress={toggleModal}>
-            <View style={styles.buttonView1}>
-              <Text style={styles.buttonText}>Go Back</Text>
-            </View>
-          </TouchableOpacity>
-        </View>
+              <View style={styles.texcon}>
+                <Text style={styles.text111}>
+                  Trying to set up a visit for Someone else ?
+                </Text>
+              </View>
+              <View style={styles.texcon1}>
+                <Text style={styles.text1}>
+                  If the patient is over 18,they need to create their own
+                  account.if they are a dependent under your health plan,they
+                  can add your insurance to thier account
+                </Text>
+              </View>
 
-          </Modal>
-
-
+              <View style={styles.buttnView}>
+                <TouchableOpacity
+                  onPress={() => navigation.navigate('signupscreen')}>
+                  <View style={styles.buttonView}>
+                    <Text style={styles.buttonText}>Create new account</Text>
+                  </View>
+                </TouchableOpacity>
+              </View>
+              <View style={styles.buttnView}>
+                <TouchableOpacity onPress={toggleModal}>
+                  <View style={styles.buttonView1}>
+                    <Text style={styles.buttonText}>Go Back</Text>
+                  </View>
+                </TouchableOpacity>
+              </View>
+            </Modal>
           </View>
         </View>
       </ScrollView>
@@ -149,20 +164,23 @@ const styles = StyleSheet.create({
     color: colors.primary,
     fontSize: fontSize.h6,
     fontWeight: 'bold',
+    fontFamily: fontFamily.appTextRegular,
   },
   faqText: {
     color: colors.secondary,
-    fontSize: fontSize.h6,
+    // fontSize: fontSize.h6,
+    fontFamily: fontFamily.appTextRegular,
   },
   faqText2: {
     marginTop: sizes.screenHeight * 0.02,
     color: colors.secondary,
     fontSize: fontSize.h7,
+    fontFamily: fontFamily.appTextRegular,
   },
   card: {
     backgroundColor: colors.white,
     padding: sizes.screenHeight * 0.03,
-    marginBottom: sizes.screenHeight*-0.01,
+    marginBottom: sizes.screenHeight * -0.01,
     width: sizes.screenWidth * 0.9,
     borderRadius: sizes.screenWidth * 0.02,
     alignSelf: 'center',
@@ -186,32 +204,35 @@ const styles = StyleSheet.create({
   fname: {
     color: colors.white,
     fontSize: fontSize.h6,
+    fontFamily: fontFamily.appTextMedium,
   },
-  buttondiv:{
-    marginTop:sizes.screenHeight*0.05
+  buttondiv: {
+    marginTop: sizes.screenHeight * 0.05,
   },
-  buttonchilddiv:{
-    marginBottom:sizes.screenHeight*0.03
+  buttonchilddiv: {
+    marginBottom: sizes.screenHeight * 0.03,
   },
-  text111:{
-    fontSize:fontSize.h4,
-    color:colors.white,
-    fontWeight:"bold"
+  text111: {
+    fontSize: fontSize.h4,
+    color: colors.white,
+    fontWeight: 'bold',
+    fontFamily: fontFamily.appTextHeading,
   },
-  texcon:{
-    bottom:sizes.screenHeight*0.1
+  texcon: {
+    bottom: sizes.screenHeight * 0.1,
   },
-  texcon1:{
-    bottom:sizes.screenHeight*0.08
+  texcon1: {
+    bottom: sizes.screenHeight * 0.08,
   },
-  text1:{
-    fontSize:fontSize.large,
-    color:colors.white,
-    fontWeight:"bold"
+  text1: {
+    fontSize: fontSize.large,
+    color: colors.white,
+    fontFamily: fontFamily.appTextLight,
+
   },
   buttnView: {
     // marginRight:sizes.screenWidth*0.06,
-    marginTop:sizes.screenHeight*0.03,
+    marginTop: sizes.screenHeight * 0.03,
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -226,12 +247,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  buttonView1:{
-    borderWidth:1,
-    borderColor:colors.white,
+  buttonView1: {
+    borderWidth: 1,
+    borderColor: colors.white,
     height: sizes.screenHeight * 0.06,
     width: sizes.screenWidth * 0.91,
     alignItems: 'center',
     justifyContent: 'center',
-  }
+  },
 });

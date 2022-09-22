@@ -17,18 +17,18 @@ import {
 import {Checkbox} from 'react-native-paper';
 import {RadioButton} from 'react-native-paper';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import {colors, fontSize, sizes} from '../../services';
+import {colors, fontFamily, fontSize, sizes} from '../../services';
 import Octicons from 'react-native-vector-icons/Octicons';
 import Header from '../../components/Header';
 import {CustomTextFiel} from '../../component/textFiled';
 export const ForPharmacy = () => {
   const [zipCode, setzipCode] = useState();
   const [Fieldsshowhide, setFieldsshowhide] = useState(false);
-  const [checked, setChecked] = React.useState(false);
-  const [retail, setretail] = useState(false)
-  const [mailorder, setmailorder] = useState(false)
-  const [longterm, setlongterm] = useState(false)
-  const [Specialty, setSpecialty] = useState(false)
+  const [checked, setChecked] = React.useState(true);
+  const [retail, setretail] = useState(false);
+  const [mailorder, setmailorder] = useState(false);
+  const [longterm, setlongterm] = useState(false);
+  const [Specialty, setSpecialty] = useState(false);
   const ShowFiled = () => {
     setFieldsshowhide(!Fieldsshowhide);
   };
@@ -80,99 +80,103 @@ export const ForPharmacy = () => {
             <TouchableOpacity onPress={ShowFiled}>
               <View style={styles.fle}>
                 <Text style={styles.filtertext}>SHOW FILTERS</Text>
-                { Fieldsshowhide ?  <MaterialIcons
-                  name="expand-less"
-                  style={{color: colors.secondary}}
-                  size={25}
-                />: <MaterialIcons
-                  name="expand-more"
-                  style={{color: colors.secondary}}
-                  size={25}
-                />}
-               
+                {Fieldsshowhide ? (
+                  <MaterialIcons
+                    name="expand-less"
+                    style={{color: colors.secondary}}
+                    size={25}
+                  />
+                ) : (
+                  <MaterialIcons
+                    name="expand-more"
+                    style={{color: colors.secondary}}
+                    size={25}
+                  />
+                )}
               </View>
             </TouchableOpacity>
-            { Fieldsshowhide ? <View>
-            <View>
-              <View style={styles.checkboxcont}>
-                <Checkbox
-                  status={checked ? 'checked' : 'unchecked'}
-                  onPress={() => {
-                    setChecked(!checked);
-                  }}
-                  color={'#be1d2d'}
-                  uncheckColor={colors.secondary}
-                />
-                <Text style={styles.fultime}>24 Hours only</Text>
-              </View>
-            </View>
-            <View style={styles.bg}>
-              <View style={styles.filedcontext}>
-                <Text style={styles.text}>Retail</Text>
+            {Fieldsshowhide ? (
+              <View>
                 <View>
-                  <Checkbox
-                    status={retail ? 'checked' : 'unchecked'}
-                    onPress={() => {
-                      setretail(!retail);
-                    }}
-                    color={'#be1d2d'}
-                    uncheckColor={colors.secondary}
-                  />
+                  <View style={styles.checkboxcont}>
+                    <Checkbox
+                      status={checked ? 'checked' : 'unchecked'}
+                      onPress={() => {
+                        setChecked(!checked);
+                      }}
+                      color={'#be1d2d'}
+                      uncheckColor={colors.secondary}
+                    />
+                    <Text style={styles.fultime}>24 Hours only</Text>
+                  </View>
+                </View>
+                <View style={styles.bg}>
+                  <View style={styles.filedcontext}>
+                    <Text style={styles.text}>Retail</Text>
+                    <View>
+                      <Checkbox
+                        status={retail ? 'checked' : 'unchecked'}
+                        onPress={() => {
+                          setretail(!retail);
+                        }}
+                        color={'#be1d2d'}
+                        uncheckColor={colors.secondary}
+                      />
+                    </View>
+                  </View>
+                  <View style={styles.filedcontext}>
+                    <Text style={styles.text}>Mail Order</Text>
+                    <View>
+                      <Checkbox
+                        status={mailorder ? 'checked' : 'unchecked'}
+                        onPress={() => {
+                          setmailorder(!mailorder);
+                        }}
+                        color={'#be1d2d'}
+                        uncheckColor={colors.secondary}
+                      />
+                    </View>
+                  </View>
+                  <View style={styles.filedcontext}>
+                    <Text style={styles.text}>Long Term Care</Text>
+                    <View>
+                      <Checkbox
+                        status={longterm ? 'checked' : 'unchecked'}
+                        onPress={() => {
+                          setlongterm(!longterm);
+                        }}
+                        color={'#be1d2d'}
+                        uncheckColor={colors.secondary}
+                      />
+                    </View>
+                  </View>
+                  <View style={styles.filedcontext}>
+                    <Text style={styles.text}>Specialty</Text>
+                    <View>
+                      <Checkbox
+                        status={Specialty ? 'checked' : 'unchecked'}
+                        onPress={() => {
+                          setSpecialty(!Specialty);
+                        }}
+                        color={'#be1d2d'}
+                        uncheckColor={colors.secondary}
+                      />
+                    </View>
+                  </View>
                 </View>
               </View>
-              <View style={styles.filedcontext}>
-                <Text style={styles.text}>Mail Order</Text>
-                <View>
-                  <Checkbox
-                    status={mailorder ? 'checked' : 'unchecked'}
-                    onPress={() => {
-                      setmailorder(!mailorder);
-                    }}
-                    color={'#be1d2d'}
-                    uncheckColor={colors.secondary}
-                  />
-                </View>
-              </View>
-              <View style={styles.filedcontext}>
-                <Text style={styles.text}>Long Term Care</Text>
-                <View>
-                  <Checkbox
-                    status={longterm ? 'checked' : 'unchecked'}
-                    onPress={() => {
-                      setlongterm(!longterm);
-                    }}
-                    color={'#be1d2d'}
-                    uncheckColor={colors.secondary}
-                  />
-                </View>
-              </View>
-              <View style={styles.filedcontext}>
-                <Text style={styles.text}>Specialty</Text>
-                <View>
-                  <Checkbox
-                    status={Specialty ? 'checked' : 'unchecked'}
-                    onPress={() => {
-                      setSpecialty(!Specialty);
-                    }}
-                    color={'#be1d2d'}
-                    uncheckColor={colors.secondary}
-                  />
-                </View>
-              </View>
-            </View>
-            </View>:null}
+            ) : null}
             <View style={styles.field}>
-            <View style={styles.btncontainer}>
-            <View style={styles.gap}>
-              <TouchableOpacity>
-                <View style={styles.buttonView}>
-                  <Text style={styles.buttonText}>Search</Text>
+              <View style={styles.btncontainer}>
+                <View style={styles.gap}>
+                  <TouchableOpacity>
+                    <View style={styles.buttonView}>
+                      <Text style={styles.buttonText}>Search</Text>
+                    </View>
+                  </TouchableOpacity>
                 </View>
-              </TouchableOpacity>
+              </View>
             </View>
-          </View>
-            </View>
-           
           </View>
         </View>
       </ScrollView>
@@ -182,7 +186,7 @@ export const ForPharmacy = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor:colors.white
+    backgroundColor: colors.white,
   },
   container2: {
     paddingLeft: sizes.screenWidth * 0.05,
@@ -191,7 +195,7 @@ const styles = StyleSheet.create({
   buttonView: {
     backgroundColor: colors.secondary,
     height: sizes.screenHeight * 0.06,
-    width: sizes.screenWidth * 0.8,
+    width: sizes.screenWidth * 0.93,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -210,8 +214,9 @@ const styles = StyleSheet.create({
   },
   manually: {
     color: colors.black,
-    fontSize: fontSize.large,
+    fontSize: fontSize.medium,
     fontWeight: 'bold',
+    fontFamily: fontFamily.appTextHeading,
   },
   filedcon: {
     marginBottom: deviceHeight * 0.03,
@@ -225,8 +230,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   fultime: {
-    fontSize: fontSize.large,
+    fontSize: fontSize.medium,
     color: colors.black,
+    fontFamily:fontFamily.appTextMedium
+
   },
   filedcontext: {
     marginTop: deviceHeight * 0.03,
@@ -237,18 +244,21 @@ const styles = StyleSheet.create({
     marginBottom: deviceHeight * 0.02,
   },
   text: {
-    fontSize:fontSize.large,
+    fontSize: fontSize.medium,
     color: '#000',
+    fontFamily:fontFamily.appTextMedium
+
   },
-  bg:{
-    marginTop:sizes.screenHeight*0.02,
-    backgroundColor:colors.white
+  bg: {
+    marginTop: sizes.screenHeight * 0.02,
+    backgroundColor: colors.white,
   },
-  filtertext:{
-    fontSize: fontSize.large,
+  filtertext: {
+    fontSize: fontSize.medium,
     color: '#000',
+    fontFamily:fontFamily.appTextMedium
   },
-  field:{
-marginTop:sizes.screenHeight*0.03
-  }
+  field: {
+    marginTop: sizes.screenHeight * 0.03,
+  },
 });
