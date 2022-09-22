@@ -19,10 +19,10 @@ import {colors} from '../../services';
 export default function NoticeOfPrivacy() {
   return (
     <SafeAreaView>
+      <View>
+        <Header dark={true} />
+      </View>
       <ScrollView style={styles.color}>
-        <View>
-          <Header dark={true} />
-        </View>
         <View style={[styles.paddingLeft, styles.paddingBottom]}>
           <Text style={styles.addPaymentText}>
             Weight Loss On Demand Professionals Notice of Privacy Practices

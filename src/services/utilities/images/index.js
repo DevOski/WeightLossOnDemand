@@ -1,4 +1,5 @@
 import icon from '../../../assets/lightIcon.png';
+import icon2 from '../../../assets/icon.png';
 import setting from '../../../assets/setting.png';
 import playIcon from '../../../assets/playIcon.png';
 import bg1 from '../../../assets/bg1.jpeg';
@@ -30,6 +31,7 @@ import call from '../../../assets/call.png';
 
 const images = {
   icon,
+  icon2,
   setting,
   playIcon,
   bg1,

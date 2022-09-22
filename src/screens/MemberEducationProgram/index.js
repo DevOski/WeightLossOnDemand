@@ -19,17 +19,17 @@ import {colors} from '../../services';
 export default function MemberEducationProgram({navigation}) {
   return (
     <SafeAreaView>
-      <ScrollView style={styles.color}>
-        <View>
+       <View>
           <Header dark={true} />
         </View>
-        <View style={styles.paddingLeft}>
+      <ScrollView style={styles.color}>
+        <View style={[styles.padding, styles.height]}>
+          <ScrollView>
+        <View >
           <Text style={[styles.bold, styles.textColor]}>
             Participation in Member Education Program
           </Text>
         </View>
-        <View style={[styles.padding, styles.height]}>
-          <ScrollView>
             <Text style={styles.textColor}>
               By participating in the Member Education Program, you authorize
               Doctor On Demand to share with you information about products and

@@ -13,15 +13,20 @@ export const styles = StyleSheet.create({
   text: {
     color: colors.primary,
     fontSize: fontSize.medium,
+    width: sizes.screenWidth * 0.83,
+    fontFamily: fontFamily.appTextRegular,
   },
   medicalText: {
     fontSize: fontSize.h6,
     color: colors.black,
+    fontFamily: fontFamily.appTextLight,
   },
   medicalText2: {
     fontSize: fontSize.h6,
     color: colors.black,
     width: sizes.screenWidth * 0.7,
+    fontFamily: fontFamily.appTextLight,
+
   },
   row: {
     flexDirection: 'row',
@@ -36,11 +41,14 @@ export const styles = StyleSheet.create({
   head: {
     color: colors.primary,
     fontWeight: 'bold',
+    fontFamily:fontFamily.appTextHeading
   },
   card: {
     backgroundColor: colors.white,
-    padding: sizes.screenHeight * 0.03,
-    marginBottom: sizes.TinyMargin,
+    padding: sizes.screenHeight * 0.01,
+    paddingLeft: sizes.screenHeight * 0.03,
+    paddingRight: sizes.screenHeight * 0.03,
+    // marginBottom: sizes.TinyMargin,
   },
   symbol: {
     color: colors.secondary,

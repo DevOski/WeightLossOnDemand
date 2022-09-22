@@ -16,14 +16,13 @@ import {colors} from '../../services';
 export default function MemberAgreement() {
   return (
     <SafeAreaView>
-      <ScrollView style={styles.color}>
-        <View>
+       <View>
           <Header dark={true} />
         </View>
+      <ScrollView style={styles.color}>
         <View style={[styles.paddingLeft, styles.paddingBottom]}>
           <Text style={styles.addPaymentText}>
-            Weight Loss On Demand {'    '} Professionals Member {'            '}{' '}
-            Services Agreement
+            Weight Loss On Demand Professionals Member Services Agreement
           </Text>
           <View style={styles.paddingTop}>
             <Text style={[styles.bold, styles.textColor]}>
