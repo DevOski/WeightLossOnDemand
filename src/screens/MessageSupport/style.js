@@ -26,8 +26,10 @@ export const styles = StyleSheet.create({
   text: {
     color: colors.disabledText,
     fontSize: fontSize.h6,
-    // fontWeight: '500',
+    fontWeight: '500',
     top: sizes.screenHeight * 0.02,
+    fontFamily: fontFamily.appTextRegular,
+
   },
   heading:{
     color: colors.disabledText,
@@ -46,6 +48,8 @@ export const styles = StyleSheet.create({
   buttonText: {
     color: colors.white,
     fontSize: fontSize.h6,
+    fontFamily: fontFamily.appTextHeading,
+    fontWeight: '600',
   },
   paddingTop: {
     paddingTop: sizes.screenHeight * 0.35,

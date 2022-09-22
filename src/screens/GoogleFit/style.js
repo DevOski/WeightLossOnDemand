@@ -17,6 +17,9 @@ export const styles = StyleSheet.create({
     fontSize: fontSize.h4,
     fontWeight: 'bold',
     color: colors.primary,
+    fontFamily: fontFamily.appTextHeading,
+    padding: sizes.TinyMargin,
+    paddingLeft: sizes.screenWidth * 0.03,
   },
   googleFit: {
     alignSelf: 'center',
@@ -29,6 +32,7 @@ export const styles = StyleSheet.create({
   },
   padding: {
     padding: sizes.baseMargin,
+    paddingLeft:sizes.screenWidth * 0.07
   },
   text: {
     color: colors.primary,
@@ -54,6 +58,7 @@ export const styles = StyleSheet.create({
     fontSize: fontSize.h6,
     fontWeight: 'bold',
     color: colors.secondary,
+    fontFamily: fontFamily.appTextHeading,
   },
   buttonView: {
     alignSelf: 'center',
@@ -66,6 +71,8 @@ export const styles = StyleSheet.create({
   buttonText: {
     color: colors.white,
     fontSize: fontSize.h6,
+    fontFamily: fontFamily.appTextHeading,
+    fontWeight: '600',
   },
   btnTop: {
     paddingTop: sizes.screenHeight * 0.1,
