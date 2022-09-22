@@ -15,7 +15,7 @@ import {styles} from './style';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {colors} from '../../services';
 
-export default function Employer() {
+export default function Employer({navigation}) {
   return (
     <SafeAreaView>
       <ScrollView style={styles.color}>
@@ -29,7 +29,7 @@ export default function Employer() {
           <Ionicons
             name="briefcase-sharp"
             color={colors.disabledBg}
-            size={100}
+            size={80}
           />
           <Text style={styles.text}>
             Many employers help to cover the cost of Weight Loss On Demand Video
@@ -37,7 +37,7 @@ export default function Employer() {
           </Text>
         </View>
         <View style={styles.paddingTop}>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={()=>navigation.navigate("AddEmployer")}>
             <View style={styles.buttonView}>
               <Text style={styles.buttonText}> Add employer</Text>
             </View>

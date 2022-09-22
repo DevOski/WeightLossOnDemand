@@ -77,6 +77,7 @@ import {Whichmedication} from '../../screens/whichmedicationscreen';
 import {whichdrugallergi} from '../../screens/whichdrugallergi';
 import {Whichmedicalconditions} from '../../screens/whichmedicalconditions';
 import {Whichsurgeries} from '../../screens/whichsurgeri';
+import AddEmployer from '../../screens/AddEmployer';
 
 const Stack = createNativeStackNavigator();
 
@@ -186,6 +187,7 @@ export default function MainNavigator() {
         <Stack.Screen name="EditAddress" component={EditAddress} />
         <Stack.Screen name="EnterNewPassword" component={EnterNewPassword} />
         <Stack.Screen name="AddPaymentMethod" component={AddPaymentMethod} />
+        <Stack.Screen name="AddEmployer" component={AddEmployer} />
       </Stack.Navigator>
     </NavigationContainer>
   );
