@@ -21,6 +21,8 @@ export const styles = StyleSheet.create({
   textColor: {
     color: colors.black,
     fontSize: fontSize.large,
+    fontFamily: fontFamily.appTextRegular,
+    
   },
   link: {
     color: colors.link,
@@ -32,7 +34,7 @@ export const styles = StyleSheet.create({
   buttonView: {
     backgroundColor: colors.secondary,
     height: sizes.screenHeight * 0.06,
-    width: sizes.screenWidth * 0.9,
+    width: sizes.screenWidth * 0.92,
     alignItems: 'center',
     justifyContent: 'center',
     alignSelf: 'center',
@@ -41,7 +43,7 @@ export const styles = StyleSheet.create({
   diasbledView: {
     backgroundColor: colors.disabledBg2,
     height: sizes.screenHeight * 0.06,
-    width: sizes.screenWidth * 0.9,
+    width: sizes.screenWidth * 0.92,
     alignItems: 'center',
     justifyContent: 'center',
     alignSelf: 'center',
@@ -50,9 +52,11 @@ export const styles = StyleSheet.create({
   buttonText: {
     color: colors.white,
     fontSize: fontSize.h6,
+    fontFamily: fontFamily.appTextHeading,
+    fontWeight: '600',
   },
   buttonTop: {
     marginTop: sizes.screenHeight * 0.01,
-
+    paddingBottom:sizes.screenWidth * 0.08
   },
 });

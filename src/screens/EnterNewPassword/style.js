@@ -12,21 +12,23 @@ export const styles = StyleSheet.create({
     paddingBottom: sizes.baseMargin,
   },
   addPaymentText: {
-    fontSize: fontSize.h3,
+    fontSize: fontSize.h4,
     fontWeight: 'bold',
     color: colors.primary,
+    fontFamily: fontFamily.appTextHeading,
   },
   text: {
-    fontSize: fontSize.large,
+    fontSize: fontSize.medium,
     color: colors.primary,
-    fontWeight: '300',
+    fontFamily: fontFamily.appTextLight,
   },
   paddingLeft: {
     paddingLeft: sizes.baseMargin,
   },
   field: {
     backgroundColor: colors.lightGray,
-    fontSize: fontSize.extraLarge,
+    fontSize: fontSize.large,
+    fontFamily: fontFamily.appTextRegular,
   },
   padding: {
     padding: sizes.baseMargin,
@@ -35,7 +37,7 @@ export const styles = StyleSheet.create({
     alignSelf: 'center',
     backgroundColor: colors.secondary,
     height: sizes.screenHeight * 0.06,
-    width: sizes.screenWidth * 0.9,
+    width: sizes.screenWidth * 0.92,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -50,7 +52,7 @@ export const styles = StyleSheet.create({
     alignSelf: 'center',
     backgroundColor: colors.disabledBg,
     height: sizes.screenHeight * 0.06,
-    width: sizes.screenWidth * 0.9,
+    width: sizes.screenWidth * 0.92,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -62,13 +64,14 @@ export const styles = StyleSheet.create({
   buttnText: {
     color: colors.secondary,
     fontSize: fontSize.h6,
-    fontWeight: '500',
+    fontFamily: fontFamily.appTextHeading,
+    fontWeight: '600',
   },
   buttonView1: {
     borderWidth: 1,
     borderColor: colors.secondary,
     height: sizes.screenHeight * 0.06,
-    width: sizes.screenWidth * 0.9,
+    width: sizes.screenWidth * 0.92,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -82,7 +85,7 @@ export const styles = StyleSheet.create({
   fontcheck: {
     marginLeft: sizes.screenHeight * 0.02,
     fontSize: fontSize.h6,
-    color: '#000',
-    // fontWeight: '400',
+    color: colors.primary,
+    fontFamily: fontFamily.appTextRegular,
   },
 });

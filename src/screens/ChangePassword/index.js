@@ -29,7 +29,7 @@ export default function ChangePassword({navigation,route}) {
         </View>
         <View style={[styles.paddingLeft]}>
           <Text style={styles.text}>
-            In order to update your password, please verify your current
+            In order to update your {route?.params?.title}, please verify your current
             password.
           </Text>
         </View>
@@ -46,6 +46,7 @@ export default function ChangePassword({navigation,route}) {
               <TextInput.Icon
                 icon={showPassword ? 'eye' : 'eye-off'}
                 onPress={() => setShowPassword(!showPassword)}
+                color={colors.disabledBg2}
               />
             }
           />

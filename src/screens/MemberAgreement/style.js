@@ -24,6 +24,7 @@ export const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: colors.primary,
     textDecorationLine: 'underline',
+    fontFamily: fontFamily.appTextHeading,
   },
   heading: {
     fontSize: fontSize.medium,
@@ -34,6 +35,8 @@ export const styles = StyleSheet.create({
     fontSize: fontSize.h5,
     fontWeight: 'bold',
     color: colors.primary,
+    width: sizes.screenWidth * 0.7,
+    fontFamily: fontFamily.appTextHeading,
   },
   paddingTop: {
     paddingTop: sizes.screenHeight * 0.015,
@@ -49,10 +52,12 @@ export const styles = StyleSheet.create({
     color: colors.black,
     fontSize: fontSize.medium,
     textAlign: 'justify',
+    fontFamily: fontFamily.appTextRegular,
   },
   text: {
     color: colors.black,
     fontSize: fontSize.medium,
+    fontFamily: fontFamily.appTextRegular,
   },
   link: {
     color: colors.link,
@@ -86,7 +91,7 @@ export const styles = StyleSheet.create({
     top: sizes.screenHeight * 0.009,
   },
   paddingBottom2: {
-    paddingBottom: sizes.screenHeight * 0.1,
+    paddingBottom: sizes.screenHeight * 0.15,
   },
   bottom: {
     bottom: sizes.screenHeight * 0.01,

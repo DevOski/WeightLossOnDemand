@@ -14,13 +14,13 @@ export const styles = StyleSheet.create({
     paddingBottom: sizes.baseMargin,
   },
   addPaymentText: {
-    fontSize: fontSize.h3,
+    fontSize: fontSize.h4,
     fontWeight: 'bold',
     color: colors.primary,
   },
   contentView: {
     alignItems: 'center',
-    top: sizes.screenHeight * 0.15,
+    top: sizes.screenHeight * 0.1,
     padding: sizes.baseMargin,
   },
   text: {
@@ -28,6 +28,8 @@ export const styles = StyleSheet.create({
     fontSize: fontSize.h6,
     fontWeight: '500',
     top: sizes.screenHeight * 0.02,
+    fontFamily: fontFamily.appTextRegular,
+
   },
   heading:{
     color: colors.disabledText,
@@ -39,19 +41,23 @@ export const styles = StyleSheet.create({
     alignSelf: 'center',
     backgroundColor: colors.secondary,
     height: sizes.screenHeight * 0.06,
-    width: sizes.screenWidth * 0.9,
+    width: sizes.screenWidth * 0.92,
     alignItems: 'center',
     justifyContent: 'center',
   },
   buttonText: {
     color: colors.white,
     fontSize: fontSize.h6,
+    fontFamily: fontFamily.appTextHeading,
+    fontWeight: '600',
   },
   paddingTop: {
-    paddingTop: sizes.screenHeight * 0.45,
+    paddingTop: sizes.screenHeight * 0.35,
+    paddingBottom:sizes.screenHeight * 0.05
+
   },
   icon:{
-    height:sizes.screenHeight * 0.2,
+    height:sizes.screenHeight * 0.3,
     width:sizes.screenWidth * 0.5
   }
 });

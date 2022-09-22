@@ -31,7 +31,7 @@ export default function ContactSupport({navigation}) {
           <View style={[styles.row, styles.card]}>
             <Octicons name="question" color={colors.secondary} size={30} />
             <View>
-              <Text style={styles.cardText}>{'   '}Credit Card, FSA, HSA</Text>
+              <Text style={styles.cardText}>{'   '}Get Help Qucikly</Text>
               <Text style={styles.faqText}>{'   '}Browse our FAQs</Text>
             </View>
             <View>

@@ -14,9 +14,10 @@ export const styles = StyleSheet.create({
     paddingBottom: sizes.baseMargin,
   },
   addPaymentText: {
-    fontSize: fontSize.h3,
+    fontSize: fontSize.h4,
     fontWeight: 'bold',
     color: colors.primary,
+    fontFamily: fontFamily.appTextHeading,
   },
   row: {
     flexDirection: 'row',
@@ -39,11 +40,13 @@ export const styles = StyleSheet.create({
   head: {
     color: colors.primary,
     fontWeight: 'bold',
+    fontFamily: fontFamily.appTextHeading,
   },
   text: {
     top: sizes.TinyMargin,
     fontSize: fontSize.h6,
     color: colors.secondary,
     fontWeight: 'bold',
+    fontFamily: fontFamily.appTextHeading,
   },
 });
