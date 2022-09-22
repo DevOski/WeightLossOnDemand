@@ -18,13 +18,13 @@ export const styles = StyleSheet.create({
   signOutText: {
     color: colors.white,
     fontSize: fontSize.h6,
-    fontWeight: '300',
+    fontFamily: fontFamily.appTextLight,
   },
   userName: {
     color: colors.white,
     fontSize: fontSize.h6,
     paddingLeft: sizes.baseMargin,
-    fontWeight: '600',
+    fontFamily: fontFamily.appTextMedium,
   },
   left: {
     paddingLeft: sizes.baseMargin,
@@ -38,14 +38,15 @@ export const styles = StyleSheet.create({
   },
   btnText: {
     left: sizes.screenWidth * 0.06,
-    fontSize: fontSize.h6,
+    fontSize: fontSize.medium,
     color: colors.black,
-    // fontWeight:'400'
+    fontFamily: fontFamily.appTextRegular,
   },
   fingerprintText: {
-    right: sizes.screenWidth * 0.04,
-    fontSize: fontSize.h6,
+    right: sizes.screenWidth * 0.07,
+    fontSize: fontSize.medium,
     color: colors.black,
+    fontFamily: fontFamily.appTextRegular,
   },
   top: {
     top: sizes.TinyMargin,
@@ -53,13 +54,18 @@ export const styles = StyleSheet.create({
   head: {
     color: colors.primary,
     fontWeight: 'bold',
+    fontFamily: fontFamily.appTextLight,
+    fontSize: fontSize.medium,
   },
-  version:{
+  version: {
     color: colors.secondary,
-    fontWeight: 'bold',
+    fontWeight: '700',
+    fontFamily: fontFamily.appTextLight,
   },
   redText: {
     color: colors.secondary,
+    left: sizes.screenWidth * 0.008,
+    fontFamily: fontFamily.appTextLight,
   },
   medicalIcon: {
     height: sizes.screenHeight * 0.03,
@@ -69,9 +75,9 @@ export const styles = StyleSheet.create({
   right: {
     alignSelf: 'flex-end',
     paddingRight: sizes.screenWidth * 0.08,
-    paddingBottom:sizes.baseMargin,
+    paddingBottom: sizes.baseMargin,
   },
-  bottom:{
-    paddingBottom:sizes.screenWidth * 0.25
-  }
+  bottom: {
+    paddingBottom: sizes.screenWidth * 0.25,
+  },
 });

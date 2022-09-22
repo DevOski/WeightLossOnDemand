@@ -37,11 +37,13 @@ export const styles = StyleSheet.create({
     color: colors.white,
     left: sizes.screenWidth * 0.05,
     fontSize: fontSize.h6,
+    fontFamily: fontFamily.appTextLight,
   },
   darkTitle: {
     color: colors.primary,
     left: sizes.screenWidth * 0.05,
     fontSize: fontSize.h6,
+    fontFamily: fontFamily.appTextLight,
   },
   skipView: {
     left: sizes.screenHeight * 0.2,
