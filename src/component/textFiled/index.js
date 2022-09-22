@@ -1,15 +1,20 @@
 import React, {useState} from 'react';
-import { TextInput } from 'react-native-paper';
-import {View, StyleSheet, Text, } from 'react-native';
-import { colors } from '../../services';
+import {TextInput} from 'react-native-paper';
+import {View, StyleSheet, Text} from 'react-native';
+import {colors, fontFamily, fontSize} from '../../services';
 
-
- export const CustomTextFiel = ({value,label,setValue,secureTextEntry,right}) => {
-    return (
+export const CustomTextFiel = ({
+  value,
+  label,
+  setValue,
+  secureTextEntry,
+  right,
+}) => {
+  return (
     //   <View style={styles.container}>
     <>
-        <TextInput
-        mode='contain'
+      <TextInput
+        mode="contain"
         //   style={styles.input}
         value={value}
         label={label}
@@ -17,11 +22,12 @@ import { colors } from '../../services';
         autoCapitalize={'none'}
         secureTextEntry={secureTextEntry}
         activeUnderlineColor={colors.secondary}
-        style={{backgroundColor:colors.white,fontSize:20}}
-      
-           
-        />
-        </>
-     
-    );
-  };
+        style={{
+          backgroundColor: colors.white,
+          fontSize: fontSize.large,
+          fontFamily: fontFamily.appTextRegular,
+        }}
+      />
+    </>
+  );
+};

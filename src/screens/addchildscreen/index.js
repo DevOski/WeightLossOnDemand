@@ -13,7 +13,7 @@ import {
 import Header from '../../components/Header';
 import images from '../../services/utilities/images';
 import {CustomTextFiel} from '../../component/textFiled';
-import {colors, sizes, fontSize} from '../../services';
+import {colors, sizes, fontSize, fontFamily} from '../../services';
 import {RadioButton} from 'react-native-paper';
 import Modal from 'react-native-modal';
 import Entypo from 'react-native-vector-icons/Entypo';
@@ -82,59 +82,61 @@ export const ChildScreen = () => {
             />
           </View>
         </View>
-       <View style={{flexDirection:'row',alignItems:'center'}}>
-       <View
-          style={{flexDirection: 'row', paddingTop: sizes.screenHeight * 0.03}}>
+        <View style={{flexDirection: 'row', alignItems: 'center'}}>
           <View
             style={{
               flexDirection: 'row',
-              alignItems: 'center',
-              marginRight: sizes.screenWidth * 0.04,
+              paddingTop: sizes.screenHeight * 0.03,
             }}>
-            <Text style={styles.lstyle}>Male</Text>
-            <RadioButton
-              status={CheckedMale ? 'checked' : 'unchecked'}
-              onPress={() => {
-                setCheckedMale(!CheckedMale);
-              }}
-              color={'#be1d2d'}
-              uncheckColor={colors.secondary}
-            />
+            <View
+              style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+                marginRight: sizes.screenWidth * 0.04,
+              }}>
+              <Text style={styles.lstyle}>Male</Text>
+              <RadioButton
+                status={CheckedMale ? 'checked' : 'unchecked'}
+                onPress={() => {
+                  setCheckedMale(!CheckedMale);
+                }}
+                color={'#be1d2d'}
+                uncheckColor={colors.secondary}
+              />
+            </View>
+            <View
+              style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+                marginRight: sizes.screenWidth * 0.02,
+              }}>
+              <Text style={styles.lstyle}>Female</Text>
+              <RadioButton
+                status={CheckedMale ? 'checked' : 'unchecked'}
+                onPress={() => {
+                  setCheckedMale(!CheckedMale);
+                }}
+                color={'#be1d2d'}
+                uncheckColor={colors.secondary}
+              />
+            </View>
           </View>
-          <View
-            style={{
-              flexDirection: 'row',
-              alignItems: 'center',
-              marginRight: sizes.screenWidth * 0.02,
-            }}>
-            <Text style={styles.lstyle}>Female</Text>
-            <RadioButton
-              status={CheckedMale ? 'checked' : 'unchecked'}
-              onPress={() => {
-                setCheckedMale(!CheckedMale);
-              }}
-              color={'#be1d2d'}
-              uncheckColor={colors.secondary}
-            />
-          </View>
-          
+          <TouchableOpacity onPress={toggleModal}>
+            <View
+              style={{
+                justifyContent: 'center',
+                alignItems: 'center',
+                backgroundColor: colors.lightGray,
+                width: sizes.screenWidth * 0.08,
+                height: sizes.screenHeight * 0.04,
+                borderRadius: sizes.screenWidth * 0.4,
+                bottom: sizes.screenHeight * -0.017,
+              }}>
+              <Text style={styles.lstyle1}>?</Text>
+            </View>
+          </TouchableOpacity>
         </View>
-       <TouchableOpacity onPress={toggleModal}>
-       <View
-            style={{
-              justifyContent: 'center',
-              alignItems: 'center',
-              backgroundColor: colors.lightGray,
-              width: sizes.screenWidth * 0.08,
-              height: sizes.screenHeight * 0.04,
-              borderRadius: sizes.screenWidth * 0.4,
-              bottom:sizes.screenHeight*-0.017
-            }}>
-            <Text style={styles.lstyle1}>?</Text>
-          </View>
-       </TouchableOpacity>
-       </View>
-        
+
         <View
           style={{
             flexDirection: 'row',
@@ -150,7 +152,7 @@ export const ChildScreen = () => {
               paddingRight: sizes.screenWidth * 0.1,
             }}>
             <Text style={styles.lstylem}>
-              Note :By continuing,I agree that I am legally authorized to make
+              Note: By continuing, I agree that I am legally authorized to make
               medical decisions for this individual
             </Text>
           </View>
@@ -163,34 +165,46 @@ export const ChildScreen = () => {
           </TouchableOpacity>
         </View>
       </View>
-      <Modal style={{width:sizes.screenWidth,height:sizes.screenHeight,backgroundColor: 'rgba(52, 52, 52, 0.8)',marginLeft:sizes.screenWidth*0.01,padding:10}}  isVisible={isModalVisible}>
-         <TouchableOpacity onPress={toggleModal}>
-         <View style={{position:'relative',bottom:sizes.screenHeight*0.25,left:sizes.screenWidth*0.85}}>
-          <Entypo
-                    name="cross"
-                    color={colors.secondary}
-                    size={30}
-                  />
+      <Modal
+        style={{
+          width: sizes.screenWidth,
+          height: sizes.screenHeight,
+          backgroundColor: 'rgba(52, 52, 52, 0.8)',
+          marginLeft: sizes.screenWidth * 0.01,
+          padding: 10,
+        }}
+        isVisible={isModalVisible}>
+        <TouchableOpacity onPress={toggleModal}>
+          <View
+            style={{
+              position: 'relative',
+              bottom: sizes.screenHeight * 0.25,
+              left: sizes.screenWidth * 0.85,
+            }}>
+            <Entypo name="cross" color={colors.secondary} size={30} />
           </View>
-         </TouchableOpacity>
-          
-           <View style={styles.texcon}>
-            <Text style={styles.text111}>Why we ask</Text>
-           </View>
-           <View style={styles.texcon1}>
-            <Text style={styles.text1}>weight loss on Deman is accepting of all gender identities.however in order to use your insurance coverage or for your provider to prescribe medication,you need to specify your chlds sex as either Male or Female</Text>
-           </View>
+        </TouchableOpacity>
 
-           <View style={styles.buttnView}>
+        <View style={styles.texcon}>
+          <Text style={styles.text111}>Why we ask</Text>
+        </View>
+        <View style={styles.texcon1}>
+          <Text style={styles.text1}>
+            Weight Loss on Demand is accepting of all gender identities.however
+            in order to use your insurance coverage or for your provider to
+            prescribe medication,you need to specify your chlds sex as either
+            Male or Female
+          </Text>
+        </View>
+
+        <View style={styles.buttnView}>
           <TouchableOpacity onPress={toggleModal}>
             <View style={styles.buttonView}>
               <Text style={styles.buttonText}>Done</Text>
             </View>
           </TouchableOpacity>
         </View>
-       
-
-          </Modal>
+      </Modal>
     </SafeAreaView>
   );
 };
@@ -206,12 +220,16 @@ const styles = StyleSheet.create({
     fontSize: fontSize.h4,
     color: colors.black,
     fontWeight: 'bold',
+    fontStyle: fontFamily.appTextHeading,
   },
   lstyle: {
-    fontSize: fontSize.h5,
+    fontSize: fontSize.h6,
+    left: sizes.TinyMargin,
     color: colors.black,
+    fontFamily: fontFamily.appTextRegular,
     fontWeight: '400',
     lineHeight: sizes.screenHeight * 0.05,
+    paddingRight: sizes.screenWidth * 0.03,
   },
   lstyle1: {
     fontSize: fontSize.h5,
@@ -228,13 +246,16 @@ const styles = StyleSheet.create({
   },
   lstyle2: {
     fontSize: fontSize.large,
-    color: colors.black,
+    color: colors.white,
     fontWeight: '400',
+    fontStyle: fontFamily.appTextRegular,
   },
   lstylem: {
-    fontSize: fontSize.large,
+    fontSize: fontSize.medium,
     color: colors.black,
     fontWeight: '400',
+    fontStyle: fontFamily.appTextRegular,
+    right: sizes.screenWidth * 0.03,
   },
   buttonView: {
     backgroundColor: colors.secondary,
@@ -246,6 +267,8 @@ const styles = StyleSheet.create({
   buttonText: {
     color: colors.white,
     fontSize: fontSize.h6,
+    fontFamily: fontFamily.appTextHeading,
+    fontWeight: '600',
   },
   buttnView: {
     // marginRight: sizes.screenWidth * 0.05,
@@ -260,21 +283,22 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  text111:{
-    fontSize:fontSize.h4,
-    color:colors.white,
-    fontWeight:"bold"
+  text111: {
+    fontSize: fontSize.h4,
+    color: colors.white,
+    fontWeight: 'bold',
+    fontFamily: fontFamily.appTextRegular,
   },
-  texcon:{
-    bottom:sizes.screenHeight*0.1
+  texcon: {
+    bottom: sizes.screenHeight * 0.1,
   },
-  texcon1:{
-    bottom:sizes.screenHeight*0.08
+  texcon1: {
+    bottom: sizes.screenHeight * 0.08,
   },
-  text1:{
-    fontSize:fontSize.large,
-    color:colors.white,
-    fontWeight:"bold"
+  text1: {
+    fontSize: fontSize.large,
+    color: colors.white,
+    fontFamily: fontFamily.appTextLight,
+
   },
-  
 });

@@ -15,7 +15,7 @@ import {
 } from 'react-native';
 import {RadioButton} from 'react-native-paper';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import {colors, fontSize, sizes} from '../../services';
+import {colors, fontFamily, fontSize, sizes} from '../../services';
 import {CustomTextFiel} from '../../component/textFiled';
 const BasicInfoScreen = ({navigation}) => {
   const [CheckedMale, setCheckedMale] = React.useState();
@@ -122,7 +122,7 @@ const BasicInfoScreen = ({navigation}) => {
                   onPress={toogle}
                 />
                 {show ? (
-                  <View style={styles.pap}>
+                  <View style={[styles.pap, styles.right]}>
                     <Text
                       style={styles.lstyle}
                       onPress={() => {
@@ -180,9 +180,7 @@ const BasicInfoScreen = ({navigation}) => {
             <Text style={styles.lstyle}>GENDER</Text>
           </View>
           <View style={styles.gcon}>
-            <View
-             style={styles.ro}
-             >
+            <View style={styles.ro}>
               <Text style={styles.lstyle}>Male</Text>
               <RadioButton
                 status={CheckedMale ? 'checked' : 'unchecked'}
@@ -204,9 +202,7 @@ const BasicInfoScreen = ({navigation}) => {
                 uncheckColor={colors.secondary}
               />
             </View>
-            <View
-             style={styles.ro}
-             >
+            <View style={styles.ro}>
               <Text style={styles.lstyle}>Other</Text>
               <RadioButton
                 status={CheckedOther ? 'checked' : 'unchecked'}
@@ -219,15 +215,14 @@ const BasicInfoScreen = ({navigation}) => {
             </View>
           </View>
           <View style={styles.termspayra}>
-            <View style={styles.r} >
+            <View style={styles.r}>
               <Text style={styles.tremtext}>
                 By providing your Mobile number,you give us permission to
                 contact you via text,
-               
               </Text>
               <TouchableOpacity>
-                  <Text style={styles.tremtextbutt}>View terms.</Text>
-                </TouchableOpacity>
+                <Text style={styles.tremtextbutt}>View terms.</Text>
+              </TouchableOpacity>
             </View>
           </View>
           <View style={styles.buttocon}>
@@ -254,8 +249,8 @@ const styles = StyleSheet.create({
     padding: sizes.screenWidth * 0.04,
   },
   basicinfo: {
-    right: sizes.screenWidth * 0.03,
-    fontSize: fontSize.h2,
+    right: sizes.screenWidth * 0.02,
+    fontSize: fontSize.h4,
     fontWeight: '700',
     color: colors.black,
   },
@@ -269,7 +264,7 @@ const styles = StyleSheet.create({
     paddingBottom: sizes.screenHeight * 0.03,
   },
   spayrainfo: {
-    paddingBottom: sizes.screenHeight * 0.05,
+    // paddingBottom: sizes.screenHeight * 0.05,
   },
   filedcon: {
     marginBottom: deviceHeight * 0.03,
@@ -309,10 +304,14 @@ const styles = StyleSheet.create({
     backgroundColor: colors.white,
   },
   lstyle: {
-    fontSize: fontSize.h5,
+    fontSize: fontSize.h6,
     color: colors.black,
     fontWeight: '400',
     lineHeight: sizes.screenHeight * 0.05,
+    fontFamily: fontFamily.appTextMedium,
+  },
+  right: {
+    left: sizes.screenWidth * 0.1,
   },
   expndbuttoncontainer: {
     justifyContent: 'center',
@@ -335,13 +334,16 @@ const styles = StyleSheet.create({
   },
   tremtext: {
     fontSize: fontSize.large,
+    fontFamily: fontFamily.appTextRegular,
   },
   tremtextbutt: {
- position:'relative',
- top:sizes.screenHeight*0.03,
- right:sizes.screenWidth*0.18, 
-    fontSize: fontSize.regular,
+    position: 'relative',
+    top: sizes.screenHeight * 0.03,
+    right: sizes.screenWidth * 0.18,
+    fontSize: fontSize.medium,
     color: colors.secondary,
+    fontFamily: fontFamily.appTextLight,
+    fontWeight: '700',
   },
   buttocon: {
     paddingTop: sizes.screenHeight * 0.05,
@@ -349,17 +351,17 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   buttoconSTYLE: {
-    paddingTop: sizes.screenHeight * 0.02,
-    paddingBottom: sizes.screenHeight * 0.02,
-    width: sizes.screenWidth * 0.9,
-    heigh: sizes.screenHeight * 0.99,
+    width: sizes.screenWidth * 0.93,
+    height: sizes.screenHeight * 0.06,
     backgroundColor: colors.secondary,
     justifyContent: 'center',
     alignItems: 'center',
   },
   continue: {
     color: colors.white,
-    fontSize: fontSize.h5,
+    fontSize: fontSize.h6,
+    fontFamily: fontFamily.appTextHeading,
+    fontWeight: '600',
   },
   ro: {
     flexDirection: 'row',
@@ -367,7 +369,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     padding: sizes.screenWidth * 0.01,
   },
-  r:{
-    flexDirection:'row',
-  }
+  r: {
+    flexDirection: 'row',
+  },
 });
