@@ -86,6 +86,8 @@ export default function MainNavigator() {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{headerShown: false}}>
+        <Stack.Screen name="Setting" component={Setting} />
+
         <Stack.Screen name="Introsliderscreen" component={Intro} />
 
         <Stack.Screen name="whichsurgeri" component={Whichsurgeries} />
@@ -126,7 +128,6 @@ export default function MainNavigator() {
         <Stack.Screen name="otherreasonscreen" component={OtherReason} />
         <Stack.Screen name="reasonVisit" component={ReasonForDcoctor} />
         <Stack.Screen name="BottomNavs" component={MyTabs} />
-        <Stack.Screen name="Setting" component={Setting} />
 
         <Stack.Screen
           name="membershiptermscreens"

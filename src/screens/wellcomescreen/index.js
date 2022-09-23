@@ -175,6 +175,8 @@ const styles = StyleSheet.create({
     color: colors.primary,
     fontSize: fontSize.h6,
     fontWeight: 'bold',
+    fontFamily: fontFamily.appTextRegular,
+
   },
   faqText: {
     color: colors.secondary,
