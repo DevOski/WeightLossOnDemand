@@ -78,6 +78,7 @@ import {whichdrugallergi} from '../../screens/whichdrugallergi';
 import {Whichmedicalconditions} from '../../screens/whichmedicalconditions';
 import {Whichsurgeries} from '../../screens/whichsurgeri';
 import AddEmployer from '../../screens/AddEmployer';
+import FAQs from '../../screens/FAQs';
 
 const Stack = createNativeStackNavigator();
 
@@ -86,9 +87,9 @@ export default function MainNavigator() {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{headerShown: false}}>
-        <Stack.Screen name="Setting" component={Setting} />
 
         <Stack.Screen name="Introsliderscreen" component={Intro} />
+        <Stack.Screen name="Setting" component={Setting} />
 
         <Stack.Screen name="whichsurgeri" component={Whichsurgeries} />
         <Stack.Screen
@@ -189,6 +190,7 @@ export default function MainNavigator() {
         <Stack.Screen name="EnterNewPassword" component={EnterNewPassword} />
         <Stack.Screen name="AddPaymentMethod" component={AddPaymentMethod} />
         <Stack.Screen name="AddEmployer" component={AddEmployer} />
+        <Stack.Screen name="FAQs" component={FAQs} />
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -82,7 +82,7 @@ export default function HowItWorks({navigation}) {
                 </View>
               </View>
             </TouchableOpacity>
-            <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate('FAQs')}>
               <View style={[styles.row, styles.card]}>
                 <Text style={styles.cardText}>FAQs</Text>
                 <View>
