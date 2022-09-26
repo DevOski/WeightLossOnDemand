@@ -19,7 +19,7 @@ import Header from '../../components/Header';
 export default function SoreThroat() {
   return (
     <SafeAreaView>
-      <Header title={'Alleriges'} />
+      <Header title={'Sore Throat'} />
       <ScrollView style={styles.color}>
         <View style={styles.padding}>
           <Image source={images.soreThroat} style={styles.image} />

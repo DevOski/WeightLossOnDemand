@@ -21,7 +21,7 @@ import Entypo from 'react-native-vector-icons/Entypo';
 export default function ColdAndFlu() {
   return (
     <SafeAreaView>
-      <Header title={'Cold&Flu'} />
+      <Header title={'Cold & Flu'} />
       <ScrollView style={styles.color}>
         <View style={styles.padding}>
           <Image source={images.coldAndFlu} style={styles.image} />

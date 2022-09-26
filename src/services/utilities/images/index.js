@@ -32,6 +32,7 @@ import medical from '../../../assets/medical.jpeg';
 import allergies from '../../../assets/allergies.jpeg';
 import coldAndFlu from '../../../assets/coldAndFlu.jpeg';
 import soreThroat from '../../../assets/soreThroat.jpeg';
+import utis from '../../../assets/utis.jpeg';
 
 const images = {
   icon,
@@ -68,5 +69,6 @@ const images = {
   allergies,
   coldAndFlu,
   soreThroat,
+  utis
 };
 export default images;
