@@ -21,16 +21,14 @@ export const styles = StyleSheet.create({
     fontSize: fontSize.h5,
     fontWeight: '500',
     fontFamily: fontFamily.appTextMedium,
-
   },
   textColor: {
     color: colors.primary,
     fontWeight: '300',
     fontFamily: fontFamily.appTextLight,
-    lineHeight:20
-
+    lineHeight: 20,
   },
-  paddingBottom:{
-    paddingBottom:sizes.screenHeight * 0.13
-  }
+  paddingBottom: {
+    paddingBottom: sizes.screenHeight * 0.13,
+  },
 });
