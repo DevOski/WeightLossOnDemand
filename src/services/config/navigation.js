@@ -83,6 +83,7 @@ import Medical from '../../screens/Medical';
 import WhatDoWeTreat from '../../screens/WhatDoWeTreat';
 import Allergies from '../../screens/Allergies';
 import ColdAndFlu from '../../screens/ColdAndFlu';
+import SoreThroat from '../../screens/SoreThroat';
 
 const Stack = createNativeStackNavigator();
 
@@ -198,6 +199,7 @@ export default function MainNavigator() {
         <Stack.Screen name="WhatDoWeTreat" component={WhatDoWeTreat} />
         <Stack.Screen name="Allergies" component={Allergies} />
         <Stack.Screen name="ColdAndFlu" component={ColdAndFlu} />
+        <Stack.Screen name="SoreThroat" component={SoreThroat} />
       </Stack.Navigator>
     </NavigationContainer>
   );
