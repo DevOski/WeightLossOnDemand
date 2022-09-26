@@ -30,6 +30,7 @@ import messageIcon from '../../../assets/messageIcon.png';
 import call from '../../../assets/call.png';
 import medical from '../../../assets/medical.jpeg';
 import allergies from '../../../assets/allergies.jpeg';
+import coldAndFlu from '../../../assets/coldAndFlu.jpeg';
 
 const images = {
   icon,
@@ -63,6 +64,7 @@ const images = {
   messageIcon,
   call,
   medical,
-  allergies
+  allergies,
+  coldAndFlu,
 };
 export default images;

@@ -18,17 +18,37 @@ export const styles = StyleSheet.create({
   },
   heading: {
     color: colors.primary,
-    fontSize: fontSize.h5,
+    fontSize: fontSize.medium,
     fontWeight: '500',
     fontFamily: fontFamily.appTextMedium,
-
   },
   textColor: {
     color: colors.primary,
     fontWeight: '300',
     fontFamily: fontFamily.appTextLight,
   },
-  paddingBottom:{
-    paddingBottom:sizes.screenHeight * 0.13
-  }
+  paddingBottom: {
+    paddingBottom: sizes.screenHeight * 0.13,
+  },
+  paddingBottom2: {
+    paddingBottom: sizes.screenHeight * 0.02,
+  },
+  paddingTop: {
+    paddingTop: sizes.screenHeight * 0.02,
+  },
+  row: {
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    // justifyContent: 'space-around',
+  },
+  text: {
+    color: colors.primary,
+    fontSize: fontSize.medium,
+    fontFamily: fontFamily.appTextLight,
+    width: sizes.screenWidth * 0.85,
+    top: 2,
+  },
+  paddingTop2: {
+    paddingTop: sizes.screenHeight * 0.005,
+  },
 });
