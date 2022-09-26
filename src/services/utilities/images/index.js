@@ -36,6 +36,7 @@ import utis from '../../../assets/utis.jpeg';
 import travel from '../../../assets/travel.jpeg';
 import sportInjuries from '../../../assets/sportInjuries.jpeg';
 import skinIssues from '../../../assets/skinIssues.jpeg';
+import diarrhea from '../../../assets/diarrhea.jpeg';
 
 const images = {
   icon,
@@ -75,6 +76,7 @@ const images = {
   utis,
   travel,
   sportInjuries,
-  skinIssues
+  skinIssues,
+  diarrhea,
 };
 export default images;
