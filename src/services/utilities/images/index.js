@@ -37,6 +37,7 @@ import travel from '../../../assets/travel.jpeg';
 import sportInjuries from '../../../assets/sportInjuries.jpeg';
 import skinIssues from '../../../assets/skinIssues.jpeg';
 import diarrhea from '../../../assets/diarrhea.jpeg';
+import eyeConditions from '../../../assets/eyeConditions.jpeg';
 
 const images = {
   icon,
@@ -78,5 +79,6 @@ const images = {
   sportInjuries,
   skinIssues,
   diarrhea,
+  eyeConditions
 };
 export default images;

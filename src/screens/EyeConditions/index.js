@@ -25,7 +25,7 @@ export default function EyeConditions() {
       <Header title={'Eye Conditions'} />
       <ScrollView style={styles.color}>
         <View style={styles.padding}>
-          <Image source={images.diarrhea} style={styles.image} />
+          <Image source={images.eyeConditions} style={styles.image} />
         </View>
         <View style={styles.padding}>
           <Text style={styles.heading}>Eye Conditions</Text>
