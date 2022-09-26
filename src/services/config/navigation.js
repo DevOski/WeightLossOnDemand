@@ -92,6 +92,7 @@ import Diarrhea from '../../screens/Diarrhea';
 import EyeConditions from '../../screens/EyeConditions';
 import WhatWeDontTreat from '../../screens/WhatWeDontTreat';
 import HealthVisits from '../../screens/HealthVisits';
+import Documents from '../../screens/Documents';
 
 const Stack = createNativeStackNavigator();
 
@@ -216,6 +217,8 @@ export default function MainNavigator() {
         <Stack.Screen name="EyeConditions" component={EyeConditions} />
         <Stack.Screen name="WhatWeDontTreat" component={WhatWeDontTreat} />
         <Stack.Screen name="HealthVisits" component={HealthVisits} />
+        <Stack.Screen name="Documents" component={Documents} />
+        
         
       </Stack.Navigator>
     </NavigationContainer>
