@@ -18,7 +18,7 @@ export const styles = StyleSheet.create({
   },
   heading: {
     color: colors.primary,
-    fontSize: fontSize.medium,
+    fontSize: fontSize.h5,
     fontWeight: '500',
     fontFamily: fontFamily.appTextMedium,
   },
@@ -26,34 +26,9 @@ export const styles = StyleSheet.create({
     color: colors.primary,
     fontWeight: '300',
     fontFamily: fontFamily.appTextLight,
-    lineHeight:20
-  
+    lineHeight: 20,
   },
-
   paddingBottom: {
     paddingBottom: sizes.screenHeight * 0.13,
-  },
-  paddingBottom2: {
-    paddingBottom: sizes.screenHeight * 0.02,
-  },
-  paddingTop: {
-    paddingTop: sizes.screenHeight * 0.02,
-  },
-  row: {
-    flexDirection: 'row',
-    alignItems: 'flex-start',
-    // justifyContent: 'space-around',
-  },
-  text: {
-    color: colors.primary,
-    fontSize: fontSize.medium,
-    fontFamily: fontFamily.appTextLight,
-    width: sizes.screenWidth * 0.85,
-    top: 2,
-    lineHeight:20
-
-  },
-  paddingTop2: {
-    paddingTop: sizes.screenHeight * 0.005,
   },
 });

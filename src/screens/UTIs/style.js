@@ -27,6 +27,7 @@ export const styles = StyleSheet.create({
     color: colors.primary,
     fontWeight: '300',
     fontFamily: fontFamily.appTextLight,
+    lineHeight:20
   },
   paddingBottom:{
     paddingBottom:sizes.screenHeight * 0.13
