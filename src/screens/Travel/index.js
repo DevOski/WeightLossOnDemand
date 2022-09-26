@@ -31,9 +31,9 @@ export default function Travel() {
           <Text style={styles.textColor}>
             Travel is exciting: new places, new foods, new experiences.
             Unfortunately, travel can also bring with it exposure to pathogens,
-            germs and overall stress on your body. Doctor on Demand can assist
+            germs and overall stress on your body. Weight Loss on Demand can assist
             in all stages of travel. Whether you are about to travel, are
-            currently traveling or have just returned from a trip, Doctor on
+            currently traveling or have just returned from a trip, Weight Loss on
             Demand Video Visits are available wherever you have internet access,
             which can be very assuring!
           </Text>
@@ -60,7 +60,7 @@ export default function Travel() {
           </View>
           <View style={[styles.paddingTop2]}>
             <Text style={styles.textColor}>
-              Doctor On Demand is available everywhere domestically by
+              Weight Loss On Demand is available everywhere domestically by
               smartphone, tablet or computer, and if traveling internationally,
               you can connect with a physician from anywhere you have internet
               access. Imagine you're away from home, you don't know local
@@ -68,7 +68,7 @@ export default function Travel() {
               Video Visit. Our doctor's can tell you whether your condition
               requires urgent care, if you can wait to be treated or if it's
               something that needs to run its course. While they cannot
-              prescribe medications internationally, the physicians at Doctor On
+              prescribe medications internationally, the physicians at Weight Loss On
               Demand Professionals can diagnose your condition, suggest
               medications that may be available where you are, share
               non-prescription remedies, inform you of medical treatments to
@@ -83,7 +83,7 @@ export default function Travel() {
           <View style={[styles.paddingTop2,styles.paddingBottom]}>
             <Text style={styles.textColor}>
               To effectively diagnose and treat post-travel conditions, the
-              physicians at Doctor On Demand Professionals can ask about your
+              physicians at Weight Loss On Demand Professionals can ask about your
               travel history, review your history and perform an examination,
               combine that with accepted medical knowledge of triggers common to
               those regions, and help determine and coordinate any necessary

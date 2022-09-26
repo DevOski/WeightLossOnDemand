@@ -38,7 +38,7 @@ export default function SoreThroat() {
         </View>
         <View style={styles.padding}>
           <Text style={styles.textColor}>
-            The doctors at Doctor On Demand Professionals are trained to
+            The doctors at Weight Loss On Demand Professionals are trained to
             evaluate your symptoms and, depending on the clinical circumstances,
             diagnose and treat the various causes of a sore throat specifically
             through a Video Visit. You can make your visit more efficient by
@@ -74,7 +74,7 @@ export default function SoreThroat() {
         </View>
         <View style={[styles.padding, styles.paddingBottom]}>
           <Text style={styles.textColor}>
-            During Video Visits, Doctor On Demand physicians also examine
+            During Video Visits, Weight Loss On Demand physicians also examine
             patients. For example, the physician can use the video and high
             resolution camera on your phone to look deep inside a patient's
             mouth. Depending on the clinical circumstances, doctors are able to

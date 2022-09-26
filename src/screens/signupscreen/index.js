@@ -113,7 +113,7 @@ export const SignUp = ({navigation}) => {
               uncheckColor={colors.secondary}
             />
             <View style={styles.ddemand}>
-              <Text style={styles.text}>I agree to the Doctor On Demands</Text>
+              <Text style={styles.text}>I agree to the Weight Loss On Demands</Text>
               <TouchableOpacity
                 onPress={() => navigation.navigate('membershiptermscreens')}>
                 <Text style={styles.text1}>Membership Terms</Text>

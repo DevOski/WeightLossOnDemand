@@ -38,7 +38,7 @@ export default function HealthInfoAgreement({navigation}) {
             <Text style={styles.textColor}>
               Your personal health information will not be shared with anyone
               except with your permission or as permitted by applicable law. By
-              selecting "I Accept", you permit Doctor on Demand and the health
+              selecting "I Accept", you permit Weight Loss On Demand and the health
               care professionals you interact with through the Site to disclose
               your health information to other health professionals for purposes
               relating to your treatment, including information relating to

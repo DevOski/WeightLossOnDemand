@@ -128,12 +128,12 @@ export default function FAQs() {
           </View>
           <View style={[styles.marginTop2, styles.paddingLeft]}>
             <Text style={[styles.light, styles.footerText]}>
-              The telemedicine services made available through Doctor On Demand
+              The telemedicine services made available through Weight Loss On Demand
               are provided by licensed physicians practicing within a group of
               independently owned professional practices collectively known as
-              “Doctor On Demand Professionals”. These professional practices
-              provide services via the Doctor On Demand telehealth platform.
-              Doctor On Demand, Inc. does not itself provide any physician,
+              Weight Loss On Demand Professionals”. These professional practices
+              provide services via the Weight Loss On Demand telehealth platform.
+              Weight Loss On Demand, Inc. does not itself provide any physician,
               mental health or other healthcare provider services.
             </Text>
           </View>

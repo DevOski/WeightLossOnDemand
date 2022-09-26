@@ -30,9 +30,9 @@ export default function UTIs() {
         <View style={styles.padding}>
           <Text style={styles.textColor}>
             Urinary tract infections (UTIs) are a very common condition. In
-            fact, more often than not, when patients call Doctor On Demand they
-            have already experienced the symptoms and have been diagnosed with
-            this condition before.
+            fact, more often than not, when patients call Weight Loss On Demand
+            they have already experienced the symptoms and have been diagnosed
+            with this condition before.
           </Text>
         </View>
         <View style={styles.padding}>

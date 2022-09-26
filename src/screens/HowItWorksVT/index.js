@@ -41,7 +41,7 @@ export default function HowItWorksVT() {
           <View style={styles.paddingTop}>
             <Text style={[styles.textColor, styles.italic]}>
               [The video now shows short conversations of patients interacting
-              with Doctor On Demand providers through their phone,iPad, or other
+              with Weight Loss On Demand providers through their phone,iPad, or other
               tablet. All members are speaking with doctors through a video
               call].
             </Text>
@@ -197,7 +197,7 @@ export default function HowItWorksVT() {
           <View style={styles.paddingTop}>
             <Text style={styles.textColor}>
               <Text style={styles.bold}>Weight Loss On Demand Provider: </Text>
-              Thanks for calling Doctor On Demand. Have a good day!
+              Thanks for calling Weight Loss On Demand. Have a good day!
             </Text>
           </View>
         </View>

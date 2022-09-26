@@ -38,14 +38,14 @@ export const Employerhelp = ({navigation}) => {
         <View style={styles.payra}>
           <View>
             <Text style={styles.tex}>
-              Does your employer help cover Doctor on Demand visits?
+              Does your employer help cover Weight Loss on Demand visits?
             </Text>
           </View>
         </View>
         <View style={styles.payra2}>
           <View>
             <Text style={styles.tex1}>
-              400+ employers partner directly with Doctor on Demand to provide
+              400+ employers partner directly with Weight Loss on Demand to provide
               benefits to their employess
             </Text>
           </View>
