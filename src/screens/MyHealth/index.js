@@ -23,7 +23,7 @@ export default function MyHealth({navigation}) {
         </View>
         <View style={styles.padding}>
           <TouchableOpacity 
-          // onPress={() => navigation.navigate('Allergies')}
+          onPress={() => navigation.navigate('HealthVisits')}
           >
             <View style={[styles.row, styles.card]}>
               <Text style={styles.cardText}>Visits</Text>
