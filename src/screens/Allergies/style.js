@@ -7,33 +7,26 @@ export const styles = StyleSheet.create({
     backgroundColor: '#fafafa',
     height: sizes.screenHeight,
   },
-  image: {
-    width: sizes.screenWidth * 0.92,
-    height: sizes.screenHeight * 0.3,
-    alignSelf: 'center',
-    borderRadius: sizes.cardRadius,
-  },
   padding: {
     padding: sizes.baseMargin,
+  },
+  image: {
+    width: sizes.screenWidth * 0.9,
+    height: sizes.screenHeight * 0.27,
+    alignSelf: 'center',
+    borderRadius: sizes.cardRadius,
   },
   heading: {
     color: colors.primary,
     fontSize: fontSize.h5,
     fontWeight: '500',
-    fontFamily: fontFamily.appTextHeading,
   },
   textColor: {
     color: colors.primary,
     fontWeight: '300',
     fontFamily: fontFamily.appTextLight,
   },
-  subHeading: {
-    color: colors.primary,
-    fontSize: fontSize.medium,
-    fontWeight: '500',
-    fontFamily: fontFamily.appTextHeading,
-  },
-  paddingBottom: {
-    paddingBottom: sizes.screenHeight * 0.15,
-  },
+  paddingBottom:{
+    paddingBottom:sizes.screenHeight * 0.13
+  }
 });

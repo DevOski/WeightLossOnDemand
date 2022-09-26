@@ -11,21 +11,18 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import GetCare from '../../components/GetCare';
 import images from '../../services/utilities/images';
 import {styles} from './style';
 import {WebView} from 'react-native-webview';
 import {colors} from '../../services';
 import Header from '../../components/Header';
-export default function WhatDoWeTreat() {
+export default function WhatDoWeTreat({navigation}) {
   return (
     <SafeAreaView>
       <Header title={'What Do We Treat'} />
       <ScrollView style={styles.color}>
         <View style={styles.padding}>
-          <TouchableOpacity
-          //   onPress={() => navigation.navigate('WhatDoWeTreat')}
-          >
+          <TouchableOpacity onPress={() => navigation.navigate('Allergies')}>
             <View style={[styles.row, styles.card]}>
               <Text style={styles.cardText}>Allergies</Text>
               <View>

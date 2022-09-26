@@ -29,6 +29,7 @@ import visit from '../../../assets/visit.png';
 import messageIcon from '../../../assets/messageIcon.png';
 import call from '../../../assets/call.png';
 import medical from '../../../assets/medical.jpeg';
+import allergies from '../../../assets/allergies.jpeg';
 
 const images = {
   icon,
@@ -61,6 +62,7 @@ const images = {
   visit,
   messageIcon,
   call,
-  medical
+  medical,
+  allergies
 };
 export default images;

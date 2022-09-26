@@ -81,6 +81,7 @@ import AddEmployer from '../../screens/AddEmployer';
 import FAQs from '../../screens/FAQs';
 import Medical from '../../screens/Medical';
 import WhatDoWeTreat from '../../screens/WhatDoWeTreat';
+import Allergies from '../../screens/Allergies';
 
 const Stack = createNativeStackNavigator();
 
@@ -194,6 +195,7 @@ export default function MainNavigator() {
         <Stack.Screen name="FAQs" component={FAQs} />
         <Stack.Screen name="Medical" component={Medical} />
         <Stack.Screen name="WhatDoWeTreat" component={WhatDoWeTreat} />
+        <Stack.Screen name="Allergies" component={Allergies} />
       </Stack.Navigator>
     </NavigationContainer>
   );
