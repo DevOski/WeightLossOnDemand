@@ -16,9 +16,15 @@ export const styles = StyleSheet.create({
     alignSelf: 'center',
     borderRadius: sizes.cardRadius,
   },
-  heading: {
+  heading2: {
     color: colors.primary,
     fontSize: fontSize.medium,
+    fontWeight: '500',
+    fontFamily: fontFamily.appTextMedium,
+  },
+  heading:{
+    color: colors.primary,
+    fontSize: fontSize.h5,
     fontWeight: '500',
     fontFamily: fontFamily.appTextMedium,
   },

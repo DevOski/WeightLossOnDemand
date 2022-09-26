@@ -109,7 +109,7 @@ export default function WhatDoWeTreat({navigation}) {
             </View>
           </TouchableOpacity>
           <TouchableOpacity
-          //   onPress={() => navigation.navigate('WhatDoWeTreat')}
+            onPress={() => navigation.navigate('WhatWeDontTreat')}
           >
             <View style={[styles.row, styles.card]}>
               <Text style={styles.cardText}>What we don't treat</Text>
