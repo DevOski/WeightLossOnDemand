@@ -38,8 +38,10 @@ import sportInjuries from '../../../assets/sportInjuries.jpeg';
 import skinIssues from '../../../assets/skinIssues.jpeg';
 import diarrhea from '../../../assets/diarrhea.jpeg';
 import eyeConditions from '../../../assets/eyeConditions.jpeg';
+import labTest from '../../../assets/labTest.png';
 
 const images = {
+  labTest,
   icon,
   icon2,
   setting,
@@ -79,6 +81,6 @@ const images = {
   sportInjuries,
   skinIssues,
   diarrhea,
-  eyeConditions
+  eyeConditions,
 };
 export default images;
