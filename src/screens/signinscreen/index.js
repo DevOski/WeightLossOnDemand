@@ -62,7 +62,10 @@ export const SignIn = ({navigation}) => {
             </View>
           </View>
           <View style={styles.filedcon}>
-            <Text style={styles.forgotpass}>I forgot my Password</Text>
+            <TouchableOpacity
+              onPress={() => navigation.navigate('RecoverPassword')}>
+              <Text style={styles.forgotpass}>I forgot my Password</Text>
+            </TouchableOpacity>
           </View>
           <View style={{justifyContent: 'center', alignItems: 'center'}}>
             <View style={styles.filedconbutton}>
@@ -74,7 +77,7 @@ export const SignIn = ({navigation}) => {
                     color: '#fff',
                     fontSize: fontSize.h6,
                     fontFamily: fontFamily.appTextHeading,
-                    fontWeight:'600'
+                    fontWeight: '600',
                   }}>
                   Sign In
                 </Text>
