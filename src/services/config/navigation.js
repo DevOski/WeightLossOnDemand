@@ -85,6 +85,7 @@ import Allergies from '../../screens/Allergies';
 import ColdAndFlu from '../../screens/ColdAndFlu';
 import SoreThroat from '../../screens/SoreThroat';
 import UTIs from '../../screens/UTIs';
+import Travel from '../../screens/Travel';
 
 const Stack = createNativeStackNavigator();
 
@@ -202,6 +203,7 @@ export default function MainNavigator() {
         <Stack.Screen name="ColdAndFlu" component={ColdAndFlu} />
         <Stack.Screen name="SoreThroat" component={SoreThroat} />
         <Stack.Screen name="UTIs" component={UTIs} />
+        <Stack.Screen name="Travel" component={Travel} />
       </Stack.Navigator>
     </NavigationContainer>
   );
