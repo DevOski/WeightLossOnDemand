@@ -89,6 +89,7 @@ import Travel from '../../screens/Travel';
 import SportsInjuries from '../../screens/SportsInjuries';
 import SkinIssues from '../../screens/SkinIssues';
 import Diarrhea from '../../screens/Diarrhea';
+import EyeConditions from '../../screens/EyeConditions';
 
 const Stack = createNativeStackNavigator();
 
@@ -210,6 +211,8 @@ export default function MainNavigator() {
         <Stack.Screen name="SportsInjuries" component={SportsInjuries} />
         <Stack.Screen name="SkinIssues" component={SkinIssues} />
         <Stack.Screen name="Diarrhea" component={Diarrhea} />
+        <Stack.Screen name="EyeConditions" component={EyeConditions} />
+        
       </Stack.Navigator>
     </NavigationContainer>
   );
