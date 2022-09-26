@@ -39,8 +39,10 @@ import skinIssues from '../../../assets/skinIssues.jpeg';
 import diarrhea from '../../../assets/diarrhea.jpeg';
 import eyeConditions from '../../../assets/eyeConditions.jpeg';
 import labTest from '../../../assets/labTest.png';
+import questionnaries from '../../../assets/questionnaries.jpeg';
 
 const images = {
+  questionnaries,
   labTest,
   icon,
   icon2,

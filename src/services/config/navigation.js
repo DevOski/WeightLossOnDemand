@@ -94,6 +94,7 @@ import WhatWeDontTreat from '../../screens/WhatWeDontTreat';
 import HealthVisits from '../../screens/HealthVisits';
 import Documents from '../../screens/Documents';
 import LabTests from '../../screens/LabTests';
+import Questionnaires from '../../screens/Questionnaires';
 
 const Stack = createNativeStackNavigator();
 
@@ -220,6 +221,8 @@ export default function MainNavigator() {
         <Stack.Screen name="HealthVisits" component={HealthVisits} />
         <Stack.Screen name="Documents" component={Documents} />
         <Stack.Screen name="LabTests" component={LabTests} />
+        <Stack.Screen name="Questionnaires" component={Questionnaires} />
+        
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -56,8 +56,7 @@ export default function MyHealth({navigation}) {
             </View>
           </TouchableOpacity>
           <TouchableOpacity
-          // onPress={() => navigation.navigate('Allergies')}
-          >
+            onPress={() => navigation.navigate('Questionnaires')}>
             <View style={[styles.row, styles.card]}>
               <Text style={styles.cardText}>Questionnaires</Text>
               <View>
