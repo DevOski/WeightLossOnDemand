@@ -17,23 +17,22 @@ import {styles} from './style';
 import {WebView} from 'react-native-webview';
 import {colors} from '../../services';
 import Header from '../../components/Header';
+import AntDesign from 'react-native-vector-icons/AntDesign';
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
-export default function HowItWorks({navigation}) {
+export default function Medical({navigation}) {
   const [showVideo, setShowVideo] = useState(false);
   return (
     <SafeAreaView>
-      <Header title={'How It Works'} />
+      <Header title={'Medical'} />
       <ScrollView style={styles.color}>
         {!showVideo ? (
-          <ImageBackground source={images.mother} style={styles.image}>
+          <ImageBackground source={images.medical} style={styles.image}>
             <TouchableOpacity onPress={() => setShowVideo(true)}>
               <View style={styles.playBtn}>
                 <Image source={images.playIcon} style={styles.playIcon} />
               </View>
             </TouchableOpacity>
-            <View style={styles.textView}>
-              <Text style={styles.heading}>How It Works</Text>
-            </View>
           </ImageBackground>
         ) : (
           <WebView
@@ -49,42 +48,65 @@ export default function HowItWorks({navigation}) {
             </View>
           </TouchableOpacity>
           <View style={styles.padding}>
+            <TouchableOpacity
+              onPress={() => navigation.navigate('visitforscreen')}>
+              <View style={[styles.row, styles.card2]}>
+                <Text style={styles.cardText2}>See a Provider Now</Text>
+                <View>
+                  <Text style={styles.symbol2}> ›</Text>
+                </View>
+              </View>
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => navigation.navigate('visitforscreen')}>
+              <View style={[styles.row, styles.card]}>
+                <AntDesign
+                  name="calendar"
+                  color={colors.secondary}
+                  size={25}
+                  style={styles.iconLeft}
+                />
+                <Text style={styles.cardText}>Schedule an Appointment</Text>
+                <View>
+                  <Text style={styles.symbol}> ›</Text>
+                </View>
+              </View>
+            </TouchableOpacity>
             <TouchableOpacity onPress={() => navigation.navigate('VideoVisit')}>
               <View style={[styles.row, styles.card]}>
+                <FontAwesome5
+                  name="play"
+                  color={colors.secondary}
+                  size={20}
+                  style={styles.iconLeft}
+                />
                 <Text style={styles.cardText}>What is a Video Visit?</Text>
                 <View>
                   <Text style={styles.symbol}> ›</Text>
                 </View>
               </View>
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => navigation.navigate('TipsVisit')}>
+            <TouchableOpacity
+              onPress={() => navigation.navigate('WhatDoWeTreat')}>
               <View style={[styles.row, styles.card]}>
-                <Text style={styles.cardText}>Tips for a Successful Visit</Text>
+                <Image source={images.icon} style={styles.icon} />
+                <Text style={styles.cardText}>What do we treat?</Text>
                 <View>
                   <Text style={styles.symbol}> ›</Text>
                 </View>
               </View>
             </TouchableOpacity>
             <TouchableOpacity
-              onPress={() => navigation.navigate('PrescriptionsAndLab')}>
+            // onPress={() => navigation.navigate('FAQs')}
+            >
               <View style={[styles.row, styles.card]}>
-                <Text style={styles.cardText}>Prescriptions and Lab Work</Text>
-                <View>
-                  <Text style={styles.symbol}> ›</Text>
-                </View>
-              </View>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={() => navigation.navigate('MyPricing')}>
-              <View style={[styles.row, styles.card]}>
-                <Text style={styles.cardText}>My Pricing</Text>
-                <View>
-                  <Text style={styles.symbol}> ›</Text>
-                </View>
-              </View>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={() => navigation.navigate('FAQs')}>
-              <View style={[styles.row, styles.card]}>
-                <Text style={styles.cardText}>FAQs</Text>
+                <FontAwesome5
+                  name="user-alt"
+                  color={colors.secondary}
+                  size={20}
+                  style={styles.iconLeft}
+                />
+                <Text style={styles.cardText}>Meet Our Providers</Text>
                 <View>
                   <Text style={styles.symbol}> ›</Text>
                 </View>

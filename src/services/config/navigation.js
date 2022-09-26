@@ -79,6 +79,8 @@ import {Whichmedicalconditions} from '../../screens/whichmedicalconditions';
 import {Whichsurgeries} from '../../screens/whichsurgeri';
 import AddEmployer from '../../screens/AddEmployer';
 import FAQs from '../../screens/FAQs';
+import Medical from '../../screens/Medical';
+import WhatDoWeTreat from '../../screens/WhatDoWeTreat';
 
 const Stack = createNativeStackNavigator();
 
@@ -87,7 +89,6 @@ export default function MainNavigator() {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{headerShown: false}}>
-
         <Stack.Screen name="Introsliderscreen" component={Intro} />
         <Stack.Screen name="Setting" component={Setting} />
 
@@ -191,6 +192,8 @@ export default function MainNavigator() {
         <Stack.Screen name="AddPaymentMethod" component={AddPaymentMethod} />
         <Stack.Screen name="AddEmployer" component={AddEmployer} />
         <Stack.Screen name="FAQs" component={FAQs} />
+        <Stack.Screen name="Medical" component={Medical} />
+        <Stack.Screen name="WhatDoWeTreat" component={WhatDoWeTreat} />
       </Stack.Navigator>
     </NavigationContainer>
   );

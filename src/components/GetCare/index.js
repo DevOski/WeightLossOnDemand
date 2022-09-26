@@ -9,9 +9,13 @@ import {
   View,
 } from 'react-native';
 import {styles} from './style';
+import { useNavigation } from '@react-navigation/native';
+
 export default function GetCare() {
+  const navigation = useNavigation();
+
   return (
-      <TouchableOpacity>
+      <TouchableOpacity onPress={()=>navigation.navigate("GetCare")}>
         <View style={styles.buttonView}>
           <Text style={styles.buttonText}> Get care</Text>
         </View>
