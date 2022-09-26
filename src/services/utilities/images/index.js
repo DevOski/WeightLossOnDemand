@@ -35,6 +35,7 @@ import soreThroat from '../../../assets/soreThroat.jpeg';
 import utis from '../../../assets/utis.jpeg';
 import travel from '../../../assets/travel.jpeg';
 import sportInjuries from '../../../assets/sportInjuries.jpeg';
+import skinIssues from '../../../assets/skinIssues.jpeg';
 
 const images = {
   icon,
@@ -74,5 +75,6 @@ const images = {
   utis,
   travel,
   sportInjuries,
+  skinIssues
 };
 export default images;
