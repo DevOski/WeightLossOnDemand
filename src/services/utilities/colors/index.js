@@ -30,4 +30,5 @@ export const colors = {
   disabledBg2: '#90949d',
   lightGray2: '#c1c1c1',
   disabledIcon: '#bcc3cb',
+  modalLink: '#2a8cd7',
 };
