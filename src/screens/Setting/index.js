@@ -19,7 +19,7 @@ import Modal from 'react-native-modal';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import Entypo from 'react-native-vector-icons/Entypo';
 
-import {openComposer, openInbox} from 'react-native-email-link';
+import {openComposer} from 'react-native-email-link';
 import {colors, sizes} from '../../services';
 
 export default function Setting({navigation}) {
