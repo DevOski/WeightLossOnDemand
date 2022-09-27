@@ -232,7 +232,7 @@ export default function MainNavigator() {
       </Stack.Navigator>
     </NavigationContainer>
   );
-}
+} 
 
 function MyTabs() {
   return (
