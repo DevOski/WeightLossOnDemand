@@ -40,6 +40,8 @@ import diarrhea from '../../../assets/diarrhea.jpeg';
 import eyeConditions from '../../../assets/eyeConditions.jpeg';
 import labTest from '../../../assets/labTest.png';
 import questionnaries from '../../../assets/questionnaries.jpeg';
+import fedoctr from '../../../assets/fedoctr.png';
+import mdoctr from '../../../assets/mdoctr.png';
 
 const images = {
   questionnaries,
@@ -84,5 +86,7 @@ const images = {
   skinIssues,
   diarrhea,
   eyeConditions,
+  fedoctr,
+  mdoctr,
 };
 export default images;
