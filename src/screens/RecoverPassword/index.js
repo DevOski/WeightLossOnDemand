@@ -15,7 +15,7 @@ import {styles} from './style';
 import {TextInput} from 'react-native-paper';
 import {colors, sizes} from '../../services';
 import Modal from 'react-native-modal';
-import {openComposer, openInbox} from 'react-native-email-link';
+import {openInbox} from 'react-native-email-link';
 
 export default function RecoverPassword() {
   const [email, setEmail] = useState('tester@gmail.com');

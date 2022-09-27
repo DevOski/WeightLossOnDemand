@@ -19,6 +19,7 @@ import Modal from 'react-native-modal';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import Entypo from 'react-native-vector-icons/Entypo';
 
+import {openComposer, openInbox} from 'react-native-email-link';
 import {colors, sizes} from '../../services';
 
 export default function Setting({navigation}) {
@@ -30,6 +31,13 @@ export default function Setting({navigation}) {
   const toggleSwitch = () => setIsEnabled(previousState => !previousState);
   const toggleModal = () => {
     setIsModalVisible(!isModalVisible);
+  };
+
+  const handleFeedback = () => {
+    openComposer({
+      to:"feedback@weightlossondemand.com",
+      subject:"Weight Loss On Demand Feedback"
+    });
   };
   return (
     <SafeAreaView>
@@ -194,7 +202,7 @@ export default function Setting({navigation}) {
           </TouchableOpacity>
         </View>
         <View style={styles.padding}>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={handleFeedback}>
             <View style={styles.row}>
               <Image source={images.feedback} style={styles.medicalIcon} />
 
@@ -240,8 +248,7 @@ export default function Setting({navigation}) {
             </View>
             <View style={styles.buttnView}>
               <TouchableOpacity
-              onPress={() => navigation.navigate('signinscreen')}
-              >
+                onPress={() => navigation.navigate('signinscreen')}>
                 <View style={styles.buttonView}>
                   <Text style={styles.buttonText}>Yes</Text>
                 </View>
