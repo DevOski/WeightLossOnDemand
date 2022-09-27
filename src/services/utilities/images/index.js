@@ -42,9 +42,12 @@ import labTest from '../../../assets/labTest.png';
 import questionnaries from '../../../assets/questionnaries.jpeg';
 import fedoctr from '../../../assets/fedoctr.png';
 import mdoctr from '../../../assets/mdoctr.png';
+import mediVisit from '../../../assets/mediVisit.png';
+import greenCheck from '../../../assets/greenCheck.png';
 
 const images = {
   questionnaries,
+  greenCheck,
   labTest,
   icon,
   icon2,
@@ -88,5 +91,6 @@ const images = {
   eyeConditions,
   fedoctr,
   mdoctr,
+  mediVisit,
 };
 export default images;

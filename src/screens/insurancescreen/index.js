@@ -38,7 +38,11 @@ export const InsuranceScreen = ({navigation, route}) => {
             <Image source={medi} />
           </View>
           <View style={styles.insu}>
-            <Text style={styles.insutext}>We take health insurance</Text>
+            {route?.params?.title ? (
+              <Text style={styles.insutext}>{route?.params?.title}</Text>
+            ) : (
+              <Text style={styles.insutext}>We take health insurance</Text>
+            )}
           </View>
           <View style={styles.insu2}>
             <Text style={styles.insutext2}>
@@ -60,17 +64,18 @@ export const InsuranceScreen = ({navigation, route}) => {
             </TouchableOpacity>
             <Text style={styles.sbtd}>e.g Hoghmark, UnitedHealthcare</Text>
           </View>
-
-          <View style={styles.skipin}>
-            <TouchableOpacity onPress={toggleModal}>
-              <Text style={styles.ski}> Skip Insurance</Text>
-            </TouchableOpacity>
-            <View style={styles.padd}>
-              <Text style={styles.sbtd}>
-                You can see a provider widthout insurance{' '}
-              </Text>
+          {!route?.params?.title && (
+            <View style={styles.skipin}>
+              <TouchableOpacity onPress={toggleModal}>
+                <Text style={styles.ski}> Skip Insurance</Text>
+              </TouchableOpacity>
+              <View style={styles.padd}>
+                <Text style={styles.sbtd}>
+                  You can see a provider widthout insurance{' '}
+                </Text>
+              </View>
             </View>
-          </View>
+          )}
         </View>
         <View>{/* <Button title="Show modal" onPress={toggleModal} /> */}</View>
       </ScrollView>
@@ -199,7 +204,7 @@ const styles = StyleSheet.create({
     paddingRight: sizes.screenWidth * 0.05,
   },
   insutext: {
-    fontSize: fontSize.h4,
+    fontSize: fontSize.h5,
     color: colors.black,
     fontWeight: '500',
     fontFamily: fontFamily.appTextMedium,
@@ -241,7 +246,7 @@ const styles = StyleSheet.create({
     fontSize: fontSize.medium,
     color: colors.black,
     fontWeight: '500',
-    fontFamily:fontFamily.appTextMedium
+    fontFamily: fontFamily.appTextMedium,
   },
   skipin: {
     marginTop: sizes.screenHeight * 0.2,
@@ -258,13 +263,13 @@ const styles = StyleSheet.create({
     fontSize: fontSize.h6,
     color: colors.secondary,
     fontWeight: '700',
-    fontFamily:fontFamily.appTextLight
+    fontFamily: fontFamily.appTextLight,
   },
   why: {
     fontSize: fontSize.large,
     color: colors.secondary,
     fontWeight: '400',
-    fontFamily:fontFamily.appTextMedium
+    fontFamily: fontFamily.appTextMedium,
   },
   fle: {
     flexDirection: 'row',
@@ -275,7 +280,6 @@ const styles = StyleSheet.create({
     // fontSize: fontSize.large,
     color: colors.black,
     fontWeight: '400',
-    fontFamily:fontFamily.appTextRegular
-
+    fontFamily: fontFamily.appTextRegular,
   },
 });

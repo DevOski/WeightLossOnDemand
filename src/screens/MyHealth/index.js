@@ -65,8 +65,7 @@ export default function MyHealth({navigation}) {
             </View>
           </TouchableOpacity>
           <TouchableOpacity
-          onPress={() => navigation.navigate('HealthMyProviders')}
-          >
+            onPress={() => navigation.navigate('HealthMyProviders')}>
             <View style={[styles.row, styles.card]}>
               <Text style={styles.cardText}>My Providers</Text>
               <View>
@@ -74,9 +73,7 @@ export default function MyHealth({navigation}) {
               </View>
             </View>
           </TouchableOpacity>
-          <TouchableOpacity
-          onPress={() => navigation.navigate('Pharmacies')}
-          >
+          <TouchableOpacity onPress={() => navigation.navigate('Pharmacies')}>
             <View style={[styles.row, styles.card]}>
               <Text style={styles.cardText}>Pharmacies</Text>
               <View>

@@ -15,7 +15,7 @@ import {styles} from './style';
 import {colors} from '../../services';
 import Octicons from 'react-native-vector-icons/Octicons';
 
-export default function GetCare() {
+export default function GetCare({navigation}) {
   return (
     <SafeAreaView>
       <ScrollView style={styles.color}>
@@ -24,9 +24,7 @@ export default function GetCare() {
             Choose a video visit that is right for you
           </Text>
         </View>
-        <TouchableOpacity
-        // onPress={() => navigation.navigate('FAQs')}
-        >
+        <TouchableOpacity onPress={() => navigation.navigate('UserVisit')}>
           <View style={[styles.row, styles.card]}>
             <Image style={styles.icon} source={images.mdoctr} />
             <View>
@@ -45,7 +43,7 @@ export default function GetCare() {
         // onPress={() => navigation.navigate('FAQs')}
         >
           <View style={[styles.row, styles.card]}>
-            <Image style={styles.icon} source={images.mdoctr} />
+            <Image style={styles.icon2} source={images.mediVisit} />
 
             <View>
               <Text style={styles.cardText}>Book a medical visit</Text>

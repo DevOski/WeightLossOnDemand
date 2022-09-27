@@ -98,6 +98,7 @@ import Questionnaires from '../../screens/Questionnaires';
 import HealthMyProviders from '../../screens/HealthMyProviders';
 import Pharmacies from '../../screens/Pharmacies';
 import RecoverPassword from '../../screens/RecoverPassword';
+import UserVisit from '../../screens/UserVisit';
 
 const Stack = createNativeStackNavigator();
 
@@ -228,6 +229,7 @@ export default function MainNavigator() {
         <Stack.Screen name="HealthMyProviders" component={HealthMyProviders} />
         <Stack.Screen name="Pharmacies" component={Pharmacies} />
         <Stack.Screen name="RecoverPassword" component={RecoverPassword} />
+        <Stack.Screen name="UserVisit" component={UserVisit} />
         
       </Stack.Navigator>
     </NavigationContainer>

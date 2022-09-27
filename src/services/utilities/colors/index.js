@@ -31,4 +31,5 @@ export const colors = {
   lightGray2: '#c1c1c1',
   disabledIcon: '#bcc3cb',
   modalLink: '#2a8cd7',
+  greenIcon: '#1bbc9b',
 };
