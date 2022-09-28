@@ -102,6 +102,7 @@ import UserVisit from '../../screens/UserVisit';
 import FindingProvider from '../../screens/FindingProvider';
 import ProviderReview from '../../screens/ProviderReview';
 import RateProvider from '../../screens/RateProvider';
+import HowLikelyRecommend from '../../screens/HowLikelyRecommend';
 
 const Stack = createNativeStackNavigator();
 
@@ -236,6 +237,8 @@ export default function MainNavigator() {
         <Stack.Screen name="FindingProvider" component={FindingProvider} />
         <Stack.Screen name="ProviderReview" component={ProviderReview} />
         <Stack.Screen name="RateProvider" component={RateProvider} />
+        <Stack.Screen name="HowLikelyRecommend" component={HowLikelyRecommend} />
+        
       </Stack.Navigator>
     </NavigationContainer>
   );

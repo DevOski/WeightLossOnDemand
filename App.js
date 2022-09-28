@@ -8,6 +8,7 @@ import Modal from 'react-native-modal';
 import {colors, fontFamily, fontSize, sizes} from './src/services';
 import Entypo from 'react-native-vector-icons/Entypo';
 import RateProvider from './src/screens/RateProvider';
+import HowLikelyRecommend from './src/screens/HowLikelyRecommend';
 
 export default function App() {
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -51,8 +52,9 @@ export default function App() {
           </TouchableOpacity>
         </Modal>
       )}
-      {/* <MainNavigator /> */}
-      <RateProvider />
+      <MainNavigator />
+      {/* <RateProvider /> */}
+      <HowLikelyRecommend />
     </View>
   );
 }
