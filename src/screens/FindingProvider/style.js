@@ -69,4 +69,7 @@ export const styles = StyleSheet.create({
   paddingTop: {
     marginTop: sizes.screenHeight * 0.02,
   },
+  spinner: {
+    alignSelf: 'center',
+  },
 });

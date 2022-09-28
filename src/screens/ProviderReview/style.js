@@ -40,7 +40,7 @@ export const styles = StyleSheet.create({
     position: 'absolute',
     alignSelf: 'center',
     // left: sizes.screenWidth * 0.35,
-    top: sizes.screenHeight * 0.14,
+    top: sizes.screenHeight * 0.19,
   },
   docImg: {
     height: sizes.screenHeight * 0.2,
@@ -61,7 +61,10 @@ export const styles = StyleSheet.create({
     fontFamily: fontFamily.appTextLight,
     color: colors.disabledIcon,
   },
-  top:{
-    top:sizes.screenHeight * 0.55
-  }
+  top: {
+    top: sizes.screenHeight * 0.48,
+  },
+  spinner: {
+    alignSelf: 'center',
+  },
 });

@@ -74,6 +74,9 @@ export default function GetCare({navigation}) {
             </View>
           </View>
         </TouchableOpacity>
+        <TouchableOpacity onPress={()=>navigation.navigate("GenerateReciept")}>
+          <Text style={{alignSelf:'center'}}>Testing button</Text>
+        </TouchableOpacity>
       </ScrollView>
     </SafeAreaView>
   );

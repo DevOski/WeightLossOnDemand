@@ -16,13 +16,15 @@ import {colors, sizes} from '../../services';
 import Loader from 'react-native-three-dots-loader';
 import Entypo from 'react-native-vector-icons/Entypo';
 import Swiper from 'react-native-swiper';
+import Spinner from 'react-native-spinkit';
+
 export default function FindingProvider({navigation}) {
-    useEffect(() => {
-      setTimeout(() => {
-        navigation.navigate("ProviderReview")
-      }, 5000);
-    }, [])
-    
+  useEffect(() => {
+    setTimeout(() => {
+      navigation.navigate('ProviderReview');
+    }, 5000);
+  }, []);
+
   return (
     <SafeAreaView>
       <View style={styles.color}>
@@ -36,7 +38,13 @@ export default function FindingProvider({navigation}) {
             <View style={styles.paddingTop}>
               <Text style={styles.findingText}>Finding a Provider...</Text>
               <View style={styles.paddingTop}>
-                <Loader size={5} background={'white'} />
+                <Spinner
+                  style={styles.spinner}
+                  isVisible={true}
+                  size={50}
+                  type={'ThreeBounce'}
+                  color={colors.white}
+                />
               </View>
               <View style={styles.padding}>
                 <Text style={[styles.findingText]}>
@@ -47,7 +55,11 @@ export default function FindingProvider({navigation}) {
           </View>
         </View>
 
-        <Swiper autoplay={true} style={styles.wrapper} autoplayTimeout={10} showsPagination={false}>
+        <Swiper
+          autoplay={true}
+          style={styles.wrapper}
+          autoplayTimeout={10}
+          showsPagination={false}>
           <View style={[styles.row, styles.card, styles.paddingTop]}>
             <Entypo name="light-bulb" color={colors.secondary} size={40} />
 

@@ -14,6 +14,8 @@ import images from '../../services/utilities/images';
 import {styles} from './style';
 import {colors, sizes} from '../../services';
 import Loader from 'react-native-three-dots-loader';
+import Spinner from 'react-native-spinkit';
+
 export default function ProviderReview({navigation}) {
   return (
     <SafeAreaView>
@@ -30,7 +32,13 @@ export default function ProviderReview({navigation}) {
                 Your provider is reviewing your chart...
               </Text>
               <View style={styles.paddingTop}>
-                <Loader size={5} background={'white'} />
+              <Spinner
+                  style={styles.spinner}
+                  isVisible={true}
+                  size={50}
+                  type={'ThreeBounce'}
+                  color={colors.white}
+                />
               </View>
             </View>
           </View>

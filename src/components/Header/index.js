@@ -15,7 +15,7 @@ import {useNavigation} from '@react-navigation/native';
 
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
-export default function Header({title, skip, dark}) {
+export default function Header({title, skip, dark, done}) {
   const navigation = useNavigation();
   return (
     <View style={styles.card}>
@@ -30,10 +30,19 @@ export default function Header({title, skip, dark}) {
         <Text style={[dark ? styles.darkTitle : styles.title, styles.bold]}>
           {title}
         </Text>
-        {skip && (
+        {done && (
           <View style={styles.skipView}>
             <TouchableOpacity onPress={() => navigation.goBack()}>
-              <View style={[styles.row, styles.left]}>
+              <View style={[styles.row, styles.leftDone]}>
+                <Text style={styles.title2}>{'   '}Done </Text>
+              </View>
+            </TouchableOpacity>
+          </View>
+        )}
+        {skip && (
+          <View style={[styles.skipView,styles.leftDone]}>
+            <TouchableOpacity onPress={() => navigation.goBack()}>
+              <View style={[styles.row]}>
                 <Text style={styles.title}>{'   '}Skip </Text>
                 <MaterialIcons
                   name="keyboard-arrow-right"

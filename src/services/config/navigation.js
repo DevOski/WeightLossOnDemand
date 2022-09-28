@@ -104,7 +104,7 @@ import ProviderReview from '../../screens/ProviderReview';
 import RateProvider from '../../screens/RateProvider';
 import HowLikelyRecommend from '../../screens/HowLikelyRecommend';
 import ThankyouVisit from '../../screens/ThankyouVisit';
-
+import GenerateReciept from '../../screens/GenerateReceipt';
 const Stack = createNativeStackNavigator();
 
 const Tab = createMaterialBottomTabNavigator();
@@ -238,9 +238,12 @@ export default function MainNavigator() {
         <Stack.Screen name="FindingProvider" component={FindingProvider} />
         <Stack.Screen name="ProviderReview" component={ProviderReview} />
         <Stack.Screen name="RateProvider" component={RateProvider} />
-        <Stack.Screen name="HowLikelyRecommend" component={HowLikelyRecommend} />
+        <Stack.Screen
+          name="HowLikelyRecommend"
+          component={HowLikelyRecommend}
+        />
         <Stack.Screen name="ThankyouVisit" component={ThankyouVisit} />
-        
+        <Stack.Screen name="GenerateReciept" component={GenerateReciept} />
       </Stack.Navigator>
     </NavigationContainer>
   );
