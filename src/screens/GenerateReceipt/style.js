@@ -10,4 +10,45 @@ export const styles = StyleSheet.create({
   padding: {
     padding: sizes.baseMargin,
   },
+  head: {
+    fontFamily: fontFamily.appTextHeading,
+    fontSize: fontSize.h5,
+    color: colors.primary,
+    fontWeight: 'bold',
+  },
+  row: {
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    justifyContent: 'space-around',
+  },
+  head2: {
+    right: sizes.screenWidth * 0.03,
+    fontFamily: fontFamily.appTextMedium,
+    color: colors.primary,
+  },
+  text: {
+    top: sizes.screenHeight * 0.007,
+    right: sizes.screenWidth * 0.03,
+    fontFamily: fontFamily.appTextLight,
+    color: colors.primary,
+    width: sizes.screenWidth * 0.7,
+    fontSize: fontSize.smallM,
+  },
+  buttonView: {
+    backgroundColor: colors.secondary,
+    height: sizes.screenHeight * 0.06,
+    width: sizes.screenWidth * 0.9,
+    alignItems: 'center',
+    justifyContent: 'center',
+    alignSelf: 'center',
+  },
+  buttonText: {
+    color: colors.white,
+    fontSize: fontSize.h6,
+    fontFamily: fontFamily.appTextHeading,
+    fontWeight: '600',
+  },
+  paddingTop:{
+    paddingTop:sizes.screenHeight * 0.02
+  }
 });
