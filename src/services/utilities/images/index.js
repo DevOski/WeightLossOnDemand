@@ -45,8 +45,14 @@ import mdoctr from '../../../assets/mdoctr.png';
 import mediVisit from '../../../assets/mediVisit.png';
 import greenCheck from '../../../assets/greenCheck.png';
 import doctor from '../../../assets/doctor.png';
+import msg from '../../../assets/msg.png';
+import ema from '../../../assets/ema.jpeg';
+import fac from '../../../assets/fac.jpeg';
 
 const images = {
+  msg,
+  ema,
+  fac,
   doctor,
   questionnaries,
   greenCheck,

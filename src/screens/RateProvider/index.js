@@ -16,6 +16,7 @@ import {colors, sizes} from '../../services';
 import {Rating} from 'react-native-ratings';
 
 export default function RateProvider({navigation}) {
+  console.log(navigation);
   const ratingCompleted = rating => {
     console.log(rating);
   };

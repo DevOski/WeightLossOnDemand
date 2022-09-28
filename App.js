@@ -9,6 +9,7 @@ import {colors, fontFamily, fontSize, sizes} from './src/services';
 import Entypo from 'react-native-vector-icons/Entypo';
 import RateProvider from './src/screens/RateProvider';
 import HowLikelyRecommend from './src/screens/HowLikelyRecommend';
+import ThankyouVisit from './src/screens/ThankyouVisit';
 
 export default function App() {
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -54,7 +55,8 @@ export default function App() {
       )}
       <MainNavigator />
       {/* <RateProvider /> */}
-      <HowLikelyRecommend />
+      {/* <HowLikelyRecommend /> */}
+      {/* <ThankyouVisit /> */}
     </View>
   );
 }

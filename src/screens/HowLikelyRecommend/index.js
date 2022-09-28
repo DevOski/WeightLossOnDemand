@@ -59,8 +59,9 @@ export default function HowLikelyRecommend({navigation}) {
               <Text style={styles.buttonText}>Submit</Text>
             </TouchableOpacity>
           </View>
-          <View style={[styles.center,styles.paddingTop]}>
-            <TouchableOpacity>
+          <View style={[styles.center, styles.paddingTop]}>
+            <TouchableOpacity
+              onPress={() => navigation.navigate('ThankyouVisit')}>
               <Text style={styles.skip}>Skip</Text>
             </TouchableOpacity>
           </View>
