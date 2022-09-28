@@ -44,8 +44,10 @@ import fedoctr from '../../../assets/fedoctr.png';
 import mdoctr from '../../../assets/mdoctr.png';
 import mediVisit from '../../../assets/mediVisit.png';
 import greenCheck from '../../../assets/greenCheck.png';
+import doctor from '../../../assets/doctor.png';
 
 const images = {
+  doctor,
   questionnaries,
   greenCheck,
   labTest,

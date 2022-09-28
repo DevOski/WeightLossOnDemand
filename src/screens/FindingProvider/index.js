@@ -1,4 +1,4 @@
-import React, {useRef, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {
   Image,
   ImageBackground,
@@ -17,6 +17,12 @@ import Loader from 'react-native-three-dots-loader';
 import Entypo from 'react-native-vector-icons/Entypo';
 import Swiper from 'react-native-swiper';
 export default function FindingProvider({navigation}) {
+    useEffect(() => {
+      setTimeout(() => {
+        navigation.navigate("ProviderReview")
+      }, 100);
+    }, [])
+    
   return (
     <SafeAreaView>
       <View style={styles.color}>
