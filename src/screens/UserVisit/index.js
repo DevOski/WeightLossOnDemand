@@ -142,14 +142,16 @@ export default function UserVisit({navigation}) {
                   color={colors.disabledBg2}
                   size={25}
                 />
-                <Text style={styles.text2}> Turn off other devices, like TV or music</Text>
+                <Text style={styles.text2}>
+                  {' '}
+                  Turn off other devices, like TV or music
+                </Text>
               </View>
             </View>
             <View style={styles.buttnView}>
               <TouchableOpacity
-              // onPress={() => navigation.navigate('signinscreen')}
-              >
-                <View style={styles.buttonView}>
+                onPress={() => navigation.navigate('FindingProvider')}>
+                <View style={styles.buttonView2}>
                   <Text style={styles.buttonText}>Start visit now</Text>
                 </View>
               </TouchableOpacity>

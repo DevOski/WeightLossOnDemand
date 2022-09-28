@@ -87,7 +87,7 @@ export const styles = StyleSheet.create({
   buttonView: {
     backgroundColor: colors.secondary,
     height: sizes.screenHeight * 0.06,
-    width: sizes.screenWidth * 0.9,
+    width: sizes.screenWidth * 0.93,
     alignItems: 'center',
     justifyContent: 'center',
     alignSelf: 'center',
@@ -137,6 +137,14 @@ export const styles = StyleSheet.create({
   noBtn: {
     alignSelf: 'center',
     marginTop: sizes.screenHeight * 0.025,
+  },
+  buttonView2: {
+    backgroundColor: colors.secondary,
+    height: sizes.screenHeight * 0.06,
+    width: sizes.screenWidth * 0.89,
+    alignItems: 'center',
+    justifyContent: 'center',
+    alignSelf: 'center',
   },
   buttonView1: {
     borderWidth: 1,
