@@ -29,6 +29,7 @@ import {
 import {colors, fontFamily, fontSize, sizes} from '../../services';
 // FontAwesome
 import Entypo from 'react-native-vector-icons/Entypo';
+import Loader from '../../components/Loader';
 
 const Intro = ({navigation}) => {
   const slides = [
@@ -63,6 +64,7 @@ const Intro = ({navigation}) => {
             return <View>{item.name}</View>;
           })}
         </ScrollView>
+
         {/* {slides?.map((item, index) => {
          console.log(item.id);
          return (
@@ -101,7 +103,8 @@ const Intro = ({navigation}) => {
           }}>
           {imgActive !== 3 && (
             <View style={[styles.footer, styles.top]}>
-              <TouchableOpacity onPress={()=>navigation.navigate("signinscreen")}>
+              <TouchableOpacity
+                onPress={() => navigation.navigate('signinscreen')}>
                 <Text style={styles.fontsiginandsignup}>Sign In</Text>
               </TouchableOpacity>
             </View>
@@ -117,7 +120,11 @@ const Intro = ({navigation}) => {
                         style={
                           imgActive == index ? styles.dotActive : styles.dot
                         }>
-                       <Entypo name="dot-single" color={colors.secondary}  size={30}  />
+                        <Entypo
+                          name="dot-single"
+                          color={colors.secondary}
+                          size={30}
+                        />
                       </Text>
                     </View>
                   )}
@@ -126,7 +133,8 @@ const Intro = ({navigation}) => {
             })}
             {imgActive !== 3 && (
               <View style={[styles.footer, styles.top]}>
-                <TouchableOpacity onPress={()=>navigation.navigate("signupscreen")}>
+                <TouchableOpacity
+                  onPress={() => navigation.navigate('signupscreen')}>
                   <Text style={styles.fontsiginandsignup}>Sign Up</Text>
                 </TouchableOpacity>
               </View>

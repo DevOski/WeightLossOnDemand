@@ -10,6 +10,7 @@ import Entypo from 'react-native-vector-icons/Entypo';
 import RateProvider from './src/screens/RateProvider';
 import HowLikelyRecommend from './src/screens/HowLikelyRecommend';
 import ThankyouVisit from './src/screens/ThankyouVisit';
+import Loader from './src/components/Loader';
 
 export default function App() {
   const [isModalVisible, setIsModalVisible] = useState(false);
