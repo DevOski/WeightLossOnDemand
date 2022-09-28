@@ -101,6 +101,7 @@ import RecoverPassword from '../../screens/RecoverPassword';
 import UserVisit from '../../screens/UserVisit';
 import FindingProvider from '../../screens/FindingProvider';
 import ProviderReview from '../../screens/ProviderReview';
+import RateProvider from '../../screens/RateProvider';
 
 const Stack = createNativeStackNavigator();
 
@@ -234,6 +235,7 @@ export default function MainNavigator() {
         <Stack.Screen name="UserVisit" component={UserVisit} />
         <Stack.Screen name="FindingProvider" component={FindingProvider} />
         <Stack.Screen name="ProviderReview" component={ProviderReview} />
+        <Stack.Screen name="RateProvider" component={RateProvider} />
       </Stack.Navigator>
     </NavigationContainer>
   );

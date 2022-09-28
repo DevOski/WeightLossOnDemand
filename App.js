@@ -7,6 +7,7 @@ import NetInfo from '@react-native-community/netinfo';
 import Modal from 'react-native-modal';
 import {colors, fontFamily, fontSize, sizes} from './src/services';
 import Entypo from 'react-native-vector-icons/Entypo';
+import RateProvider from './src/screens/RateProvider';
 
 export default function App() {
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -50,7 +51,8 @@ export default function App() {
           </TouchableOpacity>
         </Modal>
       )}
-      <MainNavigator />
+      {/* <MainNavigator /> */}
+      <RateProvider />
     </View>
   );
 }

@@ -20,7 +20,7 @@ export default function FindingProvider({navigation}) {
     useEffect(() => {
       setTimeout(() => {
         navigation.navigate("ProviderReview")
-      }, 100);
+      }, 5000);
     }, [])
     
   return (
