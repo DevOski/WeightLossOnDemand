@@ -24,7 +24,7 @@ export default function ProviderType({navigation}) {
           </View>
         </View>
         <TouchableOpacity
-        // onPress={() => navigation.navigate('HowToSchedule')}
+        onPress={() => navigation.navigate('ChooseAppointmentLength')}
         >
           <View style={[styles.row, styles.card]}>
             <View>
