@@ -28,7 +28,7 @@ export const Whichsurgeries = () => {
       <View style={styles.container1}>
         <View>
           <Text style={styles.hedtext}>
-           Which surgeries ?
+           Add surgeries ?
           </Text>
           
         </View>

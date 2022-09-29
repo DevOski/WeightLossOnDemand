@@ -34,7 +34,7 @@ export const Whichmedicalconditions = () => {
       <View style={styles.container1}>
         <View>
           <Text style={styles.hedtext}>
-           Which conditions ?
+           Add conditions ?
           </Text>
           
         </View>
@@ -414,9 +414,9 @@ export const Whichmedicalconditions = () => {
         </Text>
        </View>
         
-          <TouchableOpacity>
+          <TouchableOpacity onPress={()=>navigation.navigate('pharmacymaplocation')}>
             <View style={styles.buttonView}>
-              <Text style={styles.buttonText}>Save</Text>
+              <Text style={styles.buttonText}>Confirm</Text>
             </View>
           </TouchableOpacity>
           

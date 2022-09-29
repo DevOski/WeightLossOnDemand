@@ -28,8 +28,35 @@ import appIcon from '../../../assets/appIcon.png';
 import visit from '../../../assets/visit.png';
 import messageIcon from '../../../assets/messageIcon.png';
 import call from '../../../assets/call.png';
+import medical from '../../../assets/medical.jpeg';
+import allergies from '../../../assets/allergies.jpeg';
+import coldAndFlu from '../../../assets/coldAndFlu.jpeg';
+import soreThroat from '../../../assets/soreThroat.jpeg';
+import utis from '../../../assets/utis.jpeg';
+import travel from '../../../assets/travel.jpeg';
+import sportInjuries from '../../../assets/sportInjuries.jpeg';
+import skinIssues from '../../../assets/skinIssues.jpeg';
+import diarrhea from '../../../assets/diarrhea.jpeg';
+import eyeConditions from '../../../assets/eyeConditions.jpeg';
+import labTest from '../../../assets/labTest.png';
+import questionnaries from '../../../assets/questionnaries.jpeg';
+import fedoctr from '../../../assets/fedoctr.png';
+import mdoctr from '../../../assets/mdoctr.png';
+import mediVisit from '../../../assets/mediVisit.png';
+import greenCheck from '../../../assets/greenCheck.png';
+import doctor from '../../../assets/doctor.png';
+import msg from '../../../assets/msg.png';
+import ema from '../../../assets/ema.jpeg';
+import fac from '../../../assets/fac.jpeg';
 
 const images = {
+  msg,
+  ema,
+  fac,
+  doctor,
+  questionnaries,
+  greenCheck,
+  labTest,
   icon,
   icon2,
   setting,
@@ -59,6 +86,19 @@ const images = {
   appIcon,
   visit,
   messageIcon,
-  call
+  call,
+  medical,
+  allergies,
+  coldAndFlu,
+  soreThroat,
+  utis,
+  travel,
+  sportInjuries,
+  skinIssues,
+  diarrhea,
+  eyeConditions,
+  fedoctr,
+  mdoctr,
+  mediVisit,
 };
 export default images;

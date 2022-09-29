@@ -3,7 +3,6 @@ import React, {useEffect} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import Home from '../../screens/Home';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
@@ -11,6 +10,7 @@ import {createMaterialBottomTabNavigator} from '@react-navigation/material-botto
 import {Image} from 'react-native';
 import images from '../utilities/images';
 import {sizes} from '../utilities';
+import Home from '../../screens/Home';
 import GetCare from '../../screens/GetCare';
 import MyHealth from '../../screens/MyHealth';
 import Setting from '../../screens/Setting';
@@ -43,7 +43,6 @@ import {Correct} from '../../screens/correctinfoscreen';
 import {EditInfo} from '../../screens/edityourinformation';
 import {EdiTChildscreen} from '../../screens/editChildscreen';
 import {ChildScreen} from '../../screens/addchildscreen';
-
 import NoticeOfPrivacy from '../../screens/NoticeOfPrivacy';
 import MemberEducationProgram from '../../screens/MemberEducationProgram';
 import HealthInfoAgreement from '../../screens/HealthInfoAgreement';
@@ -77,7 +76,57 @@ import {Whichmedication} from '../../screens/whichmedicationscreen';
 import {whichdrugallergi} from '../../screens/whichdrugallergi';
 import {Whichmedicalconditions} from '../../screens/whichmedicalconditions';
 import {Whichsurgeries} from '../../screens/whichsurgeri';
+import {ReviewHealthprofile} from '../../screens/healthprofilereview';
+import {Doyouneeddoctor} from '../../screens/doyouneeddoctor';
+import AddEmployer from '../../screens/AddEmployer';
+import { YourHabits } from '../../screens/yourhabits';
+import { AddTEmp } from '../../screens/addyourtemperature';
+import Meetourproviders from '../../screens/meetOurproviders';
+import IntroductionScreen from '../../screens/introductionscreen';
+import Physicans from '../../screens/physiciansscreen';
+import Featureprovider from '../../screens/Featuresproviderscreen';
+import ScreeningTraining from '../../screens/screeningandtrainingscreen';
+import QualityOversight from '../../screens/qualityandoversight';
+import MentalHealth from '../../screens/mentalhealthscreen';
+import HowCanWeHelp from '../../screens/howcanwehepl';
+import WhatToExpect from '../../screens/whattoexpect';
+import Therapists from '../../screens/therapistscreen';
+import { PharmacyMap } from '../../screens/pharmacymaplocation';
+import { BeyondScreen } from '../../screens/beyondscreen';
+import { ShareViste } from '../../screens/sharevist';
+import { VisitDetail } from '../../screens/VisitDetail';
 
+
+import FAQs from '../../screens/FAQs';
+import Medical from '../../screens/Medical';
+import WhatDoWeTreat from '../../screens/WhatDoWeTreat';
+import Allergies from '../../screens/Allergies';
+import ColdAndFlu from '../../screens/ColdAndFlu';
+import SoreThroat from '../../screens/SoreThroat';
+import UTIs from '../../screens/UTIs';
+import Travel from '../../screens/Travel';
+import SportsInjuries from '../../screens/SportsInjuries';
+import SkinIssues from '../../screens/SkinIssues';
+import Diarrhea from '../../screens/Diarrhea';
+import EyeConditions from '../../screens/EyeConditions';
+import WhatWeDontTreat from '../../screens/WhatWeDontTreat';
+import HealthVisits from '../../screens/HealthVisits';
+import Documents from '../../screens/Documents';
+import LabTests from '../../screens/LabTests';
+import Questionnaires from '../../screens/Questionnaires';
+import HealthMyProviders from '../../screens/HealthMyProviders';
+import Pharmacies from '../../screens/Pharmacies';
+import RecoverPassword from '../../screens/RecoverPassword';
+import UserVisit from '../../screens/UserVisit';
+import FindingProvider from '../../screens/FindingProvider';
+import ProviderReview from '../../screens/ProviderReview';
+import RateProvider from '../../screens/RateProvider';
+import HowLikelyRecommend from '../../screens/HowLikelyRecommend';
+import ThankyouVisit from '../../screens/ThankyouVisit';
+import GenerateReciept from '../../screens/GenerateReceipt';
+import PayPal from '../../screens/PayPal';
+import VisitHistory from '../../screens/VisitHistory';
+import HowToSchedule from '../../screens/HowToSchedule';
 const Stack = createNativeStackNavigator();
 
 const Tab = createMaterialBottomTabNavigator();
@@ -85,7 +134,10 @@ export default function MainNavigator() {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{headerShown: false}}>
+      
+      <Stack.Screen name="VisitDetail" component={VisitDetail} />
         <Stack.Screen name="Introsliderscreen" component={Intro} />
+        <Stack.Screen name="Setting" component={Setting} />
 
         <Stack.Screen name="whichsurgeri" component={Whichsurgeries} />
         <Stack.Screen
@@ -113,7 +165,7 @@ export default function MainNavigator() {
           component={MedicalCondition}
         />
         {/* <Stack.Screen name="drugalergiesscreen" component={Drugallergies} /> */}
-        <Stack.Screen name="cureentlytakingmed" component={Currently} />
+        {/* <Stack.Screen name="cureentlytakingmed" component={Currently} /> */}
         {/* <Stack.Screen name="createhelthproscreen" component={Healthpro} /> */}
         <Stack.Screen name="signupscreen" component={SignUp} />
         <Stack.Screen name="signinscreen" component={SignIn} />
@@ -125,12 +177,90 @@ export default function MainNavigator() {
         <Stack.Screen name="otherreasonscreen" component={OtherReason} />
         <Stack.Screen name="reasonVisit" component={ReasonForDcoctor} />
         <Stack.Screen name="BottomNavs" component={MyTabs} />
-        <Stack.Screen name="Setting" component={Setting} />
+        {/* <Stack.Screen name="Setting" component={Setting} /> */}
+        <Stack.Screen name="beyondscreen" component={BeyondScreen} />
+        <Stack.Screen
+          name="meetOurproviders"
+          component={Meetourproviders}
+        />
+         <Stack.Screen name="sharevist" component={ShareViste} />
+          <Stack.Screen
+          name="introductionscreen"
+          component={IntroductionScreen}
+        />
+        
 
         <Stack.Screen
-          name="membershiptermscreens"
-          component={MemberShipTerms}
+          name="physiciansscreen"
+          component={Physicans}
         />
+         <Stack.Screen
+          name="Featuresproviderscreen"
+          component={Featureprovider}
+        />
+         <Stack.Screen
+          name="screeningandtrainingscreen"
+          component={ScreeningTraining}
+        />
+        <Stack.Screen
+          name="qualityandoversight"
+          component={QualityOversight}
+        />
+         <Stack.Screen
+          name="mentalhealthscreen"
+          component={MentalHealth}
+        />
+         <Stack.Screen
+          name="howcanwehepl"
+          component={HowCanWeHelp}
+        />
+          <Stack.Screen
+          name="whattoexpect"
+          component={WhatToExpect}
+        />
+         <Stack.Screen
+          name="therapistscreen"
+          component={Therapists}
+        />
+         <Stack.Screen name="addyourtemperature" component={AddTEmp} />
+      <Stack.Screen name="yourhabits" component={YourHabits} />
+        <Stack.Screen name="doyouneeddoctor" component={Doyouneeddoctor} />
+        <Stack.Screen
+          name="healthprofilereview"
+          component={ReviewHealthprofile}
+        />
+        {/* <Stack.Screen name="whichsurgeri" component={Whichsurgeries} /> */}
+        {/* <Stack.Screen
+          name="whichmedicalconditions"
+          component={Whichmedicalconditions}
+        /> */}
+       <Stack.Screen name="pharmacymaplocation" component={PharmacyMap} />
+        {/* <Stack.Screen name="surgeriesscreen" component={Surgeries} /> */}
+  
+        {/* <Stack.Screen name="createhelthproscreen" component={Healthpro} /> */}
+
+        {/* <Stack.Screen
+          name="familymedicalcondition"
+          component={FamilyMedicalconditions}
+        /> */}
+       
+        <Stack.Screen name="cureentlytakingmed" component={Currently} />
+      
+
+     
+        {/* <Stack.Screen name="whichdrugallergi" component={whichdrugallergi} /> */}
+        {/* <Stack.Screen
+          name="whichmedicationscreen"
+          component={Whichmedication}
+        /> */}
+     
+        {/* <Stack.Screen name="drugalergiesscreen" component={Drugallergies} /> */}
+       
+        {/* <Stack.Screen
+          name="Medicalcondionscreen"
+          component={MedicalCondition}
+        /> */}
+        
         <Stack.Screen name="searchforpharmacyscreen" component={ForPharmacy} />
         <Stack.Screen name="employerhelpscreen" component={Employerhelp} />
         <Stack.Screen name="visitforscreen" component={VisitScreen} />
@@ -186,6 +316,40 @@ export default function MainNavigator() {
         <Stack.Screen name="EditAddress" component={EditAddress} />
         <Stack.Screen name="EnterNewPassword" component={EnterNewPassword} />
         <Stack.Screen name="AddPaymentMethod" component={AddPaymentMethod} />
+        <Stack.Screen name="AddEmployer" component={AddEmployer} />
+        <Stack.Screen name="FAQs" component={FAQs} />
+        <Stack.Screen name="Medical" component={Medical} />
+        <Stack.Screen name="WhatDoWeTreat" component={WhatDoWeTreat} />
+        <Stack.Screen name="Allergies" component={Allergies} />
+        <Stack.Screen name="ColdAndFlu" component={ColdAndFlu} />
+        <Stack.Screen name="SoreThroat" component={SoreThroat} />
+        <Stack.Screen name="UTIs" component={UTIs} />
+        <Stack.Screen name="Travel" component={Travel} />
+        <Stack.Screen name="SportsInjuries" component={SportsInjuries} />
+        <Stack.Screen name="SkinIssues" component={SkinIssues} />
+        <Stack.Screen name="Diarrhea" component={Diarrhea} />
+        <Stack.Screen name="EyeConditions" component={EyeConditions} />
+        <Stack.Screen name="WhatWeDontTreat" component={WhatWeDontTreat} />
+        <Stack.Screen name="HealthVisits" component={HealthVisits} />
+        <Stack.Screen name="Documents" component={Documents} />
+        <Stack.Screen name="LabTests" component={LabTests} />
+        <Stack.Screen name="Questionnaires" component={Questionnaires} />
+        <Stack.Screen name="HealthMyProviders" component={HealthMyProviders} />
+        <Stack.Screen name="Pharmacies" component={Pharmacies} />
+        <Stack.Screen name="RecoverPassword" component={RecoverPassword} />
+        <Stack.Screen name="UserVisit" component={UserVisit} />
+        <Stack.Screen name="FindingProvider" component={FindingProvider} />
+        <Stack.Screen name="ProviderReview" component={ProviderReview} />
+        <Stack.Screen name="RateProvider" component={RateProvider} />
+        <Stack.Screen
+          name="HowLikelyRecommend"
+          component={HowLikelyRecommend}
+        />
+        <Stack.Screen name="ThankyouVisit" component={ThankyouVisit} />
+        <Stack.Screen name="GenerateReciept" component={GenerateReciept} />
+        <Stack.Screen name="PayPal" component={PayPal} />
+        <Stack.Screen name="VisitHistory" component={VisitHistory} />
+        <Stack.Screen name="HowToSchedule" component={HowToSchedule} />
       </Stack.Navigator>
     </NavigationContainer>
   );

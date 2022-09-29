@@ -20,6 +20,7 @@ export default function Home({navigation}) {
     'Text3',
     'Text3',
     'Text4',
+    'Text5',
   ]);
   const [imgActive, setImgActive] = useState(0);
 
@@ -120,7 +121,7 @@ export default function Home({navigation}) {
                     </View>
                     <View style={styles.btnTop}>
                       <GetCare />
-                      <TouchableOpacity>
+                      <TouchableOpacity onPress={()=>navigation.navigate("Medical")}>
                         <View style={styles.learnMoreBtn}>
                           <Text style={styles.learnMoreText}>Learn more</Text>
                         </View>
@@ -154,7 +155,7 @@ export default function Home({navigation}) {
                     </View>
                     <View style={styles.btnTop2}>
                       <GetCare />
-                      <TouchableOpacity>
+                      <TouchableOpacity onPress={()=>navigation.navigate('mentalhealthscreen')}>
                         <View style={styles.learnMoreBtn}>
                           <Text style={styles.learnMoreText}>Learn more</Text>
                         </View>
@@ -174,7 +175,7 @@ export default function Home({navigation}) {
                         Let us help you find the right LGBQTQ+ friendly doctor
                       </Text>
                     </View>
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={()=>navigation.navigate('beyondscreen')}>
                       <View style={[styles.learnMoreView, styles.row2]}>
                         <Text style={styles.semiText}>Learn more</Text>
                         <Text style={styles.symbol}> ›</Text>
@@ -269,14 +270,54 @@ export default function Home({navigation}) {
                       </View>
                     </View>
                     <View style={styles.seeBtn}>
-                      <TouchableOpacity>
+                      <TouchableOpacity onPress={()=>navigation.navigate("meetOurproviders")}>
                         <View style={[styles.learnMoreBtn, styles.row2]}>
                           <Text style={styles.learnMoreText}>
-                            See all of our providers{' '}
+                            See all of our providers
                           </Text>
                           <Text style={styles.symbol}> ›</Text>
                         </View>
                       </TouchableOpacity>
+                    </View>
+                  </View>
+                )}
+                  {index == 5 && (
+                  <View key={index} style={[styles.padding]}>
+                    <Text style={[styles.heading, styles.top]}>
+                     Recent Visit
+                    </Text>
+
+                    <View style={[styles.row2, styles.paddingLeft]}>
+                      <Image
+                        source={images.provider1}
+                        style={styles.providerImg}
+                      />
+                      <View>
+                        <Text style={styles.providerHead}>Dr.Kimberly</Text>
+                        <Text style={styles.providerProfession}>
+                          Townsend-scott,MD
+                        </Text>
+                        <Text style={styles.providerProfession}>
+                          sep 12,2022
+                        </Text>
+                      </View>
+                    </View>
+                   <View>
+                   <Text style={styles.he}>INSTRUCTIONS:</Text>
+
+                   </View>
+                   <View style={styles.het1} >
+                   <Text style={styles.het}>our Visit was incomplete,please,check your settings close out any background applications that are running on your device and check your connection.our customer support team is available 24/7 to get you reconnected.please email support@weightloseondemand.com or call 1-800-997-6196 for assistance if you a</Text>
+
+                   </View>
+                    <View style={styles.seeBtn}>
+                    <View style={styles.buttnView}>
+          <TouchableOpacity onPress={()=>navigation.navigate("healthprofilereview")}>
+            <View style={styles.buttonView}>
+              <Text style={styles.buttonText}>View Full summary</Text>
+            </View>
+          </TouchableOpacity>
+        </View>
                     </View>
                   </View>
                 )}

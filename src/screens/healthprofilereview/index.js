@@ -15,29 +15,83 @@ import images from '../../services/utilities/images';
 import {CustomTextFiel} from '../../component/textFiled';
 import {colors, sizes, fontSize} from '../../services';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-export const whichdrugallergi = () => {
-  const [dreugallergi, setdreugallergi] = useState();
-  const [slectnumber, setslectnumber] = useState();
-  const [show, setshow] = useState(false);
-  const toogle = () => {
-    setshow(!show);
-  };
+export const ReviewHealthprofile = ({navigation}) => {
+ 
   return (
     <SafeAreaView style={styles.container}>
       <View>
         <Header dark={true} />
       </View>
+      <ScrollView>
       <View style={styles.container1}>
         <View>
-          <Text style={styles.hedtext}>Which drug allergies ?</Text>
+          <Text style={styles.hedtext}>Please review your health profile</Text>
+        </View>
+        <View style={styles.pa}>
+          <View style={styles.box}>
+            <View style={styles.borderrb}>
+            <Text style={styles.textttt}>Medications</Text>
+            </View>
+            <View style={styles.borderrb}>
+            <Text style={styles.textttt}>No active medicatyion</Text>
+            </View>
+            <TouchableOpacity onPress={()=>navigation.navigate('whichmedicationscreen')}>
+              <Text style={styles.addanother}>Add</Text>
+            </TouchableOpacity>
+          </View>
+          <View style={styles.box}>
+            <View style={styles.borderrb}>
+            <Text style={styles.textttt}>Drugs Allergies</Text>
+            </View>
+            <View style={styles.borderrb}>
+            <Text style={styles.textttt}>No Known drug allergies</Text>
+            </View>
+            <TouchableOpacity onPress={()=>navigation.navigate('whichdrugallergi')}>
+              <Text style={styles.addanother}>Add</Text>
+            </TouchableOpacity>
+          </View>
+          <View style={styles.box}>
+            <View style={styles.borderrb}>
+            <Text style={styles.textttt}>Medical Conditions</Text>
+            </View>
+            <View style={styles.borderrb}>
+            <Text style={styles.textttt}>No known medical conditions</Text>
+            </View>
+            <TouchableOpacity onPress={()=>navigation.navigate('whichmedicalconditions')}>
+              <Text style={styles.addanother}>Add</Text>
+            </TouchableOpacity>
+          </View>
+          <View style={styles.box}>
+            <View style={styles.borderrb}>
+            <Text style={styles.textttt}>Surgeries</Text>
+            </View>
+            <View style={styles.borderrb}>
+            <Text style={styles.textttt}>No Past surgeries</Text>
+            </View>
+            <TouchableOpacity onPress={()=>navigation.navigate('whichsurgeri')}>
+              <Text style={styles.addanother}>Add</Text>
+            </TouchableOpacity>
+          </View>
+          <View style={[styles.box,styles.b2]}>
+            <View style={styles.borderrb}>
+            <Text style={styles.textttt}>Family History</Text>
+            </View>
+            <View style={styles.borderrb}>
+            <Text style={styles.textttt}>No first-degree relatives with medical Conditions</Text>
+            </View>
+            <TouchableOpacity onPress={()=>navigation.navigate('whichmedicalconditions')}>
+              <Text style={styles.addanother}>Add</Text>
+            </TouchableOpacity>
+          </View>
         </View>
 
-        <TouchableOpacity>
+        <TouchableOpacity onPress={()=>navigation.navigate("doyouneeddoctor")}>
           <View style={styles.buttonView}>
-            <Text style={styles.buttonText}>Save</Text>
+            <Text style={styles.buttonText}>Confirm</Text>
           </View>
         </TouchableOpacity>
       </View>
+      </ScrollView>
     </SafeAreaView>
   );
 };
@@ -112,30 +166,7 @@ const styles = StyleSheet.create({
     marginBottom: sizes.screenHeight * 0.03,
     width: sizes.screenWidth * 0.9,
   },
-  pap: {
-    position: 'absolute',
-    top: sizes.screenHeight * 0.09,
-    width: sizes.screenWidth * 0.4,
-    heigh: sizes.screenHeight * 0.9,
-    backgroundColor: colors.white,
-    paddingLeft: sizes.screenWidth * 0.02,
-    zIndex: 9,
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-
-    elevation: 5,
-  },
-  lstyle: {
-    fontSize: fontSize.h5,
-    color: colors.black,
-    fontWeight: '400',
-    lineHeight: sizes.screenHeight * 0.05,
-  },
+ 
   icon: {
     position: 'absolute',
     // left:sizes.screenWidth*0.3,
@@ -150,8 +181,47 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   addanother: {
+    paddingTop:sizes.screenHeight*0.02,
     fontSize: fontSize.large,
     color: colors.secondary,
     fontWeight: 'bold',
   },
+  box: {
+    marginBottom:sizes.screenHeight*0.03,
+    borderRadius:sizes.screenWidth*0.02,
+    height:sizes.screenHeight * 0.24,
+    width: sizes.screenWidth * 0.90,
+    borderWidth: 1,
+    borderColor:colors.lightGray,
+    padding: sizes.screenWidth * 0.04,
+    shadowColor: '#000',
+    backgroundColor:colors.white,
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+
+    elevation: 5,
+  },
+  textttt: {
+    paddingTop:sizes.screenHeight*0.02,
+   paddingBottom:sizes.screenHeight*0.02,
+    fontSize:fontSize.large,
+    color:colors.black
+  },
+  borderrb:{
+    borderColor:colors.gray,
+//    height:sizes.screenHeight * 0.05,
+    borderBottomWidth: 1,
+  },
+ 
+  pa:{
+    paddingTop:sizes.screenHeight*0.05
+  },
+  b2:{
+    height:sizes.screenHeight * 0.26,
+    width: sizes.screenWidth * 0.90,
+  }
 });

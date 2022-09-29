@@ -155,15 +155,15 @@ const ComponentFour = () => {
           </Text>
         </View>
 
-        <View></View>
+        <View style={{top:sizes.screenHeight*0.10}}>
         <View style={styles.kidd}>
           <Image style={{width: '100%', height: '100%'}} source={kiid} />
         </View>
         <View
           style={{
             position: 'absolute',
-            top: deviceHeight * 0.82,
-
+            top: deviceHeight * 0.50,
+            // zIndex:999999,
             left: deviceWidth * 0.03,
           }}>
           <TouchableOpacity
@@ -181,34 +181,9 @@ const ComponentFour = () => {
           </TouchableOpacity>
         </View>
       </View>
-
-      {/* <View style={styles.container}>
-      <View style={styles.payragraphcon}>
-        <Text style={styles.payragraphcontext}>TOTAL VIRTUAL CARE</Text>
       </View>
 
-      <View style={styles.payragraphcon}>
-        <Text style={styles.payragraphcontext}>
-          Your provider will send prescriptions to the pharmacy of your choice.
-        </Text>
-      </View>
-     
-    </View>
-    <View style={{position: 'absolute', top: deviceHeight * 0.10}}>
-        <View style={styles.kidd}>
-          <Image style={{width: '100%', height: '100%'}} source={kiid} />
-        </View>
-        <View
-          style={{
-            position: 'absolute',
-            top: deviceHeight * 0.45,
-            left: deviceWidth * 0.15,
-          }}>
-          <TouchableOpacity style={styles.but}  onPress={()=>navigation.navigate("signupscreen")}>
-            <Text style={{color: '#fff',fontSize:fontSize.h5}}>Sign Up</Text>
-          </TouchableOpacity>
-        </View>
-      </View> */}
+    
     </>
   );
 };
@@ -271,7 +246,8 @@ const styles = StyleSheet.create({
     height: deviceHeight * 0.4,
   },
   kidd: {
-    top: deviceHeight * 0.1,
+    position:'absolute',
+    top: deviceHeight * 0.2,
     width: deviceWidth,
     height: deviceHeight * 0.4,
   },
@@ -281,7 +257,7 @@ const styles = StyleSheet.create({
     width: sizes.screenWidth * 0.94,
     justifyContent: 'center',
     alignItems: 'center',
-    position: 'absolute',
+    // position: 'absolute',
   },
   footer: {
     width: sizes.screenWidth,
@@ -299,6 +275,7 @@ const styles = StyleSheet.create({
   },
   forslid: {
     width: deviceWidth,
+    height:deviceHeight,
   },
   forslidtext: {
     marginTop: deviceHeight * 0.08,

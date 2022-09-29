@@ -38,7 +38,7 @@ export const whichdrugallergi = () => {
        
         <View style={styles.hedtextcon}>
           <Text style={styles.hedtext1}>
-          Please consider any medication you are taking, including those taken on aregular basis
+          Please add any new or missing drug allergies
           </Text>
          
         </View>
@@ -46,7 +46,7 @@ export const whichdrugallergi = () => {
        <View style={styles.inonecon}>
             <View style={styles.twoitem}>
               <CustomTextFiel
-                label={'Medication 1'}
+                label={'Drug Allergy 1'}
                 value={dreugallergi}
                 setValue={setdreugallergi}
                 style={styles.twoitem}
@@ -54,7 +54,7 @@ export const whichdrugallergi = () => {
             </View>
             <View style={styles.twoitem}>
               <CustomTextFiel
-                label={'Medication 2'}
+                label={'Drug Allergy  2'}
                 value={dreugallergi}
                 setValue={setdreugallergi}
                 style={styles.twoitem}
@@ -62,7 +62,7 @@ export const whichdrugallergi = () => {
             </View>
             <View style={styles.twoitem}>
               <CustomTextFiel
-                label={'Medication 3'}
+                label={'Drug Allergy  3'}
                 value={dreugallergi}
                 setValue={setdreugallergi}
                 style={styles.twoitem}

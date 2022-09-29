@@ -15,17 +15,30 @@ import {styles} from './style';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import Modal from 'react-native-modal';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import Entypo from 'react-native-vector-icons/Entypo';
 
-import {colors} from '../../services';
+import {openComposer} from 'react-native-email-link';
+import {colors, sizes} from '../../services';
 
 export default function Setting({navigation}) {
   const [userName, setUserName] = useState('Tester Jazzy');
   const [email, setEmail] = useState('tester586@gmail.com');
   const [isEnabled, setIsEnabled] = useState(false);
+  const [isModalVisible, setIsModalVisible] = useState(false);
 
   const toggleSwitch = () => setIsEnabled(previousState => !previousState);
+  const toggleModal = () => {
+    setIsModalVisible(!isModalVisible);
+  };
 
+  const handleFeedback = () => {
+    openComposer({
+      to:"feedback@weightlossondemand.com",
+      subject:"Weight Loss On Demand Feedback"
+    });
+  };
   return (
     <SafeAreaView>
       <View>
@@ -34,7 +47,7 @@ export default function Setting({navigation}) {
       <ScrollView style={styles.color}>
         <View style={styles.userView}>
           <View style={styles.signOutBtn}>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => setIsModalVisible(true)}>
               <Text style={styles.signOutText}>Sign Out</Text>
             </TouchableOpacity>
           </View>
@@ -189,7 +202,7 @@ export default function Setting({navigation}) {
           </TouchableOpacity>
         </View>
         <View style={styles.padding}>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={handleFeedback}>
             <View style={styles.row}>
               <Image source={images.feedback} style={styles.medicalIcon} />
 
@@ -212,6 +225,44 @@ export default function Setting({navigation}) {
         <View style={[styles.right, styles.top, styles.bottom]}>
           <Text style={styles.version}>VERSION 3.66.0</Text>
         </View>
+        {isModalVisible && (
+          <Modal style={styles.modalView} isVisible={isModalVisible}>
+            <TouchableOpacity onPress={toggleModal}>
+              <View
+                style={{
+                  position: 'relative',
+                  bottom: sizes.screenHeight * 0.25,
+                  left: sizes.screenWidth * 0.85,
+                }}>
+                <Entypo name="cross" color={colors.secondary} size={30} />
+              </View>
+            </TouchableOpacity>
+
+            <View style={styles.texcon}>
+              <Text style={styles.text111}>Are you sure?</Text>
+            </View>
+            <View style={styles.texcon1}>
+              <Text style={styles.text1}>
+                Are you sure you want to sign out?
+              </Text>
+            </View>
+            <View style={styles.buttnView}>
+              <TouchableOpacity
+                onPress={() => navigation.navigate('signinscreen')}>
+                <View style={styles.buttonView}>
+                  <Text style={styles.buttonText}>Yes</Text>
+                </View>
+              </TouchableOpacity>
+            </View>
+            <View style={styles.noBtn}>
+              <TouchableOpacity onPress={toggleModal}>
+                <View style={styles.buttonView1}>
+                  <Text style={styles.buttonText}>No</Text>
+                </View>
+              </TouchableOpacity>
+            </View>
+          </Modal>
+        )}
       </ScrollView>
     </SafeAreaView>
   );

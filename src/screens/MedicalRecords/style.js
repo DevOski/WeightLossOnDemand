@@ -26,7 +26,6 @@ export const styles = StyleSheet.create({
     color: colors.black,
     width: sizes.screenWidth * 0.7,
     fontFamily: fontFamily.appTextLight,
-
   },
   row: {
     flexDirection: 'row',
@@ -41,7 +40,7 @@ export const styles = StyleSheet.create({
   head: {
     color: colors.primary,
     fontWeight: 'bold',
-    fontFamily:fontFamily.appTextHeading
+    fontFamily: fontFamily.appTextHeading,
   },
   card: {
     backgroundColor: colors.white,
@@ -58,5 +57,6 @@ export const styles = StyleSheet.create({
   cardText: {
     color: colors.primary,
     fontSize: fontSize.medium,
+    fontFamily: fontFamily.appTextRegular,
   },
 });

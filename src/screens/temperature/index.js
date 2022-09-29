@@ -14,13 +14,15 @@ import {
 import Header from '../../components/Header';
 import images from '../../services/utilities/images';
 import {CustomTextFiel} from '../../component/textFiled';
-import {colors, sizes, fontSize, fontFamily} from '../../services';
+import {colors, sizes, fontSize} from '../../services';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Slider from '@react-native-community/slider';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
+
+
 export const Temperaturescreen = () => {
-  const [temperature, settemperature] = useState();
+    const [temperature, settemperature] = useState()
   return (
     <SafeAreaView style={styles.container}>
       <View>
@@ -31,23 +33,19 @@ export const Temperaturescreen = () => {
         <Text style={styles.hedtext}>Add your temperature</Text>
       </View>
       <View style={styles.headcontaine2}>
-        <Text style={styles.hedtext1}>
-          If you have a therometer,adding your temperature now will save time
-          during your visits no guessing please
-        </Text>
+        <Text style={styles.hedtext1}>if you have a therometer,adding your temperature now will save time  during your visits no guessing please</Text>
       </View>
       <View>
-        <View style={styles.filedcon}>
-          <CustomTextFiel
-            label={'Password'}
-            value={temperature}
-            setValue={settemperature}
-          />
-        </View>
+      <View style={styles.filedcon}>
+            <CustomTextFiel
+              label={'Password'}
+              value={temperature}
+              setValue={settemperature}
+            /></View>
       </View>
-    </SafeAreaView>
-  );
-};
+      </SafeAreaView>
+  )
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -55,31 +53,27 @@ const styles = StyleSheet.create({
     backgroundColor: colors.white,
   },
   headcontainer: {
+
     paddingLeft: sizes.screenWidth * 0.05,
     paddingRight: sizes.screenWidth * 0.05,
   },
 
   hedtext: {
-    fontSize: fontSize.h4,
+    fontSize: fontSize.h2,
     color: colors.black,
     fontWeight: 'bold',
-    fontStyle: fontFamily.appTextHeading,
-
   },
-  hedtext1: {
-    fontSize: fontSize.medium,
+  hedtext1:{
+    fontSize: fontSize.large,
     color: colors.black,
     fontWeight: 'bold',
-    fontStyle: fontFamily.appTextHeading,
-
   },
   headcontaine2: {
-    marginTop: sizes.screenHeight * 0.05,
+marginTop:sizes.screenHeight*0.05,
     paddingLeft: sizes.screenWidth * 0.05,
     paddingRight: sizes.screenWidth * 0.05,
   },
   filedcon: {
-    marginBottom: sizes.screenHeight * 0.03,
-    padding: sizes.screenWidth * 0.04,
+    marginBottom:sizes.screenHeight     * 0.03,
   },
-});
+})

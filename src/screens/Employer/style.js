@@ -21,7 +21,7 @@ export const styles = StyleSheet.create({
   },
   contentView: {
     alignItems: 'center',
-    marginTop: sizes.screenHeight * 0.15,
+    marginTop: sizes.screenHeight * 0.16,
     padding: sizes.baseMargin,
   },
   text: {
@@ -46,7 +46,7 @@ export const styles = StyleSheet.create({
     fontWeight: '600',
   },
   paddingTop: {
-    paddingTop: sizes.screenHeight * 0.33,
+    paddingTop: sizes.screenHeight * 0.36,
     paddingBottom: sizes.screenHeight * 0.05,
   },
 });

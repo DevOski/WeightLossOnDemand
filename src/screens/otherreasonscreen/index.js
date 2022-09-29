@@ -39,7 +39,7 @@ export const OtherReason = ({navigation}) => {
         </View>
 
         {text ? (
-          <TouchableOpacity onPress={() => navigation.navigate('temperature')}>
+          <TouchableOpacity onPress={() => navigation.navigate('howlongscreen')}>
             <View style={styles.bdiv}>
               <Text style={styles.btext}>›</Text>
             </View>

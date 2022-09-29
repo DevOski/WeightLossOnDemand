@@ -15,7 +15,7 @@ import Header from '../../components/Header';
 import images from '../../services/utilities/images';
 import {CustomTextFiel} from '../../component/textFiled';
 import {colors, sizes, fontSize} from '../../services';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
+
 import Slider from '@react-native-community/slider';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 export const Howlong = ({navigation}) => {
@@ -98,7 +98,7 @@ export const Howlong = ({navigation}) => {
         
       </View>
       <View style={{justifyContent:'center',alignItems:'center'}}>
-      <TouchableOpacity onPress={()=>{navigation.navigate('temperature')}}>
+      <TouchableOpacity onPress={()=>{navigation.navigate('symptomsscreen')}}>
         <View style={styles.bdiv}>
           <Text style={styles.btext}>></Text>
         </View>
