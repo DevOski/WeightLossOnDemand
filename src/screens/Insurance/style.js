@@ -26,6 +26,8 @@ export const styles = StyleSheet.create({
   cardText: {
     width: sizes.screenWidth * 0.42,
     color: colors.primary,
+    fontFamily: fontFamily.appTextRegular,
+
   },
   card: {
     backgroundColor: colors.white,

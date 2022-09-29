@@ -39,6 +39,11 @@ export const styles = StyleSheet.create({
     fontSize: fontSize.h6,
     fontFamily: fontFamily.appTextLight,
   },
+  title2: {
+    color: colors.white,
+    fontSize: fontSize.h6,
+    fontFamily: fontFamily.appTextMedium,
+  },
   darkTitle: {
     color: colors.primary,
     left: sizes.screenWidth * 0.05,
@@ -57,5 +62,8 @@ export const styles = StyleSheet.create({
   },
   card: {
     // zIndex: 1,
+  },
+  leftDone: {
+    left: sizes.screenWidth * 0.2,
   },
 });

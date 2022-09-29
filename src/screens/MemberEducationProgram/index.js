@@ -32,11 +32,11 @@ export default function MemberEducationProgram({navigation}) {
         </View>
             <Text style={styles.textColor}>
               By participating in the Member Education Program, you authorize
-              Doctor On Demand to share with you information about products and
-              services provided by organizations other than Doctor On Demand
+              Weight On Demand to share with you information about products and
+              services provided by organizations other than Weight On Demand
               that may be of interest to you, such as health education materials
               prepared by third parties and applications that can integrate with
-              Doctor On Demand applications, and other health related products
+              Weight On Demand applications, and other health related products
               and services. You understand that these communications may be
               influenced by the information you provide to us during the
               registration process.

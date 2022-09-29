@@ -67,6 +67,8 @@ export const styles = StyleSheet.create({
     color: colors.primary,
     fontSize: fontSize.medium,
     paddingLeft: sizes.baseMargin,
+    fontFamily: fontFamily.appTextRegular,
+    
   },
   symbol: {
     color: colors.secondary,

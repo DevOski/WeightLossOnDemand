@@ -25,6 +25,7 @@ const fontSize = {
   large: totalSize(2),
   medium: totalSize(1.75),
   regular: totalSize(1.6),
+  smallM:totalSize(1.5),
   small: totalSize(1.25),
   tiny: totalSize(1),
   extraSmall:totalSize(0.8)

@@ -27,7 +27,7 @@ export default function ContactSupport({navigation}) {
         <View style={[styles.paddingLeft, styles.paddingBottom]}>
           <Text style={styles.addPaymentText}>Contact support</Text>
         </View>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate('FAQs')}>
           <View style={[styles.row, styles.card]}>
             <Octicons name="question" color={colors.secondary} size={30} />
             <View>
@@ -62,7 +62,7 @@ export default function ContactSupport({navigation}) {
             Linking.openURL('tel:18009976196');
           }}>
           <View style={[styles.row, styles.card]}>
-            <Image source={images.call} style={styles.callIcon}/>
+            <Image source={images.call} style={styles.callIcon} />
             {/* <Octicons name="question" color={colors.secondary} size={30} /> */}
             <View>
               <Text style={styles.cardText}>{'   '}Call Support 24/7</Text>

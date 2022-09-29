@@ -40,6 +40,8 @@ export const styles = StyleSheet.create({
     fontWeight: 'bold',
     paddingBottom: sizes.baseMargin,
     right: sizes.screenWidth * 0.05,
+    fontFamily: fontFamily.appTextRegular,
+
   },
   card: {
     backgroundColor: colors.white,

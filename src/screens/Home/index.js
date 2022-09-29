@@ -121,7 +121,7 @@ export default function Home({navigation}) {
                     </View>
                     <View style={styles.btnTop}>
                       <GetCare />
-                      <TouchableOpacity>
+                      <TouchableOpacity onPress={()=>navigation.navigate("Medical")}>
                         <View style={styles.learnMoreBtn}>
                           <Text style={styles.learnMoreText}>Learn more</Text>
                         </View>

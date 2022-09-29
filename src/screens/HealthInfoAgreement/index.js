@@ -19,12 +19,11 @@ import {colors} from '../../services';
 export default function HealthInfoAgreement({navigation}) {
   return (
     <SafeAreaView>
-       <View>
-          <Header dark={true} />
-        </View>
+      <View>
+        <Header dark={true} />
+      </View>
       <ScrollView style={styles.color}>
-       
-        <View style={[styles.paddingLeft,styles.paddingRight]}>
+        <View style={[styles.paddingLeft, styles.paddingRight]}>
           <Text style={[styles.bold, styles.textColor]}>
             Weight Loss On Demand can automatically send records of your visits
             to your doctor.
@@ -39,7 +38,7 @@ export default function HealthInfoAgreement({navigation}) {
             <Text style={styles.textColor}>
               Your personal health information will not be shared with anyone
               except with your permission or as permitted by applicable law. By
-              selecting "I Accept", you permit Doctor on Demand and the health
+              selecting "I Accept", you permit Weight Loss On Demand and the health
               care professionals you interact with through the Site to disclose
               your health information to other health professionals for purposes
               relating to your treatment, including information relating to
@@ -55,7 +54,6 @@ export default function HealthInfoAgreement({navigation}) {
               This consent shall be in force and effect for one year from the
               date it is signed.
             </Text>
-            
           </ScrollView>
         </View>
         <View style={styles.buttonTop}>
