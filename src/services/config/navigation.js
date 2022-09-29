@@ -105,6 +105,7 @@ import RateProvider from '../../screens/RateProvider';
 import HowLikelyRecommend from '../../screens/HowLikelyRecommend';
 import ThankyouVisit from '../../screens/ThankyouVisit';
 import GenerateReciept from '../../screens/GenerateReceipt';
+import PayPal from '../../screens/PayPal';
 const Stack = createNativeStackNavigator();
 
 const Tab = createMaterialBottomTabNavigator();
@@ -244,6 +245,7 @@ export default function MainNavigator() {
         />
         <Stack.Screen name="ThankyouVisit" component={ThankyouVisit} />
         <Stack.Screen name="GenerateReciept" component={GenerateReciept} />
+        <Stack.Screen name="PayPal" component={PayPal} />
       </Stack.Navigator>
     </NavigationContainer>
   );

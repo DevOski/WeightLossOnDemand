@@ -16,7 +16,7 @@ import {Checkbox} from 'react-native-paper';
 import {colors} from '../../services';
 
 export default function GenerateReciept() {
-  const [checked, setChecked] = useState(false);
+  const [checked, setChecked] = useState(true);
   const [detailReceipt, setDetailReceipt] = useState(false);
 
   return (

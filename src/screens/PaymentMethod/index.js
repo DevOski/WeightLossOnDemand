@@ -16,12 +16,15 @@ import Fontisto from 'react-native-vector-icons/Fontisto';
 import {colors, sizes} from '../../services';
 import Modal from 'react-native-modal';
 import Entypo from 'react-native-vector-icons/Entypo';
+import WebView from 'react-native-webview';
 
 export default function PaymentMethod({navigation}) {
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [payPal, setPayPal] = useState(false);
   const toggleModal = () => {
     setIsModalVisible(!isModalVisible);
   };
+  const handlePaypal = () => {};
   return (
     <SafeAreaView>
       <ScrollView style={styles.color}>
@@ -41,7 +44,7 @@ export default function PaymentMethod({navigation}) {
             </View>
           </View>
         </TouchableOpacity>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate('PayPal')}>
           <View style={[styles.row, styles.card]}>
             <Fontisto name="paypal" color={colors.secondary} size={25} />
             <Text style={styles.cardText}>{'   '}PayPal</Text>
@@ -84,14 +87,13 @@ export default function PaymentMethod({navigation}) {
                 with one of our providers
               </Text>
             </View>
-            <View style={[styles.texcon1,styles.paddingTop]}>
+            <View style={[styles.texcon1, styles.paddingTop]}>
               <Text style={styles.text1}>
                 Your payment information is always encrypted and stored
                 securely.
               </Text>
             </View>
-            <TouchableOpacity
-              onPress={toggleModal}>
+            <TouchableOpacity onPress={toggleModal}>
               <View style={styles.buttonView}>
                 <Text style={styles.buttonText}>OK</Text>
               </View>
