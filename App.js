@@ -11,6 +11,7 @@ import RateProvider from './src/screens/RateProvider';
 import HowLikelyRecommend from './src/screens/HowLikelyRecommend';
 import ThankyouVisit from './src/screens/ThankyouVisit';
 import Loader from './src/components/Loader';
+import Error from './src/components/Error';
 
 export default function App() {
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -55,6 +56,7 @@ export default function App() {
         </Modal>
       )}
       <MainNavigator />
+      {/* <Error title={"Oops!"} message={"Invalid user identity or password."}/> */}
       {/* <RateProvider /> */}
       {/* <HowLikelyRecommend /> */}
       {/* <ThankyouVisit /> */}
