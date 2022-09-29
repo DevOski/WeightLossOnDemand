@@ -56,7 +56,7 @@ export default function App() {
           </TouchableOpacity>
         </Modal>
       )}
-      {/* <MainNavigator /> */}
+      <MainNavigator />
       {/* <Error title={"Oops!"} message={"Invalid user identity or password."}/> */}
       {/* <RateProvider /> */}
       {/* <HowLikelyRecommend /> */}

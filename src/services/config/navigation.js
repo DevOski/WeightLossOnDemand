@@ -107,6 +107,7 @@ import ThankyouVisit from '../../screens/ThankyouVisit';
 import GenerateReciept from '../../screens/GenerateReceipt';
 import PayPal from '../../screens/PayPal';
 import VisitHistory from '../../screens/VisitHistory';
+import HowToSchedule from '../../screens/HowToSchedule';
 const Stack = createNativeStackNavigator();
 
 const Tab = createMaterialBottomTabNavigator();
@@ -114,8 +115,6 @@ export default function MainNavigator() {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{headerShown: false}}>
-
-
         <Stack.Screen name="Introsliderscreen" component={Intro} />
         <Stack.Screen name="Setting" component={Setting} />
 
@@ -249,8 +248,8 @@ export default function MainNavigator() {
         <Stack.Screen name="ThankyouVisit" component={ThankyouVisit} />
         <Stack.Screen name="GenerateReciept" component={GenerateReciept} />
         <Stack.Screen name="PayPal" component={PayPal} />
-      <Stack.Screen name="VisitHistory" component={VisitHistory} />
-        
+        <Stack.Screen name="VisitHistory" component={VisitHistory} />
+        <Stack.Screen name="HowToSchedule" component={HowToSchedule} />
       </Stack.Navigator>
     </NavigationContainer>
   );
