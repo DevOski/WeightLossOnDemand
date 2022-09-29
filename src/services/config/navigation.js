@@ -130,6 +130,8 @@ import ChooseProvider from '../../screens/ChooseProvider';
 import Filter from '../../screens/Filter';
 import SelectLanguage from '../../screens/SelectLanguage';
 import SelectFocusArea from '../../screens/SelectFocusArea';
+import ProviderType from '../../screens/ProviderType';
+import ProviderHelpChoose from '../../screens/ProviderHelpChoose';
 const Stack = createNativeStackNavigator();
 
 const Tab = createMaterialBottomTabNavigator();
@@ -332,6 +334,8 @@ export default function MainNavigator() {
         <Stack.Screen name="Filter" component={Filter} />
         <Stack.Screen name="SelectLanguage" component={SelectLanguage} />
         <Stack.Screen name="SelectFocusArea" component={SelectFocusArea} />
+        <Stack.Screen name="ProviderType" component={ProviderType} />
+        <Stack.Screen name="ProviderHelpChoose" component={ProviderHelpChoose} />
         
       </Stack.Navigator>
     </NavigationContainer>

@@ -48,8 +48,10 @@ import doctor from '../../../assets/doctor.png';
 import msg from '../../../assets/msg.png';
 import ema from '../../../assets/ema.jpeg';
 import fac from '../../../assets/fac.jpeg';
+import rx from '../../../assets/rx.png';
 
 const images = {
+  rx,
   msg,
   ema,
   fac,

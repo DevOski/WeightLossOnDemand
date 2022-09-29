@@ -16,6 +16,7 @@ import {styles} from './style';
 export default function HowToSchedule({navigation}) {
   return (
     <SafeAreaView>
+      <Header dark={true}/>
       <ScrollView style={styles.color}>
         <View style={styles.padding}>
           <Text style={styles.addPaymentText}>How to schedule</Text>
