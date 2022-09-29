@@ -12,7 +12,7 @@ import {
 import Header from '../../components/Header';
 import images from '../../services/utilities/images';
 import {styles} from './style';
-export default function Filter({navigation}) {
+export default function Filter({navigation, route}) {
   const [first, setfirst] = useState(true);
   const [second, setSecond] = useState(false);
   const [third, setThird] = useState(false);
@@ -49,6 +49,7 @@ export default function Filter({navigation}) {
     setFifth(false);
     setSixth(true);
   };
+  console.log('---->>', route?.params?.language);
   return (
     <SafeAreaView>
       <Header dark={true} />
@@ -105,10 +106,15 @@ export default function Filter({navigation}) {
             </View>
             <View style={styles.paddingTop}>
               <TouchableOpacity
-              // onPress={() => navigation.navigate('VideoVisit')}
-              >
+                onPress={() => navigation.navigate('SelectLanguage')}>
                 <View style={[styles.row2, styles.card]}>
-                  <Text style={styles.cardText}>English</Text>
+                  {route?.params?.language ? (
+                    <Text style={styles.cardText}>
+                      {route?.params?.language}
+                    </Text>
+                  ) : (
+                    <Text style={styles.cardText}>English</Text>
+                  )}
                   <View>
                     <Text style={styles.symbol}> ›</Text>
                   </View>
@@ -135,8 +141,7 @@ export default function Filter({navigation}) {
           </View>
           <View style={styles.paddingTop}>
             <TouchableOpacity
-              onPress={() => navigation.navigate('ChooseProvider')}
-            >
+              onPress={() => navigation.navigate('ChooseProvider')}>
               <View style={styles.buttonView}>
                 <Text style={styles.buttonText}> Show 163 results</Text>
               </View>

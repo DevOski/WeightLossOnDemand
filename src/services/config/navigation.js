@@ -128,6 +128,7 @@ import VisitHistory from '../../screens/VisitHistory';
 import HowToSchedule from '../../screens/HowToSchedule';
 import ChooseProvider from '../../screens/ChooseProvider';
 import Filter from '../../screens/Filter';
+import SelectLanguage from '../../screens/SelectLanguage';
 const Stack = createNativeStackNavigator();
 
 const Tab = createMaterialBottomTabNavigator();
@@ -328,6 +329,7 @@ export default function MainNavigator() {
         <Stack.Screen name="VisitDetail" component={VisitDetail} />
         <Stack.Screen name="ChooseProvider" component={ChooseProvider} />
         <Stack.Screen name="Filter" component={Filter} />
+        <Stack.Screen name="SelectLanguage" component={SelectLanguage} />
         
       </Stack.Navigator>
     </NavigationContainer>
