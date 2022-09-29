@@ -12,7 +12,7 @@ import {
 import Header from '../../components/Header';
 import images from '../../services/utilities/images';
 import {styles} from './style';
-export default function ChooseAppointmentLength() {
+export default function ChooseAppointmentLength({navigation}) {
   return (
     <SafeAreaView>
       <Header dark={true} />
@@ -28,13 +28,14 @@ export default function ChooseAppointmentLength() {
             </Text>
           </View>
           <View style={styles.paddingTop}>
-            <TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => navigation.navigate('LetsFindTherapist')}>
               <View style={styles.lisbutton}>
                 <Text style={styles.text2}>50 minutes</Text>
                 <Text style={styles.text2}>(recommended)</Text>
               </View>
             </TouchableOpacity>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.navigate('LetsFindTherapist')}>
               <View style={styles.lisbutton}>
                 <Text style={styles.text2}>25 minutes</Text>
               </View>
