@@ -79,8 +79,8 @@ import {Whichsurgeries} from '../../screens/whichsurgeri';
 import {ReviewHealthprofile} from '../../screens/healthprofilereview';
 import {Doyouneeddoctor} from '../../screens/doyouneeddoctor';
 import AddEmployer from '../../screens/AddEmployer';
-import { YourHabits } from '../../screens/yourhabits';
-import { AddTEmp } from '../../screens/addyourtemperature';
+import {YourHabits} from '../../screens/yourhabits';
+import {AddTEmp} from '../../screens/addyourtemperature';
 import Meetourproviders from '../../screens/meetOurproviders';
 import IntroductionScreen from '../../screens/introductionscreen';
 import Physicans from '../../screens/physiciansscreen';
@@ -91,11 +91,10 @@ import MentalHealth from '../../screens/mentalhealthscreen';
 import HowCanWeHelp from '../../screens/howcanwehepl';
 import WhatToExpect from '../../screens/whattoexpect';
 import Therapists from '../../screens/therapistscreen';
-import { PharmacyMap } from '../../screens/pharmacymaplocation';
-import { BeyondScreen } from '../../screens/beyondscreen';
-import { ShareViste } from '../../screens/sharevist';
-import { VisitDetail } from '../../screens/VisitDetail';
-
+import {PharmacyMap} from '../../screens/pharmacymaplocation';
+import {BeyondScreen} from '../../screens/beyondscreen';
+import {ShareViste} from '../../screens/sharevist';
+import {VisitDetail} from '../../screens/VisitDetail';
 
 import FAQs from '../../screens/FAQs';
 import Medical from '../../screens/Medical';
@@ -127,6 +126,8 @@ import GenerateReciept from '../../screens/GenerateReceipt';
 import PayPal from '../../screens/PayPal';
 import VisitHistory from '../../screens/VisitHistory';
 import HowToSchedule from '../../screens/HowToSchedule';
+import ChooseProvider from '../../screens/ChooseProvider';
+import Filter from '../../screens/Filter';
 const Stack = createNativeStackNavigator();
 
 const Tab = createMaterialBottomTabNavigator();
@@ -134,8 +135,6 @@ export default function MainNavigator() {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{headerShown: false}}>
-      
-      <Stack.Screen name="VisitDetail" component={VisitDetail} />
         <Stack.Screen name="Introsliderscreen" component={Intro} />
         <Stack.Screen name="Setting" component={Setting} />
 
@@ -179,51 +178,29 @@ export default function MainNavigator() {
         <Stack.Screen name="BottomNavs" component={MyTabs} />
         {/* <Stack.Screen name="Setting" component={Setting} /> */}
         <Stack.Screen name="beyondscreen" component={BeyondScreen} />
+        <Stack.Screen name="meetOurproviders" component={Meetourproviders} />
+        <Stack.Screen name="sharevist" component={ShareViste} />
         <Stack.Screen
-          name="meetOurproviders"
-          component={Meetourproviders}
-        />
-         <Stack.Screen name="sharevist" component={ShareViste} />
-          <Stack.Screen
           name="introductionscreen"
           component={IntroductionScreen}
         />
-        
 
+        <Stack.Screen name="physiciansscreen" component={Physicans} />
         <Stack.Screen
-          name="physiciansscreen"
-          component={Physicans}
-        />
-         <Stack.Screen
           name="Featuresproviderscreen"
           component={Featureprovider}
         />
-         <Stack.Screen
+        <Stack.Screen
           name="screeningandtrainingscreen"
           component={ScreeningTraining}
         />
-        <Stack.Screen
-          name="qualityandoversight"
-          component={QualityOversight}
-        />
-         <Stack.Screen
-          name="mentalhealthscreen"
-          component={MentalHealth}
-        />
-         <Stack.Screen
-          name="howcanwehepl"
-          component={HowCanWeHelp}
-        />
-          <Stack.Screen
-          name="whattoexpect"
-          component={WhatToExpect}
-        />
-         <Stack.Screen
-          name="therapistscreen"
-          component={Therapists}
-        />
-         <Stack.Screen name="addyourtemperature" component={AddTEmp} />
-      <Stack.Screen name="yourhabits" component={YourHabits} />
+        <Stack.Screen name="qualityandoversight" component={QualityOversight} />
+        <Stack.Screen name="mentalhealthscreen" component={MentalHealth} />
+        <Stack.Screen name="howcanwehepl" component={HowCanWeHelp} />
+        <Stack.Screen name="whattoexpect" component={WhatToExpect} />
+        <Stack.Screen name="therapistscreen" component={Therapists} />
+        <Stack.Screen name="addyourtemperature" component={AddTEmp} />
+        <Stack.Screen name="yourhabits" component={YourHabits} />
         <Stack.Screen name="doyouneeddoctor" component={Doyouneeddoctor} />
         <Stack.Screen
           name="healthprofilereview"
@@ -234,33 +211,31 @@ export default function MainNavigator() {
           name="whichmedicalconditions"
           component={Whichmedicalconditions}
         /> */}
-       <Stack.Screen name="pharmacymaplocation" component={PharmacyMap} />
+        <Stack.Screen name="pharmacymaplocation" component={PharmacyMap} />
         {/* <Stack.Screen name="surgeriesscreen" component={Surgeries} /> */}
-  
+
         {/* <Stack.Screen name="createhelthproscreen" component={Healthpro} /> */}
 
         {/* <Stack.Screen
           name="familymedicalcondition"
           component={FamilyMedicalconditions}
         /> */}
-       
-        <Stack.Screen name="cureentlytakingmed" component={Currently} />
-      
 
-     
+        <Stack.Screen name="cureentlytakingmed" component={Currently} />
+
         {/* <Stack.Screen name="whichdrugallergi" component={whichdrugallergi} /> */}
         {/* <Stack.Screen
           name="whichmedicationscreen"
           component={Whichmedication}
         /> */}
-     
+
         {/* <Stack.Screen name="drugalergiesscreen" component={Drugallergies} /> */}
-       
+
         {/* <Stack.Screen
           name="Medicalcondionscreen"
           component={MedicalCondition}
         /> */}
-        
+
         <Stack.Screen name="searchforpharmacyscreen" component={ForPharmacy} />
         <Stack.Screen name="employerhelpscreen" component={Employerhelp} />
         <Stack.Screen name="visitforscreen" component={VisitScreen} />
@@ -350,6 +325,10 @@ export default function MainNavigator() {
         <Stack.Screen name="PayPal" component={PayPal} />
         <Stack.Screen name="VisitHistory" component={VisitHistory} />
         <Stack.Screen name="HowToSchedule" component={HowToSchedule} />
+        <Stack.Screen name="VisitDetail" component={VisitDetail} />
+        <Stack.Screen name="ChooseProvider" component={ChooseProvider} />
+        <Stack.Screen name="Filter" component={Filter} />
+        
       </Stack.Navigator>
     </NavigationContainer>
   );

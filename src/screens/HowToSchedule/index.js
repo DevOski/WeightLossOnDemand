@@ -13,7 +13,7 @@ import Header from '../../components/Header';
 import images from '../../services/utilities/images';
 import {styles} from './style';
 
-export default function HowToSchedule() {
+export default function HowToSchedule({navigation}) {
   return (
     <SafeAreaView>
       <ScrollView style={styles.color}>
@@ -25,7 +25,7 @@ export default function HowToSchedule() {
         </View>
         <View>
           <TouchableOpacity
-          //   onPress={() => navigation.navigate('GetCare')}
+            onPress={() => navigation.navigate('ChooseProvider')}
           >
             <View style={styles.buttonView}>
               <Text style={styles.buttonText}> Find a provider</Text>
