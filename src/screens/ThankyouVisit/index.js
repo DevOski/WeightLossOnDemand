@@ -30,11 +30,15 @@ export default function ThankyouVisit({navigation}) {
           <Text style={styles.text}>
             You can find notes from your provider and more under My Health
           </Text>
-          <View style={styles.headerView}>
+          <View style={[styles.headerView,styles.row2]}>
             <Text style={styles.health}>
               My Health {' > '}
-              <Text style={styles.visitHistory}> Visit History</Text>
             </Text>
+            <View style={styles.top}>
+                <TouchableOpacity onPress={()=>navigation.navigate("VisitHistory")}>
+                  <Text style={styles.visitHistory}> Visit History</Text>
+                </TouchableOpacity>
+              </View>
           </View>
           <View style={styles.borderView}></View>
           <View style={styles.inviteView}>
@@ -56,7 +60,7 @@ export default function ThankyouVisit({navigation}) {
               <Image source={images.fac} style={styles.icon2} />
               <Text style={styles.list}>Facebook</Text>
             </View>
-            <View style={[styles.borderView,styles.bottom]}></View>
+            <View style={[styles.borderView, styles.bottom]}></View>
           </View>
         </View>
       </View>

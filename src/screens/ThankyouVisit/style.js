@@ -41,6 +41,7 @@ export const styles = StyleSheet.create({
   },
   visitHistory: {
     color: colors.secondary,
+    fontFamily: fontFamily.appTextMedium,
   },
   borderView: {
     borderBottomWidth: 1,
@@ -75,6 +76,10 @@ export const styles = StyleSheet.create({
     right: sizes.screenWidth * 0.05,
     paddingTop: sizes.screenHeight * 0.02,
     paddingBottom: sizes.screenHeight * 0.01,
+  },
+  row2:{
+    flexDirection: 'row',
+    alignItems: 'center',
   },
   icon: {
     height: sizes.screenHeight * 0.04,

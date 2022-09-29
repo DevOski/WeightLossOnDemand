@@ -12,6 +12,7 @@ import HowLikelyRecommend from './src/screens/HowLikelyRecommend';
 import ThankyouVisit from './src/screens/ThankyouVisit';
 import Loader from './src/components/Loader';
 import Error from './src/components/Error';
+import VisitHistory from './src/screens/VisitHistory';
 
 export default function App() {
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -55,11 +56,12 @@ export default function App() {
           </TouchableOpacity>
         </Modal>
       )}
-      <MainNavigator />
+      {/* <MainNavigator /> */}
       {/* <Error title={"Oops!"} message={"Invalid user identity or password."}/> */}
       {/* <RateProvider /> */}
       {/* <HowLikelyRecommend /> */}
       {/* <ThankyouVisit /> */}
+      {/* <VisitHistory /> */}
     </View>
   );
 }
