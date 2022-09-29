@@ -129,6 +129,7 @@ import HowToSchedule from '../../screens/HowToSchedule';
 import ChooseProvider from '../../screens/ChooseProvider';
 import Filter from '../../screens/Filter';
 import SelectLanguage from '../../screens/SelectLanguage';
+import SelectFocusArea from '../../screens/SelectFocusArea';
 const Stack = createNativeStackNavigator();
 
 const Tab = createMaterialBottomTabNavigator();
@@ -330,6 +331,7 @@ export default function MainNavigator() {
         <Stack.Screen name="ChooseProvider" component={ChooseProvider} />
         <Stack.Screen name="Filter" component={Filter} />
         <Stack.Screen name="SelectLanguage" component={SelectLanguage} />
+        <Stack.Screen name="SelectFocusArea" component={SelectFocusArea} />
         
       </Stack.Navigator>
     </NavigationContainer>

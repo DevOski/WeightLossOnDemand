@@ -126,12 +126,18 @@ export default function Filter({navigation, route}) {
             </View>
             <View style={styles.paddingTop}>
               <TouchableOpacity
-              // onPress={() => navigation.navigate('VideoVisit')}
-              >
+                onPress={() => navigation.navigate('SelectFocusArea')}>
                 <View style={[styles.row2, styles.card]}>
-                  <Text style={[styles.cardText, styles.italic]}>
-                    None selected
-                  </Text>
+                  {route?.params?.area ? (
+                    <Text style={[styles.cardText]}>
+                      {route?.params?.area}
+                    </Text>
+                  ) : (
+                    <Text style={[styles.cardText, styles.italic]}>
+                      None selected
+                    </Text>
+                  )}
+
                   <View>
                     <Text style={styles.symbol}> ›</Text>
                   </View>
