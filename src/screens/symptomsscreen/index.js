@@ -18,7 +18,7 @@ import {colors, sizes, fontSize} from '../../services';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import {Checkbox} from 'react-native-paper';
 
-export const SymtomsScreen = () => {
+export const SymtomsScreen = ({navigation}) => {
   const [CheckedFemale, setCheckedFemale] = React.useState();
   return (
     <SafeAreaView style={styles.container}>
@@ -688,9 +688,9 @@ export const SymtomsScreen = () => {
         
       </View>
       <View style={styles.buttnView}>
-          <TouchableOpacity onPress={()=>navigation.navigate("signupscreen")}>
+          <TouchableOpacity onPress={()=>navigation.navigate("healthprofilereview")}>
             <View style={styles.buttonView}>
-              <Text style={styles.buttonText}>Create new account</Text>
+              <Text style={styles.buttonText}>Next</Text>
             </View>
           </TouchableOpacity>
         </View>

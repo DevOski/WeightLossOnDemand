@@ -18,7 +18,7 @@ import {RadioButton} from 'react-native-paper';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 
-import {colors, fontSize, sizes} from '../../services';
+import {colors, fontFamily, fontSize, sizes} from '../../services';
 import {CustomTextFiel} from '../../component/textFiled';
 import Header from '../../components/Header';
 import medicalCard from '../../assets/medicalCard.png';
@@ -37,29 +37,36 @@ export const Employerhelp = ({navigation}) => {
         </View>
         <View style={styles.payra}>
           <View>
-            <Text style={styles.tex}>Does your employer help cover Doctor on Demand visits?</Text>
+            <Text style={styles.tex}>
+              Does your employer help cover Doctor on Demand visits?
+            </Text>
           </View>
         </View>
         <View style={styles.payra2}>
           <View>
-            <Text style={styles.tex1}>400+ employers partner directly with Doctor on Demand to provide benefits to their employess</Text>
+            <Text style={styles.tex1}>
+              400+ employers partner directly with Doctor on Demand to provide
+              benefits to their employess
+            </Text>
           </View>
         </View>
         <View style={styles.btncontainer}>
-            <View style={styles.gap}>
-                <TouchableOpacity onPress={()=>navigation.navigate("wellcomescreen")}>
-                <View style={styles.buttonView}>
-          <Text style={styles.buttonText}> Yes</Text>
-        </View>
-                </TouchableOpacity>
-            </View>
-            <View>
-                <TouchableOpacity onPress={()=>navigation.navigate("wellcomescreen")}>
-                <View style={styles.buttonView1}>
-          <Text style={styles.buttonText1}>No</Text>
-        </View>
-                </TouchableOpacity>
-            </View>
+          <View style={styles.gap}>
+            <TouchableOpacity
+              onPress={() => navigation.navigate('wellcomescreen')}>
+              <View style={styles.buttonView}>
+                <Text style={styles.buttonText}> Yes</Text>
+              </View>
+            </TouchableOpacity>
+          </View>
+          <View>
+            <TouchableOpacity
+              onPress={() => navigation.navigate('wellcomescreen')}>
+              <View style={styles.buttonView1}>
+                <Text style={styles.buttonText1}>No</Text>
+              </View>
+            </TouchableOpacity>
+          </View>
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -78,59 +85,63 @@ const styles = StyleSheet.create({
   payra: {
     justifyContent: 'center',
     alignItems: 'center',
-    paddingTop:sizes.screenHeight*0.05,
-    
+    paddingTop: sizes.screenHeight * 0.05,
   },
   payra2: {
-    paddingTop:sizes.screenHeight*0.05,
+    paddingTop: sizes.screenHeight * 0.05,
     justifyContent: 'center',
     alignItems: 'center',
-    paddingLeft:sizes.screenWidth*0.15,
-    paddingRight:sizes.screenWidth*0.2
-    
+    paddingLeft: sizes.screenWidth * 0.15,
+    paddingRight: sizes.screenWidth * 0.2,
   },
-  tex:{
+  tex: {
     fontSize: fontSize.h4,
     color: colors.black,
     fontWeight: '500',
-    textAlign:'center',
+    textAlign: 'center',
+    fontFamily: fontFamily.appTextMedium,
   },
-  tex1:{
-    textAlign:'center',
+  tex1: {
+    textAlign: 'center',
     fontSize: fontSize.h6,
     color: colors.black,
     fontWeight: '500',
+    fontFamily: fontFamily.appTextMedium,
   },
   buttonView: {
     backgroundColor: colors.secondary,
     height: sizes.screenHeight * 0.06,
-    width: sizes.screenWidth * 0.8,
+    width: sizes.screenWidth * 0.93,
     alignItems: 'center',
     justifyContent: 'center',
   },
   buttonView1: {
-    borderColor:colors.secondary,
-   borderWidth:sizes.screenWidth*0.01,
+    borderColor: colors.secondary,
+    borderWidth: 2,
     height: sizes.screenHeight * 0.06,
-    width: sizes.screenWidth * 0.8,
+    width: sizes.screenWidth * 0.93,
     alignItems: 'center',
     justifyContent: 'center',
   },
- 
+
   buttonText: {
     color: colors.white,
     fontSize: fontSize.h6,
+    fontFamily: fontFamily.appTextHeading,
+    fontWeight: '600',
   },
   buttonText1: {
     color: colors.secondary,
     fontSize: fontSize.h6,
+    fontFamily: fontFamily.appTextHeading,
+    fontWeight: '600',
   },
-  btncontainer:{
-    marginTop:sizes.screenHeight*0.2,
-    justifyContent:'center',
-    alignItems:'center'
+  btncontainer: {
+    marginTop: sizes.screenHeight * 0.2,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
-  gap:{
-    marginBottom:sizes.screenHeight*0.04
-  }
+  gap: {
+    marginBottom: sizes.screenHeight * 0.02,
+  },
 });

@@ -26,7 +26,7 @@ import {
   Componentthrd,
   ComponentFour,
 } from '../../component/IntrComponent';
-import {colors, fontSize, sizes} from '../../services';
+import {colors, fontFamily, fontSize, sizes} from '../../services';
 // FontAwesome
 import Entypo from 'react-native-vector-icons/Entypo';
 
@@ -97,7 +97,9 @@ const Intro = ({navigation}) => {
             flexDirection: 'row',
             alignItems: 'center',
             justifyContent: 'space-around',
-            padding: 20,
+            padding: deviceWidth*0.01,
+            position:'absolute',
+            top:sizes.screenHeight*0.93
           }}>
           {imgActive !== 3 && (
             <View style={[styles.footer, styles.top]}>
@@ -194,11 +196,14 @@ const styles = StyleSheet.create({
     fontSize: fontSize.h2,
   },
   top: {
-    top: sizes.screenHeight * -0.01,
+    bottom: sizes.screenHeight * 0.01,
   },
   fontsiginandsignup: {
     fontSize: fontSize.h5,
     color: colors.secondary,
+    fontFamily: fontFamily.appTextHeading,
+    fontWeight: '700',
+    
   },
 });
 

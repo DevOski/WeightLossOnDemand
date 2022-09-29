@@ -216,4 +216,43 @@ export const styles = StyleSheet.create({
   paddingBottom: {
     paddingBottom: sizes.screenHeight * 0.1,
   },
+  he:{
+    fontWeight: '400',
+    color: colors.black,
+    fontSize: fontSize.h6,
+    top: sizes.screenHeight * 0.03,
+    fontFamily: fontFamily.appTextRegular,
+  },
+  het:{
+    fontWeight: '400',
+    color: colors.black,
+    fontSize: fontSize.h6,
+    top: sizes.screenHeight * 0.03,
+    fontFamily: fontFamily.appTextRegular,
+    lineHeight:sizes.screenHeight * 0.04,
+  },
+  het1:{
+    marginTop: sizes.screenHeight * 0.03,
+  },
+  buttnView: {
+    // marginRight:sizes.screenWidth*0.06,
+    marginTop: sizes.screenHeight * 0.10,
+    marginRight:sizes.screenWidth*0.05,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  buttonView: {
+    borderWidth:sizes.screenWidth*0.006,
+    borderColor:colors.secondary,
+    height: sizes.screenHeight * 0.06,
+    width: sizes.screenWidth * 0.79,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  buttonText: {
+    color: colors.secondary,
+    fontSize: fontSize.h6,
+    fontFamily: fontFamily.appTextHeading,
+    fontWeight: '600',
+  },
 });

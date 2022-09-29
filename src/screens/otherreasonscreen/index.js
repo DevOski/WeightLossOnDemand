@@ -14,12 +14,11 @@ import {
 import Header from '../../components/Header';
 import images from '../../services/utilities/images';
 import {CustomTextFiel} from '../../component/textFiled';
-import {colors, sizes, fontSize} from '../../services';
+import {colors, sizes, fontSize, fontFamily} from '../../services';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 export const OtherReason = ({navigation}) => {
   const [text, settext] = useState('');
-
 
   return (
     <SafeAreaView style={styles.container}>
@@ -39,13 +38,13 @@ export const OtherReason = ({navigation}) => {
           />
         </View>
 
-       {text ?  <TouchableOpacity onPress={()=>navigation.navigate("temperature")}>
-        <View style={styles.bdiv}>
-          <Text style={styles.btext}>></Text>
-        </View>
-       </TouchableOpacity>: null
-
-       }
+        {text ? (
+          <TouchableOpacity onPress={() => navigation.navigate('howlongscreen')}>
+            <View style={styles.bdiv}>
+              <Text style={styles.btext}>›</Text>
+            </View>
+          </TouchableOpacity>
+        ) : null}
       </View>
     </SafeAreaView>
   );
@@ -60,9 +59,10 @@ const styles = StyleSheet.create({
   },
 
   hedtext: {
-    fontSize: fontSize.h2,
+    fontSize: fontSize.h4,
     color: colors.black,
     fontWeight: 'bold',
+    fontStyle: fontFamily.appTextHeading,
   },
   getextcontainer: {
     justifyContent: 'center',
@@ -74,17 +74,18 @@ const styles = StyleSheet.create({
   },
 
   bdiv: {
-    marginTop:sizes.screenHeight*0.05,
-    width: sizes.screenWidth * 0.2,
-    height: sizes.screenHeight * 0.10,
+    marginTop: sizes.screenHeight * 0.05,
+    width: sizes.screenWidth * 0.16,
+    height: sizes.screenHeight * 0.081,
     backgroundColor: colors.secondary,
-    justifyContent:'center',
-    alignItems:'center',
-    borderRadius:sizes.screenWidth*0.2
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: sizes.screenWidth * 0.2,
   },
   btext: {
     fontSize: fontSize.h2,
     color: colors.white,
-    fontWeight:'bold'
+    fontWeight: 'bold',
+    bottom: sizes.screenWidth * 0.01,
   },
 });

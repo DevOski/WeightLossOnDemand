@@ -14,16 +14,15 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import Header from '../../components/Header';
 import images from '../../services/utilities/images';
 
-import {colors, sizes, fontSize} from '../../services';
+import {colors, sizes, fontSize, fontFamily} from '../../services';
 
 export const Correct = ({navigation}) => {
   return (
     <SafeAreaView style={styles.container}>
       <View>
-          <Header dark={true} />
-        </View>
+        <Header dark={true} />
+      </View>
       <View style={styles.containe2}>
-        
         <View style={styles.containe3}>
           <Text style={styles.hedtext}>Is this correct ?</Text>
         </View>
@@ -52,11 +51,15 @@ export const Correct = ({navigation}) => {
             <TouchableOpacity
               onPress={() => navigation.navigate('reasonVisit')}>
               <View style={styles.button}>
-                <Text style={styles.btext2}> <AntDesign
-                  name="check"
-                  style={{color: "green"}}
-                  size={25}
-                /> Yes</Text>
+                <Text style={styles.btext2}>
+                  {' '}
+                  <AntDesign
+                    name="check"
+                    style={{color: 'green'}}
+                    size={25}
+                  />{' '}
+                  Yes
+                </Text>
               </View>
             </TouchableOpacity>
           </View>
@@ -83,15 +86,20 @@ const styles = StyleSheet.create({
     fontSize: fontSize.h4,
     color: colors.black,
     fontWeight: 'bold',
+    fontFamily: fontFamily.appTextHeading,
   },
   context: {
     fontSize: fontSize.large,
     color: colors.black,
-    fontWeight:'bold',lineHeight:sizes.screenHeight*0.06
+    fontFamily: fontFamily.appTextHeading,
+    fontWeight: 'bold',
+    lineHeight: sizes.screenHeight * 0.06,
   },
   context1: {
     fontSize: fontSize.large,
     color: colors.gray,
+    fontFamily: fontFamily.appTextRegular,
+
   },
   containecontent: {
     paddingBottom: sizes.screenHeight * 0.03,
@@ -117,6 +125,8 @@ const styles = StyleSheet.create({
     color: colors.secondary,
     fontSize: fontSize.h5,
     fontWeight: 'bold',
+    fontFamily: fontFamily.appTextRegular,
+
   },
   bcontainer: {
     flexDirection: 'row',
@@ -127,5 +137,7 @@ const styles = StyleSheet.create({
     color: 'green',
     fontSize: fontSize.h5,
     fontWeight: 'bold',
+    fontFamily: fontFamily.appTextRegular,
+
   },
 });

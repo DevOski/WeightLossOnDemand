@@ -34,17 +34,17 @@ export const Doyouneeddoctor = () => {
             </View>
             <TouchableOpacity>
           <View style={styles.buttonViewbox}>
-            <Text style={styles.buttonTextt}>Save</Text>
+            <Text style={styles.buttonTextt}>Yes</Text>
           </View>
         </TouchableOpacity>
         <TouchableOpacity>
           <View style={styles.buttonViewbox}>
-            <Text style={styles.buttonTextt}>Save</Text>
+            <Text style={styles.buttonTextt}>No</Text>
           </View>
         </TouchableOpacity>
         <TouchableOpacity>
           <View style={styles.buttonViewbox}>
-            <Text style={styles.buttonTextt}>Save</Text>
+            <Text style={styles.buttonTextt}>I'm not sure</Text>
           </View>
         </TouchableOpacity>
             
@@ -53,7 +53,7 @@ export const Doyouneeddoctor = () => {
        
         </View>
 
-        <TouchableOpacity>
+        <TouchableOpacity onPress={()=>navigation.navigate("healthprofilereview")}>
           <View style={styles.buttonView}>
             <Text style={styles.buttonText}>continue</Text>
           </View>

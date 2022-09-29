@@ -15,7 +15,7 @@ import images from '../../services/utilities/images';
 import {CustomTextFiel} from '../../component/textFiled';
 import {colors, sizes, fontSize} from '../../services';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-export const ReviewHealthprofile = () => {
+export const ReviewHealthprofile = ({navigation}) => {
  
   return (
     <SafeAreaView style={styles.container}>
@@ -35,7 +35,7 @@ export const ReviewHealthprofile = () => {
             <View style={styles.borderrb}>
             <Text style={styles.textttt}>No active medicatyion</Text>
             </View>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={()=>navigation.navigate('whichmedicationscreen')}>
               <Text style={styles.addanother}>Add</Text>
             </TouchableOpacity>
           </View>
@@ -46,7 +46,7 @@ export const ReviewHealthprofile = () => {
             <View style={styles.borderrb}>
             <Text style={styles.textttt}>No Known drug allergies</Text>
             </View>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={()=>navigation.navigate('whichdrugallergi')}>
               <Text style={styles.addanother}>Add</Text>
             </TouchableOpacity>
           </View>
@@ -57,7 +57,7 @@ export const ReviewHealthprofile = () => {
             <View style={styles.borderrb}>
             <Text style={styles.textttt}>No known medical conditions</Text>
             </View>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={()=>navigation.navigate('whichmedicalconditions')}>
               <Text style={styles.addanother}>Add</Text>
             </TouchableOpacity>
           </View>
@@ -68,7 +68,7 @@ export const ReviewHealthprofile = () => {
             <View style={styles.borderrb}>
             <Text style={styles.textttt}>No Past surgeries</Text>
             </View>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={()=>navigation.navigate('whichsurgeri')}>
               <Text style={styles.addanother}>Add</Text>
             </TouchableOpacity>
           </View>
@@ -79,15 +79,15 @@ export const ReviewHealthprofile = () => {
             <View style={styles.borderrb}>
             <Text style={styles.textttt}>No first-degree relatives with medical Conditions</Text>
             </View>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={()=>navigation.navigate('whichmedicalconditions')}>
               <Text style={styles.addanother}>Add</Text>
             </TouchableOpacity>
           </View>
         </View>
 
-        <TouchableOpacity>
+        <TouchableOpacity onPress={()=>navigation.navigate("doyouneeddoctor")}>
           <View style={styles.buttonView}>
-            <Text style={styles.buttonText}>Save</Text>
+            <Text style={styles.buttonText}>Confirm</Text>
           </View>
         </TouchableOpacity>
       </View>
