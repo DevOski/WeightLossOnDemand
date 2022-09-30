@@ -18,7 +18,7 @@ import {colors, sizes, fontSize, fontFamily} from '../../services';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 export const OtherReason = ({navigation}) => {
-  const [text, settext] = useState('');
+  const [text, settext] = useState(0);
 
   return (
     <SafeAreaView style={styles.container}>
@@ -36,7 +36,9 @@ export const OtherReason = ({navigation}) => {
             value={text}
             setValue={settext}
           />
+          <Text style={{textAlign:'right',fontSize:fontSize.large,color:colors.secondary,top:sizes.screenHeight*0.01}}>{text.length}/400</Text>
         </View>
+        
 
         {text ? (
           <TouchableOpacity onPress={() => navigation.navigate('howlongscreen')}>

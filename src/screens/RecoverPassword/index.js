@@ -18,7 +18,7 @@ import Modal from 'react-native-modal';
 import {openInbox} from 'react-native-email-link';
 
 export default function RecoverPassword() {
-  const [email, setEmail] = useState('tester@gmail.com');
+  const [email, setEmail] = useState('');
   const [isModalVisible, setIsModalVisible] = useState(false);
 
   const toggleModal = () => {

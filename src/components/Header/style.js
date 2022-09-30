@@ -44,6 +44,11 @@ export const styles = StyleSheet.create({
     fontSize: fontSize.h6,
     fontFamily: fontFamily.appTextMedium,
   },
+  filter: {
+    color: colors.secondary,
+    fontSize: fontSize.h6,
+    fontFamily: fontFamily.appTextMedium,
+  },
   darkTitle: {
     color: colors.primary,
     left: sizes.screenWidth * 0.05,
@@ -53,7 +58,10 @@ export const styles = StyleSheet.create({
   skipView: {
     left: sizes.screenHeight * 0.2,
   },
-  skipIcon: {left: sizes.baseMargin},
+  filterView: {
+    left: sizes.screenHeight * 0.25,
+  },
+  skipIcon: {left: sizes.screenWidth*0.17},
   bold: {
     fontWeight: 'bold',
   },

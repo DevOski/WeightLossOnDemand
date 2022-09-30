@@ -14,7 +14,7 @@ import {
 } from 'react-native';
 import GetCare from '../../components/GetCare';
 import images from '../../services/utilities/images';
-import ladyy from '../../assets/assets/ladyy.jpg'
+import ladyy from '../../assets/assets/ladyy.jpg';
 import {WebView} from 'react-native-webview';
 import Header from '../../components/Header';
 import {colors, sizes, fontSize} from '../../services';
@@ -24,143 +24,159 @@ export default function Physicans({navigation}) {
   return (
     <SafeAreaView>
       <Header dark={true} />
-      
+
       <ScrollView style={styles.color}>
-
-      <View style={styles.paddingLeft}>
-        <Text style={styles.subHeading}>Our Providers </Text>
-        
+        <View style={styles.paddingLeft}>
+          <Text style={styles.subHeading}>Our Providers </Text>
         </View>
-       <View style={styles.paddingTop}>
-       <TouchableOpacity onPress={() => navigation.navigate('physiciansscreen')}>
-              <View style={[styles.row, styles.card]}>
-                
-                <View>
-                <View style={styles.rowinner} >
-                   <View style={styles.img} >
-                    <Image style={{width:"100%",height:'100%',borderRadius:sizes.screenWidth*0.5}} source={ladyy}/>
-                   </View>
-                   <View>
-
- 
-                <Text style={styles.heading}>Dr.KiKi Lwin,Md</Text>
-                   </View>
-
+        <View style={styles.paddingTop}>
+          <TouchableOpacity
+            onPress={() => navigation.navigate('physiciansscreen')}>
+            <View style={[styles.row, styles.card]}>
+              <View>
+                <View style={styles.rowinner}>
+                  <View style={styles.img}>
+                    <Image
+                      style={{
+                        width: '100%',
+                        height: '100%',
+                        borderRadius: sizes.screenWidth * 0.5,
+                      }}
+                      source={ladyy}
+                    />
+                  </View>
+                  <View>
+                    <Text style={styles.heading}>Dr.KiKi Lwin,Md</Text>
+                  </View>
                 </View>
                 <Text style={styles.cardText1}>
-                  Dr. Lwin was born and raised in Myanmar,formerly known as Burma and graduated from University of Med....
+                  Dr. Lwin was born and raised in Myanmar,formerly known as
+                  Burma and graduated from University of Med....
                 </Text>
-                </View>
-                <View>
-                  <Text style={styles.symbol}> ›</Text>
-                </View>
-               
               </View>
-            </TouchableOpacity>
+              <View>
+                <Text style={styles.symbol}> ›</Text>
+              </View>
+            </View>
+          </TouchableOpacity>
 
-            <TouchableOpacity onPress={() => navigation.navigate('physiciansscreen')}>
-              <View style={[styles.row, styles.card]}>
-                
-                <View>
-                <View style={styles.rowinner} >
-                   <View style={styles.img} >
-                    <Image style={{width:"100%",height:'100%',borderRadius:sizes.screenWidth*0.5}} source={ladyy}/>
-                   </View>
-                   <View>
-
- 
-                <Text style={styles.heading}>Dr.KiKi Lwin,Md</Text>
-                   </View>
-
+          <TouchableOpacity
+            onPress={() => navigation.navigate('physiciansscreen')}>
+            <View style={[styles.row, styles.card]}>
+              <View>
+                <View style={styles.rowinner}>
+                  <View style={styles.img}>
+                    <Image
+                      style={{
+                        width: '100%',
+                        height: '100%',
+                        borderRadius: sizes.screenWidth * 0.5,
+                      }}
+                      source={ladyy}
+                    />
+                  </View>
+                  <View>
+                    <Text style={styles.heading}>Dr.KiKi Lwin,Md</Text>
+                  </View>
                 </View>
                 <Text style={styles.cardText1}>
-                  Dr. Lwin was born and raised in Myanmar,formerly known as Burma and graduated from University of Med....
+                  Dr. Lwin was born and raised in Myanmar,formerly known as
+                  Burma and graduated from University of Med....
                 </Text>
-                </View>
-                <View>
-                  <Text style={styles.symbol}> ›</Text>
-                </View>
-               
               </View>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={() => navigation.navigate('physiciansscreen')}>
-              <View style={[styles.row, styles.card]}>
-                
-                <View>
-                <View style={styles.rowinner} >
-                   <View style={styles.img} >
-                    <Image style={{width:"100%",height:'100%',borderRadius:sizes.screenWidth*0.5}} source={ladyy}/>
-                   </View>
-                   <View>
-
- 
-                <Text style={styles.heading}>Dr.KiKi Lwin,Md</Text>
-                   </View>
-
+              <View>
+                <Text style={styles.symbol}> ›</Text>
+              </View>
+            </View>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => navigation.navigate('physiciansscreen')}>
+            <View style={[styles.row, styles.card]}>
+              <View>
+                <View style={styles.rowinner}>
+                  <View style={styles.img}>
+                    <Image
+                      style={{
+                        width: '100%',
+                        height: '100%',
+                        borderRadius: sizes.screenWidth * 0.5,
+                      }}
+                      source={ladyy}
+                    />
+                  </View>
+                  <View>
+                    <Text style={styles.heading}>Dr.KiKi Lwin,Md</Text>
+                  </View>
                 </View>
                 <Text style={styles.cardText1}>
-                  Dr. Lwin was born and raised in Myanmar,formerly known as Burma and graduated from University of Med....
+                  Dr. Lwin was born and raised in Myanmar,formerly known as
+                  Burma and graduated from University of Med....
                 </Text>
-                </View>
-                <View>
-                  <Text style={styles.symbol}> ›</Text>
-                </View>
-               
               </View>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={() => navigation.navigate('physiciansscreen')}>
-              <View style={[styles.row, styles.card]}>
-                
-                <View>
-                <View style={styles.rowinner} >
-                   <View style={styles.img} >
-                    <Image style={{width:"100%",height:'100%',borderRadius:sizes.screenWidth*0.5}} source={ladyy}/>
-                   </View>
-                   <View>
-
- 
-                <Text style={styles.heading}>Dr.KiKi Lwin,Md</Text>
-                   </View>
-
+              <View>
+                <Text style={styles.symbol}> ›</Text>
+              </View>
+            </View>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => navigation.navigate('physiciansscreen')}>
+            <View style={[styles.row, styles.card]}>
+              <View>
+                <View style={styles.rowinner}>
+                  <View style={styles.img}>
+                    <Image
+                      style={{
+                        width: '100%',
+                        height: '100%',
+                        borderRadius: sizes.screenWidth * 0.5,
+                      }}
+                      source={ladyy}
+                    />
+                  </View>
+                  <View>
+                    <Text style={styles.heading}>Dr.KiKi Lwin,Md</Text>
+                  </View>
                 </View>
                 <Text style={styles.cardText1}>
-                  Dr. Lwin was born and raised in Myanmar,formerly known as Burma and graduated from University of Med....
+                  Dr. Lwin was born and raised in Myanmar,formerly known as
+                  Burma and graduated from University of Med....
                 </Text>
-                </View>
-                <View>
-                  <Text style={styles.symbol}> ›</Text>
-                </View>
-               
               </View>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={() => navigation.navigate('physiciansscreen')}>
-              <View style={[styles.row, styles.card]}>
-                
-                <View>
-                <View style={styles.rowinner} >
-                   <View style={styles.img} >
-                    <Image style={{width:"100%",height:'100%',borderRadius:sizes.screenWidth*0.5}} source={ladyy}/>
-                   </View>
-                   <View>
-
- 
-                <Text style={styles.heading}>Dr.KiKi Lwin,Md</Text>
-                   </View>
-
+              <View>
+                <Text style={styles.symbol}> ›</Text>
+              </View>
+            </View>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => navigation.navigate('physiciansscreen')}>
+            <View style={[styles.row, styles.card]}>
+              <View>
+                <View style={styles.rowinner}>
+                  <View style={styles.img}>
+                    <Image
+                      style={{
+                        width: '100%',
+                        height: '100%',
+                        borderRadius: sizes.screenWidth * 0.5,
+                      }}
+                      source={ladyy}
+                    />
+                  </View>
+                  <View>
+                    <Text style={styles.heading}>Dr.KiKi Lwin,Md</Text>
+                  </View>
                 </View>
                 <Text style={styles.cardText1}>
-                  Dr. Lwin was born and raised in Myanmar,formerly known as Burma and graduated from University of Med....
+                  Dr. Lwin was born and raised in Myanmar,formerly known as
+                  Burma and graduated from University of Med....
                 </Text>
-                </View>
-                <View>
-                  <Text style={styles.symbol}> ›</Text>
-                </View>
-               
               </View>
-            </TouchableOpacity>
-       </View>
-   
-       
+              <View>
+                <Text style={styles.symbol}> ›</Text>
+              </View>
+            </View>
+          </TouchableOpacity>
+        </View>
       </ScrollView>
     </SafeAreaView>
   );
@@ -195,7 +211,7 @@ const styles = StyleSheet.create({
   heading: {
     fontSize: fontSize.h5,
     color: colors.black,
-    fontWeight:'bold',
+    fontWeight: 'bold',
     paddingLeft: sizes.screenWidth * 0.05,
   },
   padding: {
@@ -214,7 +230,7 @@ const styles = StyleSheet.create({
   rowinner: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginTop:sizes.screenHeight*0.00,
+    marginTop: sizes.screenHeight * 0.0,
     paddingLeft: sizes.screenWidth * 0.03,
     // justifyContent: 'space-between',
   },
@@ -224,7 +240,7 @@ const styles = StyleSheet.create({
     marginBottom: sizes.screenHeight * 0.02,
     alignSelf: 'center',
     width: sizes.screenWidth * 0.96,
-    height:sizes.screenHeight*0.26,
+    height: sizes.screenHeight * 0.26,
     borderWidth: 1,
     borderColor: colors.disabledBg,
     shadowColor: '#000',
@@ -245,7 +261,7 @@ const styles = StyleSheet.create({
   cardText1: {
     color: colors.primary,
     fontSize: fontSize.large,
-    paddingTop:sizes.screenHeight*0.01,
+    paddingTop: sizes.screenHeight * 0.01,
     paddingLeft: sizes.screenWidth * 0.04,
     lineHeight: sizes.screenHeight * 0.027,
   },
@@ -266,15 +282,15 @@ const styles = StyleSheet.create({
   bOTtomPAD: {
     paddingBottom: sizes.screenHeight * 0.05,
   },
-  img:{
-    width:sizes.screenWidth*0.2,
-    height:sizes.screenHeight*0.11
+  img: {
+    width: sizes.screenWidth * 0.2,
+    height: sizes.screenHeight * 0.11,
   },
-  paddingTop:{
-    paddingTop:10
+  paddingTop: {
+    paddingTop: 10,
   },
-  paddingLeft:{
-    paddingTop:sizes.screenHeight*0.03,
-    paddingLeft:sizes.screenWidth*0.05
-  }
+  paddingLeft: {
+    paddingTop: sizes.screenHeight * 0.03,
+    paddingLeft: sizes.screenWidth * 0.05,
+  },
 });

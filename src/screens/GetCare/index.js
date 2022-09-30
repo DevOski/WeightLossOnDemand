@@ -58,7 +58,7 @@ export default function GetCare({navigation}) {
           </View>
         </TouchableOpacity>
         <TouchableOpacity
-        // onPress={() => navigation.navigate('FAQs')}
+        onPress={() => navigation.navigate('ProviderType')}
         >
           <View style={[styles.row, styles.card]}>
             <Image style={styles.icon} source={images.fedoctr} />

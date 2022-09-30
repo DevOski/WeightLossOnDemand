@@ -129,6 +129,17 @@ import VisitHistory from '../../screens/VisitHistory';
 import HowToSchedule from '../../screens/HowToSchedule';
 import { WhatCANWEhelp } from '../../screens/whatcanwehelpyouwidth';
 import { ProviderDetail } from '../../screens/providerdetail';
+import ChooseProvider from '../../screens/ChooseProvider';
+import Filter from '../../screens/Filter';
+import SelectLanguage from '../../screens/SelectLanguage';
+import SelectFocusArea from '../../screens/SelectFocusArea';
+import ProviderType from '../../screens/ProviderType';
+import ProviderHelpChoose from '../../screens/ProviderHelpChoose';
+import ChooseAppointmentLength from '../../screens/ChooseAppointmentLength';
+import LetsFindTherapist from '../../screens/LetsFindTherapist';
+import ChooseTherapist from '../../screens/Choosetherapist';
+import { TherapistDetail } from '../../screens/therapisdetail';
+import { AppointmentReqest } from '../../screens/appointmentreqest';
 
 const Stack = createNativeStackNavigator();
 
@@ -137,7 +148,7 @@ export default function MainNavigator() {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{headerShown: false}}>
-     
+      
         <Stack.Screen name="Introsliderscreen" component={Intro} />
         <Stack.Screen name="Setting" component={Setting} />
 
@@ -162,6 +173,7 @@ export default function MainNavigator() {
           component={FamilyMedicalconditions}
         />
 
+
         {/* <Stack.Screen name="surgeriesscreen" component={Surgeries} /> */}
        
         {/* <Stack.Screen name="drugalergiesscreen" component={Drugallergies} /> */}
@@ -170,10 +182,6 @@ export default function MainNavigator() {
         <Stack.Screen name="signupscreen" component={SignUp} />
         <Stack.Screen name="signinscreen" component={SignIn} />
         <Stack.Screen name="wellcomescreen" component={Wellcome} />
-        <Stack.Screen
-          name="MemberShipTerms"
-          component={MemberShipTerms}
-        />
         <Stack.Screen name="basicInfoscreens" component={BasicInfoScreen} />
         <Stack.Screen name="temperature" component={Temperaturescreen} />
         <Stack.Screen name="symptomsscreen" component={SymtomsScreen} />
@@ -361,6 +369,18 @@ export default function MainNavigator() {
         <Stack.Screen name="PayPal" component={PayPal} />
         <Stack.Screen name="VisitHistory" component={VisitHistory} />
         <Stack.Screen name="HowToSchedule" component={HowToSchedule} />
+        {/* <Stack.Screen name="VisitDetail" component={VisitDetail} /> */}
+        <Stack.Screen name="ChooseProvider" component={ChooseProvider} />
+        <Stack.Screen name="Filter" component={Filter} />
+        <Stack.Screen name="SelectLanguage" component={SelectLanguage} />
+        <Stack.Screen name="SelectFocusArea" component={SelectFocusArea} />
+        <Stack.Screen name="ProviderType" component={ProviderType} />
+        <Stack.Screen name="ProviderHelpChoose" component={ProviderHelpChoose} />
+        <Stack.Screen name="ChooseAppointmentLength" component={ChooseAppointmentLength} />
+        <Stack.Screen name="LetsFindTherapist" component={LetsFindTherapist} />
+        <Stack.Screen name="Choosetherapist" component={ChooseTherapist} />
+        <Stack.Screen name="therapisdetail" component={TherapistDetail} />
+        <Stack.Screen name="appointmentreqest" component={AppointmentReqest} />
       </Stack.Navigator>
     </NavigationContainer>
   );
