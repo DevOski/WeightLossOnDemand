@@ -135,6 +135,7 @@ import ProviderHelpChoose from '../../screens/ProviderHelpChoose';
 import ChooseAppointmentLength from '../../screens/ChooseAppointmentLength';
 import LetsFindTherapist from '../../screens/LetsFindTherapist';
 import ChooseAppointment from '../../screens/ChooseAppointment';
+import ChooseFollowUp from '../../screens/ChooseFollowUp';
 const Stack = createNativeStackNavigator();
 
 const Tab = createMaterialBottomTabNavigator();
@@ -142,6 +143,8 @@ export default function MainNavigator() {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{headerShown: false}}>
+      <Stack.Screen name="ChooseFollowUp" component={ChooseFollowUp} />
+
         <Stack.Screen name="Introsliderscreen" component={Intro} />
         <Stack.Screen name="Setting" component={Setting} />
 
@@ -348,6 +351,7 @@ export default function MainNavigator() {
         />
         <Stack.Screen name="LetsFindTherapist" component={LetsFindTherapist} />
         <Stack.Screen name="ChooseAppointment" component={ChooseAppointment} />
+        
       </Stack.Navigator>
     </NavigationContainer>
   );
