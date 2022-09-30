@@ -134,6 +134,7 @@ import ProviderType from '../../screens/ProviderType';
 import ProviderHelpChoose from '../../screens/ProviderHelpChoose';
 import ChooseAppointmentLength from '../../screens/ChooseAppointmentLength';
 import LetsFindTherapist from '../../screens/LetsFindTherapist';
+import ChooseAppointment from '../../screens/ChooseAppointment';
 const Stack = createNativeStackNavigator();
 
 const Tab = createMaterialBottomTabNavigator();
@@ -337,10 +338,16 @@ export default function MainNavigator() {
         <Stack.Screen name="SelectLanguage" component={SelectLanguage} />
         <Stack.Screen name="SelectFocusArea" component={SelectFocusArea} />
         <Stack.Screen name="ProviderType" component={ProviderType} />
-        <Stack.Screen name="ProviderHelpChoose" component={ProviderHelpChoose} />
-        <Stack.Screen name="ChooseAppointmentLength" component={ChooseAppointmentLength} />
+        <Stack.Screen
+          name="ProviderHelpChoose"
+          component={ProviderHelpChoose}
+        />
+        <Stack.Screen
+          name="ChooseAppointmentLength"
+          component={ChooseAppointmentLength}
+        />
         <Stack.Screen name="LetsFindTherapist" component={LetsFindTherapist} />
-        
+        <Stack.Screen name="ChooseAppointment" component={ChooseAppointment} />
       </Stack.Navigator>
     </NavigationContainer>
   );

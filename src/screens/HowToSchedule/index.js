@@ -16,7 +16,7 @@ import {styles} from './style';
 export default function HowToSchedule({navigation}) {
   return (
     <SafeAreaView>
-      <Header dark={true}/>
+      <Header dark={true} />
       <ScrollView style={styles.color}>
         <View style={styles.padding}>
           <Text style={styles.addPaymentText}>How to schedule</Text>
@@ -26,8 +26,7 @@ export default function HowToSchedule({navigation}) {
         </View>
         <View>
           <TouchableOpacity
-            onPress={() => navigation.navigate('ChooseProvider')}
-          >
+            onPress={() => navigation.navigate('ChooseProvider')}>
             <View style={styles.buttonView}>
               <Text style={styles.buttonText}> Find a provider</Text>
             </View>
@@ -35,8 +34,7 @@ export default function HowToSchedule({navigation}) {
         </View>
         <View style={styles.paddingTop2}>
           <TouchableOpacity
-          //   onPress={() => navigation.navigate('GetCare')}
-          >
+            onPress={() => navigation.navigate('ChooseAppointment')}>
             <View style={styles.buttonView}>
               <Text style={styles.buttonText}> Find a time</Text>
             </View>
