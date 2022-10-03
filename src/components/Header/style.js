@@ -39,6 +39,12 @@ export const styles = StyleSheet.create({
     fontSize: fontSize.h6,
     fontFamily: fontFamily.appTextLight,
   },
+  centerTitle: {
+    color: colors.white,
+    left: sizes.screenWidth * 0.2,
+    fontSize: fontSize.h6,
+    fontFamily: fontFamily.appTextLight,
+  },
   title2: {
     color: colors.white,
     fontSize: fontSize.h6,
@@ -72,6 +78,6 @@ export const styles = StyleSheet.create({
     // zIndex: 1,
   },
   leftDone: {
-    left: sizes.screenWidth * 0.2,
+    left: sizes.screenWidth * 0.37,
   },
 });

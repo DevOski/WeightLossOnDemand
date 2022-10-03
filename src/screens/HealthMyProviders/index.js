@@ -14,7 +14,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import {colors} from '../../services';
 import images from '../../services/utilities/images';
 
-export default function HealthMyProviders() {
+export default function HealthMyProviders({navigation}) {
   return (
     <SafeAreaView>
       <View>
@@ -35,7 +35,7 @@ export default function HealthMyProviders() {
             </View>
             <View style={[styles.paddingTop, styles.row]}>
               <Text style={styles.head}>EXTERNAL PHYSICIAN</Text>
-              <TouchableOpacity>
+              <TouchableOpacity onPress={()=>navigation.navigate("sharevist")}>
                 <View>
                   <Text style={styles.addBtn}>Add</Text>
                 </View>

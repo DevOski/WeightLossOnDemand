@@ -141,6 +141,8 @@ import ChooseTherapist from '../../screens/Choosetherapist';
 import { TherapistDetail } from '../../screens/therapisdetail';
 import { AppointmentReqest } from '../../screens/appointmentreqest';
 
+import ChooseAppointment from '../../screens/ChooseAppointment';
+import ChooseFollowUp from '../../screens/ChooseFollowUp';
 const Stack = createNativeStackNavigator();
 
 const Tab = createMaterialBottomTabNavigator();
@@ -149,6 +151,7 @@ export default function MainNavigator() {
     <NavigationContainer>
       <Stack.Navigator screenOptions={{headerShown: false}}>
       
+
         <Stack.Screen name="Introsliderscreen" component={Intro} />
         <Stack.Screen name="Setting" component={Setting} />
 
@@ -375,12 +378,21 @@ export default function MainNavigator() {
         <Stack.Screen name="SelectLanguage" component={SelectLanguage} />
         <Stack.Screen name="SelectFocusArea" component={SelectFocusArea} />
         <Stack.Screen name="ProviderType" component={ProviderType} />
-        <Stack.Screen name="ProviderHelpChoose" component={ProviderHelpChoose} />
-        <Stack.Screen name="ChooseAppointmentLength" component={ChooseAppointmentLength} />
+        <Stack.Screen
+          name="ProviderHelpChoose"
+          component={ProviderHelpChoose}
+        />
+        <Stack.Screen
+          name="ChooseAppointmentLength"
+          component={ChooseAppointmentLength}
+        />
         <Stack.Screen name="LetsFindTherapist" component={LetsFindTherapist} />
         <Stack.Screen name="Choosetherapist" component={ChooseTherapist} />
         <Stack.Screen name="therapisdetail" component={TherapistDetail} />
         <Stack.Screen name="appointmentreqest" component={AppointmentReqest} />
+        <Stack.Screen name="ChooseAppointment" component={ChooseAppointment} />
+      <Stack.Screen name="ChooseFollowUp" component={ChooseFollowUp} />
+        
       </Stack.Navigator>
     </NavigationContainer>
   );
