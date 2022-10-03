@@ -194,7 +194,7 @@ export default function HowItWorksVT() {
               questions or concerns, please don't hesitate to call us back.
             </Text>
           </View>
-          <View style={styles.paddingTop}>
+          <View style={[styles.paddingTop,styles.bottom]}>
             <Text style={styles.textColor}>
               <Text style={styles.bold}>Weight Loss On Demand Provider: </Text>
               Thanks for calling Weight Loss On Demand. Have a good day!

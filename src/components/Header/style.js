@@ -78,6 +78,6 @@ export const styles = StyleSheet.create({
     // zIndex: 1,
   },
   leftDone: {
-    left: sizes.screenWidth * 0.2,
+    left: sizes.screenWidth * 0.37,
   },
 });

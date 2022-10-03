@@ -79,7 +79,7 @@ export default function MyPricing({navigation}) {
           </View>
         </View>
         <View style={styles.top}>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={()=>navigation.navigate("GetCare")}>
             <View style={styles.buttonView}>
               <Text style={styles.buttonText}> Get Care</Text>
             </View>
