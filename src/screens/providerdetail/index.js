@@ -21,7 +21,7 @@ import book from '../../assets/assets/book.png';
 import question from '../../assets/assets/question.png';
 import share from '../../assets/assets/share.png';
 
-export const ProviderDetail = () => {
+export const ProviderDetail = ({navigation}) => {
   const [show, setshow] = useState(false);
 
   const Toogle = () => {
@@ -56,23 +56,31 @@ export const ProviderDetail = () => {
           </View>
           <View style={styles.flex3}>
             <View style={styles.avialbox}>
-              <Text style={styles.tex}>Thus</Text>
-              <Text style={styles.tex}>09/29</Text>
-              <Text style={styles.tex}>10:30</Text>
+              <TouchableOpacity
+                onPress={() => navigation.navigate('appointmentreqest')}>
+                <Text style={styles.tex}>Thus</Text>
+                <Text style={styles.tex}>09/29</Text>
+                <Text style={styles.tex}>10:30</Text>
+              </TouchableOpacity>
             </View>
             <View style={styles.avialbox}>
-              <Text style={styles.tex}>Thus</Text>
-              <Text style={styles.tex}>09/29</Text>
-              <Text style={styles.tex}>10:30</Text>
+              <TouchableOpacity
+                onPress={() => navigation.navigate('appointmentreqest')}>
+                <Text style={styles.tex}>Thus</Text>
+                <Text style={styles.tex}>09/29</Text>
+                <Text style={styles.tex}>10:30</Text>
+              </TouchableOpacity>
             </View>
             <View style={styles.avialbox}>
-              <Text style={styles.tex}>Thus</Text>
-              <Text style={styles.tex}>09/29</Text>
-              <Text style={styles.tex}>10:30</Text>
+              <TouchableOpacity
+                onPress={() => navigation.navigate('appointmentreqest')}>
+                <Text style={styles.tex}>Thus</Text>
+                <Text style={styles.tex}>09/29</Text>
+                <Text style={styles.tex}>10:30</Text>
+              </TouchableOpacity>
             </View>
           </View>
 
-         
           <View style={styles.crd}>
             <Text style={styles.providertex}>Patient</Text>
             <Text style={[styles.subhead, styles.border]}>
@@ -124,22 +132,22 @@ export const ProviderDetail = () => {
             <Text style={styles.subhead}>Language</Text>
             <Text style={styles.providertex}>English Hindi</Text>
           </View>
-   
-         
+
           <View style={styles.crd}>
             <Text style={styles.subhead}>QUALIFICATIONS</Text>
-            <Text style={styles.providertex}>Board-Certfied,Family Medicine</Text>
+            <Text style={styles.providertex}>
+              Board-Certfied,Family Medicine
+            </Text>
           </View>
-          
         </View>
       </ScrollView>
       <View style={styles.buttnView}>
-          <TouchableOpacity >
-            <View style={styles.buttonView}>
-              <Text style={styles.buttonText}>view Availbility</Text>
-            </View>
-          </TouchableOpacity>
-        </View>
+        <TouchableOpacity onPress={()=>navigation.navigate("ChooseAppointment")}>
+          <View style={styles.buttonView}>
+            <Text style={styles.buttonText}>View Availbility</Text>
+          </View>
+        </TouchableOpacity>
+      </View>
     </SafeAreaView>
   );
 };
@@ -150,7 +158,7 @@ const styles = StyleSheet.create({
   },
   container1: {
     padding: sizes.screenWidth * 0.05,
-    paddingBottom:sizes.screenHeight*0.2
+    paddingBottom: sizes.screenHeight * 0.2,
   },
   hedtext: {
     marginBottom: sizes.screenHeight * 0.0,
@@ -165,7 +173,7 @@ const styles = StyleSheet.create({
     fontFamily: fontFamily.appTextHeading,
   },
   img: {
-    marginTop:sizes.screenHeight*0.02,
+    marginTop: sizes.screenHeight * 0.02,
     width: sizes.screenWidth * 0.5,
     height: sizes.screenHeight * 0.27,
   },
@@ -175,7 +183,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   providertex: {
-    top:sizes.screenHeight*0.02,
+    top: sizes.screenHeight * 0.02,
     marginBottom: sizes.screenHeight * 0.01,
     fontSize: fontSize.large,
     color: colors.gray,
@@ -285,19 +293,17 @@ const styles = StyleSheet.create({
     // marginTop: sizes.screenHeight * 0.03,
     justifyContent: 'center',
     alignItems: 'center',
-    position:'absolute',
-    top:sizes.screenHeight*0.9
-
+    position: 'absolute',
+    top: sizes.screenHeight * 0.9,
   },
   buttonView: {
     backgroundColor: colors.secondary,
     height: sizes.screenHeight * 0.07,
-    width: sizes.screenWidth * 0.90,
+    width: sizes.screenWidth * 0.9,
     alignItems: 'center',
     justifyContent: 'center',
     alignSelf: 'center',
-    borderRadius:sizes.screenWidth*0.2
-   
+    borderRadius: sizes.screenWidth * 0.2,
   },
   buttonText: {
     color: colors.white,

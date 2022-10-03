@@ -67,7 +67,7 @@ export const styles = StyleSheet.create({
   filterView: {
     left: sizes.screenHeight * 0.25,
   },
-  skipIcon: {left: sizes.screenWidth*0.17},
+  skipIcon: {left: sizes.screenWidth * 0.05},
   bold: {
     fontWeight: 'bold',
   },
@@ -79,5 +79,8 @@ export const styles = StyleSheet.create({
   },
   leftDone: {
     left: sizes.screenWidth * 0.37,
+  },
+  filterLeft: {
+    left: sizes.screenWidth * 0.22,
   },
 });

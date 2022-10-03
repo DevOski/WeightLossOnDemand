@@ -20,13 +20,13 @@ import {colors, fontFamily, fontSize, sizes} from '../../services';
 import Header from '../../components/Header';
 import Modal from 'react-native-modal';
 
-
-export const VisitScreen = ({navigation}) => {
+export const VisitScreen = ({navigation, route}) => {
   const [isModalVisible, setModalVisible] = useState(false);
 
   const toggleModal = () => {
     setModalVisible(!isModalVisible);
   };
+  console.log(route?.params?.to);
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView>
@@ -41,7 +41,13 @@ export const VisitScreen = ({navigation}) => {
           <View style={styles.buttondiv}>
             <View style={styles.buttonchilddiv}>
               <TouchableOpacity
-                onPress={() => navigation.navigate('correctinfoscreen')}>
+                onPress={() =>
+                  route?.params?.to
+                    ? navigation.navigate(route?.params?.to, {
+                        GoogelFit: route?.params?.GoogelFit
+                      })
+                    : navigation.navigate('correctinfoscreen')
+                }>
                 <View style={[styles.row, styles.card]}>
                   <View style={styles.namefirt}>
                     <Text style={styles.fname}>J</Text>
@@ -54,7 +60,12 @@ export const VisitScreen = ({navigation}) => {
             </View>
             <View style={styles.buttonchilddiv}>
               <TouchableOpacity
-                onPress={() => navigation.navigate('addchildscreen')}>
+                onPress={() =>
+                  navigation.navigate('addchildscreen', {
+                    to: route?.params?.to,
+                    GoogelFit: route?.params?.GoogelFit,
+                  })
+                }>
                 <View style={[styles.row, styles.card]}>
                   <View style={styles.namefirt}>
                     <Text style={styles.fname}>+</Text>
@@ -227,7 +238,6 @@ const styles = StyleSheet.create({
     fontSize: fontSize.large,
     color: colors.white,
     fontFamily: fontFamily.appTextLight,
-
   },
   buttnView: {
     // marginRight:sizes.screenWidth*0.06,

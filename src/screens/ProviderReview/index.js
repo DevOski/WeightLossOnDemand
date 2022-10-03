@@ -1,4 +1,4 @@
-import React, {useRef, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {
   Image,
   ImageBackground,
@@ -17,6 +17,10 @@ import Loader from 'react-native-three-dots-loader';
 import Spinner from 'react-native-spinkit';
 
 export default function ProviderReview({navigation}) {
+  useEffect(() => {
+   navigation.navigate("RateProvider")
+  }, [])
+  
   return (
     <SafeAreaView>
       <View style={styles.color}>

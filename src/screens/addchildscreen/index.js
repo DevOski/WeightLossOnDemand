@@ -17,7 +17,7 @@ import {colors, sizes, fontSize, fontFamily} from '../../services';
 import {RadioButton} from 'react-native-paper';
 import Modal from 'react-native-modal';
 import Entypo from 'react-native-vector-icons/Entypo';
-export const ChildScreen = () => {
+export const ChildScreen = ({navigation, route}) => {
   const [CheckedMale, setCheckedMale] = React.useState();
   const [name, setname] = useState();
   const [lastname, setlastname] = useState();
@@ -158,7 +158,10 @@ export const ChildScreen = () => {
           </View>
         </View>
         <View style={styles.buttnView}>
-          <TouchableOpacity>
+          <TouchableOpacity
+            onPress={() =>
+              route?.params?.to ? navigation.navigate(route?.params?.to) : null
+            }>
             <View style={styles.buttonView}>
               <Text style={styles.buttonText}>Save</Text>
             </View>
@@ -299,6 +302,5 @@ const styles = StyleSheet.create({
     fontSize: fontSize.large,
     color: colors.white,
     fontFamily: fontFamily.appTextLight,
-
   },
 });

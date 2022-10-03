@@ -23,6 +23,8 @@ export default function Header({
   onPress,
   filter,
   textCenter,
+  next,
+  status
 }) {
   const navigation = useNavigation();
   return (
@@ -36,9 +38,7 @@ export default function Header({
           />
         </TouchableOpacity>
         {textCenter ? (
-          <Text style={[styles.centerTitle, styles.bold]}>
-            {title}
-          </Text>
+          <Text style={[styles.centerTitle, styles.bold]}>{title}</Text>
         ) : (
           <Text style={[dark ? styles.darkTitle : styles.title, styles.bold]}>
             {title}
@@ -64,17 +64,50 @@ export default function Header({
         {filter && (
           <View style={styles.filterView}>
             <TouchableOpacity onPress={() => navigation.navigate('Filter')}>
-              <View style={[styles.row, styles.leftDone]}>
+              <View style={[styles.row, styles.filterLeft]}>
                 <Text style={styles.filter}>{'   '}Filter </Text>
               </View>
             </TouchableOpacity>
           </View>
         )}
-        {skip && (
+        {skip && dark && !status &&(
+          <View style={[styles.skipView, styles.leftDone]}>
+            <TouchableOpacity
+              onPress={() =>
+                next ? navigation.navigate(next) : navigation.goBack()
+              }>
+              <View style={[styles.row]}>
+                <Text style={styles.title}>{'>'} </Text>
+                <MaterialIcons
+                  name="keyboard-arrow-right"
+                  color={colors.white}
+                  size={20}
+                  style={styles.skipIcon}
+                />
+              </View>
+            </TouchableOpacity>
+          </View>
+        )}
+        {skip && !status && (
           <View style={[styles.skipView, styles.leftDone]}>
             <TouchableOpacity onPress={() => navigation.goBack()}>
               <View style={[styles.row]}>
-                <Text style={styles.title}>{'   '} </Text>
+                <Text style={styles.title}>Skip </Text>
+                <MaterialIcons
+                  name="keyboard-arrow-right"
+                  color={colors.white}
+                  size={20}
+                  style={styles.skipIcon}
+                />
+              </View>
+            </TouchableOpacity>
+          </View>
+        )}
+         {skip && status && (
+          <View style={[styles.skipView, styles.leftDone]}>
+            <TouchableOpacity onPress={() => navigation.goBack()}>
+              <View style={[styles.row]}>
+                {/* <Text style={styles.title}>Skip </Text> */}
                 <MaterialIcons
                   name="keyboard-arrow-right"
                   color={colors.white}

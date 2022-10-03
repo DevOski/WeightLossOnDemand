@@ -20,7 +20,7 @@ import {TextInput} from 'react-native-paper';
 export const AppointmentReqest = ({navigation}) => {
   return (
     <SafeAreaView style={styles.container}>
-      <Header skip={true} title={'Appointment Reqest'} />
+      <Header skip={true} title={'Appointment Window'} />
       <View style={styles.bg}>
         <View style={styles.intext}>
           <Text style={styles.tx}>Your Appointment is </Text>
@@ -28,12 +28,12 @@ export const AppointmentReqest = ({navigation}) => {
         </View>
         <View style={styles.intext}>
           <Text style={styles.tx}>11:30 PM </Text>
-          <Text style={styles.tx}> on WEd,Nov 9 </Text>
+          <Text style={styles.tx}>on Wed,Nov 9 </Text>
         </View>
       </View>
 
       <View>
-        <Text style={styles.tx1}>we will hold your appointment request for 20 minutes while you answer a few question 
+        <Text style={styles.tx1}>We will hold your appointment request for 20 minutes while you answer a few question 
 
         </Text>
       </View>

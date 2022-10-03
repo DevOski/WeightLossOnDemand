@@ -43,13 +43,9 @@ export default function LetsFindTherapist({navigation}) {
           </View>
           <View style={styles.paddingTop2}>
             <TouchableOpacity
-              onPress={() => navigation.navigate('Choosetherapist')}
-            >
+              onPress={() => navigation.navigate('Choosetherapist')}>
               <View>
-                <Text style={styles.redBtn}>
-                 
-                  No thanks, see all therapists
-                </Text>
+                <Text style={styles.redBtn}>No thanks, see all therapists</Text>
               </View>
             </TouchableOpacity>
           </View>
@@ -69,7 +65,13 @@ export default function LetsFindTherapist({navigation}) {
               </Text>
             </View>
             <View>
-              <TouchableOpacity onPress={() => setIsModalVisible(false)}>
+              <TouchableOpacity
+                onPress={() => {
+                  setIsModalVisible(false);
+                  setTimeout(() => {
+                    navigation.navigate('Choosetherapist');
+                  }, 200);
+                }}>
                 <View style={styles.buttonView}>
                   <Text style={styles.buttonText}>
                     View all available therapists
