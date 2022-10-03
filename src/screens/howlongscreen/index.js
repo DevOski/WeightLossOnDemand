@@ -18,13 +18,13 @@ import {colors, sizes, fontSize} from '../../services';
 
 import Slider from '@react-native-community/slider';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-export const Howlong = ({navigation}) => {
+export const Howlong = ({navigation, route}) => {
   const [sliderValue, setSliderValue] = useState(15);
   const [slectnumber, setslectnumber] = useState();
   const [show, setshow] = useState(false);
-  const toogle=()=>{
-    setshow(!show )
-}
+  const toogle = () => {
+    setshow(!show);
+  };
   return (
     <SafeAreaView style={styles.container}>
       <View>
@@ -47,15 +47,14 @@ export const Howlong = ({navigation}) => {
             value={sliderValue}
             onValueChange={sliderValue => setSliderValue(sliderValue)}
             style={styles.slidit}
-         />
+          />
         </View>
-        <View >
+        <View>
           <View style={styles.twoitem}>
             <CustomTextFiel
               label={'Days'}
               value={slectnumber}
               setValue={setslectnumber}
-              
             />
             <MaterialIcons
               name="expand-more"
@@ -72,7 +71,7 @@ export const Howlong = ({navigation}) => {
                     setslectnumber('Days');
                     setshow(!show);
                   }}>
-                 Days
+                  Days
                 </Text>
                 <Text
                   style={styles.lstyle}
@@ -88,21 +87,24 @@ export const Howlong = ({navigation}) => {
                     setslectnumber('Years');
                     setshow(!show);
                   }}>
-                 Years
+                  Years
                 </Text>
               </View>
             ) : null}
           </View>
-          
         </View>
-        
       </View>
-      <View style={{justifyContent:'center',alignItems:'center'}}>
-      <TouchableOpacity onPress={()=>{navigation.navigate('symptomsscreen')}}>
-        <View style={styles.bdiv}>
-          <Text style={styles.btext}>></Text>
-        </View>
-       </TouchableOpacity>
+      <View style={{justifyContent: 'center', alignItems: 'center'}}>
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navigate('symptomsscreen', {
+              GoogleFit: route?.params?.GoogelFit,
+            });
+          }}>
+          <View style={styles.bdiv}>
+            <Text style={styles.btext}>></Text>
+          </View>
+        </TouchableOpacity>
       </View>
     </SafeAreaView>
   );
@@ -138,16 +140,15 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   twoitem: {
-    
     width: sizes.screenWidth * 0.2,
   },
-  icon:{
-    position:'absolute',
-    left:sizes.screenWidth*0.15,
-    top:sizes.screenHeight *0.03,
-    fontSize:fontSize.h2
-        // flexDirection:'row'
-      },
+  icon: {
+    position: 'absolute',
+    left: sizes.screenWidth * 0.15,
+    top: sizes.screenHeight * 0.03,
+    fontSize: fontSize.h2,
+    // flexDirection:'row'
+  },
   pap: {
     width: sizes.screenWidth * 0.4,
     heigh: sizes.screenHeight * 0.9,
@@ -160,20 +161,20 @@ const styles = StyleSheet.create({
     lineHeight: sizes.screenHeight * 0.05,
   },
   bdiv: {
-    marginTop:sizes.screenHeight*0.05,
+    marginTop: sizes.screenHeight * 0.05,
     width: sizes.screenWidth * 0.2,
-    height: sizes.screenHeight * 0.10,
+    height: sizes.screenHeight * 0.1,
     backgroundColor: colors.secondary,
-    justifyContent:'center',
-    alignItems:'center',
-    borderRadius:sizes.screenWidth*0.2
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: sizes.screenWidth * 0.2,
   },
   btext: {
     fontSize: fontSize.h2,
     color: colors.white,
-    fontWeight:'bold'
+    fontWeight: 'bold',
   },
-  slidit:{
-    top:sizes.screenHeight*0.04
-  }
+  slidit: {
+    top: sizes.screenHeight * 0.04,
+  },
 });

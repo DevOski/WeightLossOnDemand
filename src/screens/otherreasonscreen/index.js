@@ -17,7 +17,7 @@ import {CustomTextFiel} from '../../component/textFiled';
 import {colors, sizes, fontSize, fontFamily} from '../../services';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
-export const OtherReason = ({navigation}) => {
+export const OtherReason = ({navigation,route}) => {
   const [text, settext] = useState(0);
 
   return (
@@ -41,7 +41,9 @@ export const OtherReason = ({navigation}) => {
         
 
         {text ? (
-          <TouchableOpacity onPress={() => navigation.navigate('howlongscreen')}>
+          <TouchableOpacity onPress={() => navigation.navigate('howlongscreen',{
+            GoogleFit:route?.params?.GoogelFit
+          })}>
             <View style={styles.bdiv}>
               <Text style={styles.btext}>›</Text>
             </View>

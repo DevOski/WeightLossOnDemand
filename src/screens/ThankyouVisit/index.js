@@ -20,7 +20,7 @@ export default function ThankyouVisit({navigation}) {
       <View style={styles.color}>
         <View style={styles.padding}>
           <View style={styles.skipBtn}>
-            <TouchableOpacity onPress={() => navigation.goBack()}>
+            <TouchableOpacity onPress={() => navigation.navigate("Home")}>
               <Text style={styles.skipText}>Done</Text>
             </TouchableOpacity>
           </View>

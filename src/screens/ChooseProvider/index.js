@@ -17,7 +17,7 @@ import Header from '../../components/Header';
 import {sizes} from '../../services';
 import ladyy from '../../assets/assets/ladyy.jpg';
 
-export default function ChooseProvider() {
+export default function ChooseProvider({navigation}) {
   return (
     <SafeAreaView>
       <Header dark={true} filter={true} />
@@ -27,7 +27,7 @@ export default function ChooseProvider() {
           <Text style={styles.subHeading}>Choose provider </Text>
         </View>
         <TouchableOpacity
-        //   onPress={() => navigation.navigate('physiciansscreen')}
+          onPress={() => navigation.navigate('providerdetail')}
         >
           <View style={[styles.row, styles.card]}>
             <View>
@@ -58,7 +58,7 @@ export default function ChooseProvider() {
           </View>
         </TouchableOpacity>
         <TouchableOpacity
-        //   onPress={() => navigation.navigate('physiciansscreen')}
+          onPress={() => navigation.navigate('providerdetail')}
         >
           <View style={[styles.row, styles.card]}>
             <View>
@@ -89,7 +89,7 @@ export default function ChooseProvider() {
           </View>
         </TouchableOpacity>
         <TouchableOpacity
-        //   onPress={() => navigation.navigate('physiciansscreen')}
+          onPress={() => navigation.navigate('providerdetail')}
         >
           <View style={[styles.row, styles.card]}>
             <View>
@@ -120,7 +120,7 @@ export default function ChooseProvider() {
           </View>
         </TouchableOpacity>
         <TouchableOpacity
-        //   onPress={() => navigation.navigate('physiciansscreen')}
+          onPress={() => navigation.navigate('providerdetail')}
         >
           <View style={[styles.row, styles.card]}>
             <View>
@@ -151,7 +151,7 @@ export default function ChooseProvider() {
           </View>
         </TouchableOpacity>
         <TouchableOpacity
-        //   onPress={() => navigation.navigate('physiciansscreen')}
+          onPress={() => navigation.navigate('providerdetail')}
         >
           <View style={[styles.row, styles.card]}>
             <View>
@@ -182,7 +182,7 @@ export default function ChooseProvider() {
           </View>
         </TouchableOpacity>
         <TouchableOpacity
-        //   onPress={() => navigation.navigate('physiciansscreen')}
+          onPress={() => navigation.navigate('providerdetail')}
         >
           <View style={[styles.row, styles.card]}>
             <View>
@@ -213,7 +213,7 @@ export default function ChooseProvider() {
           </View>
         </TouchableOpacity>
         <TouchableOpacity
-        //   onPress={() => navigation.navigate('physiciansscreen')}
+          onPress={() => navigation.navigate('providerdetail')}
         >
           <View style={[styles.row, styles.card]}>
             <View>
@@ -244,7 +244,7 @@ export default function ChooseProvider() {
           </View>
         </TouchableOpacity>
         <TouchableOpacity
-        //   onPress={() => navigation.navigate('physiciansscreen')}
+          onPress={() => navigation.navigate('providerdetail')}
         >
           <View style={[styles.row, styles.card]}>
             <View>
@@ -275,7 +275,7 @@ export default function ChooseProvider() {
           </View>
         </TouchableOpacity>
         <TouchableOpacity
-        //   onPress={() => navigation.navigate('physiciansscreen')}
+          onPress={() => navigation.navigate('providerdetail')}
         >
           <View style={[styles.row, styles.card,styles.paddingBottom]}>
             <View>

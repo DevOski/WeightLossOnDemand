@@ -22,7 +22,7 @@ export const PharmacyMap = ({navigation}) => {
   return (
     <SafeAreaView style={styles.container}>
       <View>
-        <Header  title={'Select For Pharmacy'} skip={true} onPress={()=>navigation.navigate('')}/> 
+        <Header  title={'Select For Pharmacy'} skip={true} status={true} next={"UserVisit"} onPress={()=>navigation.navigate('')}/> 
        
       </View>
       <MapView   style={styles.map}/>

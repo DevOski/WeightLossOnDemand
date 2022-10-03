@@ -24,7 +24,8 @@ export default function GetCare({navigation}) {
             Choose a video visit that is right for you
           </Text>
         </View>
-        <TouchableOpacity onPress={() => navigation.navigate('UserVisit')}>
+        <TouchableOpacity onPress={() => navigation.navigate('visitforscreen',{to:"reasonVisit"})}>
+          {/* UserVisit */}
           <View style={[styles.row, styles.card]}>
             <Image style={styles.icon} source={images.mdoctr} />
             <View>
@@ -40,8 +41,10 @@ export default function GetCare({navigation}) {
           </View>
         </TouchableOpacity>
         <TouchableOpacity
-        onPress={() => navigation.navigate('HowToSchedule')}
-        >
+          onPress={
+            () => navigation.navigate('visitforscreen', {to: 'HowToSchedule'})
+            // navigation.navigate('HowToSchedule')
+          }>
           <View style={[styles.row, styles.card]}>
             <Image style={styles.icon2} source={images.mediVisit} />
 
@@ -58,8 +61,9 @@ export default function GetCare({navigation}) {
           </View>
         </TouchableOpacity>
         <TouchableOpacity
-        onPress={() => navigation.navigate('ProviderType')}
-        >
+          onPress={() =>
+            navigation.navigate('visitforscreen', {to: 'ProviderType'})
+          }>
           <View style={[styles.row, styles.card]}>
             <Image style={styles.icon} source={images.fedoctr} />
             <View>

@@ -22,11 +22,11 @@ import question from '../../assets/assets/question.png';
 import share from '../../assets/assets/share.png';
 
 export const VisitDetail = ({navigation}) => {
-  const [show, setshow] = useState(false)
+  const [show, setshow] = useState(false);
 
-  const Toogle=()=>{
-    setshow(!show)
-  }
+  const Toogle = () => {
+    setshow(!show);
+  };
   return (
     <SafeAreaView style={styles.container}>
       <View>
@@ -68,7 +68,10 @@ export const VisitDetail = ({navigation}) => {
                   source={calender}
                 />
               </View>
-              <Text style={styles.litext}>Schedule Follow-up</Text>
+              <TouchableOpacity
+                onPress={() => navigation.navigate('ChooseFollowUp')}>
+                <Text style={styles.litext}>Schedule Follow-up</Text>
+              </TouchableOpacity>
             </View>
             <View style={styles.flex2}>
               <View style={styles.imgicon}>
@@ -77,13 +80,18 @@ export const VisitDetail = ({navigation}) => {
                   source={favourite}
                 />
               </View>
-              <Text style={styles.litext}>Add Provider to Favourites</Text>
+              <TouchableOpacity>
+                <Text style={styles.litext}>Add Provider to Favourites</Text>
+              </TouchableOpacity>
             </View>
             <View style={styles.flex2}>
               <View style={styles.imgicon}>
                 <Image style={{width: '100%', height: '100%'}} source={book} />
               </View>
-              <Text style={styles.litext}>Get areceipt</Text>
+              <TouchableOpacity
+                onPress={() => navigation.navigate('GenerateReciept')}>
+                <Text style={styles.litext}>Get a receipt</Text>
+              </TouchableOpacity>
             </View>
             <View style={styles.flex2}>
               <View style={styles.imgicon}>
@@ -92,20 +100,20 @@ export const VisitDetail = ({navigation}) => {
                   source={question}
                 />
               </View>
-              <TouchableOpacity onPress={()=>navigation.navigate('whatcanwehelpyouwidth')}>
-
-              <Text style={styles.litext}>Message Support</Text>
+              <TouchableOpacity
+                onPress={() => navigation.navigate('whatcanwehelpyouwidth')}>
+                <Text style={styles.litext}>Message Support</Text>
               </TouchableOpacity>
             </View>
             <View style={styles.flex2}>
               <View style={styles.imgicon}>
                 <Image style={{width: '100%', height: '100%'}} source={share} />
               </View>
-              <TouchableOpacity onPress={()=>navigation.navigate('sharevist')}>
-              <Text style={[styles.litext, styles.padding]}>
-                Share Visit width an External Physicans
-              </Text>
-
+              <TouchableOpacity
+                onPress={() => navigation.navigate('sharevist')}>
+                <Text style={[styles.litext, styles.padding]}>
+                  Share Visit width an External Physicans
+                </Text>
               </TouchableOpacity>
             </View>
           </View>
@@ -119,62 +127,55 @@ export const VisitDetail = ({navigation}) => {
               Our visit was incomplete,please check your settings ,close out any
               background applications that are running on your device,and check
             </Text>
-            {show ?<Text style={[styles.subhead, styles.border]}>
-              your connection.our customer support team is available 24/7 to get
-              you reconnected.please email support@weightloseondeman.com or call
-              1-800-997-6196 for assistance.if you are having a medical
-              emergency, please call 911 or proceed diretly to the emergency
-              room
-            </Text>:null}
-            
+            {show ? (
+              <Text style={[styles.subhead, styles.border]}>
+                your connection.our customer support team is available 24/7 to
+                get you reconnected.please email support@weightloseondeman.com
+                or call 1-800-997-6196 for assistance.if you are having a
+                medical emergency, please call 911 or proceed diretly to the
+                emergency room
+              </Text>
+            ) : null}
+
             <View style={styles.borderbottom}></View>
             <View>
-             {show ? <TouchableOpacity onPress={Toogle}>
-              <Text style={styles.addanother}>READ LESS</Text>
-              </TouchableOpacity>: <TouchableOpacity onPress={Toogle}>
-              <Text style={styles.addanother}>READ MORE</Text>
-              </TouchableOpacity>}
+              {show ? (
+                <TouchableOpacity onPress={Toogle}>
+                  <Text style={styles.addanother}>READ LESS</Text>
+                </TouchableOpacity>
+              ) : (
+                <TouchableOpacity onPress={Toogle}>
+                  <Text style={styles.addanother}>READ MORE</Text>
+                </TouchableOpacity>
+              )}
             </View>
           </View>
           <View style={styles.crd}>
-          <Text style={styles.providertex}>Documents</Text>
-          <View style={styles.flex3}>
-              
+            <Text style={styles.providertex}>Documents</Text>
+            <View style={styles.flex3}>
               <Text style={styles.litext1}>Receipt {'   '}09/12/2022</Text>
               <Text style={styles.litext3}>></Text>
-
             </View>
             <View style={styles.flex3}>
-              
-            <Text style={styles.litext1}>Receipt {'   '}09/12/2022</Text>
-            <Text style={styles.litext3}>></Text>
-
-            </View>
-            <View style={styles.flex3}>
-              
-            <Text style={styles.litext1}>Receipt {'   '}09/12/2022</Text>
-            <Text style={styles.litext3}>></Text>
-
-            </View>
-            <View style={styles.flex3}>
-              
-            <Text style={styles.litext1}>Receipt {'   '}09/28/2022</Text>
-            <Text style={styles.litext3}>></Text>
-
-            </View>
-            <View style={styles.flex3}>
-              
-            <Text style={styles.litext1}>Receipt {'   '}09/28/2022</Text>
-            <Text style={styles.litext3}>></Text>
-
-            </View>
-            <View style={styles.flex3}>
-              
-            <Text style={styles.litext1}>Receipt {'   '}09/28/2022</Text>
+              <Text style={styles.litext1}>Receipt {'   '}09/12/2022</Text>
               <Text style={styles.litext3}>></Text>
-
             </View>
-
+            <View style={styles.flex3}>
+              <Text style={styles.litext1}>Receipt {'   '}09/12/2022</Text>
+              <Text style={styles.litext3}>></Text>
+            </View>
+            <View style={styles.flex3}>
+              <Text style={styles.litext1}>Receipt {'   '}09/28/2022</Text>
+              <Text style={styles.litext3}>></Text>
+            </View>
+            <View style={styles.flex3}>
+              <Text style={styles.litext1}>Receipt {'   '}09/28/2022</Text>
+              <Text style={styles.litext3}>></Text>
+            </View>
+            <View style={styles.flex3}>
+              <Text style={styles.litext1}>Receipt {'   '}09/28/2022</Text>
+              <Text style={styles.litext3}>></Text>
+            </View>
           </View>
           <View style={styles.crd}>
             <View>
@@ -182,11 +183,13 @@ export const VisitDetail = ({navigation}) => {
               <Text style={styles.subhead}>PURPOSE OF VISIT</Text>
               <Text style={styles.subhead}>Cold</Text>
               <View style={styles.borderbottom}></View>
-              <Text style={[styles.subhead,styles.mt]}>Time PERIOD</Text>
-              <Text style={[styles.subhead,styles.mt]}>3 days</Text>
+              <Text style={[styles.subhead, styles.mt]}>Time PERIOD</Text>
+              <Text style={[styles.subhead, styles.mt]}>3 days</Text>
               <View style={styles.borderbottom}></View>
-              <Text style={[styles.subhead,styles.mt]}>SYMPTOMS</Text>
-              <Text style={[styles.subhead,styles.mt]}>Difficulty sleeping</Text>
+              <Text style={[styles.subhead, styles.mt]}>SYMPTOMS</Text>
+              <Text style={[styles.subhead, styles.mt]}>
+                Difficulty sleeping
+              </Text>
             </View>
           </View>
           <View style={styles.crd}>
@@ -250,20 +253,19 @@ const styles = StyleSheet.create({
     fontFamily: fontFamily.appTextLight,
     marginLeft: sizes.screenWidth * 0.03,
   },
-  litext1:{
+  litext1: {
     fontSize: fontSize.large,
     color: colors.gray,
     fontWeight: 'bold',
     fontFamily: fontFamily.appTextLight,
-   
   },
-  litext3:{
+  litext3: {
     fontSize: fontSize.large,
     color: colors.secondary,
     fontWeight: 'bold',
     fontFamily: fontFamily.appTextLight,
   },
-  
+
   imgicon: {
     width: sizes.screenWidth * 0.1,
     height: sizes.screenHeight * 0.04,
@@ -300,23 +302,22 @@ const styles = StyleSheet.create({
     // marginLeft:sizes.screenWidth*0.03,
   },
   borderbottom: {
-    paddingTop:sizes.screenHeight*0.03,
-    
+    paddingTop: sizes.screenHeight * 0.03,
+
     borderBottomWidth: sizes.screenWidth * 0.002,
   },
   addanother: {
-    paddingTop:sizes.screenHeight*0.04,
+    paddingTop: sizes.screenHeight * 0.04,
     fontSize: fontSize.large,
     color: colors.secondary,
     fontWeight: 'bold',
- 
-},
-flex3:{
-  flexDirection:'row',
-  justifyContent:'space-between',
-  marginTop:sizes.screenHeight*0.02,
-},
-mt:{
-  marginTop:sizes.screenHeight*0.02
-}
+  },
+  flex3: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginTop: sizes.screenHeight * 0.02,
+  },
+  mt: {
+    marginTop: sizes.screenHeight * 0.02,
+  },
 });
