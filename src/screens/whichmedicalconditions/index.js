@@ -16,7 +16,7 @@ import {CustomTextFiel} from '../../component/textFiled';
 import {colors, sizes, fontSize} from '../../services';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {Checkbox} from 'react-native-paper';
-export const Whichmedicalconditions = () => {
+export const Whichmedicalconditions = ({navigation}) => {
     const [dreugallergi, setdreugallergi] = useState();
     const [slectnumber, setslectnumber] = useState();
     const [CheckedFemale, setCheckedFemale] = React.useState();
@@ -34,7 +34,7 @@ export const Whichmedicalconditions = () => {
       <View style={styles.container1}>
         <View>
           <Text style={styles.hedtext}>
-           Add conditions ?
+           Add conditions?
           </Text>
           
         </View>
@@ -435,7 +435,7 @@ const styles = StyleSheet.create({
     padding: sizes.screenWidth * 0.02,
   },
   hedtext: {
-    fontSize: fontSize.h3,
+    fontSize: fontSize.h4,
     color: colors.black,
     fontWeight: 'bold',
   },

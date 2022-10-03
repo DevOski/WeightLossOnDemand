@@ -13,9 +13,9 @@ import {
 import Header from '../../components/Header';
 import images from '../../services/utilities/images';
 import {CustomTextFiel} from '../../component/textFiled';
-import {colors, sizes, fontSize,fontFamily} from '../../services';
+import {colors, sizes, fontSize, fontFamily} from '../../services';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import { TextInput } from 'react-native-paper';
+import {TextInput} from 'react-native-paper';
 
 export const ShareViste = ({navigation}) => {
   const [name, setname] = useState();
@@ -79,7 +79,7 @@ export const ShareViste = ({navigation}) => {
     'WI',
     'WY',
   ]);
- 
+
   const handleState = item => {
     setState(item);
     setShowState(false);
@@ -87,126 +87,111 @@ export const ShareViste = ({navigation}) => {
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView>
-      <View>
-        <Header dark={true}  title={'We are proud beyond p...'} skip={true} onPress={()=>navigation.navigate('')}/> 
-       
-      </View>
-      
-      <View style={styles.headcontainer}>
-        <Text style={styles.hedtext}>Add your external physician details</Text>
-      </View>
-      <View style={styles.headcontainer}>
-        <Text style={styles.hedtex1t}>This enables us share medical records with your external physician.This creates more familiarity,better care,and easier referrals to specialists</Text>
-      </View>
-      <View style={styles.headcontainer}>
-      <View style={styles.filedcon}>
+        <View>
+          <Header dark={true} />
+        </View>
+
+        <View style={styles.headcontainer}>
+          <Text style={styles.hedtext}>
+            Add your external physician details
+          </Text>
+        </View>
+        <View style={styles.headcontainer}>
+          <Text style={styles.hedtex1t}>
+            This enables us share medical records with your external
+            physician.This creates more familiarity,better care,and easier
+            referrals to specialists
+          </Text>
+        </View>
+        <View style={styles.headcontainer}>
+          <View style={styles.filedcon}>
+            <CustomTextFiel
+              label={'Physician Name'}
+              value={name}
+              setValue={setname}
+            />
+          </View>
+          <View style={styles.filedcon}>
+            <CustomTextFiel label={'Clinic'} value={name} setValue={setname} />
+          </View>
+          <View style={styles.inonecon}>
+            <View style={styles.twoitem1}>
               <CustomTextFiel
-                label={'Physician Name'}
+                label={'Phone number'}
                 value={name}
                 setValue={setname}
               />
             </View>
-            <View style={styles.filedcon}>
-              <CustomTextFiel
-                label={'Clinic'}
-                value={name}
-                setValue={setname}
-              />
-            </View>
-            <View style={styles.inonecon}>
-              <View style={styles.twoitem1}>
+            <View style={styles.twoitem}>
+              <View
+                style={{
+                  width: sizes.screenWidth * 0.2,
+                  left: sizes.screenWidth * 0.05,
+                }}>
                 <CustomTextFiel
-                  label={'Phone number'}
-                  value={name}
-                  setValue={setname}
+                  label={'Ext.'}
+                  value={slectnumber}
+                  setValue={setslectnumber}
                 />
               </View>
-              <View style={styles.twoitem}>
-                <View
-                  style={{
-                    width: sizes.screenWidth * 0.2,
-                    left: sizes.screenWidth * 0.05,
-                  }}>
-                  <CustomTextFiel
-                    label={'Ext.'}
-                    value={slectnumber}
-                    setValue={setslectnumber}
-                  />
-                </View>
-               
-               
-              </View>
-              
-              
             </View>
-            <View style={styles.filedcon}>
-              <CustomTextFiel
-                label={'fax'}
-                value={name}
-                setValue={setname}
-              />
+          </View>
+          <View style={styles.filedcon}>
+            <CustomTextFiel label={'Fax'} value={name} setValue={setname} />
+          </View>
+          <View style={styles.inonecon}>
+            <View style={styles.twoitem1}>
+              <CustomTextFiel label={'City'} value={name} setValue={setname} />
             </View>
-            <View style={styles.inonecon}>
-              <View style={styles.twoitem1}>
-                <CustomTextFiel
-                  label={'City'}
-                  value={name}
-                  setValue={setname}
-                />
-              </View>
-              <View style={styles.twoitem}>
+            <View style={styles.twoitem}>
               <View style={styles.stateView}>
-            <TouchableOpacity>
-              <TextInput
-                mode="contain"
-                label={'State'}
-                onPressIn={() => setShowState(!showState)}
-                activeUnderlineColor={colors.secondary}
-                style={styles.field}
-                onChangeText={text => setState(text)}
-                value={state}
-                right={
-                  <TextInput.Icon
-                    onPress={() => setShowState(!showState)}
-                    name="chevron-down"
-                    color={colors.secondary}
-                    style={styles.icon}
+                <TouchableOpacity>
+                  <TextInput
+                    mode="contain"
+                    label={'State'}
+                    onPressIn={() => setShowState(!showState)}
+                    activeUnderlineColor={colors.secondary}
+                    style={styles.field}
+                    onChangeText={text => setState(text)}
+                    value={state}
+                    right={
+                      <TextInput.Icon
+                        onPress={() => setShowState(!showState)}
+                        name="chevron-down"
+                        color={colors.secondary}
+                        style={styles.icon}
+                      />
+                    }
                   />
-                }
-              />
+                </TouchableOpacity>
+              </View>
+              {showState && (
+                <View style={styles.dropdown}>
+                  <ScrollView>
+                    {stateList?.map((item, index) => {
+                      return (
+                        <TouchableOpacity
+                          key={index}
+                          onPress={() => handleState(item)}>
+                          <Text style={styles.listText}>{item}</Text>
+                        </TouchableOpacity>
+                      );
+                    })}
+                  </ScrollView>
+                </View>
+              )}
+            </View>
+          </View>
+
+          <View style={styles.buttnView}>
+            <TouchableOpacity
+              onPress={() => navigation.navigate('healthprofilereview')}>
+              <View style={styles.buttonView}>
+                <Text style={styles.buttonText}>Add Physicans</Text>
+              </View>
             </TouchableOpacity>
           </View>
-                {showState && (
-          <View style={styles.dropdown}>
-            <ScrollView>
-              {stateList?.map((item, index) => {
-                return (
-                  <TouchableOpacity
-                    key={index}
-                    onPress={() => handleState(item)}>
-                    <Text style={styles.listText}>{item}</Text>
-                  </TouchableOpacity>
-                );
-              })}
-            </ScrollView>
-          </View>
-        )}
-               
-               
-              </View>
-              
-              
-            </View>
-
-
-            <View style={styles.buttnView}>
-          <TouchableOpacity onPress={()=>navigation.navigate("healthprofilereview")}>
-            <View style={styles.buttonView}>
-              <Text style={styles.buttonText}>Add Physicans</Text>
-            </View>
-          </TouchableOpacity>
         </View>
-      </View>
       </ScrollView>
     </SafeAreaView>
   );
@@ -223,18 +208,17 @@ const styles = StyleSheet.create({
     width: sizes.screenWidth * 0.5,
   },
   headcontainer: {
-
     paddingLeft: sizes.screenWidth * 0.05,
     paddingRight: sizes.screenWidth * 0.05,
-    marginBottom:sizes.screenHeight*0.03,
+    marginBottom: sizes.screenHeight * 0.03,
   },
 
   hedtext: {
-    fontSize: fontSize.h2,
+    fontSize: fontSize.h4,
     color: colors.black,
     fontWeight: 'bold',
   },
-  hedtex1t:{
+  hedtex1t: {
     fontSize: fontSize.medium,
     color: colors.black,
     fontWeight: 'bold',
@@ -242,7 +226,7 @@ const styles = StyleSheet.create({
   filedcon: {
     marginBottom: sizes.screenHeight * 0.03,
   },
-  twoitem1:{
+  twoitem1: {
     width: sizes.screenWidth * 0.6,
   },
   inonecon: {
@@ -281,14 +265,14 @@ const styles = StyleSheet.create({
     fontFamily: fontFamily.appTextRegular,
   },
 
-
   icon: {
     top: sizes.screenHeight * 0.01,
   },
   stateView: {
     width: sizes.screenWidth * 0.3,
     // alignSelf:'center'
-  },  buttnView: {
+  },
+  buttnView: {
     // marginRight:sizes.screenWidth*0.06,
     marginTop: sizes.screenHeight * 0.04,
     justifyContent: 'center',
@@ -307,6 +291,4 @@ const styles = StyleSheet.create({
     fontFamily: fontFamily.appTextHeading,
     fontWeight: '600',
   },
-
 });
- 
