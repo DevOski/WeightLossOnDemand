@@ -14,13 +14,12 @@ import {
   TouchableOpacity,
   TextInput,
 } from 'react-native';
-import {RadioButton} from 'react-native-paper';
 import Entypo from 'react-native-vector-icons/Entypo';
 import {colors, fontFamily, fontSize, sizes} from '../../services';
-import Octicons from 'react-native-vector-icons/Octicons';
+
 import Header from '../../components/Header';
 import Modal from 'react-native-modal';
-import {NavigationHelpersContext} from '@react-navigation/native';
+
 
 export const VisitScreen = ({navigation}) => {
   const [isModalVisible, setModalVisible] = useState(false);

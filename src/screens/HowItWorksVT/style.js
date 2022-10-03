@@ -7,6 +7,9 @@ export const styles = StyleSheet.create({
     backgroundColor: '#fafafa',
     height: sizes.screenHeight,
   },
+  bottom:{
+    paddingBottom:sizes.screenHeight*0.04,
+  },
   icon: {
     height: sizes.screenHeight * 0.08,
     width: sizes.screenWidth * 0.5,

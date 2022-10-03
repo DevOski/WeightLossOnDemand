@@ -97,7 +97,7 @@ export default function Medical({navigation}) {
               </View>
             </TouchableOpacity>
             <TouchableOpacity
-            // onPress={() => navigation.navigate('FAQs')}
+            onPress={() => navigation.navigate('meetOurproviders')}
             >
               <View style={[styles.row, styles.card]}>
                 <FontAwesome5

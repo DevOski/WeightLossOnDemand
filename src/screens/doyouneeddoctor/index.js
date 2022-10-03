@@ -15,7 +15,7 @@ import images from '../../services/utilities/images';
 import {CustomTextFiel} from '../../component/textFiled';
 import {colors, sizes, fontSize} from '../../services';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-export const Doyouneeddoctor = () => {
+export const Doyouneeddoctor = ({navigation}) => {
  
   return (
     <SafeAreaView style={styles.container}>
@@ -53,12 +53,12 @@ export const Doyouneeddoctor = () => {
        
         </View>
 
-        <TouchableOpacity onPress={()=>navigation.navigate("healthprofilereview")}>
+        <TouchableOpacity onPress={()=>navigation.navigate("pharmacymaplocation")}>
           <View style={styles.buttonView}>
             <Text style={styles.buttonText}>continue</Text>
           </View>
         </TouchableOpacity>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={()=>navigation.navigate("pharmacymaplocation")}>
               <Text style={styles.addanother}>skip</Text>
             </TouchableOpacity>
       </View>

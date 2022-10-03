@@ -39,8 +39,19 @@ export const styles = StyleSheet.create({
     fontSize: fontSize.h6,
     fontFamily: fontFamily.appTextLight,
   },
+  centerTitle: {
+    color: colors.white,
+    left: sizes.screenWidth * 0.2,
+    fontSize: fontSize.h6,
+    fontFamily: fontFamily.appTextLight,
+  },
   title2: {
     color: colors.white,
+    fontSize: fontSize.h6,
+    fontFamily: fontFamily.appTextMedium,
+  },
+  filter: {
+    color: colors.secondary,
     fontSize: fontSize.h6,
     fontFamily: fontFamily.appTextMedium,
   },
@@ -53,7 +64,10 @@ export const styles = StyleSheet.create({
   skipView: {
     left: sizes.screenHeight * 0.2,
   },
-  skipIcon: {left: sizes.baseMargin},
+  filterView: {
+    left: sizes.screenHeight * 0.25,
+  },
+  skipIcon: {left: sizes.screenWidth*0.17},
   bold: {
     fontWeight: 'bold',
   },
@@ -64,6 +78,6 @@ export const styles = StyleSheet.create({
     // zIndex: 1,
   },
   leftDone: {
-    left: sizes.screenWidth * 0.2,
+    left: sizes.screenWidth * 0.37,
   },
 });

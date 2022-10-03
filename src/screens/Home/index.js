@@ -312,7 +312,7 @@ export default function Home({navigation}) {
                    </View>
                     <View style={styles.seeBtn}>
                     <View style={styles.buttnView}>
-          <TouchableOpacity onPress={()=>navigation.navigate("healthprofilereview")}>
+          <TouchableOpacity onPress={()=>navigation.navigate("VisitDetail")}>
             <View style={styles.buttonView}>
               <Text style={styles.buttonText}>View Full summary</Text>
             </View>

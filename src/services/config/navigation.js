@@ -127,6 +127,22 @@ import GenerateReciept from '../../screens/GenerateReceipt';
 import PayPal from '../../screens/PayPal';
 import VisitHistory from '../../screens/VisitHistory';
 import HowToSchedule from '../../screens/HowToSchedule';
+import { WhatCANWEhelp } from '../../screens/whatcanwehelpyouwidth';
+import { ProviderDetail } from '../../screens/providerdetail';
+import ChooseProvider from '../../screens/ChooseProvider';
+import Filter from '../../screens/Filter';
+import SelectLanguage from '../../screens/SelectLanguage';
+import SelectFocusArea from '../../screens/SelectFocusArea';
+import ProviderType from '../../screens/ProviderType';
+import ProviderHelpChoose from '../../screens/ProviderHelpChoose';
+import ChooseAppointmentLength from '../../screens/ChooseAppointmentLength';
+import LetsFindTherapist from '../../screens/LetsFindTherapist';
+import ChooseTherapist from '../../screens/Choosetherapist';
+import { TherapistDetail } from '../../screens/therapisdetail';
+import { AppointmentReqest } from '../../screens/appointmentreqest';
+
+import ChooseAppointment from '../../screens/ChooseAppointment';
+import ChooseFollowUp from '../../screens/ChooseFollowUp';
 const Stack = createNativeStackNavigator();
 
 const Tab = createMaterialBottomTabNavigator();
@@ -135,7 +151,7 @@ export default function MainNavigator() {
     <NavigationContainer>
       <Stack.Navigator screenOptions={{headerShown: false}}>
       
-      <Stack.Screen name="VisitDetail" component={VisitDetail} />
+
         <Stack.Screen name="Introsliderscreen" component={Intro} />
         <Stack.Screen name="Setting" component={Setting} />
 
@@ -159,11 +175,10 @@ export default function MainNavigator() {
           name="familymedicalcondition"
           component={FamilyMedicalconditions}
         />
+
+
         {/* <Stack.Screen name="surgeriesscreen" component={Surgeries} /> */}
-        <Stack.Screen
-          name="Medicalcondionscreen"
-          component={MedicalCondition}
-        />
+       
         {/* <Stack.Screen name="drugalergiesscreen" component={Drugallergies} /> */}
         {/* <Stack.Screen name="cureentlytakingmed" component={Currently} /> */}
         {/* <Stack.Screen name="createhelthproscreen" component={Healthpro} /> */}
@@ -183,13 +198,20 @@ export default function MainNavigator() {
           name="meetOurproviders"
           component={Meetourproviders}
         />
+        <Stack.Screen
+          name="Medicalcondionscreen"
+          component={MedicalCondition}
+        />
          <Stack.Screen name="sharevist" component={ShareViste} />
           <Stack.Screen
           name="introductionscreen"
           component={IntroductionScreen}
         />
         
-
+ <Stack.Screen name="providerdetail" component={ProviderDetail} />
+         
+      <Stack.Screen name="whatcanwehelpyouwidth" component={WhatCANWEhelp} />
+      <Stack.Screen name="VisitDetail" component={VisitDetail} />
         <Stack.Screen
           name="physiciansscreen"
           component={Physicans}
@@ -350,6 +372,27 @@ export default function MainNavigator() {
         <Stack.Screen name="PayPal" component={PayPal} />
         <Stack.Screen name="VisitHistory" component={VisitHistory} />
         <Stack.Screen name="HowToSchedule" component={HowToSchedule} />
+        {/* <Stack.Screen name="VisitDetail" component={VisitDetail} /> */}
+        <Stack.Screen name="ChooseProvider" component={ChooseProvider} />
+        <Stack.Screen name="Filter" component={Filter} />
+        <Stack.Screen name="SelectLanguage" component={SelectLanguage} />
+        <Stack.Screen name="SelectFocusArea" component={SelectFocusArea} />
+        <Stack.Screen name="ProviderType" component={ProviderType} />
+        <Stack.Screen
+          name="ProviderHelpChoose"
+          component={ProviderHelpChoose}
+        />
+        <Stack.Screen
+          name="ChooseAppointmentLength"
+          component={ChooseAppointmentLength}
+        />
+        <Stack.Screen name="LetsFindTherapist" component={LetsFindTherapist} />
+        <Stack.Screen name="Choosetherapist" component={ChooseTherapist} />
+        <Stack.Screen name="therapisdetail" component={TherapistDetail} />
+        <Stack.Screen name="appointmentreqest" component={AppointmentReqest} />
+        <Stack.Screen name="ChooseAppointment" component={ChooseAppointment} />
+      <Stack.Screen name="ChooseFollowUp" component={ChooseFollowUp} />
+        
       </Stack.Navigator>
     </NavigationContainer>
   );

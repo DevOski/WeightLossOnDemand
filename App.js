@@ -14,6 +14,7 @@ import Loader from './src/components/Loader';
 import Error from './src/components/Error';
 import VisitHistory from './src/screens/VisitHistory';
 import {enableLatestRenderer} from 'react-native-maps';
+import ChooseFollowUp from './src/screens/ChooseFollowUp';
 export default function App() {
   const [isModalVisible, setIsModalVisible] = useState(false);
 

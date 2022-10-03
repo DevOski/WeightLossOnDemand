@@ -58,7 +58,7 @@ export default function GetCare({navigation}) {
           </View>
         </TouchableOpacity>
         <TouchableOpacity
-        // onPress={() => navigation.navigate('FAQs')}
+        onPress={() => navigation.navigate('ProviderType')}
         >
           <View style={[styles.row, styles.card]}>
             <Image style={styles.icon} source={images.fedoctr} />
@@ -74,9 +74,9 @@ export default function GetCare({navigation}) {
             </View>
           </View>
         </TouchableOpacity>
-        <TouchableOpacity onPress={()=>navigation.navigate("GenerateReciept")}>
+        {/* <TouchableOpacity onPress={()=>navigation.navigate("GenerateReciept")}>
           <Text style={{alignSelf:'center'}}>Testing button</Text>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
       </ScrollView>
     </SafeAreaView>
   );

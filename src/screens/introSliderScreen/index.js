@@ -65,43 +65,16 @@ const Intro = ({navigation}) => {
           })}
         </ScrollView>
 
-        {/* {slides?.map((item, index) => {
-         console.log(item.id);
-         return (
-           <>
-             {item.id == 4 ? (
-               <View style={styles.footer}>
-                 <TouchableOpacity>
-                   <Text style={styles.fontsiginandsignup}>sign In</Text>
-                 </TouchableOpacity>
-                 <View style={styles.paginatiioncon}>
-                   <View style={styles.dot} />
-                   <View style={styles.dot} />
-                   <View style={styles.dot} />
-                   <View style={styles.dot} />
-                 </View>
- 
-                 <TouchableOpacity>
-                   <Text style={styles.fontsiginandsignup}>signUp</Text>
-                 </TouchableOpacity>
-               </View>
-             ) : null}
-           </>
-         );
-      //  })} */}
-        {/* {
-        imgActive !==3 && (
-          
-        )
-      } */}
+  
         <View
           style={{
             flexDirection: 'row',
             alignItems: 'center',
             justifyContent: 'space-around',
             padding: deviceWidth*0.01,
+            left:deviceWidth*0.00,
             position:'absolute',
-            top:sizes.screenHeight*0.93
+            top:sizes.screenHeight*0.91
           }}>
           {imgActive !== 3 && (
             <View style={[styles.footer, styles.top]}>
@@ -114,7 +87,7 @@ const Intro = ({navigation}) => {
           <View style={styles.wrapDot}>
             {slides?.map((item, index) => {
               return (
-                <View>
+                <View >
                   {imgActive !== 3 && (
                     <View>
                       <Text
@@ -125,7 +98,7 @@ const Intro = ({navigation}) => {
                         <Entypo
                           name="dot-single"
                           color={colors.secondary}
-                          size={30}
+                          size={50}
                         />
                       </Text>
                     </View>
@@ -133,15 +106,15 @@ const Intro = ({navigation}) => {
                 </View>
               );
             })}
+                </View>
             {imgActive !== 3 && (
-              <View style={[styles.footer, styles.top]}>
+              <View style={styles.footer}>
                 <TouchableOpacity
                   onPress={() => navigation.navigate('signupscreen')}>
-                  <Text style={styles.fontsiginandsignup}>Sign Up</Text>
+                  <Text style={[styles.fontsiginandsignup,styles.top]}>Sign Up</Text>
                 </TouchableOpacity>
               </View>
             )}
-          </View>
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -184,27 +157,30 @@ const styles = StyleSheet.create({
   },
 
   dot: {
-    margin: 3,
+    margin: sizes.screenHeight*0.0,
     color: colors.secondary,
     opacity: 0.6,
     fontSize: fontSize.h2,
   },
   wrapDot: {
+    // width:sizes.screenWidth*0.20,
     flexDirection: 'row',
-    alignSelf: 'center',
+    // alignSelf: 'center',
+alignItems:'center',
     // position:'absolute',
-    // top:sizes.screenHeight * 0.19,
+    top:sizes.screenHeight * 0.0,
+    // backgroundColor:'red'
   },
   wrap: {
     width: sizes.screenWidth * 0.96,
   },
   dotActive: {
-    margin: 3,
+    // marginLeft:18,
     color: colors.secondary,
     fontSize: fontSize.h2,
   },
   top: {
-    bottom: sizes.screenHeight * 0.01,
+    // top: sizes.screenHeight * -0.01,
   },
   fontsiginandsignup: {
     fontSize: fontSize.h5,

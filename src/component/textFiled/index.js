@@ -8,7 +8,7 @@ export const CustomTextFiel = ({
   label,
   setValue,
   secureTextEntry,
-  right,
+  editable,
 }) => {
   return (
     //   <View style={styles.container}>
@@ -22,6 +22,7 @@ export const CustomTextFiel = ({
         autoCapitalize={'none'}
         secureTextEntry={secureTextEntry}
         activeUnderlineColor={colors.secondary}
+        editable={editable}
         style={{
           backgroundColor: colors.white,
           fontSize: fontSize.large,

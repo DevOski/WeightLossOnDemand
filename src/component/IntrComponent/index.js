@@ -10,6 +10,7 @@ import {
   Image,
   Dimensions,
   TouchableOpacity,
+  Button
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import intro1 from '../../assets/assets/intro1.jpg';
