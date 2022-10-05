@@ -49,6 +49,7 @@ export const SearchScreen = () => {
                 width: sizes.screenWidth * 0.4,
                 left: sizes.screenWidth * 0.1,
                 fontFamily: fontFamily.appTextRegular,
+                color:colors.black
               }}
             />
           </View>
