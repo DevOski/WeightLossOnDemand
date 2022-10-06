@@ -203,15 +203,15 @@ const styles = StyleSheet.create({
     paddingTop: sizes.screenHeight * 0.05,
   },
   imagewelllcome: {
-    width: sizes.screenWidth * 0.13,
-    height: sizes.screenHeight * 0.07,
+    width: sizes.screenWidth * 0.16,
+    height: sizes.screenHeight * 0.08,
   },
   wit: {
-    right: sizes.screenWidth * 0.04,
+    right: sizes.screenWidth * 0.05,
     // paddingRight:sizes.screenWidth*0.01
     width: sizes.screenWidth * 0.6,
   },
   wi: {
-    right: sizes.screenWidth * 0.04,
+    right: sizes.screenWidth * 0.05,
   },
 });

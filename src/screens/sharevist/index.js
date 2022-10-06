@@ -86,7 +86,7 @@ export const ShareViste = ({navigation}) => {
   };
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView>
+    
         <View>
           <Header dark={true} />
         </View>
@@ -192,7 +192,7 @@ export const ShareViste = ({navigation}) => {
             </TouchableOpacity>
           </View>
         </View>
-      </ScrollView>
+     
     </SafeAreaView>
   );
 };
@@ -242,6 +242,7 @@ const styles = StyleSheet.create({
     // marginTop: sizes.screenHeight * 0.2,
     marginRight: sizes.screenWidth * 0.02,
     marginLeft: sizes.screenWidth * 0.04,
+    bottom:sizes.screenHeight*0.01,
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
@@ -274,7 +275,7 @@ const styles = StyleSheet.create({
   },
   buttnView: {
     // marginRight:sizes.screenWidth*0.06,
-    marginTop: sizes.screenHeight * 0.04,
+    marginTop: sizes.screenHeight * 0.01,
     justifyContent: 'center',
     alignItems: 'center',
   },

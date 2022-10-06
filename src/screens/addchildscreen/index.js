@@ -19,6 +19,7 @@ import Modal from 'react-native-modal';
 import Entypo from 'react-native-vector-icons/Entypo';
 export const ChildScreen = ({navigation, route}) => {
   const [CheckedMale, setCheckedMale] = React.useState();
+  const [CheckedfeMale, setCheckedfeMale] = React.useState();
   const [name, setname] = useState();
   const [lastname, setlastname] = useState();
   const [Middle, setMiddle] = useState();
@@ -99,6 +100,7 @@ export const ChildScreen = ({navigation, route}) => {
                 status={CheckedMale ? 'checked' : 'unchecked'}
                 onPress={() => {
                   setCheckedMale(!CheckedMale);
+                  setCheckedfeMale(false);
                 }}
                 color={'#be1d2d'}
                 uncheckColor={colors.secondary}
@@ -112,9 +114,10 @@ export const ChildScreen = ({navigation, route}) => {
               }}>
               <Text style={styles.lstyle}>Female</Text>
               <RadioButton
-                status={CheckedMale ? 'checked' : 'unchecked'}
+                status={CheckedfeMale ? 'checked' : 'unchecked'}
                 onPress={() => {
-                  setCheckedMale(!CheckedMale);
+                  setCheckedfeMale(!CheckedfeMale);
+                  setCheckedMale(false)
                 }}
                 color={'#be1d2d'}
                 uncheckColor={colors.secondary}
@@ -174,7 +177,9 @@ export const ChildScreen = ({navigation, route}) => {
           height: sizes.screenHeight,
           backgroundColor: 'rgba(52, 52, 52, 0.8)',
           marginLeft: sizes.screenWidth * 0.01,
-          padding: 10,
+          padding: sizes.screenWidth*0.02,
+          position:'absolute',
+          top:-sizes.baseMargin,
         }}
         isVisible={isModalVisible}>
         <TouchableOpacity onPress={toggleModal}>

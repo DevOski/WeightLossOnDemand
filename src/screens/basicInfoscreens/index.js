@@ -153,12 +153,26 @@ const BasicInfoScreen = ({navigation}) => {
             </View>
             <View style={styles.expndbuttoncontainer}>
               <TouchableOpacity onPress={ShowFiled}>
-                {!Fieldsshowhide ? (
+                {!Fieldsshowhide ? (<>
                   <Text style={styles.lstyle}>COLLAPSE</Text>
-                ) : (
+                  <MaterialIcons
+                  name="expand-more"
+                  color={colors.secondary}
+                  style={!Fieldsshowhide ? styles.iconexp : styles.iconexp2}
+                  size={20}
+                  />
+                  </>
+                ) : (<>
                   <Text style={styles.lstyle}> Expand</Text>
+                  <MaterialIcons
+                  name="expand-less"
+                  color={colors.secondary}
+                  style={!Fieldsshowhide ? styles.iconexp : styles.iconexp2}
+                  size={20}
+                  />
+                  </>
                 )}
-                {!Fieldsshowhide ? (
+                {/* {!Fieldsshowhide ? (
                   <MaterialIcons
                     name="expand-less"
                     color={colors.secondary}
@@ -172,7 +186,7 @@ const BasicInfoScreen = ({navigation}) => {
                     style={!Fieldsshowhide ? styles.iconexp : styles.iconexp2}
                     size={20}
                   />
-                )}
+                )} */}
               </TouchableOpacity>
             </View>
           </View>
@@ -186,6 +200,8 @@ const BasicInfoScreen = ({navigation}) => {
                 status={CheckedMale ? 'checked' : 'unchecked'}
                 onPress={() => {
                   setCheckedMale(!CheckedMale);
+                  setCheckedFemale(false);
+                  setCheckedOther(false);
                 }}
                 color={'#be1d2d'}
                 uncheckColor={colors.secondary}
@@ -197,6 +213,8 @@ const BasicInfoScreen = ({navigation}) => {
                 status={CheckedFemale ? 'checked' : 'unchecked'}
                 onPress={() => {
                   setCheckedFemale(!CheckedFemale);
+                  setCheckedMale(false);
+                  setCheckedOther(false);
                 }}
                 color={'#be1d2d'}
                 uncheckColor={colors.secondary}
@@ -208,6 +226,8 @@ const BasicInfoScreen = ({navigation}) => {
                 status={CheckedOther ? 'checked' : 'unchecked'}
                 onPress={() => {
                   setCheckedOther(!CheckedOther);
+                  setCheckedMale(false);
+                  setCheckedFemale(false);
                 }}
                 color={'#be1d2d'}
                 uncheckColor={colors.secondary}
@@ -288,13 +308,13 @@ const styles = StyleSheet.create({
   },
   iconexp: {
     position: 'absolute',
-    left: sizes.screenWidth * 0.3,
+    left: sizes.screenWidth * 0.22,
     top: sizes.screenHeight * 0.01,
     fontSize: fontSize.h2,
   },
   iconexp2: {
     position: 'absolute',
-    left: sizes.screenWidth * 0.2,
+    left: sizes.screenWidth * 0.22,
     top: sizes.screenHeight * 0.01,
     fontSize: fontSize.h2,
   },
@@ -339,7 +359,7 @@ const styles = StyleSheet.create({
   tremtextbutt: {
     position: 'relative',
     top: sizes.screenHeight * 0.03,
-    right: sizes.screenWidth * 0.18,
+    right: sizes.screenWidth * 0.22,
     fontSize: fontSize.medium,
     color: colors.secondary,
     fontFamily: fontFamily.appTextLight,

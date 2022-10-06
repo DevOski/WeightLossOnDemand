@@ -765,7 +765,7 @@ const styles = StyleSheet.create({
   buttonView: {
     backgroundColor: colors.secondary,
     height: sizes.screenHeight * 0.06,
-    width: sizes.screenWidth * 0.8,
+    width: sizes.screenWidth * 0.92,
     alignItems: 'center',
     justifyContent: 'center',
   },

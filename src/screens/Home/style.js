@@ -236,7 +236,7 @@ export const styles = StyleSheet.create({
   },
   buttnView: {
     // marginRight:sizes.screenWidth*0.06,
-    marginTop: sizes.screenHeight * 0.10,
+    marginTop: sizes.screenHeight * 0.05,
     marginRight:sizes.screenWidth*0.05,
     justifyContent: 'center',
     alignItems: 'center',

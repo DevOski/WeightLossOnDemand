@@ -96,7 +96,9 @@ export const VisitScreen = ({navigation, route}) => {
                 height: sizes.screenHeight,
                 backgroundColor: 'rgba(52, 52, 52, 0.8)',
                 marginLeft: sizes.screenWidth * 0.01,
-                padding: 10,
+                padding: sizes.screenWidth*0.02,
+                position:'absolute',
+                top:-sizes.baseMargin,
               }}
               isVisible={isModalVisible}>
               <TouchableOpacity onPress={toggleModal}>
