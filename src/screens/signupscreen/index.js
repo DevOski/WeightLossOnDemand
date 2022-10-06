@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   SafeAreaView,
   ScrollView,
@@ -17,33 +17,59 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import {Checkbox} from 'react-native-paper';
 import Logo from '../../assets/assets/logo.png';
 import {CustomTextFiel} from '../../component/textFiled';
-import { Button } from 'react-native-paper';
-import { DatePickerModal } from 'react-native-paper-dates';
+import {Button} from 'react-native-paper';
+import {DatePickerModal} from 'react-native-paper-dates';
 import {colors, fontFamily, fontSize, sizes} from '../../services';
 const deviceHeight = Dimensions.get('window').height;
 const deviceWidth = Dimensions.get('window').width;
-
+import moment from 'moment';
 export const SignUp = ({navigation}) => {
   const [isEnabled, setIsEnabled] = useState(false);
   const toggleSwitch = () => setIsEnabled(previousState => !previousState);
   const [email, setemail] = useState();
   const [password, setpassword] = useState();
   const [checked, setChecked] = React.useState(false);
-  const [date, setDate] = useState();
+  const [date, setDate] = useState('');
   const [open, setOpen] = useState(false);
+  const [register, setregister] = useState();
 
 
-  const onDismissSingle =(() => {
+
+  const Sinup = () => {
+    setregister({
+      email,
+      password,
+      checked,
+      isEnabled,
+      // date
+    });
+    if (register) {
+      console.log(register, 'register');
+      // navigation.navigate('basicInfoscreens')
+      // setregister()
+    }
+  };
+
+  const onDismissSingle = () => {
     setOpen(false);
-  }, [setOpen]);
+  };
 
-  const onConfirmSingle = (
-    (params) => {
-      setOpen(false);
-      setDate(params.date);
-    },
-    [setOpen, setDate]
-  );
+  const onConfirmSingle = date => {
+    console.log('------>>', date);
+    let test = JSON.stringify(date);
+    let d1 = JSON.parse(test);
+    let res = moment(d1.date).format('DD/MM/YYYY');
+    console.log(res);
+    setDate(res);
+    // setDate(date);
+    setOpen(false);
+  };
+
+  // (params) => {
+  //   setOpen(false);
+  //   setDate(params.date);
+  // },
+  // [setOpen, setDate]
 
   return (
     <SafeAreaView style={styles.bg}>
@@ -55,7 +81,9 @@ export const SignUp = ({navigation}) => {
           <View>
             <TouchableOpacity
               onPress={() => navigation.navigate('signinscreen')}>
-              <Text style={styles.fontstyleigin}>Sign In</Text>
+              <Text style={styles.fontstyleigin}>
+                Sign In
+              </Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -64,31 +92,43 @@ export const SignUp = ({navigation}) => {
             <CustomTextFiel label={'Email'} value={email} setValue={setemail} />
           </View>
           <View style={styles.filedcon}>
-          <Button style={styles.datebutton} onPress={() => setOpen(true)} uppercase={false} ><Text style={styles.datebuttontext} >Date of birth</Text></Button>
-          <DatePickerModal
-        locale="en"
-        mode="single"
-        visible={open}
-        onDismiss={onDismissSingle}
-        date={date}
-        onConfirm={onConfirmSingle}
-        // validRange={{
-        //   startDate: new Date(2021, 1, 2),  // optional
-        //   endDate: new Date(), // optional
-        //   disabledDates: [new Date()] // optional
-        // }}
-        // onChange={} // same props as onConfirm but triggered without confirmed by user
-        // saveLabel="Save" // optional
-        // saveLabelDisabled={true} // optional, default is false
-        // uppercase={false} // optional, default is true
-        // label="Select date" // optional
-        // animationType="slide" // optional, default is 'slide' on ios/android and 'none' on web
-        // startYear={2000} // optional, default is 1800
-        // endYear={2100} // optional, default is 2200
-        // closeIcon="close" // optional, default is "close"
-        // editIcon="pencil" // optional, default is "pencil"
-        // calendarIcon="calendar" // optional, default is "calendar"
-      />
+            {date ? (
+              <TouchableOpacity style={styles.datebutton} >
+                <Text style={styles.datebuttontext}>{date && date}</Text>
+              </TouchableOpacity>
+            ) : (
+              <TouchableOpacity
+                style={styles.datebutton}
+                onPress={() => setOpen(!open)}
+                uppercase={false}>
+                <Text style={styles.datebuttontext}>Date of birth</Text>
+              </TouchableOpacity>
+            )}
+            <DatePickerModal
+              locale="en"
+              mode="single"
+              visible={open}
+              onDismiss={onDismissSingle}
+              date={date}
+              onConfirm={onConfirmSingle}
+             
+              // validRange={{
+              //   startDate: new Date(2021, 1, 2),  // optional
+              //   endDate: new Date(), // optional
+              //   disabledDates: [new Date()] // optional
+              // }}
+              // onChange={} // same props as onConfirm but triggered without confirmed by user
+              // saveLabel="Save" // optional
+              // saveLabelDisabled={true} // optional, default is false
+              // uppercase={false} // optional, default is true
+              // label="Select date" // optional
+              // animationType="slide" // optional, default is 'slide' on ios/android and 'none' on web
+              // startYear={2000} // optional, default is 1800
+              // endYear={2100} // optional, default is 2200
+              // closeIcon="close" // optional, default is "close"
+              // editIcon="pencil" // optional, default is "pencil"
+              // calendarIcon="calendar" // optional, default is "calendar"
+            />
             {/* <CustomTextFiel
               label={'Date of birth'}
               value={email}
@@ -178,18 +218,20 @@ export const SignUp = ({navigation}) => {
               disabled={
                 password?.length > 8 &&
                 password?.toUpperCase() &&
-                password?.match(/\d/)
+                password?.match(/\d/) &&
+                email
                   ? false
                   : true
               }
               style={
                 password?.length > 8 &&
                 password?.toUpperCase() &&
-                password?.match(/\d/)
+                password?.match(/\d/) &&
+                email
                   ? styles.but
                   : styles.disabledView
               }
-              onPress={() => navigation.navigate('basicInfoscreens')}>
+              onPress={Sinup}>
               <Text
                 style={{
                   color: '#fff',
@@ -299,14 +341,24 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  datebutton:{
-    // backgroundColor:'none',
-    // justifyContent:'flex-start'
-  
-  },
-  datebuttontext:{
-    // color:colors.black,
-    // left:10,
+  datebutton: {
+    // backgroundColor:'red',
+    // justifyContent:'flex-start',
+    // marginRight:sizes.screenWidth*0.9,
+    // width:sizes.screenWidth*0.4,
+    // height:sizes.screenHeight*0.4,
+    color: 'black',
+    borderBottomWidth: 1,
+    borderBottomColor: colors.disabledBg,
+    paddingBottom: sizes.screenHeight * 0.05,
     // position:'absolute'
-  }
+  },
+  datebuttontext: {
+    color: colors.black,
+    fontSize: fontSize.large,
+    top: sizes.screenHeight * 0.02,
+    // alignSelf:'flex-start'
+
+    // position:'absolute'
+  },
 });
