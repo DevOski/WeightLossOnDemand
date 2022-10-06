@@ -83,7 +83,7 @@ export const styles = StyleSheet.create({
   cardText2: {
     color: colors.white,
     fontSize: fontSize.medium,
-    paddingLeft: sizes.screenWidth * 0.25,
+    paddingLeft: sizes.screenWidth * 0.02,
     fontFamily: fontFamily.appTextRegular,
   },
   cardText: {

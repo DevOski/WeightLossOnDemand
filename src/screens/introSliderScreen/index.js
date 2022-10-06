@@ -52,7 +52,7 @@ const Intro = ({navigation}) => {
   };
   return (
     <SafeAreaView>
-      <ScrollView>
+     
         <ScrollView
           onScroll={({nativeEvent}) => onchange(nativeEvent)}
           horizontal
@@ -116,7 +116,7 @@ const Intro = ({navigation}) => {
               </View>
             )}
         </View>
-      </ScrollView>
+    
     </SafeAreaView>
   );
 };

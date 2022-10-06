@@ -79,15 +79,18 @@ export const styles = StyleSheet.create({
     height: sizes.screenHeight * 0.25,
   },
   whbackgroundcolor:{
+    width:sizes.screenWidth*0.92,
+    height:sizes.screenHeight*0.07,
     backgroundColor:colors.secondary
   },
   symbolwhite:{
     color:colors.white,
-    fontSize: fontSize.h1,
+    fontSize: fontSize.h4,
     fontWeight:'bold'
   },
   whi:{
-    fontSize:fontSize.h5,
+   
+    fontSize:fontSize.large,
     color:colors.white,
   },
   fl:{
