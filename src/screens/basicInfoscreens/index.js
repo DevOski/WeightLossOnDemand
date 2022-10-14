@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState,useEffect} from 'react';
 const deviceHeight = Dimensions.get('window').height;
 const deviceWidth = Dimensions.get('window').width;
 import {
@@ -17,7 +17,10 @@ import {RadioButton} from 'react-native-paper';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {colors, fontFamily, fontSize, sizes} from '../../services';
 import {CustomTextFiel} from '../../component/textFiled';
-const BasicInfoScreen = ({navigation}) => {
+const BasicInfoScreen = ({navigation,route}) => {
+  // console.log(route,"-------->basicscreen");
+  const { register } = route.params;
+  // console.log(register,"-------->basicscreenparams");
   const [CheckedMale, setCheckedMale] = React.useState();
   const [CheckedFemale, setCheckedFemale] = React.useState();
   const [CheckedOther, setCheckedOther] = React.useState();
@@ -28,14 +31,46 @@ const BasicInfoScreen = ({navigation}) => {
   const [Middle, setMiddle] = useState();
   const [show, setshow] = useState(false);
   const [Fieldsshowhide, setFieldsshowhide] = useState(false);
-
+const [allinformation, setallinformation] = useState()
   const [Prefix, setPrefix] = useState();
+
+  useEffect(()=>{
+    //this will fire  at the beginning and on foto changing value
+    if(allinformation){
+      // navigation.navigate('basicInfoscreens')
+      console.log(allinformation,'useeffectallinformation');
+    }
+   },[allinformation])
+
   const toogle = () => {
     setshow(!show);
   };
   const ShowFiled = () => {
     setFieldsshowhide(!Fieldsshowhide);
   };
+
+
+  
+
+  
+  const Continue=()=>{
+    
+    setallinformation(
+    {
+      name,
+      lastname,
+      slectnumber,
+      phonenumber,
+      Middle,
+      CheckedMale,
+      CheckedFemale,
+      CheckedOther,
+      register
+    }
+    )
+    navigation.navigate('wellcomescreen')
+    
+  }
 
   return (
     <SafeAreaView style={styles.container}>
@@ -103,6 +138,7 @@ const BasicInfoScreen = ({navigation}) => {
                 />
               </View>
               <View style={styles.twoitem}>
+                <TouchableOpacity  onPress={toogle}>
                 <View
                   style={{
                     width: sizes.screenWidth * 0.4,
@@ -112,6 +148,7 @@ const BasicInfoScreen = ({navigation}) => {
                     label={'Mobile'}
                     value={slectnumber}
                     setValue={setslectnumber}
+                    editable={false}
                   />
                 </View>
                 <MaterialIcons
@@ -121,6 +158,7 @@ const BasicInfoScreen = ({navigation}) => {
                   size={20}
                   onPress={toogle}
                 />
+                </TouchableOpacity>
                 {show ? (
                   <View style={[styles.pap, styles.right]}>
                     <Text
@@ -247,7 +285,10 @@ const BasicInfoScreen = ({navigation}) => {
           </View>
           <View style={styles.buttocon}>
             <TouchableOpacity
-              onPress={() => navigation.navigate('insurancescreen')}>
+              onPress={
+                Continue
+                }
+                >
               <View style={styles.buttoconSTYLE}>
                 <Text style={styles.continue}>Continue</Text>
               </View>
@@ -301,7 +342,7 @@ const styles = StyleSheet.create({
   },
   icon: {
     position: 'absolute',
-    left: sizes.screenWidth * 0.4,
+    left: sizes.screenWidth * 0.36,
     top: sizes.screenHeight * 0.03,
     fontSize: fontSize.h2,
     // flexDirection:'row'

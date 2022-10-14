@@ -73,7 +73,7 @@ export const VisitDetail = ({navigation}) => {
                 <Text style={styles.litext}>Schedule Follow-up</Text>
               </TouchableOpacity>
             </View>
-            <View style={styles.flex2}>
+            {/* <View style={styles.flex2}>
               <View style={styles.imgicon}>
                 <Image
                   style={{width: '100%', height: '100%'}}
@@ -83,7 +83,7 @@ export const VisitDetail = ({navigation}) => {
               <TouchableOpacity>
                 <Text style={styles.litext}>Add Provider to Favourites</Text>
               </TouchableOpacity>
-            </View>
+            </View> */}
             <View style={styles.flex2}>
               <View style={styles.imgicon}>
                 <Image style={{width: '100%', height: '100%'}} source={book} />
@@ -105,7 +105,7 @@ export const VisitDetail = ({navigation}) => {
                 <Text style={styles.litext}>Message Support</Text>
               </TouchableOpacity>
             </View>
-            <View style={styles.flex2}>
+            {/* <View style={styles.flex2}>
               <View style={styles.imgicon}>
                 <Image style={{width: '100%', height: '100%'}} source={share} />
               </View>
@@ -115,7 +115,7 @@ export const VisitDetail = ({navigation}) => {
                   Share Visit width an External Physicans
                 </Text>
               </TouchableOpacity>
-            </View>
+            </View> */}
           </View>
           <View style={styles.crd}>
             <Text style={styles.subhead}>Patient</Text>
@@ -210,7 +210,7 @@ const styles = StyleSheet.create({
     padding: sizes.screenWidth * 0.05,
   },
   hedtext: {
-    fontSize: fontSize.h3,
+    fontSize: fontSize.h6,
     color: colors.black,
     fontWeight: 'bold',
   },
@@ -236,7 +236,7 @@ const styles = StyleSheet.create({
     fontFamily: fontFamily.appTextCondensed,
   },
   subhead: {
-    fontSize: fontSize.large,
+    fontSize: fontSize.h6,
     color: colors.gray,
     fontWeight: 'bold',
     fontFamily: fontFamily.appTextLight,

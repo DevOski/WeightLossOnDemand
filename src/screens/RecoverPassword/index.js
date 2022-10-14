@@ -17,7 +17,7 @@ import {colors, sizes} from '../../services';
 import Modal from 'react-native-modal';
 import {openInbox} from 'react-native-email-link';
 
-export default function RecoverPassword() {
+export default function RecoverPassword({navigation}) {
   const [email, setEmail] = useState('');
   const [isModalVisible, setIsModalVisible] = useState(false);
 
@@ -28,6 +28,7 @@ export default function RecoverPassword() {
   const handleEmail = () => {
     openInbox();
   };
+  
   return (
     <SafeAreaView>
       <Header title={'Recover Password'} />
@@ -68,7 +69,7 @@ export default function RecoverPassword() {
                   . Use the link in that email to reset your password
                 </Text>
               </View>
-              <TouchableOpacity onPress={toggleModal}>
+              <TouchableOpacity onPress={()=>navigation.navigate('EnterNewPassword',{screenName:'signinscreen'})}>
                 <View style={styles.buttonView}>
                   <Text style={styles.buttonText}>OK</Text>
                 </View>

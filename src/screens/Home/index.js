@@ -20,7 +20,7 @@ export default function Home({navigation}) {
     'Text3',
     'Text3',
     'Text4',
-    'Text5',
+    // 'Text5',
   ]);
   const [imgActive, setImgActive] = useState(0);
 
@@ -129,7 +129,7 @@ export default function Home({navigation}) {
                     </View>
                   </View>
                 )}
-                {index == 2 && (
+                {/* {index == 2 && (
                   <View key={index} style={styles.padding}>
                     <Text style={[styles.heading, styles.top]}>
                       Mental health
@@ -162,8 +162,8 @@ export default function Home({navigation}) {
                       </TouchableOpacity>
                     </View>
                   </View>
-                )}
-                {index == 3 && (
+                )} */}
+                {index == 2 && (
                   <ImageBackground
                     key={index}
                     source={images.bg2}
@@ -183,7 +183,7 @@ export default function Home({navigation}) {
                     </TouchableOpacity>
                   </ImageBackground>
                 )}
-                {index == 4 && (
+                {index == 3 && (
                   <View key={index} style={[styles.padding]}>
                     <Text style={[styles.heading, styles.top]}>
                       Meet Our Providers
@@ -281,7 +281,7 @@ export default function Home({navigation}) {
                     </View>
                   </View>
                 )}
-                  {index == 5 && (
+                  {index == 4 && (
                   <View key={index} style={[styles.padding]}>
                     <Text style={[styles.heading, styles.top]}>
                      Recent Visit

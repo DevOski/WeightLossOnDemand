@@ -76,7 +76,9 @@ export default function EnterNewPassword({navigation, route}) {
               <View style={styles.fleix}>
                 <AntDesign
                   name="checkcircle"
-                  color={colors.secondary}
+                  color={
+                    password?.length > 8 ? colors.secondary : colors.disabledBg
+                  }
                   size={20}
                 />
                 <Text style={styles.fontcheck}>8 characters minimum</Text>
@@ -86,7 +88,9 @@ export default function EnterNewPassword({navigation, route}) {
               <View style={styles.fleix}>
                 <AntDesign
                   name="checkcircle"
-                  color={colors.secondary}
+                  color={
+                    password?.toUpperCase() ? colors.secondary : colors.disabledBg
+                  }
                   size={20}
                 />
                 <Text style={styles.fontcheck}>
@@ -98,7 +102,9 @@ export default function EnterNewPassword({navigation, route}) {
               <View style={styles.fleix}>
                 <AntDesign
                   name="checkcircle"
-                  color={colors.secondary}
+                  color={
+                    password?.match(/\d/) ? colors.secondary : colors.disabledBg
+                  }
                   size={20}
                 />
                 <Text style={styles.fontcheck}>One number minimum</Text>
@@ -106,10 +112,10 @@ export default function EnterNewPassword({navigation, route}) {
             </View>
             <TouchableOpacity
               onPress={() => navigation.navigate(route?.params?.screenName)}
-              disabled={password !== '' ? false : true}>
+              disabled={password !== ''  && confirmPassword !== '' &&  password == confirmPassword  ?  false : true}>
               <View
                 style={
-                  password !== '' && confirmPassword !== ''
+                  password !== '' && confirmPassword !== '' &&  password == confirmPassword  
                     ? styles.buttonView
                     : styles.disabledView
                 }>

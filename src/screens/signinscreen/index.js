@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState,useEffect} from 'react';
 import {
   SafeAreaView,
   ScrollView,
@@ -23,6 +23,24 @@ export const SignIn = ({navigation}) => {
   const toggleSwitch = () => setIsEnabled(previousState => !previousState);
   const [email, setemail] = useState();
   const [password, setpassword] = useState();
+  const [sigindata, setsigindata] = useState()
+  useEffect(()=>{
+    //this will fire  at the beginning and on foto changing value
+    if(sigindata){
+      navigation.navigate('BottomNavs')
+    }
+   },[sigindata])
+
+const Sigin=()=>{
+  setsigindata({
+    email,
+    password
+  })
+  setemail('')
+  setpassword('')
+
+}
+
   return (
     <SafeAreaView style={styles.bg}>
       <View style={styles.container}>
@@ -70,8 +88,9 @@ export const SignIn = ({navigation}) => {
           <View style={{justifyContent: 'center', alignItems: 'center'}}>
             <View style={styles.filedconbutton}>
               <TouchableOpacity
-                style={styles.but}
-                onPress={() => navigation.navigate('BottomNavs')}>
+              disabled={email !='' && password !=''? false:true}
+                style={email && password?  styles.but:styles.disabledView}
+                onPress={Sigin}>
                 <Text
                   style={{
                     color: '#fff',
@@ -156,5 +175,13 @@ const styles = StyleSheet.create({
     marginBottom: deviceHeight * 0.02,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  disabledView: {
+    alignSelf: 'center',
+    backgroundColor: colors.disabledBg,
+    height: sizes.screenHeight * 0.06,
+    width: sizes.screenWidth * 0.92,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });
