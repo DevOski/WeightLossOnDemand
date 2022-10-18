@@ -65,7 +65,7 @@ export default function HowItWorks({navigation}) {
                 </View>
               </View>
             </TouchableOpacity>
-            <TouchableOpacity
+            {/* <TouchableOpacity
               onPress={() => navigation.navigate('PrescriptionsAndLab')}>
               <View style={[styles.row, styles.card]}>
                 <Text style={styles.cardText}>Prescriptions and Lab Work</Text>
@@ -73,7 +73,7 @@ export default function HowItWorks({navigation}) {
                   <Text style={styles.symbol}> ›</Text>
                 </View>
               </View>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
             <TouchableOpacity onPress={() => navigation.navigate('MyPricing')}>
               <View style={[styles.row, styles.card]}>
                 <Text style={styles.cardText}>My Pricing</Text>

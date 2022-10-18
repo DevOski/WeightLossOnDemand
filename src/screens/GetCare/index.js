@@ -60,7 +60,7 @@ export default function GetCare({navigation}) {
             </View>
           </View>
         </TouchableOpacity>
-        <TouchableOpacity
+        {/* <TouchableOpacity
           onPress={() =>
             navigation.navigate('visitforscreen', {to: 'ProviderType'})
           }>
@@ -77,7 +77,7 @@ export default function GetCare({navigation}) {
               <Text style={styles.symbol}> ›</Text>
             </View>
           </View>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
         {/* <TouchableOpacity onPress={()=>navigation.navigate("GenerateReciept")}>
           <Text style={{alignSelf:'center'}}>Testing button</Text>
         </TouchableOpacity> */}

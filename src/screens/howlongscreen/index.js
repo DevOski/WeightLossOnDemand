@@ -32,7 +32,7 @@ export const Howlong = ({navigation, route}) => {
       </View>
 
       <View style={styles.headcontainer}>
-        <Text style={styles.hedtext}>How Long have you felt this way ?</Text>
+        <Text style={styles.hedtext}>How long have you felt this way ?</Text>
       </View>
 
       <View style={styles.fle}>
@@ -102,7 +102,7 @@ export const Howlong = ({navigation, route}) => {
             });
           }}>
           <View style={styles.bdiv}>
-            <Text style={styles.btext}>></Text>
+            <Text style={styles.btext}>›</Text>
           </View>
         </TouchableOpacity>
       </View>
@@ -121,7 +121,7 @@ const styles = StyleSheet.create({
   },
 
   hedtext: {
-    fontSize: fontSize.h2,
+    fontSize: fontSize.h4,
     color: colors.black,
     fontWeight: 'bold',
   },
@@ -162,8 +162,8 @@ const styles = StyleSheet.create({
   },
   bdiv: {
     marginTop: sizes.screenHeight * 0.05,
-    width: sizes.screenWidth * 0.2,
-    height: sizes.screenHeight * 0.1,
+    width: sizes.screenWidth * 0.16,
+    height: sizes.screenHeight * 0.081,
     backgroundColor: colors.secondary,
     justifyContent: 'center',
     alignItems: 'center',
@@ -173,6 +173,8 @@ const styles = StyleSheet.create({
     fontSize: fontSize.h2,
     color: colors.white,
     fontWeight: 'bold',
+    alignSelf: 'center',
+    bottom: sizes.TinyMargin,
   },
   slidit: {
     top: sizes.screenHeight * 0.04,

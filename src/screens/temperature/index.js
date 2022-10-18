@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
   },
 
   hedtext: {
-    fontSize: fontSize.h2,
+    fontSize: fontSize.h4,
     color: colors.black,
     fontWeight: 'bold',
   },
