@@ -117,7 +117,7 @@ const styles = StyleSheet.create({
     padding: sizes.screenWidth * 0.05,
   },
   hedtext: {
-    fontSize: fontSize.h3,
+    fontSize: fontSize.h4,
     color: colors.black,
     fontWeight: 'bold',
   },

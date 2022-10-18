@@ -80,18 +80,18 @@ export default function Home({navigation}) {
                         What to expect in your first visit
                       </Text>
                     </View>
+                      <View style={[styles.semiTextView, styles.row2]}>
                     <TouchableOpacity
                       onPress={() => navigation.navigate('HowItWorks')}>
-                      <View style={[styles.semiTextView, styles.row2]}>
                         <Text style={styles.semiText}>How It Works</Text>
                         <Text style={styles.symbol}> ›</Text>
-                      </View>
                     </TouchableOpacity>
+                      </View>
                   </ImageBackground>
                 )}
                 {index == 1 && (
                   <View key={index} style={styles.padding}>
-                    <Text style={[styles.heading, styles.top]}>Medical</Text>
+                    <Text style={[styles.heading, styles.top]}>Trainer</Text>
                     <Text style={styles.providerText}>
                       Our providers can treat hundreds of issues,including:
                     </Text>

@@ -202,7 +202,7 @@ const styles = StyleSheet.create({
     padding: sizes.baseMargin,
   },
   subHeading: {
-    fontSize: fontSize.h2,
+    fontSize: fontSize.h4,
     fontWeight: 'bold',
     color: colors.black,
   },
