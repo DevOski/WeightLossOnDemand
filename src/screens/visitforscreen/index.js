@@ -58,7 +58,7 @@ export const VisitScreen = ({navigation, route}) => {
                 </View>
               </TouchableOpacity>
             </View>
-            <View style={styles.buttonchilddiv}>
+            {/* <View style={styles.buttonchilddiv}>
               <TouchableOpacity
                 onPress={() =>
                   navigation.navigate('addchildscreen', {
@@ -140,7 +140,7 @@ export const VisitScreen = ({navigation, route}) => {
                   </View>
                 </TouchableOpacity>
               </View>
-            </Modal>
+            </Modal> */}
           </View>
         </View>
       </ScrollView>

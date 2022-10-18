@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   SafeAreaView,
   ScrollView,
@@ -14,15 +14,56 @@ import {
 } from 'react-native';
 import Logo from '../../assets/assets/logo.png';
 import {CustomTextFiel} from '../../component/textFiled';
+import Error from '../../components/Error';
+import Loader from '../../components/Loader';
 import {colors, fontFamily, fontSize, sizes} from '../../services';
+import {signIn} from '../../services/utilities/api/auth';
 const deviceHeight = Dimensions.get('window').height;
 const deviceWidth = Dimensions.get('window').width;
 
 export const SignIn = ({navigation}) => {
   const [isEnabled, setIsEnabled] = useState(false);
   const toggleSwitch = () => setIsEnabled(previousState => !previousState);
-  const [email, setemail] = useState();
-  const [password, setpassword] = useState();
+  const [email, setemail] = useState('');
+  const [password, setpassword] = useState('');
+  const [sigindata, setsigindata] = useState();
+  const [errorMessage, setErrorMessage] = useState('');
+  const [loader, setLoader] = useState(false);
+  const [error, setError] = useState(false);
+  // useEffect(()=>{
+  //   //this will fire  at the beginning and on foto changing value
+  //   if(sigindata){
+  //     navigation.navigate('BottomNavs')
+  //   }
+  //  },[sigindata])
+
+  const Sigin = async () => {
+    if (email && password) {
+      try {
+        setLoader(true);
+        setTimeout(async () => {
+          let response = await signIn(email, password);
+          console.log(response.data);
+          if (response.data.message == 'user found') {
+            console.log(response.data.data);
+            setError(false);
+            // navigation.navigate('BottomNavs');
+            setLoader(false);
+          } else {
+            console.log(response.data.message);
+            setError(true);
+            setErrorMessage(response.data.message);
+            setLoader(false);
+          }
+        }, 200);
+      } catch (error) {
+        setError(true);
+        setErrorMessage(error.message);
+        setLoader(false);
+      }
+    }
+  };
+
   return (
     <SafeAreaView style={styles.bg}>
       <View style={styles.container}>
@@ -70,8 +111,9 @@ export const SignIn = ({navigation}) => {
           <View style={{justifyContent: 'center', alignItems: 'center'}}>
             <View style={styles.filedconbutton}>
               <TouchableOpacity
-                style={styles.but}
-                onPress={() => navigation.navigate('BottomNavs')}>
+                disabled={email != '' && password != '' ? false : true}
+                style={email && password ? styles.but : styles.disabledView}
+                onPress={Sigin}>
                 <Text
                   style={{
                     color: '#fff',
@@ -86,6 +128,8 @@ export const SignIn = ({navigation}) => {
           </View>
         </View>
       </View>
+      {loader && <Loader />}
+      {error && <Error title={'Oops!'} message={errorMessage} />}
     </SafeAreaView>
   );
 };
@@ -156,5 +200,13 @@ const styles = StyleSheet.create({
     marginBottom: deviceHeight * 0.02,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  disabledView: {
+    alignSelf: 'center',
+    backgroundColor: colors.disabledBg,
+    height: sizes.screenHeight * 0.06,
+    width: sizes.screenWidth * 0.92,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });

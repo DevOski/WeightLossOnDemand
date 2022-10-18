@@ -33,7 +33,7 @@ const Wellcome = ({navigation}) => {
           </View>
           <View style={styles.bcontainer}>
             <TouchableOpacity
-              onPress={() => navigation.navigate('visitforscreen')}>
+              onPress={() => navigation.navigate('reasonVisit')}>
               <View style={[styles.row, styles.card]}>
                 <View style={styles.imagewelllcome}>
                   <Image
@@ -75,7 +75,7 @@ const Wellcome = ({navigation}) => {
                 </View>
               </View>
             </TouchableOpacity>
-            <TouchableOpacity
+            {/* <TouchableOpacity
               onPress={() => navigation.navigate('searchforpharmacyscreen')}>
               <View style={[styles.row, styles.card]}>
                 <View style={styles.imagewelllcome}>
@@ -96,7 +96,7 @@ const Wellcome = ({navigation}) => {
                   <Text style={styles.symbol}> ›</Text>
                 </View>
               </View>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
             <TouchableOpacity onPress={() => navigation.navigate('BottomNavs')}>
               <View style={[styles.row, styles.card]}>
                 <View style={styles.imagewelllcome}>

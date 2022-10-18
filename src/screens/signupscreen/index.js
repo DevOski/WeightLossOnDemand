@@ -33,22 +33,14 @@ export const SignUp = ({navigation}) => {
   const [open, setOpen] = useState(false);
   const [register, setregister] = useState();
 
-
-
-  const Sinup = () => {
-    setregister({
-      email,
-      password,
-      checked,
-      isEnabled,
-      // date
-    });
-    if (register) {
-      console.log(register, 'register');
-      // navigation.navigate('basicInfoscreens')
-      // setregister()
+  
+  useEffect(()=>{
+    //this will fire  at the beginning and on foto changing value
+    if(register){
+      navigation.navigate('basicInfoscreens',{ register:register })
     }
-  };
+   },[register])
+ 
 
   const onDismissSingle = () => {
     setOpen(false);
@@ -65,12 +57,21 @@ export const SignUp = ({navigation}) => {
     setOpen(false);
   };
 
-  // (params) => {
-  //   setOpen(false);
-  //   setDate(params.date);
-  // },
-  // [setOpen, setDate]
 
+  const Sinup = async () => {
+  setregister({
+    email,
+    password,
+    checked,
+    isEnabled,
+    date
+  })
+    if (register) {
+     
+      navigation.navigate('basicInfoscreens',{ register:register })
+      // setregister()
+    }
+  };
   return (
     <SafeAreaView style={styles.bg}>
       <View style={styles.container}>
@@ -219,7 +220,8 @@ export const SignUp = ({navigation}) => {
                 password?.length > 8 &&
                 password?.toUpperCase() &&
                 password?.match(/\d/) &&
-                email
+                email &&
+                date
                   ? false
                   : true
               }
@@ -227,7 +229,8 @@ export const SignUp = ({navigation}) => {
                 password?.length > 8 &&
                 password?.toUpperCase() &&
                 password?.match(/\d/) &&
-                email
+                email &&
+                date
                   ? styles.but
                   : styles.disabledView
               }

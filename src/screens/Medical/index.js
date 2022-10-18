@@ -24,7 +24,7 @@ export default function Medical({navigation}) {
   const [showVideo, setShowVideo] = useState(false);
   return (
     <SafeAreaView>
-      <Header title={'Medical'} />
+      <Header title={'Trainer'} />
       <ScrollView style={styles.color}>
         {!showVideo ? (
           <ImageBackground source={images.medical} style={styles.image}>
@@ -51,7 +51,7 @@ export default function Medical({navigation}) {
             <TouchableOpacity
               onPress={() => navigation.navigate('visitforscreen')}>
               <View style={[styles.row, styles.card2]}>
-                <Text style={styles.cardText2}>See a Provider Now</Text>
+                <Text style={styles.cardText2}>See a trainer Now</Text>
                 <View>
                   <Text style={styles.symbol2}> ›</Text>
                 </View>
@@ -90,7 +90,7 @@ export default function Medical({navigation}) {
               onPress={() => navigation.navigate('WhatDoWeTreat')}>
               <View style={[styles.row, styles.card]}>
                 <Image source={images.icon} style={styles.icon} />
-                <Text style={styles.cardText}>What do we treat?</Text>
+                <Text style={styles.cardText}>What do we train?</Text>
                 <View>
                   <Text style={styles.symbol}> ›</Text>
                 </View>
@@ -106,7 +106,7 @@ export default function Medical({navigation}) {
                   size={20}
                   style={styles.iconLeft}
                 />
-                <Text style={styles.cardText}>Meet Our Providers</Text>
+                <Text style={styles.cardText}>Meet Our Trainers</Text>
                 <View>
                   <Text style={styles.symbol}> ›</Text>
                 </View>

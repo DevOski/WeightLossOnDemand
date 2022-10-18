@@ -60,7 +60,7 @@ export default function  Meetourproviders({navigation}) {
             </TouchableOpacity>
             <TouchableOpacity onPress={() => navigation.navigate('physiciansscreen')}>
               <View style={[styles.row, styles.card]}>
-                <Text style={styles.cardText}>Physicans</Text>
+                <Text style={styles.cardText}>Trainers1</Text>
                 <View>
                   <Text style={styles.symbol}> ›</Text>
                 </View>
@@ -68,7 +68,7 @@ export default function  Meetourproviders({navigation}) {
             </TouchableOpacity>
             <TouchableOpacity onPress={() => navigation.navigate('Featuresproviderscreen')}>
               <View style={[styles.row, styles.card]}>
-                <Text style={styles.cardText}>Psychiatrist & Therapists</Text>
+                <Text style={styles.cardText}>Trainer Type</Text>
                 <View>
                   <Text style={styles.symbol}> ›</Text>
                 </View>

@@ -62,7 +62,7 @@ export default function UserVisit({navigation}) {
             </View>
           </View>
         </TouchableOpacity>
-        <TouchableOpacity
+        {/* <TouchableOpacity
           onPress={() =>
             navigation.navigate('insurancescreen', {
               title: 'Add Health Insurance',
@@ -76,7 +76,7 @@ export default function UserVisit({navigation}) {
               <Text style={styles.symbol}> ›</Text>
             </View>
           </View>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
         <TouchableOpacity onPress={() => navigation.navigate('ApplyCoupon')}>
           <View style={[styles.row, styles.card, styles.borderBottom]}>
             <Text style={styles.cardText}>Coupon</Text>

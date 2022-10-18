@@ -115,7 +115,7 @@ export default function Setting({navigation}) {
             </View>
           </TouchableOpacity>
         </View>
-        <View style={styles.padding}>
+        {/* <View style={styles.padding}>
           <TouchableOpacity onPress={() => navigation.navigate('Insurance')}>
             <View style={styles.row}>
               <MaterialCommunityIcons
@@ -126,8 +126,8 @@ export default function Setting({navigation}) {
               <Text style={styles.btnText}>Insurance</Text>
             </View>
           </TouchableOpacity>
-        </View>
-        <View style={styles.padding}>
+        </View> */}
+        {/* <View style={styles.padding}>
           <TouchableOpacity onPress={() => navigation.navigate('Employer')}>
             <View style={styles.row}>
               <Ionicons
@@ -144,7 +144,7 @@ export default function Setting({navigation}) {
               </View>
             </View>
           </TouchableOpacity>
-        </View>
+        </View> */}
         <View style={styles.padding}>
           <View style={[styles.row, styles.justifyCenter]}>
             <Ionicons name="finger-print" color={colors.secondary} size={25} />
@@ -165,7 +165,7 @@ export default function Setting({navigation}) {
         <View style={[styles.left, styles.top]}>
           <Text style={styles.head}>CARE COORDINATION</Text>
         </View>
-        <View style={styles.padding}>
+        {/* <View style={styles.padding}>
           <TouchableOpacity
             onPress={() => navigation.navigate('MedicalRecords')}>
             <View style={styles.row}>
@@ -176,15 +176,15 @@ export default function Setting({navigation}) {
               <Text style={styles.btnText}>Medical Records</Text>
             </View>
           </TouchableOpacity>
-        </View>
-        <View style={styles.padding}>
+        </View> */}
+        {/* <View style={styles.padding}>
           <TouchableOpacity onPress={() => navigation.navigate('GoogleFit')}>
             <View style={styles.row}>
               <FontAwesome name="heart" color={colors.secondary} size={25} />
               <Text style={styles.btnText}>Google Fit</Text>
             </View>
           </TouchableOpacity>
-        </View>
+        </View> */}
         <View style={[styles.left, styles.top]}>
           <Text style={styles.head}>GET IN TOUCH</Text>
         </View>

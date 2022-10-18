@@ -94,10 +94,10 @@ export const ReviewHealthprofile = ({navigation, route}) => {
           </View>
 
           <TouchableOpacity
-            onPress={() =>
-              route?.params?.pharmacy
-                ? navigation.navigate('pharmacymaplocation')
-                : navigation.navigate('doyouneeddoctor')
+            onPress={() => navigation.navigate('UserVisit')
+              // route?.params?.pharmacy
+              //   ? navigation.navigate('pharmacymaplocation')
+              //   : navigation.navigate('doyouneeddoctor')
             }>
             <View style={styles.buttonView}>
               <Text style={styles.buttonText}>Confirm</Text>
@@ -117,7 +117,7 @@ const styles = StyleSheet.create({
     padding: sizes.screenWidth * 0.05,
   },
   hedtext: {
-    fontSize: fontSize.h3,
+    fontSize: fontSize.h4,
     color: colors.black,
     fontWeight: 'bold',
   },

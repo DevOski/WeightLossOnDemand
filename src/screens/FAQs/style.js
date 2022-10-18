@@ -33,7 +33,7 @@ export const styles = StyleSheet.create({
   },
   heading: {
     color: colors.white,
-    fontSize: fontSize.h2,
+    fontSize: fontSize.h4,
     fontFamily: fontFamily.appTextHeading,
     textAlign: 'center',
     fontWeight: '600',

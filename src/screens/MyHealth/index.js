@@ -38,14 +38,14 @@ export default function MyHealth({navigation}) {
               </View>
             </View>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate('LabTests')}>
+          {/* <TouchableOpacity onPress={() => navigation.navigate('LabTests')}>
             <View style={[styles.row, styles.card]}>
               <Text style={styles.cardText}>Lab Tests</Text>
               <View>
                 <Text style={styles.symbol}> ›</Text>
               </View>
             </View>
-          </TouchableOpacity>
+          </TouchableOpacity> */}
           <TouchableOpacity
             onPress={() => navigation.navigate('MessageSupport')}>
             <View style={[styles.row, styles.card]}>
@@ -55,7 +55,7 @@ export default function MyHealth({navigation}) {
               </View>
             </View>
           </TouchableOpacity>
-          <TouchableOpacity
+          {/* <TouchableOpacity
             onPress={() => navigation.navigate('Questionnaires')}>
             <View style={[styles.row, styles.card]}>
               <Text style={styles.cardText}>Questionnaires</Text>
@@ -63,7 +63,7 @@ export default function MyHealth({navigation}) {
                 <Text style={styles.symbol}> ›</Text>
               </View>
             </View>
-          </TouchableOpacity>
+          </TouchableOpacity> */}
           <TouchableOpacity
             onPress={() => navigation.navigate('HealthMyProviders')}>
             <View style={[styles.row, styles.card]}>
@@ -73,14 +73,14 @@ export default function MyHealth({navigation}) {
               </View>
             </View>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate('Pharmacies')}>
+          {/* <TouchableOpacity onPress={() => navigation.navigate('Pharmacies')}>
             <View style={[styles.row, styles.card]}>
               <Text style={styles.cardText}>Pharmacies</Text>
               <View>
                 <Text style={styles.symbol}> ›</Text>
               </View>
             </View>
-          </TouchableOpacity>
+          </TouchableOpacity> */}
         </View>
       </ScrollView>
     </SafeAreaView>

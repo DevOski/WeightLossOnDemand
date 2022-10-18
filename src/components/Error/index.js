@@ -31,7 +31,7 @@ export default function Error({title, message}) {
               <Text style={styles.text1}>{message}</Text>
             </View>
             <View>
-              <TouchableOpacity onPress={() => navigation.goBack()}>
+              <TouchableOpacity onPress={() => setIsModalVisible(false)}>
                 <View style={styles.buttonView}>
                   <Text style={styles.buttonText}>OK</Text>
                 </View>
