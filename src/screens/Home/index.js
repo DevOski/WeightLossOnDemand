@@ -80,13 +80,13 @@ export default function Home({navigation}) {
                         What to expect in your first visit
                       </Text>
                     </View>
-                    <TouchableOpacity
-                      onPress={() => navigation.navigate('HowItWorks')}>
-                      <View style={[styles.semiTextView, styles.row2]}>
+                    <View style={[styles.semiTextView, styles.row2]}>
+                      <TouchableOpacity
+                        onPress={() => navigation.navigate('HowItWorks')} style={[styles.row2]}>
                         <Text style={styles.semiText}>How It Works</Text>
                         <Text style={styles.symbol}> ›</Text>
-                      </View>
-                    </TouchableOpacity>
+                      </TouchableOpacity>
+                    </View>
                   </ImageBackground>
                 )}
                 {index == 1 && (
@@ -121,7 +121,8 @@ export default function Home({navigation}) {
                     </View>
                     <View style={styles.btnTop}>
                       <GetCare />
-                      <TouchableOpacity onPress={()=>navigation.navigate("Medical")}>
+                      <TouchableOpacity
+                        onPress={() => navigation.navigate('Medical')}>
                         <View style={styles.learnMoreBtn}>
                           <Text style={styles.learnMoreText}>Learn more</Text>
                         </View>
@@ -155,7 +156,10 @@ export default function Home({navigation}) {
                     </View>
                     <View style={styles.btnTop2}>
                       <GetCare />
-                      <TouchableOpacity onPress={()=>navigation.navigate('mentalhealthscreen')}>
+                      <TouchableOpacity
+                        onPress={() =>
+                          navigation.navigate('mentalhealthscreen')
+                        }>
                         <View style={styles.learnMoreBtn}>
                           <Text style={styles.learnMoreText}>Learn more</Text>
                         </View>
@@ -175,7 +179,8 @@ export default function Home({navigation}) {
                         Let us help you find the right LGBQTQ+ friendly doctor
                       </Text>
                     </View>
-                    <TouchableOpacity onPress={()=>navigation.navigate('beyondscreen')}>
+                    <TouchableOpacity
+                      onPress={() => navigation.navigate('beyondscreen')}>
                       <View style={[styles.learnMoreView, styles.row2]}>
                         <Text style={styles.semiText}>Learn more</Text>
                         <Text style={styles.symbol}> ›</Text>
@@ -270,7 +275,8 @@ export default function Home({navigation}) {
                       </View>
                     </View>
                     <View style={styles.seeBtn}>
-                      <TouchableOpacity onPress={()=>navigation.navigate("meetOurproviders")}>
+                      <TouchableOpacity
+                        onPress={() => navigation.navigate('meetOurproviders')}>
                         <View style={[styles.learnMoreBtn, styles.row2]}>
                           <Text style={styles.learnMoreText}>
                             See all of our providers
@@ -281,10 +287,10 @@ export default function Home({navigation}) {
                     </View>
                   </View>
                 )}
-                  {index == 5 && (
+                {index == 5 && (
                   <View key={index} style={[styles.padding]}>
                     <Text style={[styles.heading, styles.top]}>
-                     Recent Visit
+                      Recent Visit
                     </Text>
 
                     <View style={[styles.row2, styles.paddingLeft]}>
@@ -302,22 +308,30 @@ export default function Home({navigation}) {
                         </Text>
                       </View>
                     </View>
-                   <View>
-                   <Text style={styles.he}>INSTRUCTIONS:</Text>
-
-                   </View>
-                   <View style={styles.het1} >
-                   <Text style={styles.het}>our Visit was incomplete,please,check your settings close out any background applications that are running on your device and check your connection.our customer support team is available 24/7 to get you reconnected.please email support@weightloseondemand.com or call 1-800-997-6196 for assistance if you a</Text>
-
-                   </View>
+                    <View>
+                      <Text style={styles.he}>INSTRUCTIONS:</Text>
+                    </View>
+                    <View style={styles.het1}>
+                      <Text style={styles.het}>
+                        our Visit was incomplete,please,check your settings
+                        close out any background applications that are running
+                        on your device and check your connection.our customer
+                        support team is available 24/7 to get you
+                        reconnected.please email support@weightloseondemand.com
+                        or call 1-800-997-6196 for assistance if you a
+                      </Text>
+                    </View>
                     <View style={styles.seeBtn}>
-                    <View style={styles.buttnView}>
-          <TouchableOpacity onPress={()=>navigation.navigate("VisitDetail")}>
-            <View style={styles.buttonView}>
-              <Text style={styles.buttonText}>View Full summary</Text>
-            </View>
-          </TouchableOpacity>
-        </View>
+                      <View style={styles.buttnView}>
+                        <TouchableOpacity
+                          onPress={() => navigation.navigate('VisitDetail')}>
+                          <View style={styles.buttonView}>
+                            <Text style={styles.buttonText}>
+                              View Full summary
+                            </Text>
+                          </View>
+                        </TouchableOpacity>
+                      </View>
                     </View>
                   </View>
                 )}

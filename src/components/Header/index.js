@@ -24,7 +24,7 @@ export default function Header({
   filter,
   textCenter,
   next,
-  status
+  status,
 }) {
   const navigation = useNavigation();
   return (
@@ -70,7 +70,7 @@ export default function Header({
             </TouchableOpacity>
           </View>
         )}
-        {skip && dark && !status &&(
+        {skip && dark && !status && (
           <View style={[styles.skipView, styles.leftDone]}>
             <TouchableOpacity
               onPress={() =>
@@ -103,9 +103,12 @@ export default function Header({
             </TouchableOpacity>
           </View>
         )}
-         {skip && status && (
+        {skip && status && (
           <View style={[styles.skipView, styles.leftDone]}>
-            <TouchableOpacity onPress={() => navigation.goBack()}>
+            <TouchableOpacity
+              onPress={() =>
+                next ? navigation.navigate(next) : navigation.goBack()
+              }>
               <View style={[styles.row]}>
                 {/* <Text style={styles.title}>Skip </Text> */}
                 <MaterialIcons
