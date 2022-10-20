@@ -66,7 +66,9 @@ export default function Home({navigation}) {
                     <TouchableOpacity
                       onPress={() =>
                         navigation.navigate('VideoPlayer', {
-                          uri: 'https://www.youtube.com/embed/rCa-TYJabNY',
+                          uri: 'https://www.youtube.com/embed/JLnycPtolfw'
+                          
+                          ,
                         })
                       }>
                       <View style={styles.playBtn}>
