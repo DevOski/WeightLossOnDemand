@@ -30,14 +30,14 @@ export default function MyHealth({navigation}) {
               </View>
             </View>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate('Documents')}>
+          {/* <TouchableOpacity onPress={() => navigation.navigate('Documents')}>
             <View style={[styles.row, styles.card]}>
               <Text style={styles.cardText}>Documents</Text>
               <View>
                 <Text style={styles.symbol}> ›</Text>
               </View>
             </View>
-          </TouchableOpacity>
+          </TouchableOpacity> */}
           {/* <TouchableOpacity onPress={() => navigation.navigate('LabTests')}>
             <View style={[styles.row, styles.card]}>
               <Text style={styles.cardText}>Lab Tests</Text>
@@ -64,7 +64,7 @@ export default function MyHealth({navigation}) {
               </View>
             </View>
           </TouchableOpacity> */}
-          <TouchableOpacity
+          {/* <TouchableOpacity
             onPress={() => navigation.navigate('HealthMyProviders')}>
             <View style={[styles.row, styles.card]}>
               <Text style={styles.cardText}>My Providers</Text>
@@ -72,7 +72,7 @@ export default function MyHealth({navigation}) {
                 <Text style={styles.symbol}> ›</Text>
               </View>
             </View>
-          </TouchableOpacity>
+          </TouchableOpacity> */}
           {/* <TouchableOpacity onPress={() => navigation.navigate('Pharmacies')}>
             <View style={[styles.row, styles.card]}>
               <Text style={styles.cardText}>Pharmacies</Text>

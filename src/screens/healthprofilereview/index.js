@@ -77,7 +77,7 @@ export const ReviewHealthprofile = ({navigation, route}) => {
                 <Text style={styles.addanother}>Add</Text>
               </TouchableOpacity>
             </View>
-            <View style={[styles.box, styles.b2]}>
+            {/* <View style={[styles.box, styles.b2]}>
               <View style={styles.borderrb}>
                 <Text style={styles.textttt}>Family History</Text>
               </View>
@@ -90,7 +90,7 @@ export const ReviewHealthprofile = ({navigation, route}) => {
                 onPress={() => navigation.navigate('whichmedicalconditions')}>
                 <Text style={styles.addanother}>Add</Text>
               </TouchableOpacity>
-            </View>
+            </View> */}
           </View>
 
           <TouchableOpacity
