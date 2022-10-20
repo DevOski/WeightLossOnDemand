@@ -88,6 +88,7 @@ export const SignIn = ({navigation}) => {
               label={'Password'}
               value={password}
               setValue={setpassword}
+              secureTextEntry={true}
             />
           </View>
           <View style={styles.filedcontext}>

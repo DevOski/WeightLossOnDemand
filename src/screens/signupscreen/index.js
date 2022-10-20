@@ -72,7 +72,7 @@ export const SignUp = ({navigation}) => {
         email,
         password,
         checked,
-        isEnabled,
+        // isEnabled,
         date,
       });
       // setregister()
@@ -145,7 +145,7 @@ export const SignUp = ({navigation}) => {
               label={'Password'}
               value={password}
               setValue={setpassword}
-              secureTextEntry
+              secureTextEntry={true}
             />
           </View>
 
