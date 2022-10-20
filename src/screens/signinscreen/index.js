@@ -47,7 +47,7 @@ export const SignIn = ({navigation}) => {
           if (response.data.message == 'user found') {
             console.log(response.data.data);
             setError(false);
-            // navigation.navigate('BottomNavs');
+            navigation.navigate('BottomNavs');
             setLoader(false);
           } else {
             console.log(response.data.message);

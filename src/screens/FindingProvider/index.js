@@ -21,7 +21,7 @@ import Spinner from 'react-native-spinkit';
 export default function FindingProvider({navigation}) {
   useEffect(() => {
     setTimeout(() => {
-      navigation.navigate('ProviderReview');
+      navigation.navigate('videocallingscreen');
     }, 5000);
   }, []);
 

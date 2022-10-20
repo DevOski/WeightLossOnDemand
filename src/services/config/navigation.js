@@ -19,7 +19,7 @@ import {SignUp} from '../../screens/signupscreen';
 import SharePromo from '../../screens/SharePromo';
 import PaymentMethod from '../../screens/PaymentMethod';
 import ApplyCoupon from '../../screens/ApplyCoupon';
-import Intro from '../../screens/introSliderScreen';
+import Intro from '../../screens/Introsliderscreen';
 import ContactInfo from '../../screens/ContactInfo';
 import ChangePassword from '../../screens/ChangePassword';
 import Insurance from '../../screens/Insurance';
@@ -143,6 +143,7 @@ import { AppointmentReqest } from '../../screens/appointmentreqest';
 
 import ChooseAppointment from '../../screens/ChooseAppointment';
 import ChooseFollowUp from '../../screens/ChooseFollowUp';
+import Videocalling from '../../screens/videocallingscreen';
 const Stack = createNativeStackNavigator();
 
 const Tab = createMaterialBottomTabNavigator();
@@ -367,6 +368,7 @@ export default function MainNavigator() {
           name="HowLikelyRecommend"
           component={HowLikelyRecommend}
         />
+        <Stack.Screen name="videocallingscreen" component={Videocalling} />
         <Stack.Screen name="ThankyouVisit" component={ThankyouVisit} />
         <Stack.Screen name="GenerateReciept" component={GenerateReciept} />
         <Stack.Screen name="PayPal" component={PayPal} />

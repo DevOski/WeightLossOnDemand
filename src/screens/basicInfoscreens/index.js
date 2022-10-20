@@ -1,4 +1,4 @@
-import React, {useState,useEffect} from 'react';
+import React, {useState, useEffect} from 'react';
 const deviceHeight = Dimensions.get('window').height;
 const deviceWidth = Dimensions.get('window').width;
 import {
@@ -17,30 +17,37 @@ import {RadioButton} from 'react-native-paper';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {colors, fontFamily, fontSize, sizes} from '../../services';
 import {CustomTextFiel} from '../../component/textFiled';
-const BasicInfoScreen = ({navigation,route}) => {
+import {signUp} from '../../services/utilities/api/auth';
+const BasicInfoScreen = ({navigation, route}) => {
   // console.log(route,"-------->basicscreen");
-  const { register } = route.params;
-  // console.log(register,"-------->basicscreenparams");
+  const {email} = route.params;
+  const {password} = route.params;
+  const {checked} = route.params;
+  const {isEnabled} = route.params;
+
+  console.log(route.params, '-------->basicscreenparams');
   const [CheckedMale, setCheckedMale] = React.useState();
   const [CheckedFemale, setCheckedFemale] = React.useState();
   const [CheckedOther, setCheckedOther] = React.useState();
-  const [name, setname] = useState();
-  const [lastname, setlastname] = useState();
-  const [phonenumber, setphonenumber] = useState();
+  const [name, setname] = useState('');
+  const [lastname, setlastname] = useState('');
+  const [phonenumber, setphonenumber] = useState('');
   const [slectnumber, setslectnumber] = useState();
-  const [Middle, setMiddle] = useState();
+  const [middle, setMiddle] = useState('');
   const [show, setshow] = useState(false);
   const [Fieldsshowhide, setFieldsshowhide] = useState(false);
-const [allinformation, setallinformation] = useState()
-  const [Prefix, setPrefix] = useState();
+  // const [allinformation, setallinformation] = useState()
+  const [Prefix, setPrefix] = useState('');
+  const [gender, setgender] = useState();
+  const [Suffix, setsetSuffix] = useState('');
 
-  useEffect(()=>{
-    //this will fire  at the beginning and on foto changing value
-    if(allinformation){
-      // navigation.navigate('basicInfoscreens')
-      console.log(allinformation,'useeffectallinformation');
-    }
-   },[allinformation])
+  // useEffect(()=>{
+  //   //this will fire  at the beginning and on foto changing value
+  //   if(allinformation){
+  //     // navigation.navigate('basicInfoscreens')
+  //     console.log(allinformation,'useeffectallinformation');
+  //   }
+  //  },[allinformation])
 
   const toogle = () => {
     setshow(!show);
@@ -49,28 +56,41 @@ const [allinformation, setallinformation] = useState()
     setFieldsshowhide(!Fieldsshowhide);
   };
 
+  const Continue = async () => {
+    // setallinformation(
+    // {
+    //   name,
+    //   lastname,
+    //   slectnumber,
+    //   phonenumber,
+    //   Middle,
+    //   CheckedMale,
+    //   CheckedFemale,
+    //   CheckedOther,
+    //   register,
 
-  
+    // }
 
-  
-  const Continue=()=>{
-    
-    setallinformation(
-    {
-      name,
-      lastname,
-      slectnumber,
-      phonenumber,
-      Middle,
-      CheckedMale,
-      CheckedFemale,
-      CheckedOther,
-      register
-    }
-    )
+    // )
     navigation.navigate('wellcomescreen')
-    
-  }
+    // try {
+    //   let response = await signUp(
+    //     name,
+    //     middle,
+    //     lastname,
+    //     email,
+    //     password,
+    //     gender,
+    //     Prefix,
+    //     Suffix,
+    //     phonenumber,
+    //     isEnabled,
+    //   );
+    //   console.log(response);
+    // } catch (error) {
+    //   console.log(error);
+    // }
+  };
 
   return (
     <SafeAreaView style={styles.container}>
@@ -107,7 +127,7 @@ const [allinformation, setallinformation] = useState()
               <View style={styles.filedcon}>
                 <CustomTextFiel
                   label={'Middle Name'}
-                  value={Middle}
+                  value={middle}
                   setValue={setMiddle}
                 />
               </View>
@@ -123,8 +143,8 @@ const [allinformation, setallinformation] = useState()
               <View style={styles.filedcon}>
                 <CustomTextFiel
                   label={'Suffix'}
-                  value={lastname}
-                  setValue={setlastname}
+                  value={Suffix}
+                  setValue={setsetSuffix}
                 />
               </View>
             ) : null}
@@ -138,26 +158,26 @@ const [allinformation, setallinformation] = useState()
                 />
               </View>
               <View style={styles.twoitem}>
-                <TouchableOpacity  onPress={toogle}>
-                <View
-                  style={{
-                    width: sizes.screenWidth * 0.4,
-                    left: sizes.screenWidth * 0.05,
-                  }}>
-                  <CustomTextFiel
-                    label={'Mobile'}
-                    value={slectnumber}
-                    setValue={setslectnumber}
-                    editable={false}
+                <TouchableOpacity onPress={toogle}>
+                  <View
+                    style={{
+                      width: sizes.screenWidth * 0.4,
+                      left: sizes.screenWidth * 0.05,
+                    }}>
+                    <CustomTextFiel
+                      label={'Mobile'}
+                      value={slectnumber}
+                      setValue={setslectnumber}
+                      editable={false}
+                    />
+                  </View>
+                  <MaterialIcons
+                    name="expand-more"
+                    color={colors.secondary}
+                    style={styles.icon}
+                    size={20}
+                    onPress={toogle}
                   />
-                </View>
-                <MaterialIcons
-                  name="expand-more"
-                  color={colors.secondary}
-                  style={styles.icon}
-                  size={20}
-                  onPress={toogle}
-                />
                 </TouchableOpacity>
                 {show ? (
                   <View style={[styles.pap, styles.right]}>
@@ -191,23 +211,25 @@ const [allinformation, setallinformation] = useState()
             </View>
             <View style={styles.expndbuttoncontainer}>
               <TouchableOpacity onPress={ShowFiled}>
-                {!Fieldsshowhide ? (<>
-                  <Text style={styles.lstyle}>COLLAPSE</Text>
-                  <MaterialIcons
-                  name="expand-more"
-                  color={colors.secondary}
-                  style={!Fieldsshowhide ? styles.iconexp : styles.iconexp2}
-                  size={20}
-                  />
+                {!Fieldsshowhide ? (
+                  <>
+                    <Text style={styles.lstyle}>COLLAPSE</Text>
+                    <MaterialIcons
+                      name="expand-more"
+                      color={colors.secondary}
+                      style={!Fieldsshowhide ? styles.iconexp : styles.iconexp2}
+                      size={20}
+                    />
                   </>
-                ) : (<>
-                  <Text style={styles.lstyle}> Expand</Text>
-                  <MaterialIcons
-                  name="expand-less"
-                  color={colors.secondary}
-                  style={!Fieldsshowhide ? styles.iconexp : styles.iconexp2}
-                  size={20}
-                  />
+                ) : (
+                  <>
+                    <Text style={styles.lstyle}> Expand</Text>
+                    <MaterialIcons
+                      name="expand-less"
+                      color={colors.secondary}
+                      style={!Fieldsshowhide ? styles.iconexp : styles.iconexp2}
+                      size={20}
+                    />
                   </>
                 )}
                 {/* {!Fieldsshowhide ? (
@@ -238,6 +260,7 @@ const [allinformation, setallinformation] = useState()
                 status={CheckedMale ? 'checked' : 'unchecked'}
                 onPress={() => {
                   setCheckedMale(!CheckedMale);
+                  setgender(!CheckedMale);
                   setCheckedFemale(false);
                   setCheckedOther(false);
                 }}
@@ -251,6 +274,7 @@ const [allinformation, setallinformation] = useState()
                 status={CheckedFemale ? 'checked' : 'unchecked'}
                 onPress={() => {
                   setCheckedFemale(!CheckedFemale);
+                  setgender(!CheckedFemale);
                   setCheckedMale(false);
                   setCheckedOther(false);
                 }}
@@ -264,6 +288,7 @@ const [allinformation, setallinformation] = useState()
                 status={CheckedOther ? 'checked' : 'unchecked'}
                 onPress={() => {
                   setCheckedOther(!CheckedOther);
+                  setgender(!CheckedOther);
                   setCheckedMale(false);
                   setCheckedFemale(false);
                 }}
@@ -284,11 +309,7 @@ const [allinformation, setallinformation] = useState()
             </View>
           </View>
           <View style={styles.buttocon}>
-            <TouchableOpacity
-              onPress={
-                Continue
-                }
-                >
+            <TouchableOpacity onPress={Continue}>
               <View style={styles.buttoconSTYLE}>
                 <Text style={styles.continue}>Continue</Text>
               </View>
