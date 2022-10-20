@@ -65,7 +65,7 @@ export const SignIn = ({navigation}) => {
             navigation.navigate('BottomNavs');
           })
           .catch(error => {
-            console.log('Error', error);
+            setErrorMessage(error);
           });
       }
     });
@@ -81,13 +81,13 @@ export const SignIn = ({navigation}) => {
           if (response.data.message == 'user found') {
             console.log(response.data.data);
             console.log(response.data.data.fingerprint);
-            // navigation.navigate('BottomNavs');
-            if (response.data.data.fingerprint == 1) {
-              handleBiometric();
-            }
-            else{
-              navigation.navigate('BottomNavs');
-            }
+            navigation.navigate('BottomNavs');
+            // if (response.data.data.fingerprint == 1) {
+            //   handleBiometric();
+            // }
+            // else{
+            //   navigation.navigate('BottomNavs');
+            // }
             setError(false);
             // navigation.navigate('BottomNavs');
             setLoader(false);

@@ -20,10 +20,10 @@ import {CustomTextFiel} from '../../component/textFiled';
 import {getTrainer, signUp} from '../../services/utilities/api/auth';
 const BasicInfoScreen = ({navigation, route}) => {
   // console.log(route,"-------->basicscreen");
-  const {email} = route.params;
-  const {password} = route.params;
-  const {checked} = route.params;
-  const {isEnabled} = route.params;
+  const {email, password, checked, date, isEnabled} = route?.params;
+  // const {password} = route.params;
+  // const {checked} = route.params;
+  // const {isEnabled} = route.params;
 
   console.log(route.params, '-------->basicscreenparams');
   const [CheckedMale, setCheckedMale] = React.useState();
@@ -32,13 +32,13 @@ const BasicInfoScreen = ({navigation, route}) => {
   const [name, setname] = useState('');
   const [lastname, setlastname] = useState('');
   const [phonenumber, setphonenumber] = useState('');
-  const [slectnumber, setslectnumber] = useState();
+  const [slectnumber, setslectnumber] = useState('');
   const [middle, setMiddle] = useState('');
   const [show, setshow] = useState(false);
   const [Fieldsshowhide, setFieldsshowhide] = useState(false);
   // const [allinformation, setallinformation] = useState()
   const [Prefix, setPrefix] = useState('');
-  const [gender, setgender] = useState();
+  const [gender, setgender] = useState('');
   const [Suffix, setsetSuffix] = useState('');
 
   // useEffect(()=>{
@@ -57,23 +57,44 @@ const BasicInfoScreen = ({navigation, route}) => {
   };
 
   const Continue = async () => {
-    console.log(gender);
-    // setallinformation(
-    // {
-    //   name,
-    //   lastname,
-    //   slectnumber,
-    //   phonenumber,
-    //   Middle,
-    //   CheckedMale,
-    //   CheckedFemale,
-    //   CheckedOther,
-    //   register,
+    console.log(route?.params?.date);
 
-    // }
+    // )  name,
+    //     middle,
+    //     lastname,
+    //     email,
+    //     password,
+    //     gender,
+    //     Prefix,
+    //     Suffix,
+    //     phonenumber,
+    //     isEnabled,
+    // navigation.navigate('wellcomescreen')
 
-    // )
-    navigation.navigate('wellcomescreen')
+    var formdata = new FormData();
+    formdata.append('first_name', name);
+    formdata.append('middle_name', middle);
+    formdata.append('last_name', lastname);
+    formdata.append('email', email);
+    formdata.append('password', password);
+    formdata.append('gender', gender);
+    formdata.append('prefix', Prefix);
+    formdata.append('suffix', Suffix);
+    formdata.append('phone', phonenumber);
+    formdata.append('phone_type', slectnumber);
+    formdata.append('dob', date);
+    formdata.append('fingerprint', isEnabled);
+
+    var requestOptions = {
+      method: 'POST',
+      body: formdata,
+      redirect: 'follow',
+    };
+
+    fetch('http://wlod.rf.gd/api/signup', requestOptions)
+      .then(response => response.text())
+      .then(result => console.log(result))
+      .catch(error => console.log('error', error));
     // try {
     //   let response = await signUp(
     //     name,
@@ -85,37 +106,15 @@ const BasicInfoScreen = ({navigation, route}) => {
     //     Prefix,
     //     Suffix,
     //     phonenumber,
+    //     slectnumber,
+    //     date,
     //     isEnabled,
     //   );
     //   console.log(response);
     // } catch (error) {
-    //   console.log(error);
+    //   console.log(error.message);
     // }
-    // var formdata = new FormData();
-    // formdata.append('first_name', 'mus');
-    // formdata.append('middle_name', 'ab');
-    // formdata.append('last_name', 'ab');
-    // formdata.append('email', 'a@aa.com');
-    // formdata.append('password', '123456789');
-    // formdata.append('gender', 'female');
-    // formdata.append('prefix', 'ab');
-    // formdata.append('suffix', 'aa');
-    // formdata.append('phone', '0987654434');
-    // formdata.append('phone_type', 'home');
-    // formdata.append('dob', '22/02/2022');
-    // formdata.append('fingerprint', '1');
-
-    // var requestOptions = {
-    //   method: 'POST',
-    //   body: formdata,
-    //   redirect: 'follow',
-    // };
-
-    // fetch('http://wlod.rf.gd/api/signup', requestOptions)
-    //   .then(response => response.text())
-    //   .then(result => console.log(result))
-    //   .catch(error => console.log('error', error));
-  }
+  };
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView>
