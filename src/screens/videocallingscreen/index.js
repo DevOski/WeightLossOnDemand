@@ -17,20 +17,21 @@ import {
   ChannelProfileType,
 } from 'react-native-agora';
 import Header from '../../components/Header';
-
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import Entypo from 'react-native-vector-icons/Entypo';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 const appId = '270b512970864b0a93b14650e52e8f9c';
 const channelName = 'testing';
 const token =
-  '007eJxTYDjKaqESnVGwMHX69WCl+lUl+5I1GfYsFFlwetVlaX7nt0YKDEbmBkmmhkaW5gYWZiZJBomWxkmGJmamBqmmRqkWaZbJ66/5J68KZGSoZPnOzMgAgSA+O0NJanFJZl46AwMABjse/w=='
+  '007eJxTYHiuI/Neje/LluX/n99j069IWRf2Y+5U9+KG1q1mlu/ZCrMVGIzMDZJMDY0szQ0szEySDBItjZMMTcxMDVJNjVIt0iyTZ3oFJq8JZGSwj5jMxMgAgSA+O0NJanFJZl46AwMAv34gYg==';
 const uid = 0;
-
-
 
 export default function Videocalling({navigation}) {
   const agoraEngineRef = useRef(); // Agora engine instance
   const [isJoined, setIsJoined] = useState(false); // Indicates if the local user has joined the channel
   const [remoteUid, setRemoteUid] = useState(0); // Uid of the remote user
   const [message, setMessage] = useState(''); //
+  var isMuted = false;
 
   const showMessage = msg => {
     setMessage(msg);
@@ -48,7 +49,7 @@ export default function Videocalling({navigation}) {
   useEffect(() => {
     join();
     setupVideoSDKEngine();
-  },[isJoined]);
+  }, [isJoined]);
 
   const setupVideoSDKEngine = async () => {
     try {
@@ -98,82 +99,139 @@ export default function Videocalling({navigation}) {
       console.log(e);
     }
   };
-
+  const switchCamera = () => {
+    agoraEngineRef.switchCamera();
+  };
   const leave = () => {
     try {
       agoraEngineRef.current?.leaveChannel();
       setRemoteUid(0);
       setIsJoined(false);
       showMessage('You left the channel');
-      
+
       navigation.navigate('RateProvider');
     } catch (e) {
       console.log(e);
     }
   };
+  const mute = () => {
+    isMuted = !isMuted;
+    agoraEngineRef.current?.muteRemoteAudioStream(remoteUid, isMuted);
+  };
 
   return (
     <SafeAreaView style={styles.main}>
-        <Header/>
-       {/* <Text style={styles.head}>Agora Video Calling Quickstart</Text>   */}
-       {/* <View style={styles.btnContainer}> */}
-        {/* <Text onPress={join} style={styles.button}>
+      {/* <Header /> */}
+      {/* <Text style={styles.head}>Agora Video Calling Quickstart</Text>   */}
+      {/* <View style={styles.btnContainer}> */}
+      {/* <Text onPress={join} style={styles.button}>
           Join
         </Text> */}
-        {/* <Text onPress={leave} style={styles.button}>
+      {/* <Text onPress={leave} style={styles.button}>
           Leave
         </Text> */}
       {/* </View>  */}
-       {/* <ScrollView
+      {/* <ScrollView
             style={styles.scroll}
             contentContainerStyle={styles.scrollContainer}>  */}
-            {isJoined ? (
-                <React.Fragment key={0}>
-         
-                <RtcSurfaceView canvas={{uid: 0}} style={styles.videoView} />
-                {/* <Text>Local user uid: {uid}</Text> */}
-                </React.Fragment>
-            ) : (
-                <Text></Text>
-            )}
-          {isJoined && remoteUid !== 0 ? (
-                <React.Fragment key={remoteUid}>
-                <RtcSurfaceView
-                    canvas={{uid: remoteUid}}
-                    style={styles.videoView1}
-                />
-                 <Text onPress={leave} style={styles.button}>Leave</Text>
-                {/* <Text>Remote user uid: {remoteUid}</Text> */}
-                </React.Fragment>
-            ) : (
-                <Text>
-                  {/* Waiting for a remote user to join */}
-                  </Text>
-            )}
-            {/* <Text style={styles.info}>{message}</Text> */}
-        {/* </ScrollView> */}
-       
+      {isJoined ? (
+        
+          <React.Fragment key={0}>
+            <RtcSurfaceView canvas={{uid: 0}} style={styles.videoView1} />
+            {/* <Text>Local user uid: {uid}</Text> */}
+          </React.Fragment>
+      
+      ) : (
+        <Text></Text>
+      )}
+      {isJoined && remoteUid !== 0 ? (
+        <React.Fragment key={remoteUid}>
+          <RtcSurfaceView canvas={{uid: remoteUid}} style={styles.videoView} />
+          <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              paddingRight: sizes.screenWidth * 0.19,
+              marginTop: sizes.screenHeight * 0.94,
+              position: 'absolute',
+              zIndex:9,
+
+            }}>
+            <Ionicons
+              name="ios-call-outline"
+              color={colors.secondary}
+              style={styles.button}
+              size={20}
+              onPress={leave}
+              // onPress={toogle}
+            />
+            <Entypo
+              name="sound-mute"
+              color={colors.secondary}
+              style={styles.button}
+              size={20}
+              onPress={mute}
+              // onPress={toogle}
+            />
+            <MaterialCommunityIcons
+              name="camera-flip"
+              color={colors.secondary}
+              style={styles.button}
+              size={20}
+              onPress={leave}
+              // onPress={toogle}
+            />
+          </View>
+
+          {/* <Text
+                  // onPress={switchCamera}
+                  onPress={leave}
+                 style={styles.button}>Leave</Text> */}
+
+          {/* <Text>Remote user uid: {remoteUid}</Text> */}
+        </React.Fragment>
+      ) : (
+        <Text>{/* Waiting for a remote user to join */}</Text>
+      )}
+      {/* <Text style={styles.info}>{message}</Text> */}
+      {/* </ScrollView> */}
     </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   button: {
-    width:sizes.screenWidth*0.2,
-    height:sizes.screenHeight*0.03,
+    width: sizes.screenWidth * 0.2,
+    height: sizes.screenHeight * 0.04,
+    fontSize: fontSize.large,
+    paddingTop: sizes.screenWidth * 0.01,
+    // paddingVertical: 4,
+    fontWeight: 'bold',
+    color: '#ffffff',
+    backgroundColor: colors.secondary,
+    // margin: 5,
+    position: 'relative',
+    // bottom: sizes.screenHeight * 0.15,
+    // left: sizes.screenWidth * 0.1,
+    textAlign: 'center',
+    marginLeft:sizes.screenWidth*0.09,
+  },
+  button1: {
+    width: sizes.screenWidth * 0.2,
+    height: sizes.screenHeight * 0.03,
     // paddingHorizontal: sizes.screenWidth*0.05,
     // paddingVertical: 4,
     fontWeight: 'bold',
     color: '#ffffff',
-    backgroundColor:colors.secondary,
+    backgroundColor: colors.secondary,
     // margin: 5,
-    position:'relative',
-    bottom:sizes.screenHeight*0.15,
-    left:sizes.screenWidth*0.1,
-    textAlign:'center',
-   
+    position: 'relative',
+    // bottom: sizes.screenHeight * 0.01,
+    left: sizes.screenWidth * 0.4,
+    textAlign: 'center',
   },
-  main: {flex: 1, },
+
+  main: {flex: 1},
   scroll: {
     // flex: 1,
     // backgroundColor: '#ddeeff',
@@ -181,24 +239,26 @@ const styles = StyleSheet.create({
     // position: 'relative',
   },
   scrollContainer: {alignItems: 'center'},
-  videoView: {width: '100%',
-  // zIndex:-999,
-  height:sizes.screenHeight,
-  // bottom:34
-},
+  videoView: {
+    width: '100%',
+    zIndex: 1,
+    height: sizes.screenHeight,
+    
+    // bottom:34
+  },
   videoView1: {
     width: '50%',
-     height: sizes.screenHeight*0.25,
-     position:'absolute'
-     ,top:sizes.screenHeight*0.66,
-     right:sizes.screenHeight*0.02,
-    //  zIndex:999
-},
+    height: sizes.screenHeight * 0.25,
+    position: 'absolute',
+    // marginTop:8,
+    top: sizes.screenHeight * 0.66,
+    right: sizes.screenHeight * 0.02,
+    zIndex: -0,
+  },
   btnContainer: {
     flexDirection: 'row',
-   justifyContent: 'center'
+    justifyContent: 'center',
   },
   head: {fontSize: 20},
   info: {backgroundColor: '#ffffe0', color: '#0000ff'},
-  
 });
