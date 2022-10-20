@@ -38,7 +38,7 @@ export const AppointmentReqest = ({navigation}) => {
         </Text>
       </View>
       <View style={styles.top}>
-          <TouchableOpacity onPress={()=>navigation.navigate('otherreasonscreen')}>
+          <TouchableOpacity onPress={()=>navigation.navigate('reasonVisit')}>
             <View style={styles.buttonView}>
               <Text style={styles.buttonText}>Continue</Text>
             </View>
