@@ -18,8 +18,22 @@ import Error from '../../components/Error';
 import Loader from '../../components/Loader';
 import {colors, fontFamily, fontSize, sizes} from '../../services';
 import {signIn} from '../../services/utilities/api/auth';
+import TouchID from 'react-native-touch-id';
+
 const deviceHeight = Dimensions.get('window').height;
 const deviceWidth = Dimensions.get('window').width;
+
+const optionalConfigObject = {
+  title: 'Authentication Required', // Android
+  imageColor: '#e00606', // Android
+  imageErrorColor: '#ff0000', // Android
+  sensorDescription: 'Touch sensor', // Android
+  sensorErrorDescription: 'Failed', // Android
+  cancelText: 'Cancel', // Android
+  fallbackLabel: 'Show Passcode', // iOS (if empty, then label is hidden)
+  unifiedErrors: false, // use unified error messages (default false)
+  passcodeFallback: false, // iOS - allows the device to fall back to using the passcode, if faceid/touch is not available. this does not mean that if touchid/faceid fails the first few times it will revert to passcode, rather that if the former are not enrolled, then it will use the passcode.
+};
 
 export const SignIn = ({navigation}) => {
   const [isEnabled, setIsEnabled] = useState(false);
@@ -37,6 +51,26 @@ export const SignIn = ({navigation}) => {
   //   }
   //  },[sigindata])
 
+  
+  const handleBiometric = () => {
+    TouchID.isSupported(optionalConfigObject).then(biometricType => {
+      if (biometricType === 'FaceID') {
+        console.log('FaceID is supported.');
+      } else {
+        console.log('TouchID is supported.');
+        TouchID.authenticate('', optionalConfigObject)
+          .then(success => {
+            console.log('works');
+            console.log('Success', success);
+            navigation.navigate('BottomNavs');
+          })
+          .catch(error => {
+            console.log('Error', error);
+          });
+      }
+    });
+  };
+
   const Sigin = async () => {
     if (email && password) {
       try {
@@ -46,8 +80,16 @@ export const SignIn = ({navigation}) => {
           console.log(response.data);
           if (response.data.message == 'user found') {
             console.log(response.data.data);
+            console.log(response.data.data.fingerprint);
+            // navigation.navigate('BottomNavs');
+            if (response.data.data.fingerprint == 1) {
+              handleBiometric();
+            }
+            else{
+              navigation.navigate('BottomNavs');
+            }
             setError(false);
-            navigation.navigate('BottomNavs');
+            // navigation.navigate('BottomNavs');
             setLoader(false);
           } else {
             console.log(response.data.message);
