@@ -17,7 +17,7 @@ import {RadioButton} from 'react-native-paper';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {colors, fontFamily, fontSize, sizes} from '../../services';
 import {CustomTextFiel} from '../../component/textFiled';
-import {signUp} from '../../services/utilities/api/auth';
+import {getTrainer, signUp} from '../../services/utilities/api/auth';
 const BasicInfoScreen = ({navigation, route}) => {
   // console.log(route,"-------->basicscreen");
   const {email} = route.params;
@@ -57,6 +57,7 @@ const BasicInfoScreen = ({navigation, route}) => {
   };
 
   const Continue = async () => {
+    console.log(gender);
     // setallinformation(
     // {
     //   name,
@@ -90,8 +91,31 @@ const BasicInfoScreen = ({navigation, route}) => {
     // } catch (error) {
     //   console.log(error);
     // }
-  };
+    // var formdata = new FormData();
+    // formdata.append('first_name', 'mus');
+    // formdata.append('middle_name', 'ab');
+    // formdata.append('last_name', 'ab');
+    // formdata.append('email', 'a@aa.com');
+    // formdata.append('password', '123456789');
+    // formdata.append('gender', 'female');
+    // formdata.append('prefix', 'ab');
+    // formdata.append('suffix', 'aa');
+    // formdata.append('phone', '0987654434');
+    // formdata.append('phone_type', 'home');
+    // formdata.append('dob', '22/02/2022');
+    // formdata.append('fingerprint', '1');
 
+    // var requestOptions = {
+    //   method: 'POST',
+    //   body: formdata,
+    //   redirect: 'follow',
+    // };
+
+    // fetch('http://wlod.rf.gd/api/signup', requestOptions)
+    //   .then(response => response.text())
+    //   .then(result => console.log(result))
+    //   .catch(error => console.log('error', error));
+  }
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView>
@@ -260,7 +284,7 @@ const BasicInfoScreen = ({navigation, route}) => {
                 status={CheckedMale ? 'checked' : 'unchecked'}
                 onPress={() => {
                   setCheckedMale(!CheckedMale);
-                  setgender(!CheckedMale);
+                  setgender('Male');
                   setCheckedFemale(false);
                   setCheckedOther(false);
                 }}
@@ -274,7 +298,7 @@ const BasicInfoScreen = ({navigation, route}) => {
                 status={CheckedFemale ? 'checked' : 'unchecked'}
                 onPress={() => {
                   setCheckedFemale(!CheckedFemale);
-                  setgender(!CheckedFemale);
+                  setgender('Female');
                   setCheckedMale(false);
                   setCheckedOther(false);
                 }}
@@ -288,7 +312,7 @@ const BasicInfoScreen = ({navigation, route}) => {
                 status={CheckedOther ? 'checked' : 'unchecked'}
                 onPress={() => {
                   setCheckedOther(!CheckedOther);
-                  setgender(!CheckedOther);
+                  setgender('Other');
                   setCheckedMale(false);
                   setCheckedFemale(false);
                 }}

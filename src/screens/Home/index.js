@@ -9,6 +9,7 @@ import {
   View,
 } from 'react-native';
 import GetCare from '../../components/GetCare';
+import {sizes} from '../../services';
 import images from '../../services/utilities/images';
 import {styles} from './style';
 
@@ -80,13 +81,14 @@ export default function Home({navigation}) {
                         What to expect in your first visit
                       </Text>
                     </View>
-                      <View style={[styles.semiTextView, styles.row2]}>
-                    <TouchableOpacity
-                      onPress={() => navigation.navigate('HowItWorks')}>
-                        <Text style={styles.semiText}>How It Works</Text>
-                        <Text style={styles.symbol}> ›</Text>
-                    </TouchableOpacity>
-                      </View>
+                    <View style={[styles.semiTextView, styles.row2]}>
+                      <TouchableOpacity
+                        onPress={() => navigation.navigate('HowItWorks')}>
+                        <Text style={styles.semiText}>
+                          How It Works <Text style={styles.symbol}> ›</Text>
+                        </Text>
+                      </TouchableOpacity>
+                    </View>
                   </ImageBackground>
                 )}
                 {index == 1 && (
@@ -287,7 +289,7 @@ export default function Home({navigation}) {
                     </View>
                   </View>
                 )}
-                  {index == 4 && (
+                {index == 4 && (
                   <View key={index} style={[styles.padding]}>
                     <Text style={[styles.heading, styles.top]}>
                       Recent Visit
