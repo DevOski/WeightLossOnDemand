@@ -1,4 +1,4 @@
-import React, {useRef, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {
   Image,
   ImageBackground,
@@ -14,9 +14,43 @@ import images from '../../services/utilities/images';
 import {styles} from './style';
 import {TextInput} from 'react-native-paper';
 import {colors} from '../../services';
+import { useSelector } from 'react-redux';
+import { useIsFocused } from '@react-navigation/native';
+import { getUser, updateUserEmail } from '../../services/utilities/api/auth';
 
-export default function EditEmail() {
+export default function EditEmail({navigation}) {
   const [email, setEmail] = useState('testerjazzy586@gmail.com');
+  const [loader, setLoader] = useState(false);
+
+  const isVisible = useIsFocused();
+  const token = useSelector(state => state.token);
+
+  useEffect(() => {
+    getUserDetails();
+  }, [isVisible]);
+
+  const getUserDetails = async () => {
+    setLoader(true);
+    setTimeout(async () => {
+      try {
+        let response = await getUser(token);
+        setEmail(response.data.data.email);
+        setLoader(false);
+      } catch (error) {
+        console.log(error);
+        setLoader(false);
+      }
+    }, 100);
+  };
+  const updateEmail = async()=>{
+    try {
+      let response = await updateUserEmail(token, email);
+      console.log(response.data);
+      navigation.navigate("ContactInfo");
+    } catch (error) {
+      console.log(error);
+    }
+  }
   return (
     <SafeAreaView>
       <ScrollView style={styles.color}>
@@ -43,7 +77,7 @@ export default function EditEmail() {
         </View>
 
         <View style={styles.top}>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={updateEmail}>
             <View style={styles.buttonView}>
               <Text style={styles.buttonText}>Save</Text>
             </View>

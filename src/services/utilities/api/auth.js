@@ -59,3 +59,72 @@ export async function getUser(token) {
     },
   });
 }
+
+export async function updateUserName(token, lname, fname) {
+  return await axios.post(
+    `${baseURL}/update_username`,
+    {
+      lname,
+      fname,
+    },
+    {
+      headers: {
+        Authorization: token,
+      },
+    },
+  );
+}
+
+export async function updateUserAddress(
+  token,
+  address,
+  address2,
+  city,
+  state,
+  zipCode,
+) {
+  return await axios.post(
+    `${baseURL}/update_address`,
+    {
+      address,
+      address2,
+      city,
+      state,
+      zipCode,
+    },
+    {
+      headers: {
+        Authorization: token,
+      },
+    },
+  );
+}
+
+export async function updateUserPhone(token, phone) {
+  return await axios.post(
+    `${baseURL}/update_phone`,
+    {
+      phone,
+    },
+    {
+      headers: {
+        Authorization: token,
+      },
+    },
+  );
+}
+
+export async function updateUserEmail(token, email) {
+  return await axios.post(
+    `${baseURL}/update_email`,
+    {
+      email,
+    },
+    {
+      headers: {
+        Authorization: token,
+      },
+    },
+  );
+}
+
