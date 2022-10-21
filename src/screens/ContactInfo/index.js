@@ -9,10 +9,13 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
+import { useSelector } from 'react-redux';
 import Header from '../../components/Header';
 import images from '../../services/utilities/images';
 import {styles} from './style';
 export default function ContactInfo({navigation}) {
+  const user = useSelector(state => state.user);
+  console.log(user);
   return (
     <SafeAreaView>
       <ScrollView style={styles.color}>
@@ -26,7 +29,7 @@ export default function ContactInfo({navigation}) {
           <View style={[styles.row, styles.card]}>
             <View style={styles.width}>
               <Text style={styles.head}>NAME</Text>
-              <Text style={styles.text}>Tester Jazzy</Text>
+              <Text style={styles.text}>{user.first_name} {user.middle_name} {user.last_name}</Text>
             </View>
             <View>
               <Text style={styles.symbol}> ›</Text>
@@ -37,7 +40,7 @@ export default function ContactInfo({navigation}) {
           <View style={[styles.row, styles.card]}>
             <View style={styles.width}>
               <Text style={styles.head}>ADDRESS</Text>
-              <Text style={styles.text}>Lorem ipsum dolor smit</Text>
+              <Text style={styles.text}>{user.address}</Text>
             </View>
             <View>
               <Text style={styles.symbol}> ›</Text>
@@ -48,7 +51,7 @@ export default function ContactInfo({navigation}) {
           <View style={[styles.row, styles.card]}>
             <View style={styles.width}>
               <Text style={styles.head}>PHONE</Text>
-              <Text style={styles.text}>(365) 154-1736</Text>
+              <Text style={styles.text}>{user.phone}</Text>
             </View>
             <View>
               <Text style={styles.symbol}> ›</Text>
@@ -59,7 +62,7 @@ export default function ContactInfo({navigation}) {
           <View style={[styles.row, styles.card]}>
             <View style={styles.width}>
               <Text style={styles.head}>EMAIL</Text>
-              <Text style={styles.text}>testerjazzy586@gmail.com</Text>
+              <Text style={styles.text}>{user.email}</Text>
             </View>
             <View>
               <Text style={styles.symbol}> ›</Text>
