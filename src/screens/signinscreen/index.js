@@ -19,6 +19,8 @@ import Loader from '../../components/Loader';
 import {colors, fontFamily, fontSize, sizes} from '../../services';
 import {signIn} from '../../services/utilities/api/auth';
 import TouchID from 'react-native-touch-id';
+import {useDispatch} from 'react-redux';
+import {storeData} from '../../store/actions';
 
 const deviceHeight = Dimensions.get('window').height;
 const deviceWidth = Dimensions.get('window').width;
@@ -50,8 +52,8 @@ export const SignIn = ({navigation}) => {
   //     navigation.navigate('BottomNavs')
   //   }
   //  },[sigindata])
+  const dispatch = useDispatch();
 
-  
   const handleBiometric = () => {
     TouchID.isSupported(optionalConfigObject).then(biometricType => {
       if (biometricType === 'FaceID') {
@@ -62,7 +64,7 @@ export const SignIn = ({navigation}) => {
           .then(success => {
             console.log('works');
             console.log('Success', success);
-            navigation.navigate('BottomNavs');
+            // navigation.navigate('BottomNavs');
           })
           .catch(error => {
             setErrorMessage(error);
@@ -73,15 +75,20 @@ export const SignIn = ({navigation}) => {
 
   const Sigin = async () => {
     if (email && password) {
+      console.log('works1');
       try {
         setLoader(true);
+        console.log('works2');
+
         setTimeout(async () => {
           let response = await signIn(email, password);
-          console.log(response.data);
+          console.log('worss3');
+          // console.log(response.data);
+          setLoader(false);
           if (response.data.message == 'user found') {
-            console.log(response.data.data);
-            console.log(response.data.data.fingerprint);
-            navigation.navigate('BottomNavs');
+            console.log(response.data.token);
+            // console.log(response.data.data.fingerprint);
+            dispatch(storeData(response.data.token));
             // if (response.data.data.fingerprint == 1) {
             //   handleBiometric();
             // }
@@ -89,7 +96,6 @@ export const SignIn = ({navigation}) => {
             //   navigation.navigate('BottomNavs');
             // }
             setError(false);
-            // navigation.navigate('BottomNavs');
             setLoader(false);
           } else {
             console.log(response.data.message);
@@ -99,6 +105,8 @@ export const SignIn = ({navigation}) => {
           }
         }, 100);
       } catch (error) {
+        console.log('err', error);
+
         setError(true);
         setErrorMessage(error.message);
         setLoader(false);

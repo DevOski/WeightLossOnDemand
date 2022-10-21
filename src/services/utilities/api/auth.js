@@ -1,5 +1,5 @@
 import axios from 'axios';
-const baseURL = 'http://wlod.rf.gd/api';
+const baseURL = 'http://alsyedmmtravel.com/api';
 
 export async function signIn(email, password) {
   return await axios.post(`${baseURL}/signin`, {
@@ -52,3 +52,10 @@ export async function signUp(
   // );
 }
 
+export async function getUser(token) {
+  return await axios.get(`${baseURL}/user_details`, {
+    headers: {
+      Authorization: token,
+    },
+  });
+}

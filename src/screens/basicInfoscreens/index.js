@@ -20,7 +20,8 @@ import {CustomTextFiel} from '../../component/textFiled';
 import {getTrainer, signUp} from '../../services/utilities/api/auth';
 const BasicInfoScreen = ({navigation, route}) => {
   // console.log(route,"-------->basicscreen");
-  const {email, password, checked, date, isEnabled} = route?.params;
+
+  // const {email, password, checked, date, isEnabled} = route?.params;
   // const {password} = route.params;
   // const {checked} = route.params;
   // const {isEnabled} = route.params;
@@ -71,49 +72,50 @@ const BasicInfoScreen = ({navigation, route}) => {
     //     isEnabled,
     // navigation.navigate('wellcomescreen')
 
-    var formdata = new FormData();
-    formdata.append('first_name', name);
-    formdata.append('middle_name', middle);
-    formdata.append('last_name', lastname);
-    formdata.append('email', email);
-    formdata.append('password', password);
-    formdata.append('gender', gender);
-    formdata.append('prefix', Prefix);
-    formdata.append('suffix', Suffix);
-    formdata.append('phone', phonenumber);
-    formdata.append('phone_type', slectnumber);
-    formdata.append('dob', date);
-    formdata.append('fingerprint', isEnabled);
+    // var formdata = new FormData();
+    // formdata.append('first_name', name);
+    // formdata.append('middle_name', middle);
+    // formdata.append('last_name', lastname);
+    // formdata.append('email', route?.params?.email);
+    // formdata.append('password', route?.params?.password);
+    // formdata.append('gender', gender);
+    // formdata.append('prefix', Prefix);
+    // formdata.append('suffix', Suffix);
+    // formdata.append('phone', phonenumber);
+    // formdata.append('phone_type', slectnumber);
+    // formdata.append('dob', route?.params?.date);
+    // formdata.append('fingerprint', route?.params?.isEnabled);
 
-    var requestOptions = {
-      method: 'POST',
-      body: formdata,
-      redirect: 'follow',
-    };
+    // var requestOptions = {
+    //   method: 'POST',
+    //   body: formdata,
+    //   redirect: 'follow',
+    // };
 
-    fetch('http://wlod.rf.gd/api/signup', requestOptions)
-      .then(response => response.text())
-      .then(result => console.log(result))
-      .catch(error => console.log('error', error));
-    // try {
-    //   let response = await signUp(
-    //     name,
-    //     middle,
-    //     lastname,
-    //     email,
-    //     password,
-    //     gender,
-    //     Prefix,
-    //     Suffix,
-    //     phonenumber,
-    //     slectnumber,
-    //     date,
-    //     isEnabled,
-    //   );
-    //   console.log(response);
-    // } catch (error) {
-    //   console.log(error.message);
-    // }
+    // fetch('http://wlod.rf.gd/api/signup', requestOptions)
+    //   .then(response => response.text())
+    //   .then(result => console.log(result))
+    //   .catch(error => console.log('error', error));
+    try {
+      let response = await signUp(
+        name,
+        middle,
+        lastname,
+        route?.params?.email,
+        route?.params?.password,
+        gender,
+        Prefix,
+        Suffix,
+        phonenumber,
+        slectnumber,
+        route?.params?.date,
+        1,
+        // route?.params?.isEnabled,
+      );
+      console.log(response);
+    } catch (error) {
+      console.log(error.message);
+    }
   };
   return (
     <SafeAreaView style={styles.container}>

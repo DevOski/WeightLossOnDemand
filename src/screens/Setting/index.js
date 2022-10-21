@@ -21,13 +21,15 @@ import Entypo from 'react-native-vector-icons/Entypo';
 
 import {openComposer} from 'react-native-email-link';
 import {colors, sizes} from '../../services';
+import {useDispatch} from 'react-redux';
+import {removeData} from '../../store/actions';
 
 export default function Setting({navigation}) {
   const [userName, setUserName] = useState('Tester Jazzy');
   const [email, setEmail] = useState('tester586@gmail.com');
   const [isEnabled, setIsEnabled] = useState(false);
   const [isModalVisible, setIsModalVisible] = useState(false);
-
+  const dispatch = useDispatch();
   const toggleSwitch = () => setIsEnabled(previousState => !previousState);
   const toggleModal = () => {
     setIsModalVisible(!isModalVisible);
@@ -35,9 +37,13 @@ export default function Setting({navigation}) {
 
   const handleFeedback = () => {
     openComposer({
-      to:"feedback@weightlossondemand.com",
-      subject:"Weight Loss On Demand Feedback"
+      to: 'feedback@weightlossondemand.com',
+      subject: 'Weight Loss On Demand Feedback',
     });
+  };
+
+  const handleSignOut = () => {
+    dispatch(removeData());
   };
   return (
     <SafeAreaView>
@@ -247,8 +253,7 @@ export default function Setting({navigation}) {
               </Text>
             </View>
             <View style={styles.buttnView}>
-              <TouchableOpacity
-                onPress={() => navigation.navigate('signinscreen')}>
+              <TouchableOpacity onPress={handleSignOut}>
                 <View style={styles.buttonView}>
                   <Text style={styles.buttonText}>Yes</Text>
                 </View>

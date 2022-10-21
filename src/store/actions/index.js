@@ -1,6 +1,12 @@
-function storeData(user) {
+function storeData(token) {
   return {
     type: 'ADD_DATA',
+    token: token,
+  };
+}
+function storeUserData(user) {
+  return {
+    type: 'ADD_USER_DATA',
     user: user,
   };
 }
@@ -11,4 +17,4 @@ function removeData() {
   };
 }
 
-export {storeData, removeData};
+export {storeData,storeUserData, removeData};

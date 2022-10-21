@@ -1,4 +1,4 @@
-import React, {useRef, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {
   Image,
   ImageBackground,
@@ -8,13 +8,16 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
+import {useDispatch, useSelector} from 'react-redux';
 import GetCare from '../../components/GetCare';
 import {sizes} from '../../services';
+import {getUser} from '../../services/utilities/api/auth';
 import images from '../../services/utilities/images';
+import {storeUserData} from '../../store/actions';
 import {styles} from './style';
 
 export default function Home({navigation}) {
-  const [userName, setUserName] = useState('Tester');
+  const [userName, setUserName] = useState('');
   const [item, setItem] = useState([
     'Text1',
     'Text2',
@@ -24,7 +27,22 @@ export default function Home({navigation}) {
     // 'Text5',
   ]);
   const [imgActive, setImgActive] = useState(0);
+  const token = useSelector(state => state.token);
+  const dispatch = useDispatch();
 
+  useEffect(() => {
+    getUserDetails();
+  }, []);
+
+  const getUserDetails = async () => {
+    try {
+      let response = await getUser(token);
+      setUserName(response.data.data.first_name);
+      dispatch(storeUserData(response.data.data));
+    } catch (error) {
+      console.log(error);
+    }
+  };
   const onchange = nativeEvent => {
     if (nativeEvent) {
       const slide = Math.ceil(
@@ -35,6 +53,7 @@ export default function Home({navigation}) {
       }
     }
   };
+
   return (
     <SafeAreaView>
       <ScrollView style={styles.color}>
@@ -57,7 +76,7 @@ export default function Home({navigation}) {
           style={styles.wrap}>
           {item?.map((item, index) => {
             return (
-              <View style={styles.cardView}>
+              <View key={index} style={styles.cardView}>
                 {index == 0 && (
                   <ImageBackground
                     key={index}
@@ -66,9 +85,7 @@ export default function Home({navigation}) {
                     <TouchableOpacity
                       onPress={() =>
                         navigation.navigate('VideoPlayer', {
-                          uri: 'https://www.youtube.com/embed/JLnycPtolfw'
-                          
-                          ,
+                          uri: 'https://www.youtube.com/embed/JLnycPtolfw',
                         })
                       }>
                       <View style={styles.playBtn}>
