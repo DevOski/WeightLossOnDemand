@@ -1,4 +1,4 @@
-import React, {useRef, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {
   Image,
   ImageBackground,
@@ -21,16 +21,39 @@ import Entypo from 'react-native-vector-icons/Entypo';
 
 import {openComposer} from 'react-native-email-link';
 import {colors, sizes} from '../../services';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {removeData} from '../../store/actions';
+import {useIsFocused} from '@react-navigation/native';
+import {getUser, updateFingerprint} from '../../services/utilities/api/auth';
 
 export default function Setting({navigation}) {
   const [userName, setUserName] = useState('Tester Jazzy');
   const [email, setEmail] = useState('tester586@gmail.com');
   const [isEnabled, setIsEnabled] = useState(false);
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [loader, setLoader] = useState(false);
+
   const dispatch = useDispatch();
-  const toggleSwitch = () => setIsEnabled(previousState => !previousState);
+  const isVisible = useIsFocused();
+  const token = useSelector(state => state.token);
+
+  useEffect(() => {
+    getUserDetails();
+  }, [isVisible]);
+
+  const toggleSwitch = async () => {
+    setIsEnabled(previousState => !previousState);
+    console.log(isEnabled);
+    try {
+      if (isEnabled) {
+        console.log('1');
+        let response = await updateFingerprint(token, 1);
+        console.log(response.data);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
   const toggleModal = () => {
     setIsModalVisible(!isModalVisible);
   };
@@ -44,6 +67,24 @@ export default function Setting({navigation}) {
 
   const handleSignOut = () => {
     dispatch(removeData());
+  };
+
+  const getUserDetails = async () => {
+    setLoader(true);
+    setTimeout(async () => {
+      try {
+        let response = await getUser(token);
+        if (response.data.data.fingerprint == 1) {
+          setIsEnabled(true);
+        } else {
+          setIsEnabled(false);
+        }
+        setLoader(false);
+      } catch (error) {
+        console.log(error);
+        setLoader(false);
+      }
+    }, 100);
   };
   return (
     <SafeAreaView>

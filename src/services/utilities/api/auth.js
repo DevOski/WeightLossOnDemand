@@ -128,3 +128,17 @@ export async function updateUserEmail(token, email) {
   );
 }
 
+export async function updateFingerprint(token, fingerprint) {
+  return await axios.post(
+    `${baseURL}/update_fingrprnt`,
+    {
+      fingerprint,
+    },
+    {
+      headers: {
+        Authorization: token,
+      },
+    },
+  );
+}
+// 
