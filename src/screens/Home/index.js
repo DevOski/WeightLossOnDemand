@@ -1,3 +1,4 @@
+import { useIsFocused } from '@react-navigation/native';
 import React, {useEffect, useRef, useState} from 'react';
 import {
   Image,
@@ -29,10 +30,11 @@ export default function Home({navigation}) {
   const [imgActive, setImgActive] = useState(0);
   const token = useSelector(state => state.token);
   const dispatch = useDispatch();
+  const isVisible = useIsFocused();
 
   useEffect(() => {
     getUserDetails();
-  }, []);
+  }, [isVisible]);
 
   const getUserDetails = async () => {
     try {
