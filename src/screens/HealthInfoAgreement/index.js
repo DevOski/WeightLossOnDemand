@@ -25,34 +25,33 @@ export default function HealthInfoAgreement({navigation}) {
       <ScrollView style={styles.color}>
         <View style={[styles.paddingLeft, styles.paddingRight]}>
           <Text style={[styles.bold, styles.textColor]}>
-            Weight Loss On Demand can automatically send records of your visits
-            to your doctor.
+            With WeightLoss on Demand, your doctor will always have access to
+            your medical history.
           </Text>
         </View>
 
         <View style={[styles.padding, styles.height]}>
           <ScrollView>
             <Text style={[styles.textColor, styles.paddingTop, styles.heading]}>
-              Use of Health Information
+              Application of Physical Fitness Data
             </Text>
             <Text style={styles.textColor}>
-              Your personal health information will not be shared with anyone
-              except with your permission or as permitted by applicable law. By
-              selecting "I Accept", you permit Weight Loss On Demand and the health
-              care professionals you interact with through the Site to disclose
-              your health information to other health professionals for purposes
-              relating to your treatment, including information relating to
-              genetic tests, substance abuse, mental health (excluding
-              psychotherapy notes), communicable or infectious diseases and
-              other health conditions.
+              You can be sure that no one will be able to see your private
+              fitness records without your permission or unless the law says
+              they have to. By clicking "I Accept," you agree that Weight Loss
+              On Demand and the fitness professionals you talk to through the
+              site can share information about your genetic testing, substance
+              abuse, mental health, communicable or infectious diseases, and
+              other health conditions with other health professionals for your
+              treatment.
             </Text>
 
             <Text style={[styles.textColor, styles.paddingTop]}>
-              You have the right to revoke or receive a copy this consent at any
-              time by providing written notice to{' '}
+              You can send an email to
               <Text style={styles.bold}>support@weightlossondemand.com</Text>.
-              This consent shall be in force and effect for one year from the
-              date it is signed.
+              to request a copy of this consent form or to withdraw your consent
+              at any time. A year from the date of signature, this agreement
+              will remain in full force and effect
             </Text>
           </ScrollView>
         </View>

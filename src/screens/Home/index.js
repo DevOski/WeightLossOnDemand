@@ -97,7 +97,7 @@ export default function Home({navigation}) {
                     </TouchableOpacity>
                     <View style={styles.textView}>
                       <Text style={styles.text}>
-                        What to expect in your first visit
+                        What to expect during your initial visit?
                       </Text>
                     </View>
                     <View style={[styles.semiTextView, styles.row2]}>
@@ -114,38 +114,36 @@ export default function Home({navigation}) {
                   <View key={index} style={styles.padding}>
                     <Text style={[styles.heading, styles.top]}>Trainer</Text>
                     <Text style={styles.providerText}>
-                      Our providers can treat hundreds of issues,including:
+                      Our professional trainers can handle a wide range of
+                      problems, such as:
                     </Text>
                     <View style={styles.row2}>
-                      <Text style={styles.addIcon}>✚</Text>
-                      <Text style={styles.addText}> Sinus infections</Text>
+                      <Text style={styles.addIcon}>●</Text>
+                      <Text style={styles.addText}> Customized diet plans</Text>
                     </View>
                     <View style={styles.row2}>
-                      <Text style={styles.addIcon}>✚</Text>
-                      <Text style={styles.addText}> Cold & Flu</Text>
+                      <Text style={styles.addIcon}>●</Text>
+                      <Text style={styles.addText}>Activity tracking</Text>
                     </View>
                     <View style={styles.row2}>
-                      <Text style={styles.addIcon}>✚</Text>
-                      <Text style={styles.addText}> Heartburn</Text>
+                      <Text style={styles.addIcon}>●</Text>
+                      <Text style={styles.addText}>Nutritional value plan</Text>
                     </View>
                     <View style={styles.row2}>
-                      <Text style={styles.addIcon}>✚</Text>
-                      <Text style={styles.addText}> Sports Injuries</Text>
+                      <Text style={styles.addIcon}>●</Text>
+                      <Text style={styles.addText}>Stress management</Text>
                     </View>
                     <View style={styles.row2}>
-                      <Text style={styles.addIcon}>✚</Text>
+                      <Text style={styles.addIcon}>●</Text>
                       <Text style={styles.addText}> High cholesterol</Text>
                     </View>
-                    <View style={styles.row2}>
-                      <Text style={styles.addIcon}>✚</Text>
-                      <Text style={styles.addText}> Rashes & skin issues</Text>
-                    </View>
+
                     <View style={styles.btnTop}>
                       <GetCare />
                       <TouchableOpacity
                         onPress={() => navigation.navigate('Medical')}>
                         <View style={styles.learnMoreBtn}>
-                          <Text style={styles.learnMoreText}>Learn more</Text>
+                          <Text style={styles.learnMoreText}>Explore</Text>
                         </View>
                       </TouchableOpacity>
                     </View>
@@ -195,9 +193,11 @@ export default function Home({navigation}) {
                     style={styles.bg}>
                     <View style={styles.paddingBottom}></View>
                     <View style={styles.proudView}>
-                      <Text style={styles.text2}>We're proud beyond Pride</Text>
+                      <Text style={styles.text2}>
+                        We're more than just proud
+                      </Text>
                       <Text style={styles.letUsText}>
-                        Let us help you find the right LGBQTQ+ friendly doctor
+                        Let us assist you in finding the right trainer for you.
                       </Text>
                     </View>
                     <TouchableOpacity
@@ -212,7 +212,7 @@ export default function Home({navigation}) {
                 {index == 3 && (
                   <View key={index} style={[styles.padding]}>
                     <Text style={[styles.heading, styles.top]}>
-                      Meet Our Providers
+                      Meet Our Professionals
                     </Text>
 
                     <View style={[styles.row2, styles.paddingLeft]}>
@@ -300,7 +300,7 @@ export default function Home({navigation}) {
                         onPress={() => navigation.navigate('meetOurproviders')}>
                         <View style={[styles.learnMoreBtn, styles.row2]}>
                           <Text style={styles.learnMoreText}>
-                            See all of our providers
+                            Connect to all providers
                           </Text>
                           <Text style={styles.symbol}> ›</Text>
                         </View>
@@ -320,7 +320,7 @@ export default function Home({navigation}) {
                         style={styles.providerImg}
                       />
                       <View>
-                        <Text style={styles.providerHead}>Dr.Kimberly</Text>
+                        <Text style={styles.providerHead}>Trainer</Text>
                         <Text style={styles.providerProfession}>
                           Townsend-scott,MD
                         </Text>
@@ -334,12 +334,13 @@ export default function Home({navigation}) {
                     </View>
                     <View style={styles.het1}>
                       <Text style={styles.het}>
-                        our Visit was incomplete,please,check your settings
-                        close out any background applications that are running
-                        on your device and check your connection.our customer
-                        support team is available 24/7 to get you
-                        reconnected.please email support@weightloseondemand.com
-                        or call 1-800-997-6196 for assistance if you a
+                        Recent Visit Please double-check your preferences, as
+                        our stay was cut short. Check your connection and make
+                        sure no other apps are operating in the background. The
+                        members of our customer service team are ready at all
+                        hours of the day and night to restore your service. If
+                        you need help, you can contact us at 1-800-997-6196 or
+                        support@weightlossondemand.com. Visit Details
                       </Text>
                     </View>
                     <View style={styles.seeBtn}>

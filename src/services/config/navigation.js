@@ -19,7 +19,7 @@ import {SignUp} from '../../screens/signupscreen';
 import SharePromo from '../../screens/SharePromo';
 import PaymentMethod from '../../screens/PaymentMethod';
 import ApplyCoupon from '../../screens/ApplyCoupon';
-import Intro from '../../screens/introSliderScreen';
+import Intro from '../../screens/Introsliderscreen';
 import ContactInfo from '../../screens/ContactInfo';
 import ChangePassword from '../../screens/ChangePassword';
 import Insurance from '../../screens/Insurance';
@@ -461,7 +461,7 @@ function MyTabs() {
         name="GetCare"
         component={GetCare}
         options={{
-          tabBarLabel: 'Get Care',
+          tabBarLabel: 'Get Train',
           tabBarIcon: ({color}) => (
             <FontAwesome5 name="briefcase-medical" color={color} size={22} />
           ),

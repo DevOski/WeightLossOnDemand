@@ -10,7 +10,7 @@ import {
   Image,
   Dimensions,
   TouchableOpacity,
-  Button
+  Button,
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import intro1 from '../../assets/assets/intro1.jpg';
@@ -35,8 +35,8 @@ const Component = () => {
       </View>
       <View style={styles.payragraphcon}>
         <Text style={styles.payragraphcontext}>
-          Weight loss on Demand by Included Health makes it easy to see
-          top-rated medical providers, psychiatrists, and therapists on demand.
+          Weight Loss on Demand It is simple to schedule on-demand appointments
+          with top-rated gym specialists with Weight Loss on Demand.
         </Text>
       </View>
       {/* <View style={styles.footer}>
@@ -156,35 +156,33 @@ const ComponentFour = () => {
           </Text>
         </View>
 
-        <View style={{top:sizes.screenHeight*0.10}}>
-        <View style={styles.kidd}>
-          <Image style={{width: '100%', height: '100%'}} source={kiid} />
-        </View>
-        <View
-          style={{
-            position: 'absolute',
-            top: deviceHeight * 0.50,
-            // zIndex:999999,
-            left: deviceWidth * 0.03,
-          }}>
-          <TouchableOpacity
-            style={styles.but}
-            onPress={() => navigation.navigate('signupscreen')}>
-            <Text
-              style={{
-                color: '#fff',
-                fontSize: fontSize.h6,
-                fontFamily: fontFamily.appTextHeading,
-                fontWeight: '600',
-              }}>
-              Sign Up
-            </Text>
-          </TouchableOpacity>
+        <View style={{top: sizes.screenHeight * 0.1}}>
+          <View style={styles.kidd}>
+            <Image style={{width: '100%', height: '100%'}} source={kiid} />
+          </View>
+          <View
+            style={{
+              position: 'absolute',
+              top: deviceHeight * 0.5,
+              // zIndex:999999,
+              left: deviceWidth * 0.03,
+            }}>
+            <TouchableOpacity
+              style={styles.but}
+              onPress={() => navigation.navigate('signupscreen')}>
+              <Text
+                style={{
+                  color: '#fff',
+                  fontSize: fontSize.h6,
+                  fontFamily: fontFamily.appTextHeading,
+                  fontWeight: '600',
+                }}>
+                Sign Up
+              </Text>
+            </TouchableOpacity>
+          </View>
         </View>
       </View>
-      </View>
-
-    
     </>
   );
 };
@@ -247,7 +245,7 @@ const styles = StyleSheet.create({
     height: deviceHeight * 0.4,
   },
   kidd: {
-    position:'absolute',
+    position: 'absolute',
     top: deviceHeight * 0.2,
     width: deviceWidth,
     height: deviceHeight * 0.4,
@@ -276,7 +274,7 @@ const styles = StyleSheet.create({
   },
   forslid: {
     width: deviceWidth,
-    height:deviceHeight,
+    height: deviceHeight,
   },
   forslidtext: {
     marginTop: deviceHeight * 0.08,

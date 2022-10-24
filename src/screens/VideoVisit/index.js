@@ -31,54 +31,50 @@ export default function VideoVisit() {
         </View>
         <View style={styles.padding}>
           <Text style={styles.textColor}>
-            Video visits allow our medical doctors, psychologists, and
-            psychiatrists to provide care – without you having to leave your
-            home. With video, they can look, listen, examine, and engage with
-            you to diagnose your issues and provide an effective treatment plan.
+            Our certified personal trainers can now provide in-home treatment
+            through video call. The ability to see, hear, touch, and talk to you
+            is a huge help when trying to figure out what's wrong and how to
+            treat it.
           </Text>
         </View>
         <View style={styles.padding}>
           <Text style={styles.subHeading}>
-            How our medical doctors make a diagnosis
+            The method used by our fitness experts to determine the problem
           </Text>
         </View>
         <View style={styles.padding}>
           <Text style={styles.textColor}>
-            Our medical doctors use two main skills to diagnose medical
-            conditions: listening and looking. Before each visit, patients are
-            asked a series of questions regarding their symptoms and medical
-            history. If more information is needed, the doctor will ask
-            additional questions during the visit. Once the visit has begun, the
-            doctor will leverage the patient’s device camera to evaluate any
-            physical signs, this is the comparable level of quality as an
-            in-person visit. Based on the diagnosis, the doctor may order a
-            prescription or labs for further evaluation.
+            As trainers with a lot of experience, we use two main skills to
+            understand the problems our clients are facing. Looking and
+            listening
           </Text>
         </View>
         <View style={styles.padding}>
           <Text style={styles.textColor}>
-            Many of the most common ER cases can be treated by a video visit.
-            However, to ensure that patients receive the care they need, the
-            doctor may recommend the patient see someone in-person such as at
-            the ER.
+            Each client is treated as a unique person with specific needs and
+            desires that will be taken into account when developing a training
+            plan. Our trainers win the trust of their clients by promising to
+            meet each person's individual needs through one-on-one consultations
+            and custom-made workout plans.
           </Text>
         </View>
         <View style={styles.padding}>
           <Text style={styles.subHeading}>
-            How visits with our psychologists and psychiatrists work
+            A video visit can help with many of the most common health and
+            fitness issues.
           </Text>
         </View>
         <View style={styles.padding}>
           <Text style={styles.textColor}>
-            You can meet with a psychologist or psychiatrists from the privacy
-            of your home; no going to an unfamiliar office, time lost getting
-            there, or running into someone you know. Meeting with one of our
-            psychologists or psychiatrists is the same as meeting face-to-face,
-            but on your terms, and at the time and place that works for you.
-            Before your visit, you’ll be asked to complete an optional
-            questionnaire to describe how you’re feeling. This information will
-            help the psychologist or psychiatrist better understand what’s going
-            on before your visit even starts.
+            How our trainers follow the procedure to help clients There is no
+            need to travel to an unknown location, waste time getting there, or
+            risk meeting a friend or family member when you can meet with one of
+            our experienced trainers in the comfort of your own home. A session
+            with one of our qualified trainers is equivalent to meeting in but
+            may take place whenever and wherever it is most convenient for you.
+            During this survey, you will be asked to share details about your
+            lifestyle and health habits. Having this background will enable our
+            trainers to provide you with more tailored support.
           </Text>
         </View>
         <View style={styles.padding}>

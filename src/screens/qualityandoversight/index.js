@@ -33,35 +33,35 @@ export default function QualityOversight({navigation}) {
         <View style={styles.padding}>
           <View style={styles.bOTtomPAD}>
             <Text style={styles.cardText}>
-              Imagine you could rate your medical provider after each visit in
-              categories like on-time rate, helpfulness, quality and
-              communication. It's a pretty unique concept, but at Doctor On
-              Demand it's how we operate.
+              Imagine being able to submit feedback on your trainer's
+              efficiency, friendliness, care, and ability to listen and explain
+              things after each visit. It's a novel approach, but we do things
+              this way at Weight Loss on Demand.
             </Text>
           </View>
           <View style={styles.bOTtomPAD}>
             <Text style={styles.cardText}>
-              After each visit we ask you to rate your experience. The ratings
-              give us and our providers valuable feedback that allows us to
-              increase the quality of service whenever possible. They also give
-              us better insight on the level of professionalism, level of
-              service and the patient's view on the helpfulness of their
-              providers, psychologist, or psychiatrist
+              The quality of your service is evaluated after each visit. We and
+              our service providers can learn a lot. Our service providers and
+              information to better our service wherever possible. They also
+              shed light on the providers' and trainers' perceptions of the
+              providers' and trainers’ level of professionalism, service, and
+              helpfulness.
             </Text>
           </View>
           <View style={styles.bOTtomPAD}>
             <Text style={styles.cardText}>
-              After each visit we ask you to rate your experience. The ratings
-              give us and our providers valuable feedback that allows us to
-              increase the quality of service whenever possible. They also give
-              us better insight on the level of professionalism, level of
-              service and the patient's view on the helpfulness of their
-              providers, psychologist, or psychiatrist
+              Please take a moment to rate your visit after each of your
+              appointments. We and our service providers can learn from the
+              ratings and use that information to better our service wherever
+              possible. They also assist us learn more about the trainers'
+              perceptions of their degree of professionalism, service, and
+              helpfulness.
             </Text>
           </View>
           <View style={styles.bOTtomPAD}>
             <Text style={styles.cardText}>
-            Our providers are committed to lifelong learning and continuous process improvement.
+            Each of our experts has made a personal commitment to never stop growing in their fields.
             </Text>
           </View>
         </View>
@@ -134,9 +134,8 @@ const styles = StyleSheet.create({
   cardText: {
     color: colors.primary,
     fontSize: fontSize.large,
-    paddingRight: sizes.screenWidth * 0.00,
+    paddingRight: sizes.screenWidth * 0.0,
     lineHeight: sizes.screenHeight * 0.04,
-    
   },
   symbol: {
     color: colors.secondary,
@@ -153,7 +152,6 @@ const styles = StyleSheet.create({
     paddingBottom: sizes.screenHeight * 0.03,
   },
   bOTtomPAD: {
-    
     paddingBottom: sizes.screenHeight * 0.05,
   },
 });
