@@ -17,6 +17,7 @@ import Slider from '@react-native-community/slider';
 
 export default function HowLikelyRecommend({navigation}) {
   const [rate, setRate] = useState(5);
+  const handleRating = () => {};
   return (
     <SafeAreaView>
       <View style={styles.color}>
@@ -55,7 +56,7 @@ export default function HowLikelyRecommend({navigation}) {
         </View>
         <View style={styles.paddingTop}>
           <View style={styles.disabledView}>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={handleRating}>
               <Text style={styles.buttonText}>Submit</Text>
             </TouchableOpacity>
           </View>
