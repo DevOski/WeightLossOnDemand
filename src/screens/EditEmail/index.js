@@ -17,10 +17,13 @@ import {colors} from '../../services';
 import { useSelector } from 'react-redux';
 import { useIsFocused } from '@react-navigation/native';
 import { getUser, updateUserEmail } from '../../services/utilities/api/auth';
+import Loader from '../../components/Loader';
+import Error from '../../components/Error';
 
 export default function EditEmail({navigation}) {
   const [email, setEmail] = useState('testerjazzy586@gmail.com');
   const [loader, setLoader] = useState(false);
+  const [message, setMessage] = useState('');
 
   const isVisible = useIsFocused();
   const token = useSelector(state => state.token);
@@ -46,7 +49,9 @@ export default function EditEmail({navigation}) {
     try {
       let response = await updateUserEmail(token, email);
       console.log(response.data);
-      navigation.navigate("ContactInfo");
+      // navigation.navigate("ContactInfo");
+      setMessage(response.data.message);
+
     } catch (error) {
       console.log(error);
     }
@@ -83,6 +88,11 @@ export default function EditEmail({navigation}) {
             </View>
           </TouchableOpacity>
         </View>
+        {message !== '' && (
+          <Error title="Congratulations!" message={message} screen={'Home'} />
+        )}
+        {loader && <Loader />}
+
       </ScrollView>
     </SafeAreaView>
   );

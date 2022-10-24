@@ -18,10 +18,12 @@ import { useIsFocused } from '@react-navigation/native';
 import Loader from '../../components/Loader';
 import { getUser, updateUserPhone } from '../../services/utilities/api/auth';
 import { useSelector } from 'react-redux';
+import Error from '../../components/Error';
 
 export default function EditPhone({navigation}) {
   const [phone, setPhone] = useState('');
   const [loader, setLoader] = useState(false);
+  const [message, setMessage] = useState('');
 
   const isVisible = useIsFocused();
   const token = useSelector(state => state.token);
@@ -47,7 +49,9 @@ export default function EditPhone({navigation}) {
     try {
       let response = await updateUserPhone(token, phone);
       console.log(response.data);
-      navigation.goBack();
+      setMessage(response.data.message);
+
+      // navigation.goBack();
     } catch (error) {
       console.log(error);
     }
@@ -84,8 +88,10 @@ export default function EditPhone({navigation}) {
             </View>
           </TouchableOpacity>
         </View>
+        {message !== '' && (
+          <Error title="Congratulations!" message={message} screen={'Home'} />
+        )}
         {loader && <Loader />}
-
       </ScrollView>
     </SafeAreaView>
   );

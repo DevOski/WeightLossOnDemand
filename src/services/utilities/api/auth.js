@@ -141,4 +141,17 @@ export async function updateFingerprint(token, fingerprint) {
     },
   );
 }
-// 
+
+export async function updateUserPassword(token, password) {
+  return await axios.post(
+    `${baseURL}/update_password`,
+    {
+      password,
+    },
+    {
+      headers: {
+        Authorization: token,
+      },
+    },
+  );
+}

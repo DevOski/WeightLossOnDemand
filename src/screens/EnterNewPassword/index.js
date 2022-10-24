@@ -15,12 +15,36 @@ import {styles} from './style';
 import {TextInput} from 'react-native-paper';
 import {colors} from '../../services';
 import AntDesign from 'react-native-vector-icons/AntDesign';
+import {updateUserPassword} from '../../services/utilities/api/auth';
+import {useSelector} from 'react-redux';
+import Error from '../../components/Error';
+import Loader from '../../components/Loader';
 
 export default function EnterNewPassword({navigation, route}) {
   const [showPassword, setShowPassword] = useState(true);
   const [showPassword2, setShowPassword2] = useState(true);
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [message, setMessage] = useState('');
+  const token = useSelector(state => state.token);
+  const [loader, setLoader] = useState(false);
+
+  const updatePassword = async () => {
+    setLoader(true);
+    if (password == confirmPassword) {
+      setTimeout(async () => {
+        try {
+          let response = await updateUserPassword(token, password);
+          setLoader(false);
+          setMessage(response.data.message);
+          // navigation.goBack();
+        } catch (error) {
+          console.log(error);
+          setLoader(false);
+        }
+      }, 100);
+    }
+  };
   return (
     <SafeAreaView>
       <ScrollView style={styles.color}>
@@ -89,7 +113,9 @@ export default function EnterNewPassword({navigation, route}) {
                 <AntDesign
                   name="checkcircle"
                   color={
-                    password?.toUpperCase() ? colors.secondary : colors.disabledBg
+                    password?.toUpperCase()
+                      ? colors.secondary
+                      : colors.disabledBg
                   }
                   size={20}
                 />
@@ -98,7 +124,7 @@ export default function EnterNewPassword({navigation, route}) {
                 </Text>
               </View>
             </View>
-            <View style={[styles.filedcon,styles.paddingBottom]}>
+            <View style={[styles.filedcon, styles.paddingBottom]}>
               <View style={styles.fleix}>
                 <AntDesign
                   name="checkcircle"
@@ -111,11 +137,19 @@ export default function EnterNewPassword({navigation, route}) {
               </View>
             </View>
             <TouchableOpacity
-              onPress={() => navigation.navigate(route?.params?.screenName)}
-              disabled={password !== ''  && confirmPassword !== '' &&  password == confirmPassword  ?  false : true}>
+              onPress={updatePassword}
+              disabled={
+                password !== '' &&
+                confirmPassword !== '' &&
+                password == confirmPassword
+                  ? false
+                  : true
+              }>
               <View
                 style={
-                  password !== '' && confirmPassword !== '' &&  password == confirmPassword  
+                  password !== '' &&
+                  confirmPassword !== '' &&
+                  password == confirmPassword
                     ? styles.buttonView
                     : styles.disabledView
                 }>
@@ -131,6 +165,10 @@ export default function EnterNewPassword({navigation, route}) {
             </TouchableOpacity>
           </View>
         </View>
+        {loader && <Loader />}
+        {message !== '' && (
+          <Error title="Congratulations!" message={message} screen={'Home'} />
+        )}
       </ScrollView>
     </SafeAreaView>
   );

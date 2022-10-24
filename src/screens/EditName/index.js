@@ -17,7 +17,8 @@ import {colors} from '../../services';
 import {useSelector} from 'react-redux';
 import {getUser, updateUserName} from '../../services/utilities/api/auth';
 import Loader from '../../components/Loader';
-import { useIsFocused } from '@react-navigation/native';
+import {useIsFocused} from '@react-navigation/native';
+import Error from '../../components/Error';
 
 export default function EditName({navigation}) {
   const token = useSelector(state => state.token);
@@ -26,6 +27,7 @@ export default function EditName({navigation}) {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [loader, setLoader] = useState(false);
+  const [message, setMessage] = useState('');
 
   useEffect(() => {
     getUserDetails();
@@ -49,8 +51,9 @@ export default function EditName({navigation}) {
   const updateName = async () => {
     try {
       let response = await updateUserName(token, lastName, firstName);
-      console.log(response.data);
-      navigation.goBack();
+      console.log(response.data.message);
+      setMessage(response.data.message);
+      // navigation.goBack();
     } catch (error) {
       console.log(error);
     }
@@ -91,6 +94,9 @@ export default function EditName({navigation}) {
             </View>
           </TouchableOpacity>
         </View>
+        {message !== '' && (
+          <Error title="Congratulations!" message={message} screen={'Home'} />
+        )}
         {loader && <Loader />}
       </ScrollView>
     </SafeAreaView>
