@@ -24,7 +24,7 @@ export const ReasonForDcoctor = ({navigation}) => {
   const [search, setsearch] = useState();
   const [loader, setLoader] = useState(false);
   const [show, setshow] = useState(false);
-  const [reason, setReason] = useState('');
+  const [reason, setReason] = useState([]);
   const isVisible = useIsFocused();
 
   useEffect(() => {
