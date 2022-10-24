@@ -141,4 +141,38 @@ export async function updateFingerprint(token, fingerprint) {
     },
   );
 }
-// 
+
+export async function updateUserPassword(token, password) {
+  return await axios.post(
+    `${baseURL}/update_password`,
+    {
+      password,
+    },
+    {
+      headers: {
+        Authorization: token,
+      },
+    },
+  );
+}
+
+export async function getTrainerType() {
+  return await axios.get(`${baseURL}/trainertype`);
+}
+
+export async function getTrainerList(type) {
+  return await axios.get(`${baseURL}/trainersList/${type}`);
+}
+
+export async function selectedTrainer(id) {
+  return await axios.get(`${baseURL}/trainerDesc/${id}`);
+}
+
+export async function visitReason() {
+  return await axios.get(`${baseURL}/visit_reason`);
+}
+export async function searchReason(param) {
+  return await axios.post(`${baseURL}/search_reason`, {
+    param,
+  });
+}

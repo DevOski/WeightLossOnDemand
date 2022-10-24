@@ -13,12 +13,15 @@ import Modal from 'react-native-modal';
 import {styles} from './style';
 import Spinner from 'react-native-spinkit';
 import {colors} from '../../services';
-export default function Error({title, message}) {
+import {useNavigation} from '@react-navigation/native';
+
+export default function Error({title, message, screen}) {
   const [isModalVisible, setIsModalVisible] = useState(true);
 
   const toggleModal = () => {
     setIsModalVisible(!isModalVisible);
   };
+  const navigation = useNavigation();
   return (
     <SafeAreaView>
       <View style={styles.color}>
@@ -31,7 +34,12 @@ export default function Error({title, message}) {
               <Text style={styles.text1}>{message}</Text>
             </View>
             <View>
-              <TouchableOpacity onPress={() => setIsModalVisible(false)}>
+              <TouchableOpacity
+                onPress={() => {
+                  screen
+                    ? navigation.navigate(screen)
+                    : setIsModalVisible(false);
+                }}>
                 <View style={styles.buttonView}>
                   <Text style={styles.buttonText}>OK</Text>
                 </View>

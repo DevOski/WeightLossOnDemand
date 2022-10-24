@@ -1,4 +1,4 @@
-import React, {useRef, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {
   ActivityIndicator,
   Dimensions,
@@ -17,9 +17,33 @@ import images from '../../services/utilities/images';
 import {WebView} from 'react-native-webview';
 import Header from '../../components/Header';
 import {styles} from './style';
+import {useIsFocused} from '@react-navigation/native';
+import {getTrainerType} from '../../services/utilities/api/auth';
+import Loader from '../../components/Loader';
 
-export default function  Meetourproviders({navigation}) {
+export default function Meetourproviders({navigation}) {
   const [showVideo, setShowVideo] = useState(false);
+  const [loader, setLoader] = useState(false);
+  const [trainerType, setTrainerType] = useState([]);
+  const isVisible = useIsFocused();
+
+  useEffect(() => {
+    getTypeTrainer();
+  }, [isVisible]);
+
+  const getTypeTrainer = () => {
+    setLoader(true);
+    setTimeout(async () => {
+      try {
+        let response = await getTrainerType();
+        setTrainerType(response.data.data);
+        setLoader(false);
+      } catch (error) {
+        console.log(error);
+        setLoader(false);
+      }
+    }, 100);
+  };
   return (
     <SafeAreaView>
       <Header title={'Connect to all providers '} />
@@ -49,8 +73,8 @@ export default function  Meetourproviders({navigation}) {
             </View>
           </TouchableOpacity>
           <View style={styles.padding}>
-          
-            <TouchableOpacity onPress={() => navigation.navigate('introductionscreen')}>
+            <TouchableOpacity
+              onPress={() => navigation.navigate('introductionscreen')}>
               <View style={[styles.row, styles.card]}>
                 <Text style={styles.cardText}>Introduction</Text>
                 <View>
@@ -58,23 +82,41 @@ export default function  Meetourproviders({navigation}) {
                 </View>
               </View>
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => navigation.navigate('physiciansscreen')}>
+            {/* <TouchableOpacity
+              onPress={() => navigation.navigate('physiciansscreen')}>
               <View style={[styles.row, styles.card]}>
                 <Text style={styles.cardText}>Trainers1</Text>
                 <View>
                   <Text style={styles.symbol}> ›</Text>
                 </View>
               </View>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={() => navigation.navigate('Featuresproviderscreen')}>
+            </TouchableOpacity> */}
+            {trainerType?.map((item, index) => {
+              return (
+                <TouchableOpacity
+                key={index}
+                  onPress={() =>
+                    navigation.navigate('physiciansscreen', {trainer: item})
+                  }>
+                  <View style={[styles.row, styles.card]}>
+                    <Text style={styles.cardText}>{item.t_name}</Text>
+                    <View>
+                      <Text style={styles.symbol}> ›</Text>
+                    </View>
+                  </View>
+                </TouchableOpacity>
+              );
+            })}
+            {/* <TouchableOpacity
+              onPress={() => navigation.navigate('Featuresproviderscreen')}>
               <View style={[styles.row, styles.card]}>
                 <Text style={styles.cardText}>Trainer Type</Text>
                 <View>
                   <Text style={styles.symbol}> ›</Text>
                 </View>
               </View>
-            </TouchableOpacity>
-            
+            </TouchableOpacity> */}
+
             <TouchableOpacity
               onPress={() => navigation.navigate('screeningandtrainingscreen')}>
               <View style={[styles.row, styles.card]}>
@@ -84,7 +126,8 @@ export default function  Meetourproviders({navigation}) {
                 </View>
               </View>
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => navigation.navigate('qualityandoversight')}>
+            <TouchableOpacity
+              onPress={() => navigation.navigate('qualityandoversight')}>
               <View style={[styles.row, styles.card]}>
                 <Text style={styles.cardText}>Quality & Oversight</Text>
                 <View>
@@ -92,9 +135,9 @@ export default function  Meetourproviders({navigation}) {
                 </View>
               </View>
             </TouchableOpacity>
-            
           </View>
         </View>
+        {loader && <Loader />}
       </ScrollView>
     </SafeAreaView>
   );

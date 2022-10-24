@@ -19,6 +19,7 @@ import {useSelector} from 'react-redux';
 import {getUser, updateUserAddress} from '../../services/utilities/api/auth';
 import Loader from '../../components/Loader';
 import {useIsFocused} from '@react-navigation/native';
+import Error from '../../components/Error';
 
 export default function EditAddress({navigation}) {
   const [address, setAddress] = useState('');
@@ -85,6 +86,7 @@ export default function EditAddress({navigation}) {
   ]);
   const isVisible = useIsFocused();
   const [loader, setLoader] = useState(false);
+  const [message, setMessage] = useState('');
 
   const token = useSelector(state => state.token);
 
@@ -126,7 +128,8 @@ export default function EditAddress({navigation}) {
         zipCode,
       );
       console.log(response.data);
-      navigation.goBack();
+      setMessage(response.data.message);
+      // navigation.goBack();
     } catch (error) {
       console.log(error);
     }
@@ -226,6 +229,9 @@ export default function EditAddress({navigation}) {
             </View>
           </TouchableOpacity>
         </View>
+        {message !== '' && (
+          <Error title="Congratulations!" message={message} screen={'Home'} />
+        )}
         {loader && <Loader />}
       </ScrollView>
     </SafeAreaView>
