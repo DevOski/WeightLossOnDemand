@@ -1,4 +1,4 @@
-import React, {useRef, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {
   Image,
   ImageBackground,
@@ -16,10 +16,49 @@ import images from '../../services/utilities/images';
 import {CustomTextFiel} from '../../component/textFiled';
 import {colors, sizes, fontSize, fontFamily} from '../../services';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import {searchReason, visitReason} from '../../services/utilities/api/auth';
+import {useIsFocused} from '@react-navigation/native';
+import Loader from '../../components/Loader';
 
 export const ReasonForDcoctor = ({navigation}) => {
   const [search, setsearch] = useState();
-  const [show, setshow] = useState(false)
+  const [loader, setLoader] = useState(false);
+  const [show, setshow] = useState(false);
+  const [reason, setReason] = useState('');
+  const isVisible = useIsFocused();
+
+  useEffect(() => {
+    getReasons();
+  }, [isVisible]);
+
+  const getReasons = async () => {
+    setLoader(true);
+    setTimeout(async () => {
+      try {
+        let response = await visitReason();
+        setReason(response.data.data);
+        setLoader(false);
+      } catch (error) {
+        console.log(error);
+        setLoader(false);
+      }
+    }, 100);
+  };
+
+  const handleSearch = text => {
+    setsearch(text);
+    setTimeout(async () => {
+      try {
+        let response = await searchReason(text);
+        setReason(response.data.data);
+        // console.log(response.data.data);
+        setLoader(false);
+      } catch (error) {
+        console.log(error);
+        setLoader(false);
+      }
+    }, 100);
+  };
   return (
     <SafeAreaView style={styles.container}>
       <View>
@@ -27,7 +66,7 @@ export const ReasonForDcoctor = ({navigation}) => {
       </View>
 
       <View style={styles.headcontainer}>
-        <Text style={styles.hedtext}>What is the reason for your visit ?</Text>
+        <Text style={styles.hedtext}>What is the reason for your visit?</Text>
       </View>
       <View style={styles.seachViewmain}>
         <View style={styles.seachView}>
@@ -37,6 +76,8 @@ export const ReasonForDcoctor = ({navigation}) => {
           <View style={styles.filedcon}>
             <TextInput
               placeholder="Search"
+              value={search}
+              onChangeText={text => handleSearch(text)}
               style={{
                 color: colors.black,
                 marginLeft: sizes.screenWidth * 0.02,
@@ -51,7 +92,18 @@ export const ReasonForDcoctor = ({navigation}) => {
       </View>
       <ScrollView>
         <View style={styles.listcontainer}>
-          <View style={styles.pading}>
+          {reason?.map((item, index) => {
+            return (
+              <View style={styles.pading}>
+                <TouchableOpacity>
+                  <View style={styles.lisbutton}>
+                    <Text style={styles.text}>{item?.vr_opts}</Text>
+                  </View>
+                </TouchableOpacity>
+              </View>
+            );
+          })}
+          {/* <View style={styles.pading}>
             <TouchableOpacity>
               <View style={styles.lisbutton}>
                 <Text style={styles.text}>Cold</Text>
@@ -113,8 +165,16 @@ export const ReasonForDcoctor = ({navigation}) => {
                     <Text style={styles.addanother}  >See all</Text>
                 </View>
             </TouchableOpacity>
-        </View>
-        {!show ? <><View style={styles.pading}>
+        </View> */}
+          <View style={styles.pading}>
+            <TouchableOpacity
+              onPress={() => navigation.navigate('otherreasonscreen')}>
+              <View style={styles.lisbutton1}>
+                <Text style={styles.text}>Other reason</Text>
+              </View>
+            </TouchableOpacity>
+          </View>
+          {/* {!show ? <><View style={styles.pading}>
             <TouchableOpacity>
                 <View style={styles.lisbutton}>
                     <Text style={styles.text}  >Acid reflux</Text>
@@ -468,19 +528,12 @@ export const ReasonForDcoctor = ({navigation}) => {
               </View>
             </TouchableOpacity>
           </View>
-          <View style={styles.pading}>
-            <TouchableOpacity
-              onPress={() => navigation.navigate('otherreasonscreen')}>
-              <View style={styles.lisbutton1}>
-                <Text style={styles.text}>Other reason</Text>
-              </View>
-            </TouchableOpacity>
-          </View>
+        
         </>
-        :null}
+        :null} */}
         </View>
-        </ScrollView>
-
+        {loader && <Loader />}
+      </ScrollView>
     </SafeAreaView>
   );
 };
@@ -565,10 +618,10 @@ const styles = StyleSheet.create({
     // paddingTop:sizes.screenHeight*0.02
   },
   addanother: {
-    paddingTop:sizes.screenHeight*0.04,
+    paddingTop: sizes.screenHeight * 0.04,
     fontSize: fontSize.large,
     color: colors.secondary,
     fontWeight: 'bold',
- alignSelf:'center'  
-},
+    alignSelf: 'center',
+  },
 });

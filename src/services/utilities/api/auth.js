@@ -167,3 +167,12 @@ export async function getTrainerList(type) {
 export async function selectedTrainer(id) {
   return await axios.get(`${baseURL}/trainerDesc/${id}`);
 }
+
+export async function visitReason() {
+  return await axios.get(`${baseURL}/visit_reason`);
+}
+export async function searchReason(param) {
+  return await axios.post(`${baseURL}/search_reason`, {
+    param,
+  });
+}
