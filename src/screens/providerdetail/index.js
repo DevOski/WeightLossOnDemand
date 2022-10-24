@@ -44,8 +44,6 @@ export const ProviderDetail = ({navigation,route}) => {
     setTimeout(async () => {
       try {
         let response = await selectedTrainer(tr_id);
-        console.log("works------>>>");
-        console.log('---->>',response.data.data);
         setTrainer(response.data.data);
         // setTrainerList(response.data.data);
         setLoader(false);

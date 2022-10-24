@@ -1,4 +1,4 @@
-import { useIsFocused } from '@react-navigation/native';
+import {useIsFocused} from '@react-navigation/native';
 import React, {useEffect, useRef, useState} from 'react';
 import {
   Image,
@@ -12,7 +12,7 @@ import {
 import {useDispatch, useSelector} from 'react-redux';
 import GetCare from '../../components/GetCare';
 import {sizes} from '../../services';
-import {getUser} from '../../services/utilities/api/auth';
+import {getAllTrainers, getUser} from '../../services/utilities/api/auth';
 import images from '../../services/utilities/images';
 import {storeUserData} from '../../store/actions';
 import {styles} from './style';
@@ -28,12 +28,14 @@ export default function Home({navigation}) {
     // 'Text5',
   ]);
   const [imgActive, setImgActive] = useState(0);
+  const [trainerList, setTrainerList] = useState([]);
   const token = useSelector(state => state.token);
   const dispatch = useDispatch();
   const isVisible = useIsFocused();
 
   useEffect(() => {
     getUserDetails();
+    getTrainers();
   }, [isVisible]);
 
   const getUserDetails = async () => {
@@ -41,6 +43,14 @@ export default function Home({navigation}) {
       let response = await getUser(token);
       setUserName(response.data.data.first_name);
       dispatch(storeUserData(response.data.data));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const getTrainers = async () => {
+    try {
+      let response = await getAllTrainers();
+      setTrainerList(response.data.data);
     } catch (error) {
       console.log(error);
     }
@@ -216,20 +226,26 @@ export default function Home({navigation}) {
                     <Text style={[styles.heading, styles.top]}>
                       Meet Our Providers
                     </Text>
+                    {trainerList?.map((item, index) => {
+                      return (
+                        <View key={index} style={[styles.row2, styles.paddingLeft]}>
+                          <Image
+                            source={images.provider1}
+                            style={styles.providerImg}
+                          />
+                          <View>
+                            <Text style={styles.providerHead}>
+                              {item.tr_name}
+                            </Text>
+                            <Text style={styles.providerProfession}>
+                              {item?.type}
+                            </Text>
+                          </View>
+                        </View>
+                      );
+                    })}
 
-                    <View style={[styles.row2, styles.paddingLeft]}>
-                      <Image
-                        source={images.provider1}
-                        style={styles.providerImg}
-                      />
-                      <View>
-                        <Text style={styles.providerHead}>Kiki Lwin, MD</Text>
-                        <Text style={styles.providerProfession}>
-                          Medical Doctor
-                        </Text>
-                      </View>
-                    </View>
-                    <View style={[styles.row2, styles.paddingLeft]}>
+                    {/* <View style={[styles.row2, styles.paddingLeft]}>
                       <Image
                         source={images.provider2}
                         style={styles.providerImg2}
@@ -296,7 +312,7 @@ export default function Home({navigation}) {
                           Medical Doctor
                         </Text>
                       </View>
-                    </View>
+                    </View>*/}
                     <View style={styles.seeBtn}>
                       <TouchableOpacity
                         onPress={() => navigation.navigate('meetOurproviders')}>
@@ -307,7 +323,7 @@ export default function Home({navigation}) {
                           <Text style={styles.symbol}> ›</Text>
                         </View>
                       </TouchableOpacity>
-                    </View>
+                    </View> 
                   </View>
                 )}
                 {index == 4 && (

@@ -176,3 +176,12 @@ export async function searchReason(param) {
     param,
   });
 }
+export async function appRating(rate) {
+  return await axios.post(`${baseURL}/app_rating`, {
+    rate,
+  });
+}
+export async function getAllTrainers() {
+  return await axios.get(`${baseURL}/trainers`);
+}
+// /trainers
