@@ -1,4 +1,4 @@
-import React, {useRef, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {
   Image,
   ImageBackground,
@@ -20,12 +20,40 @@ import favourite from '../../assets/assets/favourite.jpeg';
 import book from '../../assets/assets/book.png';
 import question from '../../assets/assets/question.png';
 import share from '../../assets/assets/share.png';
+import { useIsFocused } from '@react-navigation/native';
+import { selectedTrainer } from '../../services/utilities/api/auth';
+import Loader from '../../components/Loader';
 
-export const ProviderDetail = ({navigation}) => {
+export const ProviderDetail = ({navigation,route}) => {
   const [show, setshow] = useState(false);
+  const [loader, setLoader] = useState(false);
+  const [trainer,setTrainer] = useState()
+  const {tr_id} = route?.params?.trainer;
+  const isVisible = useIsFocused();
 
   const Toogle = () => {
     setshow(!show);
+  };
+
+  useEffect(() => {
+    getTrainer();
+  }, [isVisible]);
+
+  const getTrainer = () => {
+    setLoader(true);
+    setTimeout(async () => {
+      try {
+        let response = await selectedTrainer(tr_id);
+        console.log("works------>>>");
+        console.log('---->>',response.data.data);
+        setTrainer(response.data.data);
+        // setTrainerList(response.data.data);
+        setLoader(false);
+      } catch (error) {
+        console.log('--->',error);
+        setLoader(false);
+      }
+    }, 100);
   };
   return (
     <SafeAreaView style={styles.container}>
@@ -142,12 +170,15 @@ export const ProviderDetail = ({navigation}) => {
         </View>
       </ScrollView>
       <View style={styles.buttnView}>
-        <TouchableOpacity onPress={()=>navigation.navigate("ChooseAppointment")}>
+        <TouchableOpacity
+          onPress={() => navigation.navigate('ChooseAppointment')}>
           <View style={styles.buttonView}>
             <Text style={styles.buttonText}>View Availbility</Text>
           </View>
         </TouchableOpacity>
       </View>
+      {loader && <Loader />}
+
     </SafeAreaView>
   );
 };

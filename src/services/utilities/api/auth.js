@@ -155,3 +155,15 @@ export async function updateUserPassword(token, password) {
     },
   );
 }
+
+export async function getTrainerType() {
+  return await axios.get(`${baseURL}/trainertype`);
+}
+
+export async function getTrainerList(type) {
+  return await axios.get(`${baseURL}/trainersList/${type}`);
+}
+
+export async function selectedTrainer(id) {
+  return await axios.get(`${baseURL}/trainerDesc/${id}`);
+}
