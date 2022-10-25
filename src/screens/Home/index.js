@@ -121,23 +121,27 @@ export default function Home({navigation}) {
                     </Text>
                     <View style={styles.row2}>
                       <Text style={styles.addIcon}>●</Text>
-                      <Text style={styles.addText}> Customized diet plans</Text>
+                      <Text style={styles.addText}>Physical fitness trainer</Text>
                     </View>
                     <View style={styles.row2}>
                       <Text style={styles.addIcon}>●</Text>
-                      <Text style={styles.addText}>Activity tracking</Text>
+                      <Text style={styles.addText}>Personal gym trainers</Text>
                     </View>
                     <View style={styles.row2}>
                       <Text style={styles.addIcon}>●</Text>
-                      <Text style={styles.addText}>Nutritional value plan</Text>
+                      <Text style={styles.addText}>Lifestyle personal trainers</Text>
                     </View>
                     <View style={styles.row2}>
                       <Text style={styles.addIcon}>●</Text>
-                      <Text style={styles.addText}>Stress management</Text>
+                      <Text style={styles.addText}>Yoga trainers</Text>
                     </View>
                     <View style={styles.row2}>
                       <Text style={styles.addIcon}>●</Text>
-                      <Text style={styles.addText}> High cholesterol</Text>
+                      <Text style={styles.addText}>Aerobic and dance</Text>
+                    </View>
+                    <View style={styles.row2}>
+                      <Text style={styles.addIcon}>●</Text>
+                      <Text style={styles.addText}>Zoomba</Text>
                     </View>
 
                     <View style={styles.btnTop}>

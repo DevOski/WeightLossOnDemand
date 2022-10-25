@@ -78,19 +78,19 @@ export default function VideoVisit() {
           </Text>
         </View>
         <View style={styles.padding}>
-          <Text style={styles.subHeading}>
+          {/* <Text style={styles.subHeading}>
             How our medical doctors treat children
-          </Text>
+          </Text> */}
         </View>
         <View style={[styles.padding, styles.paddingBottom]}>
-          <Text style={styles.textColor}>
+          {/* <Text style={styles.textColor}>
             Our medical doctors are trained to provide care through video visits
             by employing many of the same practices and techniques that are used
             in a traditional doctor’s office. If you would like to have a visit.
             Parents, please be sure to select your child during intake before
             confirming the visit, and ensure your child is present during the
             visit.
-          </Text>
+          </Text> */}
         </View>
       </ScrollView>
     </SafeAreaView>

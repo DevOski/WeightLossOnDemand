@@ -11,6 +11,8 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
+import Entypo from 'react-native-vector-icons/Entypo';
+
 import images from '../../services/utilities/images';
 import {styles} from './style';
 import {WebView} from 'react-native-webview';
@@ -19,40 +21,54 @@ import Header from '../../components/Header';
 export default function UTIs() {
   return (
     <SafeAreaView>
-      <Header title={'UTIs'} />
+      <Header title={'Weightlifting'} />
       <ScrollView style={styles.color}>
         <View style={styles.padding}>
           <Image source={images.utis} style={styles.image} />
         </View>
         <View style={styles.padding}>
-          <Text style={styles.heading}>Urinary Tract Infection</Text>
+          <Text style={styles.heading}>Weightlifting</Text>
         </View>
         <View style={styles.padding}>
           <Text style={styles.textColor}>
-            Urinary tract infections (UTIs) are a very common condition. In
-            fact, more often than not, when patients call Weight Loss On Demand
-            they have already experienced the symptoms and have been diagnosed
-            with this condition before.
+            The best activity for developing strength is lifting weights.
+            Everyone's definition of weight training is different, ranging from
+            triceps kickbacks with 5-pound dumbbells to Olympic lifts with 500
+            pounds on a barbell. Your goals determine what kind of weightlifting
+            you should do.
           </Text>
         </View>
         <View style={styles.padding}>
           <Text style={styles.textColor}>
-            If you are experiencing painful urination or bladder pain, your
-            physician will often begin the Video Visit by asking the following
-            types of questions: Have you had these symptoms before? Have you
-            ever been diagnosed with a urinary tract infection? Is there
-            discomfort and burning with urination? Was there an inciting event?
-            Physicians listen carefully to determine whether the patient is
-            suffering from a UTI or a more complicated condition that might
-            present with similar symptoms. Collection of the patient's history
-            is critical in determining whether a patient has an uncomplicated
-            UTI or something else that may require follow-up testing or a
-            physician office visit. The physician will also examine the patient,
-            which may include among other things determining whether the patient
-            has a fever or is experiencing tenderness or back pain.
+            You can add weight and perform load workouts once you're comfortable
+            with body-weight activities. There are more exercises than those
+            using dumbbells and bars. Exercise machines, resistance bands,
+            kettlebells, medicine balls, and a variety of other weightlifting
+            tools are all available.
           </Text>
         </View>
-        <View style={styles.padding}>
+        <View style={[styles.row, styles.paddingTop]}>
+            <Entypo name="dot-single" color={colors.disabledBg2} size={25} />
+            <Text style={styles.text}>Pull-up soad</Text>
+          </View>
+          <View style={[styles.row, styles.paddingTop]}>
+            <Entypo name="dot-single" color={colors.disabledBg2} size={25} />
+            <Text style={styles.text}>Planks</Text>
+          </View>
+          <View style={[styles.row, styles.paddingTop]}>
+            <Entypo name="dot-single" color={colors.disabledBg2} size={25} />
+            <Text style={styles.text}>Glute bridges</Text>
+          </View>
+          <View style={[styles.row, styles.paddingTop]}>
+            <Entypo name="dot-single" color={colors.disabledBg2} size={25} />
+            <Text style={styles.text}>Lunges</Text>
+          </View>
+          <View style={[styles.row, styles.paddingTop]}>
+            <Entypo name="dot-single" color={colors.disabledBg2} size={25} />
+            <Text style={styles.text}>Handstands</Text>
+          </View>
+
+        {/* <View style={styles.padding}>
           <Text style={styles.textColor}>
             In cases of an uncomplicated UTI, the Infectious Disease Society of
             America (IDSA) does not recommend a urinalysis.
@@ -64,7 +80,7 @@ export default function UTIs() {
             antibiotics. Ask your physician for suggestions on ways to prevent
             future urinary tract infections.
           </Text>
-        </View>
+        </View> */}
       </ScrollView>
     </SafeAreaView>
   );

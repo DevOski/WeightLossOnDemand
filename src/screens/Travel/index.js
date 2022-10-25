@@ -16,32 +16,51 @@ import {styles} from './style';
 import {WebView} from 'react-native-webview';
 import {colors} from '../../services';
 import Header from '../../components/Header';
+import Entypo from 'react-native-vector-icons/Entypo';
 export default function Travel() {
   return (
     <SafeAreaView>
-      <Header title={'Travel'} />
+      <Header title={'Aerobic Exercise'} />
       <ScrollView style={styles.color}>
         <View style={styles.padding}>
           <Image source={images.travel} style={styles.image} />
         </View>
         <View style={styles.padding}>
-          <Text style={styles.heading}>Travel</Text>
+          <Text style={styles.heading}>Aerobic Exercise</Text>
         </View>
         <View style={styles.padding}>
           <Text style={styles.textColor}>
-            Travel is exciting: new places, new foods, new experiences.
-            Unfortunately, travel can also bring with it exposure to pathogens,
-            germs and overall stress on your body. Weight Loss on Demand can assist
-            in all stages of travel. Whether you are about to travel, are
-            currently traveling or have just returned from a trip, Weight Loss on
-            Demand Video Visits are available wherever you have internet access,
-            which can be very assuring!
+            Aerobic exercise is any exercise that lasts longer than a few
+            minutes. Your body gets the energy it needs for this kind of
+            activity from its aerobic energy system. Your breathing rate also
+            rises as a result of the metabolic system using oxygen to help
+            produce energy, according to Bernard.
           </Text>
 
           <View style={styles.paddingTop}>
-            <Text style={styles.heading2}>About to Travel</Text>
+            <Text style={styles.heading2}>Popular aerobic exercise forms include:</Text>
           </View>
-          <View style={[styles.paddingTop2]}>
+          <View style={[styles.row, styles.paddingTop]}>
+            <Entypo name="dot-single" color={colors.disabledBg2} size={25} />
+            <Text style={styles.text}>Pull-up soad</Text>
+          </View>
+          <View style={[styles.row, styles.paddingTop]}>
+            <Entypo name="dot-single" color={colors.disabledBg2} size={25} />
+            <Text style={styles.text}>Planks</Text>
+          </View>
+          <View style={[styles.row, styles.paddingTop]}>
+            <Entypo name="dot-single" color={colors.disabledBg2} size={25} />
+            <Text style={styles.text}>Glute bridges</Text>
+          </View>
+          <View style={[styles.row, styles.paddingTop]}>
+            <Entypo name="dot-single" color={colors.disabledBg2} size={25} />
+            <Text style={styles.text}>Lunges</Text>
+          </View>
+          <View style={[styles.row, styles.paddingTop]}>
+            <Entypo name="dot-single" color={colors.disabledBg2} size={25} />
+            <Text style={styles.text}>Handstands</Text>
+          </View>
+          {/* <View style={[styles.paddingTop2]}>
             <Text style={styles.textColor}>
               If you are about to travel, we can provide you with advice on
               travel medicines, vaccines, prophylactic measures, foods and
@@ -68,8 +87,8 @@ export default function Travel() {
               Video Visit. Our doctor's can tell you whether your condition
               requires urgent care, if you can wait to be treated or if it's
               something that needs to run its course. While they cannot
-              prescribe medications internationally, the physicians at Weight Loss On
-              Demand Professionals can diagnose your condition, suggest
+              prescribe medications internationally, the physicians at Weight
+              Loss On Demand Professionals can diagnose your condition, suggest
               medications that may be available where you are, share
               non-prescription remedies, inform you of medical treatments to
               avoid and determine if you should adjust your travel plans. Don't
@@ -80,16 +99,16 @@ export default function Travel() {
           <View style={styles.paddingTop}>
             <Text style={styles.heading2}>Returned from Travel</Text>
           </View>
-          <View style={[styles.paddingTop2,styles.paddingBottom]}>
+          <View style={[styles.paddingTop2, styles.paddingBottom]}>
             <Text style={styles.textColor}>
               To effectively diagnose and treat post-travel conditions, the
-              physicians at Weight Loss On Demand Professionals can ask about your
-              travel history, review your history and perform an examination,
-              combine that with accepted medical knowledge of triggers common to
-              those regions, and help determine and coordinate any necessary
-              follow-up care.
+              physicians at Weight Loss On Demand Professionals can ask about
+              your travel history, review your history and perform an
+              examination, combine that with accepted medical knowledge of
+              triggers common to those regions, and help determine and
+              coordinate any necessary follow-up care.
             </Text>
-          </View>
+          </View> */}
         </View>
       </ScrollView>
     </SafeAreaView>

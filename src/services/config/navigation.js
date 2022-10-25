@@ -5,7 +5,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
-
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
 import {Image} from 'react-native';
 import images from '../utilities/images';
@@ -463,7 +463,7 @@ function MyTabs() {
         options={{
           tabBarLabel: 'Get Train',
           tabBarIcon: ({color}) => (
-            <FontAwesome5 name="briefcase-medical" color={color} size={22} />
+            <MaterialCommunityIcons name="dumbbell" color={color} size={22} />
           ),
         }}
       />

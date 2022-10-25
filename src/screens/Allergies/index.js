@@ -19,35 +19,33 @@ import Header from '../../components/Header';
 export default function Allergies() {
   return (
     <SafeAreaView>
-      <Header title={'Alleriges'} />
+      <Header title={'Strength training'} />
       <ScrollView style={styles.color}>
         <View style={styles.padding}>
           <Image source={images.allergies} style={styles.image} />
         </View>
         <View style={styles.padding}>
-          <Text style={styles.heading}>Allergies</Text>
+          <Text style={styles.heading}>Strength training</Text>
         </View>
         <View style={styles.padding}>
           <Text style={styles.textColor}>
-            The main function of your immune system is to protect your body
-            against foreign invaders that cause infection such as bacteria,
-            viruses, fungi and parasites. However, sometimes, the immune system
-            produces “protection” against substances that are normally harmless.
-            When this happens, you have developed an allergy.
+            Adding muscle is important. In fact, according to a study published
+            in the BMJ in July 2020, your strength and muscle health are major
+            contributors to your lifespan. That's because doing exercises that
+            build muscle strength and lean, active muscle can help lower the
+            risk of chronic diseases, improve mobility and function, and protect
+            the health of the brain.
           </Text>
         </View>
         <View style={styles.padding}>
           <Text style={styles.textColor}>
-            The most common substances in the environment that people become
-            allergic to -- called allergens -- are plant pollens, animal dander,
-            dust mites and molds. These allergens are inhaled and can result in
-            sneezing, itchy watery eyes, stuffiness and even an asthma attack.
-            The immune system can also react directly to chemicals in the
-            environment such as strong fragrances and pollution, and similar
-            symptoms can occur.
+            Lifting their children or using the stairs can be strength training
+            for some people. Others focus on mountain climbs and tire flips.
+            Having said that, there are numerous approaches you can use to
+            achieve your strength and muscular goals.
           </Text>
         </View>
-        <View style={styles.padding}>
+        {/* <View style={styles.padding}>
           <Text style={styles.textColor}>
             Food allergy affects up to 4% of adults and up to 8% of children. If
             you develop an allergy to any foods, ingestion can cause hives,
@@ -57,19 +55,19 @@ export default function Allergies() {
         </View>
         <View style={styles.padding}>
           <Text style={styles.textColor}>
-            Weight Loss On Demand can address a number of your allergy-related needs
-            including access to a doctor when and where you need it,
+            Weight Loss On Demand can address a number of your allergy-related
+            needs including access to a doctor when and where you need it,
             prescriptions and allergic reaction preparedness plans.
           </Text>
         </View>
-        <View style={[styles.padding,styles.paddingBottom]}>
+        <View style={[styles.padding, styles.paddingBottom]}>
           <Text style={styles.textColor}>
             We also provide an assessment of your living environment to keep it
-            allergy-free. Your Weight Loss On Demand physician will work with you
-            during the video visit to identify things in your home that may be
-            contributing to your symptoms.
+            allergy-free. Your Weight Loss On Demand physician will work with
+            you during the video visit to identify things in your home that may
+            be contributing to your symptoms.
           </Text>
-        </View>
+        </View> */}
       </ScrollView>
     </SafeAreaView>
   );
