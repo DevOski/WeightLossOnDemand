@@ -86,7 +86,7 @@ export const ProviderDetail = ({navigation, route}) => {
               return (
                 <View style={styles.avialbox}>
                   <TouchableOpacity
-                    onPress={() => navigation.navigate('appointmentreqest')}>
+                    onPress={() => navigation.navigate('appointmentreqest',{slot:item})}>
                     <Text style={styles.tex} >{item?.tr_day}</Text>
                     <Text style={styles.tex}>{item?.tr_date}</Text>
                     <Text style={styles.tex}>{item.sl_time}</Text>
