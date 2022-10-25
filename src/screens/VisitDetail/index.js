@@ -1,4 +1,4 @@
-import React, {useRef, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {
   Image,
   ImageBackground,
@@ -20,12 +20,29 @@ import favourite from '../../assets/assets/favourite.jpeg';
 import book from '../../assets/assets/book.png';
 import question from '../../assets/assets/question.png';
 import share from '../../assets/assets/share.png';
+import {recentVisit} from '../../services/utilities/api/auth';
+import {useSelector} from 'react-redux';
+import moment from 'moment';
 
-export const VisitDetail = ({navigation}) => {
+export const VisitDetail = ({navigation, route}) => {
   const [show, setshow] = useState(false);
-
+  const token = useSelector(state => state.token);
+  const [trainer, setTrainer] = useState();
+  const [user, setUser] = useState();
   const Toogle = () => {
     setshow(!show);
+  };
+  useEffect(() => {
+    getPastVisit();
+  }, []);
+  const getPastVisit = async () => {
+    try {
+      let response = await recentVisit(token);
+      setTrainer(response.data.trainer[0]);
+      setUser(response.data.user);
+    } catch (error) {
+      console.log(error);
+    }
   };
   return (
     <SafeAreaView style={styles.container}>
@@ -40,7 +57,7 @@ export const VisitDetail = ({navigation}) => {
           <View style={styles.flex}>
             <View>
               <Text style={styles.providertex}>PROVIDER</Text>
-              <Text style={styles.subhead}>Kimberly Townsend-Scoot,Md</Text>
+              <Text style={styles.subhead}>{trainer?.tr_name}</Text>
             </View>
             <View>
               <View style={styles.img}>
@@ -57,8 +74,8 @@ export const VisitDetail = ({navigation}) => {
           </View>
 
           <View>
-            <Text style={styles.subhead}>DATE AND TIME</Text>
-            <Text style={styles.subhead}>Mon,sep 12.8:15 Pm</Text>
+            <Text style={styles.subhead}>DATE</Text>
+            <Text style={styles.subhead}>{moment(trainer?.updated_at).format('DD/MM/YYYY')}</Text>
           </View>
           <View style={styles.crd}>
             <View style={styles.flex2}>
@@ -119,7 +136,7 @@ export const VisitDetail = ({navigation}) => {
           </View>
           <View style={styles.crd}>
             <Text style={styles.subhead}>Patient</Text>
-            <Text style={styles.providertex}>Jhone</Text>
+            <Text style={styles.providertex}>{user?.first_name} {user?.middle_name} {user?.last_name}</Text>
           </View>
           <View style={styles.crd}>
             <Text style={styles.providertex}>Patient</Text>
@@ -153,29 +170,29 @@ export const VisitDetail = ({navigation}) => {
           <View style={styles.crd}>
             <Text style={styles.providertex}>Documents</Text>
             <View style={styles.flex3}>
+              <Text style={styles.litext1}>Receipt {moment(trainer?.updated_at).format('DD/MM/YYYY')}</Text>
+              <Text style={styles.litext3}>{'>'}</Text>
+            </View>
+            {/* <View style={styles.flex3}>
               <Text style={styles.litext1}>Receipt {'   '}09/12/2022</Text>
-              <Text style={styles.litext3}>></Text>
+              <Text style={styles.litext3}>{'>'}</Text>
             </View>
             <View style={styles.flex3}>
               <Text style={styles.litext1}>Receipt {'   '}09/12/2022</Text>
-              <Text style={styles.litext3}>></Text>
-            </View>
-            <View style={styles.flex3}>
-              <Text style={styles.litext1}>Receipt {'   '}09/12/2022</Text>
-              <Text style={styles.litext3}>></Text>
+              <Text style={styles.litext3}>{'>'}</Text>
             </View>
             <View style={styles.flex3}>
               <Text style={styles.litext1}>Receipt {'   '}09/28/2022</Text>
-              <Text style={styles.litext3}>></Text>
+              <Text style={styles.litext3}>{'>'}</Text>
             </View>
             <View style={styles.flex3}>
               <Text style={styles.litext1}>Receipt {'   '}09/28/2022</Text>
-              <Text style={styles.litext3}>></Text>
+              <Text style={styles.litext3}>{'>'}</Text>
             </View>
             <View style={styles.flex3}>
               <Text style={styles.litext1}>Receipt {'   '}09/28/2022</Text>
-              <Text style={styles.litext3}>></Text>
-            </View>
+              <Text style={styles.litext3}>{'>'}</Text>
+            </View> */}
           </View>
           <View style={styles.crd}>
             <View>

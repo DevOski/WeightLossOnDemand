@@ -199,3 +199,11 @@ export async function verifyCoupon(token,coupon) {
     },
   );
 }
+
+export async function recentVisit(token) {
+  return await axios.get(`${baseURL}/past_visit`, {
+    headers: {
+      Authorization: token,
+    },
+  });
+}

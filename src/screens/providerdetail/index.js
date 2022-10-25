@@ -28,7 +28,7 @@ export const ProviderDetail = ({navigation,route}) => {
   const [show, setshow] = useState(false);
   const [loader, setLoader] = useState(false);
   const [trainer,setTrainer] = useState([])
-  const {tr_id} = route?.params?.trainer;
+  // const {tr_id} = route?.params?.trainer;
   const isVisible = useIsFocused();
 
   const Toogle = () => {
@@ -43,7 +43,7 @@ export const ProviderDetail = ({navigation,route}) => {
     setLoader(true);
     setTimeout(async () => {
       try {
-        let response = await selectedTrainer(tr_id);
+        let response = await selectedTrainer(route?.params?.trainer);
         // setTrainer(response.data.data[0]);
         setTrainer(response.data.data[0]);
         console.log(response.data.data[1]);
