@@ -16,16 +16,18 @@ import {TextInput} from 'react-native-paper';
 import {colors} from '../../services';
 import Loader from '../../components/Loader';
 import {verifyCoupon} from '../../services/utilities/api/auth';
-import {useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import Error from '../../components/Error';
 import Modal from 'react-native-modal';
-export default function ApplyCoupon({route,navigation}) {
+import {storeCoupon} from '../../store/actions';
+export default function ApplyCoupon({route, navigation}) {
   const [coupon, setCoupon] = useState('');
   const [message, setMessage] = useState('');
   const [loader, setLoader] = useState(false);
   const [title, setTitle] = useState('Congratulations!');
   const token = useSelector(state => state.token);
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const dispatch = useDispatch();
 
   const toggleModal = () => {
     setIsModalVisible(!isModalVisible);
@@ -33,16 +35,7 @@ export default function ApplyCoupon({route,navigation}) {
 
   const couponVerify = async () => {
     setLoader(true);
-    // setTimeout(async () => {
-    //   try {
-    //     let response = await verifyCoupon(token,coupon);
-    //     console.log(response);
-    //     setLoader(false);
-    //   } catch (error) {
-    //     console.log('e--->',error);
-    //     setLoader(false);
-    //   }
-    // }, 100);
+
     var myHeaders = new Headers();
     myHeaders.append(
       'Authorization',
@@ -65,12 +58,12 @@ export default function ApplyCoupon({route,navigation}) {
         .then(result => {
           console.log(result);
           setMessage(result.message);
-          toggleModal()
+          toggleModal();
           if (result.message == 'Invalid coupon') {
             setTitle('Oops!');
-          }else{
+          } else {
             setTitle('Congratulations!');
-
+            dispatch(storeCoupon(true));
           }
           setLoader(false);
         })
@@ -108,7 +101,6 @@ export default function ApplyCoupon({route,navigation}) {
             </TouchableOpacity>
           </View>
         </View>
-        
       </ScrollView>
       <View style={styles.color}>
         {isModalVisible && (
@@ -126,8 +118,11 @@ export default function ApplyCoupon({route,navigation}) {
                 //     ? navigation.navigate(screen)
                 //     : setIsModalVisible(false);
                 // }}
-                onPress={()=>{title=== 'Oops!'? setIsModalVisible(false):navigation.navigate("Home")}}
-                >
+                onPress={() => {
+                  title === 'Oops!'
+                    ? setIsModalVisible(false)
+                    : navigation.navigate('Home');
+                }}>
                 <View style={styles.buttonView}>
                   <Text style={styles.buttonText}>OK</Text>
                 </View>
