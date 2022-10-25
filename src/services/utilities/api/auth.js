@@ -184,4 +184,18 @@ export async function appRating(rate) {
 export async function getAllTrainers() {
   return await axios.get(`${baseURL}/trainers`);
 }
-// /trainers
+
+export async function verifyCoupon(token,coupon) {
+  console.log(token,coupon);
+  return await axios.post(
+    `${baseURL}/coupon_check`,
+    {
+      coupon,
+    },
+    {
+      headers: {
+        Authorization: token,
+      },
+    },
+  );
+}

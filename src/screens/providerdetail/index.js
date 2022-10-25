@@ -27,7 +27,7 @@ import Loader from '../../components/Loader';
 export const ProviderDetail = ({navigation,route}) => {
   const [show, setshow] = useState(false);
   const [loader, setLoader] = useState(false);
-  const [trainer,setTrainer] = useState()
+  const [trainer,setTrainer] = useState([])
   const {tr_id} = route?.params?.trainer;
   const isVisible = useIsFocused();
 
@@ -44,7 +44,9 @@ export const ProviderDetail = ({navigation,route}) => {
     setTimeout(async () => {
       try {
         let response = await selectedTrainer(tr_id);
-        setTrainer(response.data.data);
+        // setTrainer(response.data.data[0]);
+        setTrainer(response.data.data[0]);
+        console.log(response.data.data[1]);
         // setTrainerList(response.data.data);
         setLoader(false);
       } catch (error) {

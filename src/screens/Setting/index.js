@@ -75,26 +75,26 @@ export default function Setting({navigation}) {
   const getUserDetails = async () => {
     setLoader(true);
     setTimeout(async () => {
-    try {
-      let response = await getUser(token);
-      setFirstName(response.data.data.first_name);
-      setMiddleName(response.data.data.middle_name);
-      setLastName(response.data.data.last_name);
-      setEmail(response.data.data.email);
-      setLoader(false);
-
-      if (response.data.data.fingerprint == 1) {
-        setIsEnabled(true);
+      try {
+        let response = await getUser(token);
+        setFirstName(response.data.data.first_name);
+        setMiddleName(response.data.data.middle_name);
+        setLastName(response.data.data.last_name);
+        setEmail(response.data.data.email);
         setLoader(false);
-      } else {
-        setIsEnabled(false);
+
+        if (response.data.data.fingerprint == 1) {
+          setIsEnabled(true);
+          setLoader(false);
+        } else {
+          setIsEnabled(false);
+          setLoader(false);
+        }
+        setLoader(false);
+      } catch (error) {
+        console.log(error);
         setLoader(false);
       }
-      setLoader(false);
-    } catch (error) {
-      console.log(error);
-      setLoader(false);
-    }
     }, 100);
   };
   return (
@@ -139,7 +139,8 @@ export default function Setting({navigation}) {
           </TouchableOpacity>
         </View>
         <View style={styles.padding}>
-          <TouchableOpacity onPress={() => navigation.navigate('ApplyCoupon')}>
+          <TouchableOpacity
+            onPress={() => navigation.navigate('ApplyCoupon', {skip: false})}>
             <View style={styles.row}>
               <Ionicons name="pricetag" color={colors.secondary} size={25} />
               <Text style={styles.btnText}>Apply Coupon</Text>
