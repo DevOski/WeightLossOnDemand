@@ -15,12 +15,17 @@ import {styles} from './style';
 import {Calendar} from 'react-native-calendars';
 import {colors, fontFamily} from '../../services';
 import moment from 'moment';
-export default function ChooseAppointment({navigation}) {
+import {
+  getSlotDate,
+  getSlotList,
+  getSlotTime,
+} from '../../services/utilities/api/auth';
+export default function ChooseAppointment({navigation, route}) {
   const [calendar, setCalendar] = useState(true);
   const [list, setList] = useState(false);
   const [currentDate, setCurrentDate] = useState('');
   const [markedDates, setMarkedDates] = useState('');
-
+  const [timeSlot, setTimeSlot] = useState([]);
   const handleCalendar = () => {
     setCalendar(true);
     setList(false);
@@ -28,12 +33,17 @@ export default function ChooseAppointment({navigation}) {
   const handleList = () => {
     setCalendar(false);
     setList(true);
+    getTimeSlots();
   };
   useEffect(() => {
     var utc = new Date().toJSON().slice(0, 10).replace(/-/g, '-');
     setCurrentDate(utc);
   }, []);
 
+  useEffect(() => {
+    
+  }, [list])
+  
   const getSelectedDayEvents = date => {
     let markedDates = {};
     markedDates[date] = {
@@ -42,8 +52,27 @@ export default function ChooseAppointment({navigation}) {
       textColor: '#FFFFFF',
     };
     let serviceDate = moment(date);
-    serviceDate = serviceDate.format('DD.MM.YYYY');
+    serviceDate = serviceDate.format('DD/MM/YYYY');
     setMarkedDates(markedDates);
+    getDateSlots(serviceDate);
+  };
+
+  const getDateSlots = async date => {
+    try {
+      let response = await getSlotDate(route?.params?.trainer?.tr_id, date);
+      console.log(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const getTimeSlots = async () => {
+    try {
+      let response = await getSlotTime(route?.params?.trainer?.tr_id);
+      setTimeSlot(response.data.data);
+    } catch (error) {
+      console.log(error);
+    }
   };
   return (
     <SafeAreaView>
@@ -153,132 +182,20 @@ export default function ChooseAppointment({navigation}) {
             </View>
           ) : (
             <View>
-              <TouchableOpacity
-                onPress={() => navigation.navigate('appointmentreqest')}>
-                <View style={[styles.row2, styles.card]}>
-                  <Text style={styles.cardText}>7:00 PM</Text>
-                  <View>
-                    <Text style={styles.symbol}> ›</Text>
-                  </View>
-                </View>
-              </TouchableOpacity>
-              <TouchableOpacity
-                onPress={() => navigation.navigate('appointmentreqest')}>
-                <View style={[styles.row2, styles.card]}>
-                  <Text style={styles.cardText}>7:15 PM</Text>
-                  <View>
-                    <Text style={styles.symbol}> ›</Text>
-                  </View>
-                </View>
-              </TouchableOpacity>
-              <TouchableOpacity
-                onPress={() => navigation.navigate('appointmentreqest')}>
-                <View style={[styles.row2, styles.card]}>
-                  <Text style={styles.cardText}>7:30 PM</Text>
-                  <View>
-                    <Text style={styles.symbol}> ›</Text>
-                  </View>
-                </View>
-              </TouchableOpacity>
-              <TouchableOpacity
-                onPress={() => navigation.navigate('appointmentreqest')}>
-                <View style={[styles.row2, styles.card]}>
-                  <Text style={styles.cardText}>7:45 PM</Text>
-                  <View>
-                    <Text style={styles.symbol}> ›</Text>
-                  </View>
-                </View>
-              </TouchableOpacity>
-              <TouchableOpacity
-                onPress={() => navigation.navigate('appointmentreqest')}>
-                <View style={[styles.row2, styles.card]}>
-                  <Text style={styles.cardText}>8:00 PM</Text>
-                  <View>
-                    <Text style={styles.symbol}> ›</Text>
-                  </View>
-                </View>
-              </TouchableOpacity>
-              <TouchableOpacity
-                onPress={() => navigation.navigate('appointmentreqest')}>
-                <View style={[styles.row2, styles.card]}>
-                  <Text style={styles.cardText}>8:15 PM</Text>
-                  <View>
-                    <Text style={styles.symbol}> ›</Text>
-                  </View>
-                </View>
-              </TouchableOpacity>
-              <TouchableOpacity
-                onPress={() => navigation.navigate('appointmentreqest')}>
-                <View style={[styles.row2, styles.card, styles.bottom]}>
-                  <Text style={styles.cardText}>8:30 PM</Text>
-                  <View>
-                    <Text style={styles.symbol}> ›</Text>
-                  </View>
-                </View>
-              </TouchableOpacity>
-              <TouchableOpacity
-                onPress={() => navigation.navigate('appointmentreqest')}>
-                <View style={[styles.row2, styles.card]}>
-                  <Text style={styles.cardText}>8:45 PM</Text>
-                  <View>
-                    <Text style={styles.symbol}> ›</Text>
-                  </View>
-                </View>
-              </TouchableOpacity>
-              <TouchableOpacity
-                onPress={() => navigation.navigate('appointmentreqest')}>
-                <View style={[styles.row2, styles.card]}>
-                  <Text style={styles.cardText}>9:00 PM</Text>
-                  <View>
-                    <Text style={styles.symbol}> ›</Text>
-                  </View>
-                </View>
-              </TouchableOpacity>
-              <TouchableOpacity
-                onPress={() => navigation.navigate('appointmentreqest')}>
-                <View style={[styles.row2, styles.card]}>
-                  <Text style={styles.cardText}>9:15 PM</Text>
-                  <View>
-                    <Text style={styles.symbol}> ›</Text>
-                  </View>
-                </View>
-              </TouchableOpacity>
-              <TouchableOpacity
-                onPress={() => navigation.navigate('appointmentreqest')}>
-                <View style={[styles.row2, styles.card]}>
-                  <Text style={styles.cardText}>9:30 PM</Text>
-                  <View>
-                    <Text style={styles.symbol}> ›</Text>
-                  </View>
-                </View>
-              </TouchableOpacity>
-              <TouchableOpacity
-                onPress={() => navigation.navigate('appointmentreqest')}>
-                <View style={[styles.row2, styles.card]}>
-                  <Text style={styles.cardText}>9:45 PM</Text>
-                  <View>
-                    <Text style={styles.symbol}> ›</Text>
-                  </View>
-                </View>
-              </TouchableOpacity>
-              <TouchableOpacity
-                onPress={() => navigation.navigate('appointmentreqest')}>
-                <View style={[styles.row2, styles.card]}>
-                  <Text style={styles.cardText}>10:00 PM</Text>
-                  <View>
-                    <Text style={styles.symbol}> ›</Text>
-                  </View>
-                </View>
-              </TouchableOpacity>
-              <TouchableOpacity
-                onPress={() => navigation.navigate('appointmentreqest')}>
-                <View style={[styles.row2, styles.card, styles.bottom]}>
-                  <Text style={styles.cardText}>10:15 PM</Text>
-                  <View>
-                    <Text style={styles.symbol}> ›</Text>
-                  </View>
-                </View>
-              </TouchableOpacity>
+              {timeSlot?.map((item, index) => {
+                console.log(item);
+                return (
+                  <TouchableOpacity
+                    onPress={() => navigation.navigate('appointmentreqest',{slot:item})}>
+                    <View style={[styles.row2, styles.card]}>
+                      <Text style={styles.cardText}>{item?.sl_time}</Text>
+                      <View>
+                        <Text style={styles.symbol}> ›</Text>
+                      </View>
+                    </View>
+                  </TouchableOpacity>
+                );
+              })}
             </View>
           )}
         </View>

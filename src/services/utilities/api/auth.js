@@ -164,8 +164,7 @@ export async function getTrainerList(type) {
   return await axios.get(`${baseURL}/trainersList/${type}`);
 }
 
-export async function selectedTrainer(id)
- {
+export async function selectedTrainer(id) {
   return await axios.get(`${baseURL}/trainerDesc/${id}`);
 }
 
@@ -186,8 +185,8 @@ export async function getAllTrainers() {
   return await axios.get(`${baseURL}/trainers`);
 }
 
-export async function verifyCoupon(token,coupon) {
-  console.log(token,coupon);
+export async function verifyCoupon(token, coupon) {
+  console.log(token, coupon);
   return await axios.post(
     `${baseURL}/coupon_check`,
     {
@@ -207,4 +206,14 @@ export async function recentVisit(token) {
       Authorization: token,
     },
   });
+}
+export async function getSlotDate(id, date) {
+  return await axios.post(`${baseURL}/trCalenderSlots`, {
+    id,
+    date,
+  });
+}
+// 
+export async function getSlotTime(id) {
+  return await axios.post(`${baseURL}/trTimeSlots/${id}`);
 }
