@@ -46,7 +46,7 @@ export default function Meetourproviders({navigation}) {
   };
   return (
     <SafeAreaView>
-      <Header title={'Meet Our Providers'} />
+      <Header title={'Connect to all providers '} />
       <ScrollView style={styles.color}>
         {!showVideo ? (
           <ImageBackground source={images.mother} style={styles.image}>
@@ -56,7 +56,7 @@ export default function Meetourproviders({navigation}) {
               </View>
             </TouchableOpacity>
             <View style={styles.textView}>
-              <Text style={styles.heading}>Meet Our Providers</Text>
+              <Text style={styles.heading}>Meet Our Trainer</Text>
             </View>
           </ImageBackground>
         ) : (

@@ -31,5 +31,13 @@ export const styles = StyleSheet.create({
   },
   paddingBottom:{
     paddingBottom:sizes.screenHeight * 0.13
-  }
+  },
+  paddingTop: {
+    paddingTop: sizes.screenHeight * 0.01,
+  },
+  row: {
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    // justifyContent: 'space-around',
+  },
 });

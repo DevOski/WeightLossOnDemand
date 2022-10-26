@@ -128,7 +128,7 @@ export default function Home({navigation}) {
                     </TouchableOpacity>
                     <View style={styles.textView}>
                       <Text style={styles.text}>
-                        What to expect in your first visit
+                        What to expect during your initial visit?
                       </Text>
                     </View>
                     <View style={[styles.semiTextView, styles.row2]}>
@@ -145,38 +145,40 @@ export default function Home({navigation}) {
                   <View key={index} style={styles.padding}>
                     <Text style={[styles.heading, styles.top]}>Trainer</Text>
                     <Text style={styles.providerText}>
-                      Our providers can treat hundreds of issues,including:
+                      Our professional trainers can handle a wide range of
+                      problems, such as:
                     </Text>
                     <View style={styles.row2}>
-                      <Text style={styles.addIcon}>✚</Text>
-                      <Text style={styles.addText}> Sinus infections</Text>
+                      <Text style={styles.addIcon}>●</Text>
+                      <Text style={styles.addText}>Physical fitness trainer</Text>
                     </View>
                     <View style={styles.row2}>
-                      <Text style={styles.addIcon}>✚</Text>
-                      <Text style={styles.addText}> Cold & Flu</Text>
+                      <Text style={styles.addIcon}>●</Text>
+                      <Text style={styles.addText}>Personal gym trainers</Text>
                     </View>
                     <View style={styles.row2}>
-                      <Text style={styles.addIcon}>✚</Text>
-                      <Text style={styles.addText}> Heartburn</Text>
+                      <Text style={styles.addIcon}>●</Text>
+                      <Text style={styles.addText}>Lifestyle personal trainers</Text>
                     </View>
                     <View style={styles.row2}>
-                      <Text style={styles.addIcon}>✚</Text>
-                      <Text style={styles.addText}> Sports Injuries</Text>
+                      <Text style={styles.addIcon}>●</Text>
+                      <Text style={styles.addText}>Yoga trainers</Text>
                     </View>
                     <View style={styles.row2}>
-                      <Text style={styles.addIcon}>✚</Text>
-                      <Text style={styles.addText}> High cholesterol</Text>
+                      <Text style={styles.addIcon}>●</Text>
+                      <Text style={styles.addText}>Aerobic and dance</Text>
                     </View>
                     <View style={styles.row2}>
-                      <Text style={styles.addIcon}>✚</Text>
-                      <Text style={styles.addText}> Rashes & skin issues</Text>
+                      <Text style={styles.addIcon}>●</Text>
+                      <Text style={styles.addText}>Zoomba</Text>
                     </View>
+
                     <View style={styles.btnTop}>
                       <GetCare />
                       <TouchableOpacity
                         onPress={() => navigation.navigate('Medical')}>
                         <View style={styles.learnMoreBtn}>
-                          <Text style={styles.learnMoreText}>Learn more</Text>
+                          <Text style={styles.learnMoreText}>Explore</Text>
                         </View>
                       </TouchableOpacity>
                     </View>
@@ -226,9 +228,11 @@ export default function Home({navigation}) {
                     style={styles.bg}>
                     <View style={styles.paddingBottom}></View>
                     <View style={styles.proudView}>
-                      <Text style={styles.text2}>We're proud beyond Pride</Text>
+                      <Text style={styles.text2}>
+                        We're more than just proud
+                      </Text>
                       <Text style={styles.letUsText}>
-                        Let us help you find the right LGBQTQ+ friendly doctor
+                        Let us assist you in finding the right trainer for you.
                       </Text>
                     </View>
                     <TouchableOpacity
@@ -243,7 +247,7 @@ export default function Home({navigation}) {
                 {index == 3 && (
                   <View key={index} style={[styles.padding]}>
                     <Text style={[styles.heading, styles.top]}>
-                      Meet Our Providers
+                      Meet Our Professionals
                     </Text>
                     {trainerList?.map((item, index) => {
                       if (index < 6) {
@@ -341,7 +345,7 @@ export default function Home({navigation}) {
                         onPress={() => navigation.navigate('meetOurproviders')}>
                         <View style={[styles.learnMoreBtn, styles.row2]}>
                           <Text style={styles.learnMoreText}>
-                            See all of our providers
+                            Connect to all providers
                           </Text>
                           <Text style={styles.symbol}> ›</Text>
                         </View>

@@ -17,9 +17,9 @@ import {colors} from '../../services';
 export default function TermsOfService() {
   return (
     <SafeAreaView>
-       <View>
-          <Header dark={true} />
-        </View>
+      <View>
+        <Header dark={true} />
+      </View>
       <ScrollView style={styles.color}>
         <View style={[styles.paddingLeft, styles.paddingBottom]}>
           <Text style={styles.addPaymentText}>
@@ -32,49 +32,47 @@ export default function TermsOfService() {
           </View>
           <View style={styles.paddingTop}>
             <Text style={[styles.bold, styles.textColor]}>
-              We are pleased to announce that Grand Rounds, Inc., Weight Loss on
-              Demand, Inc. and Included Health Communities are now part of
+              We are pleased to announce that Ground Rounds, Inc., Weight Loss
+              on Demand, Inc. and Included Health Communities are now part of
               Included Health, Inc.
             </Text>
           </View>
           <View style={styles.paddingTop}>
             <Text style={[styles.bold, styles.textColor]}>
-              We are in the process of integrating our terms and services to
-              provide more options and help you find the care you need, when you
-              need it, regardless of which services you use.
+              We are working to harmonize our policies and procedures so that
+              you can have access to the care you need, when you need it,
+              regardless of the specific services you use.
             </Text>
           </View>
           <View style={styles.paddingTop}>
             <Text style={styles.textColor}>
-              In the meantime, the use of the Included Health, Weight Loss On
-              Demand, Grand Rounds, and Included Health Communities affiliated
-              websites, and any of the related Included Health products and
-              services linked to this document or described below (collectively,
-              "Services" unless otherwise specified), is subject to all of the
-              terms, agreements, statements of rights, consent forms, and
-              policies referenced and linked{' '}
-              <Text style={styles.link}>here</Text>, which applied prior to the
-              integration to the Grand Rounds, Weight Loss On Demand, and
-              Included Health Communities websites, services, and applications.
+              While the integration with Ground Rounds is in progress, all of
+              the terms, agreements, statements of rights, consent forms, and
+              policies referenced and linked herein as they related to the use
+              of the Included Health, Weight Loss on Demand, Ground Rounds, and
+              Included health Communities affiliated websites and any of the
+              related Included Health products and services is described below
+              (collectively, "Services: unless otherwise specified).
             </Text>
           </View>
           <View style={styles.paddingTop}>
             <Text style={styles.textColor}>
-              We encourage you to read these documents to understand the terms,
-              policies, and more that apply to you when you use our websites,
-              products, or services, including how we process your personal
-              information and how you can update and manage that information.
+              If you use our websites, products, or services, you should read
+              these agreements carefully because they contain important
+              information about how we treat your personal data and how you can
+              access, change, and manage it.
             </Text>
           </View>
           <View style={styles.paddingTop}>
             <Text style={styles.textColor}>
-              As we further integrate, our plan is to continue to update and
-              consolidate these documents in the coming months to make it easier
-              for you to understand what to expect from us-and what we expect
-              from you-as you use our Services.
+              In the coming months, we want to continue updating and
+              consolidating these documents to make it easier for you to
+              understand what to anticipate from us and what we expect from you
+              when you use our Services in light of our ongoing integration.
             </Text>
           </View>
-          <View style={styles.paddingTop}>
+          </View>
+          {/* <View style={styles.paddingTop}>
             <Text style={styles.textColor}>
               Please also note, for members of our recently-launched Included
               Health unified application, many features of the Weight Loss On
@@ -746,12 +744,12 @@ export default function TermsOfService() {
             experience once logged-in.
           </Text>
         </View>
-        <View style={[styles.row,styles.paddingBottom2]}>
+        <View style={[styles.row, styles.paddingBottom2]}>
           <Entypo name="dot-single" color={colors.primary} size={25} />
           <Text style={[styles.textColor, styles.right]}>
             Or you may call our general support toll free line at (365) 154-1736
           </Text>
-        </View>
+        </View> */}
       </ScrollView>
     </SafeAreaView>
   );

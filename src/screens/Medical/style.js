@@ -8,7 +8,7 @@ export const styles = StyleSheet.create({
     height: sizes.screenHeight,
   },
   image: {
-    height: sizes.screenHeight * 0.25,
+    height: sizes.screenHeight * 0.3,
     width: sizes.screenWidth,
   },
   playBtn: {
