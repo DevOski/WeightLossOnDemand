@@ -164,7 +164,8 @@ export async function getTrainerList(type) {
   return await axios.get(`${baseURL}/trainersList/${type}`);
 }
 
-export async function selectedTrainer(id) {
+export async function selectedTrainer(id)
+ {
   return await axios.get(`${baseURL}/trainerDesc/${id}`);
 }
 
