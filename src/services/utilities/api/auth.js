@@ -213,7 +213,13 @@ export async function getSlotDate(id, date) {
     date,
   });
 }
-// 
+//
 export async function getSlotTime(id) {
   return await axios.post(`${baseURL}/trTimeSlots/${id}`);
+}
+// getAllSlotDate
+export async function getAllSlotDate(date) {
+  return await axios.get(`${baseURL}/all_trCalenderSlots`, {
+    date:"10/10/2022",
+  });
 }
