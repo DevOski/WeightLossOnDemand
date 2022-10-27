@@ -1,4 +1,4 @@
-import React, {useRef, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {
   Image,
   ImageBackground,
@@ -17,13 +17,27 @@ import {colors, sizes} from '../../services';
 import Modal from 'react-native-modal';
 import {openInbox} from 'react-native-email-link';
 import { CustomTextFiel } from '../../component/textFiled';
+import { getQuestion } from '../../services/utilities/api/auth';
 
 export default function Questiontwo({navigation,route}) {
  
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [questiontwo, setquestiontwo] = useState();
   const [question, setquestion] = useState(route.params.question);
+  const [Qa, setQa] = useState();
   
+  useEffect(() => {
+    getQuestions();
+  }, []);
+
+  const getQuestions = async () => {
+    try {
+      let response = await getQuestion(2);
+      setQa(response.data.data[0].question);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   // console.log(question,"question");
   console.log('question2',{question1:question})
   const handleEmail = () => {
@@ -37,7 +51,7 @@ export default function Questiontwo({navigation,route}) {
       <ScrollView style={styles.color}>
         <View style={styles.padding}>
           <Text style={styles.text}>
-            Question 2
+          {Qa}
           </Text>
           <View style={styles.width}>
      
@@ -53,7 +67,7 @@ export default function Questiontwo({navigation,route}) {
           <View style={styles.paddingTop}>
             <TouchableOpacity onPress={handleEmail}>
               <View style={styles.buttonView}>
-                <Text style={styles.buttonText}>Verified</Text>
+                <Text style={styles.buttonText}>Next</Text>
               </View>
             </TouchableOpacity>
           </View>

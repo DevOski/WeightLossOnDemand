@@ -224,3 +224,18 @@ export async function getAllSlotDate(date) {
     date:"10/10/2022",
   });
 }
+export async function getQuestion(id) {
+  console.log(id);
+  return await axios.post(`${baseURL}/question`, {
+    id
+  });
+}
+export async function getAppointment(token) {
+  console.log(token);
+  return await axios.post(`${baseURL}/appointment`, {
+    headers: {
+      Authorization: token,
+    },
+  });
+}
+

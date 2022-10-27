@@ -1,4 +1,4 @@
-import React, {useRef, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {
   Image,
   ImageBackground,
@@ -17,6 +17,7 @@ import {colors, sizes} from '../../services';
 import Modal from 'react-native-modal';
 import {openInbox} from 'react-native-email-link';
 import { CustomTextFiel } from '../../component/textFiled';
+import { getAppointment, getQuestion } from '../../services/utilities/api/auth';
 
 export default function Questionfive({navigation,route}) {
  
@@ -26,10 +27,24 @@ export default function Questionfive({navigation,route}) {
   const [questionthree, setquestionthree] = useState(route.params.questions3);
   const [questionfour, setquestionfour] = useState(route.params.question4);
   const [questionfive, setquestionfive] = useState();
+  const [Qa, setQa] = useState();
   console.log(route,'screen5');
 
+  useEffect(() => {
+    getQuestions();
+  }, []);
 
-  const handleEmail = () => {
+  const getQuestions = async () => {
+    try {
+      let response = await getQuestion(5);
+      setQa(response.data.data[0].question);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleEmail = async () => {
+    navigation.navigate('healthprofilereview')
     console.log(
       question,
       questiontwo,
@@ -37,6 +52,15 @@ export default function Questionfive({navigation,route}) {
       questionfour,
       questionfive,
       "q5screengootodatabase");
+// try {
+//   let response=await getAppointment(token)
+//   console.log(response);
+// } catch (error) {
+//   console.log(error);
+// }
+      
+
+
   };
   
   return (
@@ -45,7 +69,7 @@ export default function Questionfive({navigation,route}) {
       <ScrollView style={styles.color}>
         <View style={styles.padding}>
           <Text style={styles.text}>
-            Question 5
+            {Qa}
           </Text>
           <View style={styles.width}>
      
