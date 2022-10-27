@@ -1,4 +1,4 @@
-import React, {useRef, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {
   Image,
   ImageBackground,
@@ -17,6 +17,7 @@ import {colors, sizes} from '../../services';
 import Modal from 'react-native-modal';
 import {openInbox} from 'react-native-email-link';
 import { CustomTextFiel } from '../../component/textFiled';
+import { getQuestion } from '../../services/utilities/api/auth';
 
 export default function Questionthree({navigation,route}) {
  
@@ -24,8 +25,20 @@ export default function Questionthree({navigation,route}) {
   const [question, setquestion] = useState(route.params.question1);
   const [questiontwo, setquestiontwo] = useState(route.params.questions2);
   const [questionthree, setquestionthree] = useState('');
+  const [Qa, setQa] = useState();
   console.log(route.params,"q3screen");
+  useEffect(() => {
+    getQuestions();
+  }, []);
 
+  const getQuestions = async () => {
+    try {
+      let response = await getQuestion(3);
+      setQa(response.data.data[0].question);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const handleEmail = () => {
     navigation.navigate('question4',{question1:question,questions2:questiontwo,questions3:questionthree})
@@ -37,7 +50,7 @@ export default function Questionthree({navigation,route}) {
       <ScrollView style={styles.color}>
         <View style={styles.padding}>
           <Text style={styles.text}>
-            Question 3
+            {Qa}
           </Text>
           <View style={styles.width}>
      
@@ -53,7 +66,7 @@ export default function Questionthree({navigation,route}) {
           <View style={styles.paddingTop}>
             <TouchableOpacity onPress={handleEmail}>
               <View style={styles.buttonView}>
-                <Text style={styles.buttonText}>Verified</Text>
+                <Text style={styles.buttonText}>Next</Text>
               </View>
             </TouchableOpacity>
           </View>

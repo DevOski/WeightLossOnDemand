@@ -1,4 +1,4 @@
-import React, {useRef, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {
   Image,
   ImageBackground,
@@ -25,8 +25,20 @@ export default function Questionfour({navigation,route}) {
   const [questiontwo, setquestiontwo] = useState(route.params.questions2);
   const [questionthree, setquestionthree] = useState(route.params.questions3);
   const [questionfour, setquestionfour] = useState();
+  const [Qa, setQa] = useState();
   console.log(route,"q4screen");
+  useEffect(() => {
+    getQuestions();
+  }, []);
 
+  const getQuestions = async () => {
+    try {
+      let response = await getQuestion(4);
+      setQa(response.data.data[0].question);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   const handleEmail = () => {
     navigation.navigate('question5',{question1:question,questions2:questiontwo,questions3:questionthree,question4:questionfour})
   };
@@ -37,7 +49,7 @@ export default function Questionfour({navigation,route}) {
       <ScrollView style={styles.color}>
         <View style={styles.padding}>
           <Text style={styles.text}>
-            Question 4
+            {Qa}
           </Text>
           <View style={styles.width}>
      
@@ -53,7 +65,7 @@ export default function Questionfour({navigation,route}) {
           <View style={styles.paddingTop}>
             <TouchableOpacity onPress={handleEmail}>
               <View style={styles.buttonView}>
-                <Text style={styles.buttonText}>Verified</Text>
+                <Text style={styles.buttonText}>Next</Text>
               </View>
             </TouchableOpacity>
           </View>
