@@ -57,7 +57,6 @@ export default function ChooseAppointment({navigation, route}) {
     getDateSlots(serviceDate);
     if (route?.params?.from === 'All Trainer') {
       getAllDateSlots(serviceDate);
-    
     }
   };
 
@@ -116,6 +115,7 @@ export default function ChooseAppointment({navigation, route}) {
             <View>
               <Calendar
                 onDayPress={day => {
+                  console.log(day);
                   getSelectedDayEvents(day.dateString);
                 }}
                 markedDates={markedDates}

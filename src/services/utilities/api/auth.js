@@ -219,6 +219,7 @@ export async function getSlotTime(id) {
 }
 // getAllSlotDate
 export async function getAllSlotDate(date) {
+  console.log(date);
   return await axios.get(`${baseURL}/all_trCalenderSlots`, {
     date:"10/10/2022",
   });
