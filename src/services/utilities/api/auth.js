@@ -225,7 +225,6 @@ export async function getAllSlotDate(date) {
   });
 }
 export async function getQuestion(id) {
-  console.log(id);
   return await axios.post(`${baseURL}/question`, {
     id
   });
@@ -239,3 +238,9 @@ export async function getAppointment(token) {
   });
 }
 
+// 
+export async function sendEmail(email) {
+  return await axios.post(`${baseURL}/forgot_pass`, {
+    email:"mustafailahi586@gmail.com"
+  });
+}

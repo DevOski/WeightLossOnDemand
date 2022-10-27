@@ -22,7 +22,7 @@ import {
   useBlurOnFulfill,
   useClearByFocusCell,
 } from 'react-native-confirmation-code-field';
-export default function Verificationscreen({navigation}) {
+export default function Verificationscreen({navigation,route}) {
   const CELL_COUNT = 4;
   const [email, setEmail] = useState('');
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -76,9 +76,9 @@ console.log(value,"'-------");
           </View>
           
           <View style={styles.paddingTop}>
-            <TouchableOpacity onPress={() => setIsModalVisible(true)}>
+            <TouchableOpacity onPress={() => setIsModalVisible(!isModalVisible)}>
               <View style={styles.buttonView}>
-                <Text style={styles.buttonText}>Verified</Text>
+                <Text style={styles.buttonText}>Verify</Text>
               </View>
             </TouchableOpacity>
           </View>
@@ -96,7 +96,7 @@ console.log(value,"'-------");
                   . Use the link in that email to reset your password
                 </Text>
               </View>
-              <TouchableOpacity onPress={()=>navigation.navigate('EnterNewPassword')}>
+              <TouchableOpacity onPress={()=>navigation.navigate('EnterNewPassword',{email:route?.params?.email})}>
                 <View style={styles.buttonView}>
                   <Text style={styles.buttonText}>OK</Text>
                 </View>
