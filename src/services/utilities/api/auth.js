@@ -239,8 +239,3 @@ export async function getAppointment(token) {
 }
 
 // 
-export async function sendEmail(email) {
-  return await axios.post(`${baseURL}/forgot_pass`, {
-    email:"mustafailahi586@gmail.com"
-  });
-}
