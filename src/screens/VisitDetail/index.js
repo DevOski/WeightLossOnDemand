@@ -29,6 +29,7 @@ export const VisitDetail = ({navigation, route}) => {
   const token = useSelector(state => state.token);
   const [trainer, setTrainer] = useState();
   const [user, setUser] = useState();
+  const [visit, setVisit] = useState();
   const Toogle = () => {
     setshow(!show);
   };
@@ -38,6 +39,7 @@ export const VisitDetail = ({navigation, route}) => {
   const getPastVisit = async () => {
     try {
       let response = await recentVisit(token);
+      setVisit(response.data.visit);
       setTrainer(response.data.trainer[0]);
       setUser(response.data.user);
     } catch (error) {
@@ -56,7 +58,7 @@ export const VisitDetail = ({navigation, route}) => {
           </View>
           <View style={styles.flex}>
             <View>
-              <Text style={styles.providertex}>PROVIDER</Text>
+              <Text style={styles.providertex}>TRAINER</Text>
               <Text style={styles.subhead}>{trainer?.tr_name}</Text>
             </View>
             <View>
@@ -75,7 +77,9 @@ export const VisitDetail = ({navigation, route}) => {
 
           <View>
             <Text style={styles.subhead}>DATE</Text>
-            <Text style={styles.subhead}>{moment(trainer?.updated_at).format('DD/MM/YYYY')}</Text>
+            <Text style={styles.subhead}>
+              {moment(visit?.created_at).format('DD/MM/YYYY')}
+            </Text>
           </View>
           <View style={styles.crd}>
             <View style={styles.flex2}>
@@ -135,16 +139,17 @@ export const VisitDetail = ({navigation, route}) => {
             </View> */}
           </View>
           <View style={styles.crd}>
-            <Text style={styles.subhead}>Patient</Text>
-            <Text style={styles.providertex}>{user?.first_name} {user?.middle_name} {user?.last_name}</Text>
+            <Text style={styles.subhead}>Trainee</Text>
+            <Text style={styles.providertex}>
+              {user?.first_name} {user?.middle_name} {user?.last_name}
+            </Text>
           </View>
           <View style={styles.crd}>
-            <Text style={styles.providertex}>Patient</Text>
+            <Text style={styles.providertex}>Trainer</Text>
             <Text style={[styles.subhead, styles.border]}>
-              Our visit was incomplete,please check your settings ,close out any
-              background applications that are running on your device,and check
+            {trainer?.tr_desc}
             </Text>
-            {show ? (
+            {/* {show ? (
               <Text style={[styles.subhead, styles.border]}>
                 your connection.our customer support team is available 24/7 to
                 get you reconnected.please email support@weightloseondeman.com
@@ -152,10 +157,10 @@ export const VisitDetail = ({navigation, route}) => {
                 medical emergency, please call 911 or proceed diretly to the
                 emergency room
               </Text>
-            ) : null}
+            ) : null} */}
 
             <View style={styles.borderbottom}></View>
-            <View>
+            {/* <View>
               {show ? (
                 <TouchableOpacity onPress={Toogle}>
                   <Text style={styles.addanother}>READ LESS</Text>
@@ -165,54 +170,38 @@ export const VisitDetail = ({navigation, route}) => {
                   <Text style={styles.addanother}>READ MORE</Text>
                 </TouchableOpacity>
               )}
-            </View>
+            </View> */}
           </View>
           <View style={styles.crd}>
             <Text style={styles.providertex}>Documents</Text>
             <View style={styles.flex3}>
-              <Text style={styles.litext1}>Receipt {moment(trainer?.updated_at).format('DD/MM/YYYY')}</Text>
+              <Text style={styles.litext1}>
+                Receipt {moment(visit?.created_at).format('DD/MM/YYYY')}
+              </Text>
               <Text style={styles.litext3}>{'>'}</Text>
             </View>
-            {/* <View style={styles.flex3}>
-              <Text style={styles.litext1}>Receipt {'   '}09/12/2022</Text>
-              <Text style={styles.litext3}>{'>'}</Text>
-            </View>
-            <View style={styles.flex3}>
-              <Text style={styles.litext1}>Receipt {'   '}09/12/2022</Text>
-              <Text style={styles.litext3}>{'>'}</Text>
-            </View>
-            <View style={styles.flex3}>
-              <Text style={styles.litext1}>Receipt {'   '}09/28/2022</Text>
-              <Text style={styles.litext3}>{'>'}</Text>
-            </View>
-            <View style={styles.flex3}>
-              <Text style={styles.litext1}>Receipt {'   '}09/28/2022</Text>
-              <Text style={styles.litext3}>{'>'}</Text>
-            </View>
-            <View style={styles.flex3}>
-              <Text style={styles.litext1}>Receipt {'   '}09/28/2022</Text>
-              <Text style={styles.litext3}>{'>'}</Text>
-            </View> */}
+           
           </View>
           <View style={styles.crd}>
             <View>
               <Text style={styles.subhead}>Visit intake</Text>
               <Text style={styles.subhead}>PURPOSE OF VISIT</Text>
-              <Text style={styles.subhead}>Cold</Text>
+              <Text style={styles.subhead}>{visit?.reason}</Text>
               <View style={styles.borderbottom}></View>
-              <Text style={[styles.subhead, styles.mt]}>Time PERIOD</Text>
-              <Text style={[styles.subhead, styles.mt]}>3 days</Text>
-              <View style={styles.borderbottom}></View>
+              {/* <Text style={[styles.subhead, styles.mt]}>Time PERIOD</Text>
+              <Text style={[styles.subhead, styles.mt]}>3 days</Text> */}
+              {/* <View style={styles.borderbottom}></View> */}
               <Text style={[styles.subhead, styles.mt]}>SYMPTOMS</Text>
               <Text style={[styles.subhead, styles.mt]}>
-                Difficulty sleeping
+                {visit?.response_1} {visit?.response_2} {visit?.response_3}
+                {visit?.response_4} {visit?.response_5}
               </Text>
             </View>
           </View>
-          <View style={styles.crd}>
+          {/* <View style={styles.crd}>
             <Text style={styles.subhead}>Visit Durations</Text>
             <Text style={styles.providertex}>0 min,25 sec</Text>
-          </View>
+          </View> */}
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -312,7 +301,7 @@ const styles = StyleSheet.create({
     paddingRight: sizes.screenWidth * 0.1,
   },
   border: {
-    fontSize: fontSize.h5,
+    fontSize: fontSize.h6,
     color: colors.gray,
     fontWeight: 'bold',
     fontFamily: fontFamily.appTextLight,

@@ -34,7 +34,7 @@ export default function HowToSchedule({navigation}) {
         </View>
         <View style={styles.paddingTop2}>
           <TouchableOpacity
-            onPress={() => navigation.navigate('ChooseAppointment')}>
+            onPress={() => navigation.navigate('ChooseAppointment',{from:"All Trainer"})}>
             <View style={styles.buttonView}>
               <Text style={styles.buttonText}> Find a time</Text>
             </View>

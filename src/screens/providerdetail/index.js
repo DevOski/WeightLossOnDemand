@@ -169,7 +169,7 @@ export const ProviderDetail = ({navigation, route}) => {
       </ScrollView>
       <View style={styles.buttnView}>
         <TouchableOpacity
-          onPress={() => navigation.navigate('ChooseAppointment')}>
+          onPress={() => navigation.navigate('ChooseAppointment',{trainer:trainer})}>
           <View style={styles.buttonView}>
             <Text style={styles.buttonText}>View Availbility</Text>
           </View>

@@ -19,6 +19,9 @@ export default function Filter({navigation, route}) {
   const [fourth, setFourth] = useState(true);
   const [fifth, setFifth] = useState(false);
   const [sixth, setSixth] = useState(false);
+  const [language, setLanguage] = useState(false);
+  const [focusArea, setFocusArea] = useState(false);
+  
   const handleAny = () => {
     setfirst(true);
     setSecond(false);
@@ -49,7 +52,16 @@ export default function Filter({navigation, route}) {
     setFifth(false);
     setSixth(true);
   };
-  console.log('---->>', route?.params?.language);
+  const handleReset = () => {
+    setfirst(true);
+    setSecond(false);
+    setThird(false);
+    setFourth(true);
+    setFifth(false);
+    setSixth(false);
+    setLanguage(true)
+    setFocusArea(true)
+  };
   return (
     <SafeAreaView>
       <Header dark={true} />
@@ -108,7 +120,7 @@ export default function Filter({navigation, route}) {
               <TouchableOpacity
                 onPress={() => navigation.navigate('SelectLanguage')}>
                 <View style={[styles.row2, styles.card]}>
-                  {route?.params?.language ? (
+                  {route?.params?.language && !language ? (
                     <Text style={styles.cardText}>
                       {route?.params?.language}
                     </Text>
@@ -122,16 +134,14 @@ export default function Filter({navigation, route}) {
               </TouchableOpacity>
             </View>
             <View style={styles.paddingTop}>
-              <Text style={styles.text}>FOCUS AREA</Text>
+              <Text style={styles.text}>TRAINER TYPE</Text>
             </View>
             <View style={styles.paddingTop}>
               <TouchableOpacity
                 onPress={() => navigation.navigate('SelectFocusArea')}>
                 <View style={[styles.row2, styles.card]}>
-                  {route?.params?.area ? (
-                    <Text style={[styles.cardText]}>
-                      {route?.params?.area}
-                    </Text>
+                  {route?.params?.area && !focusArea ? (
+                    <Text style={[styles.cardText]}>{route?.params?.area}</Text>
                   ) : (
                     <Text style={[styles.cardText, styles.italic]}>
                       None selected
@@ -154,9 +164,7 @@ export default function Filter({navigation, route}) {
             </TouchableOpacity>
           </View>
           <View style={styles.paddingTop2}>
-            <TouchableOpacity
-            //   onPress={() => navigation.navigate('GetCare')}
-            >
+            <TouchableOpacity onPress={handleReset}>
               <View>
                 <Text style={styles.redBtn}> Reset filters</Text>
               </View>

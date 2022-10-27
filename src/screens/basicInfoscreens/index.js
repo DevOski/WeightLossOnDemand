@@ -58,8 +58,6 @@ const BasicInfoScreen = ({navigation, route}) => {
   };
 
   const Continue = async () => {
-    console.log(route?.params?.date);
-
     // )  name,
     //     middle,
     //     lastname,
@@ -72,30 +70,6 @@ const BasicInfoScreen = ({navigation, route}) => {
     //     isEnabled,
     // navigation.navigate('wellcomescreen')
 
-    // var formdata = new FormData();
-    // formdata.append('first_name', name);
-    // formdata.append('middle_name', middle);
-    // formdata.append('last_name', lastname);
-    // formdata.append('email', route?.params?.email);
-    // formdata.append('password', route?.params?.password);
-    // formdata.append('gender', gender);
-    // formdata.append('prefix', Prefix);
-    // formdata.append('suffix', Suffix);
-    // formdata.append('phone', phonenumber);
-    // formdata.append('phone_type', slectnumber);
-    // formdata.append('dob', route?.params?.date);
-    // formdata.append('fingerprint', route?.params?.isEnabled);
-
-    // var requestOptions = {
-    //   method: 'POST',
-    //   body: formdata,
-    //   redirect: 'follow',
-    // };
-
-    // fetch('http://wlod.rf.gd/api/signup', requestOptions)
-    //   .then(response => response.text())
-    //   .then(result => console.log(result))
-    //   .catch(error => console.log('error', error));
     try {
       let response = await signUp(
         name,
@@ -109,10 +83,10 @@ const BasicInfoScreen = ({navigation, route}) => {
         phonenumber,
         slectnumber,
         route?.params?.date,
-        1,
+        isEnabled ? 1 : 0,
         // route?.params?.isEnabled,
       );
-      console.log(response);
+      console.log(response.data);
     } catch (error) {
       console.log(error.message);
     }
@@ -326,7 +300,7 @@ const BasicInfoScreen = ({navigation, route}) => {
             <View style={styles.r}>
               <Text style={styles.tremtext}>
                 By providing your Mobile number,you give us permission to
-                contact you via text,
+                contact you via text.
               </Text>
               <TouchableOpacity>
                 <Text style={styles.tremtextbutt}>View terms.</Text>
@@ -446,7 +420,7 @@ const styles = StyleSheet.create({
   tremtextbutt: {
     position: 'relative',
     top: sizes.screenHeight * 0.03,
-    right: sizes.screenWidth * 0.22,
+    right: sizes.screenWidth * 0.19,
     fontSize: fontSize.medium,
     color: colors.secondary,
     fontFamily: fontFamily.appTextLight,
