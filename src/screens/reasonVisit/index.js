@@ -95,7 +95,7 @@ export const ReasonForDcoctor = ({navigation}) => {
           {reason?.map((item, index) => {
             return (
               <View style={styles.pading}>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={() => navigation.navigate('question1')}>
                   <View style={styles.lisbutton}>
                     <Text style={styles.text}>{item?.vr_opts}</Text>
                   </View>
@@ -167,8 +167,8 @@ export const ReasonForDcoctor = ({navigation}) => {
             </TouchableOpacity>
         </View> */}
           <View style={styles.pading}>
-            <TouchableOpacity
-              onPress={() => navigation.navigate('otherreasonscreen')}>
+            <TouchableOpacity onPress={()=>navigation.navigate('otherreasonscreen')}
+                >
               <View style={styles.lisbutton1}>
                 <Text style={styles.text}>Other reason</Text>
               </View>

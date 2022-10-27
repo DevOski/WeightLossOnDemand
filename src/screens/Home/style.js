@@ -255,4 +255,7 @@ export const styles = StyleSheet.create({
     fontFamily: fontFamily.appTextHeading,
     fontWeight: '600',
   },
+  // seeBtn:{
+  //   marginTop:sizes.screenHeight * 0.18
+  // }
 });

@@ -20,15 +20,16 @@ import favourite from '../../assets/assets/favourite.jpeg';
 import book from '../../assets/assets/book.png';
 import question from '../../assets/assets/question.png';
 import share from '../../assets/assets/share.png';
-import { useIsFocused } from '@react-navigation/native';
-import { selectedTrainer } from '../../services/utilities/api/auth';
+import {useIsFocused} from '@react-navigation/native';
+import {selectedTrainer} from '../../services/utilities/api/auth';
 import Loader from '../../components/Loader';
 
-export const ProviderDetail = ({navigation,route}) => {
+export const ProviderDetail = ({navigation, route}) => {
   const [show, setshow] = useState(false);
   const [loader, setLoader] = useState(false);
-  const [trainer,setTrainer] = useState()
-  const {tr_id} = route?.params?.trainer;
+  const [trainer, setTrainer] = useState();
+  const [slot, setSlot] = useState([]);
+  // const {tr_id} = route?.params?.trainer;
   const isVisible = useIsFocused();
 
   const Toogle = () => {
@@ -43,14 +44,12 @@ export const ProviderDetail = ({navigation,route}) => {
     setLoader(true);
     setTimeout(async () => {
       try {
-        let response = await selectedTrainer(tr_id);
-        console.log("works------>>>");
-        console.log('---->>',response.data.data);
-        setTrainer(response.data.data);
-        // setTrainerList(response.data.data);
+        let response = await selectedTrainer(route?.params?.trainer?.tr_id);
+        setTrainer(response.data.trainers);
+        setSlot(response.data.slots);
         setLoader(false);
       } catch (error) {
-        console.log('--->',error);
+        console.log('--->', error);
         setLoader(false);
       }
     }, 100);
@@ -63,11 +62,11 @@ export const ProviderDetail = ({navigation,route}) => {
       <ScrollView>
         <View style={styles.container1}>
           <View style={{justifyContent: 'center', alignItems: 'center'}}>
-            <Text style={styles.hedtext}>Rekha Reddy,MD</Text>
+            <Text style={styles.hedtext}>{trainer?.tr_name}</Text>
           </View>
           <View style={styles.flex}>
             <View>
-              <Text style={styles.providertex}>Medical Doctor</Text>
+              <Text style={styles.providertex}>{trainer?.type}</Text>
             </View>
             <View>
               <View style={styles.img}>
@@ -83,42 +82,43 @@ export const ProviderDetail = ({navigation,route}) => {
             </View>
           </View>
           <View style={styles.flex3}>
-            <View style={styles.avialbox}>
+            {slot?.map((item, index) => {
+              return (
+                <View style={styles.avialbox}>
+                  <TouchableOpacity
+                    onPress={() => navigation.navigate('appointmentreqest',{slot:item})}>
+                    <Text style={styles.tex} >{item?.tr_day}</Text>
+                    <Text style={styles.tex}>{item?.tr_date}</Text>
+                    <Text style={styles.tex}>{item.sl_time}</Text>
+                  </TouchableOpacity>
+                </View>
+              );
+            })}
+
+            {/* <View style={styles.avialbox}>
               <TouchableOpacity
                 onPress={() => navigation.navigate('appointmentreqest')}>
                 <Text style={styles.tex}>Thus</Text>
                 <Text style={styles.tex}>09/29</Text>
                 <Text style={styles.tex}>10:30</Text>
               </TouchableOpacity>
-            </View>
-            <View style={styles.avialbox}>
+            </View> */}
+            {/* <View style={styles.avialbox}>
               <TouchableOpacity
                 onPress={() => navigation.navigate('appointmentreqest')}>
                 <Text style={styles.tex}>Thus</Text>
                 <Text style={styles.tex}>09/29</Text>
                 <Text style={styles.tex}>10:30</Text>
               </TouchableOpacity>
-            </View>
-            <View style={styles.avialbox}>
-              <TouchableOpacity
-                onPress={() => navigation.navigate('appointmentreqest')}>
-                <Text style={styles.tex}>Thus</Text>
-                <Text style={styles.tex}>09/29</Text>
-                <Text style={styles.tex}>10:30</Text>
-              </TouchableOpacity>
-            </View>
+            </View> */}
           </View>
 
           <View style={styles.crd}>
             <Text style={styles.providertex}>Patient</Text>
             <Text style={[styles.subhead, styles.border]}>
-              Dr. Reddy absolutely loves being a primary care physician and
-              focuses on keeping each individual she takes care of, as healthy
-              as possible, both through prevention of illness and treatment of
-              illness when it occurs. She embraces patients and their families,
-              as full partners in health care.
+              {trainer?.tr_desc}
             </Text>
-            {show ? (
+            {/* {show ? (
               <View>
                 <Text style={[styles.subhead, styles.border]}>
                   She completed her Medical Degree from Gandhi Medical College,
@@ -137,10 +137,10 @@ export const ProviderDetail = ({navigation,route}) => {
                   a member of the American Academy of Family Medicine.
                 </Text>
               </View>
-            ) : null}
+            ) : null} */}
 
             <View style={styles.borderbottom}></View>
-            <View>
+            {/* <View>
               {show ? (
                 <TouchableOpacity onPress={Toogle}>
                   <Text style={styles.addanother}>READ LESS</Text>
@@ -150,22 +150,20 @@ export const ProviderDetail = ({navigation,route}) => {
                   <Text style={styles.addanother}>READ MORE</Text>
                 </TouchableOpacity>
               )}
-            </View>
+            </View> */}
           </View>
           <View style={styles.crd}>
-            <Text style={styles.subhead}>focus Areas</Text>
-            <Text style={styles.providertex}>Women'sHealth</Text>
+            <Text style={styles.subhead}>Focus Areas</Text>
+            <Text style={styles.providertex}>{trainer?.focus_area}</Text>
           </View>
           <View style={styles.crd}>
             <Text style={styles.subhead}>Language</Text>
-            <Text style={styles.providertex}>English Hindi</Text>
+            <Text style={styles.providertex}>{trainer?.languages}</Text>
           </View>
 
           <View style={styles.crd}>
             <Text style={styles.subhead}>QUALIFICATIONS</Text>
-            <Text style={styles.providertex}>
-              Board-Certfied,Family Medicine
-            </Text>
+            <Text style={styles.providertex}>{trainer?.qualifications}</Text>
           </View>
         </View>
       </ScrollView>
@@ -178,7 +176,6 @@ export const ProviderDetail = ({navigation,route}) => {
         </TouchableOpacity>
       </View>
       {loader && <Loader />}
-
     </SafeAreaView>
   );
 };
@@ -281,7 +278,8 @@ const styles = StyleSheet.create({
     paddingRight: sizes.screenWidth * 0.1,
   },
   border: {
-    fontSize: fontSize.h5,
+    marginTop: sizes.baseMargin,
+    fontSize: fontSize.h6,
     color: colors.gray,
     fontWeight: 'bold',
     fontFamily: fontFamily.appTextLight,
@@ -318,6 +316,7 @@ const styles = StyleSheet.create({
     fontSize: fontSize.large,
     color: colors.secondary,
     fontWeight: 'bold',
+    textAlign:'center'
   },
   buttnView: {
     marginLeft: sizes.screenWidth * 0.06,

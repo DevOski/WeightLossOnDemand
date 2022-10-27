@@ -144,6 +144,12 @@ import ChooseAppointment from '../../screens/ChooseAppointment';
 import ChooseFollowUp from '../../screens/ChooseFollowUp';
 import Videocalling from '../../screens/videocallingscreen';
 import {useSelector} from 'react-redux';
+import Verificationscreen from '../../screens/verifiedcode';
+import Question from '../../screens/question1';
+import Questiontwo from '../../screens/question2';
+import Questionthree from '../../screens/question3';
+import Questionfour from '../../screens/question4';
+import Questionfive from '../../screens/question5';
 const Stack = createNativeStackNavigator();
 
 const Tab = createMaterialBottomTabNavigator();
@@ -158,8 +164,14 @@ export default function MainNavigator() {
             <Stack.Screen name="Introsliderscreen" component={Intro} />
             <Stack.Screen name="signupscreen" component={SignUp} />
             <Stack.Screen name="signinscreen" component={SignIn} />
+            <Stack.Screen name="RecoverPassword" component={RecoverPassword} />
+            <Stack.Screen name="verifiedcode" component={Verificationscreen} />
             <Stack.Screen name="basicInfoscreens" component={BasicInfoScreen} />
             <Stack.Screen name="wellcomescreen" component={Wellcome} />
+            <Stack.Screen
+              name="EnterNewPassword"
+              component={EnterNewPassword}
+            />
             {/* <Stack.Screen name="BottomNavs" component={MyTabs} /> */}
           </>
         ) : (
@@ -185,7 +197,6 @@ export default function MainNavigator() {
             <Stack.Screen name="surgeriesscreen" component={Surgeries} />
             {/* <Stack.Screen name="Medicalcondionscreen" component={MedicalCondition} /> */}
             <Stack.Screen name="drugalergiesscreen" component={Drugallergies} />
-            {/* <Stack.Screen name="cureentlytakingmed" component={Currently} /> */}
             <Stack.Screen name="createhelthproscreen" component={Healthpro} />
             <Stack.Screen
               name="familymedicalcondition"
@@ -194,14 +205,15 @@ export default function MainNavigator() {
 
             {/* <Stack.Screen name="surgeriesscreen" component={Surgeries} /> */}
 
-            {/* <Stack.Screen name="drugalergiesscreen" component={Drugallergies} /> */}
-            {/* <Stack.Screen name="cureentlytakingmed" component={Currently} /> */}
-            {/* <Stack.Screen name="createhelthproscreen" component={Healthpro} /> */}
 
             <Stack.Screen name="temperature" component={Temperaturescreen} />
             <Stack.Screen name="symptomsscreen" component={SymtomsScreen} />
             <Stack.Screen name="howlongscreen" component={Howlong} />
-            <Stack.Screen name="otherreasonscreen" component={OtherReason} />
+            <Stack.Screen name="question1" component={Question} />
+            <Stack.Screen name="question2" component={Questiontwo} />
+            <Stack.Screen name="question3" component={Questionthree} />
+            <Stack.Screen name="question4" component={Questionfour} />
+            <Stack.Screen name="question5" component={Questionfive} />
             <Stack.Screen name="reasonVisit" component={ReasonForDcoctor} />
             {/* <Stack.Screen name="Setting" component={Setting} /> */}
             <Stack.Screen name="beyondscreen" component={BeyondScreen} />
@@ -367,7 +379,7 @@ export default function MainNavigator() {
               component={HealthMyProviders}
             />
             <Stack.Screen name="Pharmacies" component={Pharmacies} />
-            <Stack.Screen name="RecoverPassword" component={RecoverPassword} />
+            
             <Stack.Screen name="UserVisit" component={UserVisit} />
             <Stack.Screen name="FindingProvider" component={FindingProvider} />
             <Stack.Screen name="ProviderReview" component={ProviderReview} />
@@ -382,7 +394,7 @@ export default function MainNavigator() {
             <Stack.Screen name="PayPal" component={PayPal} />
             <Stack.Screen name="VisitHistory" component={VisitHistory} />
             <Stack.Screen name="HowToSchedule" component={HowToSchedule} />
-            {/* <Stack.Screen name="VisitDetail" component={VisitDetail} /> */}
+            <Stack.Screen name="otherreasonscreen" component={OtherReason} />
             <Stack.Screen name="ChooseProvider" component={ChooseProvider} />
             <Stack.Screen name="Filter" component={Filter} />
             <Stack.Screen name="SelectLanguage" component={SelectLanguage} />

@@ -176,3 +176,34 @@ export async function searchReason(param) {
     param,
   });
 }
+export async function appRating(rate) {
+  return await axios.post(`${baseURL}/app_rating`, {
+    rate,
+  });
+}
+export async function getAllTrainers() {
+  return await axios.get(`${baseURL}/trainers`);
+}
+
+export async function verifyCoupon(token,coupon) {
+  console.log(token,coupon);
+  return await axios.post(
+    `${baseURL}/coupon_check`,
+    {
+      coupon,
+    },
+    {
+      headers: {
+        Authorization: token,
+      },
+    },
+  );
+}
+
+export async function recentVisit(token) {
+  return await axios.get(`${baseURL}/past_visit`, {
+    headers: {
+      Authorization: token,
+    },
+  });
+}

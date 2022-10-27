@@ -10,6 +10,12 @@ function storeUserData(user) {
     user: user,
   };
 }
+function storeCoupon(coupon) {
+  return {
+    type: 'ADD_COUPON',
+    coupon: coupon,
+  };
+}
 
 function removeData() {
   return {
@@ -17,4 +23,4 @@ function removeData() {
   };
 }
 
-export {storeData,storeUserData, removeData};
+export {storeData, storeUserData, storeCoupon, removeData};

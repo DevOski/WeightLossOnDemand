@@ -9,48 +9,38 @@ export const styles = StyleSheet.create({
   },
   padding: {
     padding: sizes.baseMargin,
-    height: sizes.screenHeight,
   },
-  couponHead: {
-    fontSize: fontSize.h6,
-    fontWeight: 'bold',
-    color: colors.primary,
-    fontFamily: fontFamily.appTextHeading,
-    paddingLeft: sizes.screenHeight * 0.01,
-  },
-  shareText: {
-    paddingTop: sizes.screenHeight * 0.01,
-    paddingLeft: sizes.screenHeight * 0.01,
-    fontSize: fontSize.medium,
-    width: sizes.screenWidth * 0.8,
+  text: {
     color: colors.primary,
     fontFamily: fontFamily.appTextLight,
+    fontSize:fontSize.h4
+  },
+  field: {
+    backgroundColor: colors.lightGray,
+    fontSize: fontSize.large,
+    fontFamily: fontFamily.appTextRegular,
+  },
+  width: {
+    width: sizes.screenWidth * 0.9,
+    alignSelf: 'center',
+    paddingTop:sizes.screenHeight*0.04
+  },
+  paddingTop: {
+    paddingTop: sizes.screenHeight * 0.04,
   },
   buttonView: {
-    alignSelf: 'center',
     backgroundColor: colors.secondary,
     height: sizes.screenHeight * 0.06,
-    width: sizes.screenWidth * 0.92,
+    width: sizes.screenWidth * 0.9,
     alignItems: 'center',
     justifyContent: 'center',
+    alignSelf: 'center',
   },
   buttonText: {
     color: colors.white,
     fontSize: fontSize.h6,
     fontFamily: fontFamily.appTextHeading,
     fontWeight: '600',
-  },
-  top: {
-    top: sizes.screenHeight * 0.05,
-  },
-  field: {
-    backgroundColor: colors.lightGray,
-    fontSize: fontSize.extraLarge,
-    fontFamily:fontFamily.appTextRegular
-  },
-  color: {
-    backgroundColor: '#fafafa',
-    height: sizes.screenHeight,
   },
   modalView: {
     width: sizes.screenWidth,
@@ -81,16 +71,23 @@ export const styles = StyleSheet.create({
     fontFamily: fontFamily.appTextLight,
     paddingLeft: sizes.screenWidth * 0.035,
   },
-  buttonText: {
-    color: colors.white,
-    fontSize: fontSize.h6,
+ 
+  link: {
+    color: colors.modalLink,
+    textDecorationLine: 'underline',
+    fontFamily: fontFamily.appTextMedium,
   },
-  buttonView: {
-    backgroundColor: colors.secondary,
-    height: sizes.screenHeight * 0.06,
-    width: sizes.screenWidth * 0.89,
-    alignItems: 'center',
-    alignSelf:'center',
-    justifyContent: 'center',
+ 
+  codeFieldRoot: {marginTop:sizes.screenHeight*0.05},
+  cell: {
+    width: sizes.screenWidth*0.08,
+    height: sizes.screenHeight*0.06,
+    fontSize:fontSize.large,
+    borderBottomWidth:1,
+    borderColor: '#00000030',
+    textAlign: 'center',
+  },
+  focusCell: {
+    borderColor: '#000',
   },
 });

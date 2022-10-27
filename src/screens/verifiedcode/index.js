@@ -16,11 +16,23 @@ import {TextInput} from 'react-native-paper';
 import {colors, sizes} from '../../services';
 import Modal from 'react-native-modal';
 import {openInbox} from 'react-native-email-link';
-
-export default function RecoverPassword({navigation}) {
+import {
+  CodeField,
+  Cursor,
+  useBlurOnFulfill,
+  useClearByFocusCell,
+} from 'react-native-confirmation-code-field';
+export default function Verificationscreen({navigation}) {
+  const CELL_COUNT = 4;
   const [email, setEmail] = useState('');
   const [isModalVisible, setIsModalVisible] = useState(false);
-
+  const [value, setValue] = useState('');
+  const ref = useBlurOnFulfill({value, cellCount: CELL_COUNT});
+  const [props, getCellOnLayoutHandler] = useClearByFocusCell({
+    value,
+    setValue,
+  });
+console.log(value,"'-------");
   const toggleModal = () => {
     setIsModalVisible(!isModalVisible);
   };
@@ -31,7 +43,7 @@ export default function RecoverPassword({navigation}) {
   
   return (
     <SafeAreaView>
-      <Header title={'Recover Password'} />
+      <Header title={'Verification'} />
       <ScrollView style={styles.color}>
         <View style={styles.padding}>
           <Text style={styles.text}>
@@ -39,19 +51,34 @@ export default function RecoverPassword({navigation}) {
             your password:
           </Text>
           <View style={styles.width}>
-            <TextInput
-              mode="contain"
-              label={'Email address'}
-              activeUnderlineColor={colors.secondary}
-              style={styles.field}
-              onChangeText={text => setEmail(text)}
-              value={email}
-            />
+          <CodeField
+        ref={ref}
+        {...props}
+        // Use `caretHidden={false}` when users can't paste a text value, because context menu doesn't appear
+        value={value}
+        onChangeText={setValue}
+        cellCount={CELL_COUNT}
+        rootStyle={styles.codeFieldRoot}
+        keyboardType="number-pad"
+        textContentType="oneTimeCode"
+        renderCell={({index, symbol, isFocused}) => (
+          <Text
+            key={index}
+            style={[styles.cell, isFocused && styles.focusCell]}
+            onLayout={getCellOnLayoutHandler(index)}>
+            {symbol || (isFocused ? <Cursor /> : null)}
+          </Text>
+        )}
+      />
+           
+           
+            
           </View>
+          
           <View style={styles.paddingTop}>
             <TouchableOpacity onPress={() => setIsModalVisible(true)}>
               <View style={styles.buttonView}>
-                <Text style={styles.buttonText}>Recover my password</Text>
+                <Text style={styles.buttonText}>Verified</Text>
               </View>
             </TouchableOpacity>
           </View>
@@ -69,7 +96,7 @@ export default function RecoverPassword({navigation}) {
                   . Use the link in that email to reset your password
                 </Text>
               </View>
-              <TouchableOpacity onPress={()=>navigation.navigate('verifiedcode')}>
+              <TouchableOpacity onPress={()=>navigation.navigate('EnterNewPassword')}>
                 <View style={styles.buttonView}>
                   <Text style={styles.buttonText}>OK</Text>
                 </View>

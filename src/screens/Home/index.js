@@ -1,4 +1,5 @@
-import { useIsFocused } from '@react-navigation/native';
+import {useIsFocused} from '@react-navigation/native';
+import moment from 'moment';
 import React, {useEffect, useRef, useState} from 'react';
 import {
   Image,
@@ -12,7 +13,11 @@ import {
 import {useDispatch, useSelector} from 'react-redux';
 import GetCare from '../../components/GetCare';
 import {sizes} from '../../services';
-import {getUser} from '../../services/utilities/api/auth';
+import {
+  getAllTrainers,
+  getUser,
+  recentVisit,
+} from '../../services/utilities/api/auth';
 import images from '../../services/utilities/images';
 import {storeUserData} from '../../store/actions';
 import {styles} from './style';
@@ -28,19 +33,43 @@ export default function Home({navigation}) {
     // 'Text5',
   ]);
   const [imgActive, setImgActive] = useState(0);
+  const [trainerList, setTrainerList] = useState([]);
+  const [pastVisit, setPastVisit] = useState();
+  const [visitDetails, setVisitDetails] = useState();
   const token = useSelector(state => state.token);
   const dispatch = useDispatch();
   const isVisible = useIsFocused();
 
   useEffect(() => {
     getUserDetails();
+    getTrainers();
   }, [isVisible]);
+  useEffect(() => {
+    getPastVisit();
+  }, []);
 
   const getUserDetails = async () => {
     try {
       let response = await getUser(token);
       setUserName(response.data.data.first_name);
       dispatch(storeUserData(response.data.data));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const getTrainers = async () => {
+    try {
+      let response = await getAllTrainers();
+      setTrainerList(response.data.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const getPastVisit = async () => {
+    try {
+      let response = await recentVisit(token);
+      setPastVisit(response.data.trainer[0]);
+      setVisitDetails(response.data);
     } catch (error) {
       console.log(error);
     }
@@ -220,20 +249,30 @@ export default function Home({navigation}) {
                     <Text style={[styles.heading, styles.top]}>
                       Meet Our Professionals
                     </Text>
+                    {trainerList?.map((item, index) => {
+                      if (index < 6) {
+                        return (
+                          <View
+                            key={index}
+                            style={[styles.row2, styles.paddingLeft]}>
+                            <Image
+                              source={images.provider1}
+                              style={styles.providerImg}
+                            />
+                            <View>
+                              <Text style={styles.providerHead}>
+                                {item.tr_name}
+                              </Text>
+                              <Text style={styles.providerProfession}>
+                                {item?.type}
+                              </Text>
+                            </View>
+                          </View>
+                        );
+                      }
+                    })}
 
-                    <View style={[styles.row2, styles.paddingLeft]}>
-                      <Image
-                        source={images.provider1}
-                        style={styles.providerImg}
-                      />
-                      <View>
-                        <Text style={styles.providerHead}>Kiki Lwin, MD</Text>
-                        <Text style={styles.providerProfession}>
-                          Medical Doctor
-                        </Text>
-                      </View>
-                    </View>
-                    <View style={[styles.row2, styles.paddingLeft]}>
+                    {/* <View style={[styles.row2, styles.paddingLeft]}>
                       <Image
                         source={images.provider2}
                         style={styles.providerImg2}
@@ -300,7 +339,7 @@ export default function Home({navigation}) {
                           Medical Doctor
                         </Text>
                       </View>
-                    </View>
+                    </View>*/}
                     <View style={styles.seeBtn}>
                       <TouchableOpacity
                         onPress={() => navigation.navigate('meetOurproviders')}>
@@ -326,27 +365,28 @@ export default function Home({navigation}) {
                         style={styles.providerImg}
                       />
                       <View>
-                        <Text style={styles.providerHead}>Trainer</Text>
-                        <Text style={styles.providerProfession}>
-                          Townsend-scott,MD
+                        <Text style={styles.providerHead}>
+                          {pastVisit?.tr_name}
                         </Text>
                         <Text style={styles.providerProfession}>
-                          sep 12,2022
+                          {/* Townsend-scott,MD */}
+                          {pastVisit?.type}
+                        </Text>
+                        <Text style={styles.providerProfession}>
+                          {/* sep 12,2022 */}
+                          {moment(pastVisit?.updated_at).format('DD/MM/YYYY')}
                         </Text>
                       </View>
                     </View>
                     <View>
-                      <Text style={styles.he}>INSTRUCTIONS:</Text>
+                      <Text style={styles.he}>DESCRIPTION:</Text>
                     </View>
                     <View style={styles.het1}>
-                      <Text style={styles.het}>
-                        Recent Visit Please double-check your preferences, as
-                        our stay was cut short. Check your connection and make
-                        sure no other apps are operating in the background. The
-                        members of our customer service team are ready at all
-                        hours of the day and night to restore your service. If
-                        you need help, you can contact us at 1-800-997-6196 or
-                        support@weightlossondemand.com. Visit Details
+                      <Text
+                        style={styles.het}
+                        numberOfLines={9}
+                        ellipsizeMode="tail">
+                        {pastVisit?.tr_desc}
                       </Text>
                     </View>
                     <View style={styles.seeBtn}>

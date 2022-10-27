@@ -41,9 +41,7 @@ export const OtherReason = ({navigation,route}) => {
         
 
         {text ? (
-          <TouchableOpacity onPress={() => navigation.navigate('howlongscreen',{
-            GoogleFit:route?.params?.GoogelFit
-          })}>
+          <TouchableOpacity onPress={() => navigation.navigate('question1')}>
             <View style={styles.bdiv}>
               <Text style={styles.btext}>›</Text>
             </View>

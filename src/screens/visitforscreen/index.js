@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 const deviceHeight = Dimensions.get('window').height;
 const deviceWidth = Dimensions.get('window').width;
 import {
@@ -19,14 +19,38 @@ import {colors, fontFamily, fontSize, sizes} from '../../services';
 
 import Header from '../../components/Header';
 import Modal from 'react-native-modal';
+import {getUser} from '../../services/utilities/api/auth';
+import {useIsFocused} from '@react-navigation/native';
+import {useSelector} from 'react-redux';
 
 export const VisitScreen = ({navigation, route}) => {
   const [isModalVisible, setModalVisible] = useState(false);
+  const [userName, setUserName] = useState('');
+  const [middleName, setMiddleName] = useState('');
+  const [lastName, setLastName] = useState('');
+
+  const token = useSelector(state => state.token);
+  const isVisible = useIsFocused();
 
   const toggleModal = () => {
     setModalVisible(!isModalVisible);
   };
-  console.log(route?.params?.to);
+
+  useEffect(() => {
+    getUserDetails();
+  }, [isVisible]);
+
+  const getUserDetails = async () => {
+    try {
+      let response = await getUser(token);
+      setUserName(response.data.data.first_name);
+      setMiddleName(response.data.data.middle_name);
+      setLastName(response.data.data.last_name);
+      // dispatch(storeUserData(response.data.data));
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView>
@@ -44,16 +68,19 @@ export const VisitScreen = ({navigation, route}) => {
                 onPress={() =>
                   route?.params?.to
                     ? navigation.navigate(route?.params?.to, {
-                        GoogelFit: route?.params?.GoogelFit
+                        GoogelFit: route?.params?.GoogelFit,
                       })
                     : navigation.navigate('correctinfoscreen')
                 }>
                 <View style={[styles.row, styles.card]}>
                   <View style={styles.namefirt}>
-                    <Text style={styles.fname}>J</Text>
+                    <Text style={styles.fname}>{userName.charAt(0)}</Text>
                   </View>
                   <View>
-                    <Text style={styles.cardText}>{'   '}Jhone</Text>
+                    <Text style={styles.cardText}>
+                      {'   '}
+                      {userName} {middleName} {lastName}
+                    </Text>
                   </View>
                 </View>
               </TouchableOpacity>

@@ -17,33 +17,37 @@ import {colors, sizes, fontSize, fontFamily} from '../../services';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {TextInput} from 'react-native-paper';
 
-export const AppointmentReqest = ({navigation}) => {
+export const AppointmentReqest = ({navigation, route}) => {
+  console.log(route?.params?.slot);
   return (
     <SafeAreaView style={styles.container}>
-      <Header skip={true} title={'Appointment Window'} />
+      <Header title={'Appointment Window'} />
       <View style={styles.bg}>
         <View style={styles.intext}>
           <Text style={styles.tx}>Your Appointment is </Text>
           <Text style={styles.tx}> scheduled for </Text>
         </View>
         <View style={styles.intext}>
-          <Text style={styles.tx}>11:30 PM </Text>
-          <Text style={styles.tx}>on Wed,Nov 9 </Text>
+          <Text style={styles.tx}>{route?.params?.slot.sl_time} </Text>
+          <Text style={styles.tx}>
+            on {route?.params?.slot.tr_day},{route?.params?.slot.tr_date}
+          </Text>
         </View>
       </View>
 
       <View>
-        <Text style={styles.tx1}>We will hold your appointment request for 20 minutes while you answer a few question 
-
+        <Text style={styles.tx1}>
+          We will hold your appointment request for 20 minutes while you answer
+          a few question
         </Text>
       </View>
       <View style={styles.top}>
-          <TouchableOpacity onPress={()=>navigation.navigate('reasonVisit')}>
-            <View style={styles.buttonView}>
-              <Text style={styles.buttonText}>Continue</Text>
-            </View>
-          </TouchableOpacity>
-        </View>
+        <TouchableOpacity onPress={() => navigation.navigate('reasonVisit')}>
+          <View style={styles.buttonView}>
+            <Text style={styles.buttonText}>Continue</Text>
+          </View>
+        </TouchableOpacity>
+      </View>
     </SafeAreaView>
   );
 };
@@ -66,13 +70,13 @@ const styles = StyleSheet.create({
   tx: {
     fontSize: fontSize.extraLarge,
     color: colors.white,
-    fontFamily:fontFamily.appTextHeading,
+    fontFamily: fontFamily.appTextHeading,
   },
   tx1: {
-    fontFamily:fontFamily.appTextHeading,
+    fontFamily: fontFamily.appTextHeading,
     fontSize: fontSize.extraLarge,
     color: colors.black,
-    padding:sizes.screenWidth*0.07
+    padding: sizes.screenWidth * 0.07,
   },
   top: {
     marginTop: sizes.screenHeight * 0.03,

@@ -14,10 +14,42 @@ import images from '../../services/utilities/images';
 import {styles} from './style';
 import {TextInput} from 'react-native-paper';
 import {colors} from '../../services';
+import {useSelector} from 'react-redux';
+import Loader from '../../components/Loader';
+import {signIn} from '../../services/utilities/api/auth';
+import Error from '../../components/Error';
 
-export default function ChangePassword({navigation,route}) {
+export default function ChangePassword({navigation, route}) {
   const [showPassword, setShowPassword] = useState(true);
   const [password, setPassword] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+  const [loader, setLoader] = useState(false);
+  const [error, setError] = useState(false);
+
+  const email = useSelector(state => state.user.email);
+  const verifyPassword = () => {
+    try {
+      setLoader(true);
+      setTimeout(async () => {
+        let response = await signIn(email, password);
+        setLoader(false);
+        if (response.data.message == 'user found') {
+          navigation.navigate(route?.params?.screenName);
+          setError(false);
+          setLoader(false);
+        } else {
+          setError(true);
+          setErrorMessage('Invalid password');
+          setLoader(false);
+        }
+      }, 100);
+    } catch (error) {
+      console.log('err', error);
+      setError(true);
+      setErrorMessage(error.message);
+      setLoader(false);
+    }
+  };
   return (
     <SafeAreaView>
       <ScrollView style={styles.color}>
@@ -29,8 +61,8 @@ export default function ChangePassword({navigation,route}) {
         </View>
         <View style={[styles.paddingLeft]}>
           <Text style={styles.text}>
-            In order to update your {route?.params?.title}, please verify your current
-            password.
+            In order to update your {route?.params?.title}, please verify your
+            current password.
           </Text>
         </View>
         <View style={styles.padding}>
@@ -51,7 +83,9 @@ export default function ChangePassword({navigation,route}) {
             }
           />
           <View style={styles.paddingTop}>
-            <TouchableOpacity onPress={()=>navigation.navigate(route?.params?.screenName)} disabled={password !== '' ? false : true}>
+            <TouchableOpacity
+              onPress={verifyPassword}
+              disabled={password !== '' ? false : true}>
               <View
                 style={
                   password !== '' ? styles.buttonView : styles.disabledView
@@ -61,6 +95,8 @@ export default function ChangePassword({navigation,route}) {
             </TouchableOpacity>
           </View>
         </View>
+        {loader && <Loader />}
+        {error && <Error title={'Oops!'} message={errorMessage} />}
       </ScrollView>
     </SafeAreaView>
   );
