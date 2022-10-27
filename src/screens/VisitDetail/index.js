@@ -58,7 +58,7 @@ export const VisitDetail = ({navigation, route}) => {
           </View>
           <View style={styles.flex}>
             <View>
-              <Text style={styles.providertex}>PROVIDER</Text>
+              <Text style={styles.providertex}>TRAINER</Text>
               <Text style={styles.subhead}>{trainer?.tr_name}</Text>
             </View>
             <View>
