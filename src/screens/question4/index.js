@@ -17,6 +17,7 @@ import {colors, sizes} from '../../services';
 import Modal from 'react-native-modal';
 import {openInbox} from 'react-native-email-link';
 import { CustomTextFiel } from '../../component/textFiled';
+import { getQuestion } from '../../services/utilities/api/auth';
 
 export default function Questionfour({navigation,route}) {
  

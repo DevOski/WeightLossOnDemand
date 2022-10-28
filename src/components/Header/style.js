@@ -78,7 +78,7 @@ export const styles = StyleSheet.create({
     // zIndex: 1,
   },
   leftDone: {
-    left: sizes.screenWidth * 0.37,
+    left: sizes.screenWidth * 0.20,
   },
   filterLeft: {
     left: sizes.screenWidth * 0.22,

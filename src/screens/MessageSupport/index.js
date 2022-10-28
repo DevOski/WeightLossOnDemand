@@ -15,7 +15,7 @@ import {styles} from './style';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {colors} from '../../services';
 
-export default function MessageSupport() {
+export default function MessageSupport({navigation}) {
   return (
     <SafeAreaView>
       <ScrollView style={styles.color}>
@@ -32,7 +32,7 @@ export default function MessageSupport() {
           </Text>
         </View>
         <View style={styles.paddingTop}>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={()=>navigation.navigate('chatscreen')}>
             <View style={styles.buttonView}>
               <Text style={styles.buttonText}> Ask a new question</Text>
             </View>

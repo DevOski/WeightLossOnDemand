@@ -35,8 +35,8 @@ const Intro = ({navigation}) => {
   const slides = [
     {id: 1, name: <Component />},
     {id: 2, name: <Componentsecond />},
-    {id: 3, name: <Componentthrd />},
-    {id: 4, name: <ComponentFour />},
+    // {id: 3, name: <Componentthrd />},
+    {id: 3, name: <ComponentFour />},
   ];
   const [imgActive, setImgActive] = useState(0);
 
@@ -145,7 +145,7 @@ const styles = StyleSheet.create({
     //  marginTop: deviceHeight * 0.09,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    paddingLeft: deviceWidth * 0.05,
+    paddingLeft: deviceWidth * 0.07,
     paddingRight: deviceWidth * 0.05,
     // borderTopWidth: deviceWidth * 0.001,
     //  paddingTop: deviceHeight * 0.02,

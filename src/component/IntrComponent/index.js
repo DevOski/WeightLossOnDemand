@@ -246,9 +246,9 @@ const styles = StyleSheet.create({
   },
   kidd: {
     position: 'absolute',
-    top: deviceHeight * 0.2,
+    top: deviceHeight * 0.10,
     width: deviceWidth,
-    height: deviceHeight * 0.4,
+    height: deviceHeight * 0.5,
   },
   but: {
     backgroundColor: colors.secondary,

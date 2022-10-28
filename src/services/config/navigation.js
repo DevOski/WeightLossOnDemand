@@ -150,6 +150,7 @@ import Questiontwo from '../../screens/question2';
 import Questionthree from '../../screens/question3';
 import Questionfour from '../../screens/question4';
 import Questionfive from '../../screens/question5';
+import Chat from '../../screens/chatscreen';
 const Stack = createNativeStackNavigator();
 
 const Tab = createMaterialBottomTabNavigator();
@@ -203,7 +204,7 @@ export default function MainNavigator() {
               component={FamilyMedicalconditions}
             />
 
-            {/* <Stack.Screen name="surgeriesscreen" component={Surgeries} /> */}
+            <Stack.Screen name="chatscreen" component={Chat} />
 
 
             <Stack.Screen name="temperature" component={Temperaturescreen} />

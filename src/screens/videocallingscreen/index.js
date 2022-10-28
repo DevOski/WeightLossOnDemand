@@ -21,9 +21,9 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import Entypo from 'react-native-vector-icons/Entypo';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 const appId = '270b512970864b0a93b14650e52e8f9c';
-const channelName = 'testing';
+const channelName = 'newVisit';
 const token =
-  '007eJxTYHiuI/Neje/LluX/n99j069IWRf2Y+5U9+KG1q1mlu/ZCrMVGIzMDZJMDY0szQ0szEySDBItjZMMTcxMDVJNjVIt0iyTZ3oFJq8JZGSwj5jMxMgAgSA+O0NJanFJZl46AwMAv34gYg==';
+  '007eJxTYPj52X/29hrrxXcVZnh57To3+5CfeMi9qiXG5xV8Tpe1dFQoMBiZGySZGhpZmhtYmJkkGSRaGicZmpiZGqSaGqVapFkmx96MTm4IZGTY/ZOJhZEBAkF8Doa81PKwzOLMEgYGACVeIdY=';
 const uid = 0;
 
 export default function Videocalling({navigation}) {
@@ -134,19 +134,13 @@ export default function Videocalling({navigation}) {
       {/* <ScrollView
             style={styles.scroll}
             contentContainerStyle={styles.scrollContainer}>  */}
-      {isJoined ? (
-        
-          <React.Fragment key={0}>
-            <RtcSurfaceView canvas={{uid: 0}} style={styles.videoView1} />
-            {/* <Text>Local user uid: {uid}</Text> */}
-          </React.Fragment>
-      
-      ) : (
-        <Text></Text>
-      )}
+     
       {isJoined && remoteUid !== 0 ? (
-        <React.Fragment key={remoteUid}>
+        
+        <React.Fragment key={remoteUid} >
+          <View >
           <RtcSurfaceView canvas={{uid: remoteUid}} style={styles.videoView} />
+        </View>
           <View
             style={{
               flexDirection: 'row',
@@ -193,8 +187,17 @@ export default function Videocalling({navigation}) {
       ) : (
         <Text>{/* Waiting for a remote user to join */}</Text>
       )}
-      {/* <Text style={styles.info}>{message}</Text> */}
-      {/* </ScrollView> */}
+       {isJoined ? (
+        
+        <React.Fragment key={0}>
+          <RtcSurfaceView canvas={{uid: 0}} style={styles.videoView1} />
+          {/* <Text>Local user uid: {uid}</Text> */}
+        </React.Fragment>
+    
+    ) : (
+      <Text></Text>
+    )}
+   
     </SafeAreaView>
   );
 }
@@ -241,8 +244,8 @@ const styles = StyleSheet.create({
   scrollContainer: {alignItems: 'center'},
   videoView: {
     width: '100%',
-    zIndex: 1,
-    height: sizes.screenHeight,
+    zIndex: -1,
+    height: sizes.screenHeight
     
     // bottom:34
   },
@@ -250,10 +253,10 @@ const styles = StyleSheet.create({
     width: '50%',
     height: sizes.screenHeight * 0.25,
     position: 'absolute',
-    // marginTop:8,
+    marginTop:8,
     top: sizes.screenHeight * 0.66,
     right: sizes.screenHeight * 0.02,
-    zIndex: -0,
+    zIndex: 111,
   },
   btnContainer: {
     flexDirection: 'row',
