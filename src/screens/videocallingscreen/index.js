@@ -20,10 +20,13 @@ import Header from '../../components/Header';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Entypo from 'react-native-vector-icons/Entypo';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import {useDispatch, useSelector} from 'react-redux';
+import {getUser} from '../../services/utilities/api/auth';
+import {removeData} from '../../store/actions';
 const appId = '270b512970864b0a93b14650e52e8f9c';
 const channelName = 'newVisit';
 const token =
-  '007eJxTYPj52X/29hrrxXcVZnh57To3+5CfeMi9qiXG5xV8Tpe1dFQoMBiZGySZGhpZmhtYmJkkGSRaGicZmpiZGqSaGqVapFkmx96MTm4IZGTY/ZOJhZEBAkF8Doa81PKwzOLMEgYGACVeIdY=';
+'007eJxTYPj52X/29hrrxXcVZnh57To3+5CfeMi9qiXG5xV8Tpe1dFQoMBiZGySZGhpZmhtYmJkkGSRaGicZmpiZGqSaGqVapFkmx96MTm4IZGTY/ZOJhZEBAkF8Doa81PKwzOLMEgYGACVeIdY='
 const uid = 0;
 
 export default function Videocalling({navigation}) {
@@ -31,8 +34,9 @@ export default function Videocalling({navigation}) {
   const [isJoined, setIsJoined] = useState(false); // Indicates if the local user has joined the channel
   const [remoteUid, setRemoteUid] = useState(0); // Uid of the remote user
   const [message, setMessage] = useState(''); //
+  const [channel_name, setChannelName] = useState('');
   var isMuted = false;
-
+  const usertoken = useSelector(state => state.token);
   const showMessage = msg => {
     setMessage(msg);
   };
@@ -47,10 +51,22 @@ export default function Videocalling({navigation}) {
   };
 
   useEffect(() => {
-    join();
+    // join();
     setupVideoSDKEngine();
-  }, [isJoined]);
+    getUserDetails();
+  }, []);
 
+  const getUserDetails = async () => {
+    try {
+      let response = await getUser(usertoken);
+      setChannelName(response.data.data.channel);
+      console.log(response.data.data.channel);
+      // setUserName(response.data.data.first_name);
+      // dispatch(storeUserData(response.data.data));
+    } catch (error) {
+      console.log(error);
+    }
+  };
   const setupVideoSDKEngine = async () => {
     try {
       // use the helper function to get permissions
@@ -81,7 +97,7 @@ export default function Videocalling({navigation}) {
   };
 
   const join = async () => {
-    console.log('working');
+    // console.log('working');
     if (isJoined) {
       return;
     }
@@ -91,10 +107,10 @@ export default function Videocalling({navigation}) {
       );
 
       agoraEngineRef.current?.startPreview();
-      agoraEngineRef.current?.joinChannel(token, channelName, uid, {
+      agoraEngineRef.current?.joinChannel(token, channel_name, uid, {
         clientRoleType: ClientRoleType.ClientRoleBroadcaster,
       });
-      console.log('work---->>', token, channelName, uid);
+      console.log('work---->>', token, channel_name, uid);
     } catch (e) {
       console.log(e);
     }
@@ -124,9 +140,9 @@ export default function Videocalling({navigation}) {
       {/* <Header /> */}
       {/* <Text style={styles.head}>Agora Video Calling Quickstart</Text>   */}
       {/* <View style={styles.btnContainer}> */}
-      {/* <Text onPress={join} style={styles.button}>
-          Join
-        </Text> */}
+      <Text onPress={join} style={styles.button}>
+        Join
+      </Text>
       {/* <Text onPress={leave} style={styles.button}>
           Leave
         </Text> */}
@@ -134,7 +150,14 @@ export default function Videocalling({navigation}) {
       {/* <ScrollView
             style={styles.scroll}
             contentContainerStyle={styles.scrollContainer}>  */}
-     
+      {isJoined ? (
+        <React.Fragment key={0}>
+          <RtcSurfaceView canvas={{uid: 0}} style={styles.videoView1} />
+          {/* <Text>Local user uid: {uid}</Text> */}
+        </React.Fragment>
+      ) : (
+        <Text></Text>
+      )}
       {isJoined && remoteUid !== 0 ? (
         
         <React.Fragment key={remoteUid} >
@@ -148,8 +171,7 @@ export default function Videocalling({navigation}) {
               paddingRight: sizes.screenWidth * 0.19,
               marginTop: sizes.screenHeight * 0.94,
               position: 'absolute',
-              zIndex:9,
-
+              zIndex: 9,
             }}>
             <Ionicons
               name="ios-call-outline"
@@ -217,7 +239,7 @@ const styles = StyleSheet.create({
     // bottom: sizes.screenHeight * 0.15,
     // left: sizes.screenWidth * 0.1,
     textAlign: 'center',
-    marginLeft:sizes.screenWidth*0.09,
+    marginLeft: sizes.screenWidth * 0.09,
   },
   button1: {
     width: sizes.screenWidth * 0.2,
