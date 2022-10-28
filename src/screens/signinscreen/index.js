@@ -87,8 +87,8 @@ export const SignIn = ({navigation}) => {
           setLoader(false);
           if (response.data.message == 'user found') {
             console.log(response.data.token);
-            // console.log(response.data.data.fingerprint);
             dispatch(storeData(response.data.token));
+            // console.log(response.data.data.fingerprint);
             // if (response.data.data.fingerprint == 1) {
             //   handleBiometric();
             // }
