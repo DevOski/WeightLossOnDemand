@@ -52,9 +52,9 @@ export default function MyHealth({navigation}) {
           </TouchableOpacity>
         </View>
         <View style={styles.padding}>
-          <TouchableOpacity onPress={() => navigation.navigate('HealthVisits')}>
+        <TouchableOpacity onPress={() => navigation.navigate('HealthVisits')}>
             <View style={[styles.row, styles.card]}>
-              <Text style={styles.cardText}>Visits</Text>
+              <Text style={styles.cardText}>Recent Visit</Text>
               <View>
                 <Text style={styles.symbol}> ›</Text>
               </View>

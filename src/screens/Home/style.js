@@ -76,6 +76,11 @@ export const styles = StyleSheet.create({
     shadowRadius: 3.84,
     elevation: 5,
   },
+  cardView2:{
+    width: sizes.screenWidth * 0.9,
+    marginRight: sizes.screenWidth * 0.02,
+    marginLeft: sizes.screenWidth * 0.04,
+  },
   bg: {
     height: sizes.screenHeight * 0.72,
     width: sizes.screenWidth * 0.9,

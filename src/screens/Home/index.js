@@ -29,7 +29,6 @@ export default function Home({navigation}) {
     'Text2',
     'Text3',
     'Text3',
-    'Text4',
     // 'Text5',
   ]);
   const [imgActive, setImgActive] = useState(0);
@@ -67,6 +66,7 @@ export default function Home({navigation}) {
     try {
       let response = await recentVisit(token);
       setPastVisit(response.data.trainer[0]);
+      setItem(["item1","item2","item3","item4","item5"])
       setVisitDetails(response.data);
     } catch (error) {
       console.log(error);
@@ -355,7 +355,7 @@ export default function Home({navigation}) {
                     </View>
                   </View>
                 )}
-                {index == 4 && (
+                {index == 4 &&  (
                   <View key={index} style={[styles.padding]}>
                     <Text style={[styles.heading, styles.top]}>
                       Recent Visit
