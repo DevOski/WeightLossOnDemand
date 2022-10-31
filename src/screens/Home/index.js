@@ -43,10 +43,8 @@ export default function Home({navigation}) {
   useEffect(() => {
     getUserDetails();
     getTrainers();
-  }, [isVisible]);
-  useEffect(() => {
     getPastVisit();
-  }, []);
+  }, [isVisible]);
 
   const getUserDetails = async () => {
     try {
@@ -150,7 +148,9 @@ export default function Home({navigation}) {
                     </Text>
                     <View style={styles.row2}>
                       <Text style={styles.addIcon}>●</Text>
-                      <Text style={styles.addText}>Physical fitness trainer</Text>
+                      <Text style={styles.addText}>
+                        Physical fitness trainer
+                      </Text>
                     </View>
                     <View style={styles.row2}>
                       <Text style={styles.addIcon}>●</Text>
@@ -158,7 +158,9 @@ export default function Home({navigation}) {
                     </View>
                     <View style={styles.row2}>
                       <Text style={styles.addIcon}>●</Text>
-                      <Text style={styles.addText}>Lifestyle personal trainers</Text>
+                      <Text style={styles.addText}>
+                        Lifestyle personal trainers
+                      </Text>
                     </View>
                     <View style={styles.row2}>
                       <Text style={styles.addIcon}>●</Text>

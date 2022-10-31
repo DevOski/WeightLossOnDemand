@@ -56,7 +56,7 @@ export default function Header({
           <View style={styles.skipView}>
             <TouchableOpacity onPress={() => navigation.goBack()}>
               <View style={[styles.row, styles.leftDone]}>
-                <Text style={styles.title2}>{'   '} Done</Text>
+                <Text style={styles.title2}>Done</Text>
               </View>
             </TouchableOpacity>
           </View>
