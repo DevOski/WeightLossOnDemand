@@ -66,26 +66,26 @@ const Componentsecond = () => {
         <View style={styles.three1}>
           <Image
             style={{width: '100%', height: '100%', borderRadius: 100}}
-            source={ladyy}
+            source={kiid}
           />
         </View>
         <View style={styles.three}>
           <Image
             style={{width: '100%', height: '100%', borderRadius: 200}}
-            source={ladyy}
+            source={intro1}
           />
         </View>
         <View style={styles.three3}>
           <Image
             style={{width: '100%', height: '100%', borderRadius: 100}}
-            source={ladyy}
+            source={kiid}
           />
         </View>
       </View>
 
       <View style={styles.margintop}>
         <View style={styles.screnintro2img}>
-          <Image style={{width: '100%', height: '100%'}} source={ss} />
+          <Image style={{width: '100%', height: '100%'}} source={kiid} />
         </View>
       </View>
       <View style={styles.payragraphcon}>
@@ -220,8 +220,8 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   three: {
-    width: deviceWidth * 0.3,
-    height: deviceHeight * 0.15,
+    width: deviceWidth * 0.33,
+    height: deviceHeight * 0.18,
   },
   three1: {
     width: deviceWidth * 0.15,

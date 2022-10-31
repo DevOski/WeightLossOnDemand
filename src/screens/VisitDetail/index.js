@@ -158,7 +158,7 @@ export const VisitDetail = ({navigation, route}) => {
               </TouchableOpacity>
             </View>
             {/* <View style={styles.flex2}>
-              <View style={styles.imgicon}>
+              <View style={styles.imgicon}>  
                 <Image style={{width: '100%', height: '100%'}} source={share} />
               </View>
               <TouchableOpacity

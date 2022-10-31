@@ -9,6 +9,7 @@ import {
   Text,
   TouchableOpacity,
   View,
+  KeyboardAvoidingView
 } from 'react-native';
 import Header from '../../components/Header';
 import images from '../../services/utilities/images';
@@ -48,13 +49,13 @@ export default function Chat({navigation, route}) {
     const keyboardDidShowListener = Keyboard.addListener(
       'keyboardDidShow',
       () => {
-        console.log('khula hwa ha ustaaad'); // or some other action
+        setKeyboardVisible(false); // or some other action
       },
     );
     const keyboardDidHideListener = Keyboard.addListener(
       'keyboardDidHide',
       () => {
-        console.log('band ha ustaaad'); // or some other action
+        setKeyboardVisible(false); // or some other action
       },
     );
 
@@ -170,7 +171,7 @@ export default function Chat({navigation, route}) {
           );
         })}
       </ScrollView>
-      <View style={styles.padding}>
+      <View style={isKeyboardVisible?styles.padding2:styles.padding}>
         <View style={styles.width}>
           <CustomTextFiel
             value={message}
@@ -189,5 +190,6 @@ export default function Chat({navigation, route}) {
       </View>
       {loader && <Loader />}
     </SafeAreaView>
+    
   );
 }
