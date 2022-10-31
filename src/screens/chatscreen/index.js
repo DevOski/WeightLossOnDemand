@@ -2,6 +2,7 @@ import React, {useEffect, useRef, useState} from 'react';
 import {
   Image,
   ImageBackground,
+  Keyboard,
   Linking,
   SafeAreaView,
   ScrollView,
@@ -22,6 +23,7 @@ import {
 } from '../../services/utilities/api/auth';
 import {useIsFocused} from '@react-navigation/native';
 import moment from 'moment';
+import Loader from '../../components/Loader';
 
 export default function Chat({navigation, route}) {
   const [message, setmessage] = useState();
@@ -31,6 +33,9 @@ export default function Chat({navigation, route}) {
   const [userName, setUserName] = useState('');
   const [middleName, setMiddleName] = useState('');
   const [lastName, setLastName] = useState('');
+  const [loader, setLoader] = useState(false);
+  const [isKeyboardVisible, setKeyboardVisible] = useState(false);
+
   const isVisible = useIsFocused();
 
   const token = useSelector(state => state.token);
@@ -39,7 +44,29 @@ export default function Chat({navigation, route}) {
     getChat();
   }, [isVisible]);
 
+  useEffect(() => {
+    const keyboardDidShowListener = Keyboard.addListener(
+      'keyboardDidShow',
+      () => {
+        console.log('khula hwa ha ustaaad'); // or some other action
+      },
+    );
+    const keyboardDidHideListener = Keyboard.addListener(
+      'keyboardDidHide',
+      () => {
+        console.log('band ha ustaaad'); // or some other action
+      },
+    );
+
+    return () => {
+      keyboardDidHideListener.remove();
+      keyboardDidShowListener.remove();
+    };
+  }, []);
+
   const getChat = async () => {
+    setLoader(true);
+
     var myHeaders = new Headers();
     myHeaders.append('Authorization', token);
 
@@ -53,7 +80,7 @@ export default function Chat({navigation, route}) {
       .then(response => response.json())
       .then(result => {
         setMsgList(result.data);
-        console.log(result.data);
+        setLoader(false);
       })
       .catch(error => console.log('error', error));
   };
@@ -160,6 +187,7 @@ export default function Chat({navigation, route}) {
           </TouchableOpacity>
         </View>
       </View>
+      {loader && <Loader />}
     </SafeAreaView>
   );
 }

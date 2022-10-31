@@ -23,6 +23,7 @@ import share from '../../assets/assets/share.png';
 import {recentVisit} from '../../services/utilities/api/auth';
 import {useSelector} from 'react-redux';
 import moment from 'moment';
+import {useIsFocused} from '@react-navigation/native';
 
 export const VisitDetail = ({navigation, route}) => {
   const [show, setshow] = useState(false);
@@ -30,12 +31,19 @@ export const VisitDetail = ({navigation, route}) => {
   const [trainer, setTrainer] = useState();
   const [user, setUser] = useState();
   const [visit, setVisit] = useState();
+
+  const [msgList, setMsgList] = useState([]);
+
+  const isVisible = useIsFocused();
+
   const Toogle = () => {
     setshow(!show);
   };
   useEffect(() => {
     getPastVisit();
-  }, []);
+    getChat();
+  }, [isVisible]);
+
   const getPastVisit = async () => {
     try {
       let response = await recentVisit(token);
@@ -45,6 +53,25 @@ export const VisitDetail = ({navigation, route}) => {
     } catch (error) {
       console.log(error);
     }
+  };
+
+  const getChat = async () => {
+    var myHeaders = new Headers();
+    myHeaders.append('Authorization', token);
+
+    var requestOptions = {
+      method: 'GET',
+      headers: myHeaders,
+      redirect: 'follow',
+    };
+
+    fetch('http://alsyedmmtravel.com/api/chat_display', requestOptions)
+      .then(response => response.json())
+      .then(result => {
+        setMsgList(result.data);
+        console.log(result.data);
+      })
+      .catch(error => console.log('error', error));
   };
   return (
     <SafeAreaView style={styles.container}>
@@ -122,7 +149,11 @@ export const VisitDetail = ({navigation, route}) => {
                 />
               </View>
               <TouchableOpacity
-                onPress={() => navigation.navigate('MessageSupport')}>
+                onPress={() => {
+                  msgList.length
+                    ? navigation.navigate('chatscreen')
+                    : navigation.navigate('MessageSupport');
+                }}>
                 <Text style={styles.litext}>Message Support</Text>
               </TouchableOpacity>
             </View>
@@ -147,7 +178,7 @@ export const VisitDetail = ({navigation, route}) => {
           <View style={styles.crd}>
             <Text style={styles.providertex}>Trainer</Text>
             <Text style={[styles.subhead, styles.border]}>
-            {trainer?.tr_desc}
+              {trainer?.tr_desc}
             </Text>
             {/* {show ? (
               <Text style={[styles.subhead, styles.border]}>
@@ -180,7 +211,6 @@ export const VisitDetail = ({navigation, route}) => {
               </Text>
               <Text style={styles.litext3}>{'>'}</Text>
             </View>
-           
           </View>
           <View style={styles.crd}>
             <View>
