@@ -1,4 +1,5 @@
-import React, {useRef, useState} from 'react';
+import {useIsFocused} from '@react-navigation/native';
+import React, {useEffect, useRef, useState} from 'react';
 import {
   Image,
   ImageBackground,
@@ -8,10 +9,39 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
+import {useSelector} from 'react-redux';
 import images from '../../services/utilities/images';
 import {styles} from './style';
 
 export default function MyHealth({navigation}) {
+
+  const [msgList, setMsgList] = useState([]);
+
+  const isVisible = useIsFocused();
+
+  const token = useSelector(state => state.token);
+  useEffect(() => {
+    getChat();
+  }, [isVisible]);
+
+  const getChat = async () => {
+    var myHeaders = new Headers();
+    myHeaders.append('Authorization', token);
+
+    var requestOptions = {
+      method: 'GET',
+      headers: myHeaders,
+      redirect: 'follow',
+    };
+
+    fetch('http://alsyedmmtravel.com/api/chat_display', requestOptions)
+      .then(response => response.json())
+      .then(result => {
+        setMsgList(result.data);
+        console.log(result.data);
+      })
+      .catch(error => console.log('error', error));
+  };
   return (
     <SafeAreaView>
       <ScrollView style={styles.color}>
@@ -47,7 +77,7 @@ export default function MyHealth({navigation}) {
             </View>
           </TouchableOpacity> */}
           <TouchableOpacity
-            onPress={() => navigation.navigate('MessageSupport')}>
+            onPress={() => {msgList.length ? navigation.navigate('chatscreen'): navigation.navigate('MessageSupport')}}>
             <View style={[styles.row, styles.card]}>
               <Text style={styles.cardText}>Messages</Text>
               <View>

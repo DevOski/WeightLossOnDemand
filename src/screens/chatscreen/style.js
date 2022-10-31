@@ -5,19 +5,34 @@ import {colors, fontFamily, fontSize, sizes} from '../../services';
 export const styles = StyleSheet.create({
   color: {
     backgroundColor: '#fafafa',
-    height: sizes.screenHeight * 0.75,
+    // paddingBottom:sizes.screenHeight*0.3
+    height: sizes.screenHeight * 0.74,
   },
   col: {
     backgroundColor: '#fafafa',
   },
   inputbg: {
-  // color:'red'
+    // color:'red'
   },
   padding: {
+    position: 'absolute',
     padding: sizes.baseMargin,
     flexDirection: 'row',
     justifyContent: 'flex-start',
     alignItems: 'center',
+    top: sizes.screenHeight * 0.8,
+    padding: sizes.baseMargin,
+    backgroundColor: '#fafafa',
+  },
+  padding2: {
+    position: 'absolute',
+    padding: sizes.baseMargin,
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    top: sizes.screenHeight * 0.2,
+    padding: sizes.baseMargin,
+    backgroundColor: '#fafafa',
   },
   text: {
     color: colors.primary,
@@ -30,6 +45,11 @@ export const styles = StyleSheet.create({
     fontFamily: fontFamily.appTextRegular,
   },
   width: {
+    width: sizes.screenWidth * 0.7,
+    alignSelf: 'center',
+    paddingTop: sizes.screenHeight * 0.04,
+  },
+  width2: {
     width: sizes.screenWidth * 0.7,
     alignSelf: 'center',
     paddingTop: sizes.screenHeight * 0.04,
@@ -76,12 +96,12 @@ export const styles = StyleSheet.create({
     top: sizes.screenHeight * 0.03,
   },
   text11: {
-    fontSize: fontSize.medium,
+    fontSize: fontSize.h5,
     color: colors.black,
-    fontWeight: 'bold',
     fontFamily: fontFamily.appTextHeading,
+    marginTop: sizes.baseMargin,
     // paddingLeft: sizes.screenWidth * 0.035,
-    top: sizes.screenHeight * 0.03,
+    // top:sizes.screenHeight*0.03
   },
   text1: {
     fontSize: fontSize.large,
@@ -128,13 +148,12 @@ export const styles = StyleSheet.create({
   },
   card2: {
     backgroundColor: colors.white,
-    padding: sizes.screenHeight * 0.01,
+    padding: sizes.screenHeight * 0.02,
     marginTop: sizes.screenHeight * 0.02,
     // marginBottom:sizes.screenHeight* 0.2,
 
     alignSelf: 'center',
     width: sizes.screenWidth * 0.9,
-    height: sizes.screenHeight * 0.25,
     borderWidth: 1,
     borderColor: colors.disabledBg,
     shadowColor: '#000',

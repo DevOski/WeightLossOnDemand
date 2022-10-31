@@ -62,7 +62,7 @@ export const SignUp = ({navigation}) => {
     //   isEnabled,
     //   date,'----------->');
 
-    if (email && password && checked && isEnabled && date) {
+    if (email && password && checked && date) {
       // console.log(email,
       //   password,
       //   checked,

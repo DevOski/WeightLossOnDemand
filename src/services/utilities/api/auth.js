@@ -221,12 +221,12 @@ export async function getSlotTime(id) {
 export async function getAllSlotDate(date) {
   console.log(date);
   return await axios.get(`${baseURL}/all_trCalenderSlots`, {
-    date:"10/10/2022",
+    date: '10/10/2022',
   });
 }
 export async function getQuestion(id) {
   return await axios.post(`${baseURL}/question`, {
-    id
+    id,
   });
 }
 export async function getAppointment(token) {
@@ -238,4 +238,25 @@ export async function getAppointment(token) {
   });
 }
 
-// 
+// export async function getMessages(token) {
+//   return await axios.get(`${baseURL}/chat_display`, {
+//     headers: {
+//       Authorization: token,
+//     },
+//   });
+// }
+
+// export async function sendMessage(token, msg, sender) {
+//   return await axios.post(
+//     `${baseURL}/msg_sent`,
+//     {
+//       msg,
+//       sender,
+//     },
+//     {
+//       headers: {
+//         Authorization: token,
+//       },
+//     },
+//   );
+// }
