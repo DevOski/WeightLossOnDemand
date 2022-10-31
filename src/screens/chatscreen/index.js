@@ -8,6 +8,7 @@ import {
   Text,
   TouchableOpacity,
   View,
+  KeyboardAvoidingView
 } from 'react-native';
 import Header from '../../components/Header';
 import images from '../../services/utilities/images';
@@ -60,6 +61,9 @@ export default function Chat({navigation, route}) {
   };
 
   return (
+    <KeyboardAvoidingView
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+      keyboardVerticalOffset={100}>
     <SafeAreaView style={styles. col} >
       <Header title={'Message'} done={true}/>
       <ScrollView style={styles.color}>
@@ -121,8 +125,9 @@ export default function Chat({navigation, route}) {
           <View style={styles.width}>
             <CustomTextFiel
               value={message}
-              label={'Question5'}
+              label={'Message'}
               setValue={setmessage}
+              style={styles.inputbg}
             />
           </View>
 
@@ -135,5 +140,6 @@ export default function Chat({navigation, route}) {
           </View>
         </View>
     </SafeAreaView>
+    </KeyboardAvoidingView>
   );
 }

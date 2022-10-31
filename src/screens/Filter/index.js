@@ -8,6 +8,7 @@ import {
   Text,
   TouchableOpacity,
   View,
+  KeyboardAvoidingView
 } from 'react-native';
 import Header from '../../components/Header';
 import images from '../../services/utilities/images';
@@ -63,6 +64,7 @@ export default function Filter({navigation, route}) {
     setFocusArea(true)
   };
   return (
+    
     <SafeAreaView>
       <Header dark={true} />
       <ScrollView style={styles.color}>
@@ -138,7 +140,7 @@ export default function Filter({navigation, route}) {
             </View>
             <View style={styles.paddingTop}>
               <TouchableOpacity
-                onPress={() => navigation.navigate('SelectFocusArea')}>
+                onPress={() => navigation.navigate('selectTrainer')}>
                 <View style={[styles.row2, styles.card]}>
                   {route?.params?.area && !focusArea ? (
                     <Text style={[styles.cardText]}>{route?.params?.area}</Text>
@@ -173,5 +175,6 @@ export default function Filter({navigation, route}) {
         </View>
       </ScrollView>
     </SafeAreaView>
+  
   );
 }

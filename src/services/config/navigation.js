@@ -151,6 +151,8 @@ import Questionthree from '../../screens/question3';
 import Questionfour from '../../screens/question4';
 import Questionfive from '../../screens/question5';
 import Chat from '../../screens/chatscreen';
+
+import selectTrainer from '../../screens/selectTrainer';
 const Stack = createNativeStackNavigator();
 
 const Tab = createMaterialBottomTabNavigator();
@@ -262,6 +264,10 @@ export default function MainNavigator() {
             <Stack.Screen
               name="healthprofilereview"
               component={ReviewHealthprofile}
+            />
+             <Stack.Screen
+              name="selectTrainer"
+              component={selectTrainer}
             />
             {/* <Stack.Screen name="whichsurgeri" component={Whichsurgeries} /> */}
             {/* <Stack.Screen

@@ -5,22 +5,24 @@ import {colors, fontFamily, fontSize, sizes} from '../../services';
 export const styles = StyleSheet.create({
   color: {
     backgroundColor: '#fafafa',
-    height: sizes.screenHeight*0.75,
+    height: sizes.screenHeight * 0.75,
   },
-  col:{
+  col: {
     backgroundColor: '#fafafa',
+  },
+  inputbg: {
+  // color:'red'
   },
   padding: {
     padding: sizes.baseMargin,
-    flexDirection:'row',
-    justifyContent:'flex-start',
-    alignItems:'center'
-    
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
   },
   text: {
     color: colors.primary,
     fontFamily: fontFamily.appTextLight,
-    fontSize:fontSize.h4
+    fontSize: fontSize.h4,
   },
   field: {
     backgroundColor: colors.lightGray,
@@ -30,13 +32,13 @@ export const styles = StyleSheet.create({
   width: {
     width: sizes.screenWidth * 0.7,
     alignSelf: 'center',
-    paddingTop:sizes.screenHeight*0.04
+    paddingTop: sizes.screenHeight * 0.04,
   },
   paddingTop: {
     paddingTop: sizes.screenHeight * 0.04,
   },
   buttonView: {
-    backgroundColor: colors.secondary,
+    // backgroundColor: colors.secondary,
     height: sizes.screenHeight * 0.08,
     width: sizes.screenWidth * 0.2,
     alignItems: 'center',
@@ -44,7 +46,7 @@ export const styles = StyleSheet.create({
     alignSelf: 'center',
   },
   buttonText: {
-    color: colors.white,
+    color: colors.secondary,
     fontSize: fontSize.h6,
     fontFamily: fontFamily.appTextHeading,
     fontWeight: '600',
@@ -71,15 +73,15 @@ export const styles = StyleSheet.create({
     // fontWeight: 'bold',
     fontFamily: fontFamily.appTextHeading,
     // paddingLeft: sizes.screenWidth * 0.035,
-    top:sizes.screenHeight*0.03
+    top: sizes.screenHeight * 0.03,
   },
-  text11:{
+  text11: {
     fontSize: fontSize.medium,
     color: colors.black,
     fontWeight: 'bold',
     fontFamily: fontFamily.appTextHeading,
     // paddingLeft: sizes.screenWidth * 0.035,
-    top:sizes.screenHeight*0.03
+    top: sizes.screenHeight * 0.03,
   },
   text1: {
     fontSize: fontSize.large,
@@ -87,19 +89,19 @@ export const styles = StyleSheet.create({
     fontFamily: fontFamily.appTextLight,
     // paddingLeft: sizes.screenWidth * 0.035,
   },
- 
+
   link: {
     color: colors.modalLink,
     textDecorationLine: 'underline',
     fontFamily: fontFamily.appTextMedium,
   },
- 
-  codeFieldRoot: {marginTop:sizes.screenHeight*0.05},
+
+  codeFieldRoot: {marginTop: sizes.screenHeight * 0.05},
   cell: {
-    width: sizes.screenWidth*0.08,
-    height: sizes.screenHeight*0.06,
-    fontSize:fontSize.large,
-    borderBottomWidth:1,
+    width: sizes.screenWidth * 0.08,
+    height: sizes.screenHeight * 0.06,
+    fontSize: fontSize.large,
+    borderBottomWidth: 1,
     borderColor: '#00000030',
     textAlign: 'center',
   },
@@ -111,7 +113,7 @@ export const styles = StyleSheet.create({
     padding: sizes.screenHeight * 0.01,
     marginTop: sizes.screenHeight * 0.02,
     alignSelf: 'center',
-    width: sizes.screenWidth * 0.90,
+    width: sizes.screenWidth * 0.9,
     height: sizes.screenHeight * 0.16,
     borderWidth: 1,
     borderColor: colors.disabledBg,
@@ -129,9 +131,9 @@ export const styles = StyleSheet.create({
     padding: sizes.screenHeight * 0.01,
     marginTop: sizes.screenHeight * 0.02,
     // marginBottom:sizes.screenHeight* 0.2,
-   
+
     alignSelf: 'center',
-    width: sizes.screenWidth * 0.90,
+    width: sizes.screenWidth * 0.9,
     height: sizes.screenHeight * 0.25,
     borderWidth: 1,
     borderColor: colors.disabledBg,
@@ -154,7 +156,7 @@ export const styles = StyleSheet.create({
     // justifyContent: 'space-between',
     // right: sizes.screenWidth * 0.01,
   },
-  left:{
-    left:sizes.screenWidth*0.02,
-  }
+  left: {
+    left: sizes.screenWidth * 0.02,
+  },
 });
