@@ -223,9 +223,9 @@ export default function Setting({navigation}) {
             </View>
           </View>
         </View>
-        <View style={[styles.left, styles.top]}>
+        {/* <View style={[styles.left, styles.top]}>
           <Text style={styles.head}>CARE COORDINATION</Text>
-        </View>
+        </View> */}
         {/* <View style={styles.padding}>
           <TouchableOpacity
             onPress={() => navigation.navigate('MedicalRecords')}>
