@@ -122,7 +122,7 @@ export const VisitDetail = ({navigation, route}) => {
                 />
               </View>
               <TouchableOpacity
-                onPress={() => navigation.navigate('whatcanwehelpyouwidth')}>
+                onPress={() => navigation.navigate('MessageSupport')}>
                 <Text style={styles.litext}>Message Support</Text>
               </TouchableOpacity>
             </View>
