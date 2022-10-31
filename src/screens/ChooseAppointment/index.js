@@ -16,6 +16,7 @@ import {Calendar} from 'react-native-calendars';
 import {colors, fontFamily} from '../../services';
 import moment from 'moment';
 import {
+  getAllList,
   getAllSlotDate,
   getSlotDate,
   getSlotList,
@@ -85,6 +86,9 @@ export default function ChooseAppointment({navigation, route}) {
     } catch (error) {
       console.log(error);
     }
+    if (route?.params?.from === 'All Trainer') {
+      getAllSlotList();
+    }
   };
 
   const getAllDateSlots = async date => {
@@ -95,21 +99,37 @@ export default function ChooseAppointment({navigation, route}) {
     // } catch (error) {
     //   console.log(error);
     // }
+
     // var myHeaders = new Headers();
     // myHeaders.append('Content-Type', 'application/json');
+
     // var raw = JSON.stringify({
     //   date: '10/10/2022',
     // });
+
     // var requestOptions = {
     //   method: 'GET',
     //   headers: myHeaders,
     //   body: raw,
     //   redirect: 'follow',
     // };
+
     // fetch('http://alsyedmmtravel.com/api/all_trCalenderSlots', requestOptions)
     //   .then(response => response.text())
     //   .then(result => console.log(result))
     //   .catch(error => console.log('error', error));
+  };
+
+  const getAllSlotList = async () => {
+    var requestOptions = {
+      method: 'GET',
+      redirect: 'follow',
+    };
+
+    fetch('http://alsyedmmtravel.com/api/Slots', requestOptions)
+      .then(response => response.json())
+      .then(result => setTimeSlot(result.data))
+      .catch(error => console.log('error', error));
   };
   return (
     <SafeAreaView>

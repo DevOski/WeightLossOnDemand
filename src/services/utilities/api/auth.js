@@ -260,3 +260,7 @@ export async function getAppointment(token) {
 //     },
 //   );
 // }
+
+export async function getAllList() {
+  return await axios.get(`${baseURL}/all_trCalenderSlots`);
+}
