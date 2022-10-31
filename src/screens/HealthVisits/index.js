@@ -64,7 +64,10 @@ export default function HealthVisits({navigation}) {
                 </View>
                 <View>
                   <Text style={styles.date}>
-                    {moment(visit?.created_at).format('DD/MM/YYYY')}
+                    {/* {moment(visit?.created_at).format('DD/MM/YYYY')} */}
+                    {moment(visit?.created_at).format('ddd')},{' '}
+                    {moment(visit?.created_at).format('MMM')}{' '}
+                    {moment(visit?.created_at).format('DD')}
                   </Text>
                 </View>
               </View>

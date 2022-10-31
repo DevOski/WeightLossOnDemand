@@ -148,7 +148,9 @@ export default function ChooseAppointment({navigation, route}) {
                 theme={styles.calendar}
               />
               <View style={styles.padding}>
-                <Text style={styles.text2}>{day}, {month} {date}</Text>
+                <Text style={styles.text2}>
+                  {day}, {month} {date}
+                </Text>
               </View>
               <View style={styles.height}>
                 <ScrollView style={[styles.card]}>
