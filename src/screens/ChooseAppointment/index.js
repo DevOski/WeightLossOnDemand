@@ -28,6 +28,9 @@ export default function ChooseAppointment({navigation, route}) {
   const [markedDates, setMarkedDates] = useState('');
   const [timeSlot, setTimeSlot] = useState([]);
   const [dateSlot, setDateSlot] = useState([]);
+  const [month, setMonth] = useState('');
+  const [day, setDay] = useState('""');
+  const [date, setDate] = useState('');
   const handleCalendar = () => {
     setCalendar(true);
     setList(false);
@@ -44,7 +47,13 @@ export default function ChooseAppointment({navigation, route}) {
 
   useEffect(() => {}, [list]);
 
-  const getSelectedDayEvents = date => {
+  const getSelectedDayEvents = (date, day) => {
+    setDate(day.day);
+    let oneDate = moment(date, 'DD-MM-YYYY');
+    let monthName = oneDate.format('MMM');
+    setMonth(monthName);
+    let weekDayName = moment(date).format('ddd');
+    setDay(weekDayName);
     let markedDates = {};
     markedDates[date] = {
       selected: true,
@@ -88,18 +97,15 @@ export default function ChooseAppointment({navigation, route}) {
     // }
     // var myHeaders = new Headers();
     // myHeaders.append('Content-Type', 'application/json');
-
     // var raw = JSON.stringify({
     //   date: '10/10/2022',
     // });
-
     // var requestOptions = {
     //   method: 'GET',
     //   headers: myHeaders,
     //   body: raw,
     //   redirect: 'follow',
     // };
-
     // fetch('http://alsyedmmtravel.com/api/all_trCalenderSlots', requestOptions)
     //   .then(response => response.text())
     //   .then(result => console.log(result))
@@ -135,14 +141,14 @@ export default function ChooseAppointment({navigation, route}) {
               <Calendar
                 onDayPress={day => {
                   console.log(day);
-                  getSelectedDayEvents(day.dateString);
+                  getSelectedDayEvents(day.dateString, day);
                 }}
                 markedDates={markedDates}
                 initialDate={currentDate}
                 theme={styles.calendar}
               />
               <View style={styles.padding}>
-                <Text style={styles.text2}>FRI, SEP 30</Text>
+                <Text style={styles.text2}>{day}, {month} {date}</Text>
               </View>
               <View style={styles.height}>
                 <ScrollView style={[styles.card]}>
