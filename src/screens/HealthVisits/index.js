@@ -16,12 +16,15 @@ import Header from '../../components/Header';
 import {recentVisit} from '../../services/utilities/api/auth';
 import images from '../../services/utilities/images';
 import {styles} from './style';
+import Loader from '../../components/Loader';
+
 export default function HealthVisits({navigation}) {
   const [trainer, setTrainer] = useState();
   const [user, setUser] = useState();
   const [visit, setVisit] = useState();
   const [error, setError] = useState(false);
   const isVisible = useIsFocused();
+  const [loader, setLoader] = useState(false);
 
   const token = useSelector(state => state.token);
 
@@ -30,16 +33,21 @@ export default function HealthVisits({navigation}) {
   }, [isVisible]);
 
   const getPastVisit = async () => {
-    try {
-      let response = await recentVisit(token);
-      setVisit(response.data.visit);
-      setTrainer(response.data.trainer[0]);
-      setUser(response.data.user);
-    } catch (error) {
-      if (error.message.includes('500')) {
-        setError(true);
+    setLoader(true);
+    setTimeout(async () => {
+      try {
+        let response = await recentVisit(token);
+        setVisit(response.data.visit);
+        setTrainer(response.data.trainer[0]);
+        setUser(response.data.user);
+        setLoader(false);
+      } catch (error) {
+        if (error.message.includes('500')) {
+          setError(true);
+          setLoader(false);
+        }
       }
-    }
+    }, 100);
   };
   return (
     <SafeAreaView>
@@ -78,6 +86,7 @@ export default function HealthVisits({navigation}) {
             <Text style={styles.text}>You haven't had any visits yet.</Text>
           </View>
         )}
+        {loader && <Loader />}
       </ScrollView>
     </SafeAreaView>
   );
