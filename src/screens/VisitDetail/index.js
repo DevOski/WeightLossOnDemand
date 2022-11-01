@@ -303,8 +303,8 @@ const styles = StyleSheet.create({
   },
 
   imgicon: {
-    width: sizes.screenWidth * 0.1,
-    height: sizes.screenHeight * 0.04,
+    width: sizes.screenWidth * 0.09,
+    height: sizes.screenHeight * 0.05,
   },
   crd: {
     paddingBottom: sizes.screenHeight * 0.03,

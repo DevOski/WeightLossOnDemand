@@ -171,7 +171,7 @@ export default function Chat({navigation, route}) {
           );
         })}
       </ScrollView>
-      <View style={isKeyboardVisible?styles.padding2:styles.padding}>
+      <View style={styles.padding2} >
         <View style={styles.width}>
           <CustomTextFiel
             value={message}

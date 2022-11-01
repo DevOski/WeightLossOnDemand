@@ -6,7 +6,7 @@ export const styles = StyleSheet.create({
   color: {
     backgroundColor: '#fafafa',
     // paddingBottom:sizes.screenHeight*0.3
-    height: sizes.screenHeight * 0.74,
+    height: sizes.screenHeight * 0.79,
   },
   col: {
     backgroundColor: '#fafafa',
@@ -20,18 +20,17 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'flex-start',
     alignItems: 'center',
-    top: sizes.screenHeight * 0.8,
+    top: sizes.screenHeight * 0.83,
     padding: sizes.baseMargin,
     backgroundColor: '#fafafa',
+    // height:sizes.screenHeight*0.12
   },
   padding2: {
-    position: 'absolute',
-    padding: sizes.baseMargin,
+   justifyContent:'center',
+  
+    
     flexDirection: 'row',
-    justifyContent: 'flex-start',
-    alignItems: 'center',
-    top: sizes.screenHeight * 0.2,
-    padding: sizes.baseMargin,
+  
     backgroundColor: '#fafafa',
   },
   text: {
@@ -46,30 +45,33 @@ export const styles = StyleSheet.create({
   },
   width: {
     width: sizes.screenWidth * 0.7,
-    alignSelf: 'center',
-    paddingTop: sizes.screenHeight * 0.04,
+    // alignSelf: 'center',
+   marginTop:sizes.screenHeight*0.02,
+   height:sizes.screenHeight*0.2,
+  //  backgroundColor:"red"
   },
   width2: {
-    width: sizes.screenWidth * 0.7,
-    alignSelf: 'center',
-    paddingTop: sizes.screenHeight * 0.04,
+    // width: sizes.screenWidth * 0.7,
+    // alignSelf: 'center',
+    // paddingTop: sizes.screenHeight * 0.01,
   },
   paddingTop: {
-    paddingTop: sizes.screenHeight * 0.04,
+    // paddingTop: sizes.screenHeight * 0.04,
   },
   buttonView: {
     // backgroundColor: colors.secondary,
-    height: sizes.screenHeight * 0.08,
+    height: sizes.screenHeight * 0.12,
     width: sizes.screenWidth * 0.2,
     alignItems: 'center',
     justifyContent: 'center',
-    alignSelf: 'center',
+    // alignSelf: 'center',
   },
   buttonText: {
     color: colors.secondary,
     fontSize: fontSize.h6,
     fontFamily: fontFamily.appTextHeading,
-    fontWeight: '600',
+    fontWeight: 'bold',
+    // top:sizes.screenHeight*-0.03
   },
   modalView: {
     width: sizes.screenWidth,
