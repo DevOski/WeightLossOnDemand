@@ -59,7 +59,7 @@ export const VisitScreen = ({navigation, route}) => {
         </View>
         <View style={styles.container2}>
           <View>
-            <Text style={styles.visitfortext}>Who is this Visit for?</Text>
+            <Text style={styles.visitfortext}>Who is this visit for?</Text>
           </View>
 
           <View style={styles.buttondiv}>
