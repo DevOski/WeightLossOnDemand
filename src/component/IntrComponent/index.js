@@ -163,7 +163,7 @@ const ComponentFour = () => {
           <View
             style={{
               position: 'absolute',
-              top: deviceHeight * 0.5,
+              top: deviceHeight * 0.48,
               // zIndex:999999,
               left: deviceWidth * 0.03,
             }}>
