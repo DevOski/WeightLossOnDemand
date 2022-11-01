@@ -24,7 +24,7 @@ export default function WhatDoWeTreat({navigation}) {
         <View style={styles.padding}>
           <TouchableOpacity onPress={() => navigation.navigate('Allergies')}>
             <View style={[styles.row, styles.card]}>
-              <Text style={styles.cardText}>Allergies</Text>
+              <Text style={styles.cardText}>Strength training</Text>
               <View>
                 <Text style={styles.symbol}> ›</Text>
               </View>
@@ -32,7 +32,7 @@ export default function WhatDoWeTreat({navigation}) {
           </TouchableOpacity>
           <TouchableOpacity onPress={() => navigation.navigate('ColdAndFlu')}>
             <View style={[styles.row, styles.card]}>
-              <Text style={styles.cardText}>Cold & Flu</Text>
+              <Text style={styles.cardText}>Weight-Bearing Workout</Text>
               <View>
                 <Text style={styles.symbol}> ›</Text>
               </View>
@@ -42,7 +42,7 @@ export default function WhatDoWeTreat({navigation}) {
             onPress={() => navigation.navigate('SoreThroat')}
           >
             <View style={[styles.row, styles.card]}>
-              <Text style={styles.cardText}>Sore Throat</Text>
+              <Text style={styles.cardText}>Calisthenics</Text>
               <View>
                 <Text style={styles.symbol}> ›</Text>
               </View>
@@ -52,7 +52,7 @@ export default function WhatDoWeTreat({navigation}) {
             onPress={() => navigation.navigate('UTIs')}
           >
             <View style={[styles.row, styles.card]}>
-              <Text style={styles.cardText}>UTIs</Text>
+              <Text style={styles.cardText}>Weightlifting</Text>
               <View>
                 <Text style={styles.symbol}> ›</Text>
               </View>
@@ -62,13 +62,13 @@ export default function WhatDoWeTreat({navigation}) {
             onPress={() => navigation.navigate('Travel')}
           >
             <View style={[styles.row, styles.card]}>
-              <Text style={styles.cardText}>Travel</Text>
+              <Text style={styles.cardText}>Aerobic Exercise</Text>
               <View>
                 <Text style={styles.symbol}> ›</Text>
               </View>
             </View>
           </TouchableOpacity>
-          <TouchableOpacity
+          {/* <TouchableOpacity
             onPress={() => navigation.navigate('SportsInjuries')}
           >
             <View style={[styles.row, styles.card]}>
@@ -117,7 +117,7 @@ export default function WhatDoWeTreat({navigation}) {
                 <Text style={styles.symbol}> ›</Text>
               </View>
             </View>
-          </TouchableOpacity>
+          </TouchableOpacity> */}
         </View>
       </ScrollView>
     </SafeAreaView>

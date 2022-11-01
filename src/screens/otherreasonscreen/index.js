@@ -36,14 +36,12 @@ export const OtherReason = ({navigation,route}) => {
             value={text}
             setValue={settext}
           />
-          <Text style={{textAlign:'right',fontSize:fontSize.large,color:colors.secondary,top:sizes.screenHeight*0.01}}>{text.length}/400</Text>
+          <Text style={{textAlign:'right',fontSize:fontSize.large,color:colors.secondary,top:sizes.screenHeight*0.01}}>{text.length ? text.length : 0}/400</Text>
         </View>
         
 
         {text ? (
-          <TouchableOpacity onPress={() => navigation.navigate('howlongscreen',{
-            GoogleFit:route?.params?.GoogelFit
-          })}>
+          <TouchableOpacity onPress={() => navigation.navigate('question1')}>
             <View style={styles.bdiv}>
               <Text style={styles.btext}>›</Text>
             </View>

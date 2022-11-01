@@ -14,12 +14,70 @@ import images from '../../services/utilities/images';
 import {styles} from './style';
 import {TextInput} from 'react-native-paper';
 import {colors} from '../../services';
-export default function ApplyCoupon() {
+import Loader from '../../components/Loader';
+import {verifyCoupon} from '../../services/utilities/api/auth';
+import {useDispatch, useSelector} from 'react-redux';
+import Error from '../../components/Error';
+import Modal from 'react-native-modal';
+import {storeCoupon} from '../../store/actions';
+export default function ApplyCoupon({route, navigation}) {
+  const [coupon, setCoupon] = useState('');
+  const [message, setMessage] = useState('');
+  const [loader, setLoader] = useState(false);
+  const [title, setTitle] = useState('Congratulations!');
+  const token = useSelector(state => state.token);
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const dispatch = useDispatch();
+
+  const toggleModal = () => {
+    setIsModalVisible(!isModalVisible);
+  };
+
+  const couponVerify = async () => {
+    setLoader(true);
+
+    var myHeaders = new Headers();
+    myHeaders.append(
+      'Authorization',
+      '$2y$10$KmDTenzlBmb2iVT.tv0nu.zmfkP5FGW.WWGAfPcXeQZqqkuf7/uCW',
+    );
+    myHeaders.append('Content-Type', 'application/json');
+
+    var raw = JSON.stringify({
+      coupon: coupon,
+    });
+    var requestOptions = {
+      method: 'POST',
+      headers: myHeaders,
+      body: raw,
+      redirect: 'follow',
+    };
+    setTimeout(() => {
+      fetch('http://alsyedmmtravel.com/api/coupon_check', requestOptions)
+        .then(response => response.json())
+        .then(result => {
+          console.log(result);
+          setMessage(result.message);
+          toggleModal();
+          if (result.message == 'Invalid coupon') {
+            setTitle('Oops!');
+          } else {
+            setTitle('Congratulations!');
+            dispatch(storeCoupon(coupon));
+          }
+          setLoader(false);
+        })
+        .catch(error => console.log('error', error));
+    }, 100);
+  };
   return (
     <SafeAreaView>
       <ScrollView style={styles.color}>
         <View>
-          <Header title={'Apply Coupon'} skip={true} />
+          <Header
+            title={'Apply Coupon'}
+            skip={route?.params?.skip ? true : false}
+          />
         </View>
         <View style={styles.padding}>
           <Text style={styles.couponHead}>Enter coupon code:</Text>
@@ -32,18 +90,55 @@ export default function ApplyCoupon() {
             label={'e.g. Coupon594'}
             activeUnderlineColor={colors.secondary}
             style={styles.field}
+            value={coupon}
+            onChangeText={text => setCoupon(text)}
           />
           <View style={styles.top}>
-          <TouchableOpacity>
-            <View style={styles.buttonView}>
-              <Text style={styles.buttonText}> Submit Coupon</Text>
-            </View>
-          </TouchableOpacity>
+            <TouchableOpacity onPress={couponVerify}>
+              <View style={styles.buttonView}>
+                <Text style={styles.buttonText}> Submit Coupon</Text>
+              </View>
+            </TouchableOpacity>
+          </View>
         </View>
-        </View>
-
-        
       </ScrollView>
+      <View style={styles.color}>
+        {isModalVisible && (
+          <Modal style={styles.modalView} isVisible={isModalVisible}>
+            <View style={styles.texcon}>
+              <Text style={styles.text111}>{title}</Text>
+            </View>
+            <View style={styles.texcon1}>
+              <Text style={styles.text1}>{message}</Text>
+            </View>
+            <View>
+              <TouchableOpacity
+                // onPress={() => {
+                //   screen
+                //     ? navigation.navigate(screen)
+                //     : setIsModalVisible(false);
+                // }}
+                onPress={() => {
+                  title === 'Oops!'
+                    ? setIsModalVisible(false)
+                    : navigation.navigate('Home');
+                }}>
+                <View style={styles.buttonView}>
+                  <Text style={styles.buttonText}>OK</Text>
+                </View>
+              </TouchableOpacity>
+            </View>
+          </Modal>
+        )}
+      </View>
+      {/* {message !== '' && (
+          <Error
+            title={title}
+            message={message}
+            // screen={title === 'Invalid coupon' && 'Home'}
+          />
+        )}
+        {loader && <Loader />} */}
     </SafeAreaView>
   );
 }

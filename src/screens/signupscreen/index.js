@@ -33,14 +33,12 @@ export const SignUp = ({navigation}) => {
   const [open, setOpen] = useState(false);
   const [register, setregister] = useState();
 
-  
-  useEffect(()=>{
+  useEffect(() => {
     //this will fire  at the beginning and on foto changing value
-    if(register){
-      navigation.navigate('basicInfoscreens',{ register:register })
+    if (register) {
+      navigation.navigate('basicInfoscreens', {register: register});
     }
-   },[register])
- 
+  }, [register]);
 
   const onDismissSingle = () => {
     setOpen(false);
@@ -55,20 +53,30 @@ export const SignUp = ({navigation}) => {
     setDate(res);
     // setDate(date);
     setOpen(false);
+    // res=""
+   
   };
 
+  const Sinup =  () => {
+    // console.log(email,
+    //   password,
+    //   checked,
+    //   isEnabled,
+    //   date,'----------->');
 
-  const Sinup = async () => {
-  setregister({
-    email,
-    password,
-    checked,
-    isEnabled,
-    date
-  })
-    if (register) {
-     
-      navigation.navigate('basicInfoscreens',{ register:register })
+    if (email && password && checked && date) {
+      // console.log(email,
+      //   password,
+      //   checked,
+      //   isEnabled,
+      //   date,'----------->');
+      navigation.navigate('basicInfoscreens', {
+        email,
+        password,
+        checked,
+        // isEnabled,
+        date,
+      });
       // setregister()
     }
   };
@@ -82,9 +90,7 @@ export const SignUp = ({navigation}) => {
           <View>
             <TouchableOpacity
               onPress={() => navigation.navigate('signinscreen')}>
-              <Text style={styles.fontstyleigin}>
-                Sign In
-              </Text>
+              <Text style={styles.fontstyleigin}>Sign In</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -94,7 +100,9 @@ export const SignUp = ({navigation}) => {
           </View>
           <View style={styles.filedcon}>
             {date ? (
-              <TouchableOpacity style={styles.datebutton} >
+              <TouchableOpacity style={styles.datebutton}
+              onPress={() => setOpen(!open)}
+              >
                 <Text style={styles.datebuttontext}>{date && date}</Text>
               </TouchableOpacity>
             ) : (
@@ -112,7 +120,7 @@ export const SignUp = ({navigation}) => {
               onDismiss={onDismissSingle}
               date={date}
               onConfirm={onConfirmSingle}
-             
+
               // validRange={{
               //   startDate: new Date(2021, 1, 2),  // optional
               //   endDate: new Date(), // optional
@@ -141,7 +149,7 @@ export const SignUp = ({navigation}) => {
               label={'Password'}
               value={password}
               setValue={setpassword}
-              secureTextEntry
+              secureTextEntry={true}
             />
           </View>
 
@@ -162,7 +170,7 @@ export const SignUp = ({navigation}) => {
               <AntDesign
                 name="checkcircle"
                 color={
-                  password?.toUpperCase() ? colors.secondary : colors.disabledBg
+                  password?.toUpperCase() && password !=password?.match(/\d/)  ? colors.secondary : colors.disabledBg
                 }
                 size={20}
               />
@@ -176,7 +184,7 @@ export const SignUp = ({navigation}) => {
               <AntDesign
                 name="checkcircle"
                 color={
-                  password?.match(/\d/) ? colors.secondary : colors.disabledBg
+                  password?.match(/\d/) && password != password?.toUpperCase() ? colors.secondary : colors.disabledBg
                 }
                 size={20}
               />

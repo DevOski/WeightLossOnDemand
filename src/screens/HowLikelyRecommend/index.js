@@ -14,9 +14,29 @@ import images from '../../services/utilities/images';
 import {styles} from './style';
 import {colors, sizes} from '../../services';
 import Slider from '@react-native-community/slider';
+import {appRating} from '../../services/utilities/api/auth';
+import Error from '../../components/Error';
 
 export default function HowLikelyRecommend({navigation}) {
   const [rate, setRate] = useState(5);
+  const [loader, setLoader] = useState(false);
+  const [message, setMessage] = useState('');
+  const handleRating = () => {
+    //
+    setLoader(true);
+    setTimeout(async () => {
+      try {
+        let response = await appRating(rate);
+        setMessage(response.data.message);
+        // setFirstName(response.data.data.first_name);
+        // setLastName(response.data.data.last_name);
+        setLoader(false);
+      } catch (error) {
+        console.log(error);
+        setLoader(false);
+      }
+    }, 100);
+  };
   return (
     <SafeAreaView>
       <View style={styles.color}>
@@ -55,7 +75,7 @@ export default function HowLikelyRecommend({navigation}) {
         </View>
         <View style={styles.paddingTop}>
           <View style={styles.disabledView}>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={handleRating}>
               <Text style={styles.buttonText}>Submit</Text>
             </TouchableOpacity>
           </View>
@@ -67,6 +87,13 @@ export default function HowLikelyRecommend({navigation}) {
           </View>
         </View>
       </View>
+      {message !== '' && (
+        <Error
+          title={'We’re so happy to hear from you!'}
+          message={message}
+          screen={'ThankyouVisit'}
+        />
+      )}
     </SafeAreaView>
   );
 }

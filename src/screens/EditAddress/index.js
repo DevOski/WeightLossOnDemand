@@ -1,4 +1,4 @@
-import React, {useRef, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {
   Image,
   ImageBackground,
@@ -15,9 +15,14 @@ import {styles} from './style';
 import {TextInput} from 'react-native-paper';
 import {colors} from '../../services';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import {useSelector} from 'react-redux';
+import {getUser, updateUserAddress} from '../../services/utilities/api/auth';
+import Loader from '../../components/Loader';
+import {useIsFocused} from '@react-navigation/native';
+import Error from '../../components/Error';
 
-export default function EditAddress() {
-  const [address, setAddress] = useState('Lorem ipsum dolor smit');
+export default function EditAddress({navigation}) {
+  const [address, setAddress] = useState('');
   const [address2, setAddress2] = useState('');
   const [city, setCity] = useState('');
   const [state, setState] = useState('');
@@ -79,10 +84,55 @@ export default function EditAddress() {
     'WI',
     'WY',
   ]);
+  const isVisible = useIsFocused();
+  const [loader, setLoader] = useState(false);
+  const [message, setMessage] = useState('');
+
+  const token = useSelector(state => state.token);
 
   const handleState = item => {
     setState(item);
     setShowState(false);
+  };
+  useEffect(() => {
+    getUserDetails();
+  }, [isVisible]);
+
+  const getUserDetails = async () => {
+    setLoader(true);
+    setTimeout(async () => {
+      try {
+        let response = await getUser(token);
+        console.log(response.data.data);
+        setAddress(response.data.data.address);
+        setAddress2(response.data.data.address2);
+        setCity(response.data.data.city);
+        setState(response.data.data.state);
+        setZipCode(response.data.data.zipcode);
+        setLoader(false);
+      } catch (error) {
+        console.log(error);
+        setLoader(false);
+      }
+    }, 100);
+  };
+
+  const updateAddress = async () => {
+    try {
+      let response = await updateUserAddress(
+        token,
+        address,
+        address2,
+        city,
+        state,
+        zipCode,
+      );
+      console.log(response.data);
+      setMessage(response.data.message);
+      // navigation.goBack();
+    } catch (error) {
+      console.log(error);
+    }
   };
   return (
     <SafeAreaView>
@@ -173,12 +223,16 @@ export default function EditAddress() {
           </View>
         </View>
         <View style={styles.top}>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={updateAddress}>
             <View style={styles.buttonView}>
               <Text style={styles.buttonText}>Save</Text>
             </View>
           </TouchableOpacity>
         </View>
+        {message !== '' && (
+          <Error title="Congratulations!" message={message} screen={'Home'} />
+        )}
+        {loader && <Loader />}
       </ScrollView>
     </SafeAreaView>
   );

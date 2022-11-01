@@ -27,39 +27,38 @@ export default function IntroductionScreen({navigation}) {
       <ScrollView style={styles.color}>
         <View style={styles.videoView}>
           <Text style={styles.heading}>Welcome to</Text>
-          <Text style={styles.heading}>Doctor On Demand</Text>
+          <Text style={styles.heading}>Weight Loss by Demand</Text>
         </View>
 
         <View style={styles.padding}>
           <View style={styles.bOTtomPAD}>
             <Text style={styles.cardText}>
-              Doctor On Demand is the fastest, easiest, and most cost-effective
-              way to connect with providers, psychologists, and other providers
-              - from the comfort of your home. However, you may be wondering:
-              who are these providers, psychologists, and psychiatrists? How are
-              they screened? What type of oversight is provided?
+              Weight Loss on Demand lets you talk to professionals, gym
+              specialists, and other providers quickly, easily, and affordably,
+              all from the comfort of your own home. Perhaps you're curious,
+              though: just who are these fitness trainers? How do we make sure
+              they're suitable? Exactly what kind of supervision is there?
             </Text>
           </View>
           <View style={styles.bOTtomPAD}>
             <Text style={styles.cardText}>
-              At Doctor On Demand, we hand-picked some of the top
-              board-certified providers in the country to provide care through
-              our platform. Our providers go through rigorous screening,
-              training and ongoing quality assurance. Patients can rate every
-              single visit to help ensure the highest quality of care. We
-              encourage you to read more about providers and how we all work
-              together to deliver world-class care that's convenient, too.
+              At Weight Loss by Demand, we have carefully picked only the most
+              qualified and board-certified professionals to offer their
+              services online to our users. All of our service providers go
+              through a thorough screening process, get a lot of training, and
+              are constantly checked for quality. If clients are able to rate
+              each visit, it will greatly assist in maintaining a high standard
+              of care. In order to maintain a consistently high standard of
+              training can provide feedback after each and every appointment.
             </Text>
           </View>
           <View style={styles.bOTtomPAD}>
             <Text style={styles.cardText}>
-              *The telemedicine services made available through Doctor On Demand
-              are provided by licensed providers practicing within a group of
-              independently owned professional practices collectively known as
-              “Doctor On Demand Professionals”. These professional practices
-              provide services via the Doctor On Demand telehealth platform.
-              Doctor On Demand, Inc. does not itself provide any provider,
-              mental health or other healthcare provider services.
+              Learn more about our providers and how we collaborate to get you
+              the best possible fitness services at your convenience by reading
+              on. Weight Loss by Demand is a network of licensed medical
+              professionals who run their own businesses and offer telemedicine
+              services to their clients.
             </Text>
           </View>
         </View>

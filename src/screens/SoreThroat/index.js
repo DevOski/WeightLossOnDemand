@@ -16,27 +16,51 @@ import {styles} from './style';
 import {WebView} from 'react-native-webview';
 import {colors} from '../../services';
 import Header from '../../components/Header';
+import Entypo from 'react-native-vector-icons/Entypo';
+
 export default function SoreThroat() {
   return (
     <SafeAreaView>
-      <Header title={'Sore Throat'} />
+      <Header title={'Calisthenics'} />
       <ScrollView style={styles.color}>
         <View style={styles.padding}>
           <Image source={images.soreThroat} style={styles.image} />
         </View>
         <View style={styles.padding}>
-          <Text style={styles.heading}>Sore Throat</Text>
+          <Text style={styles.heading}>Calisthenics</Text>
         </View>
         <View style={styles.padding}>
           <Text style={styles.textColor}>
-            A sore throat is a very common symptom which could be an indicator
-            of a series of ailments, including many that can often be treated
-            via Video Visit. It can be difficult for a patient to know if they
-            have a Cold, Allergies, Strep Throat, or Tonsillitis unless they
-            visit with a doctor.
+            You are performing calisthenics whenever you are using your own body
+            weight as resistance. Think of mountain climbers, squats, and
+            push-ups. The convenience of calisthenics is one of its main
+            advantages. You don't need special equipment to perform them
+            anywhere. They're excellent for beginners since they let you develop
+            the functional strength required to lift weights as well as master
+            movement patterns.
           </Text>
         </View>
-        <View style={styles.padding}>
+        <View style={[styles.row, styles.paddingTop]}>
+            <Entypo name="dot-single" color={colors.disabledBg2} size={25} />
+            <Text style={styles.text}>Pull-up soad</Text>
+          </View>
+          <View style={[styles.row, styles.paddingTop]}>
+            <Entypo name="dot-single" color={colors.disabledBg2} size={25} />
+            <Text style={styles.text}>Planks</Text>
+          </View>
+          <View style={[styles.row, styles.paddingTop]}>
+            <Entypo name="dot-single" color={colors.disabledBg2} size={25} />
+            <Text style={styles.text}>Glute bridges</Text>
+          </View>
+          <View style={[styles.row, styles.paddingTop]}>
+            <Entypo name="dot-single" color={colors.disabledBg2} size={25} />
+            <Text style={styles.text}>Lunges</Text>
+          </View>
+          <View style={[styles.row, styles.paddingTop]}>
+            <Entypo name="dot-single" color={colors.disabledBg2} size={25} />
+            <Text style={styles.text}>Handstands</Text>
+          </View>
+        {/* <View style={styles.padding}>
           <Text style={styles.textColor}>
             The doctors at Weight Loss On Demand Professionals are trained to
             evaluate your symptoms and, depending on the clinical circumstances,
@@ -84,7 +108,7 @@ export default function SoreThroat() {
             information to make a diagnosis and then treat your condition safely
             and effectively.
           </Text>
-        </View>
+        </View> */}
       </ScrollView>
     </SafeAreaView>
   );

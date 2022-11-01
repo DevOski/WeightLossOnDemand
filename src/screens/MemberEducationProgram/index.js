@@ -19,56 +19,57 @@ import {colors} from '../../services';
 export default function MemberEducationProgram({navigation}) {
   return (
     <SafeAreaView>
-       <View>
-          <Header dark={true} />
-        </View>
+      <View>
+        <Header dark={true} />
+      </View>
       <ScrollView style={styles.color}>
         <View style={[styles.padding, styles.height]}>
           <ScrollView>
-        <View >
-          <Text style={[styles.bold, styles.textColor]}>
-            Participation in Member Education Program
-          </Text>
-        </View>
+            <View>
+              <Text style={[styles.bold, styles.textColor]}>
+                Member Education Program Involvement
+              </Text>
+            </View>
             <Text style={styles.textColor}>
-              By participating in the Member Education Program, you authorize
-              Weight On Demand to share with you information about products and
-              services provided by organizations other than Weight On Demand
-              that may be of interest to you, such as health education materials
-              prepared by third parties and applications that can integrate with
-              Weight On Demand applications, and other health related products
-              and services. You understand that these communications may be
-              influenced by the information you provide to us during the
-              registration process.
+              By enrolling in the Member Education Program, you give Weight On
+              Demand permission to send you information about third-party
+              products and services that may be of interest to you, such as
+              health education materials prepared by third parties, applications
+              that can integrate with Weight on Demand applications, and other
+              fitness-related products and services. You agree that the
+              information you give when you sign up may be used to send you
+              messages that are more relevant to your interests.
             </Text>
             <Text style={[styles.textColor, styles.paddingTop]}>
-              You further understand that:
+              In addition, you comprehend that:
             </Text>
             <Text style={[styles.textColor, styles.paddingTop]}>
-              We will not share any information with third parties pursuant to
-              this authorization. You have the right to revoke or receive a copy
-              of this authorization at any time by providing written notice to
-              <Text style={styles.link}> support@weightlossondemand.com</Text>. However, a revocation of this
-              authorization will not affect any action taken by us in reliance
-              on this authorization. This authorization shall be in force and
-              effect for one year from the date this form is signed. Your
-              treatment, payment, enrollment or eligibility for benefits will
-              not be conditioned on whether you choose to Participate in the
-              Member Education Program. Weight Loss on Demand may receive
-              compensation relating to the Member Education Program activities
-              described above. You can learn more about Weight Loss On Demand's
-              privacy policies by viewing our Notice of Privacy Practices.
-              Selecting “I Accept” below constitutes your signature.
+              No information provided to us will be released to any outside
+              parties. By contacting
+              <Text style={styles.link}>support@weightlossondemand.com,</Text>.
+              you can revoke this consent at any moment and get a copy of it.
+              Nonetheless, any steps we have already taken with your
+              authorization in place will remain in effect even if you revoke
+              it. Once this document is signed, the authorization is valid for a
+              full year. You don't have to take part in the Member Education
+              Program to get services like therapy, payment, enrollment, or the
+              right to benefits. Weight Loss on Demand may get paid for its
+              work, depending on how the Member Education Program works. In our
+              Notice of Privacy Practices, you can find out more about how we
+              protect your privacy at Weight Loss on Demand. Clicking the "I
+              Accept" button below acts as your electronic signature.
             </Text>
           </ScrollView>
         </View>
         <View style={styles.buttonTop}>
-          <TouchableOpacity onPress={() => navigation.navigate('TermsAndConditions')}>
+          <TouchableOpacity
+            onPress={() => navigation.navigate('TermsAndConditions')}>
             <View style={[styles.buttonView]}>
               <Text style={styles.buttonText}> I Accept</Text>
             </View>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate('TermsAndConditions')}>
+          <TouchableOpacity
+            onPress={() => navigation.navigate('TermsAndConditions')}>
             <View style={[styles.diasbledView]}>
               <Text style={styles.buttonText}> I Decline</Text>
             </View>

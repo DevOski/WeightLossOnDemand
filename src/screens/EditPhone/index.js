@@ -1,4 +1,4 @@
-import React, {useRef, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {
   Image,
   ImageBackground,
@@ -14,9 +14,48 @@ import images from '../../services/utilities/images';
 import {styles} from './style';
 import {TextInput} from 'react-native-paper';
 import {colors} from '../../services';
+import { useIsFocused } from '@react-navigation/native';
+import Loader from '../../components/Loader';
+import { getUser, updateUserPhone } from '../../services/utilities/api/auth';
+import { useSelector } from 'react-redux';
+import Error from '../../components/Error';
 
-export default function EditPhone() {
-  const [phone, setPhone] = useState('(312) 261-1895');
+export default function EditPhone({navigation}) {
+  const [phone, setPhone] = useState('');
+  const [loader, setLoader] = useState(false);
+  const [message, setMessage] = useState('');
+
+  const isVisible = useIsFocused();
+  const token = useSelector(state => state.token);
+
+  useEffect(() => {
+    getUserDetails();
+  }, [isVisible]);
+
+  const getUserDetails = async () => {
+    setLoader(true);
+    setTimeout(async () => {
+      try {
+        let response = await getUser(token);
+        setPhone(response.data.data.phone);
+        setLoader(false);
+      } catch (error) {
+        console.log(error);
+        setLoader(false);
+      }
+    }, 100);
+  };
+  const updatePhone = async()=>{
+    try {
+      let response = await updateUserPhone(token, phone);
+      console.log(response.data);
+      setMessage(response.data.message);
+
+      // navigation.goBack();
+    } catch (error) {
+      console.log(error);
+    }
+  }
   return (
     <SafeAreaView>
       <ScrollView style={styles.color}>
@@ -43,12 +82,16 @@ export default function EditPhone() {
           </Text>
         </View>
         <View style={styles.top}>
-          <TouchableOpacity >
+          <TouchableOpacity onPress={updatePhone}>
             <View style={styles.buttonView}>
               <Text style={styles.buttonText}>Save</Text>
             </View>
           </TouchableOpacity>
         </View>
+        {message !== '' && (
+          <Error title="Congratulations!" message={message} screen={'Home'} />
+        )}
+        {loader && <Loader />}
       </ScrollView>
     </SafeAreaView>
   );

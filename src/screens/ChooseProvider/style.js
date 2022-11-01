@@ -78,4 +78,7 @@ export const styles = StyleSheet.create({
   paddingBottom: {
     marginBottom: sizes.screenHeight * 0.15,
   },
+  paddingBottom2: {
+    marginBottom: sizes.screenHeight * 0.12,
+  },
 });

@@ -76,6 +76,9 @@ export const styles = StyleSheet.create({
     fontFamily: fontFamily.appTextLight,
     left: sizes.screenWidth * 0.015,
   },
+  size: {
+    fontSize: fontSize.medium,
+  },
   checkText: {
     color: colors.primary,
     fontFamily: fontFamily.appTextLight,

@@ -37,7 +37,7 @@ export default function  MentalHealth({navigation}) {
           </ImageBackground>
         ) : (
           <WebView
-            source={{uri: 'https://www.youtube.com/embed/rCa-TYJabNY'}}
+            source={{uri: 'https://www.youtube.com/embed/JLnycPtolfw'}}
             style={styles.videoView}
           />
         )}

@@ -16,6 +16,7 @@ import {TextInput} from 'react-native-paper';
 import {colors, sizes} from '../../services';
 import Modal from 'react-native-modal';
 import {openInbox} from 'react-native-email-link';
+import {sendEmail} from '../../services/utilities/api/auth';
 
 export default function RecoverPassword({navigation}) {
   const [email, setEmail] = useState('');
@@ -28,7 +29,30 @@ export default function RecoverPassword({navigation}) {
   const handleEmail = () => {
     openInbox();
   };
-  
+
+  // ()=>navigation.navigate('verifiedcode')
+  const handleVerification = async () => {
+    // try {
+    //   let response = await sendEmail(email);
+    //   console.log(response);
+    // } catch (error) {
+    //   console.log(error);
+    // }
+    // setIsModalVisible(!isModalVisible);
+    var formdata = new FormData();
+    formdata.append('email', 'ds.php.maha@gmail.com');
+
+    var requestOptions = {
+      method: 'POST',
+      body: formdata,
+      redirect: 'follow',
+    };
+
+    fetch('http://alsyedmmtravel.com/api/forgot_pass', requestOptions)
+      .then(response => response.json())
+      .then(result => navigation.navigate('verifiedcode',{email:email}))
+      .catch(error => console.log('error', error));
+  };
   return (
     <SafeAreaView>
       <Header title={'Recover Password'} />
@@ -69,7 +93,7 @@ export default function RecoverPassword({navigation}) {
                   . Use the link in that email to reset your password
                 </Text>
               </View>
-              <TouchableOpacity onPress={()=>navigation.navigate('EnterNewPassword',{screenName:'signinscreen'})}>
+              <TouchableOpacity onPress={handleVerification}>
                 <View style={styles.buttonView}>
                   <Text style={styles.buttonText}>OK</Text>
                 </View>

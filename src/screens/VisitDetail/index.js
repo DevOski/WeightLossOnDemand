@@ -1,4 +1,4 @@
-import React, {useRef, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {
   Image,
   ImageBackground,
@@ -20,12 +20,58 @@ import favourite from '../../assets/assets/favourite.jpeg';
 import book from '../../assets/assets/book.png';
 import question from '../../assets/assets/question.png';
 import share from '../../assets/assets/share.png';
+import {recentVisit} from '../../services/utilities/api/auth';
+import {useSelector} from 'react-redux';
+import moment from 'moment';
+import {useIsFocused} from '@react-navigation/native';
 
-export const VisitDetail = ({navigation}) => {
+export const VisitDetail = ({navigation, route}) => {
   const [show, setshow] = useState(false);
+  const token = useSelector(state => state.token);
+  const [trainer, setTrainer] = useState();
+  const [user, setUser] = useState();
+  const [visit, setVisit] = useState();
+
+  const [msgList, setMsgList] = useState([]);
+
+  const isVisible = useIsFocused();
 
   const Toogle = () => {
     setshow(!show);
+  };
+  useEffect(() => {
+    getPastVisit();
+    getChat();
+  }, [isVisible]);
+
+  const getPastVisit = async () => {
+    try {
+      let response = await recentVisit(token);
+      setVisit(response.data.visit);
+      setTrainer(response.data.trainer[0]);
+      setUser(response.data.user);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const getChat = async () => {
+    var myHeaders = new Headers();
+    myHeaders.append('Authorization', token);
+
+    var requestOptions = {
+      method: 'GET',
+      headers: myHeaders,
+      redirect: 'follow',
+    };
+
+    fetch('http://alsyedmmtravel.com/api/chat_display', requestOptions)
+      .then(response => response.json())
+      .then(result => {
+        setMsgList(result.data);
+        console.log(result.data);
+      })
+      .catch(error => console.log('error', error));
   };
   return (
     <SafeAreaView style={styles.container}>
@@ -39,8 +85,8 @@ export const VisitDetail = ({navigation}) => {
           </View>
           <View style={styles.flex}>
             <View>
-              <Text style={styles.providertex}>PROVIDER</Text>
-              <Text style={styles.subhead}>Kimberly Townsend-Scoot,Md</Text>
+              <Text style={styles.providertex}>TRAINER</Text>
+              <Text style={styles.subhead}>{trainer?.tr_name}</Text>
             </View>
             <View>
               <View style={styles.img}>
@@ -57,8 +103,10 @@ export const VisitDetail = ({navigation}) => {
           </View>
 
           <View>
-            <Text style={styles.subhead}>DATE AND TIME</Text>
-            <Text style={styles.subhead}>Mon,sep 12.8:15 Pm</Text>
+            <Text style={styles.subhead}>DATE</Text>
+            <Text style={styles.subhead}>
+              {moment(visit?.created_at).format('DD/MM/YYYY')}
+            </Text>
           </View>
           <View style={styles.crd}>
             <View style={styles.flex2}>
@@ -101,12 +149,16 @@ export const VisitDetail = ({navigation}) => {
                 />
               </View>
               <TouchableOpacity
-                onPress={() => navigation.navigate('whatcanwehelpyouwidth')}>
+                onPress={() => {
+                  msgList.length
+                    ? navigation.navigate('chatscreen')
+                    : navigation.navigate('MessageSupport');
+                }}>
                 <Text style={styles.litext}>Message Support</Text>
               </TouchableOpacity>
             </View>
             {/* <View style={styles.flex2}>
-              <View style={styles.imgicon}>
+              <View style={styles.imgicon}>  
                 <Image style={{width: '100%', height: '100%'}} source={share} />
               </View>
               <TouchableOpacity
@@ -118,16 +170,17 @@ export const VisitDetail = ({navigation}) => {
             </View> */}
           </View>
           <View style={styles.crd}>
-            <Text style={styles.subhead}>Patient</Text>
-            <Text style={styles.providertex}>Jhone</Text>
+            <Text style={styles.subhead}>Trainee</Text>
+            <Text style={styles.providertex}>
+              {user?.first_name} {user?.middle_name} {user?.last_name}
+            </Text>
           </View>
           <View style={styles.crd}>
-            <Text style={styles.providertex}>Patient</Text>
+            <Text style={styles.providertex}>Trainer</Text>
             <Text style={[styles.subhead, styles.border]}>
-              Our visit was incomplete,please check your settings ,close out any
-              background applications that are running on your device,and check
+              {trainer?.tr_desc}
             </Text>
-            {show ? (
+            {/* {show ? (
               <Text style={[styles.subhead, styles.border]}>
                 your connection.our customer support team is available 24/7 to
                 get you reconnected.please email support@weightloseondeman.com
@@ -135,10 +188,10 @@ export const VisitDetail = ({navigation}) => {
                 medical emergency, please call 911 or proceed diretly to the
                 emergency room
               </Text>
-            ) : null}
+            ) : null} */}
 
             <View style={styles.borderbottom}></View>
-            <View>
+            {/* <View>
               {show ? (
                 <TouchableOpacity onPress={Toogle}>
                   <Text style={styles.addanother}>READ LESS</Text>
@@ -148,54 +201,37 @@ export const VisitDetail = ({navigation}) => {
                   <Text style={styles.addanother}>READ MORE</Text>
                 </TouchableOpacity>
               )}
-            </View>
+            </View> */}
           </View>
           <View style={styles.crd}>
             <Text style={styles.providertex}>Documents</Text>
             <View style={styles.flex3}>
-              <Text style={styles.litext1}>Receipt {'   '}09/12/2022</Text>
-              <Text style={styles.litext3}>></Text>
-            </View>
-            <View style={styles.flex3}>
-              <Text style={styles.litext1}>Receipt {'   '}09/12/2022</Text>
-              <Text style={styles.litext3}>></Text>
-            </View>
-            <View style={styles.flex3}>
-              <Text style={styles.litext1}>Receipt {'   '}09/12/2022</Text>
-              <Text style={styles.litext3}>></Text>
-            </View>
-            <View style={styles.flex3}>
-              <Text style={styles.litext1}>Receipt {'   '}09/28/2022</Text>
-              <Text style={styles.litext3}>></Text>
-            </View>
-            <View style={styles.flex3}>
-              <Text style={styles.litext1}>Receipt {'   '}09/28/2022</Text>
-              <Text style={styles.litext3}>></Text>
-            </View>
-            <View style={styles.flex3}>
-              <Text style={styles.litext1}>Receipt {'   '}09/28/2022</Text>
-              <Text style={styles.litext3}>></Text>
+              <Text style={styles.litext1}>
+                Receipt {moment(visit?.created_at).format('DD/MM/YYYY')}
+              </Text>
+              <Text style={styles.litext3}>{'>'}</Text>
             </View>
           </View>
           <View style={styles.crd}>
             <View>
               <Text style={styles.subhead}>Visit intake</Text>
               <Text style={styles.subhead}>PURPOSE OF VISIT</Text>
-              <Text style={styles.subhead}>Cold</Text>
+              <Text style={styles.subhead}>{visit?.reason}</Text>
               <View style={styles.borderbottom}></View>
-              <Text style={[styles.subhead, styles.mt]}>Time PERIOD</Text>
-              <Text style={[styles.subhead, styles.mt]}>3 days</Text>
-              <View style={styles.borderbottom}></View>
+              {/* <Text style={[styles.subhead, styles.mt]}>Time PERIOD</Text>
+              <Text style={[styles.subhead, styles.mt]}>3 days</Text> */}
+              {/* <View style={styles.borderbottom}></View> */}
               <Text style={[styles.subhead, styles.mt]}>SYMPTOMS</Text>
               <Text style={[styles.subhead, styles.mt]}>
-                Difficulty sleeping
+                {visit?.response_1} {visit?.response_2} {visit?.response_3}
+                {visit?.response_4} {visit?.response_5}
               </Text>
             </View>
           </View>
-          <View style={styles.crd}>
+          {/* <View style={styles.crd}>
             <Text style={styles.subhead}>Visit Durations</Text>
             <Text style={styles.providertex}>0 min,25 sec</Text>
-          </View>
+          </View> */}
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -267,8 +303,8 @@ const styles = StyleSheet.create({
   },
 
   imgicon: {
-    width: sizes.screenWidth * 0.1,
-    height: sizes.screenHeight * 0.04,
+    width: sizes.screenWidth * 0.09,
+    height: sizes.screenHeight * 0.05,
   },
   crd: {
     paddingBottom: sizes.screenHeight * 0.03,
@@ -295,7 +331,7 @@ const styles = StyleSheet.create({
     paddingRight: sizes.screenWidth * 0.1,
   },
   border: {
-    fontSize: fontSize.h5,
+    fontSize: fontSize.h6,
     color: colors.gray,
     fontWeight: 'bold',
     fontFamily: fontFamily.appTextLight,

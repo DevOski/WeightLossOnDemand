@@ -2,6 +2,7 @@
   package="com.weightlossondemand">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.USE_FINGERPRINT" />
 
     <application
       android:name=".MainApplication"
@@ -10,7 +11,7 @@
       android:roundIcon="@mipmap/ic_launcher"
       android:allowBackup="false"
       android:theme="@style/AppTheme"
-       
+       android:usesCleartextTraffic="true"
       
       >
       <meta-data

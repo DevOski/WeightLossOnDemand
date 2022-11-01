@@ -1,4 +1,5 @@
-import React, {useRef, useState} from 'react';
+import {useIsFocused} from '@react-navigation/native';
+import React, {useEffect, useRef, useState} from 'react';
 import {
   Image,
   ImageBackground,
@@ -8,10 +9,39 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
+import {useSelector} from 'react-redux';
 import images from '../../services/utilities/images';
 import {styles} from './style';
 
 export default function MyHealth({navigation}) {
+
+  const [msgList, setMsgList] = useState([]);
+
+  const isVisible = useIsFocused();
+
+  const token = useSelector(state => state.token);
+  useEffect(() => {
+    getChat();
+  }, [isVisible]);
+
+  const getChat = async () => {
+    var myHeaders = new Headers();
+    myHeaders.append('Authorization', token);
+
+    var requestOptions = {
+      method: 'GET',
+      headers: myHeaders,
+      redirect: 'follow',
+    };
+
+    fetch('http://alsyedmmtravel.com/api/chat_display', requestOptions)
+      .then(response => response.json())
+      .then(result => {
+        setMsgList(result.data);
+        console.log(result.data);
+      })
+      .catch(error => console.log('error', error));
+  };
   return (
     <SafeAreaView>
       <ScrollView style={styles.color}>
@@ -22,22 +52,22 @@ export default function MyHealth({navigation}) {
           </TouchableOpacity>
         </View>
         <View style={styles.padding}>
-          <TouchableOpacity onPress={() => navigation.navigate('HealthVisits')}>
+        <TouchableOpacity onPress={() => navigation.navigate('HealthVisits')}>
             <View style={[styles.row, styles.card]}>
-              <Text style={styles.cardText}>Visits</Text>
+              <Text style={styles.cardText}>Recent Visit</Text>
               <View>
                 <Text style={styles.symbol}> ›</Text>
               </View>
             </View>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate('Documents')}>
+          {/* <TouchableOpacity onPress={() => navigation.navigate('Documents')}>
             <View style={[styles.row, styles.card]}>
               <Text style={styles.cardText}>Documents</Text>
               <View>
                 <Text style={styles.symbol}> ›</Text>
               </View>
             </View>
-          </TouchableOpacity>
+          </TouchableOpacity> */}
           {/* <TouchableOpacity onPress={() => navigation.navigate('LabTests')}>
             <View style={[styles.row, styles.card]}>
               <Text style={styles.cardText}>Lab Tests</Text>
@@ -47,7 +77,7 @@ export default function MyHealth({navigation}) {
             </View>
           </TouchableOpacity> */}
           <TouchableOpacity
-            onPress={() => navigation.navigate('MessageSupport')}>
+            onPress={() => {msgList.length ? navigation.navigate('chatscreen'): navigation.navigate('MessageSupport')}}>
             <View style={[styles.row, styles.card]}>
               <Text style={styles.cardText}>Messages</Text>
               <View>
@@ -64,7 +94,7 @@ export default function MyHealth({navigation}) {
               </View>
             </View>
           </TouchableOpacity> */}
-          <TouchableOpacity
+          {/* <TouchableOpacity
             onPress={() => navigation.navigate('HealthMyProviders')}>
             <View style={[styles.row, styles.card]}>
               <Text style={styles.cardText}>My Providers</Text>
@@ -72,7 +102,7 @@ export default function MyHealth({navigation}) {
                 <Text style={styles.symbol}> ›</Text>
               </View>
             </View>
-          </TouchableOpacity>
+          </TouchableOpacity> */}
           {/* <TouchableOpacity onPress={() => navigation.navigate('Pharmacies')}>
             <View style={[styles.row, styles.card]}>
               <Text style={styles.cardText}>Pharmacies</Text>

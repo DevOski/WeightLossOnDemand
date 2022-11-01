@@ -15,6 +15,11 @@ import Error from './src/components/Error';
 import VisitHistory from './src/screens/VisitHistory';
 import {enableLatestRenderer} from 'react-native-maps';
 import ChooseFollowUp from './src/screens/ChooseFollowUp';
+
+import store from './src/store';
+import {persistor} from './src/store';
+import {PersistGate} from 'redux-persist/integration/react';
+import { Provider } from 'react-redux';
 export default function App() {
   const [isModalVisible, setIsModalVisible] = useState(false);
 
@@ -30,41 +35,41 @@ export default function App() {
     setIsModalVisible(!isModalVisible);
   };
   return (
-    <View style={styles.container}>
-      {isModalVisible && (
-        <Modal style={styles.modalView} isVisible={isModalVisible}>
-          <TouchableOpacity onPress={toggleModal}>
-            <View
-              style={{
-                position: 'relative',
-                bottom: sizes.screenHeight * 0.3,
-                left: sizes.screenWidth * 0.85,
-              }}>
-              <Entypo name="cross" color={colors.secondary} size={30} />
-            </View>
-          </TouchableOpacity>
-          <View style={styles.texcon}>
-            <Text style={styles.text111}>Oops!</Text>
-          </View>
-          <View style={styles.texcon1}>
-            <Text style={styles.text1}>
-              There was a problem with your request. Please try again later.
-            </Text>
-          </View>
-          <TouchableOpacity onPress={toggleModal}>
-            <View style={styles.buttonView}>
-              <Text style={styles.buttonText}>OK</Text>
-            </View>
-          </TouchableOpacity>
-        </Modal>
-      )}
-      <MainNavigator />
-      {/* <Error title={"Oops!"} message={"Invalid user identity or password."}/> */}
-      {/* <RateProvider /> */}
-      {/* <HowLikelyRecommend /> */}
-      {/* <ThankyouVisit /> */}
-      {/* <VisitHistory /> */}
-    </View>
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+        <View style={styles.container}>
+          {isModalVisible && (
+            <Modal style={styles.modalView} isVisible={isModalVisible}>
+              <TouchableOpacity onPress={toggleModal}>
+                <View
+                  style={{
+                    position: 'relative',
+                    bottom: sizes.screenHeight * 0.3,
+                    left: sizes.screenWidth * 0.85,
+                  }}>
+                  <Entypo name="cross" color={colors.secondary} size={30} />
+                </View>
+              </TouchableOpacity>
+              <View style={styles.texcon}>
+                <Text style={styles.text111}>Oops!</Text>
+              </View>
+              <View style={styles.texcon1}>
+                <Text style={styles.text1}>
+                  There was a problem with your request. Please try again later.
+                </Text>
+              </View>
+              <TouchableOpacity onPress={toggleModal}>
+                <View style={styles.buttonView}>
+                  <Text style={styles.buttonText}>OK</Text>
+                </View>
+              </TouchableOpacity>
+            </Modal>
+          )}
+          <MainNavigator />
+          {/* <Error title={"Oops!"} message={"Invalid user identity or password."}/> */}
+        </View>
+      </PersistGate>
+    </Provider>
   );
 }
 const styles = StyleSheet.create({

@@ -1,4 +1,4 @@
-import React, {useState,useEffect} from 'react';
+import React, {useState, useEffect} from 'react';
 const deviceHeight = Dimensions.get('window').height;
 const deviceWidth = Dimensions.get('window').width;
 import {
@@ -17,30 +17,38 @@ import {RadioButton} from 'react-native-paper';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {colors, fontFamily, fontSize, sizes} from '../../services';
 import {CustomTextFiel} from '../../component/textFiled';
-const BasicInfoScreen = ({navigation,route}) => {
+import {getTrainer, signUp} from '../../services/utilities/api/auth';
+const BasicInfoScreen = ({navigation, route}) => {
   // console.log(route,"-------->basicscreen");
-  const { register } = route.params;
-  // console.log(register,"-------->basicscreenparams");
+
+  // const {email, password, checked, date, isEnabled} = route?.params;
+  // const {password} = route.params;
+  // const {checked} = route.params;
+  // const {isEnabled} = route.params;
+
+  console.log(route.params, '-------->basicscreenparams');
   const [CheckedMale, setCheckedMale] = React.useState();
   const [CheckedFemale, setCheckedFemale] = React.useState();
   const [CheckedOther, setCheckedOther] = React.useState();
-  const [name, setname] = useState();
-  const [lastname, setlastname] = useState();
-  const [phonenumber, setphonenumber] = useState();
-  const [slectnumber, setslectnumber] = useState();
-  const [Middle, setMiddle] = useState();
+  const [name, setname] = useState('');
+  const [lastname, setlastname] = useState('');
+  const [phonenumber, setphonenumber] = useState('');
+  const [slectnumber, setslectnumber] = useState('');
+  const [middle, setMiddle] = useState('');
   const [show, setshow] = useState(false);
   const [Fieldsshowhide, setFieldsshowhide] = useState(false);
-const [allinformation, setallinformation] = useState()
-  const [Prefix, setPrefix] = useState();
+  // const [allinformation, setallinformation] = useState()
+  const [Prefix, setPrefix] = useState('');
+  const [gender, setgender] = useState('');
+  const [Suffix, setsetSuffix] = useState('');
 
-  useEffect(()=>{
-    //this will fire  at the beginning and on foto changing value
-    if(allinformation){
-      // navigation.navigate('basicInfoscreens')
-      console.log(allinformation,'useeffectallinformation');
-    }
-   },[allinformation])
+  // useEffect(()=>{
+  //   //this will fire  at the beginning and on foto changing value
+  //   if(allinformation){
+  //     // navigation.navigate('basicInfoscreens')
+  //     console.log(allinformation,'useeffectallinformation');
+  //   }
+  //  },[allinformation])
 
   const toogle = () => {
     setshow(!show);
@@ -49,29 +57,40 @@ const [allinformation, setallinformation] = useState()
     setFieldsshowhide(!Fieldsshowhide);
   };
 
+  const Continue = async () => {
+    // )  name,
+    //     middle,
+    //     lastname,
+    //     email,
+    //     password,
+    //     gender,
+    //     Prefix,
+    //     Suffix,
+    //     phonenumber,
+    //     isEnabled,
+    // navigation.navigate('wellcomescreen')
 
-  
-
-  
-  const Continue=()=>{
-    
-    setallinformation(
-    {
-      name,
-      lastname,
-      slectnumber,
-      phonenumber,
-      Middle,
-      CheckedMale,
-      CheckedFemale,
-      CheckedOther,
-      register
+    try {
+      let response = await signUp(
+        name,
+        middle,
+        lastname,
+        route?.params?.email,
+        route?.params?.password,
+        gender,
+        Prefix,
+        Suffix,
+        phonenumber,
+        slectnumber,
+        route?.params?.date,
+        isEnabled ? 1 : 0,
+        // route?.params?.isEnabled,
+      );
+      console.log(response.data);
+    } catch (error) {
+      console.log(error.message);
     }
-    )
-    navigation.navigate('wellcomescreen')
-    
-  }
-
+  };
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView>
@@ -107,7 +126,7 @@ const [allinformation, setallinformation] = useState()
               <View style={styles.filedcon}>
                 <CustomTextFiel
                   label={'Middle Name'}
-                  value={Middle}
+                  value={middle}
                   setValue={setMiddle}
                 />
               </View>
@@ -123,8 +142,8 @@ const [allinformation, setallinformation] = useState()
               <View style={styles.filedcon}>
                 <CustomTextFiel
                   label={'Suffix'}
-                  value={lastname}
-                  setValue={setlastname}
+                  value={Suffix}
+                  setValue={setsetSuffix}
                 />
               </View>
             ) : null}
@@ -138,26 +157,26 @@ const [allinformation, setallinformation] = useState()
                 />
               </View>
               <View style={styles.twoitem}>
-                <TouchableOpacity  onPress={toogle}>
-                <View
-                  style={{
-                    width: sizes.screenWidth * 0.4,
-                    left: sizes.screenWidth * 0.05,
-                  }}>
-                  <CustomTextFiel
-                    label={'Mobile'}
-                    value={slectnumber}
-                    setValue={setslectnumber}
-                    editable={false}
+                <TouchableOpacity onPress={toogle}>
+                  <View
+                    style={{
+                      width: sizes.screenWidth * 0.4,
+                      left: sizes.screenWidth * 0.05,
+                    }}>
+                    <CustomTextFiel
+                      label={'Mobile'}
+                      value={slectnumber}
+                      setValue={setslectnumber}
+                      editable={false}
+                    />
+                  </View>
+                  <MaterialIcons
+                    name="expand-more"
+                    color={colors.secondary}
+                    style={styles.icon}
+                    size={20}
+                    onPress={toogle}
                   />
-                </View>
-                <MaterialIcons
-                  name="expand-more"
-                  color={colors.secondary}
-                  style={styles.icon}
-                  size={20}
-                  onPress={toogle}
-                />
                 </TouchableOpacity>
                 {show ? (
                   <View style={[styles.pap, styles.right]}>
@@ -191,23 +210,25 @@ const [allinformation, setallinformation] = useState()
             </View>
             <View style={styles.expndbuttoncontainer}>
               <TouchableOpacity onPress={ShowFiled}>
-                {!Fieldsshowhide ? (<>
-                  <Text style={styles.lstyle}>COLLAPSE</Text>
-                  <MaterialIcons
-                  name="expand-more"
-                  color={colors.secondary}
-                  style={!Fieldsshowhide ? styles.iconexp : styles.iconexp2}
-                  size={20}
-                  />
+                {!Fieldsshowhide ? (
+                  <>
+                    <Text style={styles.lstyle}>COLLAPSE</Text>
+                    <MaterialIcons
+                      name="expand-more"
+                      color={colors.secondary}
+                      style={!Fieldsshowhide ? styles.iconexp : styles.iconexp2}
+                      size={20}
+                    />
                   </>
-                ) : (<>
-                  <Text style={styles.lstyle}> Expand</Text>
-                  <MaterialIcons
-                  name="expand-less"
-                  color={colors.secondary}
-                  style={!Fieldsshowhide ? styles.iconexp : styles.iconexp2}
-                  size={20}
-                  />
+                ) : (
+                  <>
+                    <Text style={styles.lstyle}> Expand</Text>
+                    <MaterialIcons
+                      name="expand-less"
+                      color={colors.secondary}
+                      style={!Fieldsshowhide ? styles.iconexp : styles.iconexp2}
+                      size={20}
+                    />
                   </>
                 )}
                 {/* {!Fieldsshowhide ? (
@@ -238,6 +259,7 @@ const [allinformation, setallinformation] = useState()
                 status={CheckedMale ? 'checked' : 'unchecked'}
                 onPress={() => {
                   setCheckedMale(!CheckedMale);
+                  setgender('Male');
                   setCheckedFemale(false);
                   setCheckedOther(false);
                 }}
@@ -251,6 +273,7 @@ const [allinformation, setallinformation] = useState()
                 status={CheckedFemale ? 'checked' : 'unchecked'}
                 onPress={() => {
                   setCheckedFemale(!CheckedFemale);
+                  setgender('Female');
                   setCheckedMale(false);
                   setCheckedOther(false);
                 }}
@@ -264,6 +287,7 @@ const [allinformation, setallinformation] = useState()
                 status={CheckedOther ? 'checked' : 'unchecked'}
                 onPress={() => {
                   setCheckedOther(!CheckedOther);
+                  setgender('Other');
                   setCheckedMale(false);
                   setCheckedFemale(false);
                 }}
@@ -276,7 +300,7 @@ const [allinformation, setallinformation] = useState()
             <View style={styles.r}>
               <Text style={styles.tremtext}>
                 By providing your Mobile number,you give us permission to
-                contact you via text,
+                contact you via text.
               </Text>
               <TouchableOpacity>
                 <Text style={styles.tremtextbutt}>View terms.</Text>
@@ -284,11 +308,7 @@ const [allinformation, setallinformation] = useState()
             </View>
           </View>
           <View style={styles.buttocon}>
-            <TouchableOpacity
-              onPress={
-                Continue
-                }
-                >
+            <TouchableOpacity onPress={Continue}>
               <View style={styles.buttoconSTYLE}>
                 <Text style={styles.continue}>Continue</Text>
               </View>
@@ -400,7 +420,7 @@ const styles = StyleSheet.create({
   tremtextbutt: {
     position: 'relative',
     top: sizes.screenHeight * 0.03,
-    right: sizes.screenWidth * 0.22,
+    right: sizes.screenWidth * 0.19,
     fontSize: fontSize.medium,
     color: colors.secondary,
     fontFamily: fontFamily.appTextLight,

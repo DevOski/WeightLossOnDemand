@@ -34,6 +34,6 @@ export const styles = StyleSheet.create({
     fontFamily: fontFamily.appTextHeading,
   },
   paddingBottom: {
-    paddingBottom: sizes.screenHeight * 0.15,
+    paddingBottom: sizes.screenHeight * 0.03,
   },
 });

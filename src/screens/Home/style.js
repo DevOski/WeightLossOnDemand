@@ -76,6 +76,11 @@ export const styles = StyleSheet.create({
     shadowRadius: 3.84,
     elevation: 5,
   },
+  cardView2:{
+    width: sizes.screenWidth * 0.9,
+    marginRight: sizes.screenWidth * 0.02,
+    marginLeft: sizes.screenWidth * 0.04,
+  },
   bg: {
     height: sizes.screenHeight * 0.72,
     width: sizes.screenWidth * 0.9,
@@ -84,8 +89,8 @@ export const styles = StyleSheet.create({
     top: sizes.screenHeight * 0.3,
     alignSelf: 'center',
     backgroundColor: 'rgba(255, 255, 247,0.3)',
-    height: sizes.screenHeight * 0.1,
-    width: sizes.screenWidth * 0.2,
+    height: sizes.screenHeight * 0.11,
+    width: sizes.screenWidth * 0.20,
     borderRadius: sizes.screenWidth * 0.8,
     justifyContent: 'center',
   },
@@ -236,7 +241,7 @@ export const styles = StyleSheet.create({
   },
   buttnView: {
     // marginRight:sizes.screenWidth*0.06,
-    marginTop: sizes.screenHeight * 0.05,
+    marginTop: sizes.screenHeight * 0.03,
     marginRight:sizes.screenWidth*0.05,
     justifyContent: 'center',
     alignItems: 'center',
@@ -255,4 +260,7 @@ export const styles = StyleSheet.create({
     fontFamily: fontFamily.appTextHeading,
     fontWeight: '600',
   },
+  // seeBtn:{
+  //   marginTop:sizes.screenHeight * 0.18
+  // }
 });

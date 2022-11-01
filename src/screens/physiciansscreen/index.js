@@ -1,4 +1,4 @@
-import React, {useRef, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {
   ActivityIndicator,
   Dimensions,
@@ -18,50 +18,85 @@ import ladyy from '../../assets/assets/ladyy.jpg';
 import {WebView} from 'react-native-webview';
 import Header from '../../components/Header';
 import {colors, sizes, fontSize} from '../../services';
+import {useIsFocused} from '@react-navigation/native';
+import {getTrainerList} from '../../services/utilities/api/auth';
+import Loader from '../../components/Loader';
 
-export default function Physicans({navigation}) {
+export default function Physicans({navigation, route}) {
   const [showVideo, setShowVideo] = useState(false);
+  const [loader, setLoader] = useState(false);
+  const [trainerList, setTrainerList] = useState([]);
+  const {t_name} = route?.params?.trainer;
+  const isVisible = useIsFocused();
+
+  useEffect(() => {
+    getList();
+  }, [isVisible]);
+
+  const getList = () => {
+    setLoader(true);
+    setTimeout(async () => {
+      try {
+        let response = await getTrainerList(t_name);
+        // console.log(response.data.data);
+        setTrainerList(response.data.data);
+        setLoader(false);
+      } catch (error) {
+        console.log(error);
+        setLoader(false);
+      }
+    }, 100);
+  };
   return (
     <SafeAreaView>
       <Header dark={true} />
 
       <ScrollView style={styles.color}>
         <View style={styles.paddingLeft}>
-          <Text style={styles.subHeading}>Our Providers </Text>
+          <Text style={styles.subHeading}>{t_name} </Text>
         </View>
         <View style={styles.paddingTop}>
-          <TouchableOpacity
-            onPress={() => navigation.navigate('physiciansscreen')}>
-            <View style={[styles.row, styles.card]}>
-              <View>
-                <View style={styles.rowinner}>
-                  <View style={styles.img}>
-                    <Image
-                      style={{
-                        width: '100%',
-                        height: '100%',
-                        borderRadius: sizes.screenWidth * 0.5,
-                      }}
-                      source={ladyy}
-                    />
+          {trainerList?.map((item, index) => {
+            return (
+              <TouchableOpacity
+                key={index}
+                onPress={() =>
+                  navigation.navigate('providerdetail', {trainer: item})
+                }>
+                <View style={[styles.row, styles.card]}>
+                  <View>
+                    <View style={styles.rowinner}>
+                      <View style={styles.img}>
+                        <Image
+                          style={{
+                            width: '100%',
+                            height: '100%',
+                            borderRadius: sizes.screenWidth * 0.5,
+                          }}
+                          source={ladyy}
+                        />
+                      </View>
+                      <View>
+                        <Text style={styles.heading}>{item.tr_name}</Text>
+                      </View>
+                    </View>
+                    <Text
+                      style={styles.cardText1}
+                      numberOfLines={3}
+                      ellipsizeMode="tail">
+                      {item?.tr_desc}
+                    </Text>
                   </View>
                   <View>
-                    <Text style={styles.heading}>Dr.KiKi Lwin,Md</Text>
+                    <Text style={styles.symbol}> ›</Text>
                   </View>
                 </View>
-                <Text style={styles.cardText1}>
-                  Dr. Lwin was born and raised in Myanmar,formerly known as
-                  Burma and graduated from University of Med....
-                </Text>
-              </View>
-              <View>
-                <Text style={styles.symbol}> ›</Text>
-              </View>
-            </View>
-          </TouchableOpacity>
+              </TouchableOpacity>
+            );
+          })}
 
-          <TouchableOpacity
-            onPress={() => navigation.navigate('physiciansscreen')}>
+          {/* <TouchableOpacity
+            onPress={() => navigation.navigate('providerdetail')}>
             <View style={[styles.row, styles.card]}>
               <View>
                 <View style={styles.rowinner}>
@@ -90,7 +125,7 @@ export default function Physicans({navigation}) {
             </View>
           </TouchableOpacity>
           <TouchableOpacity
-            onPress={() => navigation.navigate('physiciansscreen')}>
+            onPress={() => navigation.navigate('providerdetail')}>
             <View style={[styles.row, styles.card]}>
               <View>
                 <View style={styles.rowinner}>
@@ -119,7 +154,7 @@ export default function Physicans({navigation}) {
             </View>
           </TouchableOpacity>
           <TouchableOpacity
-            onPress={() => navigation.navigate('physiciansscreen')}>
+            onPress={() => navigation.navigate('providerdetail')}>
             <View style={[styles.row, styles.card]}>
               <View>
                 <View style={styles.rowinner}>
@@ -148,7 +183,7 @@ export default function Physicans({navigation}) {
             </View>
           </TouchableOpacity>
           <TouchableOpacity
-            onPress={() => navigation.navigate('physiciansscreen')}>
+            onPress={() => navigation.navigate('providerdetail')}>
             <View style={[styles.row, styles.card]}>
               <View>
                 <View style={styles.rowinner}>
@@ -175,8 +210,9 @@ export default function Physicans({navigation}) {
                 <Text style={styles.symbol}> ›</Text>
               </View>
             </View>
-          </TouchableOpacity>
+          </TouchableOpacity> */}
         </View>
+        {loader && <Loader />}
       </ScrollView>
     </SafeAreaView>
   );

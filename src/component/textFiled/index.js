@@ -24,7 +24,7 @@ export const CustomTextFiel = ({
         activeUnderlineColor={colors.secondary}
         editable={editable}
         style={{
-          backgroundColor: colors.white,
+          backgroundColor: "#fafafa",
           fontSize: fontSize.large,
           fontFamily: fontFamily.appTextRegular,
         }}

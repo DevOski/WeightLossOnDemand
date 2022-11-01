@@ -18,7 +18,9 @@ import Spinner from 'react-native-spinkit';
 
 export default function ProviderReview({navigation}) {
   useEffect(() => {
-   navigation.navigate("RateProvider")
+  setTimeout(() => {
+    navigation.navigate('videocallingscreen');
+  }, 5000);
   }, [])
   
   return (

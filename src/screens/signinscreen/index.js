@@ -1,4 +1,4 @@
-import React, {useState,useEffect} from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   SafeAreaView,
   ScrollView,
@@ -14,32 +14,104 @@ import {
 } from 'react-native';
 import Logo from '../../assets/assets/logo.png';
 import {CustomTextFiel} from '../../component/textFiled';
+import Error from '../../components/Error';
+import Loader from '../../components/Loader';
 import {colors, fontFamily, fontSize, sizes} from '../../services';
+import {signIn} from '../../services/utilities/api/auth';
+import TouchID from 'react-native-touch-id';
+import {useDispatch} from 'react-redux';
+import {storeData} from '../../store/actions';
+
 const deviceHeight = Dimensions.get('window').height;
 const deviceWidth = Dimensions.get('window').width;
+
+const optionalConfigObject = {
+  title: 'Authentication Required', // Android
+  imageColor: '#e00606', // Android
+  imageErrorColor: '#ff0000', // Android
+  sensorDescription: 'Touch sensor', // Android
+  sensorErrorDescription: 'Failed', // Android
+  cancelText: 'Cancel', // Android
+  fallbackLabel: 'Show Passcode', // iOS (if empty, then label is hidden)
+  unifiedErrors: false, // use unified error messages (default false)
+  passcodeFallback: false, // iOS - allows the device to fall back to using the passcode, if faceid/touch is not available. this does not mean that if touchid/faceid fails the first few times it will revert to passcode, rather that if the former are not enrolled, then it will use the passcode.
+};
 
 export const SignIn = ({navigation}) => {
   const [isEnabled, setIsEnabled] = useState(false);
   const toggleSwitch = () => setIsEnabled(previousState => !previousState);
-  const [email, setemail] = useState();
-  const [password, setpassword] = useState();
-  const [sigindata, setsigindata] = useState()
-  useEffect(()=>{
-    //this will fire  at the beginning and on foto changing value
-    if(sigindata){
-      navigation.navigate('BottomNavs')
+  const [email, setemail] = useState('');
+  const [password, setpassword] = useState('');
+  const [sigindata, setsigindata] = useState();
+  const [errorMessage, setErrorMessage] = useState('');
+  const [loader, setLoader] = useState(false);
+  const [error, setError] = useState(false);
+  // useEffect(()=>{
+  //   //this will fire  at the beginning and on foto changing value
+  //   if(sigindata){
+  //     navigation.navigate('BottomNavs')
+  //   }
+  //  },[sigindata])
+  const dispatch = useDispatch();
+
+  const handleBiometric = () => {
+    TouchID.isSupported(optionalConfigObject).then(biometricType => {
+      if (biometricType === 'FaceID') {
+        console.log('FaceID is supported.');
+      } else {
+        console.log('TouchID is supported.');
+        TouchID.authenticate('', optionalConfigObject)
+          .then(success => {
+            console.log('works');
+            console.log('Success', success);
+            // navigation.navigate('BottomNavs');
+          })
+          .catch(error => {
+            setErrorMessage(error);
+          });
+      }
+    });
+  };
+
+  const Sigin = async () => {
+    if (email && password) {
+      console.log('works1');
+      try {
+        setLoader(true);
+        console.log('works2');
+
+        setTimeout(async () => {
+          let response = await signIn(email, password);
+          console.log(response.data);
+          setLoader(false);
+          if (response.data.message == 'user found') {
+            console.log(response.data.token);
+            dispatch(storeData(response.data.token));
+            // console.log(response.data.data.fingerprint);
+            // if (response.data.data.fingerprint == 1) {
+            //   handleBiometric();
+            // }
+            // else{
+            //   navigation.navigate('BottomNavs');
+            // }
+            setError(false);
+            setLoader(false);
+          } else {
+            console.log(response.data.message);
+            setError(true);
+            setErrorMessage(response.data.message);
+            setLoader(false);
+          }
+        }, 100);
+      } catch (error) {
+        console.log('err', error);
+
+        setError(true);
+        setErrorMessage(error.message);
+        setLoader(false);
+      }
     }
-   },[sigindata])
-
-const Sigin=()=>{
-  setsigindata({
-    email,
-    password
-  })
-  setemail('')
-  setpassword('')
-
-}
+  };
 
   return (
     <SafeAreaView style={styles.bg}>
@@ -65,6 +137,7 @@ const Sigin=()=>{
               label={'Password'}
               value={password}
               setValue={setpassword}
+              secureTextEntry={true}
             />
           </View>
           <View style={styles.filedcontext}>
@@ -88,8 +161,8 @@ const Sigin=()=>{
           <View style={{justifyContent: 'center', alignItems: 'center'}}>
             <View style={styles.filedconbutton}>
               <TouchableOpacity
-              disabled={email !='' && password !=''? false:true}
-                style={email && password?  styles.but:styles.disabledView}
+                disabled={email != '' && password != '' ? false : true}
+                style={email && password ? styles.but : styles.disabledView}
                 onPress={Sigin}>
                 <Text
                   style={{
@@ -105,6 +178,8 @@ const Sigin=()=>{
           </View>
         </View>
       </View>
+      {loader && <Loader />}
+      {error && <Error title={'Oops!'} message={errorMessage} />}
     </SafeAreaView>
   );
 };

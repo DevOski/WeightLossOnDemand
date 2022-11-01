@@ -15,12 +15,23 @@ import {styles} from './style';
 import {Calendar} from 'react-native-calendars';
 import {colors, fontFamily} from '../../services';
 import moment from 'moment';
-export default function ChooseAppointment({navigation}) {
+import {
+  getAllList,
+  getAllSlotDate,
+  getSlotDate,
+  getSlotList,
+  getSlotTime,
+} from '../../services/utilities/api/auth';
+export default function ChooseAppointment({navigation, route}) {
   const [calendar, setCalendar] = useState(true);
   const [list, setList] = useState(false);
   const [currentDate, setCurrentDate] = useState('');
   const [markedDates, setMarkedDates] = useState('');
-
+  const [timeSlot, setTimeSlot] = useState([]);
+  const [dateSlot, setDateSlot] = useState([]);
+  const [month, setMonth] = useState('');
+  const [day, setDay] = useState('');
+  const [date, setDate] = useState('');
   const handleCalendar = () => {
     setCalendar(true);
     setList(false);
@@ -28,13 +39,22 @@ export default function ChooseAppointment({navigation}) {
   const handleList = () => {
     setCalendar(false);
     setList(true);
+    getTimeSlots();
   };
   useEffect(() => {
     var utc = new Date().toJSON().slice(0, 10).replace(/-/g, '-');
     setCurrentDate(utc);
   }, []);
 
-  const getSelectedDayEvents = date => {
+  useEffect(() => {}, [list]);
+
+  const getSelectedDayEvents = (date, day) => {
+    setDate(day.day);
+    let oneDate = moment(date, 'DD-MM-YYYY');
+    let monthName = oneDate.format('MMM');
+    setMonth(monthName);
+    let weekDayName = moment(date).format('ddd');
+    setDay(weekDayName);
     let markedDates = {};
     markedDates[date] = {
       selected: true,
@@ -42,8 +62,70 @@ export default function ChooseAppointment({navigation}) {
       textColor: '#FFFFFF',
     };
     let serviceDate = moment(date);
-    serviceDate = serviceDate.format('DD.MM.YYYY');
+    serviceDate = serviceDate.format('DD/MM/YYYY');
     setMarkedDates(markedDates);
+    getDateSlots(serviceDate);
+    if (route?.params?.from === 'All Trainer') {
+      getAllDateSlots(serviceDate);
+    }
+  };
+
+  const getDateSlots = async date => {
+    try {
+      let response = await getSlotDate(route?.params?.trainer?.tr_id, date);
+      setDateSlot(response.data.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const getTimeSlots = async () => {
+    try {
+      let response = await getSlotTime(route?.params?.trainer?.tr_id);
+      setTimeSlot(response.data.data);
+    } catch (error) {
+      console.log(error);
+    }
+    if (route?.params?.from === 'All Trainer') {
+      getAllSlotList();
+    }
+  };
+
+  const getAllDateSlots = async date => {
+    // alert("")
+    // try {
+    //   let response = await getAllSlotDate(date);
+    //   console.log(response.data);
+    // } catch (error) {
+    //   console.log(error);
+    // }
+    // var myHeaders = new Headers();
+    // myHeaders.append('Content-Type', 'application/json');
+    // var raw = JSON.stringify({
+    //   date: '10/10/2022',
+    // });
+    // var requestOptions = {
+    //   method: 'GET',
+    //   headers: myHeaders,
+    //   body: raw,
+    //   redirect: 'follow',
+    // };
+    // fetch('http://alsyedmmtravel.com/api/all_trCalenderSlots', requestOptions)
+    //   .then(response => response.text())
+    //   .then(result => console.log(result))
+    //   .catch(error => console.log('error', error));
+  };
+
+  const getAllSlotList = async () => {
+    var requestOptions = {
+      method: 'GET',
+      redirect: 'follow',
+    };
+
+    fetch('http://alsyedmmtravel.com/api/Slots', requestOptions)
+      .then(response => response.json())
+      .then(result => setTimeSlot(result.data))
+      .catch(error => console.log('error', error));
   };
   return (
     <SafeAreaView>
@@ -74,211 +156,64 @@ export default function ChooseAppointment({navigation}) {
             <View>
               <Calendar
                 onDayPress={day => {
-                  getSelectedDayEvents(day.dateString);
+                  console.log(day);
+                  getSelectedDayEvents(day.dateString, day);
                 }}
                 markedDates={markedDates}
                 initialDate={currentDate}
                 theme={styles.calendar}
               />
-              <View style={styles.padding}>
-                <Text style={styles.text2}>FRI, SEP 30</Text>
-              </View>
+              {day !== '' ? (
+                <View style={styles.padding}>
+                  <Text style={styles.text2}>
+                    {day}, {month} {date}
+                  </Text>
+                </View>
+              ) : (
+                <Text style={styles.text2}>
+                  {moment(currentDate).format('ddd')},{' '}
+                  {moment(currentDate).format('MMM')}{' '}
+                  {moment(currentDate).format('DD')}
+                </Text>
+              )}
+
               <View style={styles.height}>
                 <ScrollView style={[styles.card]}>
-                  <TouchableOpacity
-                    onPress={() => navigation.navigate('appointmentreqest')}>
-                    <View style={[styles.row2, styles.card]}>
-                      <Text style={styles.cardText}>7:00 PM</Text>
-                      <View>
-                        <Text style={styles.symbol}> ›</Text>
-                      </View>
-                    </View>
-                  </TouchableOpacity>
-                  <TouchableOpacity
-                    onPress={() => navigation.navigate('appointmentreqest')}>
-                    <View style={[styles.row2, styles.card]}>
-                      <Text style={styles.cardText}>7:15 PM</Text>
-                      <View>
-                        <Text style={styles.symbol}> ›</Text>
-                      </View>
-                    </View>
-                  </TouchableOpacity>
-                  <TouchableOpacity
-                    onPress={() => navigation.navigate('appointmentreqest')}>
-                    <View style={[styles.row2, styles.card]}>
-                      <Text style={styles.cardText}>7:30 PM</Text>
-                      <View>
-                        <Text style={styles.symbol}> ›</Text>
-                      </View>
-                    </View>
-                  </TouchableOpacity>
-                  <TouchableOpacity
-                    onPress={() => navigation.navigate('appointmentreqest')}>
-                    <View style={[styles.row2, styles.card]}>
-                      <Text style={styles.cardText}>7:45 PM</Text>
-                      <View>
-                        <Text style={styles.symbol}> ›</Text>
-                      </View>
-                    </View>
-                  </TouchableOpacity>
-                  <TouchableOpacity
-                    onPress={() => navigation.navigate('appointmentreqest')}>
-                    <View style={[styles.row2, styles.card]}>
-                      <Text style={styles.cardText}>8:00 PM</Text>
-                      <View>
-                        <Text style={styles.symbol}> ›</Text>
-                      </View>
-                    </View>
-                  </TouchableOpacity>
-                  <TouchableOpacity
-                    onPress={() => navigation.navigate('appointmentreqest')}>
-                    <View style={[styles.row2, styles.card]}>
-                      <Text style={styles.cardText}>8:15 PM</Text>
-                      <View>
-                        <Text style={styles.symbol}> ›</Text>
-                      </View>
-                    </View>
-                  </TouchableOpacity>
-                  <TouchableOpacity
-                    onPress={() => navigation.navigate('appointmentreqest')}>
-                    <View style={[styles.row2, styles.card, styles.bottom]}>
-                      <Text style={styles.cardText}>8:30 PM</Text>
-                      <View>
-                        <Text style={styles.symbol}> ›</Text>
-                      </View>
-                    </View>
-                  </TouchableOpacity>
+                  {dateSlot?.map((item, index) => {
+                    return (
+                      <TouchableOpacity
+                        onPress={() =>
+                          navigation.navigate('appointmentreqest', {slot: item})
+                        }>
+                        <View style={[styles.row2, styles.card]}>
+                          <Text style={styles.cardText}>{item?.sl_time}</Text>
+                          <View>
+                            <Text style={styles.symbol}> ›</Text>
+                          </View>
+                        </View>
+                      </TouchableOpacity>
+                    );
+                  })}
                 </ScrollView>
               </View>
             </View>
           ) : (
             <View>
-              <TouchableOpacity
-                onPress={() => navigation.navigate('appointmentreqest')}>
-                <View style={[styles.row2, styles.card]}>
-                  <Text style={styles.cardText}>7:00 PM</Text>
-                  <View>
-                    <Text style={styles.symbol}> ›</Text>
-                  </View>
-                </View>
-              </TouchableOpacity>
-              <TouchableOpacity
-                onPress={() => navigation.navigate('appointmentreqest')}>
-                <View style={[styles.row2, styles.card]}>
-                  <Text style={styles.cardText}>7:15 PM</Text>
-                  <View>
-                    <Text style={styles.symbol}> ›</Text>
-                  </View>
-                </View>
-              </TouchableOpacity>
-              <TouchableOpacity
-                onPress={() => navigation.navigate('appointmentreqest')}>
-                <View style={[styles.row2, styles.card]}>
-                  <Text style={styles.cardText}>7:30 PM</Text>
-                  <View>
-                    <Text style={styles.symbol}> ›</Text>
-                  </View>
-                </View>
-              </TouchableOpacity>
-              <TouchableOpacity
-                onPress={() => navigation.navigate('appointmentreqest')}>
-                <View style={[styles.row2, styles.card]}>
-                  <Text style={styles.cardText}>7:45 PM</Text>
-                  <View>
-                    <Text style={styles.symbol}> ›</Text>
-                  </View>
-                </View>
-              </TouchableOpacity>
-              <TouchableOpacity
-                onPress={() => navigation.navigate('appointmentreqest')}>
-                <View style={[styles.row2, styles.card]}>
-                  <Text style={styles.cardText}>8:00 PM</Text>
-                  <View>
-                    <Text style={styles.symbol}> ›</Text>
-                  </View>
-                </View>
-              </TouchableOpacity>
-              <TouchableOpacity
-                onPress={() => navigation.navigate('appointmentreqest')}>
-                <View style={[styles.row2, styles.card]}>
-                  <Text style={styles.cardText}>8:15 PM</Text>
-                  <View>
-                    <Text style={styles.symbol}> ›</Text>
-                  </View>
-                </View>
-              </TouchableOpacity>
-              <TouchableOpacity
-                onPress={() => navigation.navigate('appointmentreqest')}>
-                <View style={[styles.row2, styles.card, styles.bottom]}>
-                  <Text style={styles.cardText}>8:30 PM</Text>
-                  <View>
-                    <Text style={styles.symbol}> ›</Text>
-                  </View>
-                </View>
-              </TouchableOpacity>
-              <TouchableOpacity
-                onPress={() => navigation.navigate('appointmentreqest')}>
-                <View style={[styles.row2, styles.card]}>
-                  <Text style={styles.cardText}>8:45 PM</Text>
-                  <View>
-                    <Text style={styles.symbol}> ›</Text>
-                  </View>
-                </View>
-              </TouchableOpacity>
-              <TouchableOpacity
-                onPress={() => navigation.navigate('appointmentreqest')}>
-                <View style={[styles.row2, styles.card]}>
-                  <Text style={styles.cardText}>9:00 PM</Text>
-                  <View>
-                    <Text style={styles.symbol}> ›</Text>
-                  </View>
-                </View>
-              </TouchableOpacity>
-              <TouchableOpacity
-                onPress={() => navigation.navigate('appointmentreqest')}>
-                <View style={[styles.row2, styles.card]}>
-                  <Text style={styles.cardText}>9:15 PM</Text>
-                  <View>
-                    <Text style={styles.symbol}> ›</Text>
-                  </View>
-                </View>
-              </TouchableOpacity>
-              <TouchableOpacity
-                onPress={() => navigation.navigate('appointmentreqest')}>
-                <View style={[styles.row2, styles.card]}>
-                  <Text style={styles.cardText}>9:30 PM</Text>
-                  <View>
-                    <Text style={styles.symbol}> ›</Text>
-                  </View>
-                </View>
-              </TouchableOpacity>
-              <TouchableOpacity
-                onPress={() => navigation.navigate('appointmentreqest')}>
-                <View style={[styles.row2, styles.card]}>
-                  <Text style={styles.cardText}>9:45 PM</Text>
-                  <View>
-                    <Text style={styles.symbol}> ›</Text>
-                  </View>
-                </View>
-              </TouchableOpacity>
-              <TouchableOpacity
-                onPress={() => navigation.navigate('appointmentreqest')}>
-                <View style={[styles.row2, styles.card]}>
-                  <Text style={styles.cardText}>10:00 PM</Text>
-                  <View>
-                    <Text style={styles.symbol}> ›</Text>
-                  </View>
-                </View>
-              </TouchableOpacity>
-              <TouchableOpacity
-                onPress={() => navigation.navigate('appointmentreqest')}>
-                <View style={[styles.row2, styles.card, styles.bottom]}>
-                  <Text style={styles.cardText}>10:15 PM</Text>
-                  <View>
-                    <Text style={styles.symbol}> ›</Text>
-                  </View>
-                </View>
-              </TouchableOpacity>
+              {timeSlot?.map((item, index) => {
+                return (
+                  <TouchableOpacity
+                    onPress={() =>
+                      navigation.navigate('appointmentreqest', {slot: item})
+                    }>
+                    <View style={[styles.row2, styles.card]}>
+                      <Text style={styles.cardText}>{item?.sl_time}</Text>
+                      <View>
+                        <Text style={styles.symbol}> ›</Text>
+                      </View>
+                    </View>
+                  </TouchableOpacity>
+                );
+              })}
             </View>
           )}
         </View>

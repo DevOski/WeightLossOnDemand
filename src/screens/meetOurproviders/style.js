@@ -8,7 +8,7 @@ export const styles = StyleSheet.create({
     height: sizes.screenHeight,
   },
   image: {
-    height: sizes.screenHeight * 0.25,
+    height: sizes.screenHeight * 0.33,
     width: sizes.screenWidth,
   },
   playBtn: {
@@ -26,7 +26,7 @@ export const styles = StyleSheet.create({
     alignSelf: 'center',
   },
   textView: {
-    paddingTop: sizes.screenHeight * 0.09,
+    paddingTop: sizes.screenHeight * 0.16,
     paddingLeft: sizes.screenWidth * 0.05,
   },
   heading: {

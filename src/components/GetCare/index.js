@@ -17,7 +17,7 @@ export default function GetCare() {
   return (
       <TouchableOpacity onPress={()=>navigation.navigate("GetCare")}>
         <View style={styles.buttonView}>
-          <Text style={styles.buttonText}> Get care</Text>
+          <Text style={styles.buttonText}>Get Appointment</Text>
         </View>
       </TouchableOpacity>
   );

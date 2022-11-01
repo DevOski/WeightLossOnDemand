@@ -1,4 +1,4 @@
-import React, {useRef, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {
   Image,
   ImageBackground,
@@ -21,23 +21,81 @@ import Entypo from 'react-native-vector-icons/Entypo';
 
 import {openComposer} from 'react-native-email-link';
 import {colors, sizes} from '../../services';
+import {useDispatch, useSelector} from 'react-redux';
+import {removeData} from '../../store/actions';
+import {useIsFocused} from '@react-navigation/native';
+import {getUser, updateFingerprint} from '../../services/utilities/api/auth';
+import Loader from '../../components/Loader';
 
 export default function Setting({navigation}) {
-  const [userName, setUserName] = useState('Tester Jazzy');
+  const [firstName, setFirstName] = useState('');
+  const [middleName, setMiddleName] = useState('');
+  const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('tester586@gmail.com');
   const [isEnabled, setIsEnabled] = useState(false);
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [loader, setLoader] = useState(false);
 
-  const toggleSwitch = () => setIsEnabled(previousState => !previousState);
+  const dispatch = useDispatch();
+  const isVisible = useIsFocused();
+  const token = useSelector(state => state.token);
+
+  useEffect(() => {
+    getUserDetails();
+  }, [isVisible]);
+
+  const toggleSwitch = async () => {
+    setIsEnabled(previousState => !previousState);
+    console.log(isEnabled);
+    try {
+      if (isEnabled) {
+        console.log('1');
+        let response = await updateFingerprint(token, 1);
+        console.log(response.data);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
   const toggleModal = () => {
     setIsModalVisible(!isModalVisible);
   };
 
   const handleFeedback = () => {
     openComposer({
-      to:"feedback@weightlossondemand.com",
-      subject:"Weight Loss On Demand Feedback"
+      to: 'feedback@weightlossondemand.com',
+      subject: 'Weight Loss On Demand Feedback',
     });
+  };
+
+  const handleSignOut = () => {
+    dispatch(removeData());
+  };
+
+  const getUserDetails = async () => {
+    setLoader(true);
+    setTimeout(async () => {
+      try {
+        let response = await getUser(token);
+        setFirstName(response.data.data.first_name);
+        setMiddleName(response.data.data.middle_name);
+        setLastName(response.data.data.last_name);
+        setEmail(response.data.data.email);
+        setLoader(false);
+
+        if (response.data.data.fingerprint == 1) {
+          setIsEnabled(true);
+          setLoader(false);
+        } else {
+          setIsEnabled(false);
+          setLoader(false);
+        }
+        setLoader(false);
+      } catch (error) {
+        console.log(error);
+        setLoader(false);
+      }
+    }, 100);
   };
   return (
     <SafeAreaView>
@@ -51,7 +109,9 @@ export default function Setting({navigation}) {
               <Text style={styles.signOutText}>Sign Out</Text>
             </TouchableOpacity>
           </View>
-          <Text style={styles.userName}>{userName}</Text>
+          <Text style={styles.userName}>
+            {firstName} {middleName} {lastName}
+          </Text>
           <Text style={[styles.signOutText, styles.left]}>{email}</Text>
         </View>
         <View style={styles.padding}>
@@ -79,7 +139,8 @@ export default function Setting({navigation}) {
           </TouchableOpacity>
         </View>
         <View style={styles.padding}>
-          <TouchableOpacity onPress={() => navigation.navigate('ApplyCoupon')}>
+          <TouchableOpacity
+            onPress={() => navigation.navigate('ApplyCoupon', {skip: false})}>
             <View style={styles.row}>
               <Ionicons name="pricetag" color={colors.secondary} size={25} />
               <Text style={styles.btnText}>Apply Coupon</Text>
@@ -162,9 +223,9 @@ export default function Setting({navigation}) {
             </View>
           </View>
         </View>
-        <View style={[styles.left, styles.top]}>
+        {/* <View style={[styles.left, styles.top]}>
           <Text style={styles.head}>CARE COORDINATION</Text>
-        </View>
+        </View> */}
         {/* <View style={styles.padding}>
           <TouchableOpacity
             onPress={() => navigation.navigate('MedicalRecords')}>
@@ -247,8 +308,7 @@ export default function Setting({navigation}) {
               </Text>
             </View>
             <View style={styles.buttnView}>
-              <TouchableOpacity
-                onPress={() => navigation.navigate('signinscreen')}>
+              <TouchableOpacity onPress={handleSignOut}>
                 <View style={styles.buttonView}>
                   <Text style={styles.buttonText}>Yes</Text>
                 </View>
@@ -263,6 +323,7 @@ export default function Setting({navigation}) {
             </View>
           </Modal>
         )}
+        {loader && <Loader />}
       </ScrollView>
     </SafeAreaView>
   );

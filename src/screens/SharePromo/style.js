@@ -48,6 +48,20 @@ export const styles = StyleSheet.create({
   around: {justifyContent: 'space-around'},
   alignCenter: {alignItems: 'center'},
   width: {
-    width: sizes.screenWidth * 0.15,
+    width: sizes.screenWidth * 0.4,
+  },
+  buttonView: {
+    backgroundColor: colors.secondary,
+    height: sizes.screenHeight * 0.06,
+    width: sizes.screenWidth * 0.9,
+    alignItems: 'center',
+    justifyContent: 'center',
+    alignSelf: 'center',
+  },
+  buttonText: {
+    color: colors.white,
+    fontSize: fontSize.h6,
+    fontFamily: fontFamily.appTextHeading,
+    fontWeight: '600',
   },
 });

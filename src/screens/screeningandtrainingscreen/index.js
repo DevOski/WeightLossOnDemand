@@ -34,31 +34,30 @@ export default function ScreeningTraining({navigation}) {
         <View style={styles.padding}>
           <View style={styles.bOTtomPAD}>
             <Text style={styles.cardText}>
-              You may have heard about Doctor On Demand from a friend or seen us
-              on Dr. Phil. Maybe you read an interesting article about us.
-              Seeing a provider or psychologist from home sounds amazingly
-              convenient. However, you may be wondering: Who are the Doctor On
-              Demand providers? We're glad you asked.
+              Weight Loss on Demand may be a name familiar to you or
+              word-of-mouth. Possibly you've come across a fascinating article
+              about us. It's nice to be able to talk to a training specialist
+              without having to leave the house. If you're wondering who the
+              suppliers of Weight Loss on Demand are, you're not alone. We
+              appreciate your inquiry about this.
             </Text>
           </View>
           <View style={styles.bOTtomPAD}>
             <Text style={styles.cardText}>
-              We're proud of the quality of our provider network. Selecting,
-              screening and training our board-certified providers and
-              psychologists are some of the most critical things we do at Doctor
-              On Demand and Doctor On Demand Professionals. Here's how we do it:
+              As a company, we take great pride in the excellence of our
+              provider network. The most important things we do at Weight Loss
+              by Demand are select, test, and train our board-certified
+              trainers. Our procedure is as follows:
             </Text>
           </View>
           <View>
             <TouchableOpacity>
-                <Text style={styles.subHeading}>Providers</Text>
+              <Text style={styles.subHeading}>Providers</Text>
             </TouchableOpacity>
-            <TouchableOpacity>
-                <Text style={styles.subHeading}>psychlogist & Psychiatrists</Text>
-            </TouchableOpacity>
+            {/* <TouchableOpacity>
+              <Text style={styles.subHeading}>psychlogist & Psychiatrists</Text>
+            </TouchableOpacity> */}
           </View>
-
-          
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -102,7 +101,7 @@ const styles = StyleSheet.create({
     fontSize: fontSize.h6,
     fontWeight: 'bold',
     color: colors.secondary,
-    lineHeight:sizes.screenHeight*0.05,
+    lineHeight: sizes.screenHeight * 0.05,
   },
   row: {
     flexDirection: 'row',
@@ -140,7 +139,7 @@ const styles = StyleSheet.create({
   },
   videoView: {
     width: sizes.screenWidth,
-    height: sizes.screenHeight * 0.20,
+    height: sizes.screenHeight * 0.2,
     backgroundColor: colors.secondary,
     justifyContent: 'flex-end',
     paddingLeft: sizes.screenWidth * 0.04,
