@@ -354,7 +354,7 @@ export default function Home({navigation}) {
                         onPress={() => navigation.navigate('meetOurproviders')}>
                         <View style={[styles.learnMoreBtn, styles.row2]}>
                           <Text style={styles.learnMoreText}>
-                            Connect to all providers
+                            Connect to all trainers
                           </Text>
                           <Text style={styles.symbol}> ›</Text>
                         </View>

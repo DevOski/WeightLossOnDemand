@@ -102,6 +102,7 @@ const styles = StyleSheet.create({
   },
   padding: {
     padding: sizes.baseMargin,
+    paddingBottom:sizes.screenHeight*0.06,
   },
   subHeading: {
     fontSize: fontSize.h6,

@@ -65,7 +65,7 @@ export default function Questionfive({navigation,route}) {
   
   return (
     <SafeAreaView>
-      <Header title={'Questions'} />
+      <Header title={'Questionnaires '} />
       <ScrollView style={styles.color}>
         <View style={styles.padding}>
           <Text style={styles.text}>

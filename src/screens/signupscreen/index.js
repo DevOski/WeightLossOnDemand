@@ -53,6 +53,8 @@ export const SignUp = ({navigation}) => {
     setDate(res);
     // setDate(date);
     setOpen(false);
+    // res=""
+   
   };
 
   const Sinup =  () => {
@@ -98,7 +100,9 @@ export const SignUp = ({navigation}) => {
           </View>
           <View style={styles.filedcon}>
             {date ? (
-              <TouchableOpacity style={styles.datebutton}>
+              <TouchableOpacity style={styles.datebutton}
+              onPress={() => setOpen(!open)}
+              >
                 <Text style={styles.datebuttontext}>{date && date}</Text>
               </TouchableOpacity>
             ) : (
@@ -166,7 +170,7 @@ export const SignUp = ({navigation}) => {
               <AntDesign
                 name="checkcircle"
                 color={
-                  password?.toUpperCase() ? colors.secondary : colors.disabledBg
+                  password?.toUpperCase() && password !=password?.match(/\d/)  ? colors.secondary : colors.disabledBg
                 }
                 size={20}
               />
@@ -180,7 +184,7 @@ export const SignUp = ({navigation}) => {
               <AntDesign
                 name="checkcircle"
                 color={
-                  password?.match(/\d/) ? colors.secondary : colors.disabledBg
+                  password?.match(/\d/) && password != password?.toUpperCase() ? colors.secondary : colors.disabledBg
                 }
                 size={20}
               />
