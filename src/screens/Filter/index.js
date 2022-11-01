@@ -166,7 +166,9 @@ export default function Filter({navigation, route}) {
             </TouchableOpacity>
           </View>
           <View style={styles.paddingTop2}>
-            <TouchableOpacity onPress={handleReset}>
+            <TouchableOpacity 
+            // onPress={handleReset}
+            >
               <View>
                 <Text style={styles.redBtn}> Reset filters</Text>
               </View>
