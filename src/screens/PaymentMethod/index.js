@@ -17,6 +17,7 @@ import {colors, sizes} from '../../services';
 import Modal from 'react-native-modal';
 import Entypo from 'react-native-vector-icons/Entypo';
 import WebView from 'react-native-webview';
+import { useSelector } from 'react-redux';
 
 export default function PaymentMethod({navigation}) {
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -24,7 +25,6 @@ export default function PaymentMethod({navigation}) {
   const toggleModal = () => {
     setIsModalVisible(!isModalVisible);
   };
-  const handlePaypal = () => {};
   return (
     <SafeAreaView>
       <ScrollView style={styles.color}>

@@ -63,7 +63,7 @@ export default function ApplyCoupon({route, navigation}) {
             setTitle('Oops!');
           } else {
             setTitle('Congratulations!');
-            dispatch(storeCoupon(true));
+            dispatch(storeCoupon(coupon));
           }
           setLoader(false);
         })
