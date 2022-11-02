@@ -84,6 +84,7 @@ export const styles = StyleSheet.create({
     borderBottomWidth:1,
     borderColor: '#00000030',
     textAlign: 'center',
+    color:colors.black
   },
   focusCell: {
     borderColor: '#000',

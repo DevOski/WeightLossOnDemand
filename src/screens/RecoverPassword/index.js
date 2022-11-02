@@ -31,7 +31,7 @@ export default function RecoverPassword({navigation}) {
   };
 
   const handleVerification = async () => {
-    navigation.navigate('verifiedcode')
+    // navigation.navigate('verifiedcode')
     // try {
     //   let response = await sendEmail(email);
     //   console.log(response);

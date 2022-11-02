@@ -39,7 +39,7 @@ export const styles = StyleSheet.create({
   settingIcon: {
     height: sizes.screenHeight * 0.09,
     width: sizes.screenWidth * 0.1,
-    right: sizes.screenWidth * 0.03,
+    right: sizes.screenWidth * 0.05,
   },
   transparentView: {
     width: sizes.screenWidth * 0.4,
