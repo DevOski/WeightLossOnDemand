@@ -23,133 +23,99 @@ export default function FAQs() {
         <Header title={'FAQs'} />
       </View>
       <ScrollView style={styles.color}>
-        <View style={[styles.header]}>
-          <View style={styles.textView}>
-            <Text style={styles.heading}>How can we help?</Text>
-          </View>
-          <View style={[styles.paddingTop, styles.row]}>
-            <TextInput
-              placeholder="Search FAQs"
-              style={styles.field}
-              onChangeText={text => setFAQs(text)}
-              value={faqs}
-            />
-            <TouchableOpacity>
-              <View style={styles.searchView}>
-                <View style={{alignSelf: 'center'}}>
-                  <FontAwesome name="search" color={colors.white} size={15} />
-                </View>
-              </View>
-            </TouchableOpacity>
-          </View>
+        <View style={styles.padding}>
+          <Text style={styles.heading}>How often should I exercise?</Text>
+          <Text style={styles.text}>
+            Aim for at least 30 minutes of moderate physical activity each day.
+            You might need to exercise more if you want to lose weight, keep it
+            off, or reach certain fitness goals.
+          </Text>
         </View>
         <View style={styles.padding}>
-          <Text style={[styles.bold, styles.textHead]}>All Topics</Text>
-          <View style={styles.padding}>
-            <Text style={[styles.bold, styles.underline]}>General</Text>
-            <View style={styles.marginTop}>
-              <Text style={[styles.light, styles.underline]}>
-                How much does your service cost?
-              </Text>
-            </View>
-            <View style={styles.marginTop2}>
-              <Text style={[styles.light, styles.underline]}>
-                Do you accept insurance?
-              </Text>
-            </View>
-            <View style={styles.marginTop2}>
-              <Text style={[styles.light, styles.underline]}>
-                Can I share my visit notes with my PCP?
-              </Text>
-            </View>
-            <View style={styles.marginTop2}>
-              <TouchableOpacity>
-                <Text style={[styles.redText]}>View All (13)</Text>
-              </TouchableOpacity>
-            </View>
-          </View>
-          <View style={styles.padding}>
-            <Text style={[styles.bold, styles.underline]}>Doctor Visit</Text>
-            <View style={styles.marginTop}>
-              <Text style={[styles.light]}>
-                <Text style={[styles.underline]}>
-                  Can your Board Certified Clinicians precribe me?
-                </Text>
-                ...
-              </Text>
-            </View>
-
-            <View style={styles.marginTop2}>
-              <Text style={[styles.light]}>
-                <Text style={[styles.underline]}>
-                  Can medical forms, such as work/school excuses
-                </Text>
-                ...
-              </Text>
-            </View>
-            <View style={styles.marginTop2}>
-              <Text style={[styles.light]}>
-                <Text style={[styles.underline]}>
-                  What happens if my medical visit goes over 15 mi
-                </Text>
-                ...
-              </Text>
-            </View>
-            <View style={styles.marginTop2}>
-              <TouchableOpacity>
-                <Text style={[styles.redText]}>View All (7)</Text>
-              </TouchableOpacity>
-            </View>
-          </View>
-          <View style={styles.padding}>
-            <Text style={[styles.bold, styles.underline]}>My Account</Text>
-            <View style={styles.marginTop}>
-              <Text style={[styles.light, styles.underline]}>
-                How do I set up an account for my child?
-              </Text>
-            </View>
-            <View style={styles.marginTop2}>
-              <Text style={[styles.light, styles.underline]}>
-                How do I update/edit my personal information?
-              </Text>
-            </View>
-            <View style={styles.marginTop2}>
-              <Text style={[styles.light, styles.underline]}>
-                Can I have multiple accounts on the same devices?
-              </Text>
-            </View>
-            <View style={[styles.paddingTop, {alignItems: 'center'}]}>
-              <TouchableOpacity>
-                <View style={styles.buttonView}>
-                  <Text style={styles.buttonText}> Show more</Text>
-                </View>
-              </TouchableOpacity>
-            </View>
-          </View>
-          <View style={[styles.marginTop2, styles.paddingLeft]}>
-            <Text style={[styles.light, styles.footerText]}>
-              The telemedicine services made available through Weight Loss On Demand
-              are provided by licensed physicians practicing within a group of
-              independently owned professional practices collectively known as
-              Weight Loss On Demand Professionals”. These professional practices
-              provide services via the Weight Loss On Demand telehealth platform.
-              Weight Loss On Demand, Inc. does not itself provide any physician,
-              mental health or other healthcare provider services.
-            </Text>
-          </View>
-          <View style={[styles.top, styles.paddingLeft]}>
-            <Text style={[styles.condensed, styles.footerText, styles.bold]}>
-              Ⓒ 2022 Weight Loss On Demand,Inc. All Rights Reserved
-            </Text>
-          </View>
-          
-          {/* <View style={styles.paddingBottom}></View> */}
+          <Text style={styles.heading}>
+            What time of day is best to work out?
+          </Text>
+          <Text style={styles.text}>
+            If you want to lose weight and burn fat, the best time to exercise
+            is first thing in the morning. However, if you want to improve your
+            performance, consider working out in the afternoon, after you've
+            already had a meal or two. Compared to the mornings, the evenings
+            are better for many measures of muscular fitness, such as strength,
+            flexibility, power output, and endurance
+          </Text>
         </View>
-        <View style={[styles.top, styles.paddingLeft,styles.paddingBottom]}>
-            <Text style={[styles.light, styles.footerText,styles.condensed]}>
-              powered by  <Text style={[styles.bold]}>salesforce</Text>
-            </Text>
-          </View>
+        <View style={styles.padding}>
+          <Text style={styles.heading}>
+            Do I need to warm up before my workouts?
+          </Text>
+          <Text style={styles.text}>
+            Warming up before working out has been shown to reduce the risk of
+            injury and increase the efficiency of workouts. This pre-workout
+            regimen needs to last for at least 6 minutes. You can spend as much
+            time as you like warming up.
+          </Text>
+        </View>
+        <View style={styles.padding}>
+          <Text style={styles.heading}>
+            How do I stay motivated to continue working out?
+          </Text>
+          <Text style={styles.text}>
+            Inspirational quotations are a good way to reinvigorate our fitness
+            dedication, and music may be a good way to get into a fitness
+            rhythm. Keep them both in your back pocket when you need a mantra or
+            song to help you through those last reps. But there are also
+            established strategies to help get you revved up in the first place.
+          </Text>
+          <Text style={styles.text}>
+            • Your Hard-and-Fast Rules Were Made to Be Broken
+          </Text>
+          <Text style={styles.text}>
+            • A Little Friendly Competition Can Light a Fire
+          </Text>
+          <Text style={styles.text}>
+            • Find a Friend Who Won't Let You Off the Hook
+          </Text>
+          <Text style={styles.text}>
+            • Stop Making Exercise About How You Look
+          </Text>
+          <Text style={styles.text}>
+            • Double Tap or Tag Your Friends on Social to Boost Your Fitness
+            Game
+          </Text>
+        </View>
+        <View style={styles.padding}>
+          <Text style={styles.heading}>
+            What's the best type of workout for weight loss?
+          </Text>
+          <Text style={styles.text}>
+            • When trying to lose weight, walking is one of the best workouts
+            you can do.
+          </Text>
+          <Text style={styles.text}>
+            • Jogging and running are excellent ways to burn calories and trim
+            down.
+          </Text>
+          <Text style={styles.text}>
+            • People who want to shed pounds often turn to weight training.
+          </Text>
+          <Text style={styles.text}>
+            • High intensity interval training (HIIT) is a frequent name for
+            interval training, which simply refers to the same concept but with
+            a shorter name.
+          </Text>
+          <Text style={styles.text}>
+            • Aquatic exercise, like swimming, can help you become in shape
+            while also being a lot of fun.
+          </Text>
+          <Text style={styles.text}>
+            • Many people turn to yoga as a means of physical activity and
+            stress relief.
+          </Text>
+          <Text style={styles.text}>
+            • Pilates is an excellent, low-impact exercise that may aid in
+            weight loss, especially for newcomers.
+          </Text>
+        </View>
       </ScrollView>
     </SafeAreaView>
   );
