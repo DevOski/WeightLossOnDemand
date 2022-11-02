@@ -90,8 +90,9 @@ const Componentsecond = () => {
       </View>
       <View style={styles.payragraphcon}>
         <Text style={styles.payragraphcontext}>
-          Tell us your or your child's symptoms and you'll see a board-certified
-          provider within minutes, 24/7, any day of the year
+          Complete Health Improvement in a Digital Environment Your personal
+          trainer will provide you with different sets of exercises from which
+          to choose.
         </Text>
       </View>
       {/* <View style={{paddingTop:sizes.screenHeight*0.05 }}>
@@ -246,7 +247,7 @@ const styles = StyleSheet.create({
   },
   kidd: {
     position: 'absolute',
-    top: deviceHeight * 0.10,
+    top: deviceHeight * 0.1,
     width: deviceWidth,
     height: deviceHeight * 0.5,
   },

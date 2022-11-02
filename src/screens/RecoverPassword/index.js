@@ -30,8 +30,8 @@ export default function RecoverPassword({navigation}) {
     openInbox();
   };
 
-  // ()=>navigation.navigate('verifiedcode')
   const handleVerification = async () => {
+    // navigation.navigate('verifiedcode')
     // try {
     //   let response = await sendEmail(email);
     //   console.log(response);
@@ -40,7 +40,7 @@ export default function RecoverPassword({navigation}) {
     // }
     // setIsModalVisible(!isModalVisible);
     var formdata = new FormData();
-    formdata.append('email', 'ds.php.maha@gmail.com');
+    formdata.append('email',email);
 
     var requestOptions = {
       method: 'POST',
@@ -50,7 +50,10 @@ export default function RecoverPassword({navigation}) {
 
     fetch('http://alsyedmmtravel.com/api/forgot_pass', requestOptions)
       .then(response => response.json())
-      .then(result => navigation.navigate('verifiedcode',{email:email}))
+      .then(result => 
+        console.log(result)
+        // navigation.navigate('verifiedcode',{email:email})
+        )
       .catch(error => console.log('error', error));
   };
   return (

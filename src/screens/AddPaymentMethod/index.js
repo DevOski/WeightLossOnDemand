@@ -10,20 +10,28 @@ import {
   View,
 } from 'react-native';
 import Header from '../../components/Header';
-import images from '../../services/utilities/images';
 import {styles} from './style';
-import Fontisto from 'react-native-vector-icons/Fontisto';
 import {colors} from '../../services';
 import {TextInput} from 'react-native-paper';
+import {useDispatch, useSelector} from 'react-redux';
+import {storePayment} from '../../store/actions';
 
-export default function AddPaymentMethod() {
+export default function AddPaymentMethod({route,navigation}) {
   const [cardNum, setCardNum] = useState('');
-  const [expirationDate, setExpirationDate] = useState('');
+  const [expirationMonth, setExpirationMonth] = useState('');
+  const [expirationYear, setExpirationYear] = useState('');
   const [cvv, setCvv] = useState('');
-  const [postalCode, setPostalCode] = useState('');
-  const [country, setCountry] = useState('');
-  const [showState, setShowState] = useState(false);
 
+  const dispatch = useDispatch();
+  const payment = useSelector(state => state.payment);
+  console.log(payment);
+  const saveCreditCard = () => {
+    if (cardNum && expirationMonth && expirationYear && cvv) {
+      let paymentData = {cardNum, expirationMonth, expirationYear, cvv};
+      dispatch(storePayment(paymentData));
+      navigation.navigate(route?.params?.to)
+    }
+  };
   return (
     <SafeAreaView>
       <ScrollView style={styles.color}>
@@ -48,11 +56,11 @@ export default function AddPaymentMethod() {
           <View style={styles.zipView}>
             <TextInput
               mode="contain"
-              label={'Expiration (MM/YY)'}
+              label={'Expiration (MM)'}
               activeUnderlineColor={colors.secondary}
               style={styles.field}
-              onChangeText={text => setExpirationDate(text)}
-              value={expirationDate}
+              onChangeText={text => setExpirationMonth(text)}
+              value={expirationMonth}
               keyboardType={'numeric'}
             />
           </View>
@@ -64,62 +72,27 @@ export default function AddPaymentMethod() {
               style={styles.field}
               onChangeText={text => setCvv(text)}
               value={cvv}
+              keyboardType={'numeric'}
             />
           </View>
         </View>
 
         <View style={[styles.zipView, styles.marginLeft, styles.marginTop]}>
-          <TextInput
-            mode="contain"
-            label={
-              country == 'Canada' ? 'Billing Postal Code' : 'Billing Zip Code'
-            }
-            activeUnderlineColor={colors.secondary}
-            style={styles.field}
-            onChangeText={text => setPostalCode(text)}
-            value={postalCode}
-            keyboardType={'numeric'}
-          />
+          <View style={styles.zipView}>
+            <TextInput
+              mode="contain"
+              label={'Expiration (YY)'}
+              activeUnderlineColor={colors.secondary}
+              style={styles.field}
+              onChangeText={text => setExpirationYear(text)}
+              value={expirationYear}
+              keyboardType={'numeric'}
+            />
+          </View>
         </View>
-        <View style={[styles.padding]}>
-          <TextInput
-            mode="contain"
-            label={'Country'}
-            onPressIn={() => setShowState(!showState)}
-            activeUnderlineColor={colors.secondary}
-            style={styles.field}
-            value={country}
-            right={
-              <TextInput.Icon
-                onPress={() => setShowState(!showState)}
-                name="chevron-down"
-                color={colors.secondary}
-                style={styles.icon}
-              />
-            }
-          />
-          {showState && (
-            <View style={styles.cardView}>
-              <TouchableOpacity
-                onPress={() => {
-                  setCountry('United States');
-                  setShowState(false);
-                }}>
-                <Text style={styles.listText}>United States</Text>
-              </TouchableOpacity>
-
-              <TouchableOpacity
-                onPress={() => {
-                  setCountry('Canada');
-                  setShowState(false);
-                }}>
-                <Text style={styles.listText}>Canada</Text>
-              </TouchableOpacity>
-            </View>
-          )}
-        </View>
+        <View style={[styles.padding]}></View>
         <View style={styles.top}>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={saveCreditCard}>
             <View style={styles.buttonView}>
               <Text style={styles.buttonText}>Save Credit Card</Text>
             </View>
@@ -127,7 +100,6 @@ export default function AddPaymentMethod() {
         </View>
         <View style={styles.padding}>
           <Text style={styles.text}>
-
             <Text style={styles.bold}>Note: </Text> This will replace any
             payment method on file.
           </Text>

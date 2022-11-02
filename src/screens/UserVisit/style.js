@@ -173,4 +173,5 @@ export const styles = StyleSheet.create({
     lineHeight: 20,
     right: sizes.TinyMargin,
   },
+ 
 });

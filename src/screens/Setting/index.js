@@ -31,7 +31,7 @@ export default function Setting({navigation}) {
   const [firstName, setFirstName] = useState('');
   const [middleName, setMiddleName] = useState('');
   const [lastName, setLastName] = useState('');
-  const [email, setEmail] = useState('tester586@gmail.com');
+  const [email, setEmail] = useState('');
   const [isEnabled, setIsEnabled] = useState(false);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [loader, setLoader] = useState(false);

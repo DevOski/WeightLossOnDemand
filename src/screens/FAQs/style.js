@@ -15,6 +15,7 @@ export const styles = StyleSheet.create({
     color: colors.black,
     fontSize: fontSize.large,
     fontFamily: fontFamily.appTextRegular,
+    paddingTop:sizes.screenHeight*0.02
   },
   link: {
     color: colors.link,
@@ -32,10 +33,10 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   heading: {
-    color: colors.white,
-    fontSize: fontSize.h4,
+    color: colors.black,
+    fontSize: fontSize.h5,
     fontFamily: fontFamily.appTextHeading,
-    textAlign: 'center',
+    // textAlign: 'center',
     fontWeight: '600',
   },
   textView: {

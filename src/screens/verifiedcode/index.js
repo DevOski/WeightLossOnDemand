@@ -22,7 +22,7 @@ import {
   useBlurOnFulfill,
   useClearByFocusCell,
 } from 'react-native-confirmation-code-field';
-export default function Verificationscreen({navigation,route}) {
+export default function Verificationscreen({navigation, route}) {
   const CELL_COUNT = 4;
   const [email, setEmail] = useState('');
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -32,7 +32,6 @@ export default function Verificationscreen({navigation,route}) {
     value,
     setValue,
   });
-console.log(value,"'-------");
   const toggleModal = () => {
     setIsModalVisible(!isModalVisible);
   };
@@ -40,7 +39,12 @@ console.log(value,"'-------");
   const handleEmail = () => {
     openInbox();
   };
-  
+
+  const handleVerify = () => {
+        console.log(value,route?.params?.email);
+        toggleModal()
+    // navigation.navigate('EnterNewPassword',{email:route?.params?.email})
+  };
   return (
     <SafeAreaView>
       <Header title={'Verification'} />
@@ -51,32 +55,30 @@ console.log(value,"'-------");
             your password:
           </Text>
           <View style={styles.width}>
-          <CodeField
-        ref={ref}
-        {...props}
-        // Use `caretHidden={false}` when users can't paste a text value, because context menu doesn't appear
-        value={value}
-        onChangeText={setValue}
-        cellCount={CELL_COUNT}
-        rootStyle={styles.codeFieldRoot}
-        keyboardType="number-pad"
-        textContentType="oneTimeCode"
-        renderCell={({index, symbol, isFocused}) => (
-          <Text
-            key={index}
-            style={[styles.cell, isFocused && styles.focusCell]}
-            onLayout={getCellOnLayoutHandler(index)}>
-            {symbol || (isFocused ? <Cursor /> : null)}
-          </Text>
-        )}
-      />
-           
-           
-            
+            <CodeField
+              ref={ref}
+              {...props}
+              // Use `caretHidden={false}` when users can't paste a text value, because context menu doesn't appear
+              value={value}
+              onChangeText={setValue}
+              cellCount={CELL_COUNT}
+              rootStyle={styles.codeFieldRoot}
+              keyboardType="number-pad"
+              textContentType="oneTimeCode"
+              renderCell={({index, symbol, isFocused}) => (
+                <Text
+                  key={index}
+                  style={[styles.cell, isFocused && styles.focusCell]}
+                  onLayout={getCellOnLayoutHandler(index)}>
+                  {symbol || (isFocused ? <Cursor /> : null)}
+                </Text>
+              )}
+            />
           </View>
-          
+
           <View style={styles.paddingTop}>
-            <TouchableOpacity onPress={() => setIsModalVisible(!isModalVisible)}>
+            <TouchableOpacity
+              onPress={() => setIsModalVisible(!isModalVisible)}>
               <View style={styles.buttonView}>
                 <Text style={styles.buttonText}>Verify</Text>
               </View>
@@ -96,7 +98,7 @@ console.log(value,"'-------");
                   . Use the link in that email to reset your password
                 </Text>
               </View>
-              <TouchableOpacity onPress={()=>navigation.navigate('EnterNewPassword',{email:route?.params?.email})}>
+              <TouchableOpacity onPress={handleVerify}>
                 <View style={styles.buttonView}>
                   <Text style={styles.buttonText}>OK</Text>
                 </View>

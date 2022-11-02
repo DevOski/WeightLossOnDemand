@@ -86,6 +86,7 @@ export const styles = StyleSheet.create({
     fontSize: fontSize.h6,
   },
   top: {
+    paddingBottom:sizes.screenHeight * 0.035,
     marginTop: sizes.screenHeight * 0.035,
   },
   learnMoreBtn: {
