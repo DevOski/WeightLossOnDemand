@@ -18,14 +18,18 @@ import Modal from 'react-native-modal';
 import {openInbox} from 'react-native-email-link';
 import { CustomTextFiel } from '../../component/textFiled';
 import { getQuestion } from '../../services/utilities/api/auth';
-
+import {RadioButton} from 'react-native-paper';
 export default function Questionfour({navigation,route}) {
- 
+  const [CheckedFemale, setCheckedFemale] = React.useState();
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [question, setquestion] = useState(route.params.question1);
   const [questiontwo, setquestiontwo] = useState(route.params.questions2);
   const [questionthree, setquestionthree] = useState(route.params.questions3);
   const [questionfour, setquestionfour] = useState();
+  const [StrengthTraining, setStrengthTraining] = useState()
+  const [Yoga, setYoga] = useState()
+  const [Aerobicsanddance, setAerobicsanddance] = useState()
+  const [Pilates, setPilates] = useState()
   const [Qa, setQa] = useState();
   console.log(route,"q4screen");
   useEffect(() => {
@@ -53,14 +57,68 @@ export default function Questionfour({navigation,route}) {
             {Qa}
           </Text>
           <View style={styles.width}>
-     
-          <CustomTextFiel
-           value={questionfour}
-           label={'Question4'}
-           setValue={setquestionfour}
-          />
-           
-            
+          <View style={styles.ro}>
+              <Text style={styles.lstyle}>Strength Training</Text>
+              <RadioButton
+                status={CheckedFemale ? 'checked' : 'unchecked'}
+                onPress={() => {
+                  setStrengthTraining(!StrengthTraining);
+                  setYoga(false)
+                  setAerobicsanddance(false);
+                  setAerobicsanddance(false);
+                
+                }}
+                color={'#be1d2d'}
+                uncheckColor={colors.secondary}
+              />
+            </View>
+            <View style={styles.ro}>
+              <Text style={styles.lstyle}>Yoga</Text>
+              <RadioButton
+                status={Yoga ? 'checked' : 'unchecked'}
+                onPress={() => {
+                  setYoga(!Yoga);
+                  setStrengthTraining(false);
+                 
+                  setAerobicsanddance(false);
+                  setAerobicsanddance(false);
+                
+                }}
+                color={'#be1d2d'}
+                uncheckColor={colors.secondary}
+              />
+            </View>
+            <View style={styles.ro}>
+              <Text style={styles.lstyle}>Aerobics and dance</Text>
+              <RadioButton
+                status={Aerobicsanddance ? 'checked' : 'unchecked'}
+                onPress={() => {
+                  setAerobicsanddance(!Aerobicsanddance);
+                  setYoga(false);
+                  setStrengthTraining(false);
+                 
+                  setAerobicsanddance(false);
+                }}
+                color={'#be1d2d'}
+                uncheckColor={colors.secondary}
+              />
+            </View>
+            <View style={styles.ro}>
+              <Text style={styles.lstyle}>Pilates</Text>
+              <RadioButton
+                status={Pilates ? 'checked' : 'unchecked'}
+                onPress={() => {
+                  setPilates(!Pilates);
+                  setAerobicsanddance(false);
+                  setYoga(false);
+                  setStrengthTraining(false);
+                 
+                  setAerobicsanddance(false);
+                }}
+                color={'#be1d2d'}
+                uncheckColor={colors.secondary}
+              />
+            </View>
           </View>
           
           <View style={styles.paddingTop}>

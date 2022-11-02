@@ -12,15 +12,21 @@ import {
 import Header from '../../components/Header';
 import images from '../../services/utilities/images';
 import {styles} from './style';
+import {RadioButton} from 'react-native-paper';
 import {TextInput} from 'react-native-paper';
 import {colors, sizes} from '../../services';
 import Modal from 'react-native-modal';
 import {openInbox} from 'react-native-email-link';
 import {CustomTextFiel} from '../../component/textFiled';
 import {getQuestion} from '../../services/utilities/api/auth'
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 export default function Question({navigation}) {
+  const [Onceaweek, setOnceaweek] = React.useState();
   const [question, setquestion] = useState();
   const [Qa, setQa] = useState();
+  const [Twiceaweek, setTwiceaweek] = useState()
+  const [Daily, setDaily] = useState()
+  const [selectanswer, setselectanswer] = useState()
 
   useEffect(() => {
     getQuestions();
@@ -48,12 +54,59 @@ export default function Question({navigation}) {
         <View style={styles.padding}>
           <Text style={styles.text}>{Qa}</Text>
           <View style={styles.width}>
-            <CustomTextFiel
-              value={question}
-              label={'Question'}
-              setValue={setquestion}
-            />
+          <View style={styles.ro}>
+              <Text style={styles.lstyle}>Once a week</Text>
+              <RadioButton
+                status={Onceaweek ? 'checked' : 'unchecked'}
+                onPress={() => {
+                  setOnceaweek(!Onceaweek);
+                  setTwiceaweek(false)
+                  setDaily(false);
+                  setselectanswer('Once a week')
+                  // setgender('Female');
+                  // setCheckedMale(false);
+                  // setCheckedOther(false);
+                }}
+                color={'#be1d2d'}
+                uncheckColor={colors.secondary}
+              />
+            </View>
+            <View style={styles.ro}>
+              <Text style={styles.lstyle}>Twice a week</Text>
+              <RadioButton
+                status={Twiceaweek ? 'checked' : 'unchecked'}
+                onPress={() => {
+                  setTwiceaweek(!Twiceaweek);
+                  setOnceaweek(false);
+                  setDaily(false);
+                  setselectanswer('Twice a week')
+                  // setgender('Female');
+                  // setCheckedMale(false);
+                  // setCheckedOther(false);
+                }}
+                color={'#be1d2d'}
+                uncheckColor={colors.secondary}
+              />
+            </View>
+            <View style={styles.ro}>
+              <Text style={styles.lstyle}>Daily</Text>
+              <RadioButton
+                status={setDaily ? 'checked' : 'unchecked'}
+                onPress={() => {
+                  setDaily(!Daily);
+                  setTwiceaweek(false);
+                  setOnceaweek(false);
+                  setselectanswer('Daily')
+                  // setgender('Female');
+                  // setCheckedMale(false);
+                  // setCheckedOther(false);
+                }}
+                color={'#be1d2d'}
+                uncheckColor={colors.secondary}
+              />
+            </View>
           </View>
+           
 
           <View style={styles.paddingTop}>
             <TouchableOpacity onPress={handleEmail}>

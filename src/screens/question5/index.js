@@ -18,9 +18,9 @@ import Modal from 'react-native-modal';
 import {openInbox} from 'react-native-email-link';
 import { CustomTextFiel } from '../../component/textFiled';
 import { getAppointment, getQuestion } from '../../services/utilities/api/auth';
-
+import {RadioButton} from 'react-native-paper';
 export default function Questionfive({navigation,route}) {
- 
+  const [CheckedFemale, setCheckedFemale] = React.useState();
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [question, setquestion] = useState(route.params.question1);
   const [questiontwo, setquestiontwo] = useState(route.params.questions2);
@@ -72,14 +72,35 @@ export default function Questionfive({navigation,route}) {
             {Qa}
           </Text>
           <View style={styles.width}>
-     
-          <CustomTextFiel
-           value={questionfive}
-           label={'Question5'}
-           setValue={setquestionfive}
-          />
+          <View style={styles.ro}>
+              <Text style={styles.lstyle}>Strength Training</Text>
+              <RadioButton
+                status={CheckedFemale ? 'checked' : 'unchecked'}
+                onPress={() => {
+                  setCheckedFemale(!CheckedFemale);
+                  // setgender('Female');
+                  // setCheckedMale(false);
+                  // setCheckedOther(false);
+                }}
+                color={'#be1d2d'}
+                uncheckColor={colors.secondary}
+              />
+            </View>
+            <View style={styles.ro}>
+              <Text style={styles.lstyle}>Cardio</Text>
+              <RadioButton
+                status={CheckedFemale ? 'checked' : 'unchecked'}
+                onPress={() => {
+                  setCheckedFemale(!CheckedFemale);
+                  // setgender('Female');
+                  // setCheckedMale(false);
+                  // setCheckedOther(false);
+                }}
+                color={'#be1d2d'}
+                uncheckColor={colors.secondary}
+              />
+            </View>
            
-            
           </View>
           
           <View style={styles.paddingTop}>

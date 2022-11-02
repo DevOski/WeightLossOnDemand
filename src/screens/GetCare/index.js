@@ -32,7 +32,7 @@ export default function GetCare({navigation}) {
           <View style={[styles.row, styles.card]}>
             <Image style={styles.icon} source={images.mdoctr} />
             <View>
-              <Text style={styles.cardText}>Book a training session</Text>
+              <Text style={styles.cardText}>See first available</Text>
               <Text style={styles.text}>Board certified trainers</Text>
               <Text style={[styles.text, styles.bold]}>
                 Estimated wait: {'<'} 5 min
@@ -52,7 +52,7 @@ export default function GetCare({navigation}) {
             <Image style={styles.icon2} source={images.mediVisit} />
 
             <View>
-              <Text style={styles.cardText}>Choose your trainer and time</Text>
+              <Text style={styles.cardText}>Book a training session</Text>
               <Text style={styles.text}>Board-certified trainers</Text>
               <Text style={styles.providerText}>
                 Choose your trainer and time
