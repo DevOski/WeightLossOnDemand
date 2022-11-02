@@ -92,28 +92,21 @@ export default function ChooseAppointment({navigation, route}) {
   };
 
   const getAllDateSlots = async date => {
-    // alert("")
-    // try {
-    //   let response = await getAllSlotDate(date);
-    //   console.log(response.data);
-    // } catch (error) {
-    //   console.log(error);
-    // }
-    // var myHeaders = new Headers();
-    // myHeaders.append('Content-Type', 'application/json');
-    // var raw = JSON.stringify({
-    //   date: '10/10/2022',
-    // });
-    // var requestOptions = {
-    //   method: 'GET',
-    //   headers: myHeaders,
-    //   body: raw,
-    //   redirect: 'follow',
-    // };
-    // fetch('http://alsyedmmtravel.com/api/all_trCalenderSlots', requestOptions)
-    //   .then(response => response.text())
-    //   .then(result => console.log(result))
-    //   .catch(error => console.log('error', error));
+    var myHeaders = new Headers();
+    myHeaders.append('Content-Type', 'application/json');
+    var raw = JSON.stringify({
+      date: date,
+    });
+    var requestOptions = {
+      method: 'POST',
+      headers: myHeaders,
+      body: raw,
+      redirect: 'follow',
+    };
+    fetch('http://alsyedmmtravel.com/api/all_trCalenderSlots', requestOptions)
+      .then(response => response.json())
+      .then(result => setDateSlot(result.data))
+      .catch(error => console.log('error', error));
   };
 
   const getAllSlotList = async () => {
