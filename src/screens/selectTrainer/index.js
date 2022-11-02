@@ -1,4 +1,4 @@
-import React, {useRef, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {
   Image,
   ImageBackground,
@@ -13,6 +13,8 @@ import Header from '../../components/Header';
 import {styles} from './style';
 import {RadioButton} from 'react-native-paper';
 import {colors} from '../../services';
+import {getAllTrainers} from '../../services/utilities/api/auth';
+import {useIsFocused} from '@react-navigation/native';
 
 export default function selectTrainer({navigation}) {
   const [english, setEnglish] = useState(false);
@@ -22,49 +24,36 @@ export default function selectTrainer({navigation}) {
   const [russian, setRussian] = useState(false);
   const [spanish, setSpanish] = useState(false);
   const [vietnamese, setVietnamese] = useState(false);
+  const [value,setValue] = useState("")
+  const [trainer, setTrainer] = useState([]);
+  const isVisible = useIsFocused();
 
-  const handleEnglish = () => {
+  const handleEnglish = (item) => {
     setEnglish(!english);
+    setValue(item)
     setTimeout(() => {
-      navigation.navigate('Filter', {language: 'English'});
+      navigation.navigate('Filter', {area: item});
     }, 200);
   };
 
-  const handleFrench = () => {
-    setFrench(!french);
-    setTimeout(() => {
-      navigation.navigate('Filter', {language: 'French'});
-    }, 200);
-  };
-  const handleGerman = () => {
-    setGerman(!german);
-    setTimeout(() => {
-      navigation.navigate('Filter', {language: 'German'});
-    }, 200);
-  };
-  const handleHindi = () => {
-    setHindi(!hindi);
-    setTimeout(() => {
-      navigation.navigate('Filter', {language: 'Hindi'});
-    }, 200);
-  };
-  const handleRussian = () => {
-    setRussian(!russian);
-    setTimeout(() => {
-      navigation.navigate('Filter', {language: 'Russian'});
-    }, 200);
-  };
-  const handleSpanish = () => {
-    setSpanish(!spanish);
-    setTimeout(() => {
-      navigation.navigate('Filter', {language: 'Spanish'});
-    }, 200);
-  };
-  const handleVietnamese = () => {
-    setVietnamese(!vietnamese);
-    setTimeout(() => {
-      navigation.navigate('Filter', {language: 'Vietnamese'});
-    }, 200);
+  
+  useEffect(() => {
+    getTrainers();
+  }, [isVisible]);
+  const getTrainers = async () => {
+    try {
+      let response = await getAllTrainers();
+      // setTrainer(response.data.data);
+      var newArr = [];
+      response.data.data.forEach(item => {
+        if (newArr.some(el => el.type === item.type) === false) {
+          newArr.push(item);
+        }
+      });
+      setTrainer(newArr);
+    } catch (error) {
+      console.log(error);
+    }
   };
   return (
     <SafeAreaView>
@@ -73,19 +62,26 @@ export default function selectTrainer({navigation}) {
         <View style={styles.padding}>
           <Text style={styles.addPaymentText}>Select Trainer</Text>
         </View>
-        <TouchableOpacity onPress={handleEnglish}>
-          <View style={[styles.row, styles.card]}>
-            <Text style={[styles.cardText, styles.italic]}>English</Text>
-            <View>
-              <RadioButton
-                status={english ? 'checked' : 'unchecked'}
-                color={'#be1d2d'}
-                uncheckColor={colors.secondary}
-              />
-            </View>
-          </View>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={handleFrench}>
+        {trainer?.map((item, index) => {
+          return (
+            <TouchableOpacity onPress={() => handleEnglish(item.type)}>
+              <View style={[styles.row, styles.card]}>
+                <Text style={[styles.cardText, styles.italic]}>
+                  {item.type}
+                </Text>
+                <View>
+                  <RadioButton
+                    status={value== item.type ? 'checked' : 'unchecked'}
+                    color={'#be1d2d'}
+                    uncheckColor={colors.secondary}
+                  />
+                </View>
+              </View>
+            </TouchableOpacity>
+          );
+        })}
+
+        {/* <TouchableOpacity onPress={handleFrench}>
           <View style={[styles.row, styles.card]}>
             <Text style={[styles.cardText, styles.italic]}>French</Text>
             <View>
@@ -156,7 +152,7 @@ export default function selectTrainer({navigation}) {
               />
             </View>
           </View>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
       </ScrollView>
     </SafeAreaView>
   );

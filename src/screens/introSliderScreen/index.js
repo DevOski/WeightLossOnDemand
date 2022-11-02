@@ -74,7 +74,7 @@ const Intro = ({navigation}) => {
             padding: deviceWidth*0.01,
             left:deviceWidth*0.00,
             position:'absolute',
-            top:sizes.screenHeight*0.91
+            top:sizes.screenHeight*0.89
           }}>
           {imgActive !== 3 && (
             <View style={[styles.footer, styles.top]}>
@@ -163,7 +163,6 @@ const styles = StyleSheet.create({
     fontSize: fontSize.h2,
   },
   wrapDot: {
-    // width:sizes.screenWidth*0.20,
     flexDirection: 'row',
     // alignSelf: 'center',
 alignItems:'center',

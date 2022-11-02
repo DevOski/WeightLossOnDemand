@@ -175,7 +175,7 @@ export default function Chat({navigation, route}) {
         <View style={styles.width}>
           <CustomTextFiel
             value={message}
-            label={'Question5'}
+            label={'Message'}
             setValue={setmessage}
           />
         </View>

@@ -35,6 +35,8 @@ export default function Home({navigation}) {
   const [trainerList, setTrainerList] = useState([]);
   const [pastVisit, setPastVisit] = useState();
   const [visitDetails, setVisitDetails] = useState();
+  const [loader, setLoader] = useState(false);
+
   const token = useSelector(state => state.token);
   const dispatch = useDispatch();
   const isVisible = useIsFocused();
@@ -46,13 +48,18 @@ export default function Home({navigation}) {
   }, [isVisible]);
 
   const getUserDetails = async () => {
-    try {
-      let response = await getUser(token);
-      setUserName(response.data.data.first_name);
-      dispatch(storeUserData(response.data.data));
-    } catch (error) {
-      console.log(error);
-    }
+    setLoader(true);
+    setTimeout(async () => {
+      try {
+        let response = await getUser(token);
+        setUserName(response.data.data.first_name);
+        dispatch(storeUserData(response.data.data));
+        setLoader(false);
+      } catch (error) {
+        console.log(error);
+        setLoader(false);
+      }
+    }, 100);
   };
   const getTrainers = async () => {
     try {
@@ -66,7 +73,7 @@ export default function Home({navigation}) {
     try {
       let response = await recentVisit(token);
       setPastVisit(response.data.trainer[0]);
-      setItem(["item1","item2","item3","item4","item5"])
+      setItem(['item1', 'item2', 'item3', 'item4', 'item5']);
       setVisitDetails(response.data);
     } catch (error) {
       console.log(error);
@@ -355,7 +362,7 @@ export default function Home({navigation}) {
                     </View>
                   </View>
                 )}
-                {index == 4 &&  (
+                {index == 4 && (
                   <View key={index} style={[styles.padding]}>
                     <Text style={[styles.heading, styles.top]}>
                       Recent Visit

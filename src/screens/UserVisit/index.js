@@ -17,6 +17,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Modal from 'react-native-modal';
 import Entypo from 'react-native-vector-icons/Entypo';
+import { useSelector } from 'react-redux';
 
 export default function UserVisit({navigation}) {
   const [username, setUsername] = useState('Jazzy');
@@ -25,6 +26,8 @@ export default function UserVisit({navigation}) {
   const toggleModal = () => {
     setIsModalVisible(!isModalVisible);
   };
+const coupon = useSelector(state=>state.coupon)
+console.log(coupon);
   return (
     <SafeAreaView>
       <View>
@@ -77,11 +80,12 @@ export default function UserVisit({navigation}) {
             </View>
           </View>
         </TouchableOpacity> */}
-        <TouchableOpacity onPress={() => navigation.navigate('ApplyCoupon')}>
+        <TouchableOpacity onPress={() => {!coupon && navigation.navigate('ApplyCoupon')}}>
           <View style={[styles.row, styles.card, styles.borderBottom]}>
             <Text style={styles.cardText}>Coupon</Text>
+            
             <View>
-              <Text style={styles.symbol}> ›</Text>
+              <Text style={styles.symbol}> <Text style={[styles.addPaymentText,styles.size]}>{coupon} </Text>›</Text>
             </View>
           </View>
         </TouchableOpacity>

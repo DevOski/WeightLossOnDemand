@@ -30,7 +30,7 @@ export default function ChooseAppointment({navigation, route}) {
   const [timeSlot, setTimeSlot] = useState([]);
   const [dateSlot, setDateSlot] = useState([]);
   const [month, setMonth] = useState('');
-  const [day, setDay] = useState('""');
+  const [day, setDay] = useState('');
   const [date, setDate] = useState('');
   const handleCalendar = () => {
     setCalendar(true);
@@ -99,21 +99,17 @@ export default function ChooseAppointment({navigation, route}) {
     // } catch (error) {
     //   console.log(error);
     // }
-
     // var myHeaders = new Headers();
     // myHeaders.append('Content-Type', 'application/json');
-
     // var raw = JSON.stringify({
     //   date: '10/10/2022',
     // });
-
     // var requestOptions = {
     //   method: 'GET',
     //   headers: myHeaders,
     //   body: raw,
     //   redirect: 'follow',
     // };
-
     // fetch('http://alsyedmmtravel.com/api/all_trCalenderSlots', requestOptions)
     //   .then(response => response.text())
     //   .then(result => console.log(result))
@@ -167,11 +163,20 @@ export default function ChooseAppointment({navigation, route}) {
                 initialDate={currentDate}
                 theme={styles.calendar}
               />
-              <View style={styles.padding}>
+              {day !== '' ? (
+                <View style={styles.padding}>
+                  <Text style={styles.text2}>
+                    {day}, {month} {date}
+                  </Text>
+                </View>
+              ) : (
                 <Text style={styles.text2}>
-                  {day}, {month} {date}
+                  {moment(currentDate).format('ddd')},{' '}
+                  {moment(currentDate).format('MMM')}{' '}
+                  {moment(currentDate).format('DD')}
                 </Text>
-              </View>
+              )}
+
               <View style={styles.height}>
                 <ScrollView style={[styles.card]}>
                   {dateSlot?.map((item, index) => {
@@ -195,7 +200,6 @@ export default function ChooseAppointment({navigation, route}) {
           ) : (
             <View>
               {timeSlot?.map((item, index) => {
-                console.log(item);
                 return (
                   <TouchableOpacity
                     onPress={() =>

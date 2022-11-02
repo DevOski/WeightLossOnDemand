@@ -82,8 +82,7 @@ export const SignIn = ({navigation}) => {
 
         setTimeout(async () => {
           let response = await signIn(email, password);
-          console.log('worss3');
-          // console.log(response.data);
+          console.log(response.data);
           setLoader(false);
           if (response.data.message == 'user found') {
             console.log(response.data.token);
