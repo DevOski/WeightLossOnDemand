@@ -17,10 +17,16 @@ function storeCoupon(coupon) {
   };
 }
 
+function storePayment(payment) {
+  return {
+    type: 'ADD_PAYMENT',
+    payment: payment,
+  };
+}
 function removeData() {
   return {
     type: 'REMOVE_DATA',
   };
 }
 
-export {storeData, storeUserData, storeCoupon, removeData};
+export {storeData, storeUserData, storeCoupon, storePayment, removeData};

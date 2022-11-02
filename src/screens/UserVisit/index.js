@@ -17,17 +17,44 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Modal from 'react-native-modal';
 import Entypo from 'react-native-vector-icons/Entypo';
-import { useSelector } from 'react-redux';
+import {useSelector} from 'react-redux';
 
 export default function UserVisit({navigation}) {
   const [username, setUsername] = useState('Jazzy');
   const [isModalVisible, setIsModalVisible] = useState(false);
-
+  const [cost, setCost] = useState(100);
   const toggleModal = () => {
     setIsModalVisible(!isModalVisible);
   };
-const coupon = useSelector(state=>state.coupon)
-console.log(coupon);
+  const coupon = useSelector(state => state.coupon);
+  const payment = useSelector(state => state.payment);
+  console.log(payment);
+
+  const confirmAndPay = () => {
+    let price = cost * 100;
+    // toggleModal();
+    var formdata = new FormData();
+    formdata.append('number', payment.cardNum);
+    formdata.append('expr_num', payment.expirationMonth);
+    formdata.append('exp_year', payment.expirationYear);
+    formdata.append('cvc', payment.cvv);
+    formdata.append('amount', price);
+
+    var requestOptions = {
+      method: 'POST',
+      body: formdata,
+      redirect: 'follow',
+    };
+
+    fetch('http://alsyedmmtravel.com/api/pay', requestOptions)
+      .then(response => response.json())
+      .then(result => {
+        if (result.message == 'succeeded') {
+          toggleModal();
+        }
+      })
+      .catch(error => console.log('error', error));
+  };
   return (
     <SafeAreaView>
       <View>
@@ -43,58 +70,56 @@ console.log(coupon);
         <View style={styles.padding}>
           <Text style={styles.head2}>Payment</Text>
         </View>
-        <TouchableOpacity onPress={() => navigation.navigate('PaymentMethod')}>
+        <TouchableOpacity
+          onPress={() =>
+            !payment.cardNum &&
+            navigation.navigate('AddPaymentMethod', {to: 'UserVisit'})
+          }>
           <View style={[styles.row, styles.card, styles.borderTop]}>
             <Text style={styles.cardText}>Pay with</Text>
-            <Ionicons
-              name="add-circle"
-              color={colors.greenIcon}
-              size={18}
-              style={styles.icon}
-            />
-            {/* <MaterialIcons
-              name="error"
-              color={colors.secondary}
-              size={18}
-              style={styles.icon}
-            /> */}
-
-            <Text style={styles.addPaymentText}>Add payment type</Text>
+            {payment.cardNum ? (
+              <Text style={styles.addPaymentText}> {payment.cardNum}</Text>
+            ) : (
+              <View style={{flexDirection: 'row'}}>
+                <Ionicons
+                  name="add-circle"
+                  color={colors.greenIcon}
+                  size={18}
+                  style={styles.icon}
+                />
+                <Text style={styles.addPaymentText}>Add payment type</Text>
+              </View>
+            )}
             <View>
               <Text style={styles.symbol}> ›</Text>
             </View>
           </View>
         </TouchableOpacity>
-        {/* <TouchableOpacity
-          onPress={() =>
-            navigation.navigate('insurancescreen', {
-              title: 'Add Health Insurance',
-            })
-          }>
-          <View style={[styles.row, styles.card]}>
-            <Text style={styles.cardText}>Insurance</Text>
 
-            <Text style={styles.checkText}>Check for coverage</Text>
-            <View>
-              <Text style={styles.symbol}> ›</Text>
-            </View>
-          </View>
-        </TouchableOpacity> */}
-        <TouchableOpacity onPress={() => {!coupon && navigation.navigate('ApplyCoupon')}}>
+        <TouchableOpacity
+          onPress={() => {
+            !coupon && navigation.navigate('ApplyCoupon');
+          }}>
           <View style={[styles.row, styles.card, styles.borderBottom]}>
             <Text style={styles.cardText}>Coupon</Text>
-            
+
             <View>
-              <Text style={styles.symbol}> <Text style={[styles.addPaymentText,styles.size]}>{coupon} </Text>›</Text>
+              <Text style={styles.symbol}>
+                {' '}
+                <Text style={[styles.addPaymentText, styles.size]}>
+                  {coupon}{' '}
+                </Text>
+                ›
+              </Text>
             </View>
           </View>
         </TouchableOpacity>
         <View style={[styles.padding, styles.row]}>
           <Text style={styles.head2}>Your Cost</Text>
-          <Text style={styles.head2}>FREE</Text>
+          <Text style={styles.head2}>${cost}</Text>
         </View>
 
-        <TouchableOpacity onPress={toggleModal}>
+        <TouchableOpacity onPress={confirmAndPay}>
           <View style={styles.buttonView}>
             <Text style={styles.buttonText}> Confirm and Pay</Text>
           </View>

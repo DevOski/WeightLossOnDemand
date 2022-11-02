@@ -35,7 +35,7 @@ export default function PaymentMethod({navigation}) {
           <Text style={styles.addPaymentText}>Add Payment Method</Text>
         </View>
         <TouchableOpacity
-          onPress={() => navigation.navigate('AddPaymentMethod')}>
+          onPress={() => navigation.navigate('AddPaymentMethod',{to:"Setting"})}>
           <View style={[styles.row, styles.card]}>
             <Fontisto name="credit-card" color={colors.secondary} size={25} />
             <Text style={styles.cardText}>{'   '}Credit Card, FSA, HSA</Text>
@@ -44,15 +44,7 @@ export default function PaymentMethod({navigation}) {
             </View>
           </View>
         </TouchableOpacity>
-        {/* <TouchableOpacity onPress={() => navigation.navigate('PayPal')}>
-          <View style={[styles.row, styles.card]}>
-            <Fontisto name="paypal" color={colors.secondary} size={25} />
-            <Text style={styles.cardText}>{'   '}PayPal</Text>
-            <View>
-              <Text style={styles.symbol}> ›</Text>
-            </View>
-          </View>
-        </TouchableOpacity> */}
+        
         <View style={styles.padding}>
           <Text style={styles.text}>
             <Text style={styles.bold}>
