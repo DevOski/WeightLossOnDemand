@@ -32,7 +32,7 @@ export default function MyPricing({navigation}) {
         <View>
           <View style={[styles.row, styles.card]}>
             <View>
-              <Text style={styles.cardText}>{'   '}Medical</Text>
+              <Text style={styles.cardText}>{'   '}Strength Training</Text>
               <View style={styles.row}>
                 <Text style={styles.minsText}>{'   '}15 mins</Text>
                 <Text style={styles.priceText}>{'   '}75.00</Text>
@@ -43,7 +43,7 @@ export default function MyPricing({navigation}) {
         <View>
           <View style={[styles.row, styles.card]}>
             <View>
-              <Text style={styles.cardText}>{'   '}Therapy</Text>
+              <Text style={styles.cardText}>{'   '}Yoga</Text>
               <View style={styles.row}>
                 <View>
                   <Text style={styles.minsText}>{'   '}25 mins</Text>
@@ -60,7 +60,24 @@ export default function MyPricing({navigation}) {
         <View>
           <View style={[styles.row, styles.card]}>
             <View>
-              <Text style={styles.cardText}>{'   '}Psychiatry</Text>
+              <Text style={styles.cardText}>{'   '}Pilates</Text>
+              <View style={styles.row}>
+                <View>
+                  <Text style={styles.minsText}>{'   '}25 mins</Text>
+                  <Text style={styles.minsText}>{'   '}50 mins</Text>
+                </View>
+                <View>
+                  <Text style={styles.priceText}>{'   '}129.00</Text>
+                  <Text style={styles.priceText}>{'   '}179.00</Text>
+                </View>
+              </View>
+            </View>
+          </View>
+        </View>
+        <View>
+          <View style={[styles.row, styles.card]}>
+            <View>
+              <Text style={styles.cardText}>{'   '}Aerobics and dance</Text>
               <View style={styles.row}>
                 <View>
                   <Text style={styles.minsText}>

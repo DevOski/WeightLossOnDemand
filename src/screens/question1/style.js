@@ -90,4 +90,17 @@ export const styles = StyleSheet.create({
   focusCell: {
     borderColor: '#000',
   },
+  ro: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    padding: sizes.screenWidth * 0.01,
+  },
+  lstyle: {
+    fontSize: fontSize.h6,
+    color: colors.black,
+    fontWeight: '400',
+    lineHeight: sizes.screenHeight * 0.05,
+    fontFamily: fontFamily.appTextMedium,
+  },
 });

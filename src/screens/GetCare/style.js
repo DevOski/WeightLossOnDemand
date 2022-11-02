@@ -62,8 +62,8 @@ export const styles = StyleSheet.create({
     fontWeight: '700',
   },
   icon: {
-    height: sizes.screenHeight * 0.05,
-    width: sizes.screenWidth * 0.1,
+    height: sizes.screenHeight * 0.06,
+    width: sizes.screenWidth * 0.11,
     left: sizes.screenWidth * 0.02,
   },
   icon2:{

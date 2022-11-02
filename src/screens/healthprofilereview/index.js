@@ -1,4 +1,4 @@
-import React, {useRef, useState} from 'react';
+import React, {useRef, useState,useEffect} from 'react';
 import {
   Image,
   ImageBackground,
@@ -15,7 +15,26 @@ import images from '../../services/utilities/images';
 import {CustomTextFiel} from '../../component/textFiled';
 import {colors, sizes, fontSize} from '../../services';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import { getallQuestion } from '../../services/utilities/api/auth';
 export const ReviewHealthprofile = ({navigation, route}) => {
+
+  const [Qa, setQa] = useState([]);
+
+
+
+
+
+  useEffect(() => {
+    getallQuestions();
+  }, []);
+  const getallQuestions = async () => {
+    try {
+      let response = await getallQuestion();
+      setQa(response.data.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <SafeAreaView style={styles.container}>
       <View>
@@ -29,19 +48,27 @@ export const ReviewHealthprofile = ({navigation, route}) => {
             </Text>
           </View>
           <View style={styles.pa}>
-            <View style={styles.box}>
-              <View style={styles.borderrb}>
-                <Text style={styles.textttt}>Medications</Text>
-              </View>
-              <View style={styles.borderrb}>
-                <Text style={styles.textttt}>No active medicatyion</Text>
-              </View>
-              <TouchableOpacity
-                onPress={() => navigation.navigate('whichmedicationscreen')}>
-                <Text style={styles.addanother}>Add</Text>
-              </TouchableOpacity>
-            </View>
-            <View style={styles.box}>
+            {Qa?.map((item,index)=>{
+              console.log(item,index,'item,map');
+              return(
+               <View key={index} style={styles.box}>
+               <View style={styles.borderrb}>
+                 <Text style={styles.textttt}>{item.question}</Text>
+               </View>
+               <View style={styles.borderrb}>
+                 <Text style={styles.textttt}>No active medicatyion</Text>
+               </View>
+               {/* <TouchableOpacity
+                 onPress={() => navigation.navigate('whichmedicationscreen')}>
+                 <Text style={styles.addanother}>Add</Text>
+               </TouchableOpacity> */}
+             </View>
+
+              )
+
+            })}
+            
+            {/* <View style={styles.box}>
               <View style={styles.borderrb}>
                 <Text style={styles.textttt}>Drugs Allergies</Text>
               </View>
@@ -76,7 +103,7 @@ export const ReviewHealthprofile = ({navigation, route}) => {
                 onPress={() => navigation.navigate('whichsurgeri')}>
                 <Text style={styles.addanother}>Add</Text>
               </TouchableOpacity>
-            </View>
+            </View> */}
             {/* <View style={[styles.box, styles.b2]}>
               <View style={styles.borderrb}>
                 <Text style={styles.textttt}>Family History</Text>
