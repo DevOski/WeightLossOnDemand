@@ -41,7 +41,7 @@ export default function Questionthree({navigation,route}) {
       let response = await getQuestion(3);
       setQa(response.data.data[0].question);
     } catch (error) {
-      console.log(error);
+    console.log(error);
     }
   };
 

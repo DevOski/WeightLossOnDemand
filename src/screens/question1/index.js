@@ -44,7 +44,7 @@ export default function Question({navigation}) {
 
   const handleEmail = () => {
     // console.log(question,'q1param');
-    navigation.navigate('question2', {question: question});
+    navigation.navigate('question2', {question: question,selectanswer:selectanswer});
   };
 
   return (
@@ -91,7 +91,7 @@ export default function Question({navigation}) {
             <View style={styles.ro}>
               <Text style={styles.lstyle}>Daily</Text>
               <RadioButton
-                status={setDaily ? 'checked' : 'unchecked'}
+                status={Daily ? 'checked' : 'unchecked'}
                 onPress={() => {
                   setDaily(!Daily);
                   setTwiceaweek(false);

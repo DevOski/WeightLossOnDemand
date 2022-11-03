@@ -24,13 +24,13 @@ export default function Questiontwo({navigation,route}) {
   const [Morning, setMorning] = React.useState();
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [questiontwo, setquestiontwo] = useState();
-  const [question, setquestion] = useState(route.params.question);
+  const [question, setquestion] = useState(route.params.selectanswer);
   const [Qa, setQa] = useState();
   const [Afternoon, setAfternoon] = useState()
   const [Evening, setEvening] = useState()
   const [Night, setNight] = useState()
-  const [selectanswer, setselectanswer] = useState()
-  
+  const [selectanswer1, setselectanswer1] = useState(route.params.selectanswer)
+  console.log(route.params);
   useEffect(() => {
     getQuestions();
   }, []);
@@ -46,7 +46,7 @@ export default function Questiontwo({navigation,route}) {
   // console.log(question,"question");
   console.log('question2',{question1:question})
   const handleEmail = () => {
-    navigation.navigate('question3',{question1:question,questions2:questiontwo})
+    navigation.navigate('question3',{question1:question,questions2:questiontwo,selectanswer:selectanswer1})
    
   };
   
@@ -68,7 +68,7 @@ export default function Questiontwo({navigation,route}) {
                   setAfternoon(false);
                   setEvening(false);
                   setNight(false)
-                  setselectanswer('Morning')
+                  setselectanswer1('Morning')
                   // setgender('Female');
                   // setCheckedMale(false);
                   // setCheckedOther(false);
@@ -84,7 +84,7 @@ export default function Questiontwo({navigation,route}) {
                 onPress={() => {
                   setAfternoon(!Afternoon);
                   setMorning(false);
-                  setselectanswer('Afternoon')
+                  setselectanswer1('Afternoon')
                   setEvening(false);
                   setNight(false)
                 }}
@@ -100,7 +100,7 @@ export default function Questiontwo({navigation,route}) {
                   setEvening(!Evening);
                   setAfternoon(false);
                   setMorning(false);
-                  setselectanswer('Evening')
+                  setselectanswer1('Evening')
                  
                  
                   setNight(false)
@@ -117,7 +117,7 @@ export default function Questiontwo({navigation,route}) {
                   setNight(!Night);
                   setAfternoon(false);
                   setMorning(false);
-                  setselectanswer('Night')
+                  setselectanswer1('Night')
                  
                   setEvening(false);
                
