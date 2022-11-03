@@ -19,6 +19,8 @@ import Modal from 'react-native-modal';
 import {openInbox} from 'react-native-email-link';
 import { CustomTextFiel } from '../../component/textFiled';
 import { getQuestion } from '../../services/utilities/api/auth';
+import { Question2 } from '../../store/actions';
+import { useDispatch, useSelector } from 'react-redux';
 
 export default function Questiontwo({navigation,route}) {
   const [Morning, setMorning] = React.useState();
@@ -29,8 +31,9 @@ export default function Questiontwo({navigation,route}) {
   const [Afternoon, setAfternoon] = useState()
   const [Evening, setEvening] = useState()
   const [Night, setNight] = useState()
-  const [selectanswer1, setselectanswer1] = useState(route.params.selectanswer)
+  const [selectanswer1, setselectanswer1] = useState()
   console.log(route.params);
+  const dispatch=useDispatch();
   useEffect(() => {
     getQuestions();
   }, []);
@@ -45,7 +48,10 @@ export default function Questiontwo({navigation,route}) {
   };
   // console.log(question,"question");
   console.log('question2',{question1:question})
+  // const q2=useSelector(state =>state.question2)
+  // console.log(q2,'====>q2');
   const handleEmail = () => {
+    dispatch(Question2(selectanswer1));
     navigation.navigate('question3',{question1:question,questions2:questiontwo,selectanswer:selectanswer1})
    
   };

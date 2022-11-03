@@ -166,14 +166,14 @@ export const ReasonForDcoctor = ({navigation}) => {
                 </View>
             </TouchableOpacity>
         </View> */}
-          <View style={styles.pading}>
+          {/* <View style={styles.pading}>
             <TouchableOpacity onPress={()=>navigation.navigate('otherreasonscreen')}
                 >
               <View style={styles.lisbutton1}>
                 <Text style={styles.text}>Other reason</Text>
               </View>
             </TouchableOpacity>
-          </View>
+          </View> */}
           {/* {!show ? <><View style={styles.pading}>
             <TouchableOpacity>
                 <View style={styles.lisbutton}>

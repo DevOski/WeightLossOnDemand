@@ -19,6 +19,9 @@ import {openInbox} from 'react-native-email-link';
 import {CustomTextFiel} from '../../component/textFiled';
 import {getQuestion} from '../../services/utilities/api/auth';
 import {RadioButton} from 'react-native-paper';
+import { Question4 } from '../../store/actions';
+import { useDispatch } from 'react-redux';
+
 export default function Questionfour({navigation, route}) {
   const [CheckedFemale, setCheckedFemale] = React.useState();
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -30,9 +33,12 @@ export default function Questionfour({navigation, route}) {
   const [Yoga, setYoga] = useState(false);
   const [Aerobicsanddance, setAerobicsanddance] = useState(false);
   const [Pilates, setPilates] = useState(false);
-  const [selectanswer, setselectanswer] = useState()
+  const [selectanswer4, setselectanswer4] = useState()
   const [Qa, setQa] = useState();
   console.log(route, 'q4screen');
+
+  const dispatch=useDispatch()
+
   useEffect(() => {
     getQuestions();
   }, []);
@@ -46,6 +52,7 @@ export default function Questionfour({navigation, route}) {
     }
   };
   const handleEmail = () => {
+    dispatch(Question4(selectanswer4))
     navigation.navigate('question5', {
       question1: question,
       questions2: questiontwo,
@@ -70,7 +77,7 @@ export default function Questionfour({navigation, route}) {
                   setYoga(false);
                   setAerobicsanddance(false);
                   setAerobicsanddance(false);
-                  setselectanswer('Strength Training')
+                  setselectanswer4('Strength Training')
                   
                 }}
                 color={'#be1d2d'}
@@ -84,7 +91,7 @@ export default function Questionfour({navigation, route}) {
                 onPress={() => {
                   setYoga(!Yoga);
                   setStrengthTraining(false);
-                  setselectanswer('Yoga')
+                  setselectanswer4('Yoga')
                   setAerobicsanddance(false);
                   setAerobicsanddance(false);
                 }}
@@ -100,7 +107,7 @@ export default function Questionfour({navigation, route}) {
                   setAerobicsanddance(!Aerobicsanddance);
                   setYoga(false);
                   setStrengthTraining(false);
-                  setselectanswer('Aerobics and dance')
+                  setselectanswer4('Aerobics and dance')
 
                  
                 }}
@@ -117,7 +124,7 @@ export default function Questionfour({navigation, route}) {
                   setAerobicsanddance(false);
                   setYoga(false);
                   setStrengthTraining(false);
-                  setselectanswer('Pilates')
+                  setselectanswer4('Pilates')
 
                   
                 }}
