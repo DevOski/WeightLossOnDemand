@@ -16,22 +16,29 @@ import {TextInput} from 'react-native-paper';
 import {colors, sizes} from '../../services';
 import Modal from 'react-native-modal';
 import {openInbox} from 'react-native-email-link';
-import { CustomTextFiel } from '../../component/textFiled';
-import { getQuestion } from '../../services/utilities/api/auth';
+import {CustomTextFiel} from '../../component/textFiled';
+import {getQuestion} from '../../services/utilities/api/auth';
 import {RadioButton} from 'react-native-paper';
-export default function Questionfour({navigation,route}) {
+import { Question4 } from '../../store/actions';
+import { useDispatch } from 'react-redux';
+
+export default function Questionfour({navigation, route}) {
   const [CheckedFemale, setCheckedFemale] = React.useState();
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [question, setquestion] = useState(route.params.question1);
   const [questiontwo, setquestiontwo] = useState(route.params.questions2);
   const [questionthree, setquestionthree] = useState(route.params.questions3);
   const [questionfour, setquestionfour] = useState();
-  const [StrengthTraining, setStrengthTraining] = useState()
-  const [Yoga, setYoga] = useState()
-  const [Aerobicsanddance, setAerobicsanddance] = useState()
-  const [Pilates, setPilates] = useState()
+  const [StrengthTraining, setStrengthTraining] = useState(false);
+  const [Yoga, setYoga] = useState(false);
+  const [Aerobicsanddance, setAerobicsanddance] = useState(false);
+  const [Pilates, setPilates] = useState(false);
+  const [selectanswer4, setselectanswer4] = useState()
   const [Qa, setQa] = useState();
-  console.log(route,"q4screen");
+  console.log(route, 'q4screen');
+
+  const dispatch=useDispatch()
+
   useEffect(() => {
     getQuestions();
   }, []);
@@ -45,28 +52,33 @@ export default function Questionfour({navigation,route}) {
     }
   };
   const handleEmail = () => {
-    navigation.navigate('question5',{question1:question,questions2:questiontwo,questions3:questionthree,question4:questionfour})
+    dispatch(Question4(selectanswer4))
+    navigation.navigate('question5', {
+      question1: question,
+      questions2: questiontwo,
+      questions3: questionthree,
+      question4: questionfour,
+    });
   };
-  
+
   return (
     <SafeAreaView>
       <Header title={'Questionnaires '} />
       <ScrollView style={styles.color}>
         <View style={styles.padding}>
-          <Text style={styles.text}>
-            {Qa}
-          </Text>
+          <Text style={styles.text}>{Qa}</Text>
           <View style={styles.width}>
-          <View style={styles.ro}>
+            <View style={styles.ro}>
               <Text style={styles.lstyle}>Strength Training</Text>
               <RadioButton
-                status={CheckedFemale ? 'checked' : 'unchecked'}
+                status={StrengthTraining ? 'checked' : 'unchecked'}
                 onPress={() => {
                   setStrengthTraining(!StrengthTraining);
-                  setYoga(false)
+                  setYoga(false);
                   setAerobicsanddance(false);
                   setAerobicsanddance(false);
-                
+                  setselectanswer4('Strength Training')
+                  
                 }}
                 color={'#be1d2d'}
                 uncheckColor={colors.secondary}
@@ -79,10 +91,9 @@ export default function Questionfour({navigation,route}) {
                 onPress={() => {
                   setYoga(!Yoga);
                   setStrengthTraining(false);
-                 
+                  setselectanswer4('Yoga')
                   setAerobicsanddance(false);
                   setAerobicsanddance(false);
-                
                 }}
                 color={'#be1d2d'}
                 uncheckColor={colors.secondary}
@@ -96,8 +107,9 @@ export default function Questionfour({navigation,route}) {
                   setAerobicsanddance(!Aerobicsanddance);
                   setYoga(false);
                   setStrengthTraining(false);
+                  setselectanswer4('Aerobics and dance')
+
                  
-                  setAerobicsanddance(false);
                 }}
                 color={'#be1d2d'}
                 uncheckColor={colors.secondary}
@@ -112,15 +124,16 @@ export default function Questionfour({navigation,route}) {
                   setAerobicsanddance(false);
                   setYoga(false);
                   setStrengthTraining(false);
-                 
-                  setAerobicsanddance(false);
+                  setselectanswer4('Pilates')
+
+                  
                 }}
                 color={'#be1d2d'}
                 uncheckColor={colors.secondary}
               />
             </View>
           </View>
-          
+
           <View style={styles.paddingTop}>
             <TouchableOpacity onPress={handleEmail}>
               <View style={styles.buttonView}>
@@ -128,7 +141,6 @@ export default function Questionfour({navigation,route}) {
               </View>
             </TouchableOpacity>
           </View>
-        
         </View>
       </ScrollView>
     </SafeAreaView>

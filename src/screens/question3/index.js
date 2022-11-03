@@ -20,6 +20,8 @@ import Modal from 'react-native-modal';
 import {openInbox} from 'react-native-email-link';
 import { CustomTextFiel } from '../../component/textFiled';
 import { getQuestion } from '../../services/utilities/api/auth';
+import { Question3 } from '../../store/actions';
+import { useDispatch, useSelector } from 'react-redux';
 
 export default function Questionthree({navigation,route}) {
   const [CheckedFemale, setCheckedFemale] = React.useState();
@@ -30,22 +32,26 @@ export default function Questionthree({navigation,route}) {
   const [Qa, setQa] = useState();
   const [Yes, setYes] = useState()
   const [no, setno] = useState()
-  const [selectanswer, setselectanswer] = useState()
+  const [selectanswer3, setselectanswer3] = useState()
+  const dispatch=useDispatch()
   console.log(route.params,"q3screen");
   useEffect(() => {
     getQuestions();
   }, []);
-
+// const q3=useSelector(state=>state.question3)
+console.log();
   const getQuestions = async () => {
     try {
       let response = await getQuestion(3);
       setQa(response.data.data[0].question);
     } catch (error) {
-      console.log(error);
+    console.log(error);
     }
   };
 
   const handleEmail = () => {
+    dispatch(Question3(selectanswer3))
+   
     navigation.navigate('question4',{question1:question,questions2:questiontwo,questions3:questionthree})
   };
   
@@ -65,7 +71,7 @@ export default function Questionthree({navigation,route}) {
                 onPress={() => {
                   setYes(!Yes);
                   setno(false);
-                  setselectanswer('Yes')
+                  setselectanswer3('Yes')
                   // setgender('Female');
                   // setCheckedMale(false);
                   // setCheckedOther(false);
@@ -81,7 +87,7 @@ export default function Questionthree({navigation,route}) {
                 onPress={() => {
                   setno(!no);
                   setYes(false);
-                  setselectanswer('No')
+                  setselectanswer3('No')
                   // setgender('Female');
                   // setCheckedMale(false);
                   // setCheckedOther(false);
