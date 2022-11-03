@@ -35,9 +35,6 @@ export default function Verificationscreen({navigation, route}) {
     value,
     setValue,
   });
-  // const toggleModal = () => {
-  //   setIsModalVisible(!isModalVisible);
-  // };
 
   const handleVerify = () => {
     if (value) {
@@ -64,9 +61,6 @@ export default function Verificationscreen({navigation, route}) {
         })
         .catch(error => console.log('error', error));
     }
-
-    // navigation.navigate('EnterNewPassword', {email: route?.params?.email});
-    // toggleModal();
   };
   return (
     <SafeAreaView>
@@ -81,7 +75,6 @@ export default function Verificationscreen({navigation, route}) {
             <CodeField
               ref={ref}
               {...props}
-              // Use `caretHidden={false}` when users can't paste a text value, because context menu doesn't appear
               value={value}
               onChangeText={setValue}
               cellCount={CELL_COUNT}
@@ -106,27 +99,6 @@ export default function Verificationscreen({navigation, route}) {
               </View>
             </TouchableOpacity>
           </View>
-          {/* {isModalVisible && (
-            <Modal style={styles.modalView} isVisible={isModalVisible}>
-              <View style={styles.texcon}>
-                <Text style={styles.text111}>Check your email!</Text>
-              </View>
-              <View style={styles.texcon1}>
-                <Text style={styles.text1}>
-                  An email has been sent to{' '}
-                  <Text style={styles.link} onPress={handleEmail}>
-                    {email}
-                  </Text>
-                  . Use the link in that email to reset your password
-                </Text>
-              </View>
-              <TouchableOpacity onPress={handleVerify}>
-                <View style={styles.buttonView}>
-                  <Text style={styles.buttonText}>OK</Text>
-                </View>
-              </TouchableOpacity>
-            </Modal>
-          )} */}
         </View>
         {error !== '' && <Error title={'Oops!'} message={error} />}
       </ScrollView>
