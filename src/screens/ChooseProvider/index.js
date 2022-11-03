@@ -19,12 +19,13 @@ import ladyy from '../../assets/assets/ladyy.jpg';
 import {useIsFocused} from '@react-navigation/native';
 import {getAllTrainers} from '../../services/utilities/api/auth';
 
-export default function ChooseProvider({navigation}) {
+export default function ChooseProvider({route,navigation}) {
   const [trainer, setTrainer] = useState([]);
   const isVisible = useIsFocused();
 
   useEffect(() => {
     getTrainers();
+    setTrainer(route?.params?.filteredTrainer);
   }, [isVisible]);
   const getTrainers = async () => {
     try {
@@ -45,6 +46,7 @@ export default function ChooseProvider({navigation}) {
         {trainer?.map((item, index) => {
           return (
             <TouchableOpacity
+              key={index}
               onPress={() =>
                 navigation.navigate('providerdetail', {trainer: item})
               }>
@@ -63,7 +65,7 @@ export default function ChooseProvider({navigation}) {
                     </View>
                     <View>
                       <Text style={styles.heading}>{item?.tr_name}</Text>
-                      <Text style={styles.text}>Next Available: 10:30 PM</Text>
+                      {/* <Text style={styles.text}>Next Available: 10:30 PM</Text> */}
                     </View>
                   </View>
                   <Text
