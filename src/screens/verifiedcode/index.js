@@ -22,28 +22,51 @@ import {
   useBlurOnFulfill,
   useClearByFocusCell,
 } from 'react-native-confirmation-code-field';
+import Error from '../../components/Error';
+
 export default function Verificationscreen({navigation, route}) {
   const CELL_COUNT = 4;
   const [email, setEmail] = useState('');
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [value, setValue] = useState('');
+  const [error, setError] = useState('');
   const ref = useBlurOnFulfill({value, cellCount: CELL_COUNT});
   const [props, getCellOnLayoutHandler] = useClearByFocusCell({
     value,
     setValue,
   });
-  const toggleModal = () => {
-    setIsModalVisible(!isModalVisible);
-  };
-
-  const handleEmail = () => {
-    openInbox();
-  };
+  // const toggleModal = () => {
+  //   setIsModalVisible(!isModalVisible);
+  // };
 
   const handleVerify = () => {
-        console.log(value,route?.params?.email);
-        toggleModal()
-    // navigation.navigate('EnterNewPassword',{email:route?.params?.email})
+    if (value) {
+      var formdata = new FormData();
+      formdata.append('email', route?.params?.email);
+      formdata.append('code', value);
+
+      var requestOptions = {
+        method: 'POST',
+        body: formdata,
+        redirect: 'follow',
+      };
+
+      fetch('http://alsyedmmtravel.com/api/check_code', requestOptions)
+        .then(response => response.json())
+        .then(result => {
+          if (result.message.includes('Invalid')) {
+            setError(result.message);
+          } else {
+            navigation.navigate('EnterNewPassword', {
+              email: route?.params?.email,
+            });
+          }
+        })
+        .catch(error => console.log('error', error));
+    }
+
+    // navigation.navigate('EnterNewPassword', {email: route?.params?.email});
+    // toggleModal();
   };
   return (
     <SafeAreaView>
@@ -77,14 +100,13 @@ export default function Verificationscreen({navigation, route}) {
           </View>
 
           <View style={styles.paddingTop}>
-            <TouchableOpacity
-              onPress={() => setIsModalVisible(!isModalVisible)}>
+            <TouchableOpacity onPress={handleVerify}>
               <View style={styles.buttonView}>
                 <Text style={styles.buttonText}>Verify</Text>
               </View>
             </TouchableOpacity>
           </View>
-          {isModalVisible && (
+          {/* {isModalVisible && (
             <Modal style={styles.modalView} isVisible={isModalVisible}>
               <View style={styles.texcon}>
                 <Text style={styles.text111}>Check your email!</Text>
@@ -104,8 +126,9 @@ export default function Verificationscreen({navigation, route}) {
                 </View>
               </TouchableOpacity>
             </Modal>
-          )}
+          )} */}
         </View>
+        {error !== '' && <Error title={'Oops!'} message={error} />}
       </ScrollView>
     </SafeAreaView>
   );
