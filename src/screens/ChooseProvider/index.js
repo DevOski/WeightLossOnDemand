@@ -45,6 +45,7 @@ export default function ChooseProvider({navigation}) {
         {trainer?.map((item, index) => {
           return (
             <TouchableOpacity
+              key={index}
               onPress={() =>
                 navigation.navigate('providerdetail', {trainer: item})
               }>
@@ -63,7 +64,7 @@ export default function ChooseProvider({navigation}) {
                     </View>
                     <View>
                       <Text style={styles.heading}>{item?.tr_name}</Text>
-                      <Text style={styles.text}>Next Available: 10:30 PM</Text>
+                      {/* <Text style={styles.text}>Next Available: 10:30 PM</Text> */}
                     </View>
                   </View>
                   <Text

@@ -26,25 +26,44 @@ export default function EnterNewPassword({navigation, route}) {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [message, setMessage] = useState('');
-  const token = useSelector(state => state.token);
   const [loader, setLoader] = useState(false);
+  const [stack, setStack] = useState('Home');
+  const token = useSelector(state => state.token);
 
   const updatePassword = async () => {
     setLoader(true);
-    if (password == confirmPassword) {
+    if (!route?.params?.email && password == confirmPassword) {
       setTimeout(async () => {
         try {
+          console.log('ssssssss');
           let response = await updateUserPassword(token, password);
           setLoader(false);
           setMessage(response.data.message);
-          // navigation.goBack();
         } catch (error) {
           console.log(error);
           setLoader(false);
         }
       }, 100);
+    } else if (route?.params?.email && password == confirmPassword) {
+      var formdata = new FormData();
+      formdata.append('password', password);
+      formdata.append('email', route?.params?.email);
+      var requestOptions = {
+        method: 'POST',
+        body: formdata,
+        redirect: 'follow',
+      };
+      fetch('http://alsyedmmtravel.com/api/new_password', requestOptions)
+        .then(response => response.json())
+        .then(result => {
+          setLoader(false);
+          setMessage(result.message);
+          setStack('signinscreen');
+        })
+        .catch(error => console.log('error', error));
     }
   };
+
   return (
     <SafeAreaView>
       <ScrollView style={styles.color}>
@@ -167,7 +186,7 @@ export default function EnterNewPassword({navigation, route}) {
         </View>
         {loader && <Loader />}
         {message !== '' && (
-          <Error title="Congratulations!" message={message} screen={'Home'} />
+          <Error title="Congratulations!" message={message} screen={stack} />
         )}
       </ScrollView>
     </SafeAreaView>
