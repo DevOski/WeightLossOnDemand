@@ -19,12 +19,13 @@ import ladyy from '../../assets/assets/ladyy.jpg';
 import {useIsFocused} from '@react-navigation/native';
 import {getAllTrainers} from '../../services/utilities/api/auth';
 
-export default function ChooseProvider({navigation}) {
+export default function ChooseProvider({route,navigation}) {
   const [trainer, setTrainer] = useState([]);
   const isVisible = useIsFocused();
 
   useEffect(() => {
     getTrainers();
+    setTrainer(route?.params?.filteredTrainer);
   }, [isVisible]);
   const getTrainers = async () => {
     try {

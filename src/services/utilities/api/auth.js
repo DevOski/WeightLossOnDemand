@@ -267,3 +267,12 @@ export async function getAllList() {
 export async function getallQuestion() {
   return await axios.get(`${baseURL}/questionary`);
 }
+
+export async function filterTrainer(availability, gender, language, type) {
+  return await axios.post(`${baseURL}/filter_tr`, {
+    availability,
+    gender,
+    language,
+    type,
+  });
+}

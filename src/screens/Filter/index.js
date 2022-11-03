@@ -8,9 +8,10 @@ import {
   Text,
   TouchableOpacity,
   View,
-  KeyboardAvoidingView
+  KeyboardAvoidingView,
 } from 'react-native';
 import Header from '../../components/Header';
+import {filterTrainer} from '../../services/utilities/api/auth';
 import images from '../../services/utilities/images';
 import {styles} from './style';
 export default function Filter({navigation, route}) {
@@ -22,7 +23,7 @@ export default function Filter({navigation, route}) {
   const [sixth, setSixth] = useState(false);
   const [language, setLanguage] = useState(false);
   const [focusArea, setFocusArea] = useState(false);
-  
+
   const handleAny = () => {
     setfirst(true);
     setSecond(false);
@@ -60,11 +61,25 @@ export default function Filter({navigation, route}) {
     setFourth(true);
     setFifth(false);
     setSixth(false);
-    setLanguage(true)
-    setFocusArea(true)
+    setLanguage(true);
+    setFocusArea(true);
+  };
+
+  const handleFilter = async () => {
+    try {
+      let filterData = await filterTrainer(
+        'Any',
+        'Any',
+        'English',
+        'Yoga trainer',
+      );
+      navigation.navigate('ChooseProvider', {filteredTrainer: filterData.data.data});
+    } catch (error) {
+      console.log(error);
+    }
+    // () => navigation.navigate('ChooseProvider')
   };
   return (
-    
     <SafeAreaView>
       <Header dark={true} />
       <ScrollView style={styles.color}>
@@ -158,15 +173,14 @@ export default function Filter({navigation, route}) {
             </View>
           </View>
           <View style={styles.paddingTop}>
-            <TouchableOpacity
-              onPress={() => navigation.navigate('ChooseProvider')}>
+            <TouchableOpacity onPress={handleFilter}>
               <View style={styles.buttonView}>
-                <Text style={styles.buttonText}> Show 163 results</Text>
+                <Text style={styles.buttonText}> Show results</Text>
               </View>
             </TouchableOpacity>
           </View>
           <View style={styles.paddingTop2}>
-            <TouchableOpacity 
+            <TouchableOpacity
             // onPress={handleReset}
             >
               <View>
@@ -177,6 +191,5 @@ export default function Filter({navigation, route}) {
         </View>
       </ScrollView>
     </SafeAreaView>
-  
   );
 }
