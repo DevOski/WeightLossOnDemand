@@ -153,6 +153,9 @@ import Questionfive from '../../screens/question5';
 import Chat from '../../screens/chatscreen';
 
 import selectTrainer from '../../screens/selectTrainer';
+import TrainerAppointment from '../../screens/TrainerAppointment';
+import startSession from '../../screens/session';
+import PastVisit from '../../screens/pastVisit';
 const Stack = createNativeStackNavigator();
 
 const Tab = createMaterialBottomTabNavigator();
@@ -179,8 +182,8 @@ export default function MainNavigator() {
           </>
         ) : (
           <>
+            <Stack.Screen name="BottomTrainer" component={MyTrainerTabs} />
             {/* <Stack.Screen name="Home" component={Home} /> */}
-            <Stack.Screen name="BottomNavs" component={MyTabs} />
 
             <Stack.Screen name="Setting" component={Setting} />
             <Stack.Screen name="whichsurgeri" component={Whichsurgeries} />
@@ -491,6 +494,69 @@ function MyTabs() {
         component={MyHealth}
         options={{
           tabBarLabel: 'My Health',
+          tabBarIcon: ({color}) => (
+            <FontAwesome name="heartbeat" color={color} size={22} />
+          ),
+        }}
+      />
+    </Tab.Navigator>
+  );
+}
+
+function MyTrainerTabs() {
+  return (
+    <Tab.Navigator
+      initialRouteName="TrainerAppointment"
+      activeColor="#be1d2d"
+      barStyle={{
+        backgroundColor: '#fff',
+        shadowColor: '#000',
+        shadowOffset: {
+          width: 0,
+          height: 12,
+        },
+        shadowOpacity: 0.58,
+        shadowRadius: 16.0,
+
+        elevation: 24,
+        borderTopLeftRadius: 21,
+        borderTopRightRadius: 21,
+        position: 'absolute',
+        bottom: 0,
+        zIndex: 0,
+      }}>
+      <Tab.Screen
+        name="TrainerAppointment"
+        component={TrainerAppointment}
+        options={{
+          tabBarLabel:'Appointments',
+
+          tabBarIcon: ({color}) => (
+            <Image
+              source={images.icon2}
+              style={{
+                height: sizes.screenHeight * 0.033,
+                width: sizes.screenWidth * 0.06,
+              }}
+            />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="session"
+        component={startSession}
+        options={{
+          tabBarLabel: ' Session',
+          tabBarIcon: ({color}) => (
+            <MaterialCommunityIcons name="dumbbell" color={color} size={22} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="pastVisit"
+        component={PastVisit}
+        options={{
+          tabBarLabel: 'Past visits',
           tabBarIcon: ({color}) => (
             <FontAwesome name="heartbeat" color={color} size={22} />
           ),
