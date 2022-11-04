@@ -62,6 +62,12 @@ function reasonVisit(reason) {
   return {
     type: 'ADD_REASON',
     reason: reason,
+  }
+}
+function trainerStack(trainerType) {
+  return {
+    type: 'ADD_TRAINER_TYPE',
+    trainerType: trainerType,
   };
 }
 
@@ -77,4 +83,5 @@ export {
   Question4,
   Question5,
   reasonVisit,
+  trainerStack,
 };

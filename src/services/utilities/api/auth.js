@@ -397,3 +397,10 @@ export async function trainerRating(rate, id) {
     id,
   });
 }
+export async function getTrainer(token) {
+  return await axios.get(`${baseURL}/tr_details`, {
+    headers: {
+      Authorization: token,
+    },
+  });
+}

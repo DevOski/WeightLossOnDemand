@@ -20,7 +20,7 @@ import {colors, fontFamily, fontSize, sizes} from '../../services';
 import {signIn} from '../../services/utilities/api/auth';
 import TouchID from 'react-native-touch-id';
 import {useDispatch} from 'react-redux';
-import {storeData} from '../../store/actions';
+import {storeData, trainerStack} from '../../store/actions';
 
 const deviceHeight = Dimensions.get('window').height;
 const deviceWidth = Dimensions.get('window').width;
@@ -94,9 +94,15 @@ export const SignIn = ({navigation}) => {
             // else{
             //   navigation.navigate('BottomNavs');
             // }
+         
             setError(false);
             setLoader(false);
-          } else {
+          } 
+          else if(response.data.message== "Trainer found"){
+            console.log(response.data.type);
+            dispatch(storeData("56789"));
+            dispatch(trainerStack(response.data.type));
+          }else {
             console.log(response.data.message);
             setError(true);
             setErrorMessage(response.data.message);
