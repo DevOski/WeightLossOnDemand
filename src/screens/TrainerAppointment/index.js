@@ -97,6 +97,7 @@ export default function TrainerAppointment({navigation}) {
         
           return (
             <TouchableOpacity 
+            key={index}
             // onPress={() => navigation.navigate(item.screen)}
             >
               <View style={[styles.row, styles.card]}>
