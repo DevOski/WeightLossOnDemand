@@ -16,7 +16,7 @@ import {TextInput} from 'react-native-paper';
 import {useDispatch, useSelector} from 'react-redux';
 import {storePayment} from '../../store/actions';
 
-export default function AddPaymentMethod({route,navigation}) {
+export default function AddPaymentMethod({route, navigation}) {
   const [cardNum, setCardNum] = useState('');
   const [expirationMonth, setExpirationMonth] = useState('');
   const [expirationYear, setExpirationYear] = useState('');
@@ -29,7 +29,9 @@ export default function AddPaymentMethod({route,navigation}) {
     if (cardNum && expirationMonth && expirationYear && cvv) {
       let paymentData = {cardNum, expirationMonth, expirationYear, cvv};
       dispatch(storePayment(paymentData));
-      navigation.navigate(route?.params?.to)
+      navigation.navigate(route?.params?.to, {
+        appointByTrainer: route?.params?.appointByTrainer,
+      });
     }
   };
   return (

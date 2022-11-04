@@ -58,5 +58,30 @@ function Question5(question5) {
     question5: question5,
   };
 }
+function reasonVisit(reason) {
+  return {
+    type: 'ADD_REASON',
+    reason: reason,
+  }
+}
+function trainerStack(trainerType) {
+  return {
+    type: 'ADD_TRAINER_TYPE',
+    trainerType: trainerType,
+  };
+}
 
-export {storeData, storeUserData, storeCoupon, storePayment, removeData,Question1,Question2,Question3,Question4,Question5};
+export {
+  storeData,
+  storeUserData,
+  storeCoupon,
+  storePayment,
+  removeData,
+  Question1,
+  Question2,
+  Question3,
+  Question4,
+  Question5,
+  reasonVisit,
+  trainerStack,
+};

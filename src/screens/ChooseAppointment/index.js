@@ -92,10 +92,16 @@ export default function ChooseAppointment({navigation, route}) {
   };
 
   const getAllDateSlots = async date => {
+    // try {
+    //   let res = await getAllSlotDate(date);
+    //   console.log(res);
+    // } catch (error) {
+    //   console.log(error);
+    // }
     var myHeaders = new Headers();
     myHeaders.append('Content-Type', 'application/json');
     var raw = JSON.stringify({
-      date: date,
+      date: '10/10/2022',
     });
     var requestOptions = {
       method: 'POST',
@@ -175,6 +181,7 @@ export default function ChooseAppointment({navigation, route}) {
                   {dateSlot?.map((item, index) => {
                     return (
                       <TouchableOpacity
+                        key={index}
                         onPress={() =>
                           navigation.navigate('appointmentreqest', {slot: item})
                         }>
@@ -195,6 +202,7 @@ export default function ChooseAppointment({navigation, route}) {
               {timeSlot?.map((item, index) => {
                 return (
                   <TouchableOpacity
+                    key={index}
                     onPress={() =>
                       navigation.navigate('appointmentreqest', {slot: item})
                     }>

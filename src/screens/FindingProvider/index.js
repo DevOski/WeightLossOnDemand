@@ -17,15 +17,28 @@ import Loader from 'react-native-three-dots-loader';
 import Entypo from 'react-native-vector-icons/Entypo';
 import Swiper from 'react-native-swiper';
 import Spinner from 'react-native-spinkit';
+import {findingProvider} from '../../services/utilities/api/auth';
 
 export default function FindingProvider({navigation}) {
+  const [trainer, setTrainer] = useState('');
   useEffect(() => {
-    setTimeout(() => {
-      // navigation.navigate('videocallingscreen');
-      navigation.navigate('ProviderReview');
-    }, 5000);
+    findingAProvider();
+   
   }, []);
 
+  const findingAProvider = async () => {
+    try {
+      let response = await findingProvider();
+      setTrainer(response.data.data);
+      setTimeout(() => {
+        // console.log(trainer);
+        // navigation.navigate('videocallingscreen');
+        navigation.navigate('ProviderReview', {trainer: response.data.data[0]});
+      }, 5000);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <SafeAreaView>
       <View style={styles.color}>

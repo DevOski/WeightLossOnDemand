@@ -47,9 +47,7 @@ export const ReviewHealthprofile = ({navigation, route}) => {
       <ScrollView>
         <View style={styles.container1}>
           <View>
-            <Text style={styles.hedtext}>
-              Please review your health profile
-            </Text>
+            <Text style={styles.hedtext}>Please review your questions</Text>
           </View>
           <View style={styles.pa}>
             {Qa?.map((item, index) => {
@@ -58,10 +56,12 @@ export const ReviewHealthprofile = ({navigation, route}) => {
                 return (
                   <View key={index} style={styles.box}>
                     <View style={styles.borderrb}>
-                      <Text style={styles.textttt}>{index + 1}.{item.question}</Text>
+                      <Text style={styles.textttt}>
+                        {index + 1}.{item.question}
+                      </Text>
                     </View>
                     <View style={styles.borderrb}>
-                      <Text style={styles.textttt}>{q1}</Text>
+                      <Text style={styles.textttt}>Ans: {q1}</Text>
                     </View>
                     {/* <TouchableOpacity
                  onPress={() => navigation.navigate('whichmedicationscreen')}>
@@ -74,10 +74,12 @@ export const ReviewHealthprofile = ({navigation, route}) => {
                 return (
                   <View key={index} style={styles.box}>
                     <View style={styles.borderrb}>
-                      <Text style={styles.textttt}>{index + 1}.{item.question}</Text>
+                      <Text style={styles.textttt}>
+                        {index + 1}.{item.question}
+                      </Text>
                     </View>
                     <View style={styles.borderrb}>
-                      <Text style={styles.textttt}>{q2}</Text>
+                      <Text style={styles.textttt}>Ans: {q2}</Text>
                     </View>
                     {/* <TouchableOpacity
                  onPress={() => navigation.navigate('whichmedicationscreen')}>
@@ -90,10 +92,12 @@ export const ReviewHealthprofile = ({navigation, route}) => {
                 return (
                   <View key={index} style={styles.box}>
                     <View style={styles.borderrb}>
-                      <Text style={styles.textttt}>{index + 1}.{item.question}</Text>
+                      <Text style={styles.textttt}>
+                        {index + 1}.{item.question}
+                      </Text>
                     </View>
                     <View style={styles.borderrb}>
-                      <Text style={styles.textttt}>{q3}</Text>
+                      <Text style={styles.textttt}>Ans: {q3}</Text>
                     </View>
                     {/* <TouchableOpacity
                  onPress={() => navigation.navigate('whichmedicationscreen')}>
@@ -106,10 +110,12 @@ export const ReviewHealthprofile = ({navigation, route}) => {
                 return (
                   <View key={index} style={styles.box}>
                     <View style={styles.borderrb}>
-                      <Text style={styles.textttt}>{index + 1}.{item.question}</Text>
+                      <Text style={styles.textttt}>
+                        {index + 1}.{item.question}
+                      </Text>
                     </View>
                     <View style={styles.borderrb}>
-                      <Text style={styles.textttt}>{q4}</Text>
+                      <Text style={styles.textttt}>Ans: {q4}</Text>
                     </View>
                     {/* <TouchableOpacity
                  onPress={() => navigation.navigate('whichmedicationscreen')}>
@@ -127,7 +133,7 @@ export const ReviewHealthprofile = ({navigation, route}) => {
                       </Text>
                     </View>
                     <View style={styles.borderrb}>
-                      <Text style={styles.textttt}>{q5}</Text>
+                      <Text style={styles.textttt}>Ans: {q5}</Text>
                     </View>
                     {/* <TouchableOpacity
                  onPress={() => navigation.navigate('whichmedicationscreen')}>
@@ -208,7 +214,23 @@ export const ReviewHealthprofile = ({navigation, route}) => {
 
           <TouchableOpacity
             onPress={
-              () => navigation.navigate('UserVisit')
+              () =>
+                navigation.navigate('UserVisit', {
+                  slot: route?.params?.slot,
+                  trainer: route?.params?.trainer,
+                  appointByTrainer:
+                    route?.params?.trainer && route?.params?.slot
+                      ? true
+                      : false,
+                  appointByTime:
+                    !route?.params?.trainer && route?.params?.slot
+                      ? true
+                      : false,
+                  sessionStart:
+                    !route?.params?.trainer && !route?.params?.slot
+                      ? true
+                      : false,
+                })
               // route?.params?.pharmacy
               //   ? navigation.navigate('pharmacymaplocation')
               //   : navigation.navigate('doyouneeddoctor')

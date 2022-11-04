@@ -26,10 +26,10 @@ import {removeData} from '../../store/actions';
 const appId = '270b512970864b0a93b14650e52e8f9c';
 const channelName = 'newVisit';
 const token =
-'007eJxTYPj52X/29hrrxXcVZnh57To3+5CfeMi9qiXG5xV8Tpe1dFQoMBiZGySZGhpZmhtYmJkkGSRaGicZmpiZGqSaGqVapFkmx96MTm4IZGTY/ZOJhZEBAkF8Doa81PKwzOLMEgYGACVeIdY='
+  '007eJxTYPj52X/29hrrxXcVZnh57To3+5CfeMi9qiXG5xV8Tpe1dFQoMBiZGySZGhpZmhtYmJkkGSRaGicZmpiZGqSaGqVapFkmx96MTm4IZGTY/ZOJhZEBAkF8Doa81PKwzOLMEgYGACVeIdY=';
 const uid = 0;
 
-export default function Videocalling({navigation}) {
+export default function Videocalling({navigation, route}) {
   const agoraEngineRef = useRef(); // Agora engine instance
   const [isJoined, setIsJoined] = useState(false); // Indicates if the local user has joined the channel
   const [remoteUid, setRemoteUid] = useState(0); // Uid of the remote user
@@ -97,7 +97,6 @@ export default function Videocalling({navigation}) {
   };
 
   const join = async () => {
-    // console.log('working');
     if (isJoined) {
       return;
     }
@@ -125,7 +124,7 @@ export default function Videocalling({navigation}) {
       setIsJoined(false);
       showMessage('You left the channel');
 
-      navigation.navigate('RateProvider');
+      navigation.navigate('RateProvider', {trainer: route?.params?.trainer});
     } catch (e) {
       console.log(e);
     }
@@ -159,11 +158,13 @@ export default function Videocalling({navigation}) {
         <Text></Text>
       )}
       {isJoined && remoteUid !== 0 ? (
-        
-        <React.Fragment key={remoteUid} >
-          <View >
-          <RtcSurfaceView canvas={{uid: remoteUid}} style={styles.videoView} />
-        </View>
+        <React.Fragment key={remoteUid}>
+          <View>
+            <RtcSurfaceView
+              canvas={{uid: remoteUid}}
+              style={styles.videoView}
+            />
+          </View>
           <View
             style={{
               flexDirection: 'row',
@@ -209,17 +210,14 @@ export default function Videocalling({navigation}) {
       ) : (
         <Text>{/* Waiting for a remote user to join */}</Text>
       )}
-       {isJoined ? (
-        
+      {isJoined ? (
         <React.Fragment key={0}>
           <RtcSurfaceView canvas={{uid: 0}} style={styles.videoView1} />
           {/* <Text>Local user uid: {uid}</Text> */}
         </React.Fragment>
-    
-    ) : (
-      <Text></Text>
-    )}
-   
+      ) : (
+        <Text></Text>
+      )}
     </SafeAreaView>
   );
 }
@@ -267,15 +265,15 @@ const styles = StyleSheet.create({
   videoView: {
     width: '100%',
     zIndex: -1,
-    height: sizes.screenHeight
-    
+    height: sizes.screenHeight,
+
     // bottom:34
   },
   videoView1: {
     width: '50%',
     height: sizes.screenHeight * 0.25,
     position: 'absolute',
-    marginTop:8,
+    marginTop: 8,
     top: sizes.screenHeight * 0.66,
     right: sizes.screenHeight * 0.02,
     zIndex: 111,

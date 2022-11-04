@@ -23,7 +23,11 @@ export default function Filter({navigation, route}) {
   const [sixth, setSixth] = useState(false);
   const [language, setLanguage] = useState(false);
   const [focusArea, setFocusArea] = useState(false);
-
+  // const [availability, setAvailability] = useState('');
+  const [gender, setGender] = useState('');
+  const [tLanguage, setTLanguage] = useState('');
+  const [type, setType] = useState('');
+  // , , ,
   const handleAny = () => {
     setfirst(true);
     setSecond(false);
@@ -66,18 +70,33 @@ export default function Filter({navigation, route}) {
   };
 
   const handleFilter = async () => {
+    // console.log(first,second,third);
+    let availability = first
+      ? 'Any'
+      : '' || second
+      ? 'Today'
+      : '' || third
+      ? 'Tomorrow'
+      : '';
+
+    let gender = fourth
+      ? 'Any'
+      : '' || fifth
+      ? 'Female'
+      : '' || sixth
+      ? 'Male'
+      : '';
     try {
       let filterData = await filterTrainer(
-        'Any',
-        'Any',
-        'English',
-        'Yoga trainer',
+        availability,
+        gender,
+        route?.params?.language ? route?.params?.language : '',
+        route?.params?.area ? route?.params?.area : '',
       );
       navigation.navigate('ChooseProvider', {filteredTrainer: filterData.data.data});
     } catch (error) {
       console.log(error);
     }
-    // () => navigation.navigate('ChooseProvider')
   };
   return (
     <SafeAreaView>
