@@ -411,6 +411,13 @@ export async function getAppointmentTrainer(token) {
     },
   });
 }
+export async function trainerVist(token) {
+  return await axios.get(`${baseURL}/tr_visit`, {
+    headers: {
+      Authorization: token,
+    },
+  });
+}
 
 
 // 

@@ -13,7 +13,7 @@ import {
 } from 'react-native';
 import {useSelector} from 'react-redux';
 import Header from '../../components/Header';
-import {recentVisit} from '../../services/utilities/api/auth';
+import {recentVisit, trainerVist} from '../../services/utilities/api/auth';
 import images from '../../services/utilities/images';
 import {styles} from './style';
 import Loader from '../../components/Loader';
@@ -25,7 +25,7 @@ export default function PastVisit({navigation}) {
   const [error, setError] = useState(false);
   const isVisible = useIsFocused();
   const [loader, setLoader] = useState(false);
-
+  const [visitList, setVisitList] = useState([]);
   const token = useSelector(state => state.token);
 
   useEffect(() => {
@@ -36,10 +36,8 @@ export default function PastVisit({navigation}) {
     setLoader(true);
     setTimeout(async () => {
       try {
-        let response = await recentVisit(token);
-        setVisit(response.data.visit);
-        setTrainer(response.data.trainer[0]);
-        setUser(response.data.user);
+        let response = await trainerVist(token);
+        setVisitList(response.data.data);
         setLoader(false);
       } catch (error) {
         if (error.message.includes('500')) {
@@ -58,28 +56,35 @@ export default function PastVisit({navigation}) {
         {!error ? (
           <View style={styles.marginTop}>
             <View style={[styles.left, styles.top]}>
-              <Text style={styles.head}>MY Past VISIT</Text>
+              <Text style={styles.head}>MY Past Session</Text>
             </View>
-            <TouchableOpacity
-              onPress={() => navigation.navigate('VisitDetail')}>
-              <View style={[styles.card]}>
-                <View style={styles.row}>
-                  <Image source={images.provider1} style={styles.providerImg} />
-                  <Text style={styles.cardText}>{trainer?.tr_name}</Text>
-                  <View>
-                    <Text style={styles.symbol}> ›</Text>
+            {visitList?.map((item, index) => {
+              return (
+                <TouchableOpacity
+                  onPress={() => navigation.navigate('VisitDetail')}>
+                  <View style={[styles.card]}>
+                    <View style={styles.row}>
+                      <Image
+                        source={images.provider1}
+                        style={styles.providerImg}
+                      />
+                      <Text style={styles.cardText}>{item?.tr_name}</Text>
+                      <View>
+                        <Text style={styles.symbol}> ›</Text>
+                      </View>
+                    </View>
+                    <View>
+                      <Text style={styles.date}>
+                        {/* {moment(visit?.created_at).format('DD/MM/YYYY')} */}
+                        {moment(item?.created_at).format('ddd')},{' '}
+                        {moment(item?.created_at).format('MMM')}{' '}
+                        {moment(item?.created_at).format('DD')}
+                      </Text>
+                    </View>
                   </View>
-                </View>
-                <View>
-                  <Text style={styles.date}>
-                    {/* {moment(visit?.created_at).format('DD/MM/YYYY')} */}
-                    {moment(visit?.created_at).format('ddd')},{' '}
-                    {moment(visit?.created_at).format('MMM')}{' '}
-                    {moment(visit?.created_at).format('DD')}
-                  </Text>
-                </View>
-              </View>
-            </TouchableOpacity>
+                </TouchableOpacity>
+              );
+            })}
           </View>
         ) : (
           <View style={styles.contentView}>
