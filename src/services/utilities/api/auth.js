@@ -276,3 +276,11 @@ export async function filterTrainer(availability, gender, language, type) {
     type,
   });
 }
+
+export async function getTrainer(token) {
+  return await axios.get(`${baseURL}/tr_details`, {
+    headers: {
+      Authorization: token,
+    },
+  });
+}

@@ -19,7 +19,7 @@ import {SignUp} from '../../screens/signupscreen';
 import SharePromo from '../../screens/SharePromo';
 import PaymentMethod from '../../screens/PaymentMethod';
 import ApplyCoupon from '../../screens/ApplyCoupon';
-import Intro from '../../screens/Introsliderscreen';
+import Intro from '../../screens/introSliderScreen';
 import ContactInfo from '../../screens/ContactInfo';
 import ChangePassword from '../../screens/ChangePassword';
 import Insurance from '../../screens/Insurance';
@@ -161,7 +161,7 @@ const Stack = createNativeStackNavigator();
 const Tab = createMaterialBottomTabNavigator();
 export default function MainNavigator() {
   const signIn = useSelector(state => state.token);
-  console.log('------>>', signIn);
+  const trainerStatus = useSelector(state => state.trainerType);
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{headerShown: false}}>
@@ -182,7 +182,10 @@ export default function MainNavigator() {
           </>
         ) : (
           <>
-            <Stack.Screen name="BottomTrainer" component={MyTrainerTabs} />
+            <Stack.Screen
+              name={trainerStatus ? 'BottomTrainer' : 'BottomNavs'}
+              component={trainerStatus ? MyTrainerTabs : MyTabs}
+            />
             {/* <Stack.Screen name="Home" component={Home} /> */}
 
             <Stack.Screen name="Setting" component={Setting} />
@@ -210,7 +213,6 @@ export default function MainNavigator() {
             />
 
             <Stack.Screen name="chatscreen" component={Chat} />
-
 
             <Stack.Screen name="temperature" component={Temperaturescreen} />
             <Stack.Screen name="symptomsscreen" component={SymtomsScreen} />
@@ -268,10 +270,7 @@ export default function MainNavigator() {
               name="healthprofilereview"
               component={ReviewHealthprofile}
             />
-             <Stack.Screen
-              name="selectTrainer"
-              component={selectTrainer}
-            />
+            <Stack.Screen name="selectTrainer" component={selectTrainer} />
             {/* <Stack.Screen name="whichsurgeri" component={Whichsurgeries} /> */}
             {/* <Stack.Screen
   name="whichmedicalconditions"
@@ -389,7 +388,7 @@ export default function MainNavigator() {
               component={HealthMyProviders}
             />
             <Stack.Screen name="Pharmacies" component={Pharmacies} />
-            
+
             <Stack.Screen name="UserVisit" component={UserVisit} />
             <Stack.Screen name="FindingProvider" component={FindingProvider} />
             <Stack.Screen name="ProviderReview" component={ProviderReview} />
@@ -529,7 +528,7 @@ function MyTrainerTabs() {
         name="TrainerAppointment"
         component={TrainerAppointment}
         options={{
-          tabBarLabel:'Appointments',
+          tabBarLabel: 'Appointments',
 
           tabBarIcon: ({color}) => (
             <Image

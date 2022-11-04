@@ -9,13 +9,14 @@ import {
   Text,
   TouchableOpacity,
   View,
-  FlatList
+  FlatList,
 } from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import GetCare from '../../components/GetCare';
 import {sizes} from '../../services';
 import {
   getAllTrainers,
+  getTrainer,
   getUser,
   recentVisit,
 } from '../../services/utilities/api/auth';
@@ -25,42 +26,50 @@ import {styles} from './style';
 
 export default function TrainerAppointment({navigation}) {
   const [userName, setUserName] = useState('');
-  
 
   const token = useSelector(state => state.token);
+  console.log(token);
   const dispatch = useDispatch();
   const isVisible = useIsFocused();
+
+  useEffect(() => {
+    getTrainerInfo();
+  }, [isVisible]);
+
+  const getTrainerInfo = async () => {
+    try {
+      let response = await getTrainer(token);
+      console.log(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   const data = [
-   
-  
     {
       id: 1,
       title: 'Appointment',
-      
+
       // screen: 'chatroom',
     },
     {
       id: 2,
       title: 'Appointment',
-      
+
       // screen: 'chatroom',
     },
     {
       id: 3,
       title: 'Appointment',
-      
+
       // screen: 'chatroom',
     },
     {
       id: 4,
       title: 'Mustafa',
-      
+
       // screen: 'chatroom',
     },
- 
-  
   ];
- 
 
   return (
     <SafeAreaView>
@@ -79,8 +88,7 @@ export default function TrainerAppointment({navigation}) {
         <FlatList
           data={data}
           renderItem={({item}) => (
-
-            <TouchableOpacity onPress={() =>  navigation.navigate(item.screen)}>
+            <TouchableOpacity onPress={() => navigation.navigate(item.screen)}>
               <View style={[styles.row, styles.card]}>
                 <Text style={styles.cardText}>{item.title}</Text>
                 <View>
@@ -101,7 +109,6 @@ export default function TrainerAppointment({navigation}) {
           )}
           // keyExtractor={item => navigation.navigate(item.screen)}
         />
-       
       </ScrollView>
     </SafeAreaView>
   );
