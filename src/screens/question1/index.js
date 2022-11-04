@@ -122,8 +122,14 @@ export default function Question({navigation, route}) {
           </View>
 
           <View style={styles.paddingTop}>
-            <TouchableOpacity onPress={handleEmail}>
-              <View style={styles.buttonView}>
+          
+            <TouchableOpacity 
+            disabled={selectanswer?false:true}
+            onPress={handleEmail}
+            
+            
+            >
+              <View style={selectanswer?styles.buttonView:styles.disabledView}>
                 <Text style={styles.buttonText}>Next</Text>
               </View>
             </TouchableOpacity>
