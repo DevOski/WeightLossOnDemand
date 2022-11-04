@@ -226,6 +226,10 @@ export const ReviewHealthprofile = ({navigation, route}) => {
                     !route?.params?.trainer && route?.params?.slot
                       ? true
                       : false,
+                  sessionStart:
+                    !route?.params?.trainer && !route?.params?.slot
+                      ? true
+                      : false,
                 })
               // route?.params?.pharmacy
               //   ? navigation.navigate('pharmacymaplocation')

@@ -93,31 +93,30 @@ export default function UserVisit({navigation, route}) {
           }
         })
         .catch(error => console.log('error', error));
+    } else if (route?.params?.sessionStart == true) {
+      let price = cost * 100;
+      var formdata = new FormData();
+      formdata.append('number', payment.cardNum);
+      formdata.append('expr_num', payment.expirationMonth);
+      formdata.append('exp_year', payment.expirationYear);
+      formdata.append('cvc', payment.cvv);
+      formdata.append('amount', price);
+
+      var requestOptions = {
+        method: 'POST',
+        body: formdata,
+        redirect: 'follow',
+      };
+
+      fetch('http://alsyedmmtravel.com/api/pay', requestOptions)
+        .then(response => response.json())
+        .then(result => {
+          if (result.message == 'succeeded') {
+            toggleModal();
+          }
+        })
+        .catch(error => console.log('error', error));
     }
-    // else {
-    //   let price = cost * 100;
-    //   var formdata = new FormData();
-    //   formdata.append('number', payment.cardNum);
-    //   formdata.append('expr_num', payment.expirationMonth);
-    //   formdata.append('exp_year', payment.expirationYear);
-    //   formdata.append('cvc', payment.cvv);
-    //   formdata.append('amount', price);
-
-    //   var requestOptions = {
-    //     method: 'POST',
-    //     body: formdata,
-    //     redirect: 'follow',
-    //   };
-
-    //   fetch('http://alsyedmmtravel.com/api/pay', requestOptions)
-    //     .then(response => response.json())
-    //     .then(result => {
-    //       if (result.message == 'succeeded') {
-    //         toggleModal();
-    //       }
-    //     })
-    //     .catch(error => console.log('error', error));
-    // }
   };
 
   const bookAppointmentByTrainer = async price => {
@@ -290,7 +289,10 @@ export default function UserVisit({navigation, route}) {
             </View>
             <View style={styles.buttnView}>
               <TouchableOpacity
-                onPress={() => navigation.navigate('FindingProvider')}>
+                onPress={() => {
+                  navigation.navigate('FindingProvider');
+                  setIsModalVisible(false);
+                }}>
                 <View style={styles.buttonView2}>
                   <Text style={styles.buttonText}>Start visit now</Text>
                 </View>
