@@ -19,14 +19,17 @@ import Modal from 'react-native-modal';
 import Entypo from 'react-native-vector-icons/Entypo';
 import {useSelector} from 'react-redux';
 import {
+  getUser,
   timeAppointment,
   trainerAppointment,
 } from '../../services/utilities/api/auth';
 import moment from 'moment';
 import Error from '../../components/Error';
+import {useIsFocused} from '@react-navigation/native';
+import {useEffect} from 'react';
 
 export default function UserVisit({navigation, route}) {
-  const [username, setUsername] = useState('Jazzy');
+  const [username, setUsername] = useState('');
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [cost, setCost] = useState(100);
   const [appointMsg, setAppointMsg] = useState('');
@@ -43,9 +46,23 @@ export default function UserVisit({navigation, route}) {
   const q3 = useSelector(state => state.question3);
   const q4 = useSelector(state => state.question4);
   const q5 = useSelector(state => state.question5);
+  const isVisible = useIsFocused();
+
+  useEffect(() => {
+    getUserDetails();
+  }, [isVisible]);
+
+  const getUserDetails = async () => {
+    try {
+      let response = await getUser(token);
+      setUsername(response.data.data.first_name);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const confirmAndPay = () => {
-    if (route?.params?.appointByTrainer == true) {
+    if (route?.params?.appointByTrainer == true && payment.cardNum) {
       let price = cost * 100;
       var formdata = new FormData();
       formdata.append('number', payment.cardNum);
@@ -69,7 +86,7 @@ export default function UserVisit({navigation, route}) {
           }
         })
         .catch(error => console.log('error', error));
-    } else if (route?.params?.appointByTime == true) {
+    } else if (route?.params?.appointByTime == true && payment.cardNum) {
       let price = cost * 100;
       var formdata = new FormData();
       formdata.append('number', payment.cardNum);
@@ -93,7 +110,7 @@ export default function UserVisit({navigation, route}) {
           }
         })
         .catch(error => console.log('error', error));
-    } else if (route?.params?.sessionStart == true) {
+    } else if (route?.params?.sessionStart == true && payment.cardNum) {
       let price = cost * 100;
       var formdata = new FormData();
       formdata.append('number', payment.cardNum);
@@ -229,8 +246,11 @@ export default function UserVisit({navigation, route}) {
           <Text style={styles.head2}>${cost}</Text>
         </View>
 
-        <TouchableOpacity onPress={confirmAndPay}>
-          <View style={styles.buttonView}>
+        <TouchableOpacity
+          disabled={payment.cardNum ? false : true}
+          onPress={confirmAndPay}>
+          <View
+            style={payment.cardNum ? styles.buttonView : styles.disabledBtn}>
             <Text style={styles.buttonText}> Confirm and Pay</Text>
           </View>
         </TouchableOpacity>
