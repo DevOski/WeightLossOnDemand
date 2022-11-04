@@ -19,6 +19,8 @@ import {TextInput} from 'react-native-paper';
 
 export const AppointmentReqest = ({navigation, route}) => {
   console.log(route?.params?.slot);
+  console.log(route?.params?.trainer);
+  
   return (
     <SafeAreaView style={styles.container}>
       <Header title={'Appointment Window'} />
@@ -42,7 +44,13 @@ export const AppointmentReqest = ({navigation, route}) => {
         </Text>
       </View>
       <View style={styles.top}>
-        <TouchableOpacity onPress={() => navigation.navigate('reasonVisit')}>
+        <TouchableOpacity
+          onPress={() =>
+            navigation.navigate('reasonVisit', {
+              slot: route?.params?.slot,
+              trainer: route?.params?.trainer,
+            })
+          }>
           <View style={styles.buttonView}>
             <Text style={styles.buttonText}>Continue</Text>
           </View>

@@ -276,3 +276,58 @@ export async function filterTrainer(availability, gender, language, type) {
     type,
   });
 }
+
+export async function trainerAppointment(
+  user_token,
+  response_1,
+  response_2,
+  response_3,
+  response_4,
+  response_5,
+  trainer_id,
+  tr_name,
+  reason,
+  apt_date,
+  apt_day,
+  apt_time,
+  amount,
+) {
+  console.log(
+    user_token,
+    response_1,
+    response_2,
+    response_3,
+    response_4,
+    response_5,
+    trainer_id,
+    tr_name,
+    reason,
+    apt_date,
+    apt_day,
+    apt_time,
+    amount,
+  );
+  return await axios.post(
+    `${baseURL}/appointmentByProvider`,
+    {
+      user_token,
+      response_1,
+      response_2,
+      response_3,
+      response_4,
+      response_5,
+      trainer_id,
+      tr_name,
+      reason,
+      apt_date,
+      apt_day,
+      apt_time,
+      amount,
+    },
+    {
+      headers: {
+        Authorization: user_token,
+      },
+    },
+  );
+}

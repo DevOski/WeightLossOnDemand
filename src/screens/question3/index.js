@@ -18,60 +18,62 @@ import {TextInput} from 'react-native-paper';
 import {colors, sizes} from '../../services';
 import Modal from 'react-native-modal';
 import {openInbox} from 'react-native-email-link';
-import { CustomTextFiel } from '../../component/textFiled';
-import { getQuestion } from '../../services/utilities/api/auth';
-import { Question3 } from '../../store/actions';
-import { useDispatch, useSelector } from 'react-redux';
+import {CustomTextFiel} from '../../component/textFiled';
+import {getQuestion} from '../../services/utilities/api/auth';
+import {Question3} from '../../store/actions';
+import {useDispatch, useSelector} from 'react-redux';
 
-export default function Questionthree({navigation,route}) {
+export default function Questionthree({navigation, route}) {
   const [CheckedFemale, setCheckedFemale] = React.useState();
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [question, setquestion] = useState(route.params.question1);
   const [questiontwo, setquestiontwo] = useState(route.params.questions2);
   const [questionthree, setquestionthree] = useState('');
   const [Qa, setQa] = useState();
-  const [Yes, setYes] = useState()
-  const [no, setno] = useState()
-  const [selectanswer3, setselectanswer3] = useState()
-  const dispatch=useDispatch()
-  console.log(route.params,"q3screen");
+  const [Yes, setYes] = useState();
+  const [no, setno] = useState();
+  const [selectanswer3, setselectanswer3] = useState();
+  const dispatch = useDispatch();
+  // console.log(route.params,"q3screen");
+
   useEffect(() => {
     getQuestions();
   }, []);
-// const q3=useSelector(state=>state.question3)
-console.log();
+  // const q3=useSelector(state=>state.question3)
+  console.log();
   const getQuestions = async () => {
     try {
       let response = await getQuestion(3);
       setQa(response.data.data[0].question);
     } catch (error) {
-    console.log(error);
+      console.log(error);
     }
   };
 
   const handleEmail = () => {
-    dispatch(Question3(selectanswer3))
-   
-    navigation.navigate('question4',{question1:question,questions2:questiontwo,questions3:questionthree})
+    dispatch(Question3(selectanswer3));
+
+    navigation.navigate('question4', {
+      slot: route?.params?.slot,
+      trainer: route?.params?.trainer,
+    });
   };
-  
+
   return (
     <SafeAreaView>
       <Header title={'Questionnaires '} />
       <ScrollView style={styles.color}>
         <View style={styles.padding}>
-          <Text style={styles.text}>
-            {Qa}
-          </Text>
+          <Text style={styles.text}>{Qa}</Text>
           <View style={styles.width}>
-          <View style={styles.ro}>
+            <View style={styles.ro}>
               <Text style={styles.lstyle}>Yes</Text>
               <RadioButton
                 status={Yes ? 'checked' : 'unchecked'}
                 onPress={() => {
                   setYes(!Yes);
                   setno(false);
-                  setselectanswer3('Yes')
+                  setselectanswer3('Yes');
                   // setgender('Female');
                   // setCheckedMale(false);
                   // setCheckedOther(false);
@@ -87,7 +89,7 @@ console.log();
                 onPress={() => {
                   setno(!no);
                   setYes(false);
-                  setselectanswer3('No')
+                  setselectanswer3('No');
                   // setgender('Female');
                   // setCheckedMale(false);
                   // setCheckedOther(false);
@@ -96,9 +98,8 @@ console.log();
                 uncheckColor={colors.secondary}
               />
             </View>
-           
           </View>
-          
+
           <View style={styles.paddingTop}>
             <TouchableOpacity onPress={handleEmail}>
               <View style={styles.buttonView}>
@@ -106,7 +107,6 @@ console.log();
               </View>
             </TouchableOpacity>
           </View>
-        
         </View>
       </ScrollView>
     </SafeAreaView>

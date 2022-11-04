@@ -47,9 +47,7 @@ export const ReviewHealthprofile = ({navigation, route}) => {
       <ScrollView>
         <View style={styles.container1}>
           <View>
-            <Text style={styles.hedtext}>
-              Please review your questions
-            </Text>
+            <Text style={styles.hedtext}>Please review your questions</Text>
           </View>
           <View style={styles.pa}>
             {Qa?.map((item, index) => {
@@ -58,7 +56,9 @@ export const ReviewHealthprofile = ({navigation, route}) => {
                 return (
                   <View key={index} style={styles.box}>
                     <View style={styles.borderrb}>
-                      <Text style={styles.textttt}>{index + 1}.{item.question}</Text>
+                      <Text style={styles.textttt}>
+                        {index + 1}.{item.question}
+                      </Text>
                     </View>
                     <View style={styles.borderrb}>
                       <Text style={styles.textttt}>Ans: {q1}</Text>
@@ -74,7 +74,9 @@ export const ReviewHealthprofile = ({navigation, route}) => {
                 return (
                   <View key={index} style={styles.box}>
                     <View style={styles.borderrb}>
-                      <Text style={styles.textttt}>{index + 1}.{item.question}</Text>
+                      <Text style={styles.textttt}>
+                        {index + 1}.{item.question}
+                      </Text>
                     </View>
                     <View style={styles.borderrb}>
                       <Text style={styles.textttt}>Ans: {q2}</Text>
@@ -90,7 +92,9 @@ export const ReviewHealthprofile = ({navigation, route}) => {
                 return (
                   <View key={index} style={styles.box}>
                     <View style={styles.borderrb}>
-                      <Text style={styles.textttt}>{index + 1}.{item.question}</Text>
+                      <Text style={styles.textttt}>
+                        {index + 1}.{item.question}
+                      </Text>
                     </View>
                     <View style={styles.borderrb}>
                       <Text style={styles.textttt}>Ans: {q3}</Text>
@@ -106,7 +110,9 @@ export const ReviewHealthprofile = ({navigation, route}) => {
                 return (
                   <View key={index} style={styles.box}>
                     <View style={styles.borderrb}>
-                      <Text style={styles.textttt}>{index + 1}.{item.question}</Text>
+                      <Text style={styles.textttt}>
+                        {index + 1}.{item.question}
+                      </Text>
                     </View>
                     <View style={styles.borderrb}>
                       <Text style={styles.textttt}>Ans: {q4}</Text>
@@ -208,7 +214,12 @@ export const ReviewHealthprofile = ({navigation, route}) => {
 
           <TouchableOpacity
             onPress={
-              () => navigation.navigate('UserVisit')
+              () =>
+                navigation.navigate('UserVisit', {
+                  slot: route?.params?.slot,
+                  trainer: route?.params?.trainer,
+                  appointByTrainer: true,
+                })
               // route?.params?.pharmacy
               //   ? navigation.navigate('pharmacymaplocation')
               //   : navigation.navigate('doyouneeddoctor')

@@ -23,7 +23,7 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {Question1} from '../../store/actions';
 import {useDispatch, useSelector} from 'react-redux';
 
-export default function Question({navigation}) {
+export default function Question({navigation, route}) {
   const [Onceaweek, setOnceaweek] = useState(false);
   const [question, setquestion] = useState();
   const [Qa, setQa] = useState();
@@ -39,6 +39,8 @@ export default function Question({navigation}) {
     getQuestions();
   }, []);
 
+
+
   const getQuestions = async () => {
     try {
       let response = await getQuestion(1);
@@ -53,7 +55,10 @@ export default function Question({navigation}) {
     // console.log(question,'q1param');
 
     dispatch(Question1(selectanswer));
-    navigation.navigate('question2', {question: question});
+    navigation.navigate('question2', {
+      slot: route?.params?.slot,
+      trainer: route?.params?.trainer,
+    });
   };
 
   return (

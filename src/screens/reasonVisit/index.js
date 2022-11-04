@@ -22,7 +22,7 @@ import Loader from '../../components/Loader';
 import {useDispatch, useSelector} from 'react-redux';
 import {reasonVisit} from '../../store/actions';
 
-export const ReasonForDcoctor = ({navigation}) => {
+export const ReasonForDcoctor = ({navigation, route}) => {
   const [search, setsearch] = useState();
   const [loader, setLoader] = useState(false);
   const [show, setshow] = useState(false);
@@ -30,7 +30,7 @@ export const ReasonForDcoctor = ({navigation}) => {
   const isVisible = useIsFocused();
 
   const dispatch = useDispatch();
-
+  
   useEffect(() => {
     getReasons();
   }, [isVisible]);
@@ -65,7 +65,10 @@ export const ReasonForDcoctor = ({navigation}) => {
   };
   const handleReason = item => {
     dispatch(reasonVisit(item.vr_opts));
-    navigation.navigate('question1');
+    navigation.navigate('question1', {
+      slot: route?.params?.slot,
+      trainer: route?.params?.trainer,
+    });
   };
   return (
     <SafeAreaView style={styles.container}>

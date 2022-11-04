@@ -35,8 +35,7 @@ export default function Questionfour({navigation, route}) {
   const [Pilates, setPilates] = useState(false);
   const [selectanswer4, setselectanswer4] = useState()
   const [Qa, setQa] = useState();
-  console.log(route, 'q4screen');
-
+  
   const dispatch=useDispatch()
 
   useEffect(() => {
@@ -54,10 +53,8 @@ export default function Questionfour({navigation, route}) {
   const handleEmail = () => {
     dispatch(Question4(selectanswer4))
     navigation.navigate('question5', {
-      question1: question,
-      questions2: questiontwo,
-      questions3: questionthree,
-      question4: questionfour,
+      slot: route?.params?.slot,
+      trainer: route?.params?.trainer,
     });
   };
 
