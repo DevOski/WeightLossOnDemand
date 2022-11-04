@@ -86,8 +86,13 @@ export const ProviderDetail = ({navigation, route}) => {
               return (
                 <View style={styles.avialbox}>
                   <TouchableOpacity
-                    onPress={() => navigation.navigate('appointmentreqest',{slot:item})}>
-                    <Text style={styles.tex} >{item?.tr_day}</Text>
+                    onPress={() =>
+                      navigation.navigate('appointmentreqest', {
+                        slot: item,
+                        trainer: trainer,
+                      })
+                    }>
+                    <Text style={styles.tex}>{item?.tr_day}</Text>
                     <Text style={styles.tex}>{item?.tr_date}</Text>
                     <Text style={styles.tex}>{item.sl_time}</Text>
                   </TouchableOpacity>
@@ -169,7 +174,9 @@ export const ProviderDetail = ({navigation, route}) => {
       </ScrollView>
       <View style={styles.buttnView}>
         <TouchableOpacity
-          onPress={() => navigation.navigate('ChooseAppointment',{trainer:trainer})}>
+          onPress={() =>
+            navigation.navigate('ChooseAppointment', {trainer: trainer})
+          }>
           <View style={styles.buttonView}>
             <Text style={styles.buttonText}>View Availbility</Text>
           </View>
@@ -316,7 +323,7 @@ const styles = StyleSheet.create({
     fontSize: fontSize.large,
     color: colors.secondary,
     fontWeight: 'bold',
-    textAlign:'center'
+    textAlign: 'center',
   },
   buttnView: {
     marginLeft: sizes.screenWidth * 0.06,

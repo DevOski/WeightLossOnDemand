@@ -19,14 +19,18 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import {searchReason, visitReason} from '../../services/utilities/api/auth';
 import {useIsFocused} from '@react-navigation/native';
 import Loader from '../../components/Loader';
+import {useDispatch, useSelector} from 'react-redux';
+import {reasonVisit} from '../../store/actions';
 
-export const ReasonForDcoctor = ({navigation}) => {
+export const ReasonForDcoctor = ({navigation, route}) => {
   const [search, setsearch] = useState();
   const [loader, setLoader] = useState(false);
   const [show, setshow] = useState(false);
   const [reason, setReason] = useState([]);
   const isVisible = useIsFocused();
 
+  const dispatch = useDispatch();
+  
   useEffect(() => {
     getReasons();
   }, [isVisible]);
@@ -58,6 +62,13 @@ export const ReasonForDcoctor = ({navigation}) => {
         setLoader(false);
       }
     }, 100);
+  };
+  const handleReason = item => {
+    dispatch(reasonVisit(item.vr_opts));
+    navigation.navigate('question1', {
+      slot: route?.params?.slot,
+      trainer: route?.params?.trainer,
+    });
   };
   return (
     <SafeAreaView style={styles.container}>
@@ -95,7 +106,7 @@ export const ReasonForDcoctor = ({navigation}) => {
           {reason?.map((item, index) => {
             return (
               <View style={styles.pading}>
-                <TouchableOpacity onPress={() => navigation.navigate('question1')}>
+                <TouchableOpacity onPress={() => handleReason(item)}>
                   <View style={styles.lisbutton}>
                     <Text style={styles.text}>{item?.vr_opts}</Text>
                   </View>
@@ -166,14 +177,14 @@ export const ReasonForDcoctor = ({navigation}) => {
                 </View>
             </TouchableOpacity>
         </View> */}
-          <View style={styles.pading}>
+          {/* <View style={styles.pading}>
             <TouchableOpacity onPress={()=>navigation.navigate('otherreasonscreen')}
                 >
               <View style={styles.lisbutton1}>
                 <Text style={styles.text}>Other reason</Text>
               </View>
             </TouchableOpacity>
-          </View>
+          </View> */}
           {/* {!show ? <><View style={styles.pading}>
             <TouchableOpacity>
                 <View style={styles.lisbutton}>

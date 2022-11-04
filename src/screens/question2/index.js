@@ -17,20 +17,22 @@ import {TextInput} from 'react-native-paper';
 import {colors, sizes} from '../../services';
 import Modal from 'react-native-modal';
 import {openInbox} from 'react-native-email-link';
-import { CustomTextFiel } from '../../component/textFiled';
-import { getQuestion } from '../../services/utilities/api/auth';
+import {CustomTextFiel} from '../../component/textFiled';
+import {getQuestion} from '../../services/utilities/api/auth';
+import {Question2} from '../../store/actions';
+import {useDispatch, useSelector} from 'react-redux';
 
-export default function Questiontwo({navigation,route}) {
+export default function Questiontwo({navigation, route}) {
   const [Morning, setMorning] = React.useState();
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [questiontwo, setquestiontwo] = useState();
-  const [question, setquestion] = useState(route.params.question);
+  const [question, setquestion] = useState(route?.params?.selectanswer);
   const [Qa, setQa] = useState();
-  const [Afternoon, setAfternoon] = useState()
-  const [Evening, setEvening] = useState()
-  const [Night, setNight] = useState()
-  const [selectanswer, setselectanswer] = useState()
-  
+  const [Afternoon, setAfternoon] = useState();
+  const [Evening, setEvening] = useState();
+  const [Night, setNight] = useState();
+  const [selectanswer1, setselectanswer1] = useState();
+  const dispatch = useDispatch();
   useEffect(() => {
     getQuestions();
   }, []);
@@ -44,22 +46,26 @@ export default function Questiontwo({navigation,route}) {
     }
   };
   // console.log(question,"question");
-  console.log('question2',{question1:question})
+  // console.log('question2', {question1: question});
+ ;
+  // const q2=useSelector(state =>state.question2)
+  // console.log(q2,'====>q2');
   const handleEmail = () => {
-    navigation.navigate('question3',{question1:question,questions2:questiontwo})
-   
+    dispatch(Question2(selectanswer1));
+    navigation.navigate('question3', {
+      slot: route?.params?.slot,
+      trainer: route?.params?.trainer,
+    });
   };
-  
+
   return (
     <SafeAreaView>
       <Header title={'Questionnaires '} />
       <ScrollView style={styles.color}>
         <View style={styles.padding}>
-          <Text style={styles.text}>
-          {Qa}
-          </Text>
+          <Text style={styles.text}>{Qa}</Text>
           <View style={styles.width}>
-          <View style={styles.ro}>
+            <View style={styles.ro}>
               <Text style={styles.lstyle}>Morning</Text>
               <RadioButton
                 status={Morning ? 'checked' : 'unchecked'}
@@ -67,8 +73,8 @@ export default function Questiontwo({navigation,route}) {
                   setMorning(!Morning);
                   setAfternoon(false);
                   setEvening(false);
-                  setNight(false)
-                  setselectanswer('Morning')
+                  setNight(false);
+                  setselectanswer1('Morning');
                   // setgender('Female');
                   // setCheckedMale(false);
                   // setCheckedOther(false);
@@ -84,9 +90,9 @@ export default function Questiontwo({navigation,route}) {
                 onPress={() => {
                   setAfternoon(!Afternoon);
                   setMorning(false);
-                  setselectanswer('Afternoon')
+                  setselectanswer1('Afternoon');
                   setEvening(false);
-                  setNight(false)
+                  setNight(false);
                 }}
                 color={'#be1d2d'}
                 uncheckColor={colors.secondary}
@@ -100,10 +106,9 @@ export default function Questiontwo({navigation,route}) {
                   setEvening(!Evening);
                   setAfternoon(false);
                   setMorning(false);
-                  setselectanswer('Evening')
-                 
-                 
-                  setNight(false)
+                  setselectanswer1('Evening');
+
+                  setNight(false);
                 }}
                 color={'#be1d2d'}
                 uncheckColor={colors.secondary}
@@ -117,17 +122,16 @@ export default function Questiontwo({navigation,route}) {
                   setNight(!Night);
                   setAfternoon(false);
                   setMorning(false);
-                  setselectanswer('Night')
-                 
+                  setselectanswer1('Night');
+
                   setEvening(false);
-               
                 }}
                 color={'#be1d2d'}
                 uncheckColor={colors.secondary}
               />
             </View>
           </View>
-          
+
           <View style={styles.paddingTop}>
             <TouchableOpacity onPress={handleEmail}>
               <View style={styles.buttonView}>
@@ -135,7 +139,6 @@ export default function Questiontwo({navigation,route}) {
               </View>
             </TouchableOpacity>
           </View>
-        
         </View>
       </ScrollView>
     </SafeAreaView>

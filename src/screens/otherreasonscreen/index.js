@@ -41,7 +41,7 @@ export const OtherReason = ({navigation,route}) => {
         
 
         {text ? (
-          <TouchableOpacity onPress={() => navigation.navigate('question1')}>
+          <TouchableOpacity onPress={handleReason}>
             <View style={styles.bdiv}>
               <Text style={styles.btext}>›</Text>
             </View>

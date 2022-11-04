@@ -43,8 +43,9 @@ export const styles = StyleSheet.create({
     top: sizes.screenHeight * 0.19,
   },
   docImg: {
-    height: sizes.screenHeight * 0.2,
-    width: sizes.screenWidth * 0.4,
+    height: sizes.screenHeight * 0.17,
+    width: sizes.screenWidth * 0.32,
+    borderRadius:sizes.screenWidth*0.5
   },
   info: {
     top: sizes.screenHeight * 0.1,

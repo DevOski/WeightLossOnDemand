@@ -30,6 +30,7 @@ export const styles = StyleSheet.create({
     height: sizes.screenHeight * 0.2,
     width: sizes.screenWidth * 0.4,
     alignSelf: 'center',
+    borderRadius:sizes.screenWidth*0.5
   },
   providerTitle: {
     paddingTop: sizes.screenHeight * 0.01,

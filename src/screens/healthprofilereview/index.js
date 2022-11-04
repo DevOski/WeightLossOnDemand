@@ -1,4 +1,4 @@
-import React, {useRef, useState,useEffect} from 'react';
+import React, {useRef, useState, useEffect} from 'react';
 import {
   Image,
   ImageBackground,
@@ -15,14 +15,18 @@ import images from '../../services/utilities/images';
 import {CustomTextFiel} from '../../component/textFiled';
 import {colors, sizes, fontSize} from '../../services';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import { getallQuestion } from '../../services/utilities/api/auth';
+import {getallQuestion} from '../../services/utilities/api/auth';
+import {useSelector} from 'react-redux';
+
 export const ReviewHealthprofile = ({navigation, route}) => {
-
   const [Qa, setQa] = useState([]);
+  const q1 = useSelector(state => state.question1);
+  const q2 = useSelector(state => state.question2);
+  const q3 = useSelector(state => state.question3);
+  const q4 = useSelector(state => state.question4);
+  const q5 = useSelector(state => state.question5);
 
-
-
-
+  console.log(q1, q2, q3, q4, q5, '==>');
 
   useEffect(() => {
     getallQuestions();
@@ -43,31 +47,119 @@ export const ReviewHealthprofile = ({navigation, route}) => {
       <ScrollView>
         <View style={styles.container1}>
           <View>
-            <Text style={styles.hedtext}>
-              Please review your health profile
-            </Text>
+            <Text style={styles.hedtext}>Please review your questions</Text>
           </View>
           <View style={styles.pa}>
-            {Qa?.map((item,index)=>{
-              console.log(item,index,'item,map');
-              return(
-               <View key={index} style={styles.box}>
-               <View style={styles.borderrb}>
-                 <Text style={styles.textttt}>{item.question}</Text>
-               </View>
-               <View style={styles.borderrb}>
-                 <Text style={styles.textttt}>No active medicatyion</Text>
-               </View>
-               {/* <TouchableOpacity
+            {Qa?.map((item, index) => {
+              // console.log(item, index, 'item,map');
+              if (index == 0) {
+                return (
+                  <View key={index} style={styles.box}>
+                    <View style={styles.borderrb}>
+                      <Text style={styles.textttt}>
+                        {index + 1}.{item.question}
+                      </Text>
+                    </View>
+                    <View style={styles.borderrb}>
+                      <Text style={styles.textttt}>Ans: {q1}</Text>
+                    </View>
+                    {/* <TouchableOpacity
                  onPress={() => navigation.navigate('whichmedicationscreen')}>
                  <Text style={styles.addanother}>Add</Text>
                </TouchableOpacity> */}
-             </View>
+                  </View>
+                );
+              }
+              if (index == 1) {
+                return (
+                  <View key={index} style={styles.box}>
+                    <View style={styles.borderrb}>
+                      <Text style={styles.textttt}>
+                        {index + 1}.{item.question}
+                      </Text>
+                    </View>
+                    <View style={styles.borderrb}>
+                      <Text style={styles.textttt}>Ans: {q2}</Text>
+                    </View>
+                    {/* <TouchableOpacity
+                 onPress={() => navigation.navigate('whichmedicationscreen')}>
+                 <Text style={styles.addanother}>Add</Text>
+               </TouchableOpacity> */}
+                  </View>
+                );
+              }
+              if (index == 2) {
+                return (
+                  <View key={index} style={styles.box}>
+                    <View style={styles.borderrb}>
+                      <Text style={styles.textttt}>
+                        {index + 1}.{item.question}
+                      </Text>
+                    </View>
+                    <View style={styles.borderrb}>
+                      <Text style={styles.textttt}>Ans: {q3}</Text>
+                    </View>
+                    {/* <TouchableOpacity
+                 onPress={() => navigation.navigate('whichmedicationscreen')}>
+                 <Text style={styles.addanother}>Add</Text>
+               </TouchableOpacity> */}
+                  </View>
+                );
+              }
+              if (index == 3) {
+                return (
+                  <View key={index} style={styles.box}>
+                    <View style={styles.borderrb}>
+                      <Text style={styles.textttt}>
+                        {index + 1}.{item.question}
+                      </Text>
+                    </View>
+                    <View style={styles.borderrb}>
+                      <Text style={styles.textttt}>Ans: {q4}</Text>
+                    </View>
+                    {/* <TouchableOpacity
+                 onPress={() => navigation.navigate('whichmedicationscreen')}>
+                 <Text style={styles.addanother}>Add</Text>
+               </TouchableOpacity> */}
+                  </View>
+                );
+              }
+              if (index == 4) {
+                return (
+                  <View key={index} style={styles.box}>
+                    <View style={styles.borderrb}>
+                      <Text style={styles.textttt}>
+                        {index + 1}.{item.question}
+                      </Text>
+                    </View>
+                    <View style={styles.borderrb}>
+                      <Text style={styles.textttt}>Ans: {q5}</Text>
+                    </View>
+                    {/* <TouchableOpacity
+                 onPress={() => navigation.navigate('whichmedicationscreen')}>
+                 <Text style={styles.addanother}>Add</Text>
+               </TouchableOpacity> */}
+                  </View>
+                );
+              }
 
-              )
+              // return (
+              //   <View key={index} style={styles.box}>
+              //     <View style={styles.borderrb}>
+              //       <Text style={styles.textttt}>{item.question}</Text>
+              //     </View>
+              //     <View style={styles.borderrb}>
 
+              //       <Text style={styles.textttt}>{q1}</Text>
+              //     </View>
+              //     {/* <TouchableOpacity
+              //    onPress={() => navigation.navigate('whichmedicationscreen')}>
+              //    <Text style={styles.addanother}>Add</Text>
+              //  </TouchableOpacity> */}
+              //   </View>
+              // );
             })}
-            
+
             {/* <View style={styles.box}>
               <View style={styles.borderrb}>
                 <Text style={styles.textttt}>Drugs Allergies</Text>
@@ -121,7 +213,24 @@ export const ReviewHealthprofile = ({navigation, route}) => {
           </View>
 
           <TouchableOpacity
-            onPress={() => navigation.navigate('UserVisit')
+            onPress={
+              () =>
+                navigation.navigate('UserVisit', {
+                  slot: route?.params?.slot,
+                  trainer: route?.params?.trainer,
+                  appointByTrainer:
+                    route?.params?.trainer && route?.params?.slot
+                      ? true
+                      : false,
+                  appointByTime:
+                    !route?.params?.trainer && route?.params?.slot
+                      ? true
+                      : false,
+                  sessionStart:
+                    !route?.params?.trainer && !route?.params?.slot
+                      ? true
+                      : false,
+                })
               // route?.params?.pharmacy
               //   ? navigation.navigate('pharmacymaplocation')
               //   : navigation.navigate('doyouneeddoctor')

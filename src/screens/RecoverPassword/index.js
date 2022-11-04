@@ -20,6 +20,7 @@ import {sendEmail} from '../../services/utilities/api/auth';
 
 export default function RecoverPassword({navigation}) {
   const [email, setEmail] = useState('');
+
   const [isModalVisible, setIsModalVisible] = useState(false);
 
   const toggleModal = () => {
@@ -40,7 +41,7 @@ export default function RecoverPassword({navigation}) {
     // }
     // setIsModalVisible(!isModalVisible);
     var formdata = new FormData();
-    formdata.append('email',email);
+    formdata.append('email', email);
 
     var requestOptions = {
       method: 'POST',
@@ -50,10 +51,11 @@ export default function RecoverPassword({navigation}) {
 
     fetch('http://alsyedmmtravel.com/api/forgot_pass', requestOptions)
       .then(response => response.json())
-      .then(result => 
-        console.log(result)
-        // navigation.navigate('verifiedcode',{email:email})
-        )
+      .then(result => {
+        if (result.message.includes('Check')) {
+          navigation.navigate('verifiedcode', {email: email});
+        }
+      })
       .catch(error => console.log('error', error));
   };
   return (
