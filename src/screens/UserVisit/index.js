@@ -18,7 +18,10 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Modal from 'react-native-modal';
 import Entypo from 'react-native-vector-icons/Entypo';
 import {useSelector} from 'react-redux';
-import {trainerAppointment} from '../../services/utilities/api/auth';
+import {
+  timeAppointment,
+  trainerAppointment,
+} from '../../services/utilities/api/auth';
 import moment from 'moment';
 import Error from '../../components/Error';
 
@@ -43,7 +46,6 @@ export default function UserVisit({navigation, route}) {
 
   const confirmAndPay = () => {
     if (route?.params?.appointByTrainer == true) {
-      console.log('worlks----------->>>');
       let price = cost * 100;
       var formdata = new FormData();
       formdata.append('number', payment.cardNum);
@@ -67,7 +69,31 @@ export default function UserVisit({navigation, route}) {
           }
         })
         .catch(error => console.log('error', error));
-    } 
+    } else if (route?.params?.appointByTime == true) {
+      let price = cost * 100;
+      var formdata = new FormData();
+      formdata.append('number', payment.cardNum);
+      formdata.append('expr_num', payment.expirationMonth);
+      formdata.append('exp_year', payment.expirationYear);
+      formdata.append('cvc', payment.cvv);
+      formdata.append('amount', price);
+
+      var requestOptions = {
+        method: 'POST',
+        body: formdata,
+        redirect: 'follow',
+      };
+
+      fetch('http://alsyedmmtravel.com/api/pay', requestOptions)
+        .then(response => response.json())
+        .then(result => {
+          // console.log(result);
+          if (result.message == 'succeeded') {
+            bookAppointmentByTime(price);
+          }
+        })
+        .catch(error => console.log('error', error));
+    }
     // else {
     //   let price = cost * 100;
     //   var formdata = new FormData();
@@ -115,35 +141,27 @@ export default function UserVisit({navigation, route}) {
     } catch (error) {
       console.log('err-->', error);
     }
-    // var myHeaders = new Headers();
-    // myHeaders.append('Authorization', token);
+  };
 
-    // var formdata = new FormData();
-    // formdata.append('user_token', token);
-    // formdata.append('response_1', q1);
-    // formdata.append('response_2', q2);
-    // formdata.append('response_3', q3);
-    // formdata.append('response_4', q4);
-    // formdata.append('response_5', q5);
-    // formdata.append('trainer_id', route?.params?.trainer?.tr_id);
-    // formdata.append('tr_name', route?.params?.trainer?.tr_name);
-    // formdata.append('reason', reason);
-    // formdata.append('apt_date', route?.params?.slot?.tr_date);
-    // formdata.append('apt_day', route?.params?.slot?.tr_day);
-    // formdata.append('apt_time', route?.params?.slot?.sl_time);
-    // formdata.append('amount', price);
-
-    // var requestOptions = {
-    //   method: 'POST',
-    //   headers: myHeaders,
-    //   body: formdata,
-    //   redirect: 'follow',
-    // };
-
-    // fetch('http://alsyedmmtravel.com/api/appointmentByProvider', requestOptions)
-    //   .then(response => response.json())
-    //   .then(result => console.log(result))
-    //   .catch(error => console.log('error', error));
+  const bookAppointmentByTime = async price => {
+    try {
+      let response = await timeAppointment(
+        token,
+        q1,
+        q2,
+        q3,
+        q4,
+        q5,
+        reason,
+        moment(route?.params?.slot?.tr_date, 'DD/MM/YYYY').format('MM/DD/YYYY'),
+        route?.params?.slot?.tr_day,
+        route?.params?.slot?.sl_time,
+        `$${price}`,
+      );
+      setAppointMsg(response.data.message);
+    } catch (error) {
+      console.log('err-->', error);
+    }
   };
   return (
     <SafeAreaView>

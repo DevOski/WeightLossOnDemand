@@ -218,7 +218,14 @@ export const ReviewHealthprofile = ({navigation, route}) => {
                 navigation.navigate('UserVisit', {
                   slot: route?.params?.slot,
                   trainer: route?.params?.trainer,
-                  appointByTrainer: true,
+                  appointByTrainer:
+                    route?.params?.trainer && route?.params?.slot
+                      ? true
+                      : false,
+                  appointByTime:
+                    !route?.params?.trainer && route?.params?.slot
+                      ? true
+                      : false,
                 })
               // route?.params?.pharmacy
               //   ? navigation.navigate('pharmacymaplocation')

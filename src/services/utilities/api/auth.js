@@ -292,21 +292,6 @@ export async function trainerAppointment(
   apt_time,
   amount,
 ) {
-  console.log(
-    user_token,
-    response_1,
-    response_2,
-    response_3,
-    response_4,
-    response_5,
-    trainer_id,
-    tr_name,
-    reason,
-    apt_date,
-    apt_day,
-    apt_time,
-    amount,
-  );
   return await axios.post(
     `${baseURL}/appointmentByProvider`,
     {
@@ -318,6 +303,42 @@ export async function trainerAppointment(
       response_5,
       trainer_id,
       tr_name,
+      reason,
+      apt_date,
+      apt_day,
+      apt_time,
+      amount,
+    },
+    {
+      headers: {
+        Authorization: user_token,
+      },
+    },
+  );
+}
+
+export async function timeAppointment(
+  user_token,
+  response_1,
+  response_2,
+  response_3,
+  response_4,
+  response_5,
+  reason,
+  apt_date,
+  apt_day,
+  apt_time,
+  amount,
+) {
+  return await axios.post(
+    `${baseURL}/appointmentBytime`,
+    {
+      user_token,
+      response_1,
+      response_2,
+      response_3,
+      response_4,
+      response_5,
       reason,
       apt_date,
       apt_day,
