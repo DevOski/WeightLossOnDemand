@@ -16,6 +16,7 @@ import GetCare from '../../components/GetCare';
 import {sizes} from '../../services';
 import {
   getAllTrainers,
+  getAppointmentTrainer,
   getTrainer,
   getUser,
   recentVisit,
@@ -25,51 +26,58 @@ import {storeUserData} from '../../store/actions';
 import {styles} from './style';
 
 export default function TrainerAppointment({navigation}) {
-  const [userName, setUserName] = useState('');
-
+  const [trainerName, setTrainerName] = useState('');
+  const [appointmentList, setAppointmentList] = useState([]);
   const token = useSelector(state => state.token);
-  console.log(token);
-  const dispatch = useDispatch();
   const isVisible = useIsFocused();
 
   useEffect(() => {
     getTrainerInfo();
+    getTrainerAppointments();
   }, [isVisible]);
 
   const getTrainerInfo = async () => {
     try {
       let response = await getTrainer(token);
-      console.log(response.data);
+      setTrainerName(response.data.data.tr_name);
     } catch (error) {
       console.log(error);
     }
   };
-  const data = [
-    {
-      id: 1,
-      title: 'Appointment',
+  const getTrainerAppointments = async () => {
+    try {
+      let response = await getAppointmentTrainer(token);
+      setAppointmentList(response.data.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  // const data = [
+  //   {
+  //     id: 1,
+  //     title: 'Appointment',
 
-      // screen: 'chatroom',
-    },
-    {
-      id: 2,
-      title: 'Appointment',
+  //     // screen: 'chatroom',
+  //   },
+  //   {
+  //     id: 2,
+  //     title: 'Appointment',
 
-      // screen: 'chatroom',
-    },
-    {
-      id: 3,
-      title: 'Appointment',
+  //     // screen: 'chatroom',
+  //   },
+  //   {
+  //     id: 3,
+  //     title: 'Appointment',
 
-      // screen: 'chatroom',
-    },
-    {
-      id: 4,
-      title: 'Mustafa',
+  //     // screen: 'chatroom',
+  //   },
+  //   {
+  //     id: 4,
+  //     title: 'Mustafa',
 
-      // screen: 'chatroom',
-    },
-  ];
+  //     // screen: 'chatroom',
+  //   },
+  // ];
 
   return (
     <SafeAreaView>
@@ -77,7 +85,7 @@ export default function TrainerAppointment({navigation}) {
         <View style={[styles.row, styles.padding]}>
           <Image source={images.icon2} style={styles.icon} />
           <View>
-            <Text style={styles.heading}> We're Hi jazzy,</Text>
+            <Text style={styles.heading}> We're Hi {trainerName},</Text>
             <Text style={styles.welcomeText}> Welcome back</Text>
           </View>
           <View style={styles.transparentView}></View>
@@ -85,30 +93,22 @@ export default function TrainerAppointment({navigation}) {
             <Image source={images.setting} style={styles.settingIcon} />
           </TouchableOpacity>
         </View>
-        <FlatList
-          data={data}
-          renderItem={({item}) => (
-            <TouchableOpacity onPress={() => navigation.navigate(item.screen)}>
+        {appointmentList?.map((item, index) => {
+        
+          return (
+            <TouchableOpacity 
+            // onPress={() => navigation.navigate(item.screen)}
+            >
               <View style={[styles.row, styles.card]}>
-                <Text style={styles.cardText}>{item.title}</Text>
+                <Text style={styles.cardText}>Time: {moment(item.apt_time).format("DD/MM/YY: hh:mm: A")}</Text>
                 <View>
                   <Text style={styles.symbol}> ›</Text>
                 </View>
               </View>
             </TouchableOpacity>
-            // <Chatbox
-            //   name={item.name}
-            //   text={item.text}
-            //   onPress={() =>
-            //     navigation.navigate(item.screen, {
-            //       name: item.name,
-            //       text: item.text,
-            //     })
-            //   }
-            // />
-          )}
-          // keyExtractor={item => navigation.navigate(item.screen)}
-        />
+          );
+        })}
+      <View style={styles.paddingBottom2}></View>
       </ScrollView>
     </SafeAreaView>
   );

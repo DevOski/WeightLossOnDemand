@@ -404,3 +404,13 @@ export async function getTrainer(token) {
     },
   });
 }
+export async function getAppointmentTrainer(token) {
+  return await axios.get(`${baseURL}/tr_appt`, {
+    headers: {
+      Authorization: token,
+    },
+  });
+}
+
+
+// 
