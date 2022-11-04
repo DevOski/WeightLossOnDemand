@@ -135,8 +135,8 @@ export default function Questionfour({navigation, route}) {
           </View>
 
           <View style={styles.paddingTop}>
-            <TouchableOpacity onPress={handleEmail}>
-              <View style={styles.buttonView}>
+          <TouchableOpacity onPress={handleEmail}  disabled={selectanswer4?false:true}>
+              <View style={selectanswer4?styles.buttonView:styles.disabledView}>
                 <Text style={styles.buttonText}>Next</Text>
               </View>
             </TouchableOpacity>

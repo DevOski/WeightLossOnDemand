@@ -177,7 +177,7 @@ export default function MainNavigator() {
             />
             {/* <Stack.Screen name="BottomNavs" component={MyTabs} /> */}
           </>
-        ) : (
+        ) : ( 
           <>
             {/* <Stack.Screen name="Home" component={Home} /> */}
             <Stack.Screen name="BottomNavs" component={MyTabs} />

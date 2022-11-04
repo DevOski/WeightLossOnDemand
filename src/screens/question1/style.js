@@ -103,4 +103,12 @@ export const styles = StyleSheet.create({
     lineHeight: sizes.screenHeight * 0.05,
     fontFamily: fontFamily.appTextMedium,
   },
+  disabledView: {
+    alignSelf: 'center',
+    backgroundColor: colors.disabledBg,
+    height: sizes.screenHeight * 0.06,
+    width: sizes.screenWidth * 0.92,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
 });
