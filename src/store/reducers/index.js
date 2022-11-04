@@ -8,6 +8,7 @@ const initialState = {
   question3: '',
   question4: '',
   question5: '',
+  reason: '',
 };
 const reducer = (state = initialState, action) => {
   switch (action.type) {
@@ -38,6 +39,9 @@ const reducer = (state = initialState, action) => {
     case 'ADD_Five_question': {
       return {...state, question5: action.question5};
     }
+    case 'ADD_REASON': {
+      return {...state, reason: action.reason};
+    }
     case 'REMOVE_DATA': {
       return {
         ...state,
@@ -50,6 +54,7 @@ const reducer = (state = initialState, action) => {
         question3: null,
         question4: null,
         question5: null,
+        reason: null,
       };
     }
 

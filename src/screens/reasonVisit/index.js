@@ -19,6 +19,8 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import {searchReason, visitReason} from '../../services/utilities/api/auth';
 import {useIsFocused} from '@react-navigation/native';
 import Loader from '../../components/Loader';
+import {useDispatch, useSelector} from 'react-redux';
+import {reasonVisit} from '../../store/actions';
 
 export const ReasonForDcoctor = ({navigation}) => {
   const [search, setsearch] = useState();
@@ -26,6 +28,8 @@ export const ReasonForDcoctor = ({navigation}) => {
   const [show, setshow] = useState(false);
   const [reason, setReason] = useState([]);
   const isVisible = useIsFocused();
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     getReasons();
@@ -58,6 +62,10 @@ export const ReasonForDcoctor = ({navigation}) => {
         setLoader(false);
       }
     }, 100);
+  };
+  const handleReason = item => {
+    dispatch(reasonVisit(item.vr_opts));
+    navigation.navigate('question1');
   };
   return (
     <SafeAreaView style={styles.container}>
@@ -95,7 +103,7 @@ export const ReasonForDcoctor = ({navigation}) => {
           {reason?.map((item, index) => {
             return (
               <View style={styles.pading}>
-                <TouchableOpacity onPress={() => navigation.navigate('question1')}>
+                <TouchableOpacity onPress={() => handleReason(item)}>
                   <View style={styles.lisbutton}>
                     <Text style={styles.text}>{item?.vr_opts}</Text>
                   </View>

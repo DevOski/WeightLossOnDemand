@@ -48,7 +48,7 @@ export const ReviewHealthprofile = ({navigation, route}) => {
         <View style={styles.container1}>
           <View>
             <Text style={styles.hedtext}>
-              Please review your health profile
+              Please review your questions
             </Text>
           </View>
           <View style={styles.pa}>
@@ -61,7 +61,7 @@ export const ReviewHealthprofile = ({navigation, route}) => {
                       <Text style={styles.textttt}>{index + 1}.{item.question}</Text>
                     </View>
                     <View style={styles.borderrb}>
-                      <Text style={styles.textttt}>{q1}</Text>
+                      <Text style={styles.textttt}>Ans: {q1}</Text>
                     </View>
                     {/* <TouchableOpacity
                  onPress={() => navigation.navigate('whichmedicationscreen')}>
@@ -77,7 +77,7 @@ export const ReviewHealthprofile = ({navigation, route}) => {
                       <Text style={styles.textttt}>{index + 1}.{item.question}</Text>
                     </View>
                     <View style={styles.borderrb}>
-                      <Text style={styles.textttt}>{q2}</Text>
+                      <Text style={styles.textttt}>Ans: {q2}</Text>
                     </View>
                     {/* <TouchableOpacity
                  onPress={() => navigation.navigate('whichmedicationscreen')}>
@@ -93,7 +93,7 @@ export const ReviewHealthprofile = ({navigation, route}) => {
                       <Text style={styles.textttt}>{index + 1}.{item.question}</Text>
                     </View>
                     <View style={styles.borderrb}>
-                      <Text style={styles.textttt}>{q3}</Text>
+                      <Text style={styles.textttt}>Ans: {q3}</Text>
                     </View>
                     {/* <TouchableOpacity
                  onPress={() => navigation.navigate('whichmedicationscreen')}>
@@ -109,7 +109,7 @@ export const ReviewHealthprofile = ({navigation, route}) => {
                       <Text style={styles.textttt}>{index + 1}.{item.question}</Text>
                     </View>
                     <View style={styles.borderrb}>
-                      <Text style={styles.textttt}>{q4}</Text>
+                      <Text style={styles.textttt}>Ans: {q4}</Text>
                     </View>
                     {/* <TouchableOpacity
                  onPress={() => navigation.navigate('whichmedicationscreen')}>
@@ -127,7 +127,7 @@ export const ReviewHealthprofile = ({navigation, route}) => {
                       </Text>
                     </View>
                     <View style={styles.borderrb}>
-                      <Text style={styles.textttt}>{q5}</Text>
+                      <Text style={styles.textttt}>Ans: {q5}</Text>
                     </View>
                     {/* <TouchableOpacity
                  onPress={() => navigation.navigate('whichmedicationscreen')}>
