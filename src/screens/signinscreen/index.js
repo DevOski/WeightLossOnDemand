@@ -100,7 +100,7 @@ export const SignIn = ({navigation}) => {
           } 
           else if(response.data.message== "Trainer found"){
             console.log(response.data.type);
-            dispatch(storeData("56789"));
+            dispatch(storeData("$2y$10$kl2gP4WxK7V/IFAyBblRSOorRI3.VpxYsol6fjnJcebb0WwbtwjUi"));
             dispatch(trainerStack(response.data.type));
           }else {
             console.log(response.data.message);
