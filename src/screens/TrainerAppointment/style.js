@@ -224,7 +224,7 @@ export const styles = StyleSheet.create({
 
   card: {
     backgroundColor: colors.white,
-    padding: sizes.screenHeight * 0.01,
+    padding: sizes.screenHeight * 0.02,
     marginBottom: sizes.TinyMargin,
     alignSelf: 'center',
     width: sizes.screenWidth * 0.9,
@@ -248,7 +248,7 @@ export const styles = StyleSheet.create({
   cardText: {
     color: colors.primary,
     fontSize: fontSize.medium,
-    paddingLeft: sizes.baseMargin,
+    // paddingLeft: sizes.baseMargin,
     fontFamily: fontFamily.appTextRegular,
   },
   paddingBottom2: {
@@ -257,4 +257,12 @@ export const styles = StyleSheet.create({
   // seeBtn:{
   //   marginTop:sizes.screenHeight * 0.18
   // }
+  appointmentText:{
+    color:colors.black,
+    left:sizes.screenWidth * 0.05,
+    fontFamily:fontFamily.appTextRegular,
+    fontSize:fontSize.h6,
+    fontWeight:'bold',
+    paddingBottom:sizes.TinyMargin
+  }
 });

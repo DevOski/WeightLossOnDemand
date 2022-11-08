@@ -70,7 +70,7 @@ export default function PastVisit({navigation}) {
                       />
                       <Text style={styles.cardText}>{item?.tr_name}</Text>
                       <View>
-                        <Text style={styles.symbol}> ›</Text>
+                        {/* <Text style={styles.symbol}> ›</Text> */}
                       </View>
                     </View>
                     <View>
@@ -85,6 +85,7 @@ export default function PastVisit({navigation}) {
                 </TouchableOpacity>
               );
             })}
+          <View style={styles.paddingBottom}></View>
           </View>
         ) : (
           <View style={styles.contentView}>

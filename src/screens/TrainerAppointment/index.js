@@ -52,32 +52,6 @@ export default function TrainerAppointment({navigation}) {
       console.log(error);
     }
   };
-  // const data = [
-  //   {
-  //     id: 1,
-  //     title: 'Appointment',
-
-  //     // screen: 'chatroom',
-  //   },
-  //   {
-  //     id: 2,
-  //     title: 'Appointment',
-
-  //     // screen: 'chatroom',
-  //   },
-  //   {
-  //     id: 3,
-  //     title: 'Appointment',
-
-  //     // screen: 'chatroom',
-  //   },
-  //   {
-  //     id: 4,
-  //     title: 'Mustafa',
-
-  //     // screen: 'chatroom',
-  //   },
-  // ];
 
   return (
     <SafeAreaView>
@@ -85,7 +59,7 @@ export default function TrainerAppointment({navigation}) {
         <View style={[styles.row, styles.padding]}>
           <Image source={images.icon2} style={styles.icon} />
           <View>
-            <Text style={styles.heading}> We're Hi {trainerName},</Text>
+            <Text style={styles.heading}> Hi {trainerName},</Text>
             <Text style={styles.welcomeText}> Welcome back</Text>
           </View>
           <View style={styles.transparentView}></View>
@@ -93,23 +67,32 @@ export default function TrainerAppointment({navigation}) {
             <Image source={images.setting} style={styles.settingIcon} />
           </TouchableOpacity>
         </View>
+        <View>
+          <Text style={styles.appointmentText}>Your recent appointment</Text>
+        </View>
         {appointmentList?.map((item, index) => {
-        
+          console.log(item);
           return (
-            <TouchableOpacity 
-            key={index}
-            // onPress={() => navigation.navigate(item.screen)}
-            >
-              <View style={[styles.row, styles.card]}>
-                <Text style={styles.cardText}>Time: {moment(item.apt_time).format("DD/MM/YY: hh:mm: A")}</Text>
-                <View>
-                  <Text style={styles.symbol}> ›</Text>
-                </View>
-              </View>
-            </TouchableOpacity>
+            <View>
+              {item.status == 'pending' ? (
+                <TouchableOpacity
+                  key={index}
+                  // onPress={() => navigation.navigate(item.screen)}
+                >
+                  <View style={[styles.row, styles.card]}>
+                    <Text style={styles.cardText}>
+                      {moment(item.apt_time).format('DD/MM/YY hh:mm: A')}
+                    </Text>
+                    <View>{/* <Text style={styles.symbol}> ›</Text> */}</View>
+                  </View>
+                </TouchableOpacity>
+              ) : (
+                <Text>No recent appointments</Text>
+              )}
+            </View>
           );
         })}
-      <View style={styles.paddingBottom2}></View>
+        <View style={styles.paddingBottom2}></View>
       </ScrollView>
     </SafeAreaView>
   );
