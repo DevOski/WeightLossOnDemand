@@ -15,7 +15,7 @@ import {styles} from './style';
 import {colors, sizes} from '../../services';
 import Loader from 'react-native-three-dots-loader';
 import Spinner from 'react-native-spinkit';
-import {startSession} from '../../services/utilities/api/auth';
+import {createChannel, startSession} from '../../services/utilities/api/auth';
 import {useSelector} from 'react-redux';
 
 export default function ProviderReview({navigation, route}) {
@@ -27,6 +27,7 @@ export default function ProviderReview({navigation, route}) {
   const q4 = useSelector(state => state.question4);
   const q5 = useSelector(state => state.question5);
 
+  const userID = useSelector(state => state.user.user_id);
   useEffect(() => {
     sessionStart();
   }, []);
@@ -47,9 +48,24 @@ export default function ProviderReview({navigation, route}) {
       );
       console.log(response.data);
       if (response.data.status == 200) {
+        channelCreate();
         setTimeout(() => {
-          navigation.navigate('videocallingscreen', {trainer: route?.params?.trainer});
+          navigation.navigate('videocallingscreen', {
+            trainer: route?.params?.trainer,
+          });
         }, 5000);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const channelCreate = async () => {
+    try {
+      let response = await createChannel(route?.params?.trainer?.tr_id, userID);
+      console.log(response.data.message);
+      if (response.data.message == 'Channel created successfully') {
+        sessionStart();
       }
     } catch (error) {
       console.log(error);

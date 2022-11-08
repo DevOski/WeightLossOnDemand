@@ -420,4 +420,9 @@ export async function trainerVist(token) {
 }
 
 
-// 
+export async function createChannel(tr_id, user_id) {
+  return await axios.post(`${baseURL}/setChannel`, {
+    tr_id,
+    user_id,
+  });
+}
