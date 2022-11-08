@@ -17,6 +17,7 @@ import Loader from 'react-native-three-dots-loader';
 import Spinner from 'react-native-spinkit';
 import {createChannel, startSession} from '../../services/utilities/api/auth';
 import {useSelector} from 'react-redux';
+import { useIsFocused } from '@react-navigation/native';
 
 export default function ProviderReview({navigation, route}) {
   const token = useSelector(state => state.token);
@@ -26,11 +27,13 @@ export default function ProviderReview({navigation, route}) {
   const q3 = useSelector(state => state.question3);
   const q4 = useSelector(state => state.question4);
   const q5 = useSelector(state => state.question5);
+  const isVisible = useIsFocused();
 
+  
   const userID = useSelector(state => state.user.user_id);
   useEffect(() => {
     sessionStart();
-  }, []);
+  }, [isVisible]);
 
   const sessionStart = async () => {
     try {

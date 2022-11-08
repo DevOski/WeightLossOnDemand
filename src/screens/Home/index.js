@@ -17,6 +17,7 @@ import {
   getAllTrainers,
   getUser,
   recentVisit,
+  userAppointment,
 } from '../../services/utilities/api/auth';
 import images from '../../services/utilities/images';
 import {storeUserData} from '../../store/actions';
@@ -45,6 +46,7 @@ export default function Home({navigation}) {
     getUserDetails();
     getTrainers();
     getPastVisit();
+    getRecentAppointment();
   }, [isVisible]);
 
   const getUserDetails = async () => {
@@ -79,24 +81,32 @@ export default function Home({navigation}) {
       console.log(error);
     }
   };
-  const onchange = nativeEvent => {
-    if (nativeEvent) {
-      const slide = Math.ceil(
-        nativeEvent.contentOffset.x / nativeEvent.layoutMeasurement.width,
-      );
-      if (slide != imgActive) {
-        setImgActive(slide);
+  const getRecentAppointment = async () => {
+      try {
+        let response = await userAppointment(token);
+        console.log(response);
+      } catch (error) {
+        console.log('ée',error);
       }
     }
-  };
 
+    const onchange = nativeEvent => {
+      if (nativeEvent) {
+        const slide = Math.ceil(
+          nativeEvent.contentOffset.x / nativeEvent.layoutMeasurement.width,
+        );
+        if (slide != imgActive) {
+          setImgActive(slide);
+        }
+      }
+  };
   return (
     <SafeAreaView>
       <ScrollView style={styles.color}>
         <View style={[styles.row, styles.padding]}>
           <Image source={images.icon2} style={styles.icon} />
           <View>
-            <Text style={styles.heading}> We're Hi {userName},</Text>
+            <Text style={styles.heading}> Hi {userName},</Text>
             <Text style={styles.welcomeText}> Welcome back</Text>
           </View>
           <View style={styles.transparentView}></View>

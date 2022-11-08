@@ -230,7 +230,6 @@ export async function getQuestion(id) {
   });
 }
 export async function getAppointment(token) {
-  console.log(token);
   return await axios.post(`${baseURL}/appointment`, {
     headers: {
       Authorization: token,
@@ -424,5 +423,14 @@ export async function createChannel(tr_id, user_id) {
   return await axios.post(`${baseURL}/setChannel`, {
     tr_id,
     user_id,
+  });
+}
+
+// 
+export async function userAppointment(token) {
+  return await axios.post(`${baseURL}/recent_apt`, {
+    headers: {
+      Authorization: "$2y$10$KmDTenzlBmb2iVT.tv0nu.zmfkP5FGW.WWGAfPcXeQZqqkuf7/uCW",
+    },
   });
 }
