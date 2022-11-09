@@ -98,6 +98,9 @@ export default function ChooseAppointment({navigation, route}) {
     // } catch (error) {
     //   console.log(error);
     // }
+
+    let updatedDate = moment(date.dateString).format('MM/DD/YYYY');
+    console.log(updatedDate);
     var myHeaders = new Headers();
     myHeaders.append('Content-Type', 'application/json');
     var raw = JSON.stringify({
