@@ -12,7 +12,9 @@ import {
   FlatList,
 } from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
+import {removeData} from '../../store/actions';
 import GetCare from '../../components/GetCare';
+import Loader from '../../components/Loader';
 import {sizes} from '../../services';
 import {
   getAllTrainers,
@@ -26,7 +28,8 @@ import {styles} from './style';
 
 export default function TrainerAppointment({navigation}) {
   const [userName, setUserName] = useState('');
-
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [loader, setLoader] = useState(false);
   const token = useSelector(state => state.token);
   console.log(token);
   const dispatch = useDispatch();
@@ -44,6 +47,13 @@ export default function TrainerAppointment({navigation}) {
       console.log(error);
     }
   };
+  const toggleModal = () => {
+    setIsModalVisible(!isModalVisible);
+  };
+  const handleSignOut = () => {
+    dispatch(removeData());
+  };
+
   const data = [
     {
       id: 1,
@@ -81,9 +91,9 @@ export default function TrainerAppointment({navigation}) {
             <Text style={styles.welcomeText}> Welcome back</Text>
           </View>
           <View style={styles.transparentView}></View>
-          <TouchableOpacity onPress={() => navigation.navigate('Setting')}>
-            <Image source={images.setting} style={styles.settingIcon} />
-          </TouchableOpacity>
+          <TouchableOpacity onPress={() => setIsModalVisible(true)}>
+              <Text style={styles.signOutText}>Sign Out</Text>
+            </TouchableOpacity>
         </View>
         <FlatList
           data={data}
@@ -109,6 +119,44 @@ export default function TrainerAppointment({navigation}) {
           )}
           // keyExtractor={item => navigation.navigate(item.screen)}
         />
+         {isModalVisible && (
+          <Modal style={styles.modalView} isVisible={isModalVisible}>
+            <TouchableOpacity onPress={toggleModal}>
+              <View
+                style={{
+                  position: 'relative',
+                  bottom: sizes.screenHeight * 0.25,
+                  left: sizes.screenWidth * 0.85,
+                }}>
+                <Entypo name="cross" color={colors.secondary} size={30} />
+              </View>
+            </TouchableOpacity>
+
+            <View style={styles.texcon}>
+              <Text style={styles.text111}>Are you sure?</Text>
+            </View>
+            <View style={styles.texcon1}>
+              <Text style={styles.text1}>
+                Are you sure you want to sign out?
+              </Text>
+            </View>
+            <View style={styles.buttnView}>
+              <TouchableOpacity onPress={handleSignOut}>
+                <View style={styles.buttonView}>
+                  <Text style={styles.buttonText}>Yes</Text>
+                </View>
+              </TouchableOpacity>
+            </View>
+            <View style={styles.noBtn}>
+              <TouchableOpacity onPress={toggleModal}>
+                <View style={styles.buttonView1}>
+                  <Text style={styles.buttonText}>No</Text>
+                </View>
+              </TouchableOpacity>
+            </View>
+          </Modal>
+        )}
+        {Loader && <Loader />}
       </ScrollView>
     </SafeAreaView>
   );
