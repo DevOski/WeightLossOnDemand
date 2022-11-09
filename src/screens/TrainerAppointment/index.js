@@ -18,7 +18,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {removeData} from '../../store/actions';
 import GetCare from '../../components/GetCare';
 import Loader from '../../components/Loader';
-import {sizes,colors} from '../../services';
+import {sizes, colors} from '../../services';
 import {
   getAllTrainers,
   getAppointmentTrainer,
@@ -70,8 +70,6 @@ export default function TrainerAppointment({navigation}) {
     dispatch(removeData());
   };
 
- 
-
   const getRecentAppointment = async () => {
     try {
       const time = new Date().getTime();
@@ -98,12 +96,14 @@ export default function TrainerAppointment({navigation}) {
             <Text style={styles.welcomeText}> Welcome back</Text>
           </View>
           <View style={styles.transparentView}></View>
-          <TouchableOpacity onPress={() => setIsModalVisible(true)}>
+          <View style={styles.left}>
+            <TouchableOpacity onPress={() => setIsModalVisible(true)}>
               <Text style={styles.signOutText}>Sign Out</Text>
             </TouchableOpacity>
+          </View>
         </View>
-  
-         {isModalVisible && (
+
+        {isModalVisible && (
           <Modal style={styles.modalView} isVisible={isModalVisible}>
             <TouchableOpacity onPress={toggleModal}>
               <View

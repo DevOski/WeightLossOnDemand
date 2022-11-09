@@ -7,6 +7,9 @@ export const styles = StyleSheet.create({
     backgroundColor: '#fafafa',
     height: sizes.screenHeight,
   },
+  left: {
+    right: sizes.baseMargin,
+  },
   padding: {
     padding: sizes.TinyMargin,
     paddingBottom: sizes.baseMargin,
@@ -42,7 +45,7 @@ export const styles = StyleSheet.create({
     right: sizes.screenWidth * 0.05,
   },
   transparentView: {
-    width: sizes.screenWidth * 0.4,
+    width: sizes.screenWidth * 0.3,
   },
   dotActive: {
     margin: 3,
@@ -328,12 +331,12 @@ export const styles = StyleSheet.create({
   // seeBtn:{
   //   marginTop:sizes.screenHeight * 0.18
   // }
-  appointmentText:{
-    color:colors.black,
-    left:sizes.screenWidth * 0.05,
-    fontFamily:fontFamily.appTextRegular,
-    fontSize:fontSize.h6,
-    fontWeight:'bold',
-    paddingBottom:sizes.TinyMargin
-  }
+  appointmentText: {
+    color: colors.black,
+    left: sizes.screenWidth * 0.05,
+    fontFamily: fontFamily.appTextRegular,
+    fontSize: fontSize.h6,
+    fontWeight: 'bold',
+    paddingBottom: sizes.TinyMargin,
+  },
 });
