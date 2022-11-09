@@ -52,71 +52,70 @@ const Intro = ({navigation}) => {
   };
   return (
     <SafeAreaView>
-     
-        <ScrollView
-          onScroll={({nativeEvent}) => onchange(nativeEvent)}
-          horizontal
-          pagingEnabled
-          showsHorizontalScrollIndicator={false}
-          style={styles.srollwidth}
-          disableIntervalMomentum={true}>
-          {slides.map((item, index) => {
-            return <View>{item.name}</View>;
-          })}
-        </ScrollView>
+      <ScrollView
+        onScroll={({nativeEvent}) => onchange(nativeEvent)}
+        horizontal
+        pagingEnabled
+        showsHorizontalScrollIndicator={false}
+        style={styles.srollwidth}
+        disableIntervalMomentum={true}>
+        {slides.map((item, index) => {
+          return <View>{item.name}</View>;
+        })}
+      </ScrollView>
 
-  
-        <View
-          style={{
-            flexDirection: 'row',
-            alignItems: 'center',
-            justifyContent: 'space-around',
-            padding: deviceWidth*0.01,
-            left:deviceWidth*0.00,
-            position:'absolute',
-            top:sizes.screenHeight*0.89
-          }}>
-          {imgActive !== 3 && (
-            <View style={[styles.footer, styles.top]}>
-              <TouchableOpacity
-                onPress={() => navigation.navigate('signinscreen')}>
-                <Text style={styles.fontsiginandsignup}>Sign In</Text>
-              </TouchableOpacity>
-            </View>
-          )}
-          <View style={styles.wrapDot}>
-            {slides?.map((item, index) => {
-              return (
-                <View >
-                  {imgActive !== 3 && (
-                    <View>
-                      <Text
-                        // key={index}
-                        style={
-                          imgActive == index ? styles.dotActive : styles.dot
-                        }>
-                        <Entypo
-                          name="dot-single"
-                          color={colors.secondary}
-                          size={50}
-                        />
-                      </Text>
-                    </View>
-                  )}
-                </View>
-              );
-            })}
-                </View>
-            {imgActive !== 3 && (
-              <View style={styles.footer}>
-                <TouchableOpacity
-                  onPress={() => navigation.navigate('signupscreen')}>
-                  <Text style={[styles.fontsiginandsignup,styles.top]}>Sign Up</Text>
-                </TouchableOpacity>
+      <View
+        style={{
+          flexDirection: 'row',
+          alignItems: 'center',
+          justifyContent: 'space-around',
+          padding: deviceWidth * 0.01,
+          left: deviceWidth * 0.0,
+          position: 'absolute',
+          top: sizes.screenHeight * 0.89,
+        }}>
+        {imgActive !== 3 && (
+          <View style={[styles.footer, styles.top]}>
+            <TouchableOpacity
+              onPress={() => navigation.navigate('signinscreen')}>
+              <Text style={styles.fontsiginandsignup}>Sign In</Text>
+            </TouchableOpacity>
+          </View>
+        )}
+        <View style={styles.wrapDot}>
+          {slides?.map((item, index) => {
+            return (
+              <View>
+                {imgActive !== 3 && (
+                  <View>
+                    <Text
+                      // key={index}
+                      style={
+                        imgActive == index ? styles.dotActive : styles.dot
+                      }>
+                      <Entypo
+                        name="dot-single"
+                        color={colors.secondary}
+                        size={50}
+                      />
+                    </Text>
+                  </View>
+                )}
               </View>
-            )}
+            );
+          })}
         </View>
-    
+        {imgActive !== 3 && (
+          <View style={styles.footer}>
+            <TouchableOpacity
+              onPress={() => navigation.navigate('signupscreen')}>
+              <Text style={[styles.fontsiginandsignup, styles.top]}>
+                Sign Up
+              </Text>
+            </TouchableOpacity>
+          </View>
+        )}
+      </View>
     </SafeAreaView>
   );
 };
@@ -157,7 +156,7 @@ const styles = StyleSheet.create({
   },
 
   dot: {
-    margin: sizes.screenHeight*0.0,
+    margin: sizes.screenHeight * 0.0,
     color: colors.secondary,
     opacity: 0.6,
     fontSize: fontSize.h2,
@@ -165,9 +164,9 @@ const styles = StyleSheet.create({
   wrapDot: {
     flexDirection: 'row',
     // alignSelf: 'center',
-alignItems:'center',
+    alignItems: 'center',
     // position:'absolute',
-    top:sizes.screenHeight * 0.0,
+    top: sizes.screenHeight * 0.0,
     // backgroundColor:'red'
   },
   wrap: {
@@ -186,7 +185,6 @@ alignItems:'center',
     color: colors.secondary,
     fontFamily: fontFamily.appTextHeading,
     fontWeight: '700',
-    
   },
 });
 

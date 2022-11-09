@@ -221,7 +221,7 @@ export async function getSlotTime(id) {
 export async function getAllSlotDate(date) {
   console.log(date);
   return await axios.get(`${baseURL}/all_trCalenderSlots`, {
-    date: '10/10/2022',
+    date: date,
   });
 }
 export async function getQuestion(id) {
@@ -418,7 +418,6 @@ export async function trainerVist(token) {
   });
 }
 
-
 export async function createChannel(tr_id, user_id) {
   return await axios.post(`${baseURL}/setChannel`, {
     tr_id,
@@ -426,11 +425,19 @@ export async function createChannel(tr_id, user_id) {
   });
 }
 
-// 
+//
 export async function userAppointment(token) {
-  return await axios.post(`${baseURL}/recent_apt`, {
+  return await axios.get(`${baseURL}/recent_users_apt`, {
     headers: {
-      Authorization: "$2y$10$KmDTenzlBmb2iVT.tv0nu.zmfkP5FGW.WWGAfPcXeQZqqkuf7/uCW",
+      Authorization: token,
+    },
+  });
+}
+
+export async function trainerRecentAppointment(token) {
+  return await axios.get(`${baseURL}/recent_apt`, {
+    headers: {
+      Authorization: "$2y$10$kl2gP4WxK7V/IFAyBblRSOorRI3.VpxYsol6fjnJcebb0WwbtwjUi",
     },
   });
 }

@@ -13,10 +13,13 @@ import {
 import {useDispatch, useSelector} from 'react-redux';
 import GetCare from '../../components/GetCare';
 import {sizes} from '../../services';
+import {LocalNotification} from '../../services/LocalNotificationController';
 import {
   getAllTrainers,
   getUser,
   recentVisit,
+  trainerAppointment,
+  trainerRecentAppointment,
   userAppointment,
 } from '../../services/utilities/api/auth';
 import images from '../../services/utilities/images';
@@ -82,23 +85,54 @@ export default function Home({navigation}) {
     }
   };
   const getRecentAppointment = async () => {
-      try {
-        let response = await userAppointment(token);
-        console.log(response);
-      } catch (error) {
-        console.log('ée',error);
+    try {
+      const time = new Date().getTime();
+      let currentTime = ` ${moment(time).format('HH:MM:SS')}`;
+      let date = new Date().toJSON();
+      let currentDate = moment(date).format('YYYY-MM-DD');
+      let currentFinalDate = currentDate + currentTime;
+      let response = await userAppointment(token);
+      console.log(response.data.data.apt_time);
+      if (
+        response.data.data.tr_name !== 'random' &&
+        currentFinalDate == response.data.data.apt_time
+      ) {
+        // LocalNotification();
+        navigation.navigate('ProviderReview', {
+          tr_id: response.data.data.trainer_id,
+          tr_name: response.data.data.tr_name,
+          q1: response.data.data.response_1,
+          q2: response.data.data.response_2,
+          q3: response.data.data.response_3,
+          q4: response.data.data.response_4,
+          q5: response.data.data.response_5,
+          reason: response.data.data.reason,
+          tr_amount: response.data.data.amount,
+          tr_image: response.data.image,
+        });
+      } else if (
+        response.data.data.tr_name == 'random' &&
+        currentFinalDate == response.data.data.apt_time
+      ) {
+        navigation.navigate('FindingProvider');
+      }
+    } catch (error) {
+      console.log('ée', error);
+    }
+  };
+
+  const onchange = nativeEvent => {
+    if (nativeEvent) {
+      const slide = Math.ceil(
+        nativeEvent.contentOffset.x / nativeEvent.layoutMeasurement.width,
+      );
+      if (slide != imgActive) {
+        setImgActive(slide);
       }
     }
-
-    const onchange = nativeEvent => {
-      if (nativeEvent) {
-        const slide = Math.ceil(
-          nativeEvent.contentOffset.x / nativeEvent.layoutMeasurement.width,
-        );
-        if (slide != imgActive) {
-          setImgActive(slide);
-        }
-      }
+  };
+  const handleNotif = () => {
+    LocalNotification();
   };
   return (
     <SafeAreaView>
@@ -110,7 +144,11 @@ export default function Home({navigation}) {
             <Text style={styles.welcomeText}> Welcome back</Text>
           </View>
           <View style={styles.transparentView}></View>
-          <TouchableOpacity onPress={() => navigation.navigate('Setting')}>
+          <TouchableOpacity
+            onPress={
+              // handleNotif
+              () => navigation.navigate('Setting')
+            }>
             <Image source={images.setting} style={styles.settingIcon} />
           </TouchableOpacity>
         </View>
