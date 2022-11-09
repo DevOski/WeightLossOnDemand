@@ -284,7 +284,7 @@ export default function Setting({navigation}) {
           </TouchableOpacity>
         </View>
         <View style={[styles.right, styles.top, styles.bottom]}>
-          <Text style={styles.version}>VERSION 3.66.0</Text>
+          <Text style={styles.version}>VERSION 1.0.0</Text>
         </View>
         {isModalVisible && (
           <Modal style={styles.modalView} isVisible={isModalVisible}>
