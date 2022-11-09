@@ -13,14 +13,31 @@ import Header from '../../components/Header';
 import images from '../../services/utilities/images';
 import {styles} from './style';
 import {colors, sizes} from '../../services';
+import {appointmentStatus} from '../../services/utilities/api/auth';
 
-export default function ThankyouVisit({navigation}) {
+export default function ThankyouVisit({navigation, route}) {
+  const handleRecentAppointment = async () => {
+    console.log(route?.params?.apt_id);
+    if (route?.params?.apt_id) {
+      try {
+        let response = await appointmentStatus(route?.params?.apt_id);
+        // console.log(response.data);
+        if (response.data.message == 'Status has been updated') {
+          navigation.navigate('Home');
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    } else {
+      navigation.navigate('Home');
+    }
+  };
   return (
     <SafeAreaView>
       <View style={styles.color}>
         <View style={styles.padding}>
           <View style={styles.skipBtn}>
-            <TouchableOpacity onPress={() => navigation.navigate("Home")}>
+            <TouchableOpacity onPress={handleRecentAppointment}>
               <Text style={styles.skipText}>Done</Text>
             </TouchableOpacity>
           </View>
@@ -30,15 +47,14 @@ export default function ThankyouVisit({navigation}) {
           <Text style={styles.text}>
             You can find notes from your provider and more under My Health
           </Text>
-          <View style={[styles.headerView,styles.row2]}>
-            <Text style={styles.health}>
-              My Health {' > '}
-            </Text>
+          <View style={[styles.headerView, styles.row2]}>
+            <Text style={styles.health}>My Health {' > '}</Text>
             <View style={styles.top}>
-                <TouchableOpacity onPress={()=>navigation.navigate("VisitHistory")}>
-                  <Text style={styles.visitHistory}> Visit History</Text>
-                </TouchableOpacity>
-              </View>
+              <TouchableOpacity
+                onPress={() => navigation.navigate('VisitHistory')}>
+                <Text style={styles.visitHistory}> Visit History</Text>
+              </TouchableOpacity>
+            </View>
           </View>
           <View style={styles.borderView}></View>
           <View style={styles.inviteView}>

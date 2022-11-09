@@ -109,6 +109,7 @@ export default function Home({navigation}) {
           reason: response.data.data.reason,
           tr_amount: response.data.data.amount,
           tr_image: response.data.image,
+          apt_id: response.data.data.ap_id,
         });
       } else if (
         response.data.data.tr_name == 'random' &&

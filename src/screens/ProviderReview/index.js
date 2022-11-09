@@ -31,8 +31,8 @@ export default function ProviderReview({navigation, route}) {
 
   const userID = useSelector(state => state.user.user_id);
   useEffect(() => {
-    // sessionStart();
-  }, [isVisible]);
+    sessionStart();
+  }, []);
 
   const sessionStart = async () => {
     try {
@@ -54,14 +54,10 @@ export default function ProviderReview({navigation, route}) {
           ? route?.params?.tr_amount
           : route?.params?.trainer?.tr_amount,
       );
-      console.log(response.data);
+
       if (response.data.status == 200) {
         channelCreate();
-        setTimeout(() => {
-          navigation.navigate('videocallingscreen', {
-            trainer: route?.params?.trainer,
-          });
-        }, 5000);
+        console.log(updatedTrainer);
       }
     } catch (error) {
       console.log(error);
@@ -73,7 +69,20 @@ export default function ProviderReview({navigation, route}) {
       let response = await createChannel(route?.params?.trainer?.tr_id, userID);
       console.log(response.data.message);
       if (response.data.message == 'Channel created successfully') {
-        sessionStart();
+        // sessionStart();
+        let updatedTrainer = {
+          tr_name: route?.params?.tr_name,
+          tr_id: route?.params?.tr_id,
+          tr_image: route?.params?.tr_image,
+        };
+        setTimeout(() => {
+          navigation.navigate('videocallingscreen', {
+            trainer: route?.params?.trainer
+              ? route?.params?.trainer
+              : updatedTrainer,
+            apt_id: route?.params?.apt_id,
+          });
+        }, 5000);
       }
     } catch (error) {
       console.log(error);

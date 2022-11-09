@@ -437,7 +437,14 @@ export async function userAppointment(token) {
 export async function trainerRecentAppointment(token) {
   return await axios.get(`${baseURL}/recent_apt`, {
     headers: {
-      Authorization: "$2y$10$kl2gP4WxK7V/IFAyBblRSOorRI3.VpxYsol6fjnJcebb0WwbtwjUi",
+      Authorization:
+        '$2y$10$kl2gP4WxK7V/IFAyBblRSOorRI3.VpxYsol6fjnJcebb0WwbtwjUi',
     },
+  });
+}
+
+export async function appointmentStatus(apt_id) {
+  return await axios.post(`${baseURL}/apt_status`, {
+    apt_id,
   });
 }

@@ -94,22 +94,26 @@ export default function Videocalling({navigation, route}) {
   };
 
   const join = async () => {
-    if (isJoined) {
-      return;
-    }
-    try {
-      agoraEngineRef.current?.setChannelProfile(
-        ChannelProfileType.ChannelProfileCommunication,
-      );
+    navigation.navigate('RateProvider', {
+      trainer: route?.params?.trainer,
+      apt_id: route?.params?.apt_id,
+    });
+    // if (isJoined) {
+    //   return;
+    // }
+    // try {
+    //   agoraEngineRef.current?.setChannelProfile(
+    //     ChannelProfileType.ChannelProfileCommunication,
+    //   );
 
-      agoraEngineRef.current?.startPreview();
-      agoraEngineRef.current?.joinChannel(token, channel_name, uid, {
-        clientRoleType: ClientRoleType.ClientRoleBroadcaster,
-      });
-      console.log('work---->>', token, channel_name, uid);
-    } catch (e) {
-      console.log(e);
-    }
+    //   agoraEngineRef.current?.startPreview();
+    //   agoraEngineRef.current?.joinChannel(token, channel_name, uid, {
+    //     clientRoleType: ClientRoleType.ClientRoleBroadcaster,
+    //   });
+    //   console.log('work---->>', token, channel_name, uid);
+    // } catch (e) {
+    //   console.log(e);
+    // }
   };
   const switchCamera = () => {
     agoraEngineRef.switchCamera();
@@ -121,7 +125,10 @@ export default function Videocalling({navigation, route}) {
       setIsJoined(false);
       showMessage('You left the channel');
 
-      navigation.navigate('RateProvider', {trainer: route?.params?.trainer});
+      navigation.navigate('RateProvider', {
+        trainer: route?.params?.trainer,
+        apt_id: route?.params?.apt_id,
+      });
     } catch (e) {
       console.log(e);
     }
