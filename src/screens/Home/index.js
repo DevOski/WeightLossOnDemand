@@ -46,6 +46,7 @@ export default function Home({navigation}) {
   const isVisible = useIsFocused();
 
   useEffect(() => {
+    // handleNotif();
     getUserDetails();
     getTrainers();
     getPastVisit();
@@ -97,6 +98,7 @@ export default function Home({navigation}) {
         response.data.data.tr_name !== 'random' &&
         currentFinalDate == response.data.data.apt_time
       ) {
+        // handleNotif();
         navigation.navigate('ProviderReview', {
           tr_id: response.data.data.trainer_id,
           tr_name: response.data.data.tr_name,
@@ -133,6 +135,8 @@ export default function Home({navigation}) {
   };
   const handleNotif = () => {
     LocalNotification();
+    // let date = new Date(Date.now() + 10 * 1000)
+    // console.log(date);
   };
   return (
     <SafeAreaView>
