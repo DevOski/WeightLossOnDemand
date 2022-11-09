@@ -76,7 +76,7 @@ export const styles = StyleSheet.create({
     shadowRadius: 3.84,
     elevation: 5,
   },
-  cardView2:{
+  cardView2: {
     width: sizes.screenWidth * 0.9,
     marginRight: sizes.screenWidth * 0.02,
     marginLeft: sizes.screenWidth * 0.04,
@@ -90,7 +90,7 @@ export const styles = StyleSheet.create({
     alignSelf: 'center',
     backgroundColor: 'rgba(255, 255, 247,0.3)',
     height: sizes.screenHeight * 0.11,
-    width: sizes.screenWidth * 0.20,
+    width: sizes.screenWidth * 0.2,
     borderRadius: sizes.screenWidth * 0.8,
     justifyContent: 'center',
   },
@@ -221,11 +221,10 @@ export const styles = StyleSheet.create({
   paddingBottom: {
     paddingBottom: sizes.screenHeight * 0.1,
   },
- 
 
   card: {
     backgroundColor: colors.white,
-    padding: sizes.screenHeight * 0.01,
+    padding: sizes.screenHeight * 0.02,
     marginBottom: sizes.TinyMargin,
     alignSelf: 'center',
     width: sizes.screenWidth * 0.9,
@@ -238,7 +237,7 @@ export const styles = StyleSheet.create({
     },
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
-    elevation: 1
+    elevation: 1,
   },
   symbol: {
     color: colors.secondary,
@@ -249,12 +248,14 @@ export const styles = StyleSheet.create({
   cardText: {
     color: colors.primary,
     fontSize: fontSize.medium,
-    paddingLeft: sizes.baseMargin,
+    // paddingLeft: sizes.baseMargin,
     fontFamily: fontFamily.appTextRegular,
-    
+  },
+  paddingBottom2: {
+    paddingBottom: sizes.screenHeight * 0.12,
   },
   signOutText: {
-    color: colors.white,
+    color: colors.secondary,
     fontSize: fontSize.h6,
     fontFamily: fontFamily.appTextLight,
   },
@@ -327,4 +328,12 @@ export const styles = StyleSheet.create({
   // seeBtn:{
   //   marginTop:sizes.screenHeight * 0.18
   // }
+  appointmentText:{
+    color:colors.black,
+    left:sizes.screenWidth * 0.05,
+    fontFamily:fontFamily.appTextRegular,
+    fontSize:fontSize.h6,
+    fontWeight:'bold',
+    paddingBottom:sizes.TinyMargin
+  }
 });

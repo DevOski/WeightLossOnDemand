@@ -18,13 +18,14 @@ import Entypo from 'react-native-vector-icons/Entypo';
 import Swiper from 'react-native-swiper';
 import Spinner from 'react-native-spinkit';
 import {findingProvider} from '../../services/utilities/api/auth';
+import { useIsFocused } from '@react-navigation/native';
 
 export default function FindingProvider({navigation}) {
   const [trainer, setTrainer] = useState('');
+  const isVisible = useIsFocused();
   useEffect(() => {
     findingAProvider();
-   
-  }, []);
+  }, [isVisible]);
 
   const findingAProvider = async () => {
     try {

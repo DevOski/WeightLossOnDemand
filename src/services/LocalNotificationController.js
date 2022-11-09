@@ -1,0 +1,47 @@
+import PushNotification from 'react-native-push-notification';
+
+PushNotification.configure({
+  onNotification: function (notification) {
+    console.log('Local Notification', notification);
+  },
+  popInitialNotification: true,
+  requestPermissions: true,
+});
+
+PushNotification.createChannel(
+  {
+    channelId: 'channel-id',
+    channelName: 'my_channel',
+    channelDescription: 'A channel for notification',
+    playSound: true,
+    soundName: 'default',
+    vibrate: true,
+    vibration: 1000,
+  },
+  created => console.log(`channel created ${created}`),
+);
+
+export const LocalNotification = () => {
+
+  PushNotification.localNotification({
+    channelId: 'channel-id',
+    channelName: 'my_channel',
+    autoCancel: true,
+    channelDescription: 'Your session is getting started',
+    playSound: true,
+    title: 'Your session is getting started',
+    message: 'Get ready for a training session.',
+    soundName: 'default',
+    importance: 10,
+    vibrate: true,
+    vibration: 1000,
+  });
+// PushNotification.localNotificationSchedule({
+//     channelId: 'channel-id',
+//     channelName: 'my_channel',
+//     message: "My Notification Message", // (required)
+//     date: new Date(Date.now() + 10 * 1000), // in 60 secs
+//     allowWhileIdle: false, 
+//     smallIcon:"https://www.bugatti.com/fileadmin/_processed_/sei/p54/se-image-4799f9106491ebb58ca3351f6df5c44a.jpg"
+//   });
+};

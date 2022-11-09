@@ -13,10 +13,14 @@ import {
 import {useDispatch, useSelector} from 'react-redux';
 import GetCare from '../../components/GetCare';
 import {sizes} from '../../services';
+import {LocalNotification} from '../../services/LocalNotificationController';
 import {
   getAllTrainers,
   getUser,
   recentVisit,
+  trainerAppointment,
+  trainerRecentAppointment,
+  userAppointment,
 } from '../../services/utilities/api/auth';
 import images from '../../services/utilities/images';
 import {storeUserData} from '../../store/actions';
@@ -45,6 +49,7 @@ export default function Home({navigation}) {
     getUserDetails();
     getTrainers();
     getPastVisit();
+    getRecentAppointment();
   }, [isVisible]);
 
   const getUserDetails = async () => {
@@ -79,6 +84,43 @@ export default function Home({navigation}) {
       console.log(error);
     }
   };
+  const getRecentAppointment = async () => {
+    try {
+      const time = new Date().getTime();
+      let currentTime = ` ${moment(time).format('HH:MM:SS')}`;
+      let date = new Date().toJSON();
+      let currentDate = moment(date).format('YYYY-MM-DD');
+      let currentFinalDate = currentDate + currentTime;
+      let response = await userAppointment(token);
+      console.log(response.data.data);
+      if (
+        response.data.data.tr_name !== 'random' &&
+        currentFinalDate == response.data.data.apt_time
+      ) {
+        navigation.navigate('ProviderReview', {
+          tr_id: response.data.data.trainer_id,
+          tr_name: response.data.data.tr_name,
+          q1: response.data.data.response_1,
+          q2: response.data.data.response_2,
+          q3: response.data.data.response_3,
+          q4: response.data.data.response_4,
+          q5: response.data.data.response_5,
+          reason: response.data.data.reason,
+          tr_amount: response.data.data.amount,
+          tr_image: response.data.image,
+          apt_id: response.data.data.ap_id,
+        });
+      } else if (
+        response.data.data.tr_name == 'random' &&
+        currentFinalDate == response.data.data.apt_time
+      ) {
+        navigation.navigate('FindingProvider');
+      }
+    } catch (error) {
+      console.log('ée', error);
+    }
+  };
+
   const onchange = nativeEvent => {
     if (nativeEvent) {
       const slide = Math.ceil(
@@ -89,18 +131,24 @@ export default function Home({navigation}) {
       }
     }
   };
-
+  const handleNotif = () => {
+    LocalNotification();
+  };
   return (
     <SafeAreaView>
       <ScrollView style={styles.color}>
         <View style={[styles.row, styles.padding]}>
           <Image source={images.icon2} style={styles.icon} />
           <View>
-            <Text style={styles.heading}> We're Hi {userName},</Text>
+            <Text style={styles.heading}> Hi {userName},</Text>
             <Text style={styles.welcomeText}> Welcome back</Text>
           </View>
           <View style={styles.transparentView}></View>
-          <TouchableOpacity onPress={() => navigation.navigate('Setting')}>
+          <TouchableOpacity
+            onPress={
+              // handleNotif
+              () => navigation.navigate('Setting')
+            }>
             <Image source={images.setting} style={styles.settingIcon} />
           </TouchableOpacity>
         </View>

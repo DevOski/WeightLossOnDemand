@@ -60,9 +60,6 @@ export default function Videocalling({navigation, route}) {
     try {
       let response = await getUser(usertoken);
       setChannelName(response.data.data.channel);
-      console.log(response.data.data.channel);
-      // setUserName(response.data.data.first_name);
-      // dispatch(storeUserData(response.data.data));
     } catch (error) {
       console.log(error);
     }
@@ -124,7 +121,10 @@ export default function Videocalling({navigation, route}) {
       setIsJoined(false);
       showMessage('You left the channel');
 
-      navigation.navigate('RateProvider', {trainer: route?.params?.trainer});
+      navigation.navigate('RateProvider', {
+        trainer: route?.params?.trainer,
+        apt_id: route?.params?.apt_id,
+      });
     } catch (e) {
       console.log(e);
     }

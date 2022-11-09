@@ -16,11 +16,14 @@ import {colors, sizes} from '../../services';
 import Slider from '@react-native-community/slider';
 import {appRating} from '../../services/utilities/api/auth';
 import Error from '../../components/Error';
+import Modal from 'react-native-modal';
 
-export default function HowLikelyRecommend({navigation}) {
+export default function HowLikelyRecommend({navigation, route}) {
   const [rate, setRate] = useState(5);
   const [loader, setLoader] = useState(false);
   const [message, setMessage] = useState('');
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
   const handleRating = () => {
     //
     setLoader(true);
@@ -28,6 +31,7 @@ export default function HowLikelyRecommend({navigation}) {
       try {
         let response = await appRating(rate);
         setMessage(response.data.message);
+        setIsModalVisible(true);
         // setFirstName(response.data.data.first_name);
         // setLastName(response.data.data.last_name);
         setLoader(false);
@@ -81,18 +85,46 @@ export default function HowLikelyRecommend({navigation}) {
           </View>
           <View style={[styles.center, styles.paddingTop]}>
             <TouchableOpacity
-              onPress={() => navigation.navigate('ThankyouVisit')}>
+              onPress={() =>
+                navigation.navigate('ThankyouVisit', {
+                  trianer: route?.params?.trainer,
+                  apt_id: route?.params?.apt_id,
+                })
+              }>
               <Text style={styles.skip}>Skip</Text>
             </TouchableOpacity>
           </View>
         </View>
       </View>
-      {message !== '' && (
+      {/* {message !== '' && (
         <Error
           title={'We’re so happy to hear from you!'}
           message={message}
           screen={'ThankyouVisit'}
         />
+      )} */}
+      {isModalVisible && (
+        <Modal style={styles.modalView} isVisible={isModalVisible}>
+          <View style={styles.texcon}>
+            <Text style={styles.text111}>We’re so happy to hear from you!</Text>
+          </View>
+          <View style={styles.texcon1}>
+            <Text style={styles.text1}>{message}</Text>
+          </View>
+          <View>
+            <TouchableOpacity
+              onPress={() => {
+                navigation.navigate('ThankyouVisit', {
+                  trianer: route?.params?.trainer,
+                  apt_id: route?.params?.apt_id,
+                });
+              }}>
+              <View style={styles.buttonView}>
+                <Text style={styles.buttonText}>OK</Text>
+              </View>
+            </TouchableOpacity>
+          </View>
+        </Modal>
       )}
     </SafeAreaView>
   );

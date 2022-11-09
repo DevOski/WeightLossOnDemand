@@ -80,4 +80,7 @@ export const styles = StyleSheet.create({
     width: sizes.screenWidth * 0.58,
     bottom: sizes.TinyMargin,
   },
+  paddingBottom:{
+    paddingBottom:sizes.doubleBaseMargin
+  }
 });

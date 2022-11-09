@@ -15,8 +15,9 @@ import {styles} from './style';
 import {colors, sizes} from '../../services';
 import Loader from 'react-native-three-dots-loader';
 import Spinner from 'react-native-spinkit';
-import {startSession} from '../../services/utilities/api/auth';
+import {createChannel, startSession} from '../../services/utilities/api/auth';
 import {useSelector} from 'react-redux';
+import {useIsFocused} from '@react-navigation/native';
 
 export default function ProviderReview({navigation, route}) {
   const token = useSelector(state => state.token);
@@ -26,7 +27,9 @@ export default function ProviderReview({navigation, route}) {
   const q3 = useSelector(state => state.question3);
   const q4 = useSelector(state => state.question4);
   const q5 = useSelector(state => state.question5);
+  const isVisible = useIsFocused();
 
+  const userID = useSelector(state => state.user.user_id);
   useEffect(() => {
     sessionStart();
   }, []);
@@ -35,20 +38,50 @@ export default function ProviderReview({navigation, route}) {
     try {
       let response = await startSession(
         token,
-        q1,
-        q2,
-        q3,
-        q4,
-        q5,
-        route?.params?.trainer?.tr_id,
-        route?.params?.trainer?.tr_name,
-        reason,
-        route?.params?.trainer?.tr_amount,
+        route?.params?.q1 ? route?.params?.q1 : q1,
+        route?.params?.q2 ? route?.params?.q2 : q2,
+        route?.params?.q3 ? route?.params?.q3 : q3,
+        route?.params?.q4 ? route?.params?.q4 : q4,
+        route?.params?.q5 ? route?.params?.q5 : q5,
+        route?.params?.tr_id
+          ? route?.params?.tr_id
+          : route?.params?.trainer?.tr_id,
+        route?.params?.tr_name
+          ? route?.params?.tr_name
+          : route?.params?.trainer?.tr_name,
+        route?.params?.reason ? route?.params?.reason : reason,
+        route?.params?.tr_amount
+          ? route?.params?.tr_amount
+          : route?.params?.trainer?.tr_amount,
       );
-      console.log(response.data);
+
       if (response.data.status == 200) {
+        channelCreate();
+        console.log(updatedTrainer);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const channelCreate = async () => {
+    try {
+      let response = await createChannel(route?.params?.trainer?.tr_id, userID);
+      console.log(response.data.message);
+      if (response.data.message == 'Channel created successfully') {
+        // sessionStart();
+        let updatedTrainer = {
+          tr_name: route?.params?.tr_name,
+          tr_id: route?.params?.tr_id,
+          tr_image: route?.params?.tr_image,
+        };
         setTimeout(() => {
-          navigation.navigate('videocallingscreen', {trainer: route?.params?.trainer});
+          navigation.navigate('videocallingscreen', {
+            trainer: route?.params?.trainer
+              ? route?.params?.trainer
+              : updatedTrainer,
+            apt_id: route?.params?.apt_id,
+          });
         }, 5000);
       }
     } catch (error) {
@@ -82,13 +115,21 @@ export default function ProviderReview({navigation, route}) {
           </View>
           <View style={styles.imageView}>
             <Image
-              source={{uri: route?.params?.trainer?.images}}
+              source={{
+                uri: route?.params?.tr_image
+                  ? route?.params?.tr_image
+                  : route?.params?.trainer?.images,
+              }}
               style={styles.docImg}
             />
           </View>
         </View>
         <View style={[styles.padding, styles.info]}>
-          <Text style={styles.head}>{route?.params?.trainer?.tr_name}</Text>
+          <Text style={styles.head}>
+            {route?.params?.tr_name
+              ? route?.params?.tr_name
+              : route?.params?.trainer?.tr_name}
+          </Text>
           <Text style={styles.text}>{route?.params?.trainer?.type}</Text>
         </View>
         <View style={[styles.padding, styles.info, styles.top]}>

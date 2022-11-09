@@ -221,7 +221,7 @@ export async function getSlotTime(id) {
 export async function getAllSlotDate(date) {
   console.log(date);
   return await axios.get(`${baseURL}/all_trCalenderSlots`, {
-    date: '10/10/2022',
+    date: date,
   });
 }
 export async function getQuestion(id) {
@@ -230,7 +230,6 @@ export async function getQuestion(id) {
   });
 }
 export async function getAppointment(token) {
-  console.log(token);
   return await axios.post(`${baseURL}/appointment`, {
     headers: {
       Authorization: token,
@@ -399,6 +398,59 @@ export async function trainerRating(rate, id) {
 }
 export async function getTrainer(token) {
   return await axios.get(`${baseURL}/tr_details`, {
+    headers: {
+      Authorization: token,
+    },
+  });
+}
+export async function getAppointmentTrainer(token) {
+  return await axios.get(`${baseURL}/tr_appt`, {
+    headers: {
+      Authorization: token,
+    },
+  });
+}
+export async function trainerVist(token) {
+  return await axios.get(`${baseURL}/tr_visit`, {
+    headers: {
+      Authorization: token,
+    },
+  });
+}
+
+export async function createChannel(tr_id, user_id) {
+  return await axios.post(`${baseURL}/setChannel`, {
+    tr_id,
+    user_id,
+  });
+}
+
+//
+export async function userAppointment(token) {
+  return await axios.get(`${baseURL}/recent_users_apt`, {
+    headers: {
+      Authorization: token,
+    },
+  });
+}
+
+export async function trainerRecentAppointment(token) {
+  return await axios.get(`${baseURL}/recent_apt`, {
+    headers: {
+      Authorization:
+        '$2y$10$kl2gP4WxK7V/IFAyBblRSOorRI3.VpxYsol6fjnJcebb0WwbtwjUi',
+    },
+  });
+}
+
+export async function appointmentStatus(apt_id) {
+  return await axios.post(`${baseURL}/apt_status`, {
+    apt_id,
+  });
+}
+
+export async function trainerAppointmentTime(token) {
+  return await axios.get(`${baseURL}/recent_apt`, {
     headers: {
       Authorization: token,
     },

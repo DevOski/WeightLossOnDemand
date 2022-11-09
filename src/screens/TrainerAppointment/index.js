@@ -11,16 +11,21 @@ import {
   View,
   FlatList,
 } from 'react-native';
+import Entypo from 'react-native-vector-icons/Entypo';
+
+import Modal from 'react-native-modal';
 import {useDispatch, useSelector} from 'react-redux';
 import {removeData} from '../../store/actions';
 import GetCare from '../../components/GetCare';
 import Loader from '../../components/Loader';
-import {sizes} from '../../services';
+import {sizes,colors} from '../../services';
 import {
   getAllTrainers,
+  getAppointmentTrainer,
   getTrainer,
   getUser,
   recentVisit,
+  trainerAppointmentTime,
 } from '../../services/utilities/api/auth';
 import images from '../../services/utilities/images';
 import {storeUserData} from '../../store/actions';
@@ -30,23 +35,34 @@ export default function TrainerAppointment({navigation}) {
   const [userName, setUserName] = useState('');
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [loader, setLoader] = useState(false);
+  const [trainerName, setTrainerName] = useState('');
+  const [appointmentList, setAppointmentList] = useState([]);
   const token = useSelector(state => state.token);
-  console.log(token);
-  const dispatch = useDispatch();
   const isVisible = useIsFocused();
 
   useEffect(() => {
     getTrainerInfo();
+    getTrainerAppointments();
+    getRecentAppointment();
   }, [isVisible]);
 
   const getTrainerInfo = async () => {
     try {
       let response = await getTrainer(token);
-      console.log(response.data);
+      setTrainerName(response.data.data.tr_name);
     } catch (error) {
       console.log(error);
     }
   };
+  const getTrainerAppointments = async () => {
+    try {
+      let response = await getAppointmentTrainer(token);
+      setAppointmentList(response.data.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const dispatch = useDispatch();
   const toggleModal = () => {
     setIsModalVisible(!isModalVisible);
   };
@@ -54,40 +70,31 @@ export default function TrainerAppointment({navigation}) {
     dispatch(removeData());
   };
 
-  const data = [
-    {
-      id: 1,
-      title: 'Appointment',
+ 
 
-      // screen: 'chatroom',
-    },
-    {
-      id: 2,
-      title: 'Appointment',
+  const getRecentAppointment = async () => {
+    try {
+      const time = new Date().getTime();
+      let currentTime = ` ${moment(time).format('HH:MM:SS')}`;
+      let date = new Date().toJSON();
+      let currentDate = moment(date).format('YYYY-MM-DD');
+      let currentFinalDate = currentDate + currentTime;
 
-      // screen: 'chatroom',
-    },
-    {
-      id: 3,
-      title: 'Appointment',
-
-      // screen: 'chatroom',
-    },
-    {
-      id: 4,
-      title: 'Mustafa',
-
-      // screen: 'chatroom',
-    },
-  ];
-
+      let response = await trainerAppointmentTime(token);
+      if (currentFinalDate == response.data.data.apt_time) {
+        navigation.navigate('trainervideocall');
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <SafeAreaView>
       <ScrollView style={styles.color}>
         <View style={[styles.row, styles.padding]}>
           <Image source={images.icon2} style={styles.icon} />
           <View>
-            <Text style={styles.heading}> We're Hi jazzy,</Text>
+            <Text style={styles.heading}> Hi {trainerName},</Text>
             <Text style={styles.welcomeText}> Welcome back</Text>
           </View>
           <View style={styles.transparentView}></View>
@@ -95,30 +102,7 @@ export default function TrainerAppointment({navigation}) {
               <Text style={styles.signOutText}>Sign Out</Text>
             </TouchableOpacity>
         </View>
-        <FlatList
-          data={data}
-          renderItem={({item}) => (
-            <TouchableOpacity onPress={() => navigation.navigate(item.screen)}>
-              <View style={[styles.row, styles.card]}>
-                <Text style={styles.cardText}>{item.title}</Text>
-                <View>
-                  <Text style={styles.symbol}> ›</Text>
-                </View>
-              </View>
-            </TouchableOpacity>
-            // <Chatbox
-            //   name={item.name}
-            //   text={item.text}
-            //   onPress={() =>
-            //     navigation.navigate(item.screen, {
-            //       name: item.name,
-            //       text: item.text,
-            //     })
-            //   }
-            // />
-          )}
-          // keyExtractor={item => navigation.navigate(item.screen)}
-        />
+  
          {isModalVisible && (
           <Modal style={styles.modalView} isVisible={isModalVisible}>
             <TouchableOpacity onPress={toggleModal}>
@@ -156,7 +140,33 @@ export default function TrainerAppointment({navigation}) {
             </View>
           </Modal>
         )}
-        {Loader && <Loader />}
+        {loader && <Loader />}
+        <View>
+          <Text style={styles.appointmentText}>Your recent appointment</Text>
+        </View>
+        {appointmentList?.map((item, index) => {
+          console.log(item);
+          return (
+            <View>
+              {item.status == 'pending' ? (
+                <TouchableOpacity
+                  key={index}
+                  // onPress={() => navigation.navigate(item.screen)}
+                >
+                  <View style={[styles.row, styles.card]}>
+                    <Text style={styles.cardText}>
+                      {moment(item.apt_time).format('DD/MM/YY hh:mm: A')}
+                    </Text>
+                    {/* <View>{/ <Text style={styles.symbol}> ›</Text> /}</View> */}
+                  </View>
+                </TouchableOpacity>
+              ) : (
+                <Text>No recent appointments</Text>
+              )}
+            </View>
+          );
+        })}
+        <View style={styles.paddingBottom2}></View>
       </ScrollView>
     </SafeAreaView>
   );

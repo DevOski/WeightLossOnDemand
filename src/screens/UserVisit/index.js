@@ -63,6 +63,7 @@ export default function UserVisit({navigation, route}) {
 
   const confirmAndPay = () => {
     if (route?.params?.appointByTrainer == true && payment.cardNum) {
+
       let price = cost * 100;
       var formdata = new FormData();
       formdata.append('number', payment.cardNum);
@@ -196,7 +197,7 @@ export default function UserVisit({navigation, route}) {
         </View>
         <TouchableOpacity
           onPress={() =>
-            !payment.cardNum &&
+            !payment?.cardNum &&
             navigation.navigate('AddPaymentMethod', {
               to: 'UserVisit',
               appointByTrainer: route?.params?.appointByTrainer,
@@ -204,8 +205,8 @@ export default function UserVisit({navigation, route}) {
           }>
           <View style={[styles.row, styles.card, styles.borderTop]}>
             <Text style={styles.cardText}>Pay with</Text>
-            {payment.cardNum ? (
-              <Text style={styles.addPaymentText}> {payment.cardNum}</Text>
+            {payment?.cardNum ? (
+              <Text style={styles.addPaymentText}> {payment?.cardNum}</Text>
             ) : (
               <View style={{flexDirection: 'row'}}>
                 <Ionicons
@@ -247,10 +248,10 @@ export default function UserVisit({navigation, route}) {
         </View>
 
         <TouchableOpacity
-          disabled={payment.cardNum ? false : true}
+          disabled={payment?.cardNum ? false : true}
           onPress={confirmAndPay}>
           <View
-            style={payment.cardNum ? styles.buttonView : styles.disabledBtn}>
+            style={payment?.cardNum ? styles.buttonView : styles.disabledBtn}>
             <Text style={styles.buttonText}> Confirm and Pay</Text>
           </View>
         </TouchableOpacity>

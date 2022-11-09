@@ -19,7 +19,7 @@ import ChooseFollowUp from './src/screens/ChooseFollowUp';
 import store from './src/store';
 import {persistor} from './src/store';
 import {PersistGate} from 'redux-persist/integration/react';
-import { Provider } from 'react-redux';
+import {Provider} from 'react-redux';
 export default function App() {
   const [isModalVisible, setIsModalVisible] = useState(false);
 
@@ -38,7 +38,7 @@ export default function App() {
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <View style={styles.container}>
-          {isModalVisible && (
+          {isModalVisible ? (
             <Modal style={styles.modalView} isVisible={isModalVisible}>
               <TouchableOpacity onPress={toggleModal}>
                 <View
@@ -64,8 +64,9 @@ export default function App() {
                 </View>
               </TouchableOpacity>
             </Modal>
+          ) : (
+            <MainNavigator />
           )}
-          <MainNavigator />
           {/* <Error title={"Oops!"} message={"Invalid user identity or password."}/> */}
         </View>
       </PersistGate>
