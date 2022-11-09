@@ -71,8 +71,8 @@ export default function TermsOfService() {
               when you use our Services in light of our ongoing integration.
             </Text>
           </View>
-          </View>
-          {/* <View style={styles.paddingTop}>
+        </View>
+        {/* <View style={styles.paddingTop}>
             <Text style={styles.textColor}>
               Please also note, for members of our recently-launched Included
               Health unified application, many features of the Weight Loss On
