@@ -34,7 +34,7 @@ export default function TermsOfService() {
             <Text style={[styles.bold, styles.textColor]}>
               We are pleased to announce that Ground Rounds, Inc., Weight Loss
               on Demand, Inc. and Included Health Communities are now part of
-              Included Health, Inc.
+              Included Health, Inc.   
             </Text>
           </View>
           <View style={styles.paddingTop}>

@@ -254,6 +254,77 @@ export const styles = StyleSheet.create({
   paddingBottom2: {
     paddingBottom: sizes.screenHeight * 0.12,
   },
+  signOutText: {
+    color: colors.secondary,
+    fontSize: fontSize.h6,
+    fontFamily: fontFamily.appTextLight,
+  },
+  modalView: {
+    width: sizes.screenWidth,
+    backgroundColor: '#0e0e0e',
+    opacity: 0.9,
+    marginLeft: sizes.screenWidth * 0.01,
+    padding: 10,
+    position: 'absolute',
+    top: -20,
+    height: sizes.screenHeight,
+  },
+  texcon: {
+    paddingBottom: sizes.screenHeight * 0.1,
+  },
+  text111: {
+    fontSize: fontSize.h4,
+    color: colors.white,
+    fontWeight: 'bold',
+    fontFamily: fontFamily.appTextHeading,
+    paddingLeft: sizes.screenWidth * 0.035,
+  },
+  texcon1: {
+    bottom: sizes.screenHeight * 0.08,
+  },
+  text1: {
+    fontSize: fontSize.large,
+    color: colors.white,
+    fontFamily: fontFamily.appTextLight,
+    paddingLeft: sizes.screenWidth * 0.035,
+  },
+  buttnView: {
+    // marginRight:sizes.screenWidth*0.06,
+    marginTop: sizes.screenHeight * 0.03,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  buttonText: {
+    color: colors.white,
+    fontSize: fontSize.h6,
+  },
+  buttonView: {
+    backgroundColor: colors.secondary,
+    height: sizes.screenHeight * 0.06,
+    width: sizes.screenWidth * 0.89,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  buttonView1: {
+    borderWidth: 1,
+    borderColor: colors.white,
+    height: sizes.screenHeight * 0.06,
+    width: sizes.screenWidth * 0.89,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  buttonView1: {
+    borderWidth: 1,
+    borderColor: colors.white,
+    height: sizes.screenHeight * 0.06,
+    width: sizes.screenWidth * 0.89,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  noBtn: {
+    alignSelf: 'center',
+    marginTop: sizes.screenHeight * 0.025,
+  },
   // seeBtn:{
   //   marginTop:sizes.screenHeight * 0.18
   // }

@@ -11,9 +11,14 @@ import {
   View,
   FlatList,
 } from 'react-native';
+import Entypo from 'react-native-vector-icons/Entypo';
+
+import Modal from 'react-native-modal';
 import {useDispatch, useSelector} from 'react-redux';
+import {removeData} from '../../store/actions';
 import GetCare from '../../components/GetCare';
-import {sizes} from '../../services';
+import Loader from '../../components/Loader';
+import {sizes,colors} from '../../services';
 import {
   getAllTrainers,
   getAppointmentTrainer,
@@ -27,6 +32,9 @@ import {storeUserData} from '../../store/actions';
 import {styles} from './style';
 
 export default function TrainerAppointment({navigation}) {
+  const [userName, setUserName] = useState('');
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [loader, setLoader] = useState(false);
   const [trainerName, setTrainerName] = useState('');
   const [appointmentList, setAppointmentList] = useState([]);
   const token = useSelector(state => state.token);
@@ -54,6 +62,15 @@ export default function TrainerAppointment({navigation}) {
       console.log(error);
     }
   };
+  const dispatch = useDispatch();
+  const toggleModal = () => {
+    setIsModalVisible(!isModalVisible);
+  };
+  const handleSignOut = () => {
+    dispatch(removeData());
+  };
+
+ 
 
   const getRecentAppointment = async () => {
     try {
@@ -81,10 +98,49 @@ export default function TrainerAppointment({navigation}) {
             <Text style={styles.welcomeText}> Welcome back</Text>
           </View>
           <View style={styles.transparentView}></View>
-          <TouchableOpacity onPress={() => navigation.navigate('Setting')}>
-            <Image source={images.setting} style={styles.settingIcon} />
-          </TouchableOpacity>
+          <TouchableOpacity onPress={() => setIsModalVisible(true)}>
+              <Text style={styles.signOutText}>Sign Out</Text>
+            </TouchableOpacity>
         </View>
+  
+         {isModalVisible && (
+          <Modal style={styles.modalView} isVisible={isModalVisible}>
+            <TouchableOpacity onPress={toggleModal}>
+              <View
+                style={{
+                  position: 'relative',
+                  bottom: sizes.screenHeight * 0.25,
+                  left: sizes.screenWidth * 0.85,
+                }}>
+                <Entypo name="cross" color={colors.secondary} size={30} />
+              </View>
+            </TouchableOpacity>
+
+            <View style={styles.texcon}>
+              <Text style={styles.text111}>Are you sure?</Text>
+            </View>
+            <View style={styles.texcon1}>
+              <Text style={styles.text1}>
+                Are you sure you want to sign out?
+              </Text>
+            </View>
+            <View style={styles.buttnView}>
+              <TouchableOpacity onPress={handleSignOut}>
+                <View style={styles.buttonView}>
+                  <Text style={styles.buttonText}>Yes</Text>
+                </View>
+              </TouchableOpacity>
+            </View>
+            <View style={styles.noBtn}>
+              <TouchableOpacity onPress={toggleModal}>
+                <View style={styles.buttonView1}>
+                  <Text style={styles.buttonText}>No</Text>
+                </View>
+              </TouchableOpacity>
+            </View>
+          </Modal>
+        )}
+        {loader && <Loader />}
         <View>
           <Text style={styles.appointmentText}>Your recent appointment</Text>
         </View>
@@ -101,7 +157,7 @@ export default function TrainerAppointment({navigation}) {
                     <Text style={styles.cardText}>
                       {moment(item.apt_time).format('DD/MM/YY hh:mm: A')}
                     </Text>
-                    <View>{/* <Text style={styles.symbol}> ›</Text> */}</View>
+                    {/* <View>{/ <Text style={styles.symbol}> ›</Text> /}</View> */}
                   </View>
                 </TouchableOpacity>
               ) : (
