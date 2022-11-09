@@ -20,6 +20,7 @@ import {
   getTrainer,
   getUser,
   recentVisit,
+  trainerAppointmentTime,
 } from '../../services/utilities/api/auth';
 import images from '../../services/utilities/images';
 import {storeUserData} from '../../store/actions';
@@ -34,6 +35,7 @@ export default function TrainerAppointment({navigation}) {
   useEffect(() => {
     getTrainerInfo();
     getTrainerAppointments();
+    getRecentAppointment();
   }, [isVisible]);
 
   const getTrainerInfo = async () => {
@@ -53,6 +55,22 @@ export default function TrainerAppointment({navigation}) {
     }
   };
 
+  const getRecentAppointment = async () => {
+    try {
+      const time = new Date().getTime();
+      let currentTime = ` ${moment(time).format('HH:MM:SS')}`;
+      let date = new Date().toJSON();
+      let currentDate = moment(date).format('YYYY-MM-DD');
+      let currentFinalDate = currentDate + currentTime;
+
+      let response = await trainerAppointmentTime(token);
+      if (currentFinalDate == response.data.data.apt_time) {
+        navigation.navigate('trainervideocall');
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <SafeAreaView>
       <ScrollView style={styles.color}>

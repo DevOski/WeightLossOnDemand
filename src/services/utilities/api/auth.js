@@ -448,3 +448,11 @@ export async function appointmentStatus(apt_id) {
     apt_id,
   });
 }
+
+export async function trainerAppointmentTime(token) {
+  return await axios.get(`${baseURL}/recent_apt`, {
+    headers: {
+      Authorization: token,
+    },
+  });
+}
