@@ -21,7 +21,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import Entypo from 'react-native-vector-icons/Entypo';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {useDispatch, useSelector} from 'react-redux';
-import {getUser} from '../../services/utilities/api/auth';
+import {getTrainer, getUser} from '../../services/utilities/api/auth';
 import {removeData} from '../../store/actions';
 const appId = '270b512970864b0a93b14650e52e8f9c';
 const channelName = 'newVisit';
@@ -58,7 +58,7 @@ export default function TrainerVideocalling({navigation, route}) {
 
   const getUserDetails = async () => {
     try {
-      let response = await getUser(usertoken);
+      let response = await getTrainer(usertoken);
       setChannelName(response.data.data.channel);
       console.log(response.data.data.channel);
       // setUserName(response.data.data.first_name);
