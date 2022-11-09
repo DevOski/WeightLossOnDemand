@@ -156,6 +156,7 @@ import selectTrainer from '../../screens/selectTrainer';
 import TrainerAppointment from '../../screens/TrainerAppointment';
 import startSession from '../../screens/session';
 import PastVisit from '../../screens/pastVisit';
+import TrainerVideocalling from '../../screens/trainervideocall';
 const Stack = createNativeStackNavigator();
 
 const Tab = createMaterialBottomTabNavigator();
@@ -398,6 +399,7 @@ export default function MainNavigator() {
               component={HowLikelyRecommend}
             />
             <Stack.Screen name="videocallingscreen" component={Videocalling} />
+            <Stack.Screen name="trainervideocall" component={TrainerVideocalling} />
             <Stack.Screen name="ThankyouVisit" component={ThankyouVisit} />
             <Stack.Screen name="GenerateReciept" component={GenerateReciept} />
             <Stack.Screen name="PayPal" component={PayPal} />

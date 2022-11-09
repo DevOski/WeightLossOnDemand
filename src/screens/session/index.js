@@ -44,6 +44,7 @@ export default function startSession({navigation}) {
   return (
     <SafeAreaView style={styles.container}>
       <TouchableOpacity
+      onPress={()=>navigation.navigate('trainervideocall')}
         // disabled={email != '' && password != '' ? false : true}
         style={styles.but}
         >
