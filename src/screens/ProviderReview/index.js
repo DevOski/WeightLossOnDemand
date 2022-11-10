@@ -66,7 +66,12 @@ export default function ProviderReview({navigation, route}) {
 
   const channelCreate = async () => {
     try {
-      let response = await createChannel(route?.params?.trainer?.tr_id, userID);
+      let response = await createChannel(
+        route?.params?.trainer?.tr_id
+          ? route?.params?.trainer?.tr_id
+          : route?.params?.tr_id,
+        userID,
+      );
       console.log(response.data.message);
       if (response.data.message == 'Channel created successfully') {
         // sessionStart();
