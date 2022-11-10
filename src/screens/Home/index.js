@@ -116,7 +116,7 @@ export default function Home({navigation}) {
         response.data.data.tr_name == 'random' &&
         currentFinalDate == response.data.data.apt_time
       ) {
-        navigation.navigate('FindingProvider');
+        navigation.navigate('FindingProvider',{apt_id:response.data.data.ap_id});
       }
     } catch (error) {
       console.log('ée', error);

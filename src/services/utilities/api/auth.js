@@ -456,3 +456,11 @@ export async function trainerAppointmentTime(token) {
     },
   });
 }
+
+export async function updateAppointmentTrainer(ap_id, tr_id, tr_name) {
+  return await axios.post(`${baseURL}/update_tr`, {
+    ap_id,
+    tr_id,
+    tr_name,
+  });
+}

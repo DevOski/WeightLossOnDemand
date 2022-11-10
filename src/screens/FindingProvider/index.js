@@ -17,10 +17,13 @@ import Loader from 'react-native-three-dots-loader';
 import Entypo from 'react-native-vector-icons/Entypo';
 import Swiper from 'react-native-swiper';
 import Spinner from 'react-native-spinkit';
-import {findingProvider} from '../../services/utilities/api/auth';
-import { useIsFocused } from '@react-navigation/native';
+import {
+  findingProvider,
+  updateAppointmentTrainer,
+} from '../../services/utilities/api/auth';
+import {useIsFocused} from '@react-navigation/native';
 
-export default function FindingProvider({navigation}) {
+export default function FindingProvider({navigation, route}) {
   const [trainer, setTrainer] = useState('');
   const isVisible = useIsFocused();
   useEffect(() => {
@@ -31,10 +34,32 @@ export default function FindingProvider({navigation}) {
     try {
       let response = await findingProvider();
       setTrainer(response.data.data);
-      setTimeout(() => {
+      setTimeout(async () => {
         // console.log(trainer);
         // navigation.navigate('videocallingscreen');
-        navigation.navigate('ProviderReview', {trainer: response.data.data[0]});
+        console.log(route?.params?.apt_id);
+        console.log(response.data.data[0].tr_id);
+        console.log(response.data.data[0].tr_name);
+        if (route?.params?.apt_id) {
+          try {
+            let res = await updateAppointmentTrainer(
+              route?.params?.apt_id,
+              response.data.data[0].tr_id,
+              response.data.data[0].tr_name,
+            );
+            if (res.data.status == 200) {
+              navigation.navigate('ProviderReview', {
+                trainer: response.data.data[0],
+              });
+            }
+          } catch (error) {
+            console.log(error);
+          }
+        } else {
+          navigation.navigate('ProviderReview', {
+            trainer: response.data.data[0],
+          });
+        }
       }, 5000);
     } catch (error) {
       console.log(error);
