@@ -59,14 +59,14 @@ export default function ContactSupport({navigation}) {
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => {
-            Linking.openURL('tel:18009976196');
+            Linking.openURL('tel:2813250066');
           }}>
           <View style={[styles.row, styles.card]}>
             <Image source={images.call} style={styles.callIcon} />
             {/* <Octicons name="question" color={colors.secondary} size={30} /> */}
             <View>
               <Text style={styles.cardText}>{'   '}Call Support 24/7</Text>
-              <Text style={styles.faqText}>{'   '}1(800) 997-6196</Text>
+              <Text style={styles.faqText}>{'   '}(281)3250066</Text>
               <Text style={styles.faqText}>{'   '}TTY: 711</Text>
             </View>
             <View>

@@ -139,9 +139,11 @@ export default function TrainerVideocalling({navigation, route}) {
       {/* <Header /> */}
       {/* <Text style={styles.head}>Agora Video Calling Quickstart</Text>   */}
       {/* <View style={styles.btnContainer}> */}
-      <Text onPress={join} style={styles.button}>
-        Join
-      </Text>
+      <TouchableOpacity onPress={join}>
+        <View style={styles.button}>
+          <Text style={[styles.top]}>Join</Text>
+        </View>
+      </TouchableOpacity>
       {/* <Text onPress={leave} style={styles.button}>
           Leave
         </Text> */}
@@ -224,20 +226,29 @@ export default function TrainerVideocalling({navigation, route}) {
 
 const styles = StyleSheet.create({
   button: {
-    width: sizes.screenWidth * 0.2,
-    height: sizes.screenHeight * 0.04,
-    fontSize: fontSize.large,
-    paddingTop: sizes.screenWidth * 0.01,
-    // paddingVertical: 4,
-    fontWeight: 'bold',
-    color: '#ffffff',
+    width: sizes.screenWidth * 0.40,
+    height: sizes.screenHeight * 0.21,
+   
     backgroundColor: colors.secondary,
+    borderRadius:sizes.screenWidth*0.7,
+    paddingTop: sizes.screenWidth * 0.01,
     // margin: 5,
-    position: 'relative',
+    // position: 'relative',
+    // top:10,
     // bottom: sizes.screenHeight * 0.15,
     // left: sizes.screenWidth * 0.1,
-    textAlign: 'center',
-    marginLeft: sizes.screenWidth * 0.09,
+    justifyContent:'center',
+    alignItems:'center',
+    // textAlign: 'center',
+    // alignSelf:'center'
+    // marginLeft: sizes.screenWidth * 0.09,
+
+    
+  },
+  top:{
+    fontSize: fontSize.large,
+    fontWeight: 'bold',
+    color: '#ffffff',
   },
   button1: {
     width: sizes.screenWidth * 0.2,
@@ -254,7 +265,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
 
-  main: {flex: 1},
+  main: {flex: 1, justifyContent: 'center', alignItems: 'center'},
   scroll: {
     // flex: 1,
     // backgroundColor: '#ddeeff',
