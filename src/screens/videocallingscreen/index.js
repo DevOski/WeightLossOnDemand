@@ -22,13 +22,8 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import Entypo from 'react-native-vector-icons/Entypo';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {useDispatch, useSelector} from 'react-redux';
-import {getUser} from '../../services/utilities/api/auth';
+import {getAgoraToken, getUser} from '../../services/utilities/api/auth';
 import {removeData} from '../../store/actions';
-const appId = '270b512970864b0a93b14650e52e8f9c';
-const channelName = 'newVisit';
-const token =
-  '007eJxTYPj52X/29hrrxXcVZnh57To3+5CfeMi9qiXG5xV8Tpe1dFQoMBiZGySZGhpZmhtYmJkkGSRaGicZmpiZGqSaGqVapFkmx96MTm4IZGTY/ZOJhZEBAkF8Doa81PKwzOLMEgYGACVeIdY=';
-const uid = 0;
 
 export default function Videocalling({navigation, route}) {
   const agoraEngineRef = useRef(); // Agora engine instance
@@ -36,11 +31,30 @@ export default function Videocalling({navigation, route}) {
   const [remoteUid, setRemoteUid] = useState(0); // Uid of the remote user
   const [message, setMessage] = useState(''); //
   const [channel_name, setChannelName] = useState('');
+  const [agoraToken, setAgoraToken] = useState('');
   var isMuted = false;
   const usertoken = useSelector(state => state.token);
   const showMessage = msg => {
     setMessage(msg);
   };
+
+  useEffect(() => {
+    getToken();
+  }, []);
+
+  const getToken = async () => {
+    try {
+      let response = await getAgoraToken();
+      setAgoraToken(response.data.token);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const appId = '270b512970864b0a93b14650e52e8f9c';
+  const channelName = 'newVisit';
+  const token = agoraToken;
+  const uid = 0;
 
   const getPermission = async () => {
     if (Platform.OS === 'android') {
@@ -104,10 +118,10 @@ export default function Videocalling({navigation, route}) {
       );
 
       agoraEngineRef.current?.startPreview();
-      agoraEngineRef.current?.joinChannel(token, channel_name, uid, {
+      agoraEngineRef.current?.joinChannel(agoraToken, channel_name, uid, {
         clientRoleType: ClientRoleType.ClientRoleBroadcaster,
       });
-      console.log('work---->>', token, channel_name, uid);
+      console.log('work---->>', agoraToken, channel_name, uid);
     } catch (e) {
       console.log(e);
     }

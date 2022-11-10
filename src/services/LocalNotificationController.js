@@ -22,28 +22,29 @@ PushNotification.createChannel(
 );
 
 export const LocalNotification = () => {
-  // PushNotification.localNotification({
-  //   channelId: 'channel-id',
-  //   channelName: 'my_channel',
-  //   autoCancel: true,
-  //   channelDescription: 'Your session is getting started',
-  //   playSound: true,
-  //   title: 'Your session is getting started',
-  //   message: 'Get ready for a training session.',
-  //   soundName: 'default',
-  //   importance: 10,
-  //   vibrate: true,
-  //   vibration: 1000,
-  // });
-  PushNotification.localNotificationSchedule({
+
+  PushNotification.localNotification({
     channelId: 'channel-id',
     channelName: 'my_channel',
+    autoCancel: true,
+    channelDescription: 'Your session is getting started',
+    playSound: true,
     title: 'Your session is getting started',
     message: 'Get ready for a training session.',
-    date: new Date(Date.now() + 10 * 1000), // in 60 secs
     soundName: 'default',
     importance: 10,
     vibrate: true,
     vibration: 1000,
   });
+// PushNotification.localNotificationSchedule({
+//     channelId: 'channel-id',
+//     channelName: 'my_channel',
+//     title: 'Your session is getting started',
+//       message: 'Get ready for a training session.',
+//     date: new Date(Date.now() + 10 * 1000), // in 60 secs
+//     soundName: 'default',
+//       importance: 10,
+//       vibrate: true,
+//       vibration: 1000,
+//   });
 };

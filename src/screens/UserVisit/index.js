@@ -19,6 +19,7 @@ import Modal from 'react-native-modal';
 import Entypo from 'react-native-vector-icons/Entypo';
 import {useSelector} from 'react-redux';
 import {
+  getAmount,
   getUser,
   timeAppointment,
   trainerAppointment,
@@ -31,8 +32,9 @@ import {useEffect} from 'react';
 export default function UserVisit({navigation, route}) {
   const [username, setUsername] = useState('');
   const [isModalVisible, setIsModalVisible] = useState(false);
-  const [cost, setCost] = useState(100);
   const [appointMsg, setAppointMsg] = useState('');
+  const [amount, setAmount] = useState('');
+  const [discount, setDiscount] = useState('');
   const toggleModal = () => {
     setIsModalVisible(!isModalVisible);
   };
@@ -50,6 +52,7 @@ export default function UserVisit({navigation, route}) {
 
   useEffect(() => {
     getUserDetails();
+    getPrice();
   }, [isVisible]);
 
   const getUserDetails = async () => {
@@ -60,11 +63,22 @@ export default function UserVisit({navigation, route}) {
       console.log(error);
     }
   };
-
+  const getPrice = async () => {
+    try {
+      let response = await getAmount();
+      setAmount(response.data.amount);
+      setDiscount(response.data.discount);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  console.log(coupon);
   const confirmAndPay = () => {
     if (route?.params?.appointByTrainer == true && payment.cardNum) {
-
-      let price = cost * 100;
+      let price =
+        coupon == null
+          ? amount * 100
+          : (amount - (amount / 100) * discount) * 100;
       var formdata = new FormData();
       formdata.append('number', payment.cardNum);
       formdata.append('expr_num', payment.expirationMonth);
@@ -88,7 +102,10 @@ export default function UserVisit({navigation, route}) {
         })
         .catch(error => console.log('error', error));
     } else if (route?.params?.appointByTime == true && payment.cardNum) {
-      let price = cost * 100;
+      let price =
+      coupon == null
+        ? amount * 100
+        : (amount - (amount / 100) * discount) * 100;
       var formdata = new FormData();
       formdata.append('number', payment.cardNum);
       formdata.append('expr_num', payment.expirationMonth);
@@ -112,7 +129,10 @@ export default function UserVisit({navigation, route}) {
         })
         .catch(error => console.log('error', error));
     } else if (route?.params?.sessionStart == true && payment.cardNum) {
-      let price = cost * 100;
+      let price =
+      coupon == null
+        ? amount * 100
+        : (amount - (amount / 100) * discount) * 100;
       var formdata = new FormData();
       formdata.append('number', payment.cardNum);
       formdata.append('expr_num', payment.expirationMonth);
@@ -152,7 +172,7 @@ export default function UserVisit({navigation, route}) {
         moment(route?.params?.slot?.tr_date, 'DD/MM/YYYY').format('MM/DD/YYYY'),
         route?.params?.slot?.tr_day,
         route?.params?.slot?.sl_time,
-        `$${price}`,
+        `$${amount}`,
       );
       setAppointMsg(response.data.message);
     } catch (error) {
@@ -173,7 +193,7 @@ export default function UserVisit({navigation, route}) {
         moment(route?.params?.slot?.tr_date, 'DD/MM/YYYY').format('MM/DD/YYYY'),
         route?.params?.slot?.tr_day,
         route?.params?.slot?.sl_time,
-        `$${price}`,
+        `$${amount}`,
       );
       setAppointMsg(response.data.message);
     } catch (error) {
@@ -244,7 +264,7 @@ export default function UserVisit({navigation, route}) {
         </TouchableOpacity>
         <View style={[styles.padding, styles.row]}>
           <Text style={styles.head2}>Your Cost</Text>
-          <Text style={styles.head2}>${cost}</Text>
+          <Text style={styles.head2}>${amount}</Text>
         </View>
 
         <TouchableOpacity
