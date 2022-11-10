@@ -46,7 +46,6 @@ export default function Home({navigation}) {
   const isVisible = useIsFocused();
 
   useEffect(() => {
-    // handleNotif();
     getUserDetails();
     getTrainers();
     getPastVisit();
@@ -98,7 +97,8 @@ export default function Home({navigation}) {
         response.data.data.tr_name !== 'random' &&
         currentFinalDate == response.data.data.apt_time
       ) {
-        // handleNotif();
+        handleNotif();
+        console.log(response.data.data);
         navigation.navigate('ProviderReview', {
           tr_id: response.data.data.trainer_id,
           tr_name: response.data.data.tr_name,
@@ -116,6 +116,7 @@ export default function Home({navigation}) {
         response.data.data.tr_name == 'random' &&
         currentFinalDate == response.data.data.apt_time
       ) {
+        handleNotif();
         navigation.navigate('FindingProvider',{apt_id:response.data.data.ap_id});
       }
     } catch (error) {
@@ -135,8 +136,8 @@ export default function Home({navigation}) {
   };
   const handleNotif = () => {
     LocalNotification();
-    // let date = new Date(Date.now() + 10 * 1000)
-    // console.log(date);
+    let date = new Date(Date.now() + 10 * 1000)
+    console.log(date);
   };
   return (
     <SafeAreaView>
@@ -150,7 +151,6 @@ export default function Home({navigation}) {
           <View style={styles.transparentView}></View>
           <TouchableOpacity
             onPress={
-              // handleNotif
               () => navigation.navigate('Setting')
             }>
             <Image source={images.setting} style={styles.settingIcon} />
