@@ -464,3 +464,8 @@ export async function updateAppointmentTrainer(ap_id, tr_id, tr_name) {
     tr_name,
   });
 }
+
+
+export async function getAmount() {
+  return await axios.get(`${baseURL}/amount`);
+}

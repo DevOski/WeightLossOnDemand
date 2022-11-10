@@ -93,15 +93,6 @@ export default function ChooseAppointment({navigation, route}) {
   };
 
   const getAllDateSlots = async updatedDate => {
-    // try {
-    //   let res = await getAllSlotDate(date);
-    //   console.log(res);
-    // } catch (error) {
-    //   console.log(error);
-    // }
-
-    // let updatedDate = moment(date.timestamp).format('MM/DD/YYYY');
-    console.log('--->>', updatedDate);
     var myHeaders = new Headers();
     myHeaders.append('Content-Type', 'application/json');
     var raw = JSON.stringify({
