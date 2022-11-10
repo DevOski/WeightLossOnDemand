@@ -66,7 +66,8 @@ export default function ChooseAppointment({navigation, route}) {
     setMarkedDates(markedDates);
     getDateSlots(serviceDate);
     if (route?.params?.from === 'All Trainer') {
-      getAllDateSlots(serviceDate);
+      let selectedDate = moment(date).format('DD/MM/YYYY');
+      getAllDateSlots(selectedDate);
     }
   };
 
@@ -91,7 +92,7 @@ export default function ChooseAppointment({navigation, route}) {
     }
   };
 
-  const getAllDateSlots = async date => {
+  const getAllDateSlots = async updatedDate => {
     // try {
     //   let res = await getAllSlotDate(date);
     //   console.log(res);
@@ -99,12 +100,12 @@ export default function ChooseAppointment({navigation, route}) {
     //   console.log(error);
     // }
 
-    let updatedDate = moment(date.dateString).format('MM/DD/YYYY');
-    console.log(updatedDate);
+    // let updatedDate = moment(date.timestamp).format('MM/DD/YYYY');
+    console.log('--->>', updatedDate);
     var myHeaders = new Headers();
     myHeaders.append('Content-Type', 'application/json');
     var raw = JSON.stringify({
-      date: '10/10/2022',
+      date: updatedDate,
     });
     var requestOptions = {
       method: 'POST',
