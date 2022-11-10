@@ -16,9 +16,9 @@ import {colors} from '../../services';
 export default function MemberAgreement() {
   return (
     <SafeAreaView>
-       <View>
-          <Header dark={true} />
-        </View>
+      <View>
+        <Header dark={true} />
+      </View>
       <ScrollView style={styles.color}>
         <View style={[styles.paddingLeft, styles.paddingBottom]}>
           <Text style={styles.addPaymentText}>
@@ -429,17 +429,17 @@ export default function MemberAgreement() {
             Included Health, Inc.
           </Text>
           <Text style={[styles.textColor, styles.left, styles.top]}>
-            1 California Street, Ste. 2300
+            14208 S. Crater Lake Court,
           </Text>
           <Text style={[styles.textColor, styles.left, styles.top3]}>
-            San Francisco, CA 94111
+            suite 300 The Woodlands, 77384
           </Text>
         </View>
         <View style={[styles.row, styles.top]}>
           <Entypo name="dot-single" color={colors.primary} size={25} />
           <Text style={[styles.text, styles.right]}>
             You may email us at{' '}
-            <Text style={styles.link}>support@includedhealth.com.</Text>
+            <Text style={styles.link}>support@weightlossondemand.com</Text>
           </Text>
         </View>
         <View style={[styles.row]}>
@@ -452,7 +452,7 @@ export default function MemberAgreement() {
         <View style={[styles.row, styles.paddingBottom2]}>
           <Entypo name="dot-single" color={colors.primary} size={25} />
           <Text style={[styles.text, styles.right]}>
-            Or you may call our general support toll free line at (365) 154-1736
+            Or you may call our general support toll free line at (281)3250066
           </Text>
         </View>
       </ScrollView>
