@@ -469,3 +469,7 @@ export async function updateAppointmentTrainer(ap_id, tr_id, tr_name) {
 export async function getAmount() {
   return await axios.get(`${baseURL}/amount`);
 }
+
+export async function getAgoraToken() {
+  return await axios.get(`${baseURL}/agoraToken`);
+}
