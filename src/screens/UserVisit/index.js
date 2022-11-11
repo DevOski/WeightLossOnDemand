@@ -129,6 +129,7 @@ export default function UserVisit({navigation, route}) {
         })
         .catch(error => console.log('error', error));
     } else if (route?.params?.sessionStart == true && payment.cardNum) {
+      console.log("works000000000|>");
       let price =
       coupon == null
         ? amount * 100
@@ -149,8 +150,12 @@ export default function UserVisit({navigation, route}) {
       fetch('http://alsyedmmtravel.com/api/pay', requestOptions)
         .then(response => response.json())
         .then(result => {
+          console.log(result);
           if (result.message == 'succeeded') {
             toggleModal();
+          }
+          else{
+            alert(result.message)
           }
         })
         .catch(error => console.log('error', error));
