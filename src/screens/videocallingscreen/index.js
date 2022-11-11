@@ -32,6 +32,12 @@ export default function Videocalling({navigation, route}) {
   const [message, setMessage] = useState(''); //
   const [channel_name, setChannelName] = useState('');
   const [agoraToken, setAgoraToken] = useState('');
+  const [userId, setUserId] = useState('');
+  const appId = '270b512970864b0a93b14650e52e8f9c';
+  const channelName = 'testify';
+  const token =
+    '007eJxTYPjp33xvs8LCnMtlO9bZSGg6ckl4i4vN41NKjFyqYHWpwFaBwSIpMSnNEIgTjQxN0lKMLFNSDSySU8wMDE0szJPSUpJ5c5MbAhkZ1oY7MTIyMDKwADGIzwQmmcEkC5hkZyhJLS7JTKtkYAAA9KEgPw==';
+  const uid = 0;
   var isMuted = false;
   const usertoken = useSelector(state => state.token);
   const showMessage = msg => {
@@ -50,11 +56,6 @@ export default function Videocalling({navigation, route}) {
       console.log(error);
     }
   };
-
-  const appId = '270b512970864b0a93b14650e52e8f9c';
-  const channelName = 'newVisit';
-  const token = agoraToken;
-  const uid = 0;
 
   const getPermission = async () => {
     if (Platform.OS === 'android') {
@@ -75,6 +76,7 @@ export default function Videocalling({navigation, route}) {
     try {
       let response = await getUser(usertoken);
       setChannelName(response.data.data.channel);
+      setUserId(response.data.data.user_id);
     } catch (error) {
       console.log(error);
     }
@@ -109,6 +111,7 @@ export default function Videocalling({navigation, route}) {
   };
 
   const join = async () => {
+    console.log('works');
     if (isJoined) {
       return;
     }
@@ -118,10 +121,10 @@ export default function Videocalling({navigation, route}) {
       );
 
       agoraEngineRef.current?.startPreview();
-      agoraEngineRef.current?.joinChannel(agoraToken, channel_name, uid, {
+      agoraEngineRef.current?.joinChannel(token, channelName, uid, {
         clientRoleType: ClientRoleType.ClientRoleBroadcaster,
       });
-      console.log('work---->>', agoraToken, channel_name, uid);
+      console.log('work---->>', token, channelName, userId);
     } catch (e) {
       console.log(e);
     }
@@ -154,11 +157,13 @@ export default function Videocalling({navigation, route}) {
       {/* <Header /> */}
       {/* <Text style={styles.head}>Agora Video Calling Quickstart</Text>   */}
       {/* <View style={styles.btnContainer}> */}
-      <TouchableOpacity onPress={join}>
-        <View style={styles.button}>
-          <Text style={[styles.top]}>Join</Text>
-        </View>
-      </TouchableOpacity>
+      {isJoined ? null : (
+        <TouchableOpacity onPress={join}>
+          <View style={styles.button1}>
+            <Text style={[styles.top]}>Join</Text>
+          </View>
+        </TouchableOpacity>
+      )}
       {/* <Text onPress={leave} style={styles.button}>
           Leave
         </Text> */}
@@ -187,9 +192,10 @@ export default function Videocalling({navigation, route}) {
               flexDirection: 'row',
               justifyContent: 'space-between',
               paddingRight: sizes.screenWidth * 0.19,
-              marginTop: sizes.screenHeight * 0.94,
+              marginTop: sizes.screenHeight * 0.9,
+              height: sizes.screenHeight * 0.02,
               position: 'absolute',
-              zIndex: 9,
+              zIndex: 999,
             }}>
             <Ionicons
               name="ios-call-outline"
@@ -241,8 +247,8 @@ export default function Videocalling({navigation, route}) {
 
 const styles = StyleSheet.create({
   button: {
-    width: sizes.screenWidth * 0.4,
-    height: sizes.screenHeight * 0.21,
+    width: sizes.screenWidth * 0.2,
+    height: sizes.screenHeight * 0.04,
 
     backgroundColor: colors.secondary,
     borderRadius: sizes.screenWidth * 0.7,
@@ -252,15 +258,17 @@ const styles = StyleSheet.create({
     // top:10,
     // bottom: sizes.screenHeight * 0.15,
     // left: sizes.screenWidth * 0.1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    // textAlign: 'center',
-    // alignSelf:'center'
-    // marginLeft: sizes.screenWidth * 0.09,
+    // justifyContent: 'center',
+    // alignItems: 'center',
+    color: '#ffffff',
+    textAlign: 'center',
+    // alignSelf:'center',
+    marginLeft: sizes.screenWidth * 0.09,
   },
   button1: {
-    width: sizes.screenWidth * 0.2,
-    height: sizes.screenHeight * 0.03,
+    width: sizes.screenWidth * 0.3,
+    height: sizes.screenHeight * 0.15,
+    borderRadius: sizes.screenWidth * 0.5,
     // paddingHorizontal: sizes.screenWidth*0.05,
     // paddingVertical: 4,
     fontWeight: 'bold',
@@ -268,12 +276,14 @@ const styles = StyleSheet.create({
     backgroundColor: colors.secondary,
     // margin: 5,
     position: 'relative',
+    top: sizes.screenHeight * 0.35,
     // bottom: sizes.screenHeight * 0.01,
-    left: sizes.screenWidth * 0.4,
+    left: sizes.screenWidth * 0.35,
     textAlign: 'center',
+    justifyContent: 'center',
   },
 
-  main: {flex: 1, justifyContent: 'center', alignItems: 'center'},
+  main: {flex: 1},
   scroll: {
     // flex: 1,
     // backgroundColor: '#ddeeff',
@@ -284,23 +294,22 @@ const styles = StyleSheet.create({
     fontSize: fontSize.large,
     fontWeight: 'bold',
     color: '#ffffff',
+    alignSelf: 'center',
   },
   scrollContainer: {alignItems: 'center'},
   videoView: {
     width: '100%',
     zIndex: -1,
     height: sizes.screenHeight,
-
-    // bottom:34
   },
   videoView1: {
     width: '50%',
     height: sizes.screenHeight * 0.25,
     position: 'absolute',
-    marginTop: 8,
-    top: sizes.screenHeight * 0.66,
+    // marginTop: 8,
+    top: sizes.screenHeight * 0.62,
     right: sizes.screenHeight * 0.02,
-    zIndex: 111,
+    zIndex: -111,
   },
   btnContainer: {
     flexDirection: 'row',

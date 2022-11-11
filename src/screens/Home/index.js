@@ -117,7 +117,9 @@ export default function Home({navigation}) {
         currentFinalDate == response.data.data.apt_time
       ) {
         handleNotif();
-        navigation.navigate('FindingProvider',{apt_id:response.data.data.ap_id});
+        navigation.navigate('FindingProvider', {
+          apt_id: response.data.data.ap_id,
+        });
       }
     } catch (error) {
       console.log('ée', error);
@@ -136,8 +138,19 @@ export default function Home({navigation}) {
   };
   const handleNotif = () => {
     LocalNotification();
-    let date = new Date(Date.now() + 10 * 1000)
+    let date = new Date(Date.now() + 10 * 1000);
     console.log(date);
+  };
+  const handleAPI = () => {
+    var requestOptions = {
+      method: 'GET',
+      redirect: 'follow',
+    };
+
+    fetch('http://alsyedmmtravel.com/api/receipt', requestOptions)
+      .then(response => response.text())
+      .then(result => console.log(result))
+      .catch(error => console.log('error', error));
   };
   return (
     <SafeAreaView>
@@ -152,6 +165,7 @@ export default function Home({navigation}) {
           <TouchableOpacity
             onPress={
               () => navigation.navigate('Setting')
+              // handleAPI
             }>
             <Image source={images.setting} style={styles.settingIcon} />
           </TouchableOpacity>
