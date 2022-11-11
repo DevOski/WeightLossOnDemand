@@ -22,41 +22,27 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import Entypo from 'react-native-vector-icons/Entypo';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {useDispatch, useSelector} from 'react-redux';
-import {getAgoraToken, getUser} from '../../services/utilities/api/auth';
+import {getAgoraToken, getTrainer, getUser} from '../../services/utilities/api/auth';
 import {removeData} from '../../store/actions';
-
+const appId = '270b512970864b0a93b14650e52e8f9c';
+const channelName = 'Testing';
+const token =
+'007eJxTYMg6eGTO3uXadrkmV7+1nhLQe/JyrXQ+o/qBXz3fk5mtWvQVGIzMDZJMDY0szQ0szEySDBItjZMMTcxMDVJNjVIt0iyTr5jkJTcEMjKwM9cyMzJAIJjPEJJaXJKZl87AAACbuB8/';
+const uid = 0;
 export default function Videocalling({navigation, route}) {
   const agoraEngineRef = useRef(); // Agora engine instance
   const [isJoined, setIsJoined] = useState(false); // Indicates if the local user has joined the channel
   const [remoteUid, setRemoteUid] = useState(0); // Uid of the remote user
   const [message, setMessage] = useState(''); //
-  const [channel_name, setChannelName] = useState('');
-  const [agoraToken, setAgoraToken] = useState('');
-  const [userId, setUserId] = useState('');
-  const appId = '270b512970864b0a93b14650e52e8f9c';
-  const channelName = 'testify';
-  const token =
-    '007eJxTYPjp33xvs8LCnMtlO9bZSGg6ckl4i4vN41NKjFyqYHWpwFaBwSIpMSnNEIgTjQxN0lKMLFNSDSySU8wMDE0szJPSUpJ5c5MbAhkZ1oY7MTIyMDKwADGIzwQmmcEkC5hkZyhJLS7JTKtkYAAA9KEgPw==';
-  const uid = 0;
+  const [channelName, setChannelName] = useState('');
+  const [appId, setAppId] = useState('');
+  const [token, setToken] = useState('');
+  // const [token, setToken] = useState('');
   var isMuted = false;
   const usertoken = useSelector(state => state.token);
   const showMessage = msg => {
     setMessage(msg);
   };
-
-  useEffect(() => {
-    getToken();
-  }, []);
-
-  const getToken = async () => {
-    try {
-      let response = await getAgoraToken();
-      setAgoraToken(response.data.token);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   const getPermission = async () => {
     if (Platform.OS === 'android') {
       await PermissionsAndroid.requestMultiple([
@@ -66,6 +52,21 @@ export default function Videocalling({navigation, route}) {
     }
   };
 
+  const getToken = async () => {
+    try {
+      let response = await getAgoraToken();
+      // setAgoraToken(response.data.token);
+      setAppId(response.data.appId);
+      setToken(response.data.token);
+      setChannelName(response.data.channelName);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getToken();
+  }, []);
   useEffect(() => {
     // join();
     setupVideoSDKEngine();
@@ -74,9 +75,11 @@ export default function Videocalling({navigation, route}) {
 
   const getUserDetails = async () => {
     try {
-      let response = await getUser(usertoken);
-      setChannelName(response.data.data.channel);
-      setUserId(response.data.data.user_id);
+      let response = await getTrainer(usertoken);
+      // setChannelName(response.data.data.channel);
+      // console.log(response.data.data.channel);
+      // setUserName(response.data.data.first_name);
+      // dispatch(storeUserData(response.data.data));
     } catch (error) {
       console.log(error);
     }
@@ -111,7 +114,6 @@ export default function Videocalling({navigation, route}) {
   };
 
   const join = async () => {
-    console.log('works');
     if (isJoined) {
       return;
     }
@@ -121,10 +123,10 @@ export default function Videocalling({navigation, route}) {
       );
 
       agoraEngineRef.current?.startPreview();
-      agoraEngineRef.current?.joinChannel(token, channelName, uid, {
+      agoraEngineRef.current?.joinChannel(token, channelName, 0, {
         clientRoleType: ClientRoleType.ClientRoleBroadcaster,
       });
-      console.log('work---->>', token, channelName, userId);
+      console.log('work---->>', token, channelName, 0);
     } catch (e) {
       console.log(e);
     }
@@ -139,10 +141,7 @@ export default function Videocalling({navigation, route}) {
       setIsJoined(false);
       showMessage('You left the channel');
 
-      navigation.navigate('RateProvider', {
-        trainer: route?.params?.trainer,
-        apt_id: route?.params?.apt_id,
-      });
+      navigation.navigate('TrainerAppointment');
     } catch (e) {
       console.log(e);
     }

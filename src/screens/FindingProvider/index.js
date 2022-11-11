@@ -33,6 +33,7 @@ export default function FindingProvider({navigation, route}) {
   const findingAProvider = async () => {
     try {
       let response = await findingProvider();
+      console.log(response.data.data);
       setTrainer(response.data.data);
       setTimeout(async () => {
         // console.log(trainer);

@@ -18,7 +18,16 @@ import icon from '../../assets/icon.png';
 import ladyy from '../../assets/assets/ladyy.jpg';
 import ss from '../../assets/assets/ss.png';
 import locationimg from '../../assets/assets/locationimg.png';
+import lasslid from '../../assets/assets/lasslid.jpg';
 import kiid from '../../assets/assets/kiid.jpg';
+import dit from '../../assets/assets/dit.jpg';
+import bac from '../../assets/assets/bac.jpg';
+import lef from '../../assets/assets/lef.jpg';
+import fatty from '../../assets/assets/fatty.jpg';
+
+
+
+
 import {colors, fontFamily, fontSize, sizes} from '../../services';
 const deviceHeight = Dimensions.get('window').height;
 const deviceWidth = Dimensions.get('window').width;
@@ -66,26 +75,26 @@ const Componentsecond = () => {
         <View style={styles.three1}>
           <Image
             style={{width: '100%', height: '100%', borderRadius: 100}}
-            source={kiid}
+            source={lef}
           />
         </View>
         <View style={styles.three}>
           <Image
             style={{width: '100%', height: '100%', borderRadius: 200}}
-            source={intro1}
+            source={bac}
           />
         </View>
         <View style={styles.three3}>
           <Image
             style={{width: '100%', height: '100%', borderRadius: 100}}
-            source={kiid}
+            source={fatty}
           />
         </View>
       </View>
 
       <View style={styles.margintop}>
         <View style={styles.screnintro2img}>
-          <Image style={{width: '100%', height: '100%'}} source={kiid} />
+          <Image style={{width: '100%', height: '100%'}} source={dit} />
         </View>
       </View>
       <View style={styles.payragraphcon}>
@@ -159,7 +168,7 @@ const ComponentFour = () => {
 
         <View style={{top: sizes.screenHeight * 0.1}}>
           <View style={styles.kidd}>
-            <Image style={{width: '100%', height: '100%'}} source={kiid} />
+            <Image style={{width: '100%', height: '100%'}} source={lasslid} />
           </View>
           <View
             style={{
@@ -249,7 +258,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: deviceHeight * 0.1,
     width: deviceWidth,
-    height: deviceHeight * 0.5,
+    height: deviceHeight * 0.8,
   },
   but: {
     backgroundColor: colors.secondary,

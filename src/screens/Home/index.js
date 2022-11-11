@@ -25,6 +25,7 @@ import {
 import images from '../../services/utilities/images';
 import {storeUserData} from '../../store/actions';
 import {styles} from './style';
+import bg1 from '../../assets/bg1.jpeg'
 
 export default function Home({navigation}) {
   const [userName, setUserName] = useState('');
@@ -325,13 +326,14 @@ export default function Home({navigation}) {
                       Meet Our Professionals
                     </Text>
                     {trainerList?.map((item, index) => {
+                      console.log(item.images);
                       if (index < 6) {
                         return (
                           <View
                             key={index}
                             style={[styles.row2, styles.paddingLeft]}>
                             <Image
-                              source={images.provider1}
+                              source={{uri:item.images}}
                               style={styles.providerImg}
                             />
                             <View>
