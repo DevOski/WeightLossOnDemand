@@ -161,8 +161,7 @@ const ComponentFour = () => {
         </View>
         <View style={styles.forslidtext}>
           <Text style={styles.payragraphcontext}>
-            Your provider will send prescriptions to the pharmacy of your
-            choice.
+            Your provider will send prescriptions.
           </Text>
         </View>
 
@@ -173,7 +172,7 @@ const ComponentFour = () => {
           <View
             style={{
               position: 'absolute',
-              top: deviceHeight * 0.48,
+              top: deviceHeight * 0.53,
               // zIndex:999999,
               left: deviceWidth * 0.03,
             }}>
