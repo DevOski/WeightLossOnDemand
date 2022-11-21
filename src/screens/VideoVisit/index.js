@@ -92,6 +92,8 @@ export default function VideoVisit() {
             visit.
           </Text> */}
         </View>
+        {Platform.OS == 'ios' && <View style={styles.bottomIOS}></View>}
+
       </ScrollView>
     </SafeAreaView>
   );
