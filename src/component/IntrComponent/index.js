@@ -13,17 +13,17 @@ import {
   Button,
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
-import intro1 from '../../assets/assets/intro1.jpg';
+import intro1 from '../../assets/assets/intro1.png';
 import icon from '../../assets/icon.png';
 import ladyy from '../../assets/assets/ladyy.jpg';
 import ss from '../../assets/assets/ss.png';
 import locationimg from '../../assets/assets/locationimg.png';
-import lasslid from '../../assets/assets/lasslid.jpg';
+import lasslid from '../../assets/assets/lasslid.png';
 import kiid from '../../assets/assets/kiid.jpg';
-import dit from '../../assets/assets/dit.jpg';
-import bac from '../../assets/assets/bac.jpg';
-import lef from '../../assets/assets/lef.jpg';
-import fatty from '../../assets/assets/fatty.jpg';
+import dit from '../../assets/assets/dit.png';
+import bac from '../../assets/assets/bac.png';
+import lef from '../../assets/assets/lef.png';
+import fatty from '../../assets/assets/fatty.png';
 
 
 
@@ -230,7 +230,7 @@ const styles = StyleSheet.create({
   },
   three: {
     width: deviceWidth * 0.33,
-    height: deviceHeight * 0.18,
+    height: deviceHeight * 0.16,
   },
   three1: {
     width: deviceWidth * 0.15,
@@ -255,9 +255,9 @@ const styles = StyleSheet.create({
   },
   kidd: {
     position: 'absolute',
-    top: deviceHeight * 0.1,
-    width: deviceWidth,
-    height: deviceHeight * 0.8,
+    top: deviceHeight * 0.30,
+    width: deviceWidth * 0.99,
+    height: deviceHeight * 0.30,
   },
   but: {
     backgroundColor: colors.secondary,

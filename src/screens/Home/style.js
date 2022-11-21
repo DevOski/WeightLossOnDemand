@@ -83,7 +83,7 @@ export const styles = StyleSheet.create({
   },
   bg: {
     height: sizes.screenHeight * 0.72,
-    width: sizes.screenWidth * 0.9,
+    width: sizes.screenWidth *0.9,
   },
   playBtn: {
     top: sizes.screenHeight * 0.3,

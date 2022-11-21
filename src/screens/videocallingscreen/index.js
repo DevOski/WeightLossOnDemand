@@ -141,7 +141,10 @@ export default function Videocalling({navigation, route}) {
       setIsJoined(false);
       showMessage('You left the channel');
 
-      navigation.navigate('TrainerAppointment');
+      navigation.navigate('RateProvider', {
+        trainer: route?.params?.trainer,
+        apt_id: route?.params?.apt_id,
+      });
     } catch (e) {
       console.log(e);
     }
