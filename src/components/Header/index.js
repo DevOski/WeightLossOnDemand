@@ -92,7 +92,7 @@ export default function Header({
           <View style={[styles.skipView, styles.leftDone]}>
             <TouchableOpacity onPress={() => navigation.goBack()}>
               <View style={[styles.row]}>
-                <Text style={styles.title}>Skip </Text>
+                <Text style={ Platform.OS !== 'ios' ? styles.title: styles.titleIOS}>Skip </Text>
                 <MaterialIcons
                   name="keyboard-arrow-right"
                   color={colors.white}

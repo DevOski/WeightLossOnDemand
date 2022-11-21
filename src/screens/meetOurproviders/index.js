@@ -49,15 +49,15 @@ export default function Meetourproviders({navigation}) {
       <Header title={'Connect to all trainers '} />
       <ScrollView style={styles.color}>
         {!showVideo ? (
-          <ImageBackground source={images.mother} style={styles.image}>
+          <ImageBackground source={images.allTrainer} style={styles.image}>
             <TouchableOpacity onPress={() => setShowVideo(true)}>
               <View style={styles.playBtn}>
                 <Image source={images.playIcon} style={styles.playIcon} />
               </View>
+              <View style={styles.textView}>
+                <Text style={styles.heading}>Meet Our Trainer</Text>
+              </View>
             </TouchableOpacity>
-            <View style={styles.textView}>
-              <Text style={styles.heading}>Meet Our Trainer</Text>
-            </View>
           </ImageBackground>
         ) : (
           <WebView
@@ -94,7 +94,7 @@ export default function Meetourproviders({navigation}) {
             {trainerType?.map((item, index) => {
               return (
                 <TouchableOpacity
-                key={index}
+                  key={index}
                   onPress={() =>
                     navigation.navigate('physiciansscreen', {trainer: item})
                   }>

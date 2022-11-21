@@ -39,6 +39,11 @@ export const styles = StyleSheet.create({
     fontSize: fontSize.h6,
     fontFamily: fontFamily.appTextLight,
   },
+  titleIOS:{
+    color: colors.white,
+    fontSize: fontSize.medium,
+    fontFamily: fontFamily.appTextLight,
+  },
   centerTitle: {
     color: colors.white,
     left: sizes.screenWidth * 0.2,
