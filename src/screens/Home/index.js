@@ -25,7 +25,7 @@ import {
 import images from '../../services/utilities/images';
 import {storeUserData} from '../../store/actions';
 import {styles} from './style';
-import bg1 from '../../assets/bg1.jpeg'
+import bg1 from '../../assets/bg1.jpeg';
 
 export default function Home({navigation}) {
   const [userName, setUserName] = useState('');
@@ -179,7 +179,11 @@ export default function Home({navigation}) {
           style={styles.wrap}>
           {item?.map((item, index) => {
             return (
-              <View key={index} style={styles.cardView}>
+              <View
+                key={index}
+                style={
+                  Platform.OS !== 'ios' ? styles.cardView : styles.cardViewIOS
+                }>
                 {index == 0 && (
                   <ImageBackground
                     key={index}
@@ -191,7 +195,12 @@ export default function Home({navigation}) {
                           uri: 'https://www.youtube.com/embed/JLnycPtolfw',
                         })
                       }>
-                      <View style={styles.playBtn}>
+                      <View
+                        style={
+                          Platform.OS !== 'ios'
+                            ? styles.playBtn
+                            : styles.playBtnIOS
+                        }>
                         <Image
                           source={images.playIcon}
                           style={styles.playIcon}
@@ -311,13 +320,13 @@ export default function Home({navigation}) {
                         Let us assist you in finding the right trainer for you.
                       </Text>
                     </View>
+                    <View style={[styles.learnMoreView, styles.row2]}>
                     <TouchableOpacity
                       onPress={() => navigation.navigate('beyondscreen')}>
-                      <View style={[styles.learnMoreView, styles.row2]}>
                         <Text style={styles.semiText}>Learn more</Text>
                         <Text style={styles.symbol}> ›</Text>
-                      </View>
                     </TouchableOpacity>
+                      </View>
                   </ImageBackground>
                 )}
                 {index == 3 && (
@@ -333,7 +342,7 @@ export default function Home({navigation}) {
                             key={index}
                             style={[styles.row2, styles.paddingLeft]}>
                             <Image
-                              source={{uri:item.images}}
+                              source={{uri: item.images}}
                               style={styles.providerImg}
                             />
                             <View>
