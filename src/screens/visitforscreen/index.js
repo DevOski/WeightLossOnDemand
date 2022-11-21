@@ -73,7 +73,12 @@ export const VisitScreen = ({navigation, route}) => {
                     : navigation.navigate('correctinfoscreen')
                 }>
                 <View style={[styles.row, styles.card]}>
-                  <View style={styles.namefirt}>
+                  <View
+                    style={
+                      Platform.OS !== 'ios'
+                        ? styles.namefirt
+                        : styles.namefirtIOS
+                    }>
                     <Text style={styles.fname}>{userName.charAt(0)}</Text>
                   </View>
                   <View>
@@ -236,6 +241,14 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     width: sizes.screenWidth * 0.11,
+    height: sizes.screenHeight * 0.06,
+    backgroundColor: colors.secondary,
+    borderRadius: sizes.screenWidth * 0.5,
+  },
+  namefirtIOS: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: sizes.screenWidth * 0.13,
     height: sizes.screenHeight * 0.06,
     backgroundColor: colors.secondary,
     borderRadius: sizes.screenWidth * 0.5,
