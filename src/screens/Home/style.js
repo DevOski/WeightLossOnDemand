@@ -222,6 +222,11 @@ export const styles = StyleSheet.create({
     height: sizes.screenHeight * 0.08,
     width: sizes.screenWidth * 0.15,
   },
+  providerImgIOS: {
+    height: sizes.screenHeight * 0.08,
+    width: sizes.screenWidth * 0.18,
+    borderRadius: sizes.screenWidth * 0.5,
+  },
   paddingLeft: {
     padding: sizes.TinyMargin,
     paddingTop: sizes.screenHeight * 0.02,

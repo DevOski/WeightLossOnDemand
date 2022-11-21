@@ -343,7 +343,7 @@ export default function Home({navigation}) {
                             style={[styles.row2, styles.paddingLeft]}>
                             <Image
                               source={{uri: item.images}}
-                              style={styles.providerImg}
+                              style={Platform.OS !== 'ios' ? styles.providerImg : styles.providerImgIOS}
                             />
                             <View>
                               <Text style={styles.providerHead}>

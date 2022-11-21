@@ -66,43 +66,50 @@ export default function Questionthree({navigation, route}) {
         <View style={styles.padding}>
           <Text style={styles.text}>{Qa}</Text>
           <View style={styles.width}>
-            <View style={styles.ro}>
-              <Text style={styles.lstyle}>Yes</Text>
-              <RadioButton
-                status={Yes ? 'checked' : 'unchecked'}
-                onPress={() => {
-                  setYes(!Yes);
-                  setno(false);
-                  setselectanswer3('Yes');
-                  // setgender('Female');
-                  // setCheckedMale(false);
-                  // setCheckedOther(false);
-                }}
-                color={'#be1d2d'}
-                uncheckColor={colors.secondary}
-              />
-            </View>
-            <View style={styles.ro}>
-              <Text style={styles.lstyle}>No</Text>
-              <RadioButton
-                status={no ? 'checked' : 'unchecked'}
-                onPress={() => {
-                  setno(!no);
-                  setYes(false);
-                  setselectanswer3('No');
-                  // setgender('Female');
-                  // setCheckedMale(false);
-                  // setCheckedOther(false);
-                }}
-                color={'#be1d2d'}
-                uncheckColor={colors.secondary}
-              />
-            </View>
+            <TouchableOpacity
+              onPress={() => {
+                setYes(!Yes);
+                setno(false);
+                setselectanswer3('Yes');
+                // setgender('Female');
+                // setCheckedMale(false);
+                // setCheckedOther(false);
+              }}>
+              <View style={styles.ro}>
+                <Text style={styles.lstyle}>Yes</Text>
+                <RadioButton
+                  status={Yes ? 'checked' : 'unchecked'}
+                  color={'#be1d2d'}
+                  uncheckColor={colors.secondary}
+                />
+              </View>
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => {
+                setno(!no);
+                setYes(false);
+                setselectanswer3('No');
+                // setgender('Female');
+                // setCheckedMale(false);
+                // setCheckedOther(false);
+              }}>
+              <View style={styles.ro}>
+                <Text style={styles.lstyle}>No</Text>
+                <RadioButton
+                  status={no ? 'checked' : 'unchecked'}
+                  color={'#be1d2d'}
+                  uncheckColor={colors.secondary}
+                />
+              </View>
+            </TouchableOpacity>
           </View>
 
           <View style={styles.paddingTop}>
-          <TouchableOpacity onPress={handleEmail}  disabled={selectanswer3?false:true}>
-              <View style={selectanswer3?styles.buttonView:styles.disabledView}>
+            <TouchableOpacity
+              onPress={handleEmail}
+              disabled={selectanswer3 ? false : true}>
+              <View
+                style={selectanswer3 ? styles.buttonView : styles.disabledView}>
                 <Text style={styles.buttonText}>Next</Text>
               </View>
             </TouchableOpacity>

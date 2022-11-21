@@ -2,6 +2,7 @@ import React, {useEffect, useRef, useState} from 'react';
 import {
   Image,
   ImageBackground,
+  Platform,
   SafeAreaView,
   ScrollView,
   Switch,
@@ -125,7 +126,7 @@ export default function ProviderReview({navigation, route}) {
                   ? route?.params?.tr_image
                   : route?.params?.trainer?.images,
               }}
-              style={styles.docImg}
+              style={Platform.OS !== 'ios' ? styles.docImg : styles.docImgIOS}
             />
           </View>
         </View>

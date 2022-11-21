@@ -2,6 +2,7 @@ import React, {useEffect, useRef, useState} from 'react';
 import {
   Image,
   ImageBackground,
+  Platform,
   SafeAreaView,
   ScrollView,
   Switch,
@@ -56,7 +57,7 @@ export default function HowLikelyRecommend({navigation, route}) {
               <Text style={styles.extremelyText2}>Extremely Likely</Text>
             </View>
             <View style={[styles.row]}>
-              <View style={styles.left}>
+              <View style={Platform.OS !== 'ios' ? styles.left :styles.leftIOS }>
                 <Text style={styles.rating}>0</Text>
               </View>
               <View>
@@ -71,7 +72,7 @@ export default function HowLikelyRecommend({navigation, route}) {
                   maximumTrackTintColor={colors.primary}
                 />
               </View>
-              <View style={styles.right}>
+              <View style={Platform.OS !== 'ios' ? styles.right : styles.rightIOS}>
                 <Text style={styles.rating}>10</Text>
               </View>
             </View>
@@ -91,7 +92,10 @@ export default function HowLikelyRecommend({navigation, route}) {
                   apt_id: route?.params?.apt_id,
                 })
               }>
-              <Text style={styles.skip}>Skip</Text>
+              <Text
+                style={Platform.OS !== 'ios' ? styles.skip : styles.skipIOS}>
+                Skip
+              </Text>
             </TouchableOpacity>
           </View>
         </View>

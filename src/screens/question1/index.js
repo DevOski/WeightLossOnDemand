@@ -39,8 +39,6 @@ export default function Question({navigation, route}) {
     getQuestions();
   }, []);
 
-
-
   const getQuestions = async () => {
     try {
       let response = await getQuestion(1);
@@ -68,68 +66,72 @@ export default function Question({navigation, route}) {
         <View style={styles.padding}>
           <Text style={styles.text}>{Qa}</Text>
           <View style={styles.width}>
-            <View style={styles.ro}>
-              <Text style={styles.lstyle}>Once a week</Text>
-              <RadioButton
-                status={Onceaweek ? 'checked' : 'unchecked'}
-                onPress={() => {
-                  setOnceaweek(!Onceaweek);
-                  setTwiceaweek(false);
-                  setDaily(false);
-                  setselectanswer('Once a week');
-                  // setgender('Female');
-                  // setCheckedMale(false);
-                  // setCheckedOther(false);
-                }}
-                color={'#be1d2d'}
-                uncheckColor={colors.secondary}
-              />
-            </View>
-            <View style={styles.ro}>
-              <Text style={styles.lstyle}>Twice a week</Text>
-              <RadioButton
-                status={Twiceaweek ? 'checked' : 'unchecked'}
-                onPress={() => {
-                  setTwiceaweek(!Twiceaweek);
-                  setOnceaweek(false);
-                  setDaily(false);
-                  setselectanswer('Twice a week');
-                  // setgender('Female');
-                  // setCheckedMale(false);
-                  // setCheckedOther(false);
-                }}
-                color={'#be1d2d'}
-                uncheckColor={colors.secondary}
-              />
-            </View>
-            <View style={styles.ro}>
-              <Text style={styles.lstyle}>Daily</Text>
-              <RadioButton
-                status={Daily ? 'checked' : 'unchecked'}
-                onPress={() => {
-                  setDaily(!Daily);
-                  setTwiceaweek(false);
-                  setOnceaweek(false);
-                  setselectanswer('Daily');
-                  // setgender('Female');
-                  // setCheckedMale(false);
-                  // setCheckedOther(false);
-                }}
-                color={'#be1d2d'}
-                uncheckColor={colors.secondary}
-              />
-            </View>
+            <TouchableOpacity
+              onPress={() => {
+                setOnceaweek(!Onceaweek);
+                setTwiceaweek(false);
+                setDaily(false);
+                setselectanswer('Once a week');
+                // setgender('Female');
+                // setCheckedMale(false);
+                // setCheckedOther(false);
+              }}>
+              <View style={styles.ro}>
+                <Text style={styles.lstyle}>Once a week</Text>
+                <RadioButton
+                  status={Onceaweek ? 'checked' : 'unchecked'}
+                  color={'#be1d2d'}
+                  uncheckColor={colors.secondary}
+                />
+              </View>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              onPress={() => {
+                setTwiceaweek(!Twiceaweek);
+                setOnceaweek(false);
+                setDaily(false);
+                setselectanswer('Twice a week');
+                // setgender('Female');
+                // setCheckedMale(false);
+                // setCheckedOther(false);
+              }}>
+              <View style={styles.ro}>
+                <Text style={styles.lstyle}>Twice a week</Text>
+                <RadioButton
+                  status={Twiceaweek ? 'checked' : 'unchecked'}
+                  color={'#be1d2d'}
+                  uncheckColor={colors.secondary}
+                />
+              </View>
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => {
+                setDaily(!Daily);
+                setTwiceaweek(false);
+                setOnceaweek(false);
+                setselectanswer('Daily');
+                // setgender('Female');
+                // setCheckedMale(false);
+                // setCheckedOther(false);
+              }}>
+              <View style={styles.ro}>
+                <Text style={styles.lstyle}>Daily</Text>
+                <RadioButton
+                  status={Daily ? 'checked' : 'unchecked'}
+                  color={'#be1d2d'}
+                  uncheckColor={colors.secondary}
+                />
+              </View>
+            </TouchableOpacity>
           </View>
 
           <View style={styles.paddingTop}>
-          
-            <TouchableOpacity 
-            disabled={selectanswer?false:true}
-            onPress={handleEmail}
-            
-            
-            >
-              <View style={selectanswer?styles.buttonView:styles.disabledView}>
+            <TouchableOpacity
+              disabled={selectanswer ? false : true}
+              onPress={handleEmail}>
+              <View
+                style={selectanswer ? styles.buttonView : styles.disabledView}>
                 <Text style={styles.buttonText}>Next</Text>
               </View>
             </TouchableOpacity>

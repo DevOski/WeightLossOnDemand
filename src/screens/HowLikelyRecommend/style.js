@@ -62,8 +62,15 @@ export const styles = StyleSheet.create({
     left: sizes.screenWidth * 0.03,
     bottom: 2,
   },
+  leftIOS: {
+    left: sizes.screenWidth * 0.01,
+  },
   right: {
     right: sizes.screenWidth * 0.03,
+    bottom: 2,
+  },
+  rightIOS: {
+    right: sizes.screenWidth * 0.01,
     bottom: 2,
   },
   sliderWidth: {
@@ -84,10 +91,16 @@ export const styles = StyleSheet.create({
   center: {
     alignItems: 'center',
   },
-  skip:{
-    color:colors.secondary,
-    fontWeight:'bold',
-    fontFamily:fontFamily.appTextLight,
+  skip: {
+    color: colors.secondary,
+    fontWeight: 'bold',
+    fontFamily: fontFamily.appTextLight,
+  },
+  skipIOS: {
+    color: colors.secondary,
+    fontWeight: 'bold',
+    fontFamily: fontFamily.appTextLight,
+    fontSize: fontSize.medium,
   },
   modalView: {
     width: sizes.screenWidth,
@@ -127,7 +140,7 @@ export const styles = StyleSheet.create({
     height: sizes.screenHeight * 0.06,
     width: sizes.screenWidth * 0.89,
     alignItems: 'center',
-    alignSelf:'center',
+    alignSelf: 'center',
     justifyContent: 'center',
   },
 });

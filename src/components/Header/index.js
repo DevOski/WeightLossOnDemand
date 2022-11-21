@@ -65,7 +65,7 @@ export default function Header({
           <View style={styles.filterView}>
             <TouchableOpacity onPress={() => navigation.navigate('Filter')}>
               <View style={[styles.row, styles.filterLeft]}>
-                <Text style={styles.filter}>{'   '}Filter </Text>
+                <Text style={styles.filter}>Filter </Text>
               </View>
             </TouchableOpacity>
           </View>

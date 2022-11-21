@@ -68,11 +68,11 @@ export default function Physicans({navigation, route}) {
                     <View style={styles.rowinner}>
                       <View style={styles.img}>
                         <Image
-                          style={{
-                            width: '100%',
-                            height: '100%',
-                            borderRadius: sizes.screenWidth * 0.5,
-                          }}
+                          style={
+                            Platform.OS !== 'ios'
+                              ? styles.trImg
+                              : styles.trImgIOS
+                          }
                           source={ladyy}
                         />
                       </View>
@@ -340,5 +340,15 @@ const styles = StyleSheet.create({
   paddingLeft: {
     paddingTop: sizes.screenHeight * 0.03,
     paddingLeft: sizes.screenWidth * 0.05,
+  },
+  trImg: {
+    width: '100%',
+    height: '100%',
+    borderRadius: sizes.screenWidth * 0.5,
+  },
+  trImgIOS: {
+    width: sizes.screenWidth * 0.22,
+    height: sizes.screenHeight * 0.1,
+    borderRadius: sizes.screenWidth * 0.5,
   },
 });

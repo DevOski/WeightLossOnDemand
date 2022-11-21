@@ -475,7 +475,7 @@ function MyTabs() {
             <Image
               source={images.icon2}
               style={{
-                height: sizes.screenHeight * 0.033,
+                height: Platform.OS !== 'ios' ? sizes.screenHeight * 0.033 : sizes.screenHeight * 0.028, 
                 width: sizes.screenWidth * 0.06,
               }}
             />
