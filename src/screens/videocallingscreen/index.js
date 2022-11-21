@@ -31,7 +31,7 @@ import {removeData} from '../../store/actions';
 const appId = '270b512970864b0a93b14650e52e8f9c';
 const channelName = 'Testing';
 const token =
-  '007eJxTYDjq+CJv3usnHAnTDW2tVgevSTPtP7bvxPx14q57F/p0OgcpMBiZGySZGhpZmhtYmJkkGSRaGicZmpiZGqSaGqVapFkmP6gpT24IZGQoy1zAwAiFID47Q0hqcUlmXjoDAwC2/yCF';
+  '007eJxTYEiYtOmzmUH3skXHyvtq+3XPv0mLqbm07PvBuzFtv7NFr/goMBiZGySZGhpZmhtYmJkkGSRaGicZmpiZGqSaGqVapFkmu0dUJzcEMjKs2BHCwsgAgSA+O0NIanFJZl46AwMAXDIiWw==';
 const uid = 0;
 export default function Videocalling({navigation, route}) {
   const agoraEngineRef = useRef(); // Agora engine instance
@@ -118,26 +118,26 @@ export default function Videocalling({navigation, route}) {
   };
 
   const join = async () => {
-    navigation.navigate('RateProvider', {
-      trainer: route?.params?.trainer,
-      apt_id: route?.params?.apt_id,
-    });
-    // if (isJoined) {
-    //   return;
-    // }
-    // try {
-    //   agoraEngineRef.current?.setChannelProfile(
-    //     ChannelProfileType.ChannelProfileCommunication,
-    //   );
+    // navigation.navigate('RateProvider', {
+    //   trainer: route?.params?.trainer,
+    //   apt_id: route?.params?.apt_id,
+    // });
+    if (isJoined) {
+      return;
+    }
+    try {
+      agoraEngineRef.current?.setChannelProfile(
+        ChannelProfileType.ChannelProfileCommunication,
+      );
 
-    //   agoraEngineRef.current?.startPreview();
-    //   agoraEngineRef.current?.joinChannel(token, channelName, 0, {
-    //     clientRoleType: ClientRoleType.ClientRoleBroadcaster,
-    //   });
-    //   console.log('work---->>', token, channelName, 0);
-    // } catch (e) {
-    //   console.log(e);
-    // }
+      agoraEngineRef.current?.startPreview();
+      agoraEngineRef.current?.joinChannel(token, channelName, 0, {
+        clientRoleType: ClientRoleType.ClientRoleBroadcaster,
+      });
+      console.log('work---->>', token, channelName, 0);
+    } catch (e) {
+      console.log(e);
+    }
   };
   const switchCamera = () => {
     agoraEngineRef.switchCamera();

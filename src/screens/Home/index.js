@@ -26,6 +26,7 @@ import images from '../../services/utilities/images';
 import {storeUserData} from '../../store/actions';
 import {styles} from './style';
 import bg1 from '../../assets/bg1.jpeg';
+import PushNotificationIOS from '@react-native-community/push-notification-ios';
 
 export default function Home({navigation}) {
   const [userName, setUserName] = useState('');
@@ -47,6 +48,7 @@ export default function Home({navigation}) {
   const isVisible = useIsFocused();
 
   useEffect(() => {
+
     getUserDetails();
     getTrainers();
     getPastVisit();
@@ -98,7 +100,6 @@ export default function Home({navigation}) {
         response.data.data.tr_name !== 'random' &&
         currentFinalDate == response.data.data.apt_time
       ) {
-        handleNotif();
         console.log(response.data.data);
         navigation.navigate('ProviderReview', {
           tr_id: response.data.data.trainer_id,
@@ -153,7 +154,9 @@ export default function Home({navigation}) {
       .then(result => console.log(result))
       .catch(error => console.log('error', error));
   };
-  return (
+
+ 
+   return (
     <SafeAreaView>
       <ScrollView style={styles.color}>
         <View style={[styles.row, styles.padding]}>
@@ -167,6 +170,8 @@ export default function Home({navigation}) {
             onPress={
               () => navigation.navigate('Setting')
               // handleAPI
+              // handleNotif()
+
             }>
             <Image source={images.setting} style={styles.settingIcon} />
           </TouchableOpacity>
