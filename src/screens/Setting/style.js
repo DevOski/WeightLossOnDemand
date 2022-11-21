@@ -138,4 +138,7 @@ export const styles = StyleSheet.create({
     top: -20,
     height: sizes.screenHeight,
   },
+  bottomIOS: {
+    paddingBottom: sizes.screenHeight * 0.05,
+  },
 });

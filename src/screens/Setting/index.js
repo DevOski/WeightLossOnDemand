@@ -2,6 +2,7 @@ import React, {useEffect, useRef, useState} from 'react';
 import {
   Image,
   ImageBackground,
+  Platform,
   SafeAreaView,
   ScrollView,
   Switch,
@@ -286,6 +287,7 @@ export default function Setting({navigation}) {
         <View style={[styles.right, styles.top, styles.bottom]}>
           <Text style={styles.version}>VERSION 1.0.0</Text>
         </View>
+        {Platform.OS == 'ios' && <View style={styles.bottomIOS}></View>}
         {isModalVisible && (
           <Modal style={styles.modalView} isVisible={isModalVisible}>
             <TouchableOpacity onPress={toggleModal}>
