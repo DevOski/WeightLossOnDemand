@@ -9,6 +9,7 @@ import {
   TouchableOpacity,
   View,
   TextInput,
+  Platform,
 } from 'react-native';
 import Header from '../../components/Header';
 import {styles} from './style';
@@ -116,6 +117,8 @@ export default function FAQs() {
             weight loss, especially for newcomers.
           </Text>
         </View>
+        {Platform.OS == 'ios' && <View style={styles.bottomIOS}></View>}
+
       </ScrollView>
     </SafeAreaView>
   );
