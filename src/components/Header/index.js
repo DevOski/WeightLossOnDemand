@@ -56,7 +56,7 @@ export default function Header({
           <View style={styles.skipView}>
             <TouchableOpacity onPress={() => navigation.goBack()}>
               <View style={[styles.row, styles.leftDone]}>
-                <Text style={styles.title2}>Done</Text>
+                <Text style={ Platform.OS !== 'ios' ? styles.title2 : styles.title2IOS}>Done</Text>
               </View>
             </TouchableOpacity>
           </View>
@@ -65,7 +65,7 @@ export default function Header({
           <View style={styles.filterView}>
             <TouchableOpacity onPress={() => navigation.navigate('Filter')}>
               <View style={[styles.row, styles.filterLeft]}>
-                <Text style={styles.filter}>{'   '}Filter </Text>
+                <Text style={styles.filter}>Filter </Text>
               </View>
             </TouchableOpacity>
           </View>
@@ -92,7 +92,7 @@ export default function Header({
           <View style={[styles.skipView, styles.leftDone]}>
             <TouchableOpacity onPress={() => navigation.goBack()}>
               <View style={[styles.row]}>
-                <Text style={styles.title}>Skip </Text>
+                <Text style={ Platform.OS !== 'ios' ? styles.title: styles.titleIOS}>Skip </Text>
                 <MaterialIcons
                   name="keyboard-arrow-right"
                   color={colors.white}

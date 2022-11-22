@@ -36,4 +36,8 @@ export const styles = StyleSheet.create({
   paddingBottom: {
     paddingBottom: sizes.screenHeight * 0.03,
   },
+  bottomIOS: {
+    paddingBottom: sizes.screenHeight * 0.05,
+  },
 });
+

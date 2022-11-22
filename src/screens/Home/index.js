@@ -25,6 +25,7 @@ import {
 import images from '../../services/utilities/images';
 import {storeUserData} from '../../store/actions';
 import {styles} from './style';
+import PushNotificationIOS from '@react-native-community/push-notification-ios';
 
 export default function Home({navigation}) {
   const [userName, setUserName] = useState('');
@@ -46,6 +47,7 @@ export default function Home({navigation}) {
   const isVisible = useIsFocused();
 
   useEffect(() => {
+
     getUserDetails();
     getTrainers();
     getPastVisit();
@@ -97,7 +99,6 @@ export default function Home({navigation}) {
         response.data.data.tr_name !== 'random' &&
         currentFinalDate == response.data.data.apt_time
       ) {
-        handleNotif();
         console.log(response.data.data);
         navigation.navigate('ProviderReview', {
           tr_id: response.data.data.trainer_id,
@@ -152,7 +153,9 @@ export default function Home({navigation}) {
       .then(result => console.log(result))
       .catch(error => console.log('error', error));
   };
-  return (
+
+ 
+   return (
     <SafeAreaView>
       <ScrollView style={styles.color}>
         <View style={[styles.row, styles.padding]}>
@@ -166,6 +169,8 @@ export default function Home({navigation}) {
             onPress={
               () => navigation.navigate('Setting')
               // handleAPI
+              // handleNotif()
+
             }>
             <Image source={images.setting} style={styles.settingIcon} />
           </TouchableOpacity>
@@ -178,7 +183,11 @@ export default function Home({navigation}) {
           style={styles.wrap}>
           {item?.map((item, index) => {
             return (
-              <View key={index} style={styles.cardView}>
+              <View
+                key={index}
+                style={
+                  Platform.OS !== 'ios' ? styles.cardView : styles.cardViewIOS
+                }>
                 {index == 0 && (
                   <ImageBackground
                     key={index}
@@ -190,7 +199,12 @@ export default function Home({navigation}) {
                           uri: 'https://www.youtube.com/embed/JLnycPtolfw',
                         })
                       }>
-                      <View style={styles.playBtn}>
+                      <View
+                        style={
+                          Platform.OS !== 'ios'
+                            ? styles.playBtn
+                            : styles.playBtnIOS
+                        }>
                         <Image
                           source={images.playIcon}
                           style={styles.playIcon}
@@ -310,13 +324,13 @@ export default function Home({navigation}) {
                         Let us assist you in finding the right trainer for you.
                       </Text>
                     </View>
+                    <View style={[styles.learnMoreView, styles.row2]}>
                     <TouchableOpacity
                       onPress={() => navigation.navigate('beyondscreen')}>
-                      <View style={[styles.learnMoreView, styles.row2]}>
                         <Text style={styles.semiText}>Learn more</Text>
                         <Text style={styles.symbol}> ›</Text>
-                      </View>
                     </TouchableOpacity>
+                      </View>
                   </ImageBackground>
                 )}
                 {index == 3 && (
@@ -331,8 +345,8 @@ export default function Home({navigation}) {
                             key={index}
                             style={[styles.row2, styles.paddingLeft]}>
                             <Image
-                              source={{uri:item.images}}
-                              style={styles.providerImg}
+                              source={{uri: item.images}}
+                              style={Platform.OS !== 'ios' ? styles.providerImg : styles.providerImgIOS}
                             />
                             <View>
                               <Text style={styles.providerHead}>

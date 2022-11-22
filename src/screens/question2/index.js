@@ -47,7 +47,6 @@ export default function Questiontwo({navigation, route}) {
   };
   // console.log(question,"question");
   // console.log('question2', {question1: question});
- ;
   // const q2=useSelector(state =>state.question2)
   // console.log(q2,'====>q2');
   const handleEmail = () => {
@@ -65,76 +64,87 @@ export default function Questiontwo({navigation, route}) {
         <View style={styles.padding}>
           <Text style={styles.text}>{Qa}</Text>
           <View style={styles.width}>
-            <View style={styles.ro}>
-              <Text style={styles.lstyle}>Morning</Text>
-              <RadioButton
-                status={Morning ? 'checked' : 'unchecked'}
-                onPress={() => {
-                  setMorning(!Morning);
-                  setAfternoon(false);
-                  setEvening(false);
-                  setNight(false);
-                  setselectanswer1('Morning');
-                  // setgender('Female');
-                  // setCheckedMale(false);
-                  // setCheckedOther(false);
-                }}
-                color={'#be1d2d'}
-                uncheckColor={colors.secondary}
-              />
-            </View>
-            <View style={styles.ro}>
-              <Text style={styles.lstyle}>Afternoon</Text>
-              <RadioButton
-                status={Afternoon ? 'checked' : 'unchecked'}
-                onPress={() => {
-                  setAfternoon(!Afternoon);
-                  setMorning(false);
-                  setselectanswer1('Afternoon');
-                  setEvening(false);
-                  setNight(false);
-                }}
-                color={'#be1d2d'}
-                uncheckColor={colors.secondary}
-              />
-            </View>
-            <View style={styles.ro}>
-              <Text style={styles.lstyle}>Evening</Text>
-              <RadioButton
-                status={Evening ? 'checked' : 'unchecked'}
-                onPress={() => {
-                  setEvening(!Evening);
-                  setAfternoon(false);
-                  setMorning(false);
-                  setselectanswer1('Evening');
+            <TouchableOpacity
+              onPress={() => {
+                setMorning(!Morning);
+                setAfternoon(false);
+                setEvening(false);
+                setNight(false);
+                setselectanswer1('Morning');
+                // setgender('Female');
+                // setCheckedMale(false);
+                // setCheckedOther(false);
+              }}>
+              <View style={styles.ro}>
+                <Text style={styles.lstyle}>Morning</Text>
+                <RadioButton
+                  status={Morning ? 'checked' : 'unchecked'}
+                  color={'#be1d2d'}
+                  uncheckColor={colors.secondary}
+                />
+              </View>
+            </TouchableOpacity>
 
-                  setNight(false);
-                }}
-                color={'#be1d2d'}
-                uncheckColor={colors.secondary}
-              />
-            </View>
-            <View style={styles.ro}>
-              <Text style={styles.lstyle}>Night</Text>
-              <RadioButton
-                status={Night ? 'checked' : 'unchecked'}
-                onPress={() => {
-                  setNight(!Night);
-                  setAfternoon(false);
-                  setMorning(false);
-                  setselectanswer1('Night');
+            <TouchableOpacity
+              onPress={() => {
+                setAfternoon(!Afternoon);
+                setMorning(false);
+                setselectanswer1('Afternoon');
+                setEvening(false);
+                setNight(false);
+              }}>
+              <View style={styles.ro}>
+                <Text style={styles.lstyle}>Afternoon</Text>
+                <RadioButton
+                  status={Afternoon ? 'checked' : 'unchecked'}
+                  color={'#be1d2d'}
+                  uncheckColor={colors.secondary}
+                />
+              </View>
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => {
+                setEvening(!Evening);
+                setAfternoon(false);
+                setMorning(false);
+                setselectanswer1('Evening');
 
-                  setEvening(false);
-                }}
-                color={'#be1d2d'}
-                uncheckColor={colors.secondary}
-              />
-            </View>
+                setNight(false);
+              }}>
+              <View style={styles.ro}>
+                <Text style={styles.lstyle}>Evening</Text>
+                <RadioButton
+                  status={Evening ? 'checked' : 'unchecked'}
+                  color={'#be1d2d'}
+                  uncheckColor={colors.secondary}
+                />
+              </View>
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => {
+                setNight(!Night);
+                setAfternoon(false);
+                setMorning(false);
+                setselectanswer1('Night');
+                setEvening(false);
+              }}>
+              <View style={styles.ro}>
+                <Text style={styles.lstyle}>Night</Text>
+                <RadioButton
+                  status={Night ? 'checked' : 'unchecked'}
+                  color={'#be1d2d'}
+                  uncheckColor={colors.secondary}
+                />
+              </View>
+            </TouchableOpacity>
           </View>
 
           <View style={styles.paddingTop}>
-            <TouchableOpacity onPress={handleEmail}  disabled={selectanswer1?false:true}>
-              <View style={selectanswer1?styles.buttonView:styles.disabledView}>
+            <TouchableOpacity
+              onPress={handleEmail}
+              disabled={selectanswer1 ? false : true}>
+              <View
+                style={selectanswer1 ? styles.buttonView : styles.disabledView}>
                 <Text style={styles.buttonText}>Next</Text>
               </View>
             </TouchableOpacity>

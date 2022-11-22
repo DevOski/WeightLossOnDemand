@@ -54,4 +54,7 @@ export const styles = StyleSheet.create({
   paddingTop2: {
     paddingTop: sizes.screenHeight * 0.005,
   },
+  bottomIOS: {
+    paddingBottom: sizes.screenHeight * 0.15,
+  },
 });

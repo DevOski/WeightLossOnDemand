@@ -1,17 +1,12 @@
+import {Platform} from 'react-native';
 import {totalSize} from 'react-native-dimension';
 
 const fontFamily = {
-  // appTextLight: 'Raleway-Light',
-  // appTextRegular: 'Raleway-Regular',
-  // appTextMedium: 'Raleway-Medium',
-  // appTextBold: 'Raleway-Bold',
-  // appTextExtraBold: 'Raleway-ExtraBold',
-  appTextRegular:'sans-serif',
-  appTextHeading: 'Roboto',
-  appTextLight: 'sans-serif-light',
-  appTextMedium: 'sans-serif-medium',
-  appTextCondensed: 'sans-serif-condensed',
-  // appTextExtraBold: 'Roboto-ExtraBold',
+  appTextRegular: Platform.OS !== 'ios' ? 'sans-serif' : 'Arial',
+  appTextHeading: Platform.OS !== 'ios' ? 'Roboto' : 'Arial',
+  appTextLight: Platform.OS !== 'ios' ? 'sans-serif-light' : 'Arial',
+  appTextMedium: Platform.OS !== 'ios' ? 'sans-serif-medium' : 'Arial',
+  appTextCondensed: Platform.OS !== 'ios' ? 'sans-serif-condensed' : 'Arial',
 };
 const fontSize = {
   h1: totalSize(4.5),
@@ -25,10 +20,10 @@ const fontSize = {
   large: totalSize(2),
   medium: totalSize(1.75),
   regular: totalSize(1.6),
-  smallM:totalSize(1.5),
+  smallM: totalSize(1.5),
   small: totalSize(1.25),
   tiny: totalSize(1),
-  extraSmall:totalSize(0.8)
+  extraSmall: totalSize(0.8),
 };
 
 export {fontFamily, fontSize};

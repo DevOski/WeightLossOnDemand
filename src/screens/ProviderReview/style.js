@@ -47,6 +47,12 @@ export const styles = StyleSheet.create({
     width: sizes.screenWidth * 0.32,
     borderRadius:sizes.screenWidth*0.5
   },
+  docImgIOS:{
+    height: sizes.screenHeight * 0.15,
+    width: sizes.screenWidth * 0.33,
+    alignSelf: 'center',
+    borderRadius:sizes.screenWidth*0.5
+  },
   info: {
     top: sizes.screenHeight * 0.1,
     alignSelf: 'center',

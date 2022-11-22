@@ -9,6 +9,7 @@ import {
   TouchableOpacity,
   View,
   StyleSheet,
+  Platform,
 } from 'react-native';
 import Header from '../../components/Header';
 import images from '../../services/utilities/images';
@@ -91,11 +92,7 @@ export const VisitDetail = ({navigation, route}) => {
             <View>
               <View style={styles.img}>
                 <Image
-                  style={{
-                    width: '100%',
-                    height: '100%',
-                    borderRadius: sizes.screenWidth * 0.5,
-                  }}
+                  style={Platform.OS !== 'ios' ? styles.trImg : styles.trImgIOS}
                   source={ladyy}
                 />
               </View>
@@ -355,5 +352,16 @@ const styles = StyleSheet.create({
   },
   mt: {
     marginTop: sizes.screenHeight * 0.02,
+  },
+  trImg: {
+    width: '100%',
+    height: '100%',
+    borderRadius: sizes.screenWidth * 0.5,
+  },
+  trImgIOS: {
+    width: sizes.screenWidth * 0.32,
+    height: sizes.screenHeight * 0.15,
+    borderRadius: sizes.screenWidth * 0.5,
+    right: sizes.screenWidth * 0.1,
   },
 });

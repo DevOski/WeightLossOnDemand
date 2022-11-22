@@ -62,7 +62,12 @@ export const ProviderDetail = ({navigation, route}) => {
       <ScrollView>
         <View style={styles.container1}>
           <View style={{justifyContent: 'center', alignItems: 'center'}}>
-            <Text style={styles.hedtext}>{trainer?.tr_name}</Text>
+            <Text
+              style={
+                Platform.OS !== 'ios' ? styles.hedtext : styles.hedtextIOS
+              }>
+              {trainer?.tr_name}
+            </Text>
           </View>
           <View style={styles.flex}>
             <View>
@@ -71,11 +76,7 @@ export const ProviderDetail = ({navigation, route}) => {
             <View>
               <View style={styles.img}>
                 <Image
-                  style={{
-                    width: '100%',
-                    height: '100%',
-                    borderRadius: sizes.screenWidth * 0.5,
-                  }}
+                  style={Platform.OS !== 'ios' ? styles.trImg : styles.trImgIOS}
                   source={ladyy}
                 />
               </View>
@@ -92,9 +93,24 @@ export const ProviderDetail = ({navigation, route}) => {
                         trainer: trainer,
                       })
                     }>
-                    <Text style={styles.tex}>{item?.tr_day}</Text>
-                    <Text style={styles.tex}>{item?.tr_date}</Text>
-                    <Text style={styles.tex}>{item.sl_time}</Text>
+                    <Text
+                      style={
+                        Platform.OS !== 'ios' ? styles.tex : styles.texIOS
+                      }>
+                      {item?.tr_day}
+                    </Text>
+                    <Text
+                      style={
+                        Platform.OS !== 'ios' ? styles.tex : styles.texIOS
+                      }>
+                      {item?.tr_date}
+                    </Text>
+                    <Text
+                      style={
+                        Platform.OS !== 'ios' ? styles.tex : styles.texIOS
+                      }>
+                      {item.sl_time}
+                    </Text>
                   </TouchableOpacity>
                 </View>
               );
@@ -158,16 +174,31 @@ export const ProviderDetail = ({navigation, route}) => {
             </View> */}
           </View>
           <View style={styles.crd}>
-            <Text style={styles.subhead}>Focus Areas</Text>
+            <Text
+              style={
+                Platform.OS !== 'ios' ? styles.subhead : styles.subheadIOS
+              }>
+              Focus Areas
+            </Text>
             <Text style={styles.providertex}>{trainer?.focus_area}</Text>
           </View>
           <View style={styles.crd}>
-            <Text style={styles.subhead}>Language</Text>
+            <Text
+              style={
+                Platform.OS !== 'ios' ? styles.subhead : styles.subheadIOS
+              }>
+              Language
+            </Text>
             <Text style={styles.providertex}>{trainer?.languages}</Text>
           </View>
 
           <View style={styles.crd}>
-            <Text style={styles.subhead}>QUALIFICATIONS</Text>
+            <Text
+              style={
+                Platform.OS !== 'ios' ? styles.subhead : styles.subheadIOS
+              }>
+              QUALIFICATIONS
+            </Text>
             <Text style={styles.providertex}>{trainer?.qualifications}</Text>
           </View>
         </View>
@@ -201,6 +232,12 @@ const styles = StyleSheet.create({
     color: colors.black,
     fontWeight: 'bold',
   },
+  hedtextIOS: {
+    marginBottom: sizes.screenHeight * 0.0,
+    fontSize: fontSize.h5,
+    color: colors.black,
+    fontWeight: 'bold',
+  },
   hedtext1: {
     fontSize: fontSize.large,
     color: colors.black,
@@ -228,6 +265,12 @@ const styles = StyleSheet.create({
   subhead: {
     fontSize: fontSize.large,
     color: colors.appBgColor2,
+    fontWeight: 'bold',
+    fontFamily: fontFamily.appTextLight,
+  },
+  subheadIOS:{
+    fontSize: fontSize.large,
+    color: colors.black,
     fontWeight: 'bold',
     fontFamily: fontFamily.appTextLight,
   },
@@ -325,6 +368,12 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center',
   },
+  texIOS: {
+    fontSize: fontSize.medium,
+    color: colors.secondary,
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
   buttnView: {
     marginLeft: sizes.screenWidth * 0.06,
     // marginTop: sizes.screenHeight * 0.03,
@@ -347,5 +396,16 @@ const styles = StyleSheet.create({
     fontSize: fontSize.h6,
     fontFamily: fontFamily.appTextHeading,
     fontWeight: '600',
+  },
+  trImg: {
+    width: '100%',
+    height: '100%',
+    borderRadius: sizes.screenWidth * 0.5,
+  },
+  trImgIOS: {
+    width: sizes.screenWidth * 0.45,
+    height: sizes.screenHeight * 0.21,
+    borderRadius: sizes.screenWidth * 0.5,
+    alignSelf: 'center',
   },
 });

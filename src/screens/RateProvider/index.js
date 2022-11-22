@@ -2,6 +2,7 @@ import React, {useEffect, useRef, useState} from 'react';
 import {
   Image,
   ImageBackground,
+  Platform,
   SafeAreaView,
   ScrollView,
   Switch,
@@ -60,7 +61,7 @@ export default function RateProvider({navigation, route}) {
               ? route?.params?.trainer?.tr_image
               : route?.params?.trainer?.images,
           }}
-          style={styles.docImg}
+          style={Platform.OS !== 'ios' ? styles.docImg : styles.docImgIOS}
         />
         <Text style={styles.providerTitle}>
           {route?.params?.trainer?.tr_name}

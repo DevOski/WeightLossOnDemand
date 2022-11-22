@@ -30,7 +30,7 @@ export const ReasonForDcoctor = ({navigation, route}) => {
   const isVisible = useIsFocused();
 
   const dispatch = useDispatch();
-  
+
   useEffect(() => {
     getReasons();
   }, [isVisible]);
@@ -89,11 +89,7 @@ export const ReasonForDcoctor = ({navigation, route}) => {
               placeholder="Search"
               value={search}
               onChangeText={text => handleSearch(text)}
-              style={{
-                color: colors.black,
-                marginLeft: sizes.screenWidth * 0.02,
-                fontFamily: fontFamily.appTextRegular,
-              }}
+              style={Platform.OS !== 'ios' ? styles.input : styles.inputIOS}
             />
           </View>
         </View>
@@ -635,4 +631,15 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     alignSelf: 'center',
   },
+  input: {
+    color: colors.black,
+    marginLeft: sizes.screenWidth * 0.02,
+    fontFamily: fontFamily.appTextRegular,
+  },
+  inputIOS:{
+    color: colors.black,
+    marginLeft: sizes.screenWidth * 0.02,
+    fontFamily: fontFamily.appTextRegular,
+    fontSize:fontSize.medium
+  }
 });

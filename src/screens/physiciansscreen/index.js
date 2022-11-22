@@ -68,11 +68,11 @@ export default function Physicans({navigation, route}) {
                     <View style={styles.rowinner}>
                       <View style={styles.img}>
                         <Image
-                          style={{
-                            width: '100%',
-                            height: '100%',
-                            borderRadius: sizes.screenWidth * 0.5,
-                          }}
+                          style={
+                            Platform.OS !== 'ios'
+                              ? styles.trImg
+                              : styles.trImgIOS
+                          }
                           source={ladyy}
                         />
                       </View>
@@ -88,7 +88,13 @@ export default function Physicans({navigation, route}) {
                     </Text>
                   </View>
                   <View>
-                    <Text style={styles.symbol}> ›</Text>
+                    <Text
+                      style={
+                        Platform.OS !== 'ios' ? styles.symbol : styles.symbolIOS
+                      }>
+                      {' '}
+                      ›
+                    </Text>
                   </View>
                 </View>
               </TouchableOpacity>
@@ -245,7 +251,7 @@ const styles = StyleSheet.create({
     paddingLeft: sizes.screenWidth * 0.05,
   },
   heading: {
-    fontSize: fontSize.h5,
+    fontSize: fontSize.h6,
     color: colors.black,
     fontWeight: 'bold',
     paddingLeft: sizes.screenWidth * 0.05,
@@ -254,8 +260,8 @@ const styles = StyleSheet.create({
     padding: sizes.baseMargin,
   },
   subHeading: {
-    fontSize: fontSize.h4,
-    fontWeight: 'bold',
+    fontSize: fontSize.h5,
+    // fontWeight: 'bold',
     color: colors.black,
   },
   row: {
@@ -296,7 +302,7 @@ const styles = StyleSheet.create({
   },
   cardText1: {
     color: colors.primary,
-    fontSize: fontSize.large,
+    fontSize: fontSize.medium,
     paddingTop: sizes.screenHeight * 0.01,
     paddingLeft: sizes.screenWidth * 0.04,
     lineHeight: sizes.screenHeight * 0.027,
@@ -306,6 +312,12 @@ const styles = StyleSheet.create({
     fontSize: fontSize.h3,
     bottom: 1,
     paddingRight: sizes.TinyMargin,
+  },
+  symbolIOS: {
+    color: colors.secondary,
+    fontSize: fontSize.h3,
+    bottom: 1,
+    right: sizes.screenWidth * 0.05,
   },
   videoView: {
     width: sizes.screenWidth,
@@ -328,5 +340,15 @@ const styles = StyleSheet.create({
   paddingLeft: {
     paddingTop: sizes.screenHeight * 0.03,
     paddingLeft: sizes.screenWidth * 0.05,
+  },
+  trImg: {
+    width: '100%',
+    height: '100%',
+    borderRadius: sizes.screenWidth * 0.5,
+  },
+  trImgIOS: {
+    width: sizes.screenWidth * 0.22,
+    height: sizes.screenHeight * 0.1,
+    borderRadius: sizes.screenWidth * 0.5,
   },
 });

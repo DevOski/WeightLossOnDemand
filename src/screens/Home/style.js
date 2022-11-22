@@ -76,21 +76,47 @@ export const styles = StyleSheet.create({
     shadowRadius: 3.84,
     elevation: 5,
   },
-  cardView2:{
+  cardViewIOS: {
+    height: sizes.screenHeight * 0.695,
+    width: sizes.screenWidth * 0.9,
+    backgroundColor: colors.white,
+    // marginBottom: sizes.TinyMargin,
+    // bottom:sizes.screenHeight * 0.03,
+    marginRight: sizes.screenWidth * 0.02,
+    marginLeft: sizes.screenWidth * 0.04,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
+  },
+  cardView2: {
     width: sizes.screenWidth * 0.9,
     marginRight: sizes.screenWidth * 0.02,
     marginLeft: sizes.screenWidth * 0.04,
   },
   bg: {
     height: sizes.screenHeight * 0.72,
-    width: sizes.screenWidth *0.9,
+    width: sizes.screenWidth * 0.9,
   },
   playBtn: {
     top: sizes.screenHeight * 0.3,
     alignSelf: 'center',
     backgroundColor: 'rgba(255, 255, 247,0.3)',
     height: sizes.screenHeight * 0.11,
-    width: sizes.screenWidth * 0.20,
+    width: sizes.screenWidth * 0.2,
+    borderRadius: sizes.screenWidth * 0.8,
+    justifyContent: 'center',
+  },
+  playBtnIOS: {
+    top: sizes.screenHeight * 0.3,
+    alignSelf: 'center',
+    backgroundColor: 'rgba(255, 255, 247,0.3)',
+    height: sizes.screenHeight * 0.08,
+    width: sizes.screenWidth * 0.18,
     borderRadius: sizes.screenWidth * 0.8,
     justifyContent: 'center',
   },
@@ -196,6 +222,11 @@ export const styles = StyleSheet.create({
     height: sizes.screenHeight * 0.08,
     width: sizes.screenWidth * 0.15,
   },
+  providerImgIOS: {
+    height: sizes.screenHeight * 0.08,
+    width: sizes.screenWidth * 0.18,
+    borderRadius: sizes.screenWidth * 0.5,
+  },
   paddingLeft: {
     padding: sizes.TinyMargin,
     paddingTop: sizes.screenHeight * 0.02,
@@ -221,34 +252,34 @@ export const styles = StyleSheet.create({
   paddingBottom: {
     paddingBottom: sizes.screenHeight * 0.1,
   },
-  he:{
+  he: {
     fontWeight: '400',
     color: colors.black,
     fontSize: fontSize.h6,
     top: sizes.screenHeight * 0.03,
     fontFamily: fontFamily.appTextRegular,
   },
-  het:{
+  het: {
     fontWeight: '400',
     color: colors.black,
     fontSize: fontSize.h6,
     top: sizes.screenHeight * 0.03,
     fontFamily: fontFamily.appTextRegular,
-    lineHeight:sizes.screenHeight * 0.04,
+    lineHeight: sizes.screenHeight * 0.04,
   },
-  het1:{
+  het1: {
     marginTop: sizes.screenHeight * 0.03,
   },
   buttnView: {
     // marginRight:sizes.screenWidth*0.06,
     marginTop: sizes.screenHeight * 0.03,
-    marginRight:sizes.screenWidth*0.05,
+    marginRight: sizes.screenWidth * 0.05,
     justifyContent: 'center',
     alignItems: 'center',
   },
   buttonView: {
-    borderWidth:sizes.screenWidth*0.006,
-    borderColor:colors.secondary,
+    borderWidth: sizes.screenWidth * 0.006,
+    borderColor: colors.secondary,
     height: sizes.screenHeight * 0.06,
     width: sizes.screenWidth * 0.79,
     alignItems: 'center',
