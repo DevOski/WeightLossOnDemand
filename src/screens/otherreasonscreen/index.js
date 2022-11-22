@@ -27,7 +27,7 @@ export const OtherReason = ({navigation,route}) => {
       </View>
 
       <View style={styles.headcontainer}>
-        <Text style={styles.hedtext}>What is the reason for your visit ?</Text>
+        <Text style={styles.hedtext}>What is the reason for your session?</Text>
       </View>
       <View style={styles.getextcontainer}>
         <View style={styles.filedcon}>

@@ -118,6 +118,8 @@ export default function HowLikelyRecommend({navigation, route}) {
           <View>
             <TouchableOpacity
               onPress={() => {
+                setIsModalVisible(false);
+
                 navigation.navigate('ThankyouVisit', {
                   trianer: route?.params?.trainer,
                   apt_id: route?.params?.apt_id,

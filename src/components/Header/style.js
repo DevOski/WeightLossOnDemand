@@ -29,6 +29,9 @@ export const styles = StyleSheet.create({
     bottom: 0,
     zIndex: 0,
   },
+  leftIOS: {
+    left: sizes.screenWidth * 0.28,
+  },
   row: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -43,6 +46,12 @@ export const styles = StyleSheet.create({
     color: colors.white,
     fontSize: fontSize.medium,
     fontFamily: fontFamily.appTextLight,
+  },
+  titleIOS2: {
+    color: colors.white,
+    fontSize: fontSize.medium,
+    fontFamily: fontFamily.appTextLight,
+    left: sizes.screenWidth * 0.29,
   },
   centerTitle: {
     color: colors.white,

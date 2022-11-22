@@ -487,7 +487,7 @@ function MyTabs() {
         name="GetCare"
         component={GetCare}
         options={{
-          tabBarLabel: 'Get Train',
+          tabBarLabel: 'Consult',
           tabBarIcon: ({color}) => (
             <MaterialCommunityIcons name="dumbbell" color={color} size={22} />
           ),
@@ -497,7 +497,7 @@ function MyTabs() {
         name="MyHealth"
         component={MyHealth}
         options={{
-          tabBarLabel: 'My Health',
+          tabBarLabel: 'Profile',
           tabBarIcon: ({color}) => (
             <FontAwesome name="heartbeat" color={color} size={22} />
           ),

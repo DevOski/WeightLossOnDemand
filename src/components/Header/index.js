@@ -56,7 +56,12 @@ export default function Header({
           <View style={styles.skipView}>
             <TouchableOpacity onPress={() => navigation.goBack()}>
               <View style={[styles.row, styles.leftDone]}>
-                <Text style={ Platform.OS !== 'ios' ? styles.title2 : styles.title2IOS}>Done</Text>
+                <Text
+                  style={
+                    Platform.OS !== 'ios' ? styles.title2 : styles.title2IOS
+                  }>
+                  Done
+                </Text>
               </View>
             </TouchableOpacity>
           </View>
@@ -92,12 +97,26 @@ export default function Header({
           <View style={[styles.skipView, styles.leftDone]}>
             <TouchableOpacity onPress={() => navigation.goBack()}>
               <View style={[styles.row]}>
-                <Text style={ Platform.OS !== 'ios' ? styles.title: styles.titleIOS}>Skip </Text>
+                {title == 'Our Website' ? (
+                  <Text
+                    style={
+                      Platform.OS !== 'ios' ? styles.title : styles.titleIOS2
+                    }>
+                    Exit{' '}
+                  </Text>
+                ) : (
+                  <Text
+                    style={
+                      Platform.OS !== 'ios' ? styles.title : styles.titleIOS
+                    }>
+                    Skip{' '}
+                  </Text>
+                )}
                 <MaterialIcons
                   name="keyboard-arrow-right"
                   color={colors.white}
                   size={20}
-                  style={styles.skipIcon}
+                  style={[styles.skipIcon,styles.leftIOS]}
                 />
               </View>
             </TouchableOpacity>

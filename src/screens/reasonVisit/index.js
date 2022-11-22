@@ -77,7 +77,7 @@ export const ReasonForDcoctor = ({navigation, route}) => {
       </View>
 
       <View style={styles.headcontainer}>
-        <Text style={styles.hedtext}>What is the reason for your visit?</Text>
+        <Text style={styles.hedtext}>What is the reason for your session?</Text>
       </View>
       <View style={styles.seachViewmain}>
         <View style={styles.seachView}>
@@ -95,7 +95,7 @@ export const ReasonForDcoctor = ({navigation, route}) => {
         </View>
       </View>
       <View style={styles.chooseContainer}>
-        <Text style={styles.chosetext}>OR CHOOSE FROME TOP REASONS</Text>
+        <Text style={styles.chosetext}>OR CHOOSE FROM TOP REASONS</Text>
       </View>
       <ScrollView>
         <View style={styles.listcontainer}>

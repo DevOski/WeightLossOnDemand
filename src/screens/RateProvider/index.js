@@ -54,7 +54,7 @@ export default function RateProvider({navigation, route}) {
             </TouchableOpacity>
           </View>
         </View>
-        <Text style={styles.rateText}>Rate your provider for this visit</Text>
+        <Text style={styles.rateText}>Rate your session for this visit</Text>
         <Image
           source={{
             uri: route?.params?.trainer?.tr_image
@@ -91,6 +91,7 @@ export default function RateProvider({navigation, route}) {
           <View>
             <TouchableOpacity
               onPress={() => {
+                setIsModalVisible(false);
                 navigation.navigate('HowLikelyRecommend', {
                   trianer: route?.params?.trainer,
                   apt_id: route?.params?.apt_id,

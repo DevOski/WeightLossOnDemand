@@ -106,7 +106,7 @@ export default function ProviderReview({navigation, route}) {
             </TouchableOpacity>
             <View style={styles.paddingTop}>
               <Text style={styles.findingText}>
-                Your provider is reviewing your chart...
+                Your consultant is reviewing your chart...
               </Text>
               <View style={styles.paddingTop}>
                 <Spinner
@@ -139,7 +139,7 @@ export default function ProviderReview({navigation, route}) {
           <Text style={styles.text}>{route?.params?.trainer?.type}</Text>
         </View>
         <View style={[styles.padding, styles.info, styles.top]}>
-          <Text style={styles.text}>Your visit will begin shortly</Text>
+          <Text style={styles.text}>Your session will begin shortly</Text>
         </View>
       </View>
     </SafeAreaView>

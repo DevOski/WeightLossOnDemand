@@ -45,7 +45,7 @@ export default function ChooseProvider({route, navigation}) {
             style={
               Platform.OS !== 'ios' ? styles.subHeading : styles.subHeadingIOS
             }>
-            Choose Trainer{' '}
+            Choose consultant{' '}
           </Text>
         </View>
         {trainer?.map((item, index) => {

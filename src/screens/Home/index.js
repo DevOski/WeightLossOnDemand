@@ -339,7 +339,7 @@ export default function Home({navigation}) {
                 {index == 3 && (
                   <View key={index} style={[styles.padding]}>
                     <Text style={[styles.heading, styles.top]}>
-                      Meet Our Professionals
+                      Meet our consultants
                     </Text>
                     {trainerList?.map((item, index) => {
                       console.log(item.images);
@@ -442,7 +442,7 @@ export default function Home({navigation}) {
                         onPress={() => navigation.navigate('meetOurproviders')}>
                         <View style={[styles.learnMoreBtn, styles.row2]}>
                           <Text style={styles.learnMoreText}>
-                            Connect to all trainers
+                            Connect to all consultants
                           </Text>
                           <Text style={styles.symbol}> ›</Text>
                         </View>

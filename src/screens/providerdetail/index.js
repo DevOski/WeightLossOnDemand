@@ -135,7 +135,7 @@ export const ProviderDetail = ({navigation, route}) => {
           </View>
 
           <View style={styles.crd}>
-            <Text style={styles.providertex}>Patient</Text>
+            <Text style={styles.providertex}>Description</Text>
             <Text style={[styles.subhead, styles.border]}>
               {trainer?.tr_desc}
             </Text>
@@ -178,7 +178,7 @@ export const ProviderDetail = ({navigation, route}) => {
               style={
                 Platform.OS !== 'ios' ? styles.subhead : styles.subheadIOS
               }>
-              Focus Areas
+              Consultant type
             </Text>
             <Text style={styles.providertex}>{trainer?.focus_area}</Text>
           </View>

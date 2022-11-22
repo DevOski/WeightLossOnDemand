@@ -55,7 +55,9 @@ export default function Physicans({navigation, route}) {
           {trainerList?.length ? (
             <Text style={styles.subHeading}>{t_name} </Text>
           ) : (
-            <Text style={styles.subHeading}>No consultant found </Text>
+            <Text style={styles.consultant}>
+              No consultants found.
+            </Text>
           )}
         </View>
         <View style={styles.paddingTop}>
@@ -266,6 +268,12 @@ const styles = StyleSheet.create({
     fontSize: fontSize.h5,
     // fontWeight: 'bold',
     color: colors.black,
+  },
+  consultant: {
+    alignSelf: 'center',
+    top: sizes.screenHeight * 0.3,
+    fontSize: fontSize.h5,
+    color: colors.secondary,
   },
   row: {
     flexDirection: 'row',

@@ -28,7 +28,7 @@ export default function HowToSchedule({navigation}) {
           <TouchableOpacity
             onPress={() => navigation.navigate('ChooseProvider')}>
             <View style={styles.buttonView}>
-              <Text style={styles.buttonText}> Find a trainer</Text>
+              <Text style={styles.buttonText}> Find a consultant</Text>
             </View>
           </TouchableOpacity>
         </View>

@@ -23,10 +23,10 @@ export const AppointmentReqest = ({navigation, route}) => {
   
   return (
     <SafeAreaView style={styles.container}>
-      <Header title={'Appointment Window'} />
+      <Header title={'Session Window'} />
       <View style={styles.bg}>
         <View style={styles.intext}>
-          <Text style={styles.tx}>Your Appointment is </Text>
+          <Text style={styles.tx}>Your session is </Text>
           <Text style={styles.tx}> scheduled for </Text>
         </View>
         <View style={styles.intext}>
@@ -39,8 +39,8 @@ export const AppointmentReqest = ({navigation, route}) => {
 
       <View>
         <Text style={styles.tx1}>
-          We will hold your appointment request for 20 minutes while you answer
-          a few question
+          We will hold your session request for 20 minutes while you answer
+          a few questions.
         </Text>
       </View>
       <View style={styles.top}>
