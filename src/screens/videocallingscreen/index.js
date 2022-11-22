@@ -24,10 +24,9 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import {useDispatch, useSelector} from 'react-redux';
 import {getAgoraToken, getTrainer, getUser} from '../../services/utilities/api/auth';
 import {removeData} from '../../store/actions';
-const appId = '270b512970864b0a93b14650e52e8f9c';
-const channelName = 'Testing';
-const token =
-'007eJxTYMg6eGTO3uXadrkmV7+1nhLQe/JyrXQ+o/qBXz3fk5mtWvQVGIzMDZJMDY0szQ0szEySDBItjZMMTcxMDVJNjVIt0iyTr5jkJTcEMjKwM9cyMzJAIJjPEJJaXJKZl87AAACbuB8/';
+const appId = appId;
+const channelName = channelName;
+const token ='007eJxTYHiTLRQ7gX/LxIgqxc2/NVfOa13mu/ixikejxPRVjOY67Z8VGIzMDZJMDY0szQ0szEySDBItjZMMTcxMDVJNjVIt0iyT26YWJzcEMjKs7ZnOyMgAgSA+O0NIanFJZl46AwMATOkfbg==';
 const uid = 0;
 export default function Videocalling({navigation, route}) {
   const agoraEngineRef = useRef(); // Agora engine instance
@@ -36,7 +35,7 @@ export default function Videocalling({navigation, route}) {
   const [message, setMessage] = useState(''); //
   const [channelName, setChannelName] = useState('');
   const [appId, setAppId] = useState('');
-  const [token, setToken] = useState('');
+  // const [token, setToken] = useState('');
   // const [token, setToken] = useState('');
   var isMuted = false;
   const usertoken = useSelector(state => state.token);
@@ -55,7 +54,8 @@ export default function Videocalling({navigation, route}) {
   const getToken = async () => {
     try {
       let response = await getAgoraToken();
-      // setAgoraToken(response.data.token);
+      setAgoraToken(response.data.token);
+      console.log(response.data);
       setAppId(response.data.appId);
       setToken(response.data.token);
       setChannelName(response.data.channelName);
@@ -120,11 +120,13 @@ export default function Videocalling({navigation, route}) {
     try {
       agoraEngineRef.current?.setChannelProfile(
         ChannelProfileType.ChannelProfileCommunication,
+       
       );
-
+console.log(token,'====');
       agoraEngineRef.current?.startPreview();
-      agoraEngineRef.current?.joinChannel(token, channelName, 0, {
+      agoraEngineRef.current?.joinChannel(token, "Testing", 0, {
         clientRoleType: ClientRoleType.ClientRoleBroadcaster,
+       
       });
       console.log('work---->>', token, channelName, 0);
     } catch (e) {
