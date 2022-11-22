@@ -38,7 +38,6 @@ export default function Physicans({navigation, route}) {
     setTimeout(async () => {
       try {
         let response = await getTrainerList(t_name);
-        // console.log(response.data.data);
         setTrainerList(response.data.data);
         setLoader(false);
       } catch (error) {
@@ -53,7 +52,11 @@ export default function Physicans({navigation, route}) {
 
       <ScrollView style={styles.color}>
         <View style={styles.paddingLeft}>
-          <Text style={styles.subHeading}>{t_name} </Text>
+          {trainerList?.length ? (
+            <Text style={styles.subHeading}>{t_name} </Text>
+          ) : (
+            <Text style={styles.subHeading}>No consultant found </Text>
+          )}
         </View>
         <View style={styles.paddingTop}>
           {trainerList?.map((item, index) => {

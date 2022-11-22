@@ -46,7 +46,7 @@ export default function Meetourproviders({navigation}) {
   };
   return (
     <SafeAreaView>
-      <Header title={'Connect to all trainers '} />
+      <Header title={'Connect to all consultants '} />
       <ScrollView style={styles.color}>
         {!showVideo ? (
           <ImageBackground source={images.allTrainer} style={styles.image}>
@@ -55,7 +55,7 @@ export default function Meetourproviders({navigation}) {
                 <Image source={images.playIcon} style={styles.playIcon} />
               </View>
               <View style={styles.textView}>
-                <Text style={styles.heading}>Meet Our Trainer</Text>
+                <Text style={styles.heading}>Meet Our Consultants</Text>
               </View>
             </TouchableOpacity>
           </ImageBackground>
@@ -99,7 +99,8 @@ export default function Meetourproviders({navigation}) {
                     navigation.navigate('physiciansscreen', {trainer: item})
                   }>
                   <View style={[styles.row, styles.card]}>
-                    <Text style={styles.cardText}>{item.t_name}</Text>
+                    <Text style={styles.cardText}>See all consultants</Text>
+                    {/* <Text style={styles.cardText}>{item.t_name}</Text> */}
                     <View>
                       <Text style={styles.symbol}> ›</Text>
                     </View>
@@ -117,7 +118,8 @@ export default function Meetourproviders({navigation}) {
               </View>
             </TouchableOpacity> */}
 
-            <TouchableOpacity
+            {/* As discussed with Jeff this was hidden at the last moment */}
+            {/* <TouchableOpacity
               onPress={() => navigation.navigate('screeningandtrainingscreen')}>
               <View style={[styles.row, styles.card]}>
                 <Text style={styles.cardText}>Screening & Training</Text>
@@ -134,8 +136,9 @@ export default function Meetourproviders({navigation}) {
                   <Text style={styles.symbol}> ›</Text>
                 </View>
               </View>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
           </View>
+
         </View>
         {loader && <Loader />}
       </ScrollView>

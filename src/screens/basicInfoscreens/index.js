@@ -12,12 +12,15 @@ import {
   Image,
   Dimensions,
   TouchableOpacity,
+  Platform,
 } from 'react-native';
 import {RadioButton} from 'react-native-paper';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {colors, fontFamily, fontSize, sizes} from '../../services';
 import {CustomTextFiel} from '../../component/textFiled';
 import {getTrainer, signUp} from '../../services/utilities/api/auth';
+import {storeData} from '../../store/actions';
+import {useDispatch} from 'react-redux';
 const BasicInfoScreen = ({navigation, route}) => {
   // console.log(route,"-------->basicscreen");
 
@@ -42,6 +45,7 @@ const BasicInfoScreen = ({navigation, route}) => {
   const [gender, setgender] = useState('');
   const [Suffix, setsetSuffix] = useState('');
 
+  const dispatch = useDispatch();
   // useEffect(()=>{
   //   //this will fire  at the beginning and on foto changing value
   //   if(allinformation){
@@ -70,26 +74,69 @@ const BasicInfoScreen = ({navigation, route}) => {
     //     isEnabled,
     // navigation.navigate('wellcomescreen')
 
-    try {
-      let response = await signUp(
-        name,
-        middle,
-        lastname,
-        route?.params?.email,
-        route?.params?.password,
-        gender,
-        Prefix,
-        Suffix,
-        phonenumber,
-        slectnumber,
-        route?.params?.date,
-        isEnabled ? 1 : 0,
-        // route?.params?.isEnabled,
-      );
-      console.log(response.data);
-    } catch (error) {
-      console.log(error.message);
-    }
+    // try {
+    //   console.log('---->>>',
+    //     name,
+    //     middle,
+    //     lastname,
+    //     route?.params?.email,
+    //     route?.params?.password,
+    //     gender,
+    //     Prefix,
+    //     Suffix,
+    //     phonenumber,
+    //     slectnumber,
+    //     route?.params?.date,
+    //     1
+    //   );
+    //   let response = await signUp(
+    //     name,
+    //     middle,
+    //     lastname,
+    //     route?.params?.email,
+    //     route?.params?.password,
+    //     gender,
+    //     Prefix,
+    //     Suffix,
+    //     phonenumber,
+    //     slectnumber,
+    //     route?.params?.date,
+    //     1
+    //     // isEnabled ? 1 : 0,
+    //     // route?.params?.isEnabled ? 1 : 0,
+    //   );
+    //   console.log(response.data);
+    // } catch (error) {
+    //   console.log(error);
+    // }
+
+    var formdata = new FormData();
+    formdata.append('first_name', name);
+    formdata.append('middle_name', middle);
+    formdata.append('last_name', lastname);
+    formdata.append('email', route?.params?.email);
+    formdata.append('password', route?.params?.password);
+    formdata.append('gender', gender);
+    formdata.append('prefix', Prefix);
+    formdata.append('suffix', Suffix);
+    formdata.append('phone', phonenumber);
+    formdata.append('phone_type', slectnumber);
+    formdata.append('dob', route?.params?.date);
+    formdata.append('fingerprint', '1');
+
+    var requestOptions = {
+      method: 'POST',
+      body: formdata,
+      redirect: 'follow',
+    };
+
+    fetch('http://alsyedmmtravel.com/api/signup', requestOptions)
+      .then(response => response.json())
+      .then(result => {
+        console.log(result);
+        dispatch(storeData(result.token));
+      })
+      .catch(error => console.log('error', error));
   };
   return (
     <SafeAreaView style={styles.container}>
@@ -100,9 +147,9 @@ const BasicInfoScreen = ({navigation, route}) => {
           </View>
           <View style={styles.spayrainfo}>
             <Text style={styles.basicinfophyra}>
-              Please tell us some basic info to complete{' '}
+              Please tell us some basic info to complete
             </Text>
-            <Text style={styles.basicinfophyra}> your profile</Text>
+            <Text style={styles.basicinfophyra}>your profile</Text>
           </View>
           <View>
             {Fieldsshowhide ? (
@@ -213,10 +260,11 @@ const BasicInfoScreen = ({navigation, route}) => {
                 {!Fieldsshowhide ? (
                   <>
                     <Text style={styles.lstyle}>COLLAPSE</Text>
+
                     <MaterialIcons
                       name="expand-more"
                       color={colors.secondary}
-                      style={!Fieldsshowhide ? styles.iconexp : styles.iconexp2}
+                      style={Platform.OS !=="ios" ?  styles.iconexp :  styles.iconexpIOS }
                       size={20}
                     />
                   </>
@@ -253,48 +301,54 @@ const BasicInfoScreen = ({navigation, route}) => {
             <Text style={styles.lstyle}>GENDER</Text>
           </View>
           <View style={styles.gcon}>
-            <View style={styles.ro}>
-              <Text style={styles.lstyle}>Male</Text>
-              <RadioButton
-                status={CheckedMale ? 'checked' : 'unchecked'}
-                onPress={() => {
-                  setCheckedMale(!CheckedMale);
-                  setgender('Male');
-                  setCheckedFemale(false);
-                  setCheckedOther(false);
-                }}
-                color={'#be1d2d'}
-                uncheckColor={colors.secondary}
-              />
-            </View>
-            <View style={styles.ro}>
-              <Text style={styles.lstyle}>Female</Text>
-              <RadioButton
-                status={CheckedFemale ? 'checked' : 'unchecked'}
-                onPress={() => {
-                  setCheckedFemale(!CheckedFemale);
-                  setgender('Female');
-                  setCheckedMale(false);
-                  setCheckedOther(false);
-                }}
-                color={'#be1d2d'}
-                uncheckColor={colors.secondary}
-              />
-            </View>
-            <View style={styles.ro}>
-              <Text style={styles.lstyle}>Other</Text>
-              <RadioButton
-                status={CheckedOther ? 'checked' : 'unchecked'}
-                onPress={() => {
-                  setCheckedOther(!CheckedOther);
-                  setgender('Other');
-                  setCheckedMale(false);
-                  setCheckedFemale(false);
-                }}
-                color={'#be1d2d'}
-                uncheckColor={colors.secondary}
-              />
-            </View>
+            <TouchableOpacity
+              onPress={() => {
+                setCheckedMale(!CheckedMale);
+                setgender('Male');
+                setCheckedFemale(false);
+                setCheckedOther(false);
+              }}>
+              <View style={styles.ro}>
+                <Text style={styles.lstyle}>Male</Text>
+                <RadioButton
+                  status={CheckedMale ? 'checked' : 'unchecked'}
+                  color={'#be1d2d'}
+                  uncheckColor={colors.secondary}
+                />
+              </View>
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => {
+                setCheckedFemale(!CheckedFemale);
+                setgender('Female');
+                setCheckedMale(false);
+                setCheckedOther(false);
+              }}>
+              <View style={styles.ro}>
+                <Text style={styles.lstyle}>Female</Text>
+                <RadioButton
+                  status={CheckedFemale ? 'checked' : 'unchecked'}
+                  color={'#be1d2d'}
+                  uncheckColor={colors.secondary}
+                />
+              </View>
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => {
+                setCheckedOther(!CheckedOther);
+                setgender('Other');
+                setCheckedMale(false);
+                setCheckedFemale(false);
+              }}>
+              <View style={styles.ro}>
+                <Text style={styles.lstyle}>Other</Text>
+                <RadioButton
+                  status={CheckedOther ? 'checked' : 'unchecked'}
+                  color={'#be1d2d'}
+                  uncheckColor={colors.secondary}
+                />
+              </View>
+            </TouchableOpacity>
           </View>
           <View style={styles.termspayra}>
             <View style={styles.r}>
@@ -371,6 +425,12 @@ const styles = StyleSheet.create({
     position: 'absolute',
     left: sizes.screenWidth * 0.22,
     top: sizes.screenHeight * 0.01,
+    fontSize: fontSize.h2,
+  },
+  iconexpIOS:{
+    position: 'absolute',
+    left: sizes.screenWidth * 0.25,
+    top: sizes.screenHeight * 0.005,
     fontSize: fontSize.h2,
   },
   iconexp2: {

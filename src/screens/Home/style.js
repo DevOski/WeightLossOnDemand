@@ -176,7 +176,7 @@ export const styles = StyleSheet.create({
     paddingBottom: sizes.screenHeight * 0.02,
     fontSize: fontSize.medium,
     color: colors.black,
-    width: sizes.screenWidth * 0.6,
+    // width: sizes.screenWidth * 0.6,
     fontFamily: fontFamily.appTextLight,
   },
   top: {
@@ -196,7 +196,7 @@ export const styles = StyleSheet.create({
     fontFamily: fontFamily.appTextRegular,
   },
   btnTop: {
-    top: sizes.screenHeight * 0.13,
+    top: sizes.screenHeight * 0.25,
   },
   btnTop2: {
     top: sizes.screenHeight * 0.23,
@@ -291,7 +291,7 @@ export const styles = StyleSheet.create({
     fontFamily: fontFamily.appTextHeading,
     fontWeight: '600',
   },
-  // seeBtn:{
-  //   marginTop:sizes.screenHeight * 0.18
-  // }
+  seeBtn:{
+    top:sizes.screenHeight * 0.48
+  }
 });

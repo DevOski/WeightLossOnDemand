@@ -27,7 +27,7 @@ export default function IntroductionScreen({navigation}) {
       <ScrollView style={styles.color}>
         <View style={styles.videoView}>
           <Text style={styles.heading}>Welcome to</Text>
-          <Text style={styles.heading}>Weight Loss by Demand</Text>
+          <Text style={styles.heading}>Weight Loss On Demand</Text>
         </View>
 
         <View style={styles.padding}>
@@ -62,6 +62,7 @@ export default function IntroductionScreen({navigation}) {
             </Text>
           </View>
         </View>
+        {Platform.OS == 'ios' && <View style={styles.bottomIOS}></View>}
       </ScrollView>
     </SafeAreaView>
   );
@@ -94,7 +95,7 @@ const styles = StyleSheet.create({
     paddingLeft: sizes.screenWidth * 0.05,
   },
   heading: {
-    fontSize: fontSize.h4,
+    fontSize: fontSize.h5,
     color: colors.white,
   },
   padding: {
@@ -129,7 +130,7 @@ const styles = StyleSheet.create({
   },
   cardText: {
     color: colors.primary,
-    fontSize: fontSize.large,
+    fontSize: fontSize.medium,
     paddingRight: sizes.screenWidth * 0.06,
     lineHeight: sizes.screenHeight * 0.04,
   },
@@ -141,7 +142,7 @@ const styles = StyleSheet.create({
   },
   videoView: {
     width: sizes.screenWidth,
-    height: sizes.screenHeight * 0.25,
+    height: sizes.screenHeight * 0.15,
     backgroundColor: colors.secondary,
     justifyContent: 'flex-end',
     paddingLeft: sizes.screenWidth * 0.04,
@@ -149,5 +150,8 @@ const styles = StyleSheet.create({
   },
   bOTtomPAD: {
     paddingBottom: sizes.screenHeight * 0.05,
+  },
+  bottomIOS: {
+    paddingBottom: sizes.screenHeight * 0.1,
   },
 });

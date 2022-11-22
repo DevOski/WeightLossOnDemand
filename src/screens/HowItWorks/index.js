@@ -59,7 +59,7 @@ export default function HowItWorks({navigation}) {
             </TouchableOpacity>
             <TouchableOpacity onPress={() => navigation.navigate('TipsVisit')}>
               <View style={[styles.row, styles.card]}>
-                <Text style={styles.cardText}>Tips for a Successful Visit</Text>
+                <Text style={styles.cardText}>Tips for a successful session</Text>
                 <View>
                   <Text style={styles.symbol}> ›</Text>
                 </View>

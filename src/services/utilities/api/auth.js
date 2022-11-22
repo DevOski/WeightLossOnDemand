@@ -22,6 +22,7 @@ export async function signUp(
   dob,
   fingerprint,
 ) {
+  console.log();
   return await axios.post(`${baseURL}/signup`, {
     first_name,
     middle_name,
@@ -34,7 +35,7 @@ export async function signUp(
     phone,
     phone_type,
     dob,
-    fingerprint,
+    fingerprint:1,
   });
   // console.log(
   //     first_name,

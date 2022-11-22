@@ -110,7 +110,7 @@ export const SignUp = ({navigation}) => {
                 style={styles.datebutton}
                 onPress={() => setOpen(!open)}
                 uppercase={false}>
-                <Text style={styles.datebuttontext}>Date of birth</Text>
+                <Text style={styles.datebuttontext}>{" "}Date of birth</Text>
               </TouchableOpacity>
             )}
             <DatePickerModal
@@ -217,7 +217,7 @@ export const SignUp = ({navigation}) => {
                 I agree to the Weight Loss On Demands
               </Text>
               <TouchableOpacity
-                onPress={() => navigation.navigate('membershiptermscreens')}>
+                onPress={() => navigation.navigate('MemberAgreement')}>
                 <Text style={styles.text1}>Membership Terms</Text>
               </TouchableOpacity>
             </View>

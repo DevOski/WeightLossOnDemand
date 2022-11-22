@@ -4,6 +4,7 @@ import React, {useEffect, useRef, useState} from 'react';
 import {
   Image,
   ImageBackground,
+  Platform,
   SafeAreaView,
   ScrollView,
   Text,
@@ -48,7 +49,6 @@ export default function Home({navigation}) {
   const isVisible = useIsFocused();
 
   useEffect(() => {
-
     getUserDetails();
     getTrainers();
     getPastVisit();
@@ -139,9 +139,20 @@ export default function Home({navigation}) {
     }
   };
   const handleNotif = () => {
-    LocalNotification();
-    let date = new Date(Date.now() + 10 * 1000);
-    console.log(date);
+    if (Platform.OS !== 'ios') {
+      LocalNotification();
+    }
+    else{
+      PushNotificationIOS.presentLocalNotification({
+        alertTitle: 'Your session is getting started',
+        alertBody: 'Get ready for a training session.',
+      });
+    }
+   
+
+    // let date = new Date(Date.now() + 10 * 1000);
+    // console.log(date);
+    // alert()
   };
   const handleAPI = () => {
     var requestOptions = {
@@ -155,8 +166,7 @@ export default function Home({navigation}) {
       .catch(error => console.log('error', error));
   };
 
- 
-   return (
+  return (
     <SafeAreaView>
       <ScrollView style={styles.color}>
         <View style={[styles.row, styles.padding]}>
@@ -170,8 +180,7 @@ export default function Home({navigation}) {
             onPress={
               () => navigation.navigate('Setting')
               // handleAPI
-              // handleNotif()
-
+              // handleNotif
             }>
             <Image source={images.setting} style={styles.settingIcon} />
           </TouchableOpacity>
@@ -193,7 +202,7 @@ export default function Home({navigation}) {
                   <ImageBackground
                     key={index}
                     source={images.bg1}
-                    style={styles.bg}>
+                    style={[styles.bg,{opacity:1}]}>
                     <TouchableOpacity
                       onPress={() =>
                         navigation.navigate('VideoPlayer', {
@@ -214,7 +223,7 @@ export default function Home({navigation}) {
                     </TouchableOpacity>
                     <View style={styles.textView}>
                       <Text style={styles.text}>
-                        What to expect during your initial visit?
+                        What to expect during your initial session?
                       </Text>
                     </View>
                     <View style={[styles.semiTextView, styles.row2]}>
@@ -229,39 +238,32 @@ export default function Home({navigation}) {
                 )}
                 {index == 1 && (
                   <View key={index} style={styles.padding}>
-                    <Text style={[styles.heading, styles.top]}>Trainer</Text>
+                    <Text style={[styles.heading, styles.top]}>Consultant</Text>
                     <Text style={styles.providerText}>
-                      Our professional trainers can handle a wide range of
-                      problems, such as:
+                      Our professional consultants can handle a wide range of
+                      weight loss goals. The program has four phases:
                     </Text>
                     <View style={styles.row2}>
                       <Text style={styles.addIcon}>●</Text>
                       <Text style={styles.addText}>
-                        Physical fitness trainer
+                        Introduction
                       </Text>
                     </View>
                     <View style={styles.row2}>
                       <Text style={styles.addIcon}>●</Text>
-                      <Text style={styles.addText}>Personal gym trainers</Text>
+                      <Text style={styles.addText}>Weight loss</Text>
                     </View>
                     <View style={styles.row2}>
                       <Text style={styles.addIcon}>●</Text>
                       <Text style={styles.addText}>
-                        Lifestyle personal trainers
+                        Pre-maintenance
                       </Text>
                     </View>
                     <View style={styles.row2}>
                       <Text style={styles.addIcon}>●</Text>
-                      <Text style={styles.addText}>Yoga trainers</Text>
+                      <Text style={styles.addText}>Maintenance</Text>
                     </View>
-                    <View style={styles.row2}>
-                      <Text style={styles.addIcon}>●</Text>
-                      <Text style={styles.addText}>Aerobic and dance</Text>
-                    </View>
-                    <View style={styles.row2}>
-                      <Text style={styles.addIcon}>●</Text>
-                      <Text style={styles.addText}>Zoomba</Text>
-                    </View>
+                    
 
                     <View style={styles.btnTop}>
                       <GetCare />
@@ -326,12 +328,12 @@ export default function Home({navigation}) {
                       </Text>
                     </View>
                     <View style={[styles.learnMoreView, styles.row2]}>
-                    <TouchableOpacity
-                      onPress={() => navigation.navigate('beyondscreen')}>
+                      <TouchableOpacity
+                        onPress={() => navigation.navigate('beyondscreen')}>
                         <Text style={styles.semiText}>Learn more</Text>
                         <Text style={styles.symbol}> ›</Text>
-                    </TouchableOpacity>
-                      </View>
+                      </TouchableOpacity>
+                    </View>
                   </ImageBackground>
                 )}
                 {index == 3 && (
@@ -348,7 +350,11 @@ export default function Home({navigation}) {
                             style={[styles.row2, styles.paddingLeft]}>
                             <Image
                               source={{uri: item.images}}
-                              style={Platform.OS !== 'ios' ? styles.providerImg : styles.providerImgIOS}
+                              style={
+                                Platform.OS !== 'ios'
+                                  ? styles.providerImg
+                                  : styles.providerImgIOS
+                              }
                             />
                             <View>
                               <Text style={styles.providerHead}>

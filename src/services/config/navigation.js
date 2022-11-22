@@ -175,6 +175,7 @@ export default function MainNavigator() {
             <Stack.Screen name="verifiedcode" component={Verificationscreen} />
             <Stack.Screen name="basicInfoscreens" component={BasicInfoScreen} />
             <Stack.Screen name="wellcomescreen" component={Wellcome} />
+            <Stack.Screen name="MemberAgreement" component={MemberAgreement} />
             <Stack.Screen
               name="EnterNewPassword"
               component={EnterNewPassword}
