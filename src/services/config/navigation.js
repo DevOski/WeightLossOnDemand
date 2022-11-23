@@ -176,6 +176,8 @@ export default function MainNavigator() {
             <Stack.Screen name="basicInfoscreens" component={BasicInfoScreen} />
             <Stack.Screen name="wellcomescreen" component={Wellcome} />
             <Stack.Screen name="MemberAgreement" component={MemberAgreement} />
+            <Stack.Screen name="TermsOfService" component={TermsOfService} />
+
             <Stack.Screen
               name="EnterNewPassword"
               component={EnterNewPassword}
