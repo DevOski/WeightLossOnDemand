@@ -172,24 +172,32 @@ export default function ChooseAppointment({navigation, route}) {
               )}
 
               <View style={styles.height}>
-                <ScrollView style={[styles.card]}>
-                  {dateSlot?.map((item, index) => {
-                    return (
-                      <TouchableOpacity
-                        key={index}
-                        onPress={() =>
-                          navigation.navigate('appointmentreqest', {slot: item})
-                        }>
-                        <View style={[styles.row2, styles.card]}>
-                          <Text style={styles.cardText}>{item?.sl_time}</Text>
-                          <View>
-                            <Text style={styles.symbol}> ›</Text>
+                {dateSlot?.length ? (
+                  <ScrollView style={[styles.card]}>
+                    {dateSlot?.map((item, index) => {
+                      return (
+                        <TouchableOpacity
+                          key={index}
+                          onPress={() =>
+                            navigation.navigate('appointmentreqest', {
+                              slot: item,
+                            })
+                          }>
+                          <View style={[styles.row2, styles.card]}>
+                            <Text style={styles.cardText}>{item?.sl_time}</Text>
+                            <View>
+                              <Text style={styles.symbol}> ›</Text>
+                            </View>
                           </View>
-                        </View>
-                      </TouchableOpacity>
-                    );
-                  })}
-                </ScrollView>
+                        </TouchableOpacity>
+                      );
+                    })}
+                  </ScrollView>
+                ) : (
+                  <View style={[styles.row2, styles.card]}>
+                    <Text style={styles.noSlotText}>No slot available</Text>
+                  </View>
+                )}
               </View>
             </View>
           ) : (
