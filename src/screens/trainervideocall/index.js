@@ -31,16 +31,16 @@ import {removeData} from '../../store/actions';
 const appId = '270b512970864b0a93b14650e52e8f9c';
 const channelName = 'Testing';
 const token =
-'007eJxTYMg6eGTO3uXadrkmV7+1nhLQe/JyrXQ+o/qBXz3fk5mtWvQVGIzMDZJMDY0szQ0szEySDBItjZMMTcxMDVJNjVIt0iyTr5jkJTcEMjKwM9cyMzJAIJjPEJJaXJKZl87AAACbuB8/';
+  '007eJxTYFj+pTfnv3DSvrx9W7dpaJxZUPPnx1rt6Vcm8E57t9j2QdxJBQYjc4MkU0MjS3MDCzOTJINES+MkQxMzU4NUU6NUizTLZDv7uuSGQEaGS7/rGBihEMRnZwhJLS7JzEtnYAAAlfgjTA==';
 const uid = 0;
 export default function TrainerVideocalling({navigation, route}) {
   const agoraEngineRef = useRef(); // Agora engine instance
   const [isJoined, setIsJoined] = useState(false); // Indicates if the local user has joined the channel
   const [remoteUid, setRemoteUid] = useState(0); // Uid of the remote user
   const [message, setMessage] = useState(''); //
-  const [channelName, setChannelName] = useState('');
-  const [appId, setAppId] = useState('');
-  const [token, setToken] = useState('');
+  // const [channelName, setChannelName] = useState('');
+  // const [appId, setAppId] = useState('');
+  // const [token, setToken] = useState('');
   // const [token, setToken] = useState('');
   var isMuted = false;
   const usertoken = useSelector(state => state.token);
@@ -60,9 +60,9 @@ export default function TrainerVideocalling({navigation, route}) {
     try {
       let response = await getAgoraToken();
       // setAgoraToken(response.data.token);
-      setAppId(response.data.appId);
-      setToken(response.data.token);
-      setChannelName(response.data.channelName);
+      // setAppId(response.data.appId);
+      // setToken(response.data.token);
+      // setChannelName(response.data.channelName);
     } catch (error) {
       console.log(error);
     }
@@ -118,7 +118,6 @@ export default function TrainerVideocalling({navigation, route}) {
   };
 
   const join = async () => {
-    
     if (isJoined) {
       return;
     }
@@ -179,6 +178,41 @@ export default function TrainerVideocalling({navigation, route}) {
         <React.Fragment key={0}>
           <RtcSurfaceView canvas={{uid: 0}} style={styles.videoView1} />
           {/* <Text>Local user uid: {uid}</Text> */}
+          <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              paddingRight: sizes.screenWidth * 0.19,
+              marginTop: sizes.screenHeight * 0.9,
+              height: sizes.screenHeight * 0.02,
+              position: 'absolute',
+              zIndex: 999,
+            }}>
+            <Ionicons
+              name="ios-call-outline"
+              color={colors.secondary}
+              style={styles.button}
+              size={20}
+              onPress={leave}
+              // onPress={toogle}
+            />
+            <Entypo
+              name="sound-mute"
+              color={colors.secondary}
+              style={styles.button}
+              size={20}
+              onPress={mute}
+              // onPress={toogle}
+            />
+            {/* <MaterialCommunityIcons
+              name="camera-flip"
+              color={colors.secondary}
+              style={styles.button}
+              size={20}
+              onPress={leave}
+              // onPress={toogle}
+            /> */}
+          </View>
         </React.Fragment>
       ) : (
         <Text></Text>
@@ -217,14 +251,14 @@ export default function TrainerVideocalling({navigation, route}) {
               onPress={mute}
               // onPress={toogle}
             />
-            <MaterialCommunityIcons
+            {/* <MaterialCommunityIcons
               name="camera-flip"
               color={colors.secondary}
               style={styles.button}
               size={20}
               onPress={leave}
               // onPress={toogle}
-            />
+            /> */}
           </View>
 
           {/* <Text
