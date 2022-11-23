@@ -406,7 +406,7 @@ const BasicInfoScreen = ({navigation, route}) => {
               <TouchableOpacity
                 onPress={() => {
                   setError(false);
-                  navigation.navigate('signupscreen');
+                  // navigation.navigate('signupscreen');
                 }}>
                 <View style={styles.buttonView}>
                   <Text style={styles.buttonText}>OK</Text>
