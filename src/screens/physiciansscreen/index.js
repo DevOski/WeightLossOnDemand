@@ -62,6 +62,7 @@ export default function Physicans({navigation, route}) {
         </View>
         <View style={styles.paddingTop}>
           {trainerList?.map((item, index) => {
+            console.log('------------------>>>',item)
             return (
               <TouchableOpacity
                 key={index}
@@ -78,7 +79,7 @@ export default function Physicans({navigation, route}) {
                               ? styles.trImg
                               : styles.trImgIOS
                           }
-                          source={ladyy}
+                          source={{uri:item?.images}}
                         />
                       </View>
                       <View>

@@ -77,7 +77,7 @@ export const ProviderDetail = ({navigation, route}) => {
               <View style={styles.img}>
                 <Image
                   style={Platform.OS !== 'ios' ? styles.trImg : styles.trImgIOS}
-                  source={ladyy}
+                  source={{uri:route?.params?.trainer?.images}}
                 />
               </View>
             </View>
@@ -197,7 +197,7 @@ export const ProviderDetail = ({navigation, route}) => {
               style={
                 Platform.OS !== 'ios' ? styles.subhead : styles.subheadIOS
               }>
-              QUALIFICATIONS
+              Qualifications
             </Text>
             <Text style={styles.providertex}>{trainer?.qualifications}</Text>
           </View>

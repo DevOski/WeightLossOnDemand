@@ -144,10 +144,14 @@ export const styles = StyleSheet.create({
   },
   text: {
     color: colors.white,
-    fontSize: fontSize.h5,
-    fontWeight: '600',
+    fontSize: fontSize.h6,
+    fontWeight: 'bold',
     width: sizes.screenWidth * 0.7,
     fontFamily: fontFamily.appTextHeading,
+    textShadowColor: colors.black,
+    textShadowOffset: {width: 0.5, height: 0.5},
+    textShadowRadius: 50,
+    textTransform:'uppercase'
   },
   text2: {
     color: colors.white,
@@ -161,6 +165,11 @@ export const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: fontSize.h6,
     fontFamily: fontFamily.appTextRegular,
+    textShadowColor: colors.white,
+    textShadowOffset: {width: 0.5, height: 0.5},
+    textShadowRadius: 30,
+    textTransform:'uppercase'
+
   },
   row2: {
     flexDirection: 'row',
@@ -291,7 +300,7 @@ export const styles = StyleSheet.create({
     fontFamily: fontFamily.appTextHeading,
     fontWeight: '600',
   },
-  seeBtn:{
-    top:sizes.screenHeight * 0.48
-  }
+  seeBtn: {
+    // top: sizes.screenHeight * 0.48,
+  },
 });
