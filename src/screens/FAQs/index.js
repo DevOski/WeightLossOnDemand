@@ -81,6 +81,8 @@ export default function FAQs() {
         ) : (
           <View style={styles.bottomIOS}></View>
         )}
+        {Platform.OS == 'ios' && <View style={styles.bottomIOS}></View>}
+
       </ScrollView>
     </SafeAreaView>
   );

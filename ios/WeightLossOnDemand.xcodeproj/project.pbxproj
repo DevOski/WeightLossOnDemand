@@ -535,7 +535,11 @@
 				DEVELOPMENT_TEAM = 6L7KD7VJ4R;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = WeightLossOnDemand/Info.plist;
+<<<<<<< HEAD
 				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+=======
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+>>>>>>> bae643cab6ff0cc2801320889afb1ff4cb7bbcf7
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -563,7 +567,11 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6L7KD7VJ4R;
 				INFOPLIST_FILE = WeightLossOnDemand/Info.plist;
+<<<<<<< HEAD
 				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+=======
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+>>>>>>> bae643cab6ff0cc2801320889afb1ff4cb7bbcf7
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

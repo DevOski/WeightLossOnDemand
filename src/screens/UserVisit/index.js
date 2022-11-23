@@ -17,6 +17,8 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Modal from 'react-native-modal';
 import Entypo from 'react-native-vector-icons/Entypo';
+import Feather from 'react-native-vector-icons/Feather';
+
 import {useSelector} from 'react-redux';
 import {
   getAmount,
@@ -79,6 +81,7 @@ export default function UserVisit({navigation, route}) {
         coupon == null
           ? amount * 100
           : (amount - (amount / 100) * discount) * 100;
+      // setAmount(price);
       var formdata = new FormData();
       formdata.append('number', payment.cardNum);
       formdata.append('expr_num', payment.expirationMonth);
@@ -103,9 +106,11 @@ export default function UserVisit({navigation, route}) {
         .catch(error => console.log('error', error));
     } else if (route?.params?.appointByTime == true && payment.cardNum) {
       let price =
-      coupon == null
-        ? amount * 100
-        : (amount - (amount / 100) * discount) * 100;
+        coupon == null
+          ? amount * 100
+          : (amount - (amount / 100) * discount) * 100;
+      // setAmount(price);
+
       var formdata = new FormData();
       formdata.append('number', payment.cardNum);
       formdata.append('expr_num', payment.expirationMonth);
@@ -129,11 +134,13 @@ export default function UserVisit({navigation, route}) {
         })
         .catch(error => console.log('error', error));
     } else if (route?.params?.sessionStart == true && payment.cardNum) {
-      console.log("works000000000|>");
+      console.log('works000000000|>');
       let price =
-      coupon == null
-        ? amount * 100
-        : (amount - (amount / 100) * discount) * 100;
+        coupon == null
+          ? amount * 100
+          : (amount - (amount / 100) * discount) * 100;
+      // setAmount(price);
+
       var formdata = new FormData();
       formdata.append('number', payment.cardNum);
       formdata.append('expr_num', payment.expirationMonth);
@@ -152,10 +159,12 @@ export default function UserVisit({navigation, route}) {
         .then(result => {
           console.log(result);
           if (result.message == 'succeeded') {
-            toggleModal();
-          }
-          else{
-            alert(result.message)
+            console.log('done------------>>');
+            setTimeout(() => {
+              toggleModal();
+            }, 500);
+          } else {
+            alert(result.message);
           }
         })
         .catch(error => console.log('error', error));
@@ -231,7 +240,25 @@ export default function UserVisit({navigation, route}) {
           <View style={[styles.row, styles.card, styles.borderTop]}>
             <Text style={styles.cardText}>Pay with</Text>
             {payment?.cardNum ? (
-              <Text style={styles.addPaymentText}> {payment?.cardNum}</Text>
+              <View style={{flexDirection: 'row'}}>
+                <TouchableOpacity
+                  onPress={() =>
+                    navigation.navigate('AddPaymentMethod', {
+                      to: 'UserVisit',
+                      appointByTrainer: route?.params?.appointByTrainer,
+                      payment: payment,
+                    })
+                  }>
+                  <Feather
+                    name="edit"
+                    color={colors.black}
+                    size={18}
+                    style={styles.icon}
+                  />
+                </TouchableOpacity>
+
+                <Text style={styles.addPaymentText}> {payment?.cardNum}</Text>
+              </View>
             ) : (
               <View style={{flexDirection: 'row'}}>
                 <Ionicons
@@ -353,13 +380,13 @@ export default function UserVisit({navigation, route}) {
             </View> */}
           </Modal>
         )}
-        {appointMsg !== '' && (
+        {/* {appointMsg !== '' && (
           <Error
             title="Congratulations!"
             message={appointMsg}
             screen={'Home'}
           />
-        )}
+        )} */}
       </ScrollView>
     </SafeAreaView>
   );

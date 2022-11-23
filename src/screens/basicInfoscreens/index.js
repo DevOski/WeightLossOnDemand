@@ -14,6 +14,8 @@ import {
   TouchableOpacity,
   Platform,
 } from 'react-native';
+import Modal from 'react-native-modal';
+
 import {RadioButton} from 'react-native-paper';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {colors, fontFamily, fontSize, sizes} from '../../services';
@@ -21,6 +23,7 @@ import {CustomTextFiel} from '../../component/textFiled';
 import {getTrainer, signUp} from '../../services/utilities/api/auth';
 import {storeData} from '../../store/actions';
 import {useDispatch} from 'react-redux';
+import Error from '../../components/Error';
 const BasicInfoScreen = ({navigation, route}) => {
   // console.log(route,"-------->basicscreen");
 
@@ -44,7 +47,14 @@ const BasicInfoScreen = ({navigation, route}) => {
   const [Prefix, setPrefix] = useState('');
   const [gender, setgender] = useState('');
   const [Suffix, setsetSuffix] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+  const [error, setError] = useState(false);
 
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
+  const toggleModal = () => {
+    setIsModalVisible(!isModalVisible);
+  };
   const dispatch = useDispatch();
   // useEffect(()=>{
   //   //this will fire  at the beginning and on foto changing value
@@ -122,7 +132,7 @@ const BasicInfoScreen = ({navigation, route}) => {
     formdata.append('phone', phonenumber);
     formdata.append('phone_type', slectnumber);
     formdata.append('dob', route?.params?.date);
-    formdata.append('fingerprint', '1');
+    formdata.append('fingerprint', route?.params?.isEnabled == true ? 1 : 0);
 
     var requestOptions = {
       method: 'POST',
@@ -134,7 +144,14 @@ const BasicInfoScreen = ({navigation, route}) => {
       .then(response => response.json())
       .then(result => {
         console.log(result);
-        dispatch(storeData(result.token));
+        if (result.token) {
+          dispatch(storeData(result.token));
+          setError(false);
+        } else {
+          setErrorMessage(result.message);
+          setIsModalVisible(true);
+          setError(true);
+        }
       })
       .catch(error => console.log('error', error));
   };
@@ -264,7 +281,7 @@ const BasicInfoScreen = ({navigation, route}) => {
                     <MaterialIcons
                       name="expand-more"
                       color={colors.secondary}
-                      style={Platform.OS !=="ios" ?  styles.iconexp :  styles.iconexpIOS }
+                      style={styles.iconexpIOS}
                       size={20}
                     />
                   </>
@@ -274,7 +291,7 @@ const BasicInfoScreen = ({navigation, route}) => {
                     <MaterialIcons
                       name="expand-less"
                       color={colors.secondary}
-                      style={!Fieldsshowhide ? styles.iconexp : styles.iconexp2}
+                      style={styles.iconexpIOS2}
                       size={20}
                     />
                   </>
@@ -356,10 +373,15 @@ const BasicInfoScreen = ({navigation, route}) => {
                 By providing your Mobile number,you give us permission to
                 contact you via text.
               </Text>
-              <TouchableOpacity>
-                <Text style={styles.tremtextbutt}>View terms.</Text>
-              </TouchableOpacity>
             </View>
+          </View>
+          <View style={styles.term}>
+            <TouchableOpacity
+              onPress={() => navigation.navigate('TermsOfService')}>
+              <View style={styles.viewTermsView}>
+                <Text style={styles.tremtextbutt}>View terms.</Text>
+              </View>
+            </TouchableOpacity>
           </View>
           <View style={styles.buttocon}>
             <TouchableOpacity onPress={Continue}>
@@ -369,7 +391,31 @@ const BasicInfoScreen = ({navigation, route}) => {
             </TouchableOpacity>
           </View>
         </View>
+        {/* {error && <Error title={'Oops!'} message={errorMessage} screen={"signupscreen"}/>} */}
       </ScrollView>
+      <View style={styles.color2}>
+        {isModalVisible && (
+          <Modal style={styles.modalView} isVisible={isModalVisible}>
+            <View style={styles.texcon}>
+              <Text style={styles.text111}>{'Oops!'}</Text>
+            </View>
+            <View style={styles.texcon1}>
+              <Text style={styles.text1}>{errorMessage}</Text>
+            </View>
+            <View>
+              <TouchableOpacity
+                onPress={() => {
+                  setError(false);
+                  // navigation.navigate('signupscreen');
+                }}>
+                <View style={styles.buttonView}>
+                  <Text style={styles.buttonText}>OK</Text>
+                </View>
+              </TouchableOpacity>
+            </View>
+          </Modal>
+        )}
+      </View>
     </SafeAreaView>
   );
 };
@@ -377,7 +423,8 @@ const BasicInfoScreen = ({navigation, route}) => {
 export default BasicInfoScreen;
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    // flex: 1,
+    // height:sizes.screenHeight,
     backgroundColor: colors.white,
   },
   inercontainer: {
@@ -427,9 +474,15 @@ const styles = StyleSheet.create({
     top: sizes.screenHeight * 0.01,
     fontSize: fontSize.h2,
   },
-  iconexpIOS:{
+  iconexpIOS: {
     position: 'absolute',
     left: sizes.screenWidth * 0.25,
+    top: sizes.screenHeight * 0.005,
+    fontSize: fontSize.h2,
+  },
+  iconexpIOS2: {
+    position: 'absolute',
+    left: sizes.screenWidth * 0.2,
     top: sizes.screenHeight * 0.005,
     fontSize: fontSize.h2,
   },
@@ -478,13 +531,18 @@ const styles = StyleSheet.create({
     fontFamily: fontFamily.appTextRegular,
   },
   tremtextbutt: {
-    position: 'relative',
-    top: sizes.screenHeight * 0.03,
-    right: sizes.screenWidth * 0.19,
+    // position: 'relative',
+    // top: sizes.screenHeight * 0.053,
+    // right: sizes.screenWidth * 0.9,
     fontSize: fontSize.medium,
     color: colors.secondary,
     fontFamily: fontFamily.appTextLight,
     fontWeight: '700',
+  },
+  viewTermsView: {
+    // top: sizes.screenHeight * 0.053,
+    // right: sizes.screenWidth * 0.9,
+    // alignSelf:'flex-start'
   },
   buttocon: {
     paddingTop: sizes.screenHeight * 0.05,
@@ -512,5 +570,50 @@ const styles = StyleSheet.create({
   },
   r: {
     flexDirection: 'row',
+  },
+  color2: {
+    backgroundColor: '#fafafa',
+    height: sizes.screenHeight,
+  },
+  modalView: {
+    width: sizes.screenWidth,
+    backgroundColor: '#0e0e0e',
+    opacity: 0.9,
+    marginLeft: sizes.screenWidth * 0.01,
+    padding: 10,
+    position: 'absolute',
+    top: -20,
+    height: sizes.screenHeight,
+  },
+  texcon: {
+    paddingBottom: sizes.screenHeight * 0.1,
+  },
+  texcon1: {
+    bottom: sizes.screenHeight * 0.08,
+  },
+  text111: {
+    fontSize: fontSize.h4,
+    color: colors.white,
+    fontWeight: 'bold',
+    fontFamily: fontFamily.appTextHeading,
+    paddingLeft: sizes.screenWidth * 0.035,
+  },
+  text1: {
+    fontSize: fontSize.large,
+    color: colors.white,
+    fontFamily: fontFamily.appTextLight,
+    paddingLeft: sizes.screenWidth * 0.035,
+  },
+  buttonText: {
+    color: colors.white,
+    fontSize: fontSize.h6,
+  },
+  buttonView: {
+    backgroundColor: colors.secondary,
+    height: sizes.screenHeight * 0.06,
+    width: sizes.screenWidth * 0.89,
+    alignItems: 'center',
+    alignSelf: 'center',
+    justifyContent: 'center',
   },
 });

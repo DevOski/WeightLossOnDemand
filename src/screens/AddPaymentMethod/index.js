@@ -1,4 +1,4 @@
-import React, {useRef, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {
   Image,
   ImageBackground,
@@ -24,7 +24,6 @@ export default function AddPaymentMethod({route, navigation}) {
 
   const dispatch = useDispatch();
   const payment = useSelector(state => state.payment);
-  console.log(payment);
   const saveCreditCard = () => {
     if (cardNum && expirationMonth && expirationYear && cvv) {
       let paymentData = {cardNum, expirationMonth, expirationYear, cvv};
@@ -34,6 +33,17 @@ export default function AddPaymentMethod({route, navigation}) {
       });
     }
   };
+
+  useEffect(() => {
+    console.log('---->>>', payment);
+    if (payment) {
+      setCardNum(payment.cardNum);
+      setExpirationMonth(payment.expirationMonth);
+      setExpirationYear(payment.expirationYear);
+      setCvv(payment.cvv);
+    }
+  }, []);
+
   return (
     <SafeAreaView>
       <ScrollView style={styles.color}>

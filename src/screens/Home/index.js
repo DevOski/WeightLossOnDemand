@@ -79,9 +79,12 @@ export default function Home({navigation}) {
   const getPastVisit = async () => {
     try {
       let response = await recentVisit(token);
-      setPastVisit(response.data.trainer[0]);
-      setItem(['item1', 'item2', 'item3', 'item4', 'item5']);
-      setVisitDetails(response.data);
+      // setPastVisit(response.data.trainer[0]);
+      if (response?.data?.trainer?.length) {
+        console.log('-------------->>', response.data.trainer);
+        setItem(['item1', 'item2', 'item3', 'item4', 'item5']);
+        setVisitDetails(response.data);
+      }
     } catch (error) {
       console.log(error);
     }
@@ -140,14 +143,12 @@ export default function Home({navigation}) {
   const handleNotif = () => {
     if (Platform.OS !== 'ios') {
       LocalNotification();
-    }
-    else{
+    } else {
       PushNotificationIOS.presentLocalNotification({
         alertTitle: 'Your session is getting started',
         alertBody: 'Get ready for a training session.',
       });
     }
-   
 
     // let date = new Date(Date.now() + 10 * 1000);
     // console.log(date);
@@ -201,7 +202,7 @@ export default function Home({navigation}) {
                   <ImageBackground
                     key={index}
                     source={images.bg1}
-                    style={[styles.bg,{opacity:1}]}>
+                    style={[styles.bg, {opacity: 1}]}>
                     <TouchableOpacity
                       onPress={() =>
                         navigation.navigate('VideoPlayer', {
@@ -244,9 +245,7 @@ export default function Home({navigation}) {
                     </Text>
                     <View style={styles.row2}>
                       <Text style={styles.addIcon}>●</Text>
-                      <Text style={styles.addText}>
-                        Introduction
-                      </Text>
+                      <Text style={styles.addText}>Introduction</Text>
                     </View>
                     <View style={styles.row2}>
                       <Text style={styles.addIcon}>●</Text>
@@ -254,9 +253,7 @@ export default function Home({navigation}) {
                     </View>
                     <View style={styles.row2}>
                       <Text style={styles.addIcon}>●</Text>
-                      <Text style={styles.addText}>
-                        Pre-maintenance
-                      </Text>
+                      <Text style={styles.addText}>Pre-maintenance</Text>
                     </View>
                     <View style={styles.row2}>
                       <Text style={styles.addIcon}>●</Text>

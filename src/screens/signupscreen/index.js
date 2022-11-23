@@ -63,7 +63,6 @@ export const SignUp = ({navigation}) => {
     //   checked,
     //   isEnabled,
     //   date,'----------->');
-
     if (email && password && checked && date) {
       // console.log(email,
       //   password,
@@ -74,10 +73,10 @@ export const SignUp = ({navigation}) => {
         email,
         password,
         checked,
-        // isEnabled,
+        isEnabled,
         date,
       });
-      // setregister()
+    //   // setregister()
     }
   };
   return (

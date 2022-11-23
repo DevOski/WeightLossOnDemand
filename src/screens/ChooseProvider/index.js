@@ -61,7 +61,7 @@ export default function ChooseProvider({route, navigation}) {
                     <View style={styles.img}>
                       <Image
                         style={Platform.OS !== 'ios' ? styles.trImg :styles.trImgIOS }
-                        source={ladyy}
+                        source={{uri:item?.images}}
                       />
                     </View>
                     <View>

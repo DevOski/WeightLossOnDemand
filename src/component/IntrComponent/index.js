@@ -175,7 +175,7 @@ const ComponentFour = () => {
           <View style={styles.kidd}>
             <Image style={{width: '100%', height: '100%'}} source={lasslid} />
           </View>
-          <View
+          {/* <View
             style={{
               position: 'absolute',
               top: deviceHeight * 0.53,
@@ -195,7 +195,7 @@ const ComponentFour = () => {
                 Sign Up
               </Text>
             </TouchableOpacity>
-          </View>
+          </View> */}
         </View>
       </View>
     </>
@@ -261,7 +261,7 @@ const styles = StyleSheet.create({
   },
   kidd: {
     position: 'absolute',
-    top: deviceHeight * 0.30,
+    // top: deviceHeight * 0.26,
     width: deviceWidth * 0.99,
     height: deviceHeight * 0.30,
   },
