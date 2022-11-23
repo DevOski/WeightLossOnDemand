@@ -210,7 +210,7 @@ export default function Setting({navigation}) {
         <View style={styles.padding}>
           <View style={[styles.row, styles.justifyCenter]}>
             <Ionicons name="finger-print" color={colors.secondary} size={25} />
-            <Text style={styles.fingerprintText}>
+            <Text style={Platform.OS!=="ios" ? styles.fingerprintText : styles.fingerprintTextIOS}>
               Enable Fingerprint for login
             </Text>
             <View style={{alignSelf: 'flex-end'}}>

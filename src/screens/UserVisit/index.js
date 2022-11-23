@@ -353,14 +353,15 @@ export default function UserVisit({navigation, route}) {
             </View> */}
           </Modal>
         )}
-        {appointMsg !== '' && (
+        {/* {appointMsg !== '' && (
           <Error
             title="Congratulations!"
             message={appointMsg}
             screen={'Home'}
           />
-        )}
+        )} */}
       </ScrollView>
+      
     </SafeAreaView>
   );
 }

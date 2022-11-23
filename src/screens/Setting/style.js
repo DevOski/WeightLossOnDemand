@@ -48,6 +48,12 @@ export const styles = StyleSheet.create({
     color: colors.black,
     fontFamily: fontFamily.appTextRegular,
   },
+  fingerprintTextIOS:{
+    right: sizes.screenWidth * 0.04,
+    fontSize: fontSize.medium,
+    color: colors.black,
+    fontFamily: fontFamily.appTextRegular,
+  },
   top: {
     top: sizes.TinyMargin,
   },
