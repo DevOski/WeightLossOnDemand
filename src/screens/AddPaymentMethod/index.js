@@ -36,10 +36,12 @@ export default function AddPaymentMethod({route, navigation}) {
 
   useEffect(() => {
     console.log('---->>>', payment);
-    setCardNum(payment.cardNum)
-    setExpirationMonth(payment.expirationMonth)
-    setExpirationYear(payment.expirationYear)
-    setCvv(payment.cvv)
+    if (payment) {
+      setCardNum(payment.cardNum);
+      setExpirationMonth(payment.expirationMonth);
+      setExpirationYear(payment.expirationYear);
+      setCvv(payment.cvv);
+    }
   }, []);
 
   return (

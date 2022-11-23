@@ -81,7 +81,7 @@ export default function UserVisit({navigation, route}) {
         coupon == null
           ? amount * 100
           : (amount - (amount / 100) * discount) * 100;
-      setAmount(price);
+      // setAmount(price);
       var formdata = new FormData();
       formdata.append('number', payment.cardNum);
       formdata.append('expr_num', payment.expirationMonth);
@@ -109,7 +109,7 @@ export default function UserVisit({navigation, route}) {
         coupon == null
           ? amount * 100
           : (amount - (amount / 100) * discount) * 100;
-      setAmount(price);
+      // setAmount(price);
 
       var formdata = new FormData();
       formdata.append('number', payment.cardNum);
@@ -139,7 +139,7 @@ export default function UserVisit({navigation, route}) {
         coupon == null
           ? amount * 100
           : (amount - (amount / 100) * discount) * 100;
-      setAmount(price);
+      // setAmount(price);
 
       var formdata = new FormData();
       formdata.append('number', payment.cardNum);
@@ -159,7 +159,10 @@ export default function UserVisit({navigation, route}) {
         .then(result => {
           console.log(result);
           if (result.message == 'succeeded') {
-            toggleModal();
+            console.log('done------------>>');
+            setTimeout(() => {
+              toggleModal();
+            }, 500);
           } else {
             alert(result.message);
           }

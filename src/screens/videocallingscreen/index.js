@@ -31,7 +31,7 @@ import {removeData} from '../../store/actions';
 const appId = '270b512970864b0a93b14650e52e8f9c';
 const channelName = 'Testing';
 const token =
-  '007eJxTYEiYtOmzmUH3skXHyvtq+3XPv0mLqbm07PvBuzFtv7NFr/goMBiZGySZGhpZmhtYmJkkGSRaGicZmpiZGqSaGqVapFkmu0dUJzcEMjKs2BHCwsgAgSA+O0NIanFJZl46AwMAXDIiWw==';
+  '007eJxTYFj+pTfnv3DSvrx9W7dpaJxZUPPnx1rt6Vcm8E57t9j2QdxJBQYjc4MkU0MjS3MDCzOTJINES+MkQxMzU4NUU6NUizTLZDv7uuSGQEaGS7/rGBihEMRnZwhJLS7JzEtnYAAAlfgjTA==';
 const uid = 0;
 export default function Videocalling({navigation, route}) {
   const agoraEngineRef = useRef(); // Agora engine instance
@@ -118,26 +118,26 @@ export default function Videocalling({navigation, route}) {
   };
 
   const join = async () => {
-    navigation.navigate('RateProvider', {
-      trainer: route?.params?.trainer,
-      apt_id: route?.params?.apt_id,
-    });
-    // if (isJoined) {
-    //   return;
-    // }
-    // try {
-    //   agoraEngineRef.current?.setChannelProfile(
-    //     ChannelProfileType.ChannelProfileCommunication,
-    //   );
+    // navigation.navigate('RateProvider', {
+    //   trainer: route?.params?.trainer,
+    //   apt_id: route?.params?.apt_id,
+    // });
+    if (isJoined) {
+      return;
+    }
+    try {
+      agoraEngineRef.current?.setChannelProfile(
+        ChannelProfileType.ChannelProfileCommunication,
+      );
 
-    //   agoraEngineRef.current?.startPreview();
-    //   agoraEngineRef.current?.joinChannel(token, channelName, 0, {
-    //     clientRoleType: ClientRoleType.ClientRoleBroadcaster,
-    //   });
-    //   console.log('work---->>', token, channelName, 0);
-    // } catch (e) {
-    //   console.log(e);
-    // }
+      agoraEngineRef.current?.startPreview();
+      agoraEngineRef.current?.joinChannel(token, channelName, 0, {
+        clientRoleType: ClientRoleType.ClientRoleBroadcaster,
+      });
+      console.log('work---->>', token, channelName, 0);
+    } catch (e) {
+      console.log(e);
+    }
   };
   const switchCamera = () => {
     agoraEngineRef.switchCamera();
@@ -247,6 +247,44 @@ export default function Videocalling({navigation, route}) {
         <React.Fragment key={0}>
           <RtcSurfaceView canvas={{uid: 0}} style={styles.videoView1} />
           {/* <Text>Local user uid: {uid}</Text> */}
+          <View style={styles.noAvailableView}>
+            <Text style={styles.text}>Waiting for consultant to join</Text>
+          </View>
+          <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              paddingRight: sizes.screenWidth * 0.19,
+              marginTop: sizes.screenHeight * 0.9,
+              height: sizes.screenHeight * 0.02,
+              position: 'absolute',
+              zIndex: 999,
+            }}>
+            <Ionicons
+              name="ios-call-outline"
+              color={colors.secondary}
+              style={styles.button}
+              size={20}
+              onPress={leave}
+              // onPress={toogle}
+            />
+            <Entypo
+              name="sound-mute"
+              color={colors.secondary}
+              style={styles.button}
+              size={20}
+              onPress={mute}
+              // onPress={toogle}
+            />
+            <MaterialCommunityIcons
+              name="camera-flip"
+              color={colors.secondary}
+              style={styles.button}
+              size={20}
+              onPress={leave}
+              // onPress={toogle}
+            />
+          </View>
         </React.Fragment>
       ) : (
         <Text></Text>
@@ -327,4 +365,13 @@ const styles = StyleSheet.create({
   },
   head: {fontSize: 20},
   info: {backgroundColor: '#ffffe0', color: '#0000ff'},
+  text: {
+    color: colors.black,
+    fontSize: fontSize.medium,
+  },
+  noAvailableView: {
+    // left:sizes.screenWidth * 0.3
+    alignSelf: 'center',
+    top: sizes.screenHeight * 0.4,
+  },
 });

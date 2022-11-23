@@ -16,6 +16,7 @@ import Logo from '../../assets/assets/logo.png';
 import {CustomTextFiel} from '../../component/textFiled';
 import Error from '../../components/Error';
 import Loader from '../../components/Loader';
+import Modal from 'react-native-modal';
 import {colors, fontFamily, fontSize, sizes} from '../../services';
 import {signIn} from '../../services/utilities/api/auth';
 import TouchID from 'react-native-touch-id';
@@ -46,6 +47,8 @@ export const SignIn = ({navigation}) => {
   const [errorMessage, setErrorMessage] = useState('');
   const [loader, setLoader] = useState(false);
   const [error, setError] = useState(false);
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
   // useEffect(()=>{
   //   //this will fire  at the beginning and on foto changing value
   //   if(sigindata){
@@ -54,6 +57,9 @@ export const SignIn = ({navigation}) => {
   //  },[sigindata])
   const dispatch = useDispatch();
 
+  const toggleModal = () => {
+    setIsModalVisible(!isModalVisible);
+  };
   const handleBiometric = () => {
     TouchID.isSupported(optionalConfigObject).then(biometricType => {
       if (biometricType === 'FaceID') {
@@ -94,27 +100,38 @@ export const SignIn = ({navigation}) => {
             // else{
             //   navigation.navigate('BottomNavs');
             // }
-         
+
             setError(false);
             setLoader(false);
-          } 
-          else if(response.data.message== "Trainer found"){
+            setIsModalVisible(false);
+          } else if (response.data.message == 'Trainer found') {
             console.log(response.data.type);
-            dispatch(storeData("$2y$10$kl2gP4WxK7V/IFAyBblRSOorRI3.VpxYsol6fjnJcebb0WwbtwjUi"));
+            dispatch(
+              storeData(
+                '$2y$10$kl2gP4WxK7V/IFAyBblRSOorRI3.VpxYsol6fjnJcebb0WwbtwjUi',
+              ),
+            );
+            setIsModalVisible(false);
+
             dispatch(trainerStack(response.data.type));
-          }else {
-            console.log(response.data.message);
-            setError(true);
-            setErrorMessage(response.data.message);
-            setLoader(false);
+          } else {
+            setTimeout(() => {
+              setIsModalVisible(true);
+              setErrorMessage(response.data.message);
+              setLoader(false);
+            }, 500);
+            console.log('--->>', response.data.message);
+            // setError(true);
           }
         }, 100);
       } catch (error) {
         console.log('err', error);
-
-        setError(true);
-        setErrorMessage(error.message);
-        setLoader(false);
+        setTimeout(() => {
+          setError(true);
+          setIsModalVisible(true);
+          setErrorMessage(error.message);
+          setLoader(false);
+        }, 500);
       }
     }
   };
@@ -185,7 +202,29 @@ export const SignIn = ({navigation}) => {
         </View>
       </View>
       {loader && <Loader />}
-      {error && <Error title={'Oops!'} message={errorMessage} />}
+      {/* {error ? <Error title={'Oops!'} message={errorMessage} />: null} */}
+      <View style={styles.color2}>
+        {isModalVisible && (
+          <Modal style={styles.modalView} isVisible={isModalVisible}>
+            <View style={styles.texcon}>
+              <Text style={styles.text111}>Oops!</Text>
+            </View>
+            <View style={styles.texcon1}>
+              <Text style={styles.text1}>{errorMessage}</Text>
+            </View>
+            <View>
+              <TouchableOpacity
+                onPress={() => {
+                  setIsModalVisible(false);
+                }}>
+                <View style={styles.buttonView}>
+                  <Text style={styles.buttonText}>OK</Text>
+                </View>
+              </TouchableOpacity>
+            </View>
+          </Modal>
+        )}
+      </View>
     </SafeAreaView>
   );
 };
@@ -263,6 +302,51 @@ const styles = StyleSheet.create({
     height: sizes.screenHeight * 0.06,
     width: sizes.screenWidth * 0.92,
     alignItems: 'center',
+    justifyContent: 'center',
+  },
+  color2: {
+    backgroundColor: '#fafafa',
+    height: sizes.screenHeight,
+  },
+  modalView: {
+    width: sizes.screenWidth,
+    backgroundColor: '#0e0e0e',
+    opacity: 0.9,
+    marginLeft: sizes.screenWidth * 0.01,
+    padding: 10,
+    position: 'absolute',
+    top: -20,
+    height: sizes.screenHeight,
+  },
+  texcon: {
+    paddingBottom: sizes.screenHeight * 0.1,
+  },
+  texcon1: {
+    bottom: sizes.screenHeight * 0.08,
+  },
+  text111: {
+    fontSize: fontSize.h4,
+    color: colors.white,
+    fontWeight: 'bold',
+    fontFamily: fontFamily.appTextHeading,
+    paddingLeft: sizes.screenWidth * 0.035,
+  },
+  text1: {
+    fontSize: fontSize.large,
+    color: colors.white,
+    fontFamily: fontFamily.appTextLight,
+    paddingLeft: sizes.screenWidth * 0.035,
+  },
+  buttonText: {
+    color: colors.white,
+    fontSize: fontSize.h6,
+  },
+  buttonView: {
+    backgroundColor: colors.secondary,
+    height: sizes.screenHeight * 0.06,
+    width: sizes.screenWidth * 0.89,
+    alignItems: 'center',
+    alignSelf: 'center',
     justifyContent: 'center',
   },
 });
