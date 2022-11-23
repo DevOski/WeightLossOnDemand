@@ -149,7 +149,7 @@ const BasicInfoScreen = ({navigation, route}) => {
           setError(false);
         } else {
           setErrorMessage(result.message);
-          setIsModalVisible(true)
+          setIsModalVisible(true);
           setError(true);
         }
       })
@@ -281,11 +281,7 @@ const BasicInfoScreen = ({navigation, route}) => {
                     <MaterialIcons
                       name="expand-more"
                       color={colors.secondary}
-                      style={
-                        Platform.OS !== 'ios'
-                          ? styles.iconexp
-                          : styles.iconexpIOS
-                      }
+                      style={styles.iconexpIOS}
                       size={20}
                     />
                   </>
@@ -295,7 +291,7 @@ const BasicInfoScreen = ({navigation, route}) => {
                     <MaterialIcons
                       name="expand-less"
                       color={colors.secondary}
-                      style={!Fieldsshowhide ? styles.iconexp : styles.iconexp2}
+                      style={styles.iconexpIOS2}
                       size={20}
                     />
                   </>
@@ -396,31 +392,30 @@ const BasicInfoScreen = ({navigation, route}) => {
           </View>
         </View>
         {/* {error && <Error title={'Oops!'} message={errorMessage} screen={"signupscreen"}/>} */}
-      
       </ScrollView>
-        <View style={styles.color2}>
-          {isModalVisible && (
-            <Modal style={styles.modalView} isVisible={isModalVisible}>
-              <View style={styles.texcon}>
-                <Text style={styles.text111}>{'Oops!'}</Text>
-              </View>
-              <View style={styles.texcon1}>
-                <Text style={styles.text1}>{errorMessage}</Text>
-              </View>
-              <View>
-                <TouchableOpacity
-                  onPress={() => {
-                    setError(false);
-                    navigation.navigate('signupscreen');
-                  }}>
-                  <View style={styles.buttonView}>
-                    <Text style={styles.buttonText}>OK</Text>
-                  </View>
-                </TouchableOpacity>
-              </View>
-            </Modal>
-          )}
-        </View>
+      <View style={styles.color2}>
+        {isModalVisible && (
+          <Modal style={styles.modalView} isVisible={isModalVisible}>
+            <View style={styles.texcon}>
+              <Text style={styles.text111}>{'Oops!'}</Text>
+            </View>
+            <View style={styles.texcon1}>
+              <Text style={styles.text1}>{errorMessage}</Text>
+            </View>
+            <View>
+              <TouchableOpacity
+                onPress={() => {
+                  setError(false);
+                  navigation.navigate('signupscreen');
+                }}>
+                <View style={styles.buttonView}>
+                  <Text style={styles.buttonText}>OK</Text>
+                </View>
+              </TouchableOpacity>
+            </View>
+          </Modal>
+        )}
+      </View>
     </SafeAreaView>
   );
 };
@@ -482,6 +477,12 @@ const styles = StyleSheet.create({
   iconexpIOS: {
     position: 'absolute',
     left: sizes.screenWidth * 0.25,
+    top: sizes.screenHeight * 0.005,
+    fontSize: fontSize.h2,
+  },
+  iconexpIOS2: {
+    position: 'absolute',
+    left: sizes.screenWidth * 0.2,
     top: sizes.screenHeight * 0.005,
     fontSize: fontSize.h2,
   },
