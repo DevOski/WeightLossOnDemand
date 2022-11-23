@@ -22,21 +22,25 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import Entypo from 'react-native-vector-icons/Entypo';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {useDispatch, useSelector} from 'react-redux';
-import {getAgoraToken, getTrainer, getUser} from '../../services/utilities/api/auth';
+import {
+  getAgoraToken,
+  getTrainer,
+  getUser,
+} from '../../services/utilities/api/auth';
 import {removeData} from '../../store/actions';
 const appId = '270b512970864b0a93b14650e52e8f9c';
 const channelName = 'Testing';
 const token =
-'007eJxTYMg6eGTO3uXadrkmV7+1nhLQe/JyrXQ+o/qBXz3fk5mtWvQVGIzMDZJMDY0szQ0szEySDBItjZMMTcxMDVJNjVIt0iyTr5jkJTcEMjKwM9cyMzJAIJjPEJJaXJKZl87AAACbuB8/';
+  '007eJxTYEiYtOmzmUH3skXHyvtq+3XPv0mLqbm07PvBuzFtv7NFr/goMBiZGySZGhpZmhtYmJkkGSRaGicZmpiZGqSaGqVapFkmu0dUJzcEMjKs2BHCwsgAgSA+O0NIanFJZl46AwMAXDIiWw==';
 const uid = 0;
 export default function Videocalling({navigation, route}) {
   const agoraEngineRef = useRef(); // Agora engine instance
   const [isJoined, setIsJoined] = useState(false); // Indicates if the local user has joined the channel
   const [remoteUid, setRemoteUid] = useState(0); // Uid of the remote user
   const [message, setMessage] = useState(''); //
-  const [channelName, setChannelName] = useState('');
-  const [appId, setAppId] = useState('');
-  const [token, setToken] = useState('');
+  // const [channelName, setChannelName] = useState('');
+  // const [appId, setAppId] = useState('');
+  // const [token, setToken] = useState('');
   // const [token, setToken] = useState('');
   var isMuted = false;
   const usertoken = useSelector(state => state.token);
@@ -56,9 +60,9 @@ export default function Videocalling({navigation, route}) {
     try {
       let response = await getAgoraToken();
       // setAgoraToken(response.data.token);
-      setAppId(response.data.appId);
-      setToken(response.data.token);
-      setChannelName(response.data.channelName);
+      // setAppId(response.data.appId);
+      // setToken(response.data.token);
+      // setChannelName(response.data.channelName);
     } catch (error) {
       console.log(error);
     }
@@ -114,22 +118,26 @@ export default function Videocalling({navigation, route}) {
   };
 
   const join = async () => {
-    if (isJoined) {
-      return;
-    }
-    try {
-      agoraEngineRef.current?.setChannelProfile(
-        ChannelProfileType.ChannelProfileCommunication,
-      );
+    navigation.navigate('RateProvider', {
+      trainer: route?.params?.trainer,
+      apt_id: route?.params?.apt_id,
+    });
+    // if (isJoined) {
+    //   return;
+    // }
+    // try {
+    //   agoraEngineRef.current?.setChannelProfile(
+    //     ChannelProfileType.ChannelProfileCommunication,
+    //   );
 
-      agoraEngineRef.current?.startPreview();
-      agoraEngineRef.current?.joinChannel(token, channelName, 0, {
-        clientRoleType: ClientRoleType.ClientRoleBroadcaster,
-      });
-      console.log('work---->>', token, channelName, 0);
-    } catch (e) {
-      console.log(e);
-    }
+    //   agoraEngineRef.current?.startPreview();
+    //   agoraEngineRef.current?.joinChannel(token, channelName, 0, {
+    //     clientRoleType: ClientRoleType.ClientRoleBroadcaster,
+    //   });
+    //   console.log('work---->>', token, channelName, 0);
+    // } catch (e) {
+    //   console.log(e);
+    // }
   };
   const switchCamera = () => {
     agoraEngineRef.switchCamera();

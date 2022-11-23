@@ -22,19 +22,19 @@ import Entypo from 'react-native-vector-icons/Entypo';
 export default function TipsVisit() {
   return (
     <SafeAreaView>
-      <Header title={'Tips for a Successful Visit'} />
+      <Header title={'Tips for a Successful Session'} />
       <ScrollView style={styles.color}>
         <View style={[styles.padding, styles.coloredView]}>
           <View style={styles.paddingTop}>
             <Text style={styles.heading}>
-              Tips for a successful video visit
+              Tips for a successful video session
             </Text>
           </View>
         </View>
         <View style={styles.padding}>
           <Text style={styles.text}>
-            With limited time for your visit, you want to make the most of your
-            time. Here are some tips for a successful video visit.
+            With limited time on your session, we want to make the most of your
+            time. Here are some tips for a successful video session.
           </Text>
         </View>
         <View style={styles.padding}>
@@ -43,15 +43,15 @@ export default function TipsVisit() {
         <View style={[styles.row, styles.tinyPadding]}>
           <Entypo name="dot-single" color={colors.disabledBg} size={25} />
           <Text style={[styles.text, styles.right]}>
-            <Text style={styles.bold}> Write down talking points.</Text> Prepare
+            <Text style={styles.bold}>Write down talking points.</Text> Prepare
             questions or concerns to discuss.
           </Text>
         </View>
         <View style={[styles.row, styles.tinyPadding]}>
           <Entypo name="dot-single" color={colors.disabledBg} size={25} />
           <Text style={[styles.text, styles.right]}>
-            <Text style={styles.bold}> Upload documents.</Text> Prepare
-            questions or concerns to discuss.
+            <Text style={styles.bold}>Upload documents.</Text> Prepare
+            questions or goals to discuss.
           </Text>
         </View>
         <View style={styles.padding}>
@@ -68,14 +68,13 @@ export default function TipsVisit() {
           <Entypo name="dot-single" color={colors.disabledBg} size={25} />
           <Text style={[styles.text, styles.right]}>
             <Text style={styles.bold}> Find a quiet and private space.</Text>{' '}
-            Your provider may need to ask for personal information or do a
-            remote physical exam.
+            Your consultant may need to ask for personal information.
           </Text>
         </View>
         <View style={[styles.row, styles.tinyPadding]}>
           <Entypo name="dot-single" color={colors.disabledBg} size={25} />
           <Text style={[styles.text, styles.right]}>
-            <Text style={styles.bold}> Be indoors with bright lighting.</Text>{' '}
+            <Text style={styles.bold}>Be indoors with bright lighting.</Text>{' '}
           </Text>
         </View>
         <View style={styles.padding}>
@@ -84,15 +83,15 @@ export default function TipsVisit() {
         <View style={[styles.row, styles.tinyPadding]}>
           <Entypo name="dot-single" color={colors.disabledBg} size={25} />
           <Text style={[styles.text, styles.right]}>
-            <Text style={styles.bold}> Turn off other devices</Text> Reduce
+            <Text style={styles.bold}>Turn off other devices</Text> Reduce
             background noise and distractions from TVs, music, or video games.
           </Text>
         </View>
         <View style={[styles.row, styles.tinyPadding]}>
           <Entypo name="dot-single" color={colors.disabledBg} size={25} />
           <Text style={[styles.text, styles.right]}>
-            <Text style={styles.bold}> Turn on "Do Not Disturb" mode.</Text>{' '}
-            Prevent interruptions during your visit.
+            <Text style={styles.bold}>Turn on "Do Not Disturb" mode.</Text>{' '}
+            Prevent interruptions during your sessions.
           </Text>
         </View>
         <View style={[styles.row, styles.tinyPadding]}>
@@ -100,26 +99,26 @@ export default function TipsVisit() {
           <Text style={[styles.text, styles.right]}>
             <Text style={styles.bold}>
               Open the Weight Loss On Demand app a few minutes prior to your
-              appointment
+              session.
             </Text>{' '}
-            Prevent interruptions during your visit.You'll receive an alert in
-            the app when your provider is ready.
+            Prevent interruptions during your session.You'll receive an alert in
+            the app when your consultant is ready.
           </Text>
         </View>
         <View style={styles.padding}>
-          <Text style={styles.text}>During the visit</Text>
+          <Text style={styles.text}>During the session</Text>
         </View>
         <View style={[styles.row, styles.tinyPadding]}>
           <Entypo name="dot-single" color={colors.disabledBg} size={25} />
           <Text style={[styles.text, styles.right]}>
-            <Text style={styles.bold}>OBe present.</Text> Avoid multitasking or
+            <Text style={styles.bold}>Be present.</Text> Avoid multitasking or
             doing other activities like eating or watching TV.
           </Text>
         </View>
         <View style={[styles.row, styles.tinyPadding]}>
           <Entypo name="dot-single" color={colors.disabledBg} size={25} />
           <Text style={[styles.text, styles.right]}>
-            <Text style={styles.bold}>Stay seated.</Text> Prop your phone up
+            <Text style={styles.bold}>Stay seated.</Text>Prop your phone up
             securely if possible.
           </Text>
         </View>
@@ -133,10 +132,10 @@ export default function TipsVisit() {
         <View style={[styles.row, styles.tinyPadding, styles.bottom]}>
           <Entypo name="dot-single" color={colors.disabledBg} size={25} />
           <Text style={[styles.text, styles.right]}>
-            <Text style={styles.bold}>Share your health concerns.</Text> Your
-            provider is there to support you. They will do their best to help
-            you feel comfortable, so that you can share your concerns and start
-            feeling better soon!
+            <Text style={styles.bold}>Share your goals.</Text>Your
+            consultant is there to support you. They will do their best to help
+            you feel comfortable, so that you can share your goals and start
+            making a change!
           </Text>
         </View>
       </ScrollView>

@@ -4,6 +4,7 @@ import React, {useEffect, useRef, useState} from 'react';
 import {
   Image,
   ImageBackground,
+  Platform,
   SafeAreaView,
   ScrollView,
   Text,
@@ -25,6 +26,7 @@ import {
 import images from '../../services/utilities/images';
 import {storeUserData} from '../../store/actions';
 import {styles} from './style';
+import PushNotificationIOS from '@react-native-community/push-notification-ios';
 
 export default function Home({navigation}) {
   const [userName, setUserName] = useState('');
@@ -97,7 +99,6 @@ export default function Home({navigation}) {
         response.data.data.tr_name !== 'random' &&
         currentFinalDate == response.data.data.apt_time
       ) {
-        handleNotif();
         console.log(response.data.data);
         navigation.navigate('ProviderReview', {
           tr_id: response.data.data.trainer_id,
@@ -137,9 +138,20 @@ export default function Home({navigation}) {
     }
   };
   const handleNotif = () => {
-    LocalNotification();
-    let date = new Date(Date.now() + 10 * 1000);
-    console.log(date);
+    if (Platform.OS !== 'ios') {
+      LocalNotification();
+    }
+    else{
+      PushNotificationIOS.presentLocalNotification({
+        alertTitle: 'Your session is getting started',
+        alertBody: 'Get ready for a training session.',
+      });
+    }
+   
+
+    // let date = new Date(Date.now() + 10 * 1000);
+    // console.log(date);
+    // alert()
   };
   const handleAPI = () => {
     var requestOptions = {
@@ -152,6 +164,7 @@ export default function Home({navigation}) {
       .then(result => console.log(result))
       .catch(error => console.log('error', error));
   };
+
   return (
     <SafeAreaView>
       <ScrollView style={styles.color}>
@@ -166,6 +179,7 @@ export default function Home({navigation}) {
             onPress={
               () => navigation.navigate('Setting')
               // handleAPI
+              // handleNotif
             }>
             <Image source={images.setting} style={styles.settingIcon} />
           </TouchableOpacity>
@@ -178,19 +192,28 @@ export default function Home({navigation}) {
           style={styles.wrap}>
           {item?.map((item, index) => {
             return (
-              <View key={index} style={styles.cardView}>
+              <View
+                key={index}
+                style={
+                  Platform.OS !== 'ios' ? styles.cardView : styles.cardViewIOS
+                }>
                 {index == 0 && (
                   <ImageBackground
                     key={index}
                     source={images.bg1}
-                    style={styles.bg}>
+                    style={[styles.bg,{opacity:1}]}>
                     <TouchableOpacity
                       onPress={() =>
                         navigation.navigate('VideoPlayer', {
                           uri: 'https://www.youtube.com/embed/JLnycPtolfw',
                         })
                       }>
-                      <View style={styles.playBtn}>
+                      <View
+                        style={
+                          Platform.OS !== 'ios'
+                            ? styles.playBtn
+                            : styles.playBtnIOS
+                        }>
                         <Image
                           source={images.playIcon}
                           style={styles.playIcon}
@@ -199,7 +222,7 @@ export default function Home({navigation}) {
                     </TouchableOpacity>
                     <View style={styles.textView}>
                       <Text style={styles.text}>
-                        What to expect during your initial visit?
+                        What to expect during your initial session?
                       </Text>
                     </View>
                     <View style={[styles.semiTextView, styles.row2]}>
@@ -214,39 +237,32 @@ export default function Home({navigation}) {
                 )}
                 {index == 1 && (
                   <View key={index} style={styles.padding}>
-                    <Text style={[styles.heading, styles.top]}>Trainer</Text>
+                    <Text style={[styles.heading, styles.top]}>Consultant</Text>
                     <Text style={styles.providerText}>
-                      Our professional trainers can handle a wide range of
-                      problems, such as:
+                      Our professional consultants can handle a wide range of
+                      weight loss goals. The program has four phases:
                     </Text>
                     <View style={styles.row2}>
                       <Text style={styles.addIcon}>●</Text>
                       <Text style={styles.addText}>
-                        Physical fitness trainer
+                        Introduction
                       </Text>
                     </View>
                     <View style={styles.row2}>
                       <Text style={styles.addIcon}>●</Text>
-                      <Text style={styles.addText}>Personal gym trainers</Text>
+                      <Text style={styles.addText}>Weight loss</Text>
                     </View>
                     <View style={styles.row2}>
                       <Text style={styles.addIcon}>●</Text>
                       <Text style={styles.addText}>
-                        Lifestyle personal trainers
+                        Pre-maintenance
                       </Text>
                     </View>
                     <View style={styles.row2}>
                       <Text style={styles.addIcon}>●</Text>
-                      <Text style={styles.addText}>Yoga trainers</Text>
+                      <Text style={styles.addText}>Maintenance</Text>
                     </View>
-                    <View style={styles.row2}>
-                      <Text style={styles.addIcon}>●</Text>
-                      <Text style={styles.addText}>Aerobic and dance</Text>
-                    </View>
-                    <View style={styles.row2}>
-                      <Text style={styles.addIcon}>●</Text>
-                      <Text style={styles.addText}>Zoomba</Text>
-                    </View>
+                    
 
                     <View style={styles.btnTop}>
                       <GetCare />
@@ -310,19 +326,19 @@ export default function Home({navigation}) {
                         Let us assist you in finding the right trainer for you.
                       </Text>
                     </View>
-                    <TouchableOpacity
-                      onPress={() => navigation.navigate('beyondscreen')}>
-                      <View style={[styles.learnMoreView, styles.row2]}>
+                    <View style={[styles.learnMoreView, styles.row2]}>
+                      <TouchableOpacity
+                        onPress={() => navigation.navigate('beyondscreen')}>
                         <Text style={styles.semiText}>Learn more</Text>
                         <Text style={styles.symbol}> ›</Text>
-                      </View>
-                    </TouchableOpacity>
+                      </TouchableOpacity>
+                    </View>
                   </ImageBackground>
                 )}
                 {index == 3 && (
                   <View key={index} style={[styles.padding]}>
                     <Text style={[styles.heading, styles.top]}>
-                      Meet Our Professionals
+                      Meet our consultants
                     </Text>
                     {trainerList?.map((item, index) => {
                       if (index < 6) {
@@ -331,8 +347,12 @@ export default function Home({navigation}) {
                             key={index}
                             style={[styles.row2, styles.paddingLeft]}>
                             <Image
-                              source={{uri:item.images}}
-                              style={styles.providerImg}
+                              source={{uri: item.images}}
+                              style={
+                                Platform.OS !== 'ios'
+                                  ? styles.providerImg
+                                  : styles.providerImgIOS
+                              }
                             />
                             <View>
                               <Text style={styles.providerHead}>
@@ -420,7 +440,7 @@ export default function Home({navigation}) {
                         onPress={() => navigation.navigate('meetOurproviders')}>
                         <View style={[styles.learnMoreBtn, styles.row2]}>
                           <Text style={styles.learnMoreText}>
-                            Connect to all trainers
+                            Connect to all consultants
                           </Text>
                           <Text style={styles.symbol}> ›</Text>
                         </View>

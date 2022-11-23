@@ -67,7 +67,6 @@ export default function ContactSupport({navigation}) {
             <View>
               <Text style={styles.cardText}>{'   '}Call Support 24/7</Text>
               <Text style={styles.faqText}>{'   '}(281)3250066</Text>
-              <Text style={styles.faqText}>{'   '}TTY: 711</Text>
             </View>
             <View>
               <Text style={styles.symbol}> ›</Text>

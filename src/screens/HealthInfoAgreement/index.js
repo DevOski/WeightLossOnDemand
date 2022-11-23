@@ -2,6 +2,7 @@ import React, {useRef, useState} from 'react';
 import {
   Image,
   ImageBackground,
+  Platform,
   SafeAreaView,
   ScrollView,
   Switch,
@@ -25,8 +26,8 @@ export default function HealthInfoAgreement({navigation}) {
       <ScrollView style={styles.color}>
         <View style={[styles.paddingLeft, styles.paddingRight]}>
           <Text style={[styles.bold, styles.textColor]}>
-            With WeightLoss on Demand, your doctor will always have access to
-            your medical history.
+            With WeightLoss on Demand, your trainer will always have access to
+            your training history.
           </Text>
         </View>
 
@@ -48,14 +49,14 @@ export default function HealthInfoAgreement({navigation}) {
 
             <Text style={[styles.textColor, styles.paddingTop]}>
               You can send an email to
-              <Text style={styles.bold}>support@weightlossondemand.com</Text>.
+              <Text style={styles.bold}> support@weightlossondemand.com</Text>.
               to request a copy of this consent form or to withdraw your consent
               at any time. A year from the date of signature, this agreement
               will remain in full force and effect
             </Text>
           </ScrollView>
         </View>
-        <View style={styles.buttonTop}>
+        <View style={Platform.OS !== 'ios' ?  styles.buttonTop: styles.buttonTopIOS}>
           <TouchableOpacity
             onPress={() => navigation.navigate('TermsAndConditions')}>
             <View style={[styles.buttonView]}>
@@ -69,6 +70,7 @@ export default function HealthInfoAgreement({navigation}) {
             </View>
           </TouchableOpacity>
         </View>
+
       </ScrollView>
     </SafeAreaView>
   );

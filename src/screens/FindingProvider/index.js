@@ -77,7 +77,7 @@ export default function FindingProvider({navigation, route}) {
               </View>
             </TouchableOpacity>
             <View style={styles.paddingTop}>
-              <Text style={styles.findingText}>Finding a Provider...</Text>
+              <Text style={styles.findingText}>Finding a consultant...</Text>
               <View style={styles.paddingTop}>
                 <Spinner
                   style={styles.spinner}

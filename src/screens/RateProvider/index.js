@@ -2,6 +2,7 @@ import React, {useEffect, useRef, useState} from 'react';
 import {
   Image,
   ImageBackground,
+  Platform,
   SafeAreaView,
   ScrollView,
   Switch,
@@ -53,14 +54,14 @@ export default function RateProvider({navigation, route}) {
             </TouchableOpacity>
           </View>
         </View>
-        <Text style={styles.rateText}>Rate your provider for this visit</Text>
+        <Text style={styles.rateText}>Rate your session for this visit</Text>
         <Image
           source={{
             uri: route?.params?.trainer?.tr_image
               ? route?.params?.trainer?.tr_image
               : route?.params?.trainer?.images,
           }}
-          style={styles.docImg}
+          style={Platform.OS !== 'ios' ? styles.docImg : styles.docImgIOS}
         />
         <Text style={styles.providerTitle}>
           {route?.params?.trainer?.tr_name}
@@ -90,6 +91,7 @@ export default function RateProvider({navigation, route}) {
           <View>
             <TouchableOpacity
               onPress={() => {
+                setIsModalVisible(false);
                 navigation.navigate('HowLikelyRecommend', {
                   trianer: route?.params?.trainer,
                   apt_id: route?.params?.apt_id,

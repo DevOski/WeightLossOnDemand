@@ -17,7 +17,7 @@ export const styles = StyleSheet.create({
     width: sizes.screenWidth * 0.1,
   },
   heading: {
-    fontSize: fontSize.h3,
+    fontSize: fontSize.h4,
     fontWeight: 'bold',
     color: colors.primary,
     fontFamily: fontFamily.appTextHeading,

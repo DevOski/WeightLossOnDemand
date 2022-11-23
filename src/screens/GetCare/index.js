@@ -21,7 +21,7 @@ export default function GetCare({navigation}) {
       <ScrollView style={styles.color}>
         <View style={styles.padding}>
           <Text style={styles.addPaymentText}>
-            Choose a video visit that is right for you
+            Choose a video session that is right for you
           </Text>
         </View>
         <TouchableOpacity
@@ -33,7 +33,7 @@ export default function GetCare({navigation}) {
             <Image style={styles.icon} source={images.mdoctr} />
             <View>
               <Text style={styles.cardText}>See first available</Text>
-              <Text style={styles.text}>Board certified trainers</Text>
+              <Text style={styles.text}>Certified Consultants</Text>
               <Text style={[styles.text, styles.bold]}>
                 Estimated wait: {'<'} 5 min
               </Text>
@@ -52,10 +52,10 @@ export default function GetCare({navigation}) {
             <Image style={styles.icon2} source={images.mediVisit} />
 
             <View>
-              <Text style={styles.cardText}>Book a training session</Text>
-              <Text style={styles.text}>Board-certified trainers</Text>
+              <Text style={styles.cardText}>Book a session</Text>
+              <Text style={styles.text}>Certified Consultants</Text>
               <Text style={styles.providerText}>
-                Choose your trainer and time
+                Choose your consultant and time
               </Text>
             </View>
             <View>

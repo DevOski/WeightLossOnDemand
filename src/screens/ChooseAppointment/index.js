@@ -124,7 +124,7 @@ export default function ChooseAppointment({navigation, route}) {
   return (
     <SafeAreaView>
       <View>
-        <Header title={'Choose Appointment'} />
+        <Header title={'Choose Session'} />
       </View>
       <ScrollView style={styles.color}>
         <View style={styles.padding}>

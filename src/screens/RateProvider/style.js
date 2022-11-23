@@ -32,6 +32,12 @@ export const styles = StyleSheet.create({
     alignSelf: 'center',
     borderRadius:sizes.screenWidth*0.5
   },
+  docImgIOS:{
+    height: sizes.screenHeight * 0.15,
+    width: sizes.screenWidth * 0.33,
+    alignSelf: 'center',
+    borderRadius:sizes.screenWidth*0.5
+  },
   providerTitle: {
     paddingTop: sizes.screenHeight * 0.01,
     fontSize:fontSize.h5,

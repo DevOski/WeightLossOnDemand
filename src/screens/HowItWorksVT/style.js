@@ -37,4 +37,7 @@ export const styles = StyleSheet.create({
   italic: {
     fontStyle: 'italic',
   },
+  bottomIOS: {
+    paddingBottom: sizes.screenHeight * 0.1,
+  },
 });

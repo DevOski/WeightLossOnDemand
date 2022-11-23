@@ -37,6 +37,12 @@ export default function HealthVisits({navigation}) {
     setTimeout(async () => {
       try {
         let response = await recentVisit(token);
+        console.log(response.data.message);
+        if(response.data.message){
+          setLoader(false);
+          setError(true)
+
+        }
         setVisit(response.data.visit);
         setTrainer(response.data.trainer[0]);
         setUser(response.data.user);
@@ -52,13 +58,13 @@ export default function HealthVisits({navigation}) {
   return (
     <SafeAreaView>
       <View>
-        <Header title={'Recent Visit'} />
+        <Header title={'Recent Sessions'} />
       </View>
       <ScrollView style={styles.color}>
         {!error ? (
           <View style={styles.marginTop}>
             <View style={[styles.left, styles.top]}>
-              <Text style={styles.head}>MY RECENT VISIT</Text>
+              <Text style={styles.head}>MY RECENT SESSIONS</Text>
             </View>
             <TouchableOpacity
               onPress={() => navigation.navigate('VisitDetail')}>
@@ -83,7 +89,7 @@ export default function HealthVisits({navigation}) {
           </View>
         ) : (
           <View style={styles.contentView}>
-            <Text style={styles.text}>You haven't had any visits yet.</Text>
+            <Text style={styles.text}>You haven't had any sessions yet.</Text>
           </View>
         )}
         {loader && <Loader />}

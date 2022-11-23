@@ -208,17 +208,17 @@ export default function UserVisit({navigation, route}) {
   return (
     <SafeAreaView>
       <View>
-        <Header title={`${username}'s Visit`} />
+        <Header title={`${username}'s Session`} />
       </View>
       <ScrollView style={styles.color}>
         <View style={styles.userView}>
           <View style={styles.padding2}>
-            <Text style={styles.text}>First Available Medical Provider</Text>
+            <Text style={styles.text}>First available consultant</Text>
             <Text style={styles.heading}>Estimated wait: {'<'} 5 min</Text>
           </View>
         </View>
         <View style={styles.padding}>
-          <Text style={styles.head2}>Payment</Text>
+          {/* <Text style={styles.head2}>Payment</Text> */}
         </View>
         <TouchableOpacity
           onPress={() =>
@@ -298,12 +298,12 @@ export default function UserVisit({navigation, route}) {
             <View style={styles.texcon1}>
               <Text style={styles.text1}>
                 When you're ready, tap below,and we'll connect you with your
-                provider.
+                consultant.
               </Text>
             </View>
             <View style={[styles.texcon1, styles.paddingTop]}>
               <Text style={styles.text1}>
-                To help your visit go smoothly, we recommend that you:
+                To help your session go smoothly, we recommend that you:
               </Text>
               <View style={[styles.row2, styles.paddingTop]}>
                 <Entypo
@@ -340,17 +340,17 @@ export default function UserVisit({navigation, route}) {
                   setIsModalVisible(false);
                 }}>
                 <View style={styles.buttonView2}>
-                  <Text style={styles.buttonText}>Start visit now</Text>
+                  <Text style={styles.buttonText}>Start session now</Text>
                 </View>
               </TouchableOpacity>
             </View>
-            <View style={styles.noBtn}>
+            {/* <View style={styles.noBtn}>
               <TouchableOpacity onPress={toggleModal}>
                 <View style={styles.buttonView1}>
                   <Text style={styles.buttonText}>Cancel</Text>
                 </View>
               </TouchableOpacity>
-            </View>
+            </View> */}
           </Modal>
         )}
         {appointMsg !== '' && (

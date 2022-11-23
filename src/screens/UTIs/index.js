@@ -81,6 +81,8 @@ export default function UTIs() {
             future urinary tract infections.
           </Text>
         </View> */}
+        {Platform.OS == 'ios' && <View style={styles.bottomIOS}></View>}
+
       </ScrollView>
     </SafeAreaView>
   );

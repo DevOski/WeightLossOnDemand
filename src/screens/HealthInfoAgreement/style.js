@@ -61,6 +61,10 @@ export const styles = StyleSheet.create({
     bottom: sizes.screenHeight * 0.03,
     paddingBottom: sizes.screenWidth * 0.08,
   },
+  buttonTopIOS: {
+    bottom: sizes.screenHeight * 0.09,
+    paddingBottom: sizes.screenWidth * 0.08,
+  },
   heading: {
     fontSize: fontSize.h6,
     paddingBottom: sizes.screenHeight * 0.02,

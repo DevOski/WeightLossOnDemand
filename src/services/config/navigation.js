@@ -175,6 +175,7 @@ export default function MainNavigator() {
             <Stack.Screen name="verifiedcode" component={Verificationscreen} />
             <Stack.Screen name="basicInfoscreens" component={BasicInfoScreen} />
             <Stack.Screen name="wellcomescreen" component={Wellcome} />
+            <Stack.Screen name="MemberAgreement" component={MemberAgreement} />
             <Stack.Screen
               name="EnterNewPassword"
               component={EnterNewPassword}
@@ -475,7 +476,7 @@ function MyTabs() {
             <Image
               source={images.icon2}
               style={{
-                height: sizes.screenHeight * 0.033,
+                height: Platform.OS !== 'ios' ? sizes.screenHeight * 0.033 : sizes.screenHeight * 0.028, 
                 width: sizes.screenWidth * 0.06,
               }}
             />
@@ -486,7 +487,7 @@ function MyTabs() {
         name="GetCare"
         component={GetCare}
         options={{
-          tabBarLabel: 'Get Train',
+          tabBarLabel: 'Consult',
           tabBarIcon: ({color}) => (
             <MaterialCommunityIcons name="dumbbell" color={color} size={22} />
           ),
@@ -496,7 +497,7 @@ function MyTabs() {
         name="MyHealth"
         component={MyHealth}
         options={{
-          tabBarLabel: 'My Health',
+          tabBarLabel: 'Profile',
           tabBarIcon: ({color}) => (
             <FontAwesome name="heartbeat" color={color} size={22} />
           ),

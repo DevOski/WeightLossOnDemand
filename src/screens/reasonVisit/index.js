@@ -30,7 +30,7 @@ export const ReasonForDcoctor = ({navigation, route}) => {
   const isVisible = useIsFocused();
 
   const dispatch = useDispatch();
-  
+
   useEffect(() => {
     getReasons();
   }, [isVisible]);
@@ -77,7 +77,7 @@ export const ReasonForDcoctor = ({navigation, route}) => {
       </View>
 
       <View style={styles.headcontainer}>
-        <Text style={styles.hedtext}>What is the reason for your visit?</Text>
+        <Text style={styles.hedtext}>What is the reason for your session?</Text>
       </View>
       <View style={styles.seachViewmain}>
         <View style={styles.seachView}>
@@ -89,17 +89,13 @@ export const ReasonForDcoctor = ({navigation, route}) => {
               placeholder="Search"
               value={search}
               onChangeText={text => handleSearch(text)}
-              style={{
-                color: colors.black,
-                marginLeft: sizes.screenWidth * 0.02,
-                fontFamily: fontFamily.appTextRegular,
-              }}
+              style={Platform.OS !== 'ios' ? styles.input : styles.inputIOS}
             />
           </View>
         </View>
       </View>
       <View style={styles.chooseContainer}>
-        <Text style={styles.chosetext}>OR CHOOSE FROME TOP REASONS</Text>
+        <Text style={styles.chosetext}>OR CHOOSE FROM TOP REASONS</Text>
       </View>
       <ScrollView>
         <View style={styles.listcontainer}>
@@ -635,4 +631,15 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     alignSelf: 'center',
   },
+  input: {
+    color: colors.black,
+    marginLeft: sizes.screenWidth * 0.02,
+    fontFamily: fontFamily.appTextRegular,
+  },
+  inputIOS:{
+    color: colors.black,
+    marginLeft: sizes.screenWidth * 0.02,
+    fontFamily: fontFamily.appTextRegular,
+    fontSize:fontSize.medium
+  }
 });

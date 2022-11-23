@@ -15,15 +15,34 @@ export const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: colors.black,
   },
+  subHeadingIOS: {
+    fontSize: fontSize.h5,
+    fontWeight: 'bold',
+    color: colors.black,
+  },
   symbol: {
     color: colors.secondary,
     fontSize: fontSize.h3,
     bottom: 1,
     paddingRight: sizes.TinyMargin,
   },
+  symbolIOS: {
+    color: colors.secondary,
+    fontSize: fontSize.h3,
+    bottom: 1,
+    right: sizes.screenWidth * 0.05,
+  },
   cardText: {
     color: colors.primary,
     fontSize: fontSize.large,
+    fontFamily: fontFamily.appTextLight,
+    paddingTop: sizes.screenHeight * 0.02,
+    paddingLeft: sizes.screenWidth * 0.04,
+    lineHeight: sizes.screenHeight * 0.027,
+  },
+  cardTextIOS:{
+    color: colors.primary,
+    fontSize: fontSize.medium,
     fontFamily: fontFamily.appTextLight,
     paddingTop: sizes.screenHeight * 0.02,
     paddingLeft: sizes.screenWidth * 0.04,
@@ -80,5 +99,15 @@ export const styles = StyleSheet.create({
   },
   paddingBottom2: {
     marginBottom: sizes.screenHeight * 0.12,
+  },
+  trImg: {
+    width: '100%',
+    height: '100%',
+    borderRadius: sizes.screenWidth * 0.5,
+  },
+  trImgIOS: {
+    width: sizes.screenWidth * 0.22,
+    height: sizes.screenHeight * 0.1,
+    borderRadius: sizes.screenWidth * 0.5,
   },
 });

@@ -30,10 +30,10 @@ export default function HowItWorks({navigation}) {
               <View style={styles.playBtn}>
                 <Image source={images.playIcon} style={styles.playIcon} />
               </View>
-            </TouchableOpacity>
             <View style={styles.textView}>
               <Text style={styles.heading}>How It Works</Text>
             </View>
+            </TouchableOpacity>
           </ImageBackground>
         ) : (
           <WebView
@@ -59,7 +59,7 @@ export default function HowItWorks({navigation}) {
             </TouchableOpacity>
             <TouchableOpacity onPress={() => navigation.navigate('TipsVisit')}>
               <View style={[styles.row, styles.card]}>
-                <Text style={styles.cardText}>Tips for a Successful Visit</Text>
+                <Text style={styles.cardText}>Tips for a successful session</Text>
                 <View>
                   <Text style={styles.symbol}> ›</Text>
                 </View>
@@ -74,14 +74,14 @@ export default function HowItWorks({navigation}) {
                 </View>
               </View>
             </TouchableOpacity> */}
-            <TouchableOpacity onPress={() => navigation.navigate('MyPricing')}>
+            {/* <TouchableOpacity onPress={() => navigation.navigate('MyPricing')}>
               <View style={[styles.row, styles.card]}>
                 <Text style={styles.cardText}>My Pricing</Text>
                 <View>
                   <Text style={styles.symbol}> ›</Text>
                 </View>
               </View>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
             <TouchableOpacity onPress={() => navigation.navigate('FAQs')}>
               <View style={[styles.row, styles.card]}>
                 <Text style={styles.cardText}>FAQs</Text>

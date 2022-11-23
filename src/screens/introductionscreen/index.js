@@ -27,41 +27,39 @@ export default function IntroductionScreen({navigation}) {
       <ScrollView style={styles.color}>
         <View style={styles.videoView}>
           <Text style={styles.heading}>Welcome to</Text>
-          <Text style={styles.heading}>Weight Loss by Demand</Text>
+          <Text style={styles.heading}>Weight Loss On Demand</Text>
         </View>
 
         <View style={styles.padding}>
           <View style={styles.bOTtomPAD}>
             <Text style={styles.cardText}>
-              Weight Loss on Demand lets you talk to professionals, gym
-              specialists, and other providers quickly, easily, and affordably,
+              Weight Loss On Demand lets you talk to professional consultants quickly, easily, and affordably,
               all from the comfort of your own home. Perhaps you're curious,
-              though: just who are these fitness trainers? How do we make sure
+              though: just who are these professional consultants? How do we make sure
               they're suitable? Exactly what kind of supervision is there?
             </Text>
           </View>
           <View style={styles.bOTtomPAD}>
             <Text style={styles.cardText}>
-              At Weight Loss by Demand, we have carefully picked only the most
-              qualified and board-certified professionals to offer their
-              services online to our users. All of our service providers go
+              At Weight Loss On Demand, we have carefully picked only the most
+              qualified and board-certified professional consultants to offer their
+              services online to our users. All of our consultants go
               through a thorough screening process, get a lot of training, and
               are constantly checked for quality. If clients are able to rate
-              each visit, it will greatly assist in maintaining a high standard
+              each sessions, it will greatly assist in maintaining a high standard
               of care. In order to maintain a consistently high standard of
-              training can provide feedback after each and every appointment.
+              consultancy can provide feedback after each and every sessions.
             </Text>
           </View>
           <View style={styles.bOTtomPAD}>
             <Text style={styles.cardText}>
-              Learn more about our providers and how we collaborate to get you
-              the best possible fitness services at your convenience by reading
-              on. Weight Loss by Demand is a network of licensed medical
-              professionals who run their own businesses and offer telemedicine
-              services to their clients.
+              Learn more about our consultants and how we collaborate to get you
+              the best possible advise at your convenience by reading
+              on.
             </Text>
           </View>
         </View>
+        {Platform.OS == 'ios' && <View style={styles.bottomIOS}></View>}
       </ScrollView>
     </SafeAreaView>
   );
@@ -94,7 +92,7 @@ const styles = StyleSheet.create({
     paddingLeft: sizes.screenWidth * 0.05,
   },
   heading: {
-    fontSize: fontSize.h4,
+    fontSize: fontSize.h5,
     color: colors.white,
   },
   padding: {
@@ -129,7 +127,7 @@ const styles = StyleSheet.create({
   },
   cardText: {
     color: colors.primary,
-    fontSize: fontSize.large,
+    fontSize: fontSize.medium,
     paddingRight: sizes.screenWidth * 0.06,
     lineHeight: sizes.screenHeight * 0.04,
   },
@@ -141,7 +139,7 @@ const styles = StyleSheet.create({
   },
   videoView: {
     width: sizes.screenWidth,
-    height: sizes.screenHeight * 0.25,
+    height: sizes.screenHeight * 0.15,
     backgroundColor: colors.secondary,
     justifyContent: 'flex-end',
     paddingLeft: sizes.screenWidth * 0.04,
@@ -149,5 +147,8 @@ const styles = StyleSheet.create({
   },
   bOTtomPAD: {
     paddingBottom: sizes.screenHeight * 0.05,
+  },
+  bottomIOS: {
+    paddingBottom: sizes.screenHeight * 0.1,
   },
 });

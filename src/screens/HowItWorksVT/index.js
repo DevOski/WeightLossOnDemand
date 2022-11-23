@@ -22,8 +22,8 @@ export default function HowItWorksVT() {
   const [showVideo, setShowVideo] = useState(false);
   return (
     <SafeAreaView>
-      <ScrollView style={styles.color}>
         <Header title={'Video Transcript'} />
+      <ScrollView style={styles.color}>
         <View style={styles.padding}>
           <Image source={images.appIcon} style={styles.icon} />
           <View style={styles.paddingTop}>
@@ -201,6 +201,8 @@ export default function HowItWorksVT() {
             </Text>
           </View>
         </View>
+        {Platform.OS == 'ios' && <View style={styles.bottomIOS}></View>}
+
       </ScrollView>
     </SafeAreaView>
   );

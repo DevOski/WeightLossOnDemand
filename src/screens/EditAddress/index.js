@@ -216,8 +216,8 @@ export default function EditAddress({navigation}) {
               label={'Zip Code'}
               activeUnderlineColor={colors.secondary}
               style={styles.field}
-              onChangeText={text => setAddress2(text)}
-              value={address2}
+              onChangeText={text => setZipCode(text)}
+              value={zipCode}
               keyboardType={'numeric'}
             />
           </View>

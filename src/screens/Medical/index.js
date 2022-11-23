@@ -24,7 +24,7 @@ export default function Medical({navigation}) {
   const [showVideo, setShowVideo] = useState(false);
   return (
     <SafeAreaView>
-      <Header title={'Trainer'} />
+      <Header title={'Consultant'} />
       <ScrollView style={styles.color}>
         {!showVideo ? (
           <ImageBackground source={images.medical} style={styles.image}>
@@ -51,7 +51,7 @@ export default function Medical({navigation}) {
             <TouchableOpacity
               onPress={() => navigation.navigate('visitforscreen')}>
               <View style={[styles.row, styles.card2]}>
-                <Text style={styles.cardText2}>See a trainer Now</Text>
+                <Text style={styles.cardText2}>See a consultant now</Text>
                 <View>
                   <Text style={styles.symbol2}> ›</Text>
                 </View>
@@ -66,7 +66,7 @@ export default function Medical({navigation}) {
                   size={25}
                   style={styles.iconLeft}
                 />
-                <Text style={styles.cardText}>Schedule an Appointment</Text>
+                <Text style={styles.cardText}>Schedule a session</Text>
                 <View>
                   <Text style={styles.symbol}> ›</Text>
                 </View>
@@ -80,13 +80,14 @@ export default function Medical({navigation}) {
                   size={20}
                   style={styles.iconLeft}
                 />
-                <Text style={styles.cardText}>What is a Video Visit?</Text>
+                <Text style={styles.cardText}>What is a video visit?</Text>
                 <View>
                   <Text style={styles.symbol}> ›</Text>
                 </View>
               </View>
             </TouchableOpacity>
-            <TouchableOpacity
+            {/* As discussed with Jeff this was hidden at the last moment */}
+            {/* <TouchableOpacity
               onPress={() => navigation.navigate('WhatDoWeTreat')}>
               <View style={[styles.row, styles.card]}>
                 <Image source={images.icon} style={styles.icon} />
@@ -95,7 +96,8 @@ export default function Medical({navigation}) {
                   <Text style={styles.symbol}> ›</Text>
                 </View>
               </View>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
+
             <TouchableOpacity
             onPress={() => navigation.navigate('meetOurproviders')}
             >
@@ -106,7 +108,7 @@ export default function Medical({navigation}) {
                   size={20}
                   style={styles.iconLeft}
                 />
-                <Text style={styles.cardText}>Meet Our Trainers</Text>
+                <Text style={styles.cardText}>Meet our consultants</Text>
                 <View>
                   <Text style={styles.symbol}> ›</Text>
                 </View>
