@@ -31,7 +31,7 @@ import {removeData} from '../../store/actions';
 const appId = '270b512970864b0a93b14650e52e8f9c';
 const channelName = 'Testing';
 const token =
-  '007eJxTYFj+pTfnv3DSvrx9W7dpaJxZUPPnx1rt6Vcm8E57t9j2QdxJBQYjc4MkU0MjS3MDCzOTJINES+MkQxMzU4NUU6NUizTLZDv7uuSGQEaGS7/rGBihEMRnZwhJLS7JzEtnYAAAlfgjTA==';
+  '007eJxTYOioeh3qfnH1vazDP8qSw1x4Vzu1XD/4v7SZp+vyWctle7gVGIzMDZJMDY0szQ0szEySDBItjZMMTcxMDVJNjVIt0iyTFTbVJzcEMjLs/D+FgREKQXx2hpDU4pLMvHQGBgAtvCIz';
 const uid = 0;
 export default function Videocalling({navigation, route}) {
   const agoraEngineRef = useRef(); // Agora engine instance
@@ -118,6 +118,7 @@ export default function Videocalling({navigation, route}) {
   };
 
   const join = async () => {
+    console.log("works--------->>>");
     // navigation.navigate('RateProvider', {
     //   trainer: route?.params?.trainer,
     //   apt_id: route?.params?.apt_id,
@@ -223,14 +224,14 @@ export default function Videocalling({navigation, route}) {
               onPress={mute}
               // onPress={toogle}
             />
-            <MaterialCommunityIcons
+            {/* <MaterialCommunityIcons
               name="camera-flip"
               color={colors.secondary}
               style={styles.button}
               size={20}
               onPress={leave}
               // onPress={toogle}
-            />
+            /> */}
           </View>
 
           {/* <Text
@@ -253,7 +254,7 @@ export default function Videocalling({navigation, route}) {
           <View
             style={{
               flexDirection: 'row',
-              justifyContent: 'space-between',
+              justifyContent: 'space-around',
               paddingRight: sizes.screenWidth * 0.19,
               marginTop: sizes.screenHeight * 0.9,
               height: sizes.screenHeight * 0.02,
@@ -276,14 +277,14 @@ export default function Videocalling({navigation, route}) {
               onPress={mute}
               // onPress={toogle}
             />
-            <MaterialCommunityIcons
+            {/* <MaterialCommunityIcons
               name="camera-flip"
               color={colors.secondary}
               style={styles.button}
               size={20}
               onPress={leave}
               // onPress={toogle}
-            />
+            /> */}
           </View>
         </React.Fragment>
       ) : (

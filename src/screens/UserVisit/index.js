@@ -1,5 +1,6 @@
 import React, {useRef, useState} from 'react';
 import {
+  BackHandler,
   Image,
   ImageBackground,
   SafeAreaView,
@@ -59,7 +60,10 @@ export default function UserVisit({navigation, route}) {
     route?.params?.appointByTime,
     route?.params?.trainer,
   );
-
+  useEffect(() => {
+    const backHandler = BackHandler.addEventListener('backPress', () => true);
+    return () => backHandler.remove();
+  }, []);
   useEffect(() => {
     getUserDetails();
     getPrice();

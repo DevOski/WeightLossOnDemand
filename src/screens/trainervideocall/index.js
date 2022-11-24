@@ -31,7 +31,8 @@ import {removeData} from '../../store/actions';
 const appId = '270b512970864b0a93b14650e52e8f9c';
 const channelName = 'Testing';
 const token =
-  '007eJxTYFj+pTfnv3DSvrx9W7dpaJxZUPPnx1rt6Vcm8E57t9j2QdxJBQYjc4MkU0MjS3MDCzOTJINES+MkQxMzU4NUU6NUizTLZDv7uuSGQEaGS7/rGBihEMRnZwhJLS7JzEtnYAAAlfgjTA==';
+  '007eJxTYOioeh3qfnH1vazDP8qSw1x4Vzu1XD/4v7SZp+vyWctle7gVGIzMDZJMDY0szQ0szEySDBItjZMMTcxMDVJNjVIt0iyTFTbVJzcEMjLs/D+FgREKQXx2hpDU4pLMvHQGBgAtvCIz';
+
 const uid = 0;
 export default function TrainerVideocalling({navigation, route}) {
   const agoraEngineRef = useRef(); // Agora engine instance
