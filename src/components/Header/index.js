@@ -59,7 +59,8 @@ export default function Header({
                 <Text
                   style={
                     Platform.OS !== 'ios' ? styles.title2 : styles.title2IOS
-                  }>
+                  }
+                  onPress={() => navigation.goBack()}>
                   Done
                 </Text>
               </View>
@@ -94,21 +95,25 @@ export default function Header({
           </View>
         )}
         {skip && !status && (
-          <View style={[styles.skipView, styles.leftDone]}>
-            <TouchableOpacity onPress={() => navigation.goBack()}>
+          <TouchableOpacity onPress={() => navigation.goBack()}>
+            <View style={[styles.skipView, styles.leftDone]}>
               <View style={[styles.row]}>
                 {title == 'Our Website' ? (
                   <Text
                     style={
-                      Platform.OS !== 'ios' ? styles.title : styles.titleIOS2
-                    }>
+                      Platform.OS !== 'ios'
+                        ? styles.titleExit
+                        : styles.titleIOS2
+                    }
+                    onPress={() => navigation.goBack()}>
                     Exit{' '}
                   </Text>
                 ) : (
                   <Text
                     style={
                       Platform.OS !== 'ios' ? styles.title : styles.titleIOS
-                    }>
+                    }
+                    onPress={() => navigation.goBack()}>
                     Skip{' '}
                   </Text>
                 )}
@@ -116,11 +121,12 @@ export default function Header({
                   name="keyboard-arrow-right"
                   color={colors.white}
                   size={20}
-                  style={[styles.skipIcon,styles.leftIOS]}
+                  style={[styles.skipIcon, styles.leftIOS]}
+                  onPress={() => navigation.goBack()}
                 />
               </View>
-            </TouchableOpacity>
-          </View>
+            </View>
+          </TouchableOpacity>
         )}
         {skip && status && (
           <View style={[styles.skipView, styles.leftDone]}>

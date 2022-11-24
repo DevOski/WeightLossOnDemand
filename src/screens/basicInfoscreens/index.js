@@ -13,6 +13,7 @@ import {
   Dimensions,
   TouchableOpacity,
   Platform,
+  BackHandler,
 } from 'react-native';
 import Modal from 'react-native-modal';
 
@@ -71,6 +72,10 @@ const BasicInfoScreen = ({navigation, route}) => {
     setFieldsshowhide(!Fieldsshowhide);
   };
 
+  useEffect(() => {
+    const backHandler = BackHandler.addEventListener('backPress', () => true);
+    return () => backHandler.remove();
+  }, []);
   const Continue = async () => {
     // )  name,
     //     middle,
@@ -149,7 +154,9 @@ const BasicInfoScreen = ({navigation, route}) => {
           setError(false);
         } else {
           setErrorMessage(result.message);
-          setIsModalVisible(true);
+          setTimeout(() => {
+            setIsModalVisible(true);
+          }, 500);
           setError(true);
         }
       })
@@ -218,6 +225,7 @@ const BasicInfoScreen = ({navigation, route}) => {
                   label={'Phone number'}
                   value={phonenumber}
                   setValue={setphonenumber}
+                  type="numeric"
                 />
               </View>
               <View style={styles.twoitem}>
@@ -283,6 +291,7 @@ const BasicInfoScreen = ({navigation, route}) => {
                       color={colors.secondary}
                       style={styles.iconexpIOS}
                       size={20}
+                      onPress={ShowFiled}
                     />
                   </>
                 ) : (
@@ -293,6 +302,7 @@ const BasicInfoScreen = ({navigation, route}) => {
                       color={colors.secondary}
                       style={styles.iconexpIOS2}
                       size={20}
+                      onPress={ShowFiled}
                     />
                   </>
                 )}
@@ -328,6 +338,12 @@ const BasicInfoScreen = ({navigation, route}) => {
               <View style={styles.ro}>
                 <Text style={styles.lstyle}>Male</Text>
                 <RadioButton
+                  onPress={() => {
+                    setCheckedMale(!CheckedMale);
+                    setgender('Male');
+                    setCheckedFemale(false);
+                    setCheckedOther(false);
+                  }}
                   status={CheckedMale ? 'checked' : 'unchecked'}
                   color={'#be1d2d'}
                   uncheckColor={colors.secondary}
@@ -344,6 +360,12 @@ const BasicInfoScreen = ({navigation, route}) => {
               <View style={styles.ro}>
                 <Text style={styles.lstyle}>Female</Text>
                 <RadioButton
+                  onPress={() => {
+                    setCheckedFemale(!CheckedFemale);
+                    setgender('Female');
+                    setCheckedMale(false);
+                    setCheckedOther(false);
+                  }}
                   status={CheckedFemale ? 'checked' : 'unchecked'}
                   color={'#be1d2d'}
                   uncheckColor={colors.secondary}
@@ -360,6 +382,12 @@ const BasicInfoScreen = ({navigation, route}) => {
               <View style={styles.ro}>
                 <Text style={styles.lstyle}>Other</Text>
                 <RadioButton
+                  onPress={() => {
+                    setCheckedOther(!CheckedOther);
+                    setgender('Other');
+                    setCheckedMale(false);
+                    setCheckedFemale(false);
+                  }}
                   status={CheckedOther ? 'checked' : 'unchecked'}
                   color={'#be1d2d'}
                   uncheckColor={colors.secondary}
@@ -370,7 +398,7 @@ const BasicInfoScreen = ({navigation, route}) => {
           <View style={styles.termspayra}>
             <View style={styles.r}>
               <Text style={styles.tremtext}>
-                By providing your Mobile number,you give us permission to
+                By providing your mobile number,you give us permission to
                 contact you via text.
               </Text>
             </View>
@@ -405,7 +433,7 @@ const BasicInfoScreen = ({navigation, route}) => {
             <View>
               <TouchableOpacity
                 onPress={() => {
-                  setError(false);
+                  setIsModalVisible(false);
                   // navigation.navigate('signupscreen');
                 }}>
                 <View style={styles.buttonView}>
@@ -455,7 +483,7 @@ const styles = StyleSheet.create({
     paddingRight: sizes.screenWidth * 0.03,
     paddingLeft: sizes.screenWidth * 0.03,
     marginBottom: deviceHeight * 0.03,
-    width: sizes.screenWidth * 0.5,
+    width: sizes.screenWidth * 0.51,
   },
   inonecon: {
     flexDirection: 'row',
@@ -527,8 +555,9 @@ const styles = StyleSheet.create({
     paddingTop: sizes.screenHeight * 0.06,
   },
   tremtext: {
-    fontSize: fontSize.large,
+    fontSize: fontSize.medium,
     fontFamily: fontFamily.appTextRegular,
+    color: colors.black,
   },
   tremtextbutt: {
     // position: 'relative',

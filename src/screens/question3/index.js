@@ -78,6 +78,14 @@ export default function Questionthree({navigation, route}) {
               <View style={styles.ro}>
                 <Text style={styles.lstyle}>Yes</Text>
                 <RadioButton
+                 onPress={() => {
+                  setYes(!Yes);
+                  setno(false);
+                  setselectanswer3('Yes');
+                  // setgender('Female');
+                  // setCheckedMale(false);
+                  // setCheckedOther(false);
+                }}
                   status={Yes ? 'checked' : 'unchecked'}
                   color={'#be1d2d'}
                   uncheckColor={colors.secondary}
@@ -96,6 +104,14 @@ export default function Questionthree({navigation, route}) {
               <View style={styles.ro}>
                 <Text style={styles.lstyle}>No</Text>
                 <RadioButton
+                  onPress={() => {
+                    setno(!no);
+                    setYes(false);
+                    setselectanswer3('No');
+                    // setgender('Female');
+                    // setCheckedMale(false);
+                    // setCheckedOther(false);
+                  }}
                   status={no ? 'checked' : 'unchecked'}
                   color={'#be1d2d'}
                   uncheckColor={colors.secondary}

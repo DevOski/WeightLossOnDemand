@@ -155,7 +155,7 @@ export default function Setting({navigation}) {
           <TouchableOpacity onPress={() => navigation.navigate('ContactInfo')}>
             <View style={styles.row}>
               <FontAwesome name="vcard-o" color={colors.secondary} size={25} />
-              <Text style={styles.btnText}>Contact Information</Text>
+              <Text style={styles.contactLeft}>Contact Information</Text>
             </View>
           </TouchableOpacity>
         </View>
@@ -210,8 +210,13 @@ export default function Setting({navigation}) {
         <View style={styles.padding}>
           <View style={[styles.row, styles.justifyCenter]}>
             <Ionicons name="finger-print" color={colors.secondary} size={25} />
-            <Text style={Platform.OS!=="ios" ? styles.fingerprintText : styles.fingerprintTextIOS}>
-              Enable Fingerprint for login
+            <Text
+              style={
+                Platform.OS !== 'ios'
+                  ? styles.fingerprintText
+                  : styles.fingerprintTextIOS
+              }>
+              Enable fingerprint for login
             </Text>
             <View style={{alignSelf: 'flex-end'}}>
               <Switch
@@ -268,7 +273,7 @@ export default function Setting({navigation}) {
             <View style={styles.row}>
               <Image source={images.feedback} style={styles.medicalIcon} />
 
-              <Text style={styles.btnText}>Send Feedback</Text>
+              <Text style={styles.btnText}> Send Feedback</Text>
             </View>
           </TouchableOpacity>
         </View>
@@ -280,7 +285,7 @@ export default function Setting({navigation}) {
             onPress={() => navigation.navigate('TermsAndConditions')}>
             <View style={styles.row}>
               <Image source={images.terms} style={styles.medicalIcon} />
-              <Text style={styles.btnText}>Terms and Conditions</Text>
+              <Text style={styles.btnText}> Terms & Conditions</Text>
             </View>
           </TouchableOpacity>
         </View>
@@ -297,7 +302,12 @@ export default function Setting({navigation}) {
                   bottom: sizes.screenHeight * 0.25,
                   left: sizes.screenWidth * 0.85,
                 }}>
-                <Entypo name="cross" color={colors.secondary} size={30} />
+                <Entypo
+                  name="cross"
+                  color={colors.secondary}
+                  size={30}
+                  onPress={toggleModal}
+                />
               </View>
             </TouchableOpacity>
 

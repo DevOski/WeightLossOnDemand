@@ -52,6 +52,14 @@ export default function UserVisit({navigation, route}) {
   const q5 = useSelector(state => state.question5);
   const isVisible = useIsFocused();
 
+  console.log(
+    '===========>>>',
+    route?.params?.sessionStart,
+    route?.params?.appointByTrainer,
+    route?.params?.appointByTime,
+    route?.params?.trainer,
+  );
+
   useEffect(() => {
     getUserDetails();
     getPrice();
@@ -74,9 +82,9 @@ export default function UserVisit({navigation, route}) {
       console.log(error);
     }
   };
-  console.log(coupon);
   const confirmAndPay = () => {
     if (route?.params?.appointByTrainer == true && payment.cardNum) {
+      console.log('appointByTrainer--------->>');
       let price =
         coupon == null
           ? amount * 100
@@ -98,7 +106,7 @@ export default function UserVisit({navigation, route}) {
       fetch('http://alsyedmmtravel.com/api/pay', requestOptions)
         .then(response => response.json())
         .then(result => {
-          // console.log(result);
+          console.log(result);
           if (result.message == 'succeeded') {
             bookAppointmentByTrainer(price);
           }
@@ -172,6 +180,7 @@ export default function UserVisit({navigation, route}) {
   };
 
   const bookAppointmentByTrainer = async price => {
+    console.log('bookAppointmentByTrainer------>>');
     try {
       let response = await trainerAppointment(
         token,
@@ -188,7 +197,10 @@ export default function UserVisit({navigation, route}) {
         route?.params?.slot?.sl_time,
         `$${amount}`,
       );
-      setAppointMsg(response.data.message);
+      console.log(response.data.message);
+      setTimeout(() => {
+        setAppointMsg(response.data.message);
+      }, 1000);
     } catch (error) {
       console.log('err-->', error);
     }
@@ -209,7 +221,9 @@ export default function UserVisit({navigation, route}) {
         route?.params?.slot?.sl_time,
         `$${amount}`,
       );
-      setAppointMsg(response.data.message);
+      setTimeout(() => {
+        setAppointMsg(response.data.message);
+      }, 1000);
     } catch (error) {
       console.log('err-->', error);
     }
@@ -234,7 +248,12 @@ export default function UserVisit({navigation, route}) {
             !payment?.cardNum &&
             navigation.navigate('AddPaymentMethod', {
               to: 'UserVisit',
-              appointByTrainer: route?.params?.appointByTrainer,
+              // appointByTrainer: route?.params?.appointByTrainer,
+              sessionStart: route?.params?.sessionStart ? true : false,
+              appointByTrainer: route?.params?.appointByTrainer ? true : false,
+              appointByTime: route?.params?.appointByTime ? true : false,
+              trainer: route?.params?.trainer,
+              slot: route?.params?.slot,
             })
           }>
           <View style={[styles.row, styles.card, styles.borderTop]}>
@@ -245,8 +264,17 @@ export default function UserVisit({navigation, route}) {
                   onPress={() =>
                     navigation.navigate('AddPaymentMethod', {
                       to: 'UserVisit',
-                      appointByTrainer: route?.params?.appointByTrainer,
+                      // appointByTrainer: route?.params?.appointByTrainer,
                       payment: payment,
+                      trainer: route?.params?.trainer,
+                      sessionStart: route?.params?.sessionStart ? true : false,
+                      appointByTrainer: route?.params?.appointByTrainer
+                        ? true
+                        : false,
+                      appointByTime: route?.params?.appointByTime
+                        ? true
+                        : false,
+                      slot: route?.params?.slot,
                     })
                   }>
                   <Feather
@@ -380,13 +408,13 @@ export default function UserVisit({navigation, route}) {
             </View> */}
           </Modal>
         )}
-        {/* {appointMsg !== '' && (
+        {appointMsg !== '' && (
           <Error
             title="Congratulations!"
             message={appointMsg}
             screen={'Home'}
           />
-        )} */}
+        )}
       </ScrollView>
     </SafeAreaView>
   );

@@ -49,10 +49,12 @@ import msg from '../../../assets/msg.png';
 import ema from '../../../assets/ema.jpeg';
 import fac from '../../../assets/fac.jpeg';
 import rx from '../../../assets/rx.png';
-import allTrainer from '../../../assets/allTrainer.png'
+import allTrainer from '../../../assets/allTrainer.png';
+import visitVideo from '../../../assets/visitVideo.png';
 
 const images = {
   allTrainer,
+  visitVideo,
   rx,
   msg,
   ema,

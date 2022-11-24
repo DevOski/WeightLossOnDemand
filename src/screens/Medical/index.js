@@ -80,7 +80,7 @@ export default function Medical({navigation}) {
                   size={20}
                   style={styles.iconLeft}
                 />
-                <Text style={styles.cardText}>What is a video visit?</Text>
+                <Text style={styles.cardText}>What is a video session?</Text>
                 <View>
                   <Text style={styles.symbol}> ›</Text>
                 </View>

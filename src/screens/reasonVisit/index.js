@@ -79,7 +79,7 @@ export const ReasonForDcoctor = ({navigation, route}) => {
       <View style={styles.headcontainer}>
         <Text style={styles.hedtext}>What is the reason for your session?</Text>
       </View>
-      <View style={styles.seachViewmain}>
+      {/* <View style={styles.seachViewmain}>
         <View style={styles.seachView}>
           <View style={styles.iconali}>
             <FontAwesome name="search" color={colors.secondary} size={20} />
@@ -93,10 +93,10 @@ export const ReasonForDcoctor = ({navigation, route}) => {
             />
           </View>
         </View>
-      </View>
-      <View style={styles.chooseContainer}>
+      </View> */}
+      {/* <View style={styles.chooseContainer}>
         <Text style={styles.chosetext}>OR CHOOSE FROM TOP REASONS</Text>
-      </View>
+      </View> */}
       <ScrollView>
         <View style={styles.listcontainer}>
           {reason?.map((item, index) => {
@@ -107,9 +107,17 @@ export const ReasonForDcoctor = ({navigation, route}) => {
                     <Text style={styles.text}>{item?.vr_opts}</Text>
                   </View>
                 </TouchableOpacity>
+                <View style={styles.pading}>
+                  <TouchableOpacity onPress={() => handleReason(item)}>
+                    <View style={styles.lisbutton1}>
+                      <Text style={styles.text}>Other reason</Text>
+                    </View>
+                  </TouchableOpacity>
+                </View>
               </View>
             );
           })}
+
           {/* <View style={styles.pading}>
             <TouchableOpacity>
               <View style={styles.lisbutton}>
@@ -173,14 +181,7 @@ export const ReasonForDcoctor = ({navigation, route}) => {
                 </View>
             </TouchableOpacity>
         </View> */}
-          {/* <View style={styles.pading}>
-            <TouchableOpacity onPress={()=>navigation.navigate('otherreasonscreen')}
-                >
-              <View style={styles.lisbutton1}>
-                <Text style={styles.text}>Other reason</Text>
-              </View>
-            </TouchableOpacity>
-          </View> */}
+
           {/* {!show ? <><View style={styles.pading}>
             <TouchableOpacity>
                 <View style={styles.lisbutton}>
@@ -587,7 +588,7 @@ const styles = StyleSheet.create({
     fontFamily: fontFamily.appTextHeading,
   },
   listcontainer: {
-    marginTop: sizes.screenHeight * 0.03,
+    marginTop: sizes.screenHeight * 0.05,
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -636,10 +637,10 @@ const styles = StyleSheet.create({
     marginLeft: sizes.screenWidth * 0.02,
     fontFamily: fontFamily.appTextRegular,
   },
-  inputIOS:{
+  inputIOS: {
     color: colors.black,
     marginLeft: sizes.screenWidth * 0.02,
     fontFamily: fontFamily.appTextRegular,
-    fontSize:fontSize.medium
-  }
+    fontSize: fontSize.medium,
+  },
 });

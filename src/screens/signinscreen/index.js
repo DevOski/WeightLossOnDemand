@@ -106,11 +106,7 @@ export const SignIn = ({navigation}) => {
             setIsModalVisible(false);
           } else if (response.data.message == 'Trainer found') {
             console.log(response.data.type);
-            dispatch(
-              storeData(
-                '$2y$10$kl2gP4WxK7V/IFAyBblRSOorRI3.VpxYsol6fjnJcebb0WwbtwjUi',
-              ),
-            );
+            dispatch(storeData(response.data.token));
             setIsModalVisible(false);
 
             dispatch(trainerStack(response.data.type));
@@ -164,7 +160,7 @@ export const SignIn = ({navigation}) => {
             />
           </View>
           <View style={styles.filedcontext}>
-            <Text style={styles.text}>Enable Fingerprint for Login</Text>
+            <Text style={styles.text}>Enable fingerprint for login</Text>
             <View>
               <Switch
                 trackColor={{false: '#767577', true: colors.secondary}}
@@ -185,7 +181,11 @@ export const SignIn = ({navigation}) => {
             <View style={styles.filedconbutton}>
               <TouchableOpacity
                 disabled={email != '' && password != '' ? false : true}
-                style={email && password ? styles.but : styles.disabledView}
+                style={
+                  email?.includes('@') && email?.includes('.') && password
+                    ? styles.but
+                    : styles.disabledView
+                }
                 onPress={Sigin}>
                 <Text
                   style={{

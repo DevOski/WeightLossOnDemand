@@ -78,6 +78,16 @@ export default function Questiontwo({navigation, route}) {
               <View style={styles.ro}>
                 <Text style={styles.lstyle}>Morning</Text>
                 <RadioButton
+                onPress={() => {
+                  setMorning(!Morning);
+                  setAfternoon(false);
+                  setEvening(false);
+                  setNight(false);
+                  setselectanswer1('Morning');
+                  // setgender('Female');
+                  // setCheckedMale(false);
+                  // setCheckedOther(false);
+                }}
                   status={Morning ? 'checked' : 'unchecked'}
                   color={'#be1d2d'}
                   uncheckColor={colors.secondary}
@@ -96,6 +106,13 @@ export default function Questiontwo({navigation, route}) {
               <View style={styles.ro}>
                 <Text style={styles.lstyle}>Afternoon</Text>
                 <RadioButton
+                  onPress={() => {
+                    setAfternoon(!Afternoon);
+                    setMorning(false);
+                    setselectanswer1('Afternoon');
+                    setEvening(false);
+                    setNight(false);
+                  }}
                   status={Afternoon ? 'checked' : 'unchecked'}
                   color={'#be1d2d'}
                   uncheckColor={colors.secondary}
@@ -114,6 +131,14 @@ export default function Questiontwo({navigation, route}) {
               <View style={styles.ro}>
                 <Text style={styles.lstyle}>Evening</Text>
                 <RadioButton
+                 onPress={() => {
+                  setEvening(!Evening);
+                  setAfternoon(false);
+                  setMorning(false);
+                  setselectanswer1('Evening');
+  
+                  setNight(false);
+                }}
                   status={Evening ? 'checked' : 'unchecked'}
                   color={'#be1d2d'}
                   uncheckColor={colors.secondary}
@@ -131,6 +156,13 @@ export default function Questiontwo({navigation, route}) {
               <View style={styles.ro}>
                 <Text style={styles.lstyle}>Night</Text>
                 <RadioButton
+                  onPress={() => {
+                    setNight(!Night);
+                    setAfternoon(false);
+                    setMorning(false);
+                    setselectanswer1('Night');
+                    setEvening(false);
+                  }}
                   status={Night ? 'checked' : 'unchecked'}
                   color={'#be1d2d'}
                   uncheckColor={colors.secondary}

@@ -204,6 +204,7 @@ export default function Home({navigation}) {
                     source={images.bg1}
                     style={[styles.bg, {opacity: 1}]}>
                     <TouchableOpacity
+                      style={styles.videoTop}
                       onPress={() =>
                         navigation.navigate('VideoPlayer', {
                           uri: 'https://www.youtube.com/embed/JLnycPtolfw',
@@ -214,7 +215,12 @@ export default function Home({navigation}) {
                           Platform.OS !== 'ios'
                             ? styles.playBtn
                             : styles.playBtnIOS
-                        }>
+                        }
+                        onPress={() => {
+                          navigation.navigate('VideoPlayer', {
+                            uri: 'https://www.youtube.com/embed/JLnycPtolfw',
+                          });
+                        }}>
                         <Image
                           source={images.playIcon}
                           style={styles.playIcon}
@@ -259,7 +265,6 @@ export default function Home({navigation}) {
                       <Text style={styles.addIcon}>●</Text>
                       <Text style={styles.addText}>Maintenance</Text>
                     </View>
-                    
 
                     <View style={styles.btnTop}>
                       <GetCare />
@@ -320,14 +325,16 @@ export default function Home({navigation}) {
                         We're more than just proud
                       </Text>
                       <Text style={styles.letUsText}>
-                        Let us assist you in finding the right trainer for you.
+                        Let us assist you in finding the right consultant for you.
                       </Text>
                     </View>
                     <View style={[styles.learnMoreView, styles.row2]}>
                       <TouchableOpacity
                         onPress={() => navigation.navigate('beyondscreen')}>
-                        <Text style={styles.semiText}>Learn more</Text>
-                        <Text style={styles.symbol}> ›</Text>
+                        <View style={styles.row2}>
+                          <Text style={styles.semiText}>Learn more</Text>
+                          <Text style={styles.symbol}> ›</Text>
+                        </View>
                       </TouchableOpacity>
                     </View>
                   </ImageBackground>

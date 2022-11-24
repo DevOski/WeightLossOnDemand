@@ -23,15 +23,20 @@ import {colors, fontFamily, fontSize, sizes} from '../../services';
 const deviceHeight = Dimensions.get('window').height;
 const deviceWidth = Dimensions.get('window').width;
 import moment from 'moment';
+import {TextInput} from 'react-native-paper';
+
 export const SignUp = ({navigation}) => {
   const [isEnabled, setIsEnabled] = useState(false);
   const toggleSwitch = () => setIsEnabled(previousState => !previousState);
-  const [email, setemail] = useState();
-  const [password, setpassword] = useState();
+  const [email, setemail] = useState('');
+  const [password, setpassword] = useState('');
   const [checked, setChecked] = React.useState(false);
   const [date, setDate] = useState('');
   const [open, setOpen] = useState(false);
   const [register, setregister] = useState();
+  const [oneUppercase, setOneUpperCase] = useState(false);
+  const [onelowercase, setOneLowerCase] = useState(false);
+  const [oneNumeric, setOneNumeric] = useState(false);
 
   useEffect(() => {
     //this will fire  at the beginning and on foto changing value
@@ -54,10 +59,9 @@ export const SignUp = ({navigation}) => {
     // setDate(date);
     setOpen(false);
     // res=""
-   
   };
 
-  const Sinup =  () => {
+  const Sinup = () => {
     // console.log(email,
     //   password,
     //   checked,
@@ -76,9 +80,34 @@ export const SignUp = ({navigation}) => {
         isEnabled,
         date,
       });
-    //   // setregister()
     }
   };
+  useEffect(() => {
+    console.log(password);
+    var i = 0;
+    var character = '';
+    if (password !== '') {
+      while (i <= password.length) {
+        character = password.charAt(i);
+        if (!isNaN(character * 1)) {
+          setOneNumeric(true)
+        } else {
+          if (character == character.toUpperCase()) {
+            // console.log('upper case true');
+            setOneUpperCase(true);
+          }
+          if (character == character.toLowerCase()) {
+            console.log('lower case true');
+            setOneLowerCase(true);
+          }
+        }
+        i++;
+      }
+    } else {
+      setOneUpperCase(false);
+      setOneLowerCase(false);
+    }
+  }, [password]);
   return (
     <SafeAreaView style={styles.bg}>
       <View style={styles.container}>
@@ -96,12 +125,26 @@ export const SignUp = ({navigation}) => {
         <View style={styles.filedContainer}>
           <View style={styles.filedcon}>
             <CustomTextFiel label={'Email'} value={email} setValue={setemail} />
+            {/* <TextInput
+              mode="contain"
+              //   style={styles.input}
+              label={'Email'}
+              value={email}
+              onChangeText={text => handleEmail(text)}
+              autoCapitalize={'none'}
+              activeUnderlineColor={colors.secondary}
+              style={{
+                backgroundColor: '#fafafa',
+                fontSize: fontSize.large,
+                fontFamily: fontFamily.appTextRegular,
+              }}
+            /> */}
           </View>
           <View style={styles.filedcon}>
             {date ? (
-              <TouchableOpacity style={styles.datebutton}
-              onPress={() => setOpen(!open)}
-              >
+              <TouchableOpacity
+                style={styles.datebutton}
+                onPress={() => setOpen(!open)}>
                 <Text style={styles.datebuttontext}>{date && date}</Text>
               </TouchableOpacity>
             ) : (
@@ -109,7 +152,7 @@ export const SignUp = ({navigation}) => {
                 style={styles.datebutton}
                 onPress={() => setOpen(!open)}
                 uppercase={false}>
-                <Text style={styles.datebuttontext}>{" "}Date of birth</Text>
+                <Text style={styles.datebuttontext}> Date of birth</Text>
               </TouchableOpacity>
             )}
             <DatePickerModal
@@ -157,7 +200,7 @@ export const SignUp = ({navigation}) => {
               <AntDesign
                 name="checkcircle"
                 color={
-                  password?.length > 8 ? colors.secondary : colors.disabledBg
+                  password?.length >= 8 ? colors.secondary : colors.disabledBg
                 }
                 size={20}
               />
@@ -169,12 +212,19 @@ export const SignUp = ({navigation}) => {
               <AntDesign
                 name="checkcircle"
                 color={
-                  password?.toUpperCase() && password !=password?.match(/\d/)  ? colors.secondary : colors.disabledBg
+                  // password?.toUpperCase() &&
+                  // // password?.toUpperCase() &&
+                  // password == password?.match(/\d/)
+                  // ?
+                  oneUppercase && onelowercase
+                    ? // password?.toLowerCase()
+                      colors.secondary
+                    : colors.disabledBg
                 }
                 size={20}
               />
               <Text style={styles.fontcheck}>
-                One uppercase and one lowercase{' '}
+                One uppercase or one lowercase{' '}
               </Text>
             </View>
           </View>
@@ -183,7 +233,11 @@ export const SignUp = ({navigation}) => {
               <AntDesign
                 name="checkcircle"
                 color={
-                  password?.match(/\d/) && password != password?.toUpperCase() ? colors.secondary : colors.disabledBg
+                  // password?.match(/\d/.test)
+                  // ? //
+                  password?.match(/\d/) && password != password?.toUpperCase()
+                    ? colors.secondary
+                    : colors.disabledBg
                 }
                 size={20}
               />
@@ -191,7 +245,7 @@ export const SignUp = ({navigation}) => {
             </View>
           </View>
           <View style={styles.filedcontext}>
-            <Text style={styles.text}>Enable Fingerprint for Login</Text>
+            <Text style={styles.text}>Enable fingerprint for login</Text>
             <View>
               <Switch
                 trackColor={{false: '#767577', true: 'red'}}
@@ -223,23 +277,26 @@ export const SignUp = ({navigation}) => {
           </View>
           <View style={styles.filedconbutton}>
             <TouchableOpacity
-              disabled={
-                password?.length > 8 &&
-                password?.toUpperCase() &&
-                password?.match(/\d/) &&
-                email &&
-                date
-                  ? false
-                  : true
-              }
+              // disabled={
+              //   password?.length > 8 &&
+              //   password?.toUpperCase() &&
+              //   password?.match(/\d/) &&
+              //   email &&
+              //   date
+              //     ? false
+              //     : true
+              // }
               style={
-                password?.length > 8 &&
-                password?.toUpperCase() &&
-                password?.match(/\d/) &&
-                email &&
-                date
-                  ? styles.but
-                  : styles.disabledView
+                // password?.length > 8 &&
+                // password?.toUpperCase() &&
+                // password?.match(/\d/) &&
+                // email?.includes('@') &&
+                // email?.includes('.') &&
+                // date &&
+                // checked
+                //   ?
+                styles.but
+                // : styles.disabledView
               }
               onPress={Sinup}>
               <Text

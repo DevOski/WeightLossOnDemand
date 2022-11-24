@@ -72,13 +72,16 @@ export default function Question({navigation, route}) {
                 setTwiceaweek(false);
                 setDaily(false);
                 setselectanswer('Once a week');
-                // setgender('Female');
-                // setCheckedMale(false);
-                // setCheckedOther(false);
               }}>
               <View style={styles.ro}>
                 <Text style={styles.lstyle}>Once a week</Text>
                 <RadioButton
+                  onPress={() => {
+                    setOnceaweek(!Onceaweek);
+                    setTwiceaweek(false);
+                    setDaily(false);
+                    setselectanswer('Once a week');
+                  }}
                   status={Onceaweek ? 'checked' : 'unchecked'}
                   color={'#be1d2d'}
                   uncheckColor={colors.secondary}
@@ -99,6 +102,15 @@ export default function Question({navigation, route}) {
               <View style={styles.ro}>
                 <Text style={styles.lstyle}>Twice a week</Text>
                 <RadioButton
+                  onPress={() => {
+                    setTwiceaweek(!Twiceaweek);
+                    setOnceaweek(false);
+                    setDaily(false);
+                    setselectanswer('Twice a week');
+                    // setgender('Female');
+                    // setCheckedMale(false);
+                    // setCheckedOther(false);
+                  }}
                   status={Twiceaweek ? 'checked' : 'unchecked'}
                   color={'#be1d2d'}
                   uncheckColor={colors.secondary}
@@ -118,6 +130,15 @@ export default function Question({navigation, route}) {
               <View style={styles.ro}>
                 <Text style={styles.lstyle}>Daily</Text>
                 <RadioButton
+                  onPress={() => {
+                    setDaily(!Daily);
+                    setTwiceaweek(false);
+                    setOnceaweek(false);
+                    setselectanswer('Daily');
+                    // setgender('Female');
+                    // setCheckedMale(false);
+                    // setCheckedOther(false);
+                  }}
                   status={Daily ? 'checked' : 'unchecked'}
                   color={'#be1d2d'}
                   uncheckColor={colors.secondary}

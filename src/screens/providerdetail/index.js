@@ -264,7 +264,7 @@ const styles = StyleSheet.create({
   },
   subhead: {
     fontSize: fontSize.large,
-    color: colors.appBgColor2,
+    color: colors.black,
     fontWeight: 'bold',
     fontFamily: fontFamily.appTextLight,
   },

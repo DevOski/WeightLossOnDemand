@@ -76,6 +76,13 @@ export default function Questionfour({navigation, route}) {
               <View style={styles.ro}>
                 <Text style={styles.lstyle}>Strength Training</Text>
                 <RadioButton
+                 onPress={() => {
+                  setStrengthTraining(!StrengthTraining);
+                  setYoga(false);
+                  setAerobicsanddance(false);
+                  setAerobicsanddance(false);
+                  setselectanswer4('Strength Training');
+                }}
                   status={StrengthTraining ? 'checked' : 'unchecked'}
                   color={'#be1d2d'}
                   uncheckColor={colors.secondary}
@@ -93,6 +100,13 @@ export default function Questionfour({navigation, route}) {
               <View style={styles.ro}>
                 <Text style={styles.lstyle}>Yoga</Text>
                 <RadioButton
+                onPress={() => {
+                  setYoga(!Yoga);
+                  setStrengthTraining(false);
+                  setselectanswer4('Yoga');
+                  setAerobicsanddance(false);
+                  setAerobicsanddance(false);
+                }}
                   status={Yoga ? 'checked' : 'unchecked'}
                   color={'#be1d2d'}
                   uncheckColor={colors.secondary}
@@ -109,6 +123,12 @@ export default function Questionfour({navigation, route}) {
               <View style={styles.ro}>
                 <Text style={styles.lstyle}>Aerobics and dance</Text>
                 <RadioButton
+                 onPress={() => {
+                  setAerobicsanddance(!Aerobicsanddance);
+                  setYoga(false);
+                  setStrengthTraining(false);
+                  setselectanswer4('Aerobics and dance');
+                }}
                   status={Aerobicsanddance ? 'checked' : 'unchecked'}
                   color={'#be1d2d'}
                   uncheckColor={colors.secondary}
@@ -126,6 +146,13 @@ export default function Questionfour({navigation, route}) {
               <View style={styles.ro}>
                 <Text style={styles.lstyle}>Pilates</Text>
                 <RadioButton
+                 onPress={() => {
+                  setPilates(!Pilates);
+                  setAerobicsanddance(false);
+                  setYoga(false);
+                  setStrengthTraining(false);
+                  setselectanswer4('Pilates');
+                }}
                   status={Pilates ? 'checked' : 'unchecked'}
                   color={'#be1d2d'}
                   uncheckColor={colors.secondary}

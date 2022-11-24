@@ -76,9 +76,9 @@ export default function ChooseProvider({route, navigation}) {
                     {item.tr_desc}
                   </Text>
                 </View>
-                <View>
+                {/* <View>
                   <Text style={Platform.OS !== 'ios' ? styles.symbol : styles.symbolIOS}> ›</Text>
-                </View>
+                </View> */}
               </View>
             </TouchableOpacity>
           );

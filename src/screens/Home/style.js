@@ -103,16 +103,16 @@ export const styles = StyleSheet.create({
     width: sizes.screenWidth * 0.9,
   },
   playBtn: {
-    top: sizes.screenHeight * 0.3,
+    // top: sizes.screenHeight * 0.3,
     alignSelf: 'center',
     backgroundColor: 'rgba(255, 255, 247,0.3)',
-    height: sizes.screenHeight * 0.11,
+    height: sizes.screenHeight * 0.1,
     width: sizes.screenWidth * 0.2,
     borderRadius: sizes.screenWidth * 0.8,
     justifyContent: 'center',
   },
   playBtnIOS: {
-    top: sizes.screenHeight * 0.3,
+    // top: sizes.screenHeight * 0.3,
     alignSelf: 'center',
     backgroundColor: 'rgba(255, 255, 247,0.3)',
     height: sizes.screenHeight * 0.08,
@@ -151,7 +151,7 @@ export const styles = StyleSheet.create({
     textShadowColor: colors.black,
     textShadowOffset: {width: 0.5, height: 0.5},
     textShadowRadius: 50,
-    textTransform:'uppercase'
+    textTransform: 'uppercase',
   },
   text2: {
     color: colors.white,
@@ -168,8 +168,7 @@ export const styles = StyleSheet.create({
     textShadowColor: colors.white,
     textShadowOffset: {width: 0.5, height: 0.5},
     textShadowRadius: 30,
-    textTransform:'uppercase'
-
+    textTransform: 'uppercase',
   },
   row2: {
     flexDirection: 'row',
@@ -229,7 +228,8 @@ export const styles = StyleSheet.create({
   },
   providerImg: {
     height: sizes.screenHeight * 0.08,
-    width: sizes.screenWidth * 0.15,
+    width: sizes.screenWidth * 0.17,
+    borderRadius: sizes.screenWidth * 0.5,
   },
   providerImgIOS: {
     height: sizes.screenHeight * 0.08,
@@ -302,5 +302,10 @@ export const styles = StyleSheet.create({
   },
   seeBtn: {
     // top: sizes.screenHeight * 0.48,
+  },
+
+  videoTop: {
+    // backgroundColor:'red',
+    top: sizes.screenHeight * 0.3,
   },
 });

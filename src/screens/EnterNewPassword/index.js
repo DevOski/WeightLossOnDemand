@@ -19,6 +19,7 @@ import {updateUserPassword} from '../../services/utilities/api/auth';
 import {useSelector} from 'react-redux';
 import Error from '../../components/Error';
 import Loader from '../../components/Loader';
+import { useEffect } from 'react';
 
 export default function EnterNewPassword({navigation, route}) {
   const [showPassword, setShowPassword] = useState(true);
@@ -28,6 +29,8 @@ export default function EnterNewPassword({navigation, route}) {
   const [message, setMessage] = useState('');
   const [loader, setLoader] = useState(false);
   const [stack, setStack] = useState('Home');
+  const [oneUppercase, setOneUpperCase] = useState(false);
+  const [onelowercase, setOneLowerCase] = useState(false);
   const token = useSelector(state => state.token);
 
   const updatePassword = async () => {
@@ -63,7 +66,32 @@ export default function EnterNewPassword({navigation, route}) {
         .catch(error => console.log('error', error));
     }
   };
-
+  useEffect(() => {
+    console.log(password);
+    var i = 0;
+    var character = '';
+    if (password !== '') {
+      while (i <= password.length) {
+        character = password.charAt(i);
+        if (!isNaN(character * 1)) {
+          setOneNumeric(true)
+        } else {
+          if (character == character.toUpperCase()) {
+            // console.log('upper case true');
+            setOneUpperCase(true);
+          }
+          if (character == character.toLowerCase()) {
+            console.log('lower case true');
+            setOneLowerCase(true);
+          }
+        }
+        i++;
+      }
+    } else {
+      setOneUpperCase(false);
+      setOneLowerCase(false);
+    }
+  }, [password]);
   return (
     <SafeAreaView>
       <ScrollView style={styles.color}>
@@ -120,7 +148,7 @@ export default function EnterNewPassword({navigation, route}) {
                 <AntDesign
                   name="checkcircle"
                   color={
-                    password?.length > 8 ? colors.secondary : colors.disabledBg
+                    password?.length >= 8 ? colors.secondary : colors.disabledBg
                   }
                   size={20}
                 />
@@ -132,7 +160,8 @@ export default function EnterNewPassword({navigation, route}) {
                 <AntDesign
                   name="checkcircle"
                   color={
-                    password?.toUpperCase()
+                    // password?.toUpperCase()
+                    oneUppercase && onelowercase
                       ? colors.secondary
                       : colors.disabledBg
                   }
@@ -148,7 +177,7 @@ export default function EnterNewPassword({navigation, route}) {
                 <AntDesign
                   name="checkcircle"
                   color={
-                    password?.match(/\d/) ? colors.secondary : colors.disabledBg
+                    password?.match(/\d/) && password != password?.toUpperCase() ? colors.secondary : colors.disabledBg
                   }
                   size={20}
                 />

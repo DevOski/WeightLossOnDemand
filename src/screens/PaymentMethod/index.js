@@ -17,7 +17,7 @@ import {colors, sizes} from '../../services';
 import Modal from 'react-native-modal';
 import Entypo from 'react-native-vector-icons/Entypo';
 import WebView from 'react-native-webview';
-import { useSelector } from 'react-redux';
+import {useSelector} from 'react-redux';
 
 export default function PaymentMethod({navigation}) {
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -35,28 +35,30 @@ export default function PaymentMethod({navigation}) {
           <Text style={styles.addPaymentText}>Add Payment Method</Text>
         </View>
         <TouchableOpacity
-          onPress={() => navigation.navigate('AddPaymentMethod',{to:"Setting"})}>
+          onPress={() =>
+            navigation.navigate('AddPaymentMethod', {to: 'Setting'})
+          }>
           <View style={[styles.row, styles.card]}>
             <Fontisto name="credit-card" color={colors.secondary} size={25} />
-            <Text style={styles.cardText}>{'   '}Credit Card, FSA, HSA</Text>
+            <Text style={styles.cardText}>{'   '}Debit or Credit Card</Text>
             <View>
               <Text style={styles.symbol}> ›</Text>
             </View>
           </View>
         </TouchableOpacity>
-        
-        <View style={styles.padding}>
+
+        {/* <View style={styles.padding}>
           <Text style={styles.text}>
             <Text style={styles.bold}>
-              You will not be charged for this visit,
+              You will not be charged for this session,
             </Text>{' '}
             however, a payment method is required in order to connect with a
-            provider.{' '}
+            consultant.{' '}
             <Text style={styles.link} onPress={() => setIsModalVisible(true)}>
               Learn more
             </Text>
           </Text>
-        </View>
+        </View> */}
         {isModalVisible && (
           <Modal style={styles.modalView} isVisible={isModalVisible}>
             <TouchableOpacity onPress={toggleModal}>
@@ -66,7 +68,12 @@ export default function PaymentMethod({navigation}) {
                   bottom: sizes.screenHeight * 0.25,
                   left: sizes.screenWidth * 0.85,
                 }}>
-                <Entypo name="cross" color={colors.secondary} size={30} />
+                <Entypo
+                  name="cross"
+                  color={colors.secondary}
+                  size={30}
+                  onPress={toggleModal}
+                />
               </View>
             </TouchableOpacity>
 

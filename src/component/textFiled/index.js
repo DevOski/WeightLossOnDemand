@@ -9,6 +9,7 @@ export const CustomTextFiel = ({
   setValue,
   secureTextEntry,
   editable,
+  type
 }) => {
   return (
     //   <View style={styles.container}>
@@ -23,6 +24,7 @@ export const CustomTextFiel = ({
         secureTextEntry={secureTextEntry}
         activeUnderlineColor={colors.secondary}
         editable={editable}
+        keyboardType={type}
         style={{
           backgroundColor: "#fafafa",
           fontSize: fontSize.large,

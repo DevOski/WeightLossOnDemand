@@ -18,7 +18,6 @@ import {styles} from './style';
 // import {openComposer, openInbox} from 'react-native-email-link';
 
 export default function SharePromo() {
-
   // const handleGmail = () => {
   //   openComposer({
   //     subject: "Here's $10 off a Weight Loss On Demand visit",
@@ -31,8 +30,8 @@ export default function SharePromo() {
   const promoCode = useSelector(state => state.user.promo_code);
   const handleMessages = async () => {
     const options = {
-      title: "Here's $10 off a Weight Loss On Demand visit!",
-      message: `I just used Weight Loss On Demand to see a board-certified physician over video, right from my phone. They can treat 18 of the top 20 ER cases, including the most common issues this cold and flu season. I wanted to share a gift of $10 off your first visit by using my code ${promoCode}.To claim your free gift, download the app and sign up using this link:`,
+      title: "Here's $10 off a Weight Loss On Demand session!",
+      message: `I just used Weight Loss On Demand to see a certified consultant over video, right from my phone. I wanted to share a gift of $10 off your first session by using my code ${promoCode}. To claim your free gift, download the app and sign up using this link:`,
     };
     const response = await Share.share(options);
   };
@@ -51,7 +50,7 @@ export default function SharePromo() {
         <View style={styles.padding}>
           <Text style={styles.shareText}>
             Share your promocode with your friends and family. They'll get $10
-            off their first visit (not eligible with insurance).
+            off their first session.
           </Text>
         </View>
         <TouchableOpacity onPress={handleMessages}>

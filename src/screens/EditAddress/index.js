@@ -103,12 +103,24 @@ export default function EditAddress({navigation}) {
     setTimeout(async () => {
       try {
         let response = await getUser(token);
-        console.log(response.data.data);
+        console.log(response.data.data.address2);
         setAddress(response.data.data.address);
-        setAddress2(response.data.data.address2);
-        setCity(response.data.data.city);
-        setState(response.data.data.state);
-        setZipCode(response.data.data.zipcode);
+        setAddress2(
+          response.data.data.address2 == 'none'
+            ? ''
+            : response.data.data.address2,
+        );
+        setCity(
+          response.data.data.city == 'none' ? '' : response.data.data.city,
+        );
+        setState(
+          response.data.data.state == 'none' ? '' : response.data.data.state,
+        );
+        setZipCode(
+          response.data.data.zipcode == 'none'
+            ? ''
+            : response.data.data.zipcode,
+        );
         setLoader(false);
       } catch (error) {
         console.log(error);

@@ -43,7 +43,7 @@ export const styles = StyleSheet.create({
     fontFamily: fontFamily.appTextRegular,
   },
   fingerprintText: {
-    right: sizes.screenWidth * 0.07,
+    right: sizes.screenWidth * 0.05,
     fontSize: fontSize.medium,
     color: colors.black,
     fontFamily: fontFamily.appTextRegular,
@@ -147,4 +147,10 @@ export const styles = StyleSheet.create({
   bottomIOS: {
     paddingBottom: sizes.screenHeight * 0.05,
   },
+  contactLeft:{
+    left: sizes.screenWidth * 0.05,
+    fontSize: fontSize.medium,
+    color: colors.black,
+    fontFamily: fontFamily.appTextRegular,
+  }
 });

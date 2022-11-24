@@ -55,14 +55,12 @@ export default function Physicans({navigation, route}) {
           {trainerList?.length ? (
             <Text style={styles.subHeading}>{t_name} </Text>
           ) : (
-            <Text style={styles.consultant}>
-              No consultants found.
-            </Text>
+            <Text style={styles.consultant}>No consultants found.</Text>
           )}
         </View>
         <View style={styles.paddingTop}>
           {trainerList?.map((item, index) => {
-            console.log('------------------>>>',item)
+            console.log('------------------>>>', item);
             return (
               <TouchableOpacity
                 key={index}
@@ -79,7 +77,7 @@ export default function Physicans({navigation, route}) {
                               ? styles.trImg
                               : styles.trImgIOS
                           }
-                          source={{uri:item?.images}}
+                          source={{uri: item?.images}}
                         />
                       </View>
                       <View>
@@ -93,15 +91,15 @@ export default function Physicans({navigation, route}) {
                       {item?.tr_desc}
                     </Text>
                   </View>
-                  <View>
-                    <Text
+                  {/* <View> */}
+                  {/* <Text
                       style={
                         Platform.OS !== 'ios' ? styles.symbol : styles.symbolIOS
                       }>
                       {' '}
                       ›
-                    </Text>
-                  </View>
+                    </Text> */}
+                  {/* </View> */}
                 </View>
               </TouchableOpacity>
             );
@@ -224,6 +222,7 @@ export default function Physicans({navigation, route}) {
             </View>
           </TouchableOpacity> */}
         </View>
+        <View style={styles.paddingBottom}></View>
         {loader && <Loader />}
       </ScrollView>
     </SafeAreaView>
@@ -362,5 +361,8 @@ const styles = StyleSheet.create({
     width: sizes.screenWidth * 0.22,
     height: sizes.screenHeight * 0.1,
     borderRadius: sizes.screenWidth * 0.5,
+  },
+  paddingBottom: {
+    paddingBottom: sizes.screenHeight * 0.09,
   },
 });

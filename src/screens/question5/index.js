@@ -76,6 +76,11 @@ export default function Questionthree({navigation, route}) {
               <View style={styles.ro}>
                 <Text style={styles.lstyle}>Strength</Text>
                 <RadioButton
+                  onPress={() => {
+                    setStrengthTraining(!StrengthTraining);
+                    setCardio(false);
+                    setselectanswer5('Strength Training');
+                  }}
                   status={StrengthTraining ? 'checked' : 'unchecked'}
                   color={'#be1d2d'}
                   uncheckColor={colors.secondary}
@@ -95,6 +100,14 @@ export default function Questionthree({navigation, route}) {
               <View style={styles.ro}>
                 <Text style={styles.lstyle}>Cardio</Text>
                 <RadioButton
+                  onPress={() => {
+                    setCardio(!Cardio);
+                    setStrengthTraining(false);
+                    setselectanswer5('Cardio');
+                    // setgender('Female');
+                    // setCheckedMale(false);
+                    // setCheckedOther(false);
+                  }}
                   status={Cardio ? 'checked' : 'unchecked'}
                   color={'#be1d2d'}
                   uncheckColor={colors.secondary}
