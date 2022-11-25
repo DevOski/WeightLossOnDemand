@@ -87,25 +87,10 @@ export const SignUp = ({navigation}) => {
     var i = 0;
     var character = '';
     if (password !== '') {
-      while (i <= password.length) {
-        character = password.charAt(i);
-        if (!isNaN(character * 1)) {
-          setOneNumeric(true)
-        } else {
-          if (character == character.toUpperCase()) {
-            // console.log('upper case true');
-            setOneUpperCase(true);
-          }
-          if (character == character.toLowerCase()) {
-            console.log('lower case true');
-            setOneLowerCase(true);
-          }
-        }
-        i++;
-      }
-    } else {
-      setOneUpperCase(false);
-      setOneLowerCase(false);
+      let upper = password.toLowerCase() !== password;
+      setOneUpperCase(upper);
+      let lower = password.toUpperCase() !== password;
+      setOneLowerCase(lower);
     }
   }, [password]);
   return (
@@ -224,7 +209,7 @@ export const SignUp = ({navigation}) => {
                 size={20}
               />
               <Text style={styles.fontcheck}>
-                One uppercase or one lowercase{' '}
+                One uppercase and one lowercase{' '}
               </Text>
             </View>
           </View>
@@ -277,26 +262,25 @@ export const SignUp = ({navigation}) => {
           </View>
           <View style={styles.filedconbutton}>
             <TouchableOpacity
-              // disabled={
-              //   password?.length > 8 &&
-              //   password?.toUpperCase() &&
-              //   password?.match(/\d/) &&
-              //   email &&
-              //   date
-              //     ? false
-              //     : true
-              // }
+              disabled={
+                password?.length > 8 &&
+                password?.toUpperCase() &&
+                password?.match(/\d/) &&
+                email &&
+                date
+                  ? false
+                  : true
+              }
               style={
-                // password?.length > 8 &&
-                // password?.toUpperCase() &&
-                // password?.match(/\d/) &&
-                // email?.includes('@') &&
-                // email?.includes('.') &&
-                // date &&
-                // checked
-                //   ?
-                styles.but
-                // : styles.disabledView
+                password?.length > 8 &&
+                password?.toUpperCase() &&
+                password?.match(/\d/) &&
+                email?.includes('@') &&
+                email?.includes('.') &&
+                date &&
+                checked
+                  ? styles.but
+                  : styles.disabledView
               }
               onPress={Sinup}>
               <Text

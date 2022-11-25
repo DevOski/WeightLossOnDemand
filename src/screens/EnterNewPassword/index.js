@@ -38,7 +38,6 @@ export default function EnterNewPassword({navigation, route}) {
     if (!route?.params?.email && password == confirmPassword) {
       setTimeout(async () => {
         try {
-          console.log('ssssssss');
           let response = await updateUserPassword(token, password);
           setLoader(false);
           setMessage(response.data.message);
@@ -74,7 +73,7 @@ export default function EnterNewPassword({navigation, route}) {
       while (i <= password.length) {
         character = password.charAt(i);
         if (!isNaN(character * 1)) {
-          setOneNumeric(true)
+          console.log("");
         } else {
           if (character == character.toUpperCase()) {
             // console.log('upper case true');

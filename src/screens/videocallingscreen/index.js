@@ -1,5 +1,6 @@
 import React, {useEffect, useRef, useState} from 'react';
 import {
+  BackHandler,
   Dimensions,
   SafeAreaView,
   ScrollView,
@@ -77,10 +78,15 @@ export default function Videocalling({navigation, route}) {
     setupVideoSDKEngine();
     getUserDetails();
   }, []);
+  useEffect(() => {
+    const backHandler = BackHandler.addEventListener('backPress', () => true);
+    return () => backHandler.remove();
+  }, []);
 
   const getUserDetails = async () => {
     try {
       let response = await getUser(usertoken);
+      console.log("chane--->",response.data.data.channel);
       // setChannelName(response.data.data.channel);
       setChannelName(response.data.data.channel);
       // console.log(response.data.data.channel);
@@ -175,7 +181,7 @@ export default function Videocalling({navigation, route}) {
       {/* <Text style={styles.head}>Agora Video Calling Quickstart</Text>   */}
       {/* <View style={styles.btnContainer}> */}
       {isJoined ? null : (
-        <TouchableOpacity onPress={join}>
+        <TouchableOpacity onPress={join} style={{backgroundColor:'orange'}}>
           <View style={styles.button1}>
             <Text style={[styles.top]}>Join</Text>
           </View>

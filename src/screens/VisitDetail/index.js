@@ -82,18 +82,18 @@ export const VisitDetail = ({navigation, route}) => {
       <ScrollView>
         <View style={styles.container1}>
           <View>
-            <Text style={styles.hedtext}>Visit Details</Text>
+            <Text style={styles.hedtext}>Session Details</Text>
           </View>
           <View style={styles.flex}>
             <View>
-              <Text style={styles.providertex}>TRAINER</Text>
+              <Text style={styles.providertex}>CONSULTANT</Text>
               <Text style={styles.subhead}>{trainer?.tr_name}</Text>
             </View>
             <View>
               <View style={styles.img}>
                 <Image
                   style={Platform.OS !== 'ios' ? styles.trImg : styles.trImgIOS}
-                  source={ladyy}
+                  source={{uri:trainer.images}}
                 />
               </View>
             </View>
@@ -106,7 +106,7 @@ export const VisitDetail = ({navigation, route}) => {
             </Text>
           </View>
           <View style={styles.crd}>
-            <View style={styles.flex2}>
+            {/* <View style={styles.flex2}>
               <View style={styles.imgicon}>
                 <Image
                   style={{width: '100%', height: '100%'}}
@@ -117,7 +117,7 @@ export const VisitDetail = ({navigation, route}) => {
                 onPress={() => navigation.navigate('ChooseFollowUp')}>
                 <Text style={styles.litext}>Schedule Follow-up</Text>
               </TouchableOpacity>
-            </View>
+            </View> */}
             {/* <View style={styles.flex2}>
               <View style={styles.imgicon}>
                 <Image
@@ -166,14 +166,14 @@ export const VisitDetail = ({navigation, route}) => {
               </TouchableOpacity>
             </View> */}
           </View>
-          <View style={styles.crd}>
+          {/* <View style={styles.crd}>
             <Text style={styles.subhead}>Trainee</Text>
             <Text style={styles.providertex}>
               {user?.first_name} {user?.middle_name} {user?.last_name}
             </Text>
-          </View>
+          </View> */}
           <View style={styles.crd}>
-            <Text style={styles.providertex}>Trainer</Text>
+            <Text style={styles.providertex}>Consultant</Text>
             <Text style={[styles.subhead, styles.border]}>
               {trainer?.tr_desc}
             </Text>
@@ -200,7 +200,7 @@ export const VisitDetail = ({navigation, route}) => {
               )}
             </View> */}
           </View>
-          <View style={styles.crd}>
+          {/* <View style={styles.crd}>
             <Text style={styles.providertex}>Documents</Text>
             <View style={styles.flex3}>
               <Text style={styles.litext1}>
@@ -208,21 +208,21 @@ export const VisitDetail = ({navigation, route}) => {
               </Text>
               <Text style={styles.litext3}>{'>'}</Text>
             </View>
-          </View>
+          </View> */}
           <View style={styles.crd}>
             <View>
-              <Text style={styles.subhead}>Visit intake</Text>
-              <Text style={styles.subhead}>PURPOSE OF VISIT</Text>
+              {/* <Text style={styles.subhead}>Visit intake</Text> */}
+              <Text style={styles.subhead}>PURPOSE OF SESSION</Text>
               <Text style={styles.subhead}>{visit?.reason}</Text>
               <View style={styles.borderbottom}></View>
               {/* <Text style={[styles.subhead, styles.mt]}>Time PERIOD</Text>
               <Text style={[styles.subhead, styles.mt]}>3 days</Text> */}
               {/* <View style={styles.borderbottom}></View> */}
-              <Text style={[styles.subhead, styles.mt]}>SYMPTOMS</Text>
+              {/* <Text style={[styles.subhead, styles.mt]}>SYMPTOMS</Text>
               <Text style={[styles.subhead, styles.mt]}>
                 {visit?.response_1} {visit?.response_2} {visit?.response_3}
                 {visit?.response_4} {visit?.response_5}
-              </Text>
+              </Text> */}
             </View>
           </View>
           {/* <View style={styles.crd}>

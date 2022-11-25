@@ -215,8 +215,7 @@ export default function Setting({navigation}) {
                 Platform.OS !== 'ios'
                   ? styles.fingerprintText
                   : styles.fingerprintTextIOS
-              }>
-              Enable fingerprint for login
+              }>Enable fingerprint for login
             </Text>
             <View style={{alignSelf: 'flex-end'}}>
               <Switch

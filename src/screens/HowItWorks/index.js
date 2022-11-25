@@ -51,7 +51,7 @@ export default function HowItWorks({navigation}) {
           <View style={styles.padding}>
             <TouchableOpacity onPress={() => navigation.navigate('VideoVisit')}>
               <View style={[styles.row, styles.card]}>
-                <Text style={styles.cardText}>What is a Video Visit?</Text>
+                <Text style={styles.cardText}>What is a video session?</Text>
                 <View>
                   <Text style={styles.symbol}> ›</Text>
                 </View>

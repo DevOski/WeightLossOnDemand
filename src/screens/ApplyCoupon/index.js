@@ -26,6 +26,7 @@ export default function ApplyCoupon({route, navigation}) {
   const [loader, setLoader] = useState(false);
   const [title, setTitle] = useState('Congratulations!');
   const token = useSelector(state => state.token);
+  const promoCode = useSelector(state => state.user.promo_code);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const dispatch = useDispatch();
 
@@ -35,40 +36,47 @@ export default function ApplyCoupon({route, navigation}) {
 
   const couponVerify = async () => {
     setLoader(true);
+    if (promoCode !== coupon) {
+      var myHeaders = new Headers();
+      myHeaders.append(
+        'Authorization',
+        '$2y$10$KmDTenzlBmb2iVT.tv0nu.zmfkP5FGW.WWGAfPcXeQZqqkuf7/uCW',
+      );
+      myHeaders.append('Content-Type', 'application/json');
 
-    var myHeaders = new Headers();
-    myHeaders.append(
-      'Authorization',
-      '$2y$10$KmDTenzlBmb2iVT.tv0nu.zmfkP5FGW.WWGAfPcXeQZqqkuf7/uCW',
-    );
-    myHeaders.append('Content-Type', 'application/json');
-
-    var raw = JSON.stringify({
-      coupon: coupon,
-    });
-    var requestOptions = {
-      method: 'POST',
-      headers: myHeaders,
-      body: raw,
-      redirect: 'follow',
-    };
-    setTimeout(() => {
-      fetch('http://alsyedmmtravel.com/api/coupon_check', requestOptions)
-        .then(response => response.json())
-        .then(result => {
-          console.log(result);
-          setMessage(result.message);
-          toggleModal();
-          if (result.message == 'Invalid coupon') {
-            setTitle('Oops!');
-          } else {
-            setTitle('Congratulations!');
-            dispatch(storeCoupon(coupon));
-          }
-          setLoader(false);
-        })
-        .catch(error => console.log('error', error));
-    }, 100);
+      var raw = JSON.stringify({
+        coupon: coupon,
+      });
+      var requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: raw,
+        redirect: 'follow',
+      };
+      setTimeout(() => {
+        fetch('http://alsyedmmtravel.com/api/coupon_check', requestOptions)
+          .then(response => response.json())
+          .then(result => {
+            console.log(result);
+            setMessage(result.message);
+            toggleModal();
+            if (result.message == 'Invalid coupon') {
+              setTitle('Oops!');
+            } else {
+              setTitle('Congratulations!');
+              dispatch(storeCoupon(coupon));
+            }
+            setLoader(false);
+          })
+          .catch(error => console.log('error', error));
+      }, 100);
+    } else {
+      console.log("worksss");
+      setLoader(false);
+      toggleModal();
+      setTitle('Oops!');
+      setMessage('Invalid coupon');
+    }
   };
   return (
     <SafeAreaView>

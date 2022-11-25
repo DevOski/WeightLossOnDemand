@@ -33,6 +33,7 @@ export default function ChangePassword({navigation, route}) {
   };
   const email = useSelector(state => state.user.email);
   const verifyPassword = () => {
+    setLoader(true);
     try {
       setLoader(true);
       setTimeout(async () => {
@@ -49,7 +50,7 @@ export default function ChangePassword({navigation, route}) {
             setLoader(false);
           }, 1000);
         }
-      }, 100);
+      }, 1000);
     } catch (error) {
       setTimeout(() => {
         console.log('err', error);

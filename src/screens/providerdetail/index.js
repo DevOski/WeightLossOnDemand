@@ -46,6 +46,7 @@ export const ProviderDetail = ({navigation, route}) => {
       try {
         let response = await selectedTrainer(route?.params?.trainer?.tr_id);
         setTrainer(response.data.trainers);
+        console.log(response.data.slots);
         setSlot(response.data.slots);
         setLoader(false);
       } catch (error) {

@@ -192,6 +192,7 @@ export default function Home({navigation}) {
           showsHorizontalScrollIndicator={false}
           style={styles.wrap}>
           {item?.map((item, index) => {
+            
             return (
               <View
                 key={index}
@@ -460,7 +461,7 @@ export default function Home({navigation}) {
 
                     <View style={[styles.row2, styles.paddingLeft]}>
                       <Image
-                        source={images.provider1}
+                        source={{uri: pastVisit.images}}
                         style={styles.providerImg}
                       />
                       <View>

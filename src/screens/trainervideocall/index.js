@@ -129,7 +129,7 @@ export default function TrainerVideocalling({navigation, route}) {
   const join = async () => {
     // console.log('------->>>',token);
     let response = await getTokenFromAPI(channelName);
-      let token = response.data.rtcToken;
+    let token = response.data.rtcToken;
 
     if (isJoined) {
       return;
@@ -191,6 +191,9 @@ export default function TrainerVideocalling({navigation, route}) {
         <React.Fragment key={0}>
           <RtcSurfaceView canvas={{uid: 0}} style={styles.videoView1} />
           {/* <Text>Local user uid: {uid}</Text> */}
+          <View style={styles.noAvailableView}>
+            <Text style={styles.text}>Waiting for user to join</Text>
+          </View>
           <View
             style={{
               flexDirection: 'row',
@@ -368,4 +371,13 @@ const styles = StyleSheet.create({
   },
   head: {fontSize: 20},
   info: {backgroundColor: '#ffffe0', color: '#0000ff'},
+  noAvailableView: {
+    // left:sizes.screenWidth * 0.3
+    alignSelf: 'center',
+    top: sizes.screenHeight * 0.4,
+  },
+  text: {
+    color: colors.black,
+    fontSize: fontSize.medium,
+  },
 });

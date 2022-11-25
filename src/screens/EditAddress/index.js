@@ -104,7 +104,11 @@ export default function EditAddress({navigation}) {
       try {
         let response = await getUser(token);
         console.log(response.data.data.address2);
-        setAddress(response.data.data.address);
+        setAddress(
+          response.data.data.address == 'none'
+            ? ''
+            : response.data.data.address,
+        );
         setAddress2(
           response.data.data.address2 == 'none'
             ? ''

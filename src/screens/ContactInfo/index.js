@@ -40,7 +40,11 @@ export default function ContactInfo({navigation}) {
         setFirstName(response.data.data.first_name);
         setMiddleName(response.data.data.middle_name);
         setLastName(response.data.data.last_name);
-        setAddress(response.data.data.address);
+        setAddress(
+          response.data.data.address == 'none'
+            ? ''
+            : response.data.data.address,
+        );
         setPhone(response.data.data.phone);
         setEmail(response.data.data.email);
         setLoader(false);

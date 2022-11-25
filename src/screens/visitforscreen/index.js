@@ -70,7 +70,7 @@ export const VisitScreen = ({navigation, route}) => {
                     ? navigation.navigate(route?.params?.to, {
                         GoogelFit: route?.params?.GoogelFit,
                       })
-                    : navigation.navigate('correctinfoscreen')
+                    : navigation.navigate('reasonVisit')
                 }>
                 <View style={[styles.row, styles.card]}>
                   <View

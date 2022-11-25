@@ -43,7 +43,7 @@ export const styles = StyleSheet.create({
     fontFamily: fontFamily.appTextRegular,
   },
   fingerprintText: {
-    right: sizes.screenWidth * 0.05,
+    right: sizes.screenWidth * 0.07,
     fontSize: fontSize.medium,
     color: colors.black,
     fontFamily: fontFamily.appTextRegular,
