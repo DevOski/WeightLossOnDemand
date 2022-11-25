@@ -255,7 +255,7 @@ export const styles = StyleSheet.create({
     fontFamily: fontFamily.appTextRegular,
   },
   paddingBottom2: {
-    paddingBottom: sizes.screenHeight * 0.12,
+    paddingBottom: sizes.screenHeight * 0.18,
   },
   signOutText: {
     color: colors.secondary,

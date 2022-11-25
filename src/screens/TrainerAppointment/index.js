@@ -144,30 +144,38 @@ export default function TrainerAppointment({navigation}) {
         <View>
           <Text style={styles.appointmentText}>Your recent appointment</Text>
         </View>
-        {appointmentList?.map((item, index) => {
-          console.log(item);
-          return (
-            <View>
-              {item.status == 'pending' ? (
-                <TouchableOpacity
-                  key={index}
-                  // onPress={() => navigation.navigate(item.screen)}
-                >
-                  <View style={[styles.row, styles.card]}>
-                    <Text style={styles.cardText}>
-                      {moment(item.apt_time).format('DD/MM/YY hh:mm: A')}
-                    </Text>
-                    {/* <View>{/ <Text style={styles.symbol}> ›</Text> /}</View> */}
-                  </View>
-                </TouchableOpacity>
-              ) : (
-                <Text>No recent appointments</Text>
-              )}
-            </View>
-          );
-        })}
+        {appointmentList.length ? (
+          appointmentList?.map((item, index) => {
+            console.log(item);
+            return (
+              <View>
+                {item.status == 'pending' && (
+                  <TouchableOpacity
+                    key={index}
+                    // onPress={() => navigation.navigate(item.screen)}
+                  >
+                    <View style={[styles.row, styles.card]}>
+                      <Text style={styles.cardText}>
+                        {moment(item.apt_time).format('DD/MM/YY hh:mm: A')}
+                      </Text>
+                      {/* <View>{/ <Text style={styles.symbol}> ›</Text> /}</View> */}
+                    </View>
+                  </TouchableOpacity>
+                )}
+              </View>
+            );
+          })
+        ) : (
+          <View>
+            <Text>No recent appointments</Text>
+          </View>
+        )}
+
         <View style={styles.paddingBottom2}></View>
       </ScrollView>
     </SafeAreaView>
   );
 }
+// : (
+//   <Text>No recent appointments</Text>
+// )

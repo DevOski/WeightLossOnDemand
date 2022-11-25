@@ -35,7 +35,7 @@ export async function signUp(
     phone,
     phone_type,
     dob,
-    fingerprint:1,
+    fingerprint: 1,
   });
   // console.log(
   //     first_name,
@@ -466,11 +466,16 @@ export async function updateAppointmentTrainer(ap_id, tr_id, tr_name) {
   });
 }
 
-
 export async function getAmount() {
   return await axios.get(`${baseURL}/amount`);
 }
 
 export async function getAgoraToken() {
   return await axios.get(`${baseURL}/agoraToken`);
+}
+export async function getTokenFromAPI(channel) {
+  console.log(channel);
+  return await axios.get(
+    `https://agoratesting2.herokuapp.com/rtc/${channel}/audience/userAccount/0`,
+  );
 }

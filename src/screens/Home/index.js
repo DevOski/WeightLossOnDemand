@@ -79,8 +79,8 @@ export default function Home({navigation}) {
   const getPastVisit = async () => {
     try {
       let response = await recentVisit(token);
-      // setPastVisit(response.data.trainer[0]);
       if (response?.data?.trainer?.length) {
+        setPastVisit(response.data.trainer[0]);
         console.log('-------------->>', response.data.trainer);
         setItem(['item1', 'item2', 'item3', 'item4', 'item5']);
         setVisitDetails(response.data);
@@ -453,7 +453,7 @@ export default function Home({navigation}) {
                   </View>
                 )}
                 {index == 4 && (
-                  <View key={index} style={[styles.padding]}>
+                   <View key={index} style={[styles.padding]}>
                     <Text style={[styles.heading, styles.top]}>
                       Recent Visit
                     </Text>

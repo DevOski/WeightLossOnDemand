@@ -24,24 +24,28 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import {useDispatch, useSelector} from 'react-redux';
 import {
   getAgoraToken,
+  getTokenFromAPI,
   getTrainer,
   getUser,
 } from '../../services/utilities/api/auth';
 import {removeData} from '../../store/actions';
 const appId = '270b512970864b0a93b14650e52e8f9c';
-const channelName = 'Testing';
-const token =
-  '007eJxTYOioeh3qfnH1vazDP8qSw1x4Vzu1XD/4v7SZp+vyWctle7gVGIzMDZJMDY0szQ0szEySDBItjZMMTcxMDVJNjVIt0iyTFTbVJzcEMjLs/D+FgREKQXx2hpDU4pLMvHQGBgAtvCIz';
-
+// const channelName = 'test';
+// const token =
+// '006270b512970864b0a93b14650e52e8f9cIAA+WbGpxgdooMm2IXWSmNLFVRH3j4seKVTJqA1SbiejGKW1esgh39v0EADmIv7oQR2CYwEAAQDR2YBj'
+// '007eJxTYOioeh3qfnH1vazDP8qSw1x4Vzu1XD/4v7SZp+vyWctle7gVGIzMDZJMDY0szQ0szEySDBItjZMMTcxMDVJNjVIt0iyTFTbVJzcEMjLs/D+FgREKQXx2hpDU4pLMvHQGBgAtvCIz';
+// '006270b512970864b0a93b14650e52e8f9cIAApbyfztP/HdOw4amq+vEc6cmW4bVJvvpNlVjZQSYO4lJpjTich39v0EADmIv7orhGCYwEAAQA+zoBj';
+// '006270b512970864b0a93b14650e52e8f9cIADMb33N1QkWA55SJ6cyF1BURhsdyT+DZ9WlSVE86rNFrwx+f9gh39v0EADmIv7oARaCYwEAAQCR0oBj';
+// '006270b512970864b0a93b14650e52e8f9cIABCN+Bwjo2V7kh98fc/Q4comFMd7j+p7MRHmTfoVETvNKW1esgh39v0EADmIv7ocBaCYwEAAQAA04Bj';
 const uid = 0;
 export default function TrainerVideocalling({navigation, route}) {
   const agoraEngineRef = useRef(); // Agora engine instance
   const [isJoined, setIsJoined] = useState(false); // Indicates if the local user has joined the channel
   const [remoteUid, setRemoteUid] = useState(0); // Uid of the remote user
   const [message, setMessage] = useState(''); //
-  // const [channelName, setChannelName] = useState('');
+  const [channelName, setChannelName] = useState('');
   // const [appId, setAppId] = useState('');
-  // const [token, setToken] = useState('');
+  const [token, setToken] = useState('');
   // const [token, setToken] = useState('');
   var isMuted = false;
   const usertoken = useSelector(state => state.token);
@@ -59,11 +63,14 @@ export default function TrainerVideocalling({navigation, route}) {
 
   const getToken = async () => {
     try {
-      let response = await getAgoraToken();
+      // let response = await getAgoraToken();
       // setAgoraToken(response.data.token);
       // setAppId(response.data.appId);
       // setToken(response.data.token);
       // setChannelName(response.data.channelName);
+      let response = await getTokenFromAPI();
+      // console.log(response.data.rtcToken);
+      // setToken(response.data.rtcToken);
     } catch (error) {
       console.log(error);
     }
@@ -81,7 +88,8 @@ export default function TrainerVideocalling({navigation, route}) {
   const getUserDetails = async () => {
     try {
       let response = await getTrainer(usertoken);
-      // setChannelName(response.data.data.channel);
+      // console.log('--->>>>>>>>'response.data.data.channel);
+      setChannelName(response.data.data.channel);
       // console.log(response.data.data.channel);
       // setUserName(response.data.data.first_name);
       // dispatch(storeUserData(response.data.data));
@@ -119,6 +127,10 @@ export default function TrainerVideocalling({navigation, route}) {
   };
 
   const join = async () => {
+    // console.log('------->>>',token);
+    let response = await getTokenFromAPI(channelName);
+      let token = response.data.rtcToken;
+
     if (isJoined) {
       return;
     }
@@ -129,7 +141,7 @@ export default function TrainerVideocalling({navigation, route}) {
 
       agoraEngineRef.current?.startPreview();
       agoraEngineRef.current?.joinChannel(token, channelName, 0, {
-        clientRoleType: ClientRoleType.ClientRoleBroadcaster,
+        clientRoleType: ClientRoleType.ClientRoleAudience,
       });
       console.log('work---->>', token, channelName, 0);
     } catch (e) {
