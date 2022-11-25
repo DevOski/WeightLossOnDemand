@@ -24,21 +24,22 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import {useDispatch, useSelector} from 'react-redux';
 import {
   getAgoraToken,
+  getTokenFromAPI,
   getTrainer,
   getUser,
 } from '../../services/utilities/api/auth';
 import {removeData} from '../../store/actions';
 const appId = '270b512970864b0a93b14650e52e8f9c';
-const channelName = 'Testing';
-const token =
-  '007eJxTYOioeh3qfnH1vazDP8qSw1x4Vzu1XD/4v7SZp+vyWctle7gVGIzMDZJMDY0szQ0szEySDBItjZMMTcxMDVJNjVIt0iyTFTbVJzcEMjLs/D+FgREKQXx2hpDU4pLMvHQGBgAtvCIz';
+// const channelName = 'Testing';
+// const token =
+//   '007eJxTYOioeh3qfnH1vazDP8qSw1x4Vzu1XD/4v7SZp+vyWctle7gVGIzMDZJMDY0szQ0szEySDBItjZMMTcxMDVJNjVIt0iyTFTbVJzcEMjLs/D+FgREKQXx2hpDU4pLMvHQGBgAtvCIz';
 const uid = 0;
 export default function Videocalling({navigation, route}) {
   const agoraEngineRef = useRef(); // Agora engine instance
   const [isJoined, setIsJoined] = useState(false); // Indicates if the local user has joined the channel
   const [remoteUid, setRemoteUid] = useState(0); // Uid of the remote user
   const [message, setMessage] = useState(''); //
-  // const [channelName, setChannelName] = useState('');
+  const [channelName, setChannelName] = useState('');
   // const [appId, setAppId] = useState('');
   // const [token, setToken] = useState('');
   // const [token, setToken] = useState('');
@@ -79,8 +80,9 @@ export default function Videocalling({navigation, route}) {
 
   const getUserDetails = async () => {
     try {
-      let response = await getTrainer(usertoken);
+      let response = await getUser(usertoken);
       // setChannelName(response.data.data.channel);
+      setChannelName(response.data.data.channel);
       // console.log(response.data.data.channel);
       // setUserName(response.data.data.first_name);
       // dispatch(storeUserData(response.data.data));
@@ -118,11 +120,15 @@ export default function Videocalling({navigation, route}) {
   };
 
   const join = async () => {
-    console.log("works--------->>>");
+    console.log('works--------->>>');
     // navigation.navigate('RateProvider', {
     //   trainer: route?.params?.trainer,
     //   apt_id: route?.params?.apt_id,
     // });
+    console.log(channelName);
+    let response = await getTokenFromAPI(channelName);
+    let token = response.data.rtcToken;
+    console.log(token);
     if (isJoined) {
       return;
     }
