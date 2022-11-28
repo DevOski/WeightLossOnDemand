@@ -13,7 +13,15 @@ export const styles = StyleSheet.create({
   text: {
     color: colors.primary,
     fontFamily: fontFamily.appTextLight,
-    fontSize:fontSize.h4
+    fontSize: fontSize.h5,
+    fontWeight: 'bold',
+  },
+  text2: {
+    color: colors.black,
+    fontFamily: fontFamily.appTextLight,
+    fontSize: fontSize.h6,
+    fontWeight: 'bold',
+    left: sizes.screenWidth * 0.02,
   },
   field: {
     backgroundColor: colors.lightGray,
@@ -111,4 +119,6 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  bottom2: {paddingBottom: sizes.screenHeight * 0.15},
+
 });

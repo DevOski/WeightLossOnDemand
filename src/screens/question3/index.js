@@ -33,9 +33,15 @@ export default function Questionthree({navigation, route}) {
   const [Yes, setYes] = useState();
   const [no, setno] = useState();
   const [selectanswer3, setselectanswer3] = useState();
+  const [activeThing, setActiveThing] = useState('');
+  const [regularExercise, setRegularExercise] = useState('');
+  const [days, setDays] = useState('');
+  const [minutes, setMinutes] = useState('');
+  const [intensityLevel, setIntensityLevel] = useState('');
+  const [fitTime, setFitTime] = useState('');
+  const [phyLimitations, setPhyLimitations] = useState('');
   const dispatch = useDispatch();
   // console.log(route.params,"q3screen");
-
   useEffect(() => {
     getQuestions();
   }, []);
@@ -44,93 +50,149 @@ export default function Questionthree({navigation, route}) {
   const getQuestions = async () => {
     try {
       let response = await getQuestion(3);
-      setQa(response.data.data[0].question);
+      // setQa(response.data.data[0].question);
     } catch (error) {
       console.log(error);
     }
   };
 
-  const handleEmail = () => {
-    dispatch(Question3(selectanswer3));
+  const handleNext = () => {
+    dispatch(
+      Question3(
+        activeThing,
+        regularExercise,
+        days,
+        minutes,
+        intensityLevel,
+        fitTime,
+        phyLimitations,
+      ),
+    );
 
     navigation.navigate('question4', {
       slot: route?.params?.slot,
       trainer: route?.params?.trainer,
     });
   };
-
+  const state = useSelector(state => state);
+  console.log(state);
   return (
     <SafeAreaView>
       <Header title={'Questionnaires '} />
       <ScrollView style={styles.color}>
         <View style={styles.padding}>
-          <Text style={styles.text}>{Qa}</Text>
-          <View style={styles.width}>
-            <TouchableOpacity
-              onPress={() => {
-                setYes(!Yes);
-                setno(false);
-                setselectanswer3('Yes');
-                // setgender('Female');
-                // setCheckedMale(false);
-                // setCheckedOther(false);
-              }}>
-              <View style={styles.ro}>
-                <Text style={styles.lstyle}>Yes</Text>
-                <RadioButton
-                 onPress={() => {
-                  setYes(!Yes);
-                  setno(false);
-                  setselectanswer3('Yes');
-                  // setgender('Female');
-                  // setCheckedMale(false);
-                  // setCheckedOther(false);
-                }}
-                  status={Yes ? 'checked' : 'unchecked'}
-                  color={'#be1d2d'}
-                  uncheckColor={colors.secondary}
-                />
-              </View>
-            </TouchableOpacity>
-            <TouchableOpacity
-              onPress={() => {
-                setno(!no);
-                setYes(false);
-                setselectanswer3('No');
-                // setgender('Female');
-                // setCheckedMale(false);
-                // setCheckedOther(false);
-              }}>
-              <View style={styles.ro}>
-                <Text style={styles.lstyle}>No</Text>
-                <RadioButton
-                  onPress={() => {
-                    setno(!no);
-                    setYes(false);
-                    setselectanswer3('No');
-                    // setgender('Female');
-                    // setCheckedMale(false);
-                    // setCheckedOther(false);
-                  }}
-                  status={no ? 'checked' : 'unchecked'}
-                  color={'#be1d2d'}
-                  uncheckColor={colors.secondary}
-                />
-              </View>
-            </TouchableOpacity>
+          <Text style={styles.text}>Physical Activity Information</Text>
+          <View style={styles.paddingTop}>
+            <Text style={styles.text2}>
+              What is the most physically active thing you do in a day?
+            </Text>
+            <View>
+              <TextInput
+                mode="contain"
+                activeUnderlineColor={colors.secondary}
+                style={styles.field}
+                multiline={true}
+                onChangeText={text => setActiveThing(text)}
+                value={activeThing}
+              />
+            </View>
+          </View>
+          <View style={styles.paddingTop}>
+            <Text style={styles.text2}>
+              What, if any, regular exercises do you do?
+            </Text>
+            <View>
+              <TextInput
+                mode="contain"
+                activeUnderlineColor={colors.secondary}
+                style={styles.field}
+                multiline={true}
+                onChangeText={text => setRegularExercise(text)}
+                value={regularExercise}
+              />
+            </View>
+          </View>
+          <View style={styles.paddingTop}>
+            <Text style={styles.text2}>How many days a week?</Text>
+            <View>
+              <TextInput
+                mode="contain"
+                activeUnderlineColor={colors.secondary}
+                style={styles.field}
+                onChangeText={text => setDays(text)}
+                value={days}
+              />
+            </View>
           </View>
 
           <View style={styles.paddingTop}>
+            <Text style={styles.text2}>How many minutes per day?</Text>
+            <View>
+              <TextInput
+                mode="contain"
+                activeUnderlineColor={colors.secondary}
+                style={styles.field}
+                onChangeText={text => setMinutes(text)}
+                value={minutes}
+              />
+            </View>
+          </View>
+
+          <View style={styles.paddingTop}>
+            <Text style={styles.text2}>
+              At what level of intensity (light, moderate, or high)?
+            </Text>
+            <View>
+              <TextInput
+                mode="contain"
+                activeUnderlineColor={colors.secondary}
+                style={styles.field}
+                onChangeText={text => setIntensityLevel(text)}
+                value={intensityLevel}
+              />
+            </View>
+          </View>
+          <View style={styles.paddingTop}>
+            <Text style={styles.text2}>
+              What time(s) of day can you fit exercise into your schedule?
+            </Text>
+            <View>
+              <TextInput
+                mode="contain"
+                activeUnderlineColor={colors.secondary}
+                style={styles.field}
+                onChangeText={text => setFitTime(text)}
+                value={fitTime}
+              />
+            </View>
+          </View>
+          <View style={styles.paddingTop}>
+            <Text style={styles.text2}>
+              List any physical limitations to exercising
+            </Text>
+            <View>
+              <TextInput
+                mode="contain"
+                activeUnderlineColor={colors.secondary}
+                style={styles.field}
+                multiline={true}
+                onChangeText={text => setPhyLimitations(text)}
+                value={phyLimitations}
+              />
+            </View>
+          </View>
+          <View style={styles.paddingTop}>
             <TouchableOpacity
-              onPress={handleEmail}
-              disabled={selectanswer3 ? false : true}>
-              <View
-                style={selectanswer3 ? styles.buttonView : styles.disabledView}>
-                <Text style={styles.buttonText}>Next</Text>
+              onPress={handleNext}
+              // disabled={selectanswer3 ? false : true}
+            >
+              <View style={styles.buttonView}>
+                <Text style={styles.buttonText}>Skip</Text>
               </View>
             </TouchableOpacity>
           </View>
         </View>
+        <View style={styles.bottom2}></View>
       </ScrollView>
     </SafeAreaView>
   );

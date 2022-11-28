@@ -23,13 +23,58 @@ import {useIsFocused} from '@react-navigation/native';
 export default function ProviderReview({navigation, route}) {
   const token = useSelector(state => state.token);
   const reason = useSelector(state => state.reason);
-  const q1 = useSelector(state => state.question1);
-  const q2 = useSelector(state => state.question2);
-  const q3 = useSelector(state => state.question3);
-  const q4 = useSelector(state => state.question4);
-  const q5 = useSelector(state => state.question5);
-  const isVisible = useIsFocused();
 
+  const isVisible = useIsFocused();
+  const q1 = useSelector(state => state.q1);
+  const q2 = useSelector(state => state.q2);
+  const q3 = useSelector(state => state.q3);
+  const q4 = useSelector(state => state.q4);
+  const q5 = useSelector(state => state.q5);
+  const q6 = useSelector(state => state.q6);
+  const q7 = useSelector(state => state.q7);
+  const q8 = useSelector(state => state.q8);
+  const q9 = useSelector(state => state.q9);
+  const q10 = useSelector(state => state.q10);
+  const q11 = useSelector(state => state.q11);
+  const q12 = useSelector(state => state.q12);
+  const q13 = useSelector(state => state.q13);
+  const q14 = useSelector(state => state.q14);
+  const q15 = useSelector(state => state.q15);
+  const q16 = useSelector(state => state.q16);
+  const q17 = useSelector(state => state.q17);
+  const q18 = useSelector(state => state.q18);
+  const q19 = useSelector(state => state.q19);
+  const q20 = useSelector(state => state.q20);
+  const q21 = useSelector(state => state.q21);
+  const q22 = useSelector(state => state.q22);
+  const q23 = useSelector(state => state.q23);
+  const q24 = useSelector(state => state.q24);
+  const q25 = useSelector(state => state.q25);
+  const q26 = useSelector(state => state.q26);
+  const q27 = useSelector(state => state.q27);
+  const q28 = useSelector(state => state.q28);
+  const q29 = useSelector(state => state.q29);
+  const q30 = useSelector(state => state.q30);
+  const q31 = useSelector(state => state.q31);
+  const q32 = useSelector(state => state.q32);
+  const q33 = useSelector(state => state.q33);
+  const q34 = useSelector(state => state.q34);
+  const q35 = useSelector(state => state.q35);
+  const q36 = useSelector(state => state.q36);
+  const q37 = useSelector(state => state.q37);
+  const q38 = useSelector(state => state.q38);
+  const q39 = useSelector(state => state.q39);
+  const q40 = useSelector(state => state.q40);
+  const q41 = useSelector(state => state.q41);
+  const q42 = useSelector(state => state.q42);
+  const q43 = useSelector(state => state.q43);
+  const q44 = useSelector(state => state.q44);
+  const q45 = useSelector(state => state.q45);
+  const q46 = useSelector(state => state.q46);
+  const q47 = useSelector(state => state.q47);
+  const q48 = useSelector(state => state.q48);
+  const q49 = useSelector(state => state.q49);
+  const q50 = useSelector(state => state.q50);
   const userID = useSelector(state => state.user.user_id);
   useEffect(() => {
     sessionStart();
@@ -39,11 +84,56 @@ export default function ProviderReview({navigation, route}) {
     try {
       let response = await startSession(
         token,
-        route?.params?.q1 ? route?.params?.q1 : q1,
-        route?.params?.q2 ? route?.params?.q2 : q2,
-        route?.params?.q3 ? route?.params?.q3 : q3,
-        route?.params?.q4 ? route?.params?.q4 : q4,
-        route?.params?.q5 ? route?.params?.q5 : q5,
+        q1,
+        q2,
+        q3,
+        q4,
+        q5,
+        q6,
+        q7,
+        q8,
+        q9,
+        q10,
+        q11,
+        q12,
+        q13,
+        q14,
+        q15,
+        q16,
+        q17,
+        q18,
+        q19,
+        q20,
+        q21,
+        q22,
+        q23,
+        q24,
+        q25,
+        q26,
+        q27,
+        q28,
+        q29,
+        q30,
+        q31,
+        q32,
+        q33,
+        q34,
+        q35,
+        q36,
+        q37,
+        q38,
+        q39,
+        q40,
+        q41,
+        q42,
+        q43,
+        q44,
+        q45,
+        q46,
+        q47,
+        q48,
+        q49,
+        q50,
         route?.params?.tr_id
           ? route?.params?.tr_id
           : route?.params?.trainer?.tr_id,
@@ -55,7 +145,7 @@ export default function ProviderReview({navigation, route}) {
           ? route?.params?.tr_amount
           : route?.params?.trainer?.tr_amount,
       );
-
+        console.log(response.data);
       if (response.data.status == 200) {
         channelCreate();
         console.log(updatedTrainer);
@@ -73,7 +163,7 @@ export default function ProviderReview({navigation, route}) {
           : route?.params?.tr_id,
         userID,
       );
-      console.log(response.data.message);
+      console.log('----------->>>>>>', response.data.message);
       if (response.data.message == 'Channel created successfully') {
         // sessionStart();
         let updatedTrainer = {

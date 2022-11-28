@@ -13,7 +13,15 @@ export const styles = StyleSheet.create({
   text: {
     color: colors.primary,
     fontFamily: fontFamily.appTextLight,
-    fontSize:fontSize.h4
+    fontSize: fontSize.h5,
+    fontWeight: 'bold',
+  },
+  text2: {
+    color: colors.black,
+    fontFamily: fontFamily.appTextLight,
+    fontSize: fontSize.h6,
+    fontWeight: 'bold',
+    left: sizes.screenWidth * 0.02,
   },
   field: {
     backgroundColor: colors.lightGray,
@@ -23,7 +31,7 @@ export const styles = StyleSheet.create({
   width: {
     width: sizes.screenWidth * 0.9,
     alignSelf: 'center',
-    paddingTop:sizes.screenHeight*0.04
+    paddingTop: sizes.screenHeight * 0.04,
   },
   paddingTop: {
     paddingTop: sizes.screenHeight * 0.04,
@@ -71,19 +79,19 @@ export const styles = StyleSheet.create({
     fontFamily: fontFamily.appTextLight,
     paddingLeft: sizes.screenWidth * 0.035,
   },
- 
+
   link: {
     color: colors.modalLink,
     textDecorationLine: 'underline',
     fontFamily: fontFamily.appTextMedium,
   },
- 
-  codeFieldRoot: {marginTop:sizes.screenHeight*0.05},
+
+  codeFieldRoot: {marginTop: sizes.screenHeight * 0.05},
   cell: {
-    width: sizes.screenWidth*0.08,
-    height: sizes.screenHeight*0.06,
-    fontSize:fontSize.large,
-    borderBottomWidth:1,
+    width: sizes.screenWidth * 0.08,
+    height: sizes.screenHeight * 0.06,
+    fontSize: fontSize.large,
+    borderBottomWidth: 1,
     borderColor: '#00000030',
     textAlign: 'center',
   },
@@ -102,6 +110,7 @@ export const styles = StyleSheet.create({
     fontWeight: '400',
     lineHeight: sizes.screenHeight * 0.05,
     fontFamily: fontFamily.appTextMedium,
+    left: sizes.screenWidth * 0.02,
   },
   disabledView: {
     alignSelf: 'center',
@@ -111,4 +120,35 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  gcon: {
+    paddingTop: sizes.screenHeight * 0.04,
+  },
+  row: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-around',
+  },
+  rate: {
+    fontSize: fontSize.h5,
+    fontFamily: fontFamily.appTextRegular,
+    color: colors.primary,
+    right: sizes.screenWidth * 0.01,
+  },
+  rating: {
+    fontSize: fontSize.medium,
+    fontFamily: fontFamily.appTextRegular,
+    color: colors.primary,
+    fontWeight: 'bold',
+  },
+  left: {
+    left: sizes.screenWidth * 0.03,
+    bottom: 2,
+  },
+  leftIOS: {
+    left: sizes.screenWidth * 0.01,
+  },
+  sliderWidth: {
+    width: sizes.screenWidth * 0.8,
+  },
+  bottom2: {paddingBottom: sizes.screenHeight * 0.15},
 });

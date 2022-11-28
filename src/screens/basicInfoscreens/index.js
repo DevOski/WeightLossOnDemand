@@ -34,12 +34,31 @@ const BasicInfoScreen = ({navigation, route}) => {
   // const {isEnabled} = route.params;
 
   console.log(route.params, '-------->basicscreenparams');
-  const [CheckedMale, setCheckedMale] = React.useState();
-  const [CheckedFemale, setCheckedFemale] = React.useState();
-  const [CheckedOther, setCheckedOther] = React.useState();
+  const [CheckedMale, setCheckedMale] = React.useState(false);
+  const [CheckedFemale, setCheckedFemale] = React.useState(false);
+  const [CheckedOther, setCheckedOther] = React.useState(false);
+  const [CheckedEnglish, setCheckedEnglish] = React.useState(false);
+  const [CheckedSpanish, setCheckedSpanish] = React.useState(false);
+  const [CheckedLanguageOther, setCheckedLanguageOther] = React.useState(false);
+  const [language, setLanguage] = useState('');
+  const [neverSmoke, setNeverSmoke] = useState(false);
+  const [formerSmoke, setFormerSmoke] = useState(false);
+  const [currentSmoke, setCurrentSmoke] = useState(false);
+  const [smokeStatus, setSmokeStatus] = useState('');
+  const [single, setSingle] = useState(false);
+  const [married, setMarried] = useState(false);
+  const [divorced, setDivorced] = useState(false);
+  const [widowed, setWidowed] = useState(false);
+  const [maritalStatus, setMaritalStatus] = useState('');
+
   const [name, setname] = useState('');
   const [lastname, setlastname] = useState('');
   const [phonenumber, setphonenumber] = useState('');
+  const [occupation, setOccupation] = useState('');
+  const [workingHour, setWorkingHour] = useState('');
+  const [age, setAge] = useState('');
+  const [education, setEducation] = useState('');
+
   const [slectnumber, setslectnumber] = useState('');
   const [middle, setMiddle] = useState('');
   const [show, setshow] = useState(false);
@@ -125,6 +144,7 @@ const BasicInfoScreen = ({navigation, route}) => {
     //   console.log(error);
     // }
 
+    // console.log('------->>>',occupation,workingHour,age,education,smokeStatus,maritalStatus);
     var formdata = new FormData();
     formdata.append('first_name', name);
     formdata.append('middle_name', middle);
@@ -138,6 +158,13 @@ const BasicInfoScreen = ({navigation, route}) => {
     formdata.append('phone_type', slectnumber);
     formdata.append('dob', route?.params?.date);
     formdata.append('fingerprint', route?.params?.isEnabled == true ? 1 : 0);
+    formdata.append('occupation', occupation);
+    formdata.append('work_hours', workingHour);
+    formdata.append('age', age);
+    formdata.append('last_education', education);
+    formdata.append('language', language);
+    formdata.append('smoking_status', smokeStatus);
+    formdata.append('marital_status', maritalStatus);
 
     var requestOptions = {
       method: 'POST',
@@ -188,7 +215,7 @@ const BasicInfoScreen = ({navigation, route}) => {
 
             <View style={styles.filedcon}>
               <CustomTextFiel
-                label={'First Name'}
+                label={'First name'}
                 value={name}
                 setValue={setname}
               />
@@ -196,7 +223,7 @@ const BasicInfoScreen = ({navigation, route}) => {
             {Fieldsshowhide ? (
               <View style={styles.filedcon}>
                 <CustomTextFiel
-                  label={'Middle Name'}
+                  label={'Middle name'}
                   value={middle}
                   setValue={setMiddle}
                 />
@@ -280,6 +307,61 @@ const BasicInfoScreen = ({navigation, route}) => {
                 ) : null}
               </View>
             </View>
+            <View style={styles.occupation}>
+              <CustomTextFiel
+                label={'Occupation'}
+                value={occupation}
+                setValue={setOccupation}
+              />
+            </View>
+            {/* <View style={[styles.inonecon, styles.top]}>
+              <View style={styles.twoitem}>
+                <CustomTextFiel
+                  label={'Working Hours'}
+                  value={workingHour}
+                  setValue={setWorkingHour}
+                  // type="numeric"
+                />
+              </View>
+              <View style={styles.twoitem}>
+                <CustomTextFiel
+                  label={'Age'}
+                  value={phonenumber}
+                  setValue={setphonenumber}
+                  type="numeric"
+                />
+              </View>
+            </View> */}
+            <View style={[styles.inonecon, styles.top]}>
+              <View style={styles.twoitem}>
+                <CustomTextFiel
+                  label={'Working hours'}
+                  value={workingHour}
+                  setValue={setWorkingHour}
+                />
+              </View>
+              <View style={styles.twoitem}>
+                <View
+                  style={{
+                    width: sizes.screenWidth * 0.4,
+                    left: sizes.screenWidth * 0.05,
+                  }}>
+                  <CustomTextFiel
+                    label={'Age'}
+                    value={age}
+                    setValue={setAge}
+                    type="numeric"
+                  />
+                </View>
+              </View>
+            </View>
+            <View style={[styles.occupation, styles.bottom]}>
+              <CustomTextFiel
+                label={'Highest level of education'}
+                value={education}
+                setValue={setEducation}
+              />
+            </View>
             <View style={styles.expndbuttoncontainer}>
               <TouchableOpacity onPress={ShowFiled}>
                 {!Fieldsshowhide ? (
@@ -324,6 +406,85 @@ const BasicInfoScreen = ({navigation, route}) => {
               </TouchableOpacity>
             </View>
           </View>
+          <View style={styles.genContainer}>
+            <Text style={styles.lstyle}>PRIMARY LANGUAGE</Text>
+          </View>
+          <View style={styles.gcon}>
+            <TouchableOpacity
+              onPress={() => {
+                setCheckedEnglish(!CheckedEnglish);
+                setLanguage('English');
+                setCheckedSpanish(false);
+                setCheckedLanguageOther(false);
+              }}>
+              <View style={styles.ro}>
+                <Text style={styles.lstyle}>English</Text>
+                <RadioButton
+                  onPress={() => {
+                    setCheckedEnglish(!CheckedEnglish);
+                    setLanguage('English');
+                    setCheckedSpanish(false);
+                    setCheckedLanguageOther(false);
+                  }}
+                  status={CheckedEnglish ? 'checked' : 'unchecked'}
+                  color={'#be1d2d'}
+                  uncheckColor={colors.secondary}
+                />
+              </View>
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => {
+                setCheckedSpanish(!CheckedSpanish);
+                setLanguage('Spanish');
+                setCheckedEnglish(false);
+                setCheckedLanguageOther(false);
+              }}>
+              <View style={styles.ro}>
+                <Text style={styles.lstyle}>Spanish</Text>
+                <RadioButton
+                  onPress={() => {
+                    setCheckedSpanish(!CheckedSpanish);
+                    setLanguage('Spanish');
+                    setCheckedEnglish(false);
+                    setCheckedLanguageOther(false);
+                  }}
+                  status={CheckedSpanish ? 'checked' : 'unchecked'}
+                  color={'#be1d2d'}
+                  uncheckColor={colors.secondary}
+                />
+              </View>
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => {
+                setCheckedLanguageOther(!CheckedLanguageOther);
+                setLanguage('');
+                setCheckedEnglish(false);
+                setCheckedSpanish(false);
+              }}>
+              <View style={styles.ro}>
+                <Text style={styles.lstyle}>Other</Text>
+                <RadioButton
+                  onPress={() => {
+                    setCheckedLanguageOther(!CheckedLanguageOther);
+                    setLanguage('');
+                    setCheckedEnglish(false);
+                    setCheckedSpanish(false);
+                  }}
+                  status={CheckedLanguageOther ? 'checked' : 'unchecked'}
+                  color={'#be1d2d'}
+                  uncheckColor={colors.secondary}
+                />
+              </View>
+            </TouchableOpacity>
+          </View>
+          {CheckedLanguageOther && (
+            <CustomTextFiel
+              label={'Other language'}
+              value={language}
+              setValue={setLanguage}
+              // type="numeric"
+            />
+          )}
           <View style={styles.genContainer}>
             <Text style={styles.lstyle}>GENDER</Text>
           </View>
@@ -389,6 +550,178 @@ const BasicInfoScreen = ({navigation, route}) => {
                     setCheckedFemale(false);
                   }}
                   status={CheckedOther ? 'checked' : 'unchecked'}
+                  color={'#be1d2d'}
+                  uncheckColor={colors.secondary}
+                />
+              </View>
+            </TouchableOpacity>
+          </View>
+          <View style={styles.genContainer}>
+            <Text style={styles.lstyle}>MARITAL STATUS</Text>
+          </View>
+          <View style={styles.gcon}>
+            <TouchableOpacity
+              onPress={() => {
+                setSingle(!single);
+                setMaritalStatus('Single');
+                setMarried(false);
+                setDivorced(false);
+                setWidowed(false);
+              }}>
+              <View style={styles.ro}>
+                <Text style={styles.lstyle}>Single</Text>
+                <RadioButton
+                  onPress={() => {
+                    setSingle(!single);
+                    setMaritalStatus('Single');
+                    setMarried(false);
+                    setDivorced(false);
+                    setWidowed(false);
+                  }}
+                  status={single ? 'checked' : 'unchecked'}
+                  color={'#be1d2d'}
+                  uncheckColor={colors.secondary}
+                />
+              </View>
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => {
+                setMarried(!married);
+                setMaritalStatus('Married');
+                setSingle(false);
+                setDivorced(false);
+                setWidowed(false);
+              }}>
+              <View style={styles.ro}>
+                <Text style={styles.lstyle}>Married</Text>
+                <RadioButton
+                  onPress={() => {
+                    setMarried(!married);
+                    setMaritalStatus('Married');
+                    setSingle(false);
+                    setDivorced(false);
+                    setWidowed(false);
+                  }}
+                  status={married ? 'checked' : 'unchecked'}
+                  color={'#be1d2d'}
+                  uncheckColor={colors.secondary}
+                />
+              </View>
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => {
+                setDivorced(!divorced);
+                setMaritalStatus('Divorced');
+                setSingle(false);
+                setMarried(false);
+                setWidowed(false);
+              }}>
+              <View style={styles.ro}>
+                <Text style={styles.lstyle}>Divorced</Text>
+                <RadioButton
+                  onPress={() => {
+                    setDivorced(!divorced);
+                    setMaritalStatus('Divorced');
+                    setSingle(false);
+                    setMarried(false);
+                    setWidowed(false);
+                  }}
+                  status={divorced ? 'checked' : 'unchecked'}
+                  color={'#be1d2d'}
+                  uncheckColor={colors.secondary}
+                />
+              </View>
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => {
+                setWidowed(!widowed);
+                setMaritalStatus('Widowed');
+                setSingle(false);
+                setMarried(false);
+                setDivorced(false);
+              }}>
+              <View style={styles.ro}>
+                <Text style={styles.lstyle}>Widowed</Text>
+                <RadioButton
+                  onPress={() => {
+                    setWidowed(!widowed);
+                    setMaritalStatus('Widowed');
+                    setSingle(false);
+                    setMarried(false);
+                    setDivorced(false);
+                  }}
+                  status={widowed ? 'checked' : 'unchecked'}
+                  color={'#be1d2d'}
+                  uncheckColor={colors.secondary}
+                />
+              </View>
+            </TouchableOpacity>
+          </View>
+          <View style={styles.genContainer}>
+            <Text style={styles.lstyle}>SMOKING STATUS</Text>
+          </View>
+          <View style={styles.gcon}>
+            <TouchableOpacity
+              onPress={() => {
+                setNeverSmoke(!neverSmoke);
+                setSmokeStatus('Never');
+                setFormerSmoke(false);
+                setCurrentSmoke(false);
+              }}>
+              <View style={styles.ro}>
+                <Text style={styles.lstyle}>Never</Text>
+                <RadioButton
+                  onPress={() => {
+                    setNeverSmoke(!neverSmoke);
+                    setSmokeStatus('Never');
+                    setFormerSmoke(false);
+                    setCurrentSmoke(false);
+                  }}
+                  status={neverSmoke ? 'checked' : 'unchecked'}
+                  color={'#be1d2d'}
+                  uncheckColor={colors.secondary}
+                />
+              </View>
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => {
+                setFormerSmoke(!formerSmoke);
+                setSmokeStatus('Former');
+                setNeverSmoke(false);
+                setCurrentSmoke(false);
+              }}>
+              <View style={styles.ro}>
+                <Text style={styles.lstyle}>Former</Text>
+                <RadioButton
+                  onPress={() => {
+                    setFormerSmoke(!formerSmoke);
+                    setSmokeStatus('Former');
+                    setNeverSmoke(false);
+                    setCurrentSmoke(false);
+                  }}
+                  status={formerSmoke ? 'checked' : 'unchecked'}
+                  color={'#be1d2d'}
+                  uncheckColor={colors.secondary}
+                />
+              </View>
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => {
+                setCurrentSmoke(!currentSmoke);
+                setSmokeStatus('Current');
+                setNeverSmoke(false);
+                setFormerSmoke(false);
+              }}>
+              <View style={styles.ro}>
+                <Text style={styles.lstyle}>Current</Text>
+                <RadioButton
+                  onPress={() => {
+                    setCurrentSmoke(!currentSmoke);
+                    setSmokeStatus('Current');
+                    setNeverSmoke(false);
+                    setFormerSmoke(false);
+                  }}
+                  status={currentSmoke ? 'checked' : 'unchecked'}
                   color={'#be1d2d'}
                   uncheckColor={colors.secondary}
                 />
@@ -644,5 +977,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     alignSelf: 'center',
     justifyContent: 'center',
+  },
+  top: {
+    marginTop: sizes.screenHeight * 0.03,
+  },
+  bottom: {
+    paddingBottom: sizes.screenHeight * 0.05,
   },
 });

@@ -181,7 +181,7 @@ export default function Videocalling({navigation, route}) {
       {/* <Text style={styles.head}>Agora Video Calling Quickstart</Text>   */}
       {/* <View style={styles.btnContainer}> */}
       {isJoined ? null : (
-        <TouchableOpacity onPress={join} style={{backgroundColor:'orange'}}>
+        <TouchableOpacity onPress={join} >
           <View style={styles.button1}>
             <Text style={[styles.top]}>Join</Text>
           </View>

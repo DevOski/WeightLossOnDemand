@@ -91,15 +91,15 @@ export const SignIn = ({navigation}) => {
           console.log(response.data);
           setLoader(false);
           if (response.data.message == 'user found') {
-            console.log(response.data.token);
+            // console.log(response.data.token);
             dispatch(storeData(response.data.token));
-            // console.log(response.data.data.fingerprint);
-            // if (response.data.data.fingerprint == 1) {
-            //   handleBiometric();
-            // }
-            // else{
-            //   navigation.navigate('BottomNavs');
-            // }
+            console.log(response.data.data);
+            if (response.data.data.fingerprint == 1) {
+              handleBiometric();
+            } 
+            else{
+              navigation.navigate('BottomNavs');
+            }
 
             setError(false);
             setLoader(false);
