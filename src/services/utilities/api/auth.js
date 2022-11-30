@@ -750,3 +750,9 @@ export async function getTokenFromAPI(channel) {
     `https://agoratesting2.herokuapp.com/rtc/${channel}/audience/userAccount/0`,
   );
 }
+
+export async function checkEmail(email) {
+  return await axios.post(`${baseURL}/check_email`, {
+    email,
+  });
+}

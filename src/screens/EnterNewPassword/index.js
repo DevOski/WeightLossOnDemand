@@ -38,6 +38,7 @@ export default function EnterNewPassword({navigation, route}) {
     if (!route?.params?.email && password == confirmPassword) {
       setTimeout(async () => {
         try {
+          // console.log(response.data.message);
           let response = await updateUserPassword(token, password);
           setLoader(false);
           setMessage(response.data.message);
@@ -58,6 +59,7 @@ export default function EnterNewPassword({navigation, route}) {
       fetch('http://alsyedmmtravel.com/api/new_password', requestOptions)
         .then(response => response.json())
         .then(result => {
+          console.log(result);
           setLoader(false);
           setMessage(result.message);
           setStack('signinscreen');

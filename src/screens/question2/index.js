@@ -229,7 +229,7 @@ export default function Questiontwo({navigation, route}) {
               // disabled={selectanswer1 ? false : true}
             >
               <View style={styles.buttonView}>
-                <Text style={styles.buttonText}>Skip</Text>
+                <Text style={styles.buttonText}>Submit</Text>
               </View>
             </TouchableOpacity>
           </View>

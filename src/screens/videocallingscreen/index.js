@@ -23,6 +23,8 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import Entypo from 'react-native-vector-icons/Entypo';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {useDispatch, useSelector} from 'react-redux';
+import Loader from '../../components/Loader';
+
 import {
   getAgoraToken,
   getTokenFromAPI,
@@ -41,6 +43,8 @@ export default function Videocalling({navigation, route}) {
   const [remoteUid, setRemoteUid] = useState(0); // Uid of the remote user
   const [message, setMessage] = useState(''); //
   const [channelName, setChannelName] = useState('');
+  const [loader, setLoader] = useState(false);
+
   // const [appId, setAppId] = useState('');
   // const [token, setToken] = useState('');
   // const [token, setToken] = useState('');
@@ -86,7 +90,7 @@ export default function Videocalling({navigation, route}) {
   const getUserDetails = async () => {
     try {
       let response = await getUser(usertoken);
-      console.log("chane--->",response.data.data.channel);
+      console.log('chane--->', response.data.data.channel);
       // setChannelName(response.data.data.channel);
       setChannelName(response.data.data.channel);
       // console.log(response.data.data.channel);
@@ -126,6 +130,7 @@ export default function Videocalling({navigation, route}) {
   };
 
   const join = async () => {
+    setLoader(true);
     console.log('works--------->>>');
     // navigation.navigate('RateProvider', {
     //   trainer: route?.params?.trainer,
@@ -147,6 +152,7 @@ export default function Videocalling({navigation, route}) {
       agoraEngineRef.current?.joinChannel(token, channelName, 0, {
         clientRoleType: ClientRoleType.ClientRoleBroadcaster,
       });
+      setLoader(false);
       console.log('work---->>', token, channelName, 0);
     } catch (e) {
       console.log(e);
@@ -181,11 +187,20 @@ export default function Videocalling({navigation, route}) {
       {/* <Text style={styles.head}>Agora Video Calling Quickstart</Text>   */}
       {/* <View style={styles.btnContainer}> */}
       {isJoined ? null : (
-        <TouchableOpacity onPress={join} >
-          <View style={styles.button1}>
-            <Text style={[styles.top]}>Join</Text>
-          </View>
-        </TouchableOpacity>
+        <>
+          <TouchableOpacity onPress={join} style={styles.button1}>
+            <View>
+              <Text style={[styles.top]}>Join</Text>
+            </View>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.getHelpTop}
+            onPress={() => navigation.navigate('ContactSupport')}>
+            <View>
+              <Text style={[styles.top, styles.getHelp]}>Get Help</Text>
+            </View>
+          </TouchableOpacity>
+        </>
       )}
       {/* <Text onPress={leave} style={styles.button}>
           Leave
@@ -220,22 +235,24 @@ export default function Videocalling({navigation, route}) {
               position: 'absolute',
               zIndex: 999,
             }}>
-            <Ionicons
-              name="ios-call-outline"
-              color={colors.secondary}
-              style={styles.button}
-              size={20}
-              onPress={leave}
-              // onPress={toogle}
-            />
-            <Entypo
+            <TouchableOpacity onPress={leave} style={styles.button}>
+              <Ionicons
+                name="ios-call-outline"
+                color={colors.white}
+                style={styles.callIcon}
+                size={20}
+                onPress={leave}
+                // onPress={toogle}
+              />
+            </TouchableOpacity>
+            {/* <Entypo
               name="sound-mute"
               color={colors.secondary}
               style={styles.button}
               size={20}
               onPress={mute}
               // onPress={toogle}
-            />
+            /> */}
             {/* <MaterialCommunityIcons
               name="camera-flip"
               color={colors.secondary}
@@ -268,27 +285,30 @@ export default function Videocalling({navigation, route}) {
               flexDirection: 'row',
               justifyContent: 'space-around',
               paddingRight: sizes.screenWidth * 0.19,
-              marginTop: sizes.screenHeight * 0.9,
+              marginTop: sizes.screenHeight * 0.88,
               height: sizes.screenHeight * 0.02,
               position: 'absolute',
               zIndex: 999,
             }}>
-            <Ionicons
-              name="ios-call-outline"
-              color={colors.secondary}
-              style={styles.button}
-              size={20}
-              onPress={leave}
-              // onPress={toogle}
-            />
-            <Entypo
+            <TouchableOpacity onPress={leave} style={styles.button}>
+              <Ionicons
+                name="ios-call-outline"
+                color={colors.white}
+                style={styles.callIcon}
+                size={20}
+                onPress={leave}
+                // onPress={toogle}
+              />
+            </TouchableOpacity>
+            {/* </View> */}
+            {/* <Entypo
               name="sound-mute"
               color={colors.secondary}
               style={styles.button}
               size={20}
               onPress={mute}
               // onPress={toogle}
-            />
+            /> */}
             {/* <MaterialCommunityIcons
               name="camera-flip"
               color={colors.secondary}
@@ -302,18 +322,18 @@ export default function Videocalling({navigation, route}) {
       ) : (
         <Text></Text>
       )}
+      {loader && <Loader />}
     </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   button: {
-    width: sizes.screenWidth * 0.2,
-    height: sizes.screenHeight * 0.04,
-
+    width: sizes.screenWidth * 0.15,
+    height: sizes.screenHeight * 0.073,
     backgroundColor: colors.secondary,
-    borderRadius: sizes.screenWidth * 0.7,
-    paddingTop: sizes.screenWidth * 0.01,
+    borderRadius: sizes.screenWidth * 0.5,
+    // paddingTop: sizes.screenWidth * 0.01,
     // margin: 5,
     // position: 'relative',
     // top:10,
@@ -323,8 +343,9 @@ const styles = StyleSheet.create({
     // alignItems: 'center',
     color: '#ffffff',
     textAlign: 'center',
+    alignItems: 'center',
     // alignSelf:'center',
-    marginLeft: sizes.screenWidth * 0.09,
+    marginLeft: sizes.screenWidth * 0.4,
   },
   button1: {
     width: sizes.screenWidth * 0.3,
@@ -357,6 +378,9 @@ const styles = StyleSheet.create({
     color: '#ffffff',
     alignSelf: 'center',
   },
+  getHelp: {
+    color: colors.secondary,
+  },
   scrollContainer: {alignItems: 'center'},
   videoView: {
     width: '100%',
@@ -386,5 +410,11 @@ const styles = StyleSheet.create({
     // left:sizes.screenWidth * 0.3
     alignSelf: 'center',
     top: sizes.screenHeight * 0.4,
+  },
+  getHelpTop: {
+    top: sizes.screenHeight * 0.4,
+  },
+  callIcon: {
+    top: sizes.screenHeight * 0.018,
   },
 });

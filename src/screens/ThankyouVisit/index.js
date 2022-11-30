@@ -32,6 +32,23 @@ export default function ThankyouVisit({navigation, route}) {
       navigation.navigate('Home');
     }
   };
+  const handleRecentSession = async () => {
+    console.log(route?.params?.apt_id);
+    if (route?.params?.apt_id) {
+      try {
+        let response = await appointmentStatus(route?.params?.apt_id);
+        // console.log(response.data);
+        if (response.data.message == 'Status has been updated') {
+          navigation.navigate('HealthVisits');
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    } else {
+      navigation.navigate('HealthVisits');
+    }
+    // navigation.navigate('HealthVisits')
+  };
   return (
     <SafeAreaView>
       <View style={styles.color}>
@@ -50,8 +67,7 @@ export default function ThankyouVisit({navigation, route}) {
           <View style={[styles.headerView, styles.row2]}>
             <Text style={styles.health}>Profile {' > '}</Text>
             <View style={styles.top}>
-              <TouchableOpacity
-                onPress={() => navigation.navigate('HealthVisits')}>
+              <TouchableOpacity onPress={handleRecentSession}>
                 <Text style={styles.visitHistory}> Recent Sessions</Text>
               </TouchableOpacity>
             </View>
@@ -64,19 +80,19 @@ export default function ThankyouVisit({navigation, route}) {
           </View> */}
           {/* <View style={styles.borderView}></View> */}
           {/* <View> */}
-            {/* <View style={[styles.row]}>
+          {/* <View style={[styles.row]}>
               <Image source={images.msg} style={styles.icon} />
               <Text style={[styles.list, styles.textList]}>Text</Text>
             </View> */}
-            {/* <View style={[styles.row]}>
+          {/* <View style={[styles.row]}>
               <Image source={images.ema} style={styles.icon2} />
               <Text style={styles.list}>Email</Text>
             </View> */}
-            {/* <View style={[styles.row]}>
+          {/* <View style={[styles.row]}>
               <Image source={images.fac} style={styles.icon2} />
               <Text style={styles.list}>Facebook</Text>
             </View> */}
-            {/* <View style={[styles.borderView, styles.bottom]}></View> */}
+          {/* <View style={[styles.borderView, styles.bottom]}></View> */}
           {/* </View> */}
         </View>
       </View>

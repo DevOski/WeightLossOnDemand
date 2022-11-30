@@ -731,7 +731,7 @@ const BasicInfoScreen = ({navigation, route}) => {
           <View style={styles.termspayra}>
             <View style={styles.r}>
               <Text style={styles.tremtext}>
-                By providing your mobile number,you give us permission to
+                By providing your mobile number, you give us permission to
                 contact you via text.
               </Text>
             </View>
@@ -740,7 +740,7 @@ const BasicInfoScreen = ({navigation, route}) => {
             <TouchableOpacity
               onPress={() => navigation.navigate('TermsOfService')}>
               <View style={styles.viewTermsView}>
-                <Text style={styles.tremtextbutt}>View terms.</Text>
+                <Text style={styles.tremtextbutt}>View Terms</Text>
               </View>
             </TouchableOpacity>
           </View>

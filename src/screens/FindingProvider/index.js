@@ -71,11 +71,11 @@ export default function FindingProvider({navigation, route}) {
       <View style={styles.color}>
         <View style={styles.userView}>
           <View style={[styles.padding]}>
-            <TouchableOpacity onPress={() => navigation.goBack()}>
+            {/* <TouchableOpacity onPress={() => navigation.goBack()}>
               <View>
                 <Text style={styles.cancel}>Cancel</Text>
               </View>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
             <View style={styles.paddingTop}>
               <Text style={styles.findingText}>Finding a consultant...</Text>
               <View style={styles.paddingTop}>

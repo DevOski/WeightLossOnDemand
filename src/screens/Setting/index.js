@@ -48,15 +48,35 @@ export default function Setting({navigation}) {
   const toggleSwitch = async () => {
     setIsEnabled(previousState => !previousState);
     console.log(isEnabled);
-    try {
-      if (isEnabled) {
-        console.log('1');
-        let response = await updateFingerprint(token, 1);
-        console.log(response.data);
-      }
-    } catch (error) {
-      console.log(error);
-    }
+    // try {
+    // if (isEnabled) {
+    //   console.log(isEnabled);
+    //   let response = await updateFingerprint(
+    //     token,
+    //     isEnabled == true ? 0 : 1,
+    //   );
+    //   console.log(response.data);
+    // }
+    // } catch (error) {
+    //   console.log(error);
+    // }
+    var myHeaders = new Headers();
+    myHeaders.append('Authorization', token);
+
+    var formdata = new FormData();
+    formdata.append('fingerprint', isEnabled == true ? 0 : 1);
+
+    var requestOptions = {
+      method: 'POST',
+      headers: myHeaders,
+      body: formdata,
+      redirect: 'follow',
+    };
+
+    fetch('http://alsyedmmtravel.com/api/update_fingrprnt', requestOptions)
+      .then(response => response.json())
+      .then(result => console.log(result))
+      .catch(error => console.log('error', error));
   };
   const toggleModal = () => {
     setIsModalVisible(!isModalVisible);
@@ -110,9 +130,15 @@ export default function Setting({navigation}) {
               <Text style={styles.signOutText}>Sign Out</Text>
             </TouchableOpacity>
           </View>
-          <Text style={styles.userName}>
-            {firstName} {middleName} {lastName}
-          </Text>
+          {middleName == '' ? (
+            <Text style={styles.userName}>
+              {firstName} {middleName} {lastName}
+            </Text>
+          ) : (
+            <Text style={styles.userName}>
+              {firstName} {lastName}
+            </Text>
+          )}
           <Text style={[styles.signOutText, styles.left]}>{email}</Text>
         </View>
         <View style={styles.padding}>
@@ -207,7 +233,7 @@ export default function Setting({navigation}) {
             </View>
           </TouchableOpacity>
         </View> */}
-        <View style={styles.padding}>
+        {/* <View style={styles.padding}>
           <View style={[styles.row, styles.justifyCenter]}>
             <Ionicons name="finger-print" color={colors.secondary} size={25} />
             <Text
@@ -215,7 +241,8 @@ export default function Setting({navigation}) {
                 Platform.OS !== 'ios'
                   ? styles.fingerprintText
                   : styles.fingerprintTextIOS
-              }>Enable fingerprint for login
+              }>
+              Enable fingerprint for login
             </Text>
             <View style={{alignSelf: 'flex-end'}}>
               <Switch
@@ -227,7 +254,7 @@ export default function Setting({navigation}) {
               />
             </View>
           </View>
-        </View>
+        </View> */}
         {/* <View style={[styles.left, styles.top]}>
           <Text style={styles.head}>CARE COORDINATION</Text>
         </View> */}

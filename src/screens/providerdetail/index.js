@@ -23,11 +23,13 @@ import share from '../../assets/assets/share.png';
 import {useIsFocused} from '@react-navigation/native';
 import {selectedTrainer} from '../../services/utilities/api/auth';
 import Loader from '../../components/Loader';
+import moment from 'moment';
 
 export const ProviderDetail = ({navigation, route}) => {
   const [show, setshow] = useState(false);
   const [loader, setLoader] = useState(false);
   const [trainer, setTrainer] = useState();
+  const [currentDate, setCurrentDate] = useState('');
   const [slot, setSlot] = useState([]);
   // const {tr_id} = route?.params?.trainer;
   const isVisible = useIsFocused();
@@ -39,6 +41,12 @@ export const ProviderDetail = ({navigation, route}) => {
   useEffect(() => {
     getTrainer();
   }, [isVisible]);
+
+  useEffect(() => {
+    let date = new Date().toJSON();
+    let current = moment(date).format('DD/MM/YYYY');
+    setCurrentDate(current);
+  }, []);
 
   const getTrainer = () => {
     setLoader(true);
@@ -78,41 +86,46 @@ export const ProviderDetail = ({navigation, route}) => {
               <View style={styles.img}>
                 <Image
                   style={Platform.OS !== 'ios' ? styles.trImg : styles.trImgIOS}
-                  source={{uri:route?.params?.trainer?.images}}
+                  source={{uri: route?.params?.trainer?.images}}
                 />
               </View>
             </View>
           </View>
           <View style={styles.flex3}>
             {slot?.map((item, index) => {
+              console.log(item);
               return (
-                <View style={styles.avialbox}>
-                  <TouchableOpacity
-                    onPress={() =>
-                      navigation.navigate('appointmentreqest', {
-                        slot: item,
-                        trainer: trainer,
-                      })
-                    }>
-                    <Text
-                      style={
-                        Platform.OS !== 'ios' ? styles.tex : styles.texIOS
-                      }>
-                      {item?.tr_day}
-                    </Text>
-                    <Text
-                      style={
-                        Platform.OS !== 'ios' ? styles.tex : styles.texIOS
-                      }>
-                      {item?.tr_date}
-                    </Text>
-                    <Text
-                      style={
-                        Platform.OS !== 'ios' ? styles.tex : styles.texIOS
-                      }>
-                      {item.sl_time}
-                    </Text>
-                  </TouchableOpacity>
+                <View>
+                  {item?.tr_date >= currentDate && (
+                    <View style={styles.avialbox}>
+                      <TouchableOpacity
+                        onPress={() =>
+                          navigation.navigate('appointmentreqest', {
+                            slot: item,
+                            trainer: trainer,
+                          })
+                        }>
+                        <Text
+                          style={
+                            Platform.OS !== 'ios' ? styles.tex : styles.texIOS
+                          }>
+                          {item?.tr_day}
+                        </Text>
+                        <Text
+                          style={
+                            Platform.OS !== 'ios' ? styles.tex : styles.texIOS
+                          }>
+                          {item?.tr_date}
+                        </Text>
+                        <Text
+                          style={
+                            Platform.OS !== 'ios' ? styles.tex : styles.texIOS
+                          }>
+                          {item.sl_time}
+                        </Text>
+                      </TouchableOpacity>
+                    </View>
+                  )}
                 </View>
               );
             })}
@@ -136,7 +149,7 @@ export const ProviderDetail = ({navigation, route}) => {
           </View>
 
           <View style={styles.crd}>
-            <Text style={styles.providertex}>Description</Text>
+            <Text style={styles.providertex}>Consultant Description</Text>
             <Text style={[styles.subhead, styles.border]}>
               {trainer?.tr_desc}
             </Text>
@@ -161,7 +174,7 @@ export const ProviderDetail = ({navigation, route}) => {
               </View>
             ) : null} */}
 
-            <View style={styles.borderbottom}></View>
+            {/* <View style={styles.borderbottom}></View> */}
             {/* <View>
               {show ? (
                 <TouchableOpacity onPress={Toogle}>
@@ -269,7 +282,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontFamily: fontFamily.appTextLight,
   },
-  subheadIOS:{
+  subheadIOS: {
     fontSize: fontSize.large,
     color: colors.black,
     fontWeight: 'bold',

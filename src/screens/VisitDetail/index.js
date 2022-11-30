@@ -86,21 +86,21 @@ export const VisitDetail = ({navigation, route}) => {
           </View>
           <View style={styles.flex}>
             <View>
-              <Text style={styles.providertex}>CONSULTANT</Text>
+              <Text style={styles.providertex}>Consultant Name</Text>
               <Text style={styles.subhead}>{trainer?.tr_name}</Text>
             </View>
             <View>
               <View style={styles.img}>
                 <Image
                   style={Platform.OS !== 'ios' ? styles.trImg : styles.trImgIOS}
-                  source={{uri:trainer.images}}
+                  source={{uri:trainer?.images}}
                 />
               </View>
             </View>
           </View>
 
           <View>
-            <Text style={styles.subhead}>DATE</Text>
+            <Text style={styles.subhead}>Date</Text>
             <Text style={styles.subhead}>
               {moment(visit?.created_at).format('DD/MM/YYYY')}
             </Text>
@@ -147,7 +147,7 @@ export const VisitDetail = ({navigation, route}) => {
               </View>
               <TouchableOpacity
                 onPress={() => {
-                  msgList.length
+                  msgList?.length
                     ? navigation.navigate('chatscreen')
                     : navigation.navigate('MessageSupport');
                 }}>
@@ -173,7 +173,7 @@ export const VisitDetail = ({navigation, route}) => {
             </Text>
           </View> */}
           <View style={styles.crd}>
-            <Text style={styles.providertex}>Consultant</Text>
+            <Text style={styles.providertex}>Notes</Text>
             <Text style={[styles.subhead, styles.border]}>
               {trainer?.tr_desc}
             </Text>
@@ -187,7 +187,7 @@ export const VisitDetail = ({navigation, route}) => {
               </Text>
             ) : null} */}
 
-            <View style={styles.borderbottom}></View>
+            {/* <View style={styles.borderbottom}></View> */}
             {/* <View>
               {show ? (
                 <TouchableOpacity onPress={Toogle}>
@@ -209,12 +209,12 @@ export const VisitDetail = ({navigation, route}) => {
               <Text style={styles.litext3}>{'>'}</Text>
             </View>
           </View> */}
-          <View style={styles.crd}>
+          {/* <View style={styles.crd}> */}
             <View>
               {/* <Text style={styles.subhead}>Visit intake</Text> */}
-              <Text style={styles.subhead}>PURPOSE OF SESSION</Text>
+              {/* <Text style={styles.subhead}>PURPOSE OF SESSION</Text>
               <Text style={styles.subhead}>{visit?.reason}</Text>
-              <View style={styles.borderbottom}></View>
+              <View style={styles.borderbottom}></View> */}
               {/* <Text style={[styles.subhead, styles.mt]}>Time PERIOD</Text>
               <Text style={[styles.subhead, styles.mt]}>3 days</Text> */}
               {/* <View style={styles.borderbottom}></View> */}
@@ -227,9 +227,9 @@ export const VisitDetail = ({navigation, route}) => {
           </View>
           {/* <View style={styles.crd}>
             <Text style={styles.subhead}>Visit Durations</Text>
-            <Text style={styles.providertex}>0 min,25 sec</Text>
+            <Text s tyle={styles.providertex}>0 min,25 sec</Text>
           </View> */}
-        </View>
+        {/* </View> */}
       </ScrollView>
     </SafeAreaView>
   );

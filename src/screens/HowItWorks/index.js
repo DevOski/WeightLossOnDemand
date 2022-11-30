@@ -26,14 +26,15 @@ export default function HowItWorks({navigation}) {
       <ScrollView style={styles.color}>
         {!showVideo ? (
           <ImageBackground source={images.mother} style={styles.image}>
-            <TouchableOpacity onPress={() => setShowVideo(true)}>
+            {/* <TouchableOpacity onPress={() => setShowVideo(true)}>
               <View style={styles.playBtn}>
                 <Image source={images.playIcon} style={styles.playIcon} />
               </View>
+            </TouchableOpacity> */}
+            <View style={styles.playBtn}></View>
             <View style={styles.textView}>
               <Text style={styles.heading}>How It Works</Text>
             </View>
-            </TouchableOpacity>
           </ImageBackground>
         ) : (
           <WebView
@@ -43,11 +44,11 @@ export default function HowItWorks({navigation}) {
         )}
 
         <View style={styles.padding}>
-          <TouchableOpacity onPress={() => navigation.navigate('HowItWorksVT')}>
+          {/* <TouchableOpacity onPress={() => navigation.navigate('HowItWorksVT')}>
             <View style={[styles.top]}>
               <Text style={styles.subHeading}>See transcript for video</Text>
             </View>
-          </TouchableOpacity>
+          </TouchableOpacity> */}
           <View style={styles.padding}>
             <TouchableOpacity onPress={() => navigation.navigate('VideoVisit')}>
               <View style={[styles.row, styles.card]}>

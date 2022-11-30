@@ -18,6 +18,7 @@ import Slider from '@react-native-community/slider';
 import {appRating} from '../../services/utilities/api/auth';
 import Error from '../../components/Error';
 import Modal from 'react-native-modal';
+import Loader from '../../components/Loader';
 
 export default function HowLikelyRecommend({navigation, route}) {
   const [rate, setRate] = useState(5);
@@ -26,7 +27,6 @@ export default function HowLikelyRecommend({navigation, route}) {
   const [isModalVisible, setIsModalVisible] = useState(false);
 
   const handleRating = () => {
-    //
     setLoader(true);
     setTimeout(async () => {
       try {
@@ -62,7 +62,7 @@ export default function HowLikelyRecommend({navigation, route}) {
               </View>
               <View>
                 <Slider
-                  onValueChange={val => setRate(Math.round(val))}
+                  onSlidingComplete={val => setRate(Math.round(val))}
                   style={styles.sliderWidth}
                   thumbTintColor={colors.secondary}
                   value={rate}
@@ -132,6 +132,8 @@ export default function HowLikelyRecommend({navigation, route}) {
           </View>
         </Modal>
       )}
+        {loader && <Loader />}
+
     </SafeAreaView>
   );
 }

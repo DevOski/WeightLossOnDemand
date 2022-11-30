@@ -30,7 +30,7 @@ export default function GetCare({navigation}) {
           }>
           {/* UserVisit */}
           <View style={[styles.row, styles.card]}>
-            <Image style={styles.icon} source={images.mdoctr} />
+            <Image style={styles.icon2} source={images.weightloss2} />
             <View>
               <Text style={styles.cardText}>See first available</Text>
               <Text style={styles.text}>Certified Consultants</Text>
@@ -49,7 +49,7 @@ export default function GetCare({navigation}) {
             // navigation.navigate('HowToSchedule')
           }>
           <View style={[styles.row, styles.card]}>
-            <Image style={styles.icon2} source={images.mediVisit} />
+            <Image style={styles.icon} source={images.weightloss} />
 
             <View>
               <Text style={styles.cardText}>Book a session</Text>

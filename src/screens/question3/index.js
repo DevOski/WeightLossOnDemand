@@ -187,7 +187,7 @@ export default function Questionthree({navigation, route}) {
               // disabled={selectanswer3 ? false : true}
             >
               <View style={styles.buttonView}>
-                <Text style={styles.buttonText}>Skip</Text>
+                <Text style={styles.buttonText}>Submit</Text>
               </View>
             </TouchableOpacity>
           </View>

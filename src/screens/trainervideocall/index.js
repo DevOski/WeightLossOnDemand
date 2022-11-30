@@ -174,8 +174,8 @@ export default function TrainerVideocalling({navigation, route}) {
       {/* <Text style={styles.head}>Agora Video Calling Quickstart</Text>   */}
       {/* <View style={styles.btnContainer}> */}
       {isJoined ? null : (
-        <TouchableOpacity onPress={join}>
-          <View style={styles.button1}>
+        <TouchableOpacity onPress={join} style={styles.button1}>
+          <View>
             <Text style={[styles.top]}>Join</Text>
           </View>
         </TouchableOpacity>
@@ -204,22 +204,24 @@ export default function TrainerVideocalling({navigation, route}) {
               position: 'absolute',
               zIndex: 999,
             }}>
-            <Ionicons
-              name="ios-call-outline"
-              color={colors.secondary}
-              style={styles.button}
-              size={20}
-              onPress={leave}
-              // onPress={toogle}
-            />
-            <Entypo
+            <TouchableOpacity onPress={leave} style={styles.button}>
+              <Ionicons
+                name="ios-call-outline"
+                color={colors.white}
+                style={styles.callIcon}
+                size={20}
+                onPress={leave}
+                // onPress={toogle}
+              />
+            </TouchableOpacity>
+            {/* <Entypo
               name="sound-mute"
               color={colors.secondary}
               style={styles.button}
               size={20}
               onPress={mute}
               // onPress={toogle}
-            />
+            /> */}
             {/* <MaterialCommunityIcons
               name="camera-flip"
               color={colors.secondary}
@@ -251,22 +253,24 @@ export default function TrainerVideocalling({navigation, route}) {
               position: 'absolute',
               zIndex: 999,
             }}>
-            <Ionicons
-              name="ios-call-outline"
-              color={colors.secondary}
-              style={styles.button}
-              size={20}
-              onPress={leave}
-              // onPress={toogle}
-            />
-            <Entypo
+            <TouchableOpacity onPress={leave} style={styles.button}>
+              <Ionicons
+                name="ios-call-outline"
+                color={colors.white}
+                style={styles.callIcon}
+                size={20}
+                onPress={leave}
+                // onPress={toogle}
+              />
+            </TouchableOpacity>
+            {/* <Entypo
               name="sound-mute"
               color={colors.secondary}
               style={styles.button}
               size={20}
               onPress={mute}
               // onPress={toogle}
-            />
+            /> */}
             {/* <MaterialCommunityIcons
               name="camera-flip"
               color={colors.secondary}
@@ -301,12 +305,11 @@ export default function TrainerVideocalling({navigation, route}) {
 
 const styles = StyleSheet.create({
   button: {
-    width: sizes.screenWidth * 0.2,
-    height: sizes.screenHeight * 0.04,
-
+    width: sizes.screenWidth * 0.15,
+    height: sizes.screenHeight * 0.073,
     backgroundColor: colors.secondary,
-    borderRadius: sizes.screenWidth * 0.7,
-    paddingTop: sizes.screenWidth * 0.01,
+    borderRadius: sizes.screenWidth * 0.5,
+    // paddingTop: sizes.screenWidth * 0.01,
     // margin: 5,
     // position: 'relative',
     // top:10,
@@ -316,8 +319,9 @@ const styles = StyleSheet.create({
     // alignItems: 'center',
     color: '#ffffff',
     textAlign: 'center',
+    alignItems: 'center',
     // alignSelf:'center',
-    marginLeft: sizes.screenWidth * 0.09,
+    marginLeft: sizes.screenWidth * 0.4,
   },
   button1: {
     width: sizes.screenWidth * 0.3,
@@ -379,5 +383,8 @@ const styles = StyleSheet.create({
   text: {
     color: colors.black,
     fontSize: fontSize.medium,
+  },
+  callIcon: {
+    top: sizes.screenHeight * 0.018,
   },
 });

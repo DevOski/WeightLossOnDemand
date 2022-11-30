@@ -60,14 +60,18 @@ export const SignIn = ({navigation}) => {
   const toggleModal = () => {
     setIsModalVisible(!isModalVisible);
   };
-  const handleBiometric = () => {
+  const handleBiometric = token => {
     TouchID.isSupported(optionalConfigObject).then(biometricType => {
+      console.log(biometricType);
       if (biometricType === 'FaceID') {
         console.log('FaceID is supported.');
       } else {
         console.log('TouchID is supported.');
         TouchID.authenticate('', optionalConfigObject)
           .then(success => {
+            dispatch(storeData(token));
+            // navigation.navigate('BottomNavs');
+
             console.log('works');
             console.log('Success', success);
             // navigation.navigate('BottomNavs');
@@ -87,19 +91,18 @@ export const SignIn = ({navigation}) => {
         console.log('works2');
 
         setTimeout(async () => {
-          let response = await signIn(email, password);
+          let response = await signIn(email.toLowerCase(), password);
           console.log(response.data);
           setLoader(false);
           if (response.data.message == 'user found') {
-            // console.log(response.data.token);
+            console.log(response.data);
             dispatch(storeData(response.data.token));
-            console.log(response.data.data);
-            if (response.data.data.fingerprint == 1) {
-              handleBiometric();
-            } 
-            else{
-              navigation.navigate('BottomNavs');
-            }
+            // handleBiometric(response.data.token);
+            // if (response.data.fingerprint == 1) {
+            // } else {
+            //   dispatch(storeData(response.data.token));
+            //   // navigation.navigate('BottomNavs');
+            // }
 
             setError(false);
             setLoader(false);
@@ -159,7 +162,7 @@ export const SignIn = ({navigation}) => {
               secureTextEntry={true}
             />
           </View>
-          <View style={styles.filedcontext}>
+          {/* <View style={styles.filedcontext}>
             <Text style={styles.text}>Enable fingerprint for login</Text>
             <View>
               <Switch
@@ -170,7 +173,7 @@ export const SignIn = ({navigation}) => {
                 value={isEnabled}
               />
             </View>
-          </View>
+          </View> */}
           <View style={styles.filedcon}>
             <TouchableOpacity
               onPress={() => navigation.navigate('RecoverPassword')}>

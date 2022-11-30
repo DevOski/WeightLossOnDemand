@@ -189,14 +189,14 @@ export default function ProviderReview({navigation, route}) {
       <View style={styles.color}>
         <View style={styles.userView}>
           <View style={[styles.padding]}>
-            <TouchableOpacity onPress={() => navigation.goBack()}>
+            {/* <TouchableOpacity onPress={() => navigation.goBack()}>
               <View>
                 <Text style={styles.cancel}>Cancel</Text>
               </View>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
             <View style={styles.paddingTop}>
               <Text style={styles.findingText}>
-                Your consultant is reviewing your chart...
+                Your consultant is reviewing your questionnaires...
               </Text>
               <View style={styles.paddingTop}>
                 <Spinner

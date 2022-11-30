@@ -88,7 +88,7 @@ export default function TrainerAppointment({navigation}) {
   };
   return (
     <SafeAreaView>
-      <ScrollView style={styles.color}>
+      <View style={styles.paddingTop}>
         <View style={[styles.row, styles.padding]}>
           <Image source={images.icon2} style={styles.icon} />
           <View>
@@ -102,7 +102,8 @@ export default function TrainerAppointment({navigation}) {
             </TouchableOpacity>
           </View>
         </View>
-
+      </View>
+      <ScrollView style={styles.color}>
         {isModalVisible && (
           <Modal style={styles.modalView} isVisible={isModalVisible}>
             <TouchableOpacity onPress={toggleModal}>
@@ -142,7 +143,7 @@ export default function TrainerAppointment({navigation}) {
         )}
         {loader && <Loader />}
         <View>
-          <Text style={styles.appointmentText}>Your recent appointment</Text>
+          <Text style={styles.appointmentText}>Your upcoming sessions</Text>
         </View>
         {appointmentList.length ? (
           appointmentList?.map((item, index) => {

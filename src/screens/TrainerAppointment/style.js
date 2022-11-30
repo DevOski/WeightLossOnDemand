@@ -339,4 +339,7 @@ export const styles = StyleSheet.create({
     fontWeight: 'bold',
     paddingBottom: sizes.TinyMargin,
   },
+  paddingTop: {
+    marginTop: sizes.screenHeight * 0.01,
+  },
 });

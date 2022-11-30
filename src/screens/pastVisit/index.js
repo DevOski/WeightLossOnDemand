@@ -50,18 +50,19 @@ export default function PastVisit({navigation}) {
   return (
     <SafeAreaView>
       <View>
-        <Header title={'Past Visit'} />
+        <Header title={'Past Session'} />
       </View>
       <ScrollView style={styles.color}>
         {!error ? (
           <View style={styles.marginTop}>
             <View style={[styles.left, styles.top]}>
-              <Text style={styles.head}>MY Past Session</Text>
+              <Text style={styles.head}>My Past Sessions</Text>
             </View>
             {visitList?.map((item, index) => {
+              console.log(item)
               return (
                 <TouchableOpacity
-                  onPress={() => navigation.navigate('VisitDetail')}>
+                  onPress={() => navigation.navigate('VisitDetail',{trainer:item})}>
                   <View style={[styles.card]}>
                     <View style={styles.row}>
                       <Image

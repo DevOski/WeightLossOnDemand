@@ -378,7 +378,7 @@ export default function Questionfour({navigation, route}) {
           <View style={styles.paddingTop}>
             <TouchableOpacity onPress={handleNext}>
               <View style={styles.buttonView}>
-                <Text style={styles.buttonText}>Skip</Text>
+                <Text style={styles.buttonText}>Submit</Text>
               </View>
             </TouchableOpacity>
           </View>

@@ -14,7 +14,7 @@ export const styles = StyleSheet.create({
   playBtn: {
     top: sizes.screenHeight * 0.08,
     alignSelf: 'center',
-    backgroundColor: 'rgba(255, 255, 247,0.3)',
+    // backgroundColor: 'rgba(255, 255, 247,0.3)',
     height: sizes.screenHeight * 0.1,
     width: sizes.screenWidth * 0.2,
     borderRadius: sizes.screenWidth * 0.8,

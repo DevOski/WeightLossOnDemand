@@ -105,7 +105,7 @@ export const styles = StyleSheet.create({
   playBtn: {
     // top: sizes.screenHeight * 0.3,
     alignSelf: 'center',
-    backgroundColor: 'rgba(255, 255, 247,0.3)',
+    // backgroundColor: 'rgba(255, 255, 247,0.3)',
     height: sizes.screenHeight * 0.1,
     width: sizes.screenWidth * 0.2,
     borderRadius: sizes.screenWidth * 0.8,
@@ -114,7 +114,7 @@ export const styles = StyleSheet.create({
   playBtnIOS: {
     // top: sizes.screenHeight * 0.3,
     alignSelf: 'center',
-    backgroundColor: 'rgba(255, 255, 247,0.3)',
+    // backgroundColor: 'rgba(255, 255, 247,0.3)',
     height: sizes.screenHeight * 0.08,
     width: sizes.screenWidth * 0.18,
     borderRadius: sizes.screenWidth * 0.8,
@@ -161,21 +161,21 @@ export const styles = StyleSheet.create({
     fontFamily: fontFamily.appTextHeading,
   },
   semiText: {
-    color: colors.secondary,
+    color: colors.white,
     fontWeight: 'bold',
     fontSize: fontSize.h6,
     fontFamily: fontFamily.appTextRegular,
-    textShadowColor: colors.white,
-    textShadowOffset: {width: 0.5, height: 0.5},
-    textShadowRadius: 30,
     textTransform: 'uppercase',
+    // textShadowColor: colors.white,
+    // textShadowOffset: {width: 0.5, height: 0.5},
+    // textShadowRadius: 30,
   },
   row2: {
     flexDirection: 'row',
     alignItems: 'center',
   },
   symbol: {
-    color: colors.secondary,
+    color: colors.white,
     fontSize: fontSize.h4,
     bottom: 1,
   },
@@ -204,7 +204,7 @@ export const styles = StyleSheet.create({
     fontFamily: fontFamily.appTextRegular,
   },
   btnTop: {
-    top: sizes.screenHeight * 0.25,
+    top: sizes.screenHeight * 0.2,
   },
   btnTop2: {
     top: sizes.screenHeight * 0.23,

@@ -22,28 +22,28 @@ export default function HowItWorksVT() {
   const [showVideo, setShowVideo] = useState(false);
   return (
     <SafeAreaView>
-        <Header title={'Video Transcript'} />
+      <Header title={'Video Transcript'} />
       <ScrollView style={styles.color}>
         <View style={styles.padding}>
           <Image source={images.appIcon} style={styles.icon} />
           <View style={styles.paddingTop}>
             <Text style={styles.heading}>
-              Transcript for "How Does a Video Visit with Weight Loss On Demand
-              Work?"
+              Transcript for "How Does a Video Session with Weight Loss On
+              Demand Work?"
             </Text>
           </View>
           <View style={styles.paddingTop}>
             <Text style={styles.textColor}>
-              <Text style={styles.bold}>Member:</Text>A video visit with a
-              doctor...how does that work?
+              <Text style={styles.bold}>Client: </Text>A video session with a
+              consultant... How does that work?
             </Text>
           </View>
           <View style={styles.paddingTop}>
             <Text style={[styles.textColor, styles.italic]}>
-              [The video now shows short conversations of patients interacting
-              with Weight Loss On Demand providers through their phone,iPad, or other
-              tablet. All members are speaking with doctors through a video
-              call].
+              [The video now shows short conversations of client interacting
+              with Weight Loss On Demand consultant through their mobile
+              devices. All the clients are speaking with consultant through a
+              video call].
             </Text>
           </View>
           <View style={styles.paddingTop}>
@@ -51,14 +51,16 @@ export default function HowItWorksVT() {
           </View>
           <View style={styles.paddingTop}>
             <Text style={styles.textColor}>
-              <Text style={styles.bold}>Weight Loss On Demand Provider: </Text>
-              Hi! This is Dr. Tong with Weight Loss On Demand.
+              <Text style={styles.bold}>
+                Weight Loss On Demand Consultant:{' '}
+              </Text>
+              Hi! This is Tony with Weight Loss On Demand.
             </Text>
           </View>
           <View style={styles.paddingTop}>
             <Text style={styles.textColor}>
-              <Text style={styles.bold}>Member 1: </Text>
-              Hi Dr. Tong, I'm Lea.
+              <Text style={styles.bold}>Client 1: </Text>
+              Hi Tony, I'm Jessica.
             </Text>
           </View>
           <View style={styles.paddingTop}>
@@ -66,8 +68,8 @@ export default function HowItWorksVT() {
           </View>
           <View style={styles.paddingTop}>
             <Text style={styles.textColor}>
-              <Text style={styles.bold}>Member 2: </Text>
-              The last time I took my temperature it was 101.4.
+              <Text style={styles.bold}>Client 2: </Text>
+              The last time I measured my weight, it was 150lb.
             </Text>
           </View>
           <View style={styles.paddingTop}>
@@ -75,9 +77,8 @@ export default function HowItWorksVT() {
           </View>
           <View style={styles.paddingTop}>
             <Text style={styles.textColor}>
-              <Text style={styles.bold}>Member 3: </Text>
-              He was playing with a plastic bat, and the bat must’ve hit his
-              nose and out comes the blood.
+              <Text style={styles.bold}>Client 3: </Text>
+              I've an upcoming photoshoot and would like to lose weight.
             </Text>
           </View>
           <View style={styles.paddingTop}>
@@ -85,15 +86,17 @@ export default function HowItWorksVT() {
           </View>
           <View style={styles.paddingTop}>
             <Text style={styles.textColor}>
-              <Text style={styles.bold}>Weight Loss On Demand Therapist: </Text>
-              He was playing with a plastic bat, and the bat must’ve hit his
-              nose and out comes the blood.
+              <Text style={styles.bold}>
+                Weight Loss On Demand Consultant:{' '}
+              </Text>
+              You have an upcoming photoshoot and you would like to lose weight.
+              Is this the first time you're ever talking to a consultant
             </Text>
           </View>
           <View style={styles.paddingTop}>
             <Text style={styles.textColor}>
-              <Text style={styles.bold}>Member 4: </Text>
-              Yeah, I mean, it's the first time I've done it.
+              <Text style={styles.bold}>Client 4: </Text>
+              Yeah, I mean, it's the first time I'll be doing it.
             </Text>
           </View>
           <View style={styles.paddingTop}>
@@ -108,7 +111,7 @@ export default function HowItWorksVT() {
           </View>
           <View style={styles.paddingTop}>
             <Text style={styles.textColor}>
-              <Text style={styles.bold}>Member 4: </Text>I want to feel like
+              <Text style={styles.bold}>Client 4: </Text>I want to feel like
               it's not chaos. I want to feel like I have a choice.
             </Text>
           </View>
@@ -135,7 +138,7 @@ export default function HowItWorksVT() {
           </View>
           <View style={styles.paddingTop}>
             <Text style={styles.textColor}>
-              <Text style={styles.bold}>Member 5: </Text>Yeah there’s a little
+              <Text style={styles.bold}>Client 5: </Text>Yeah there’s a little
               bit of a pull here.
             </Text>
           </View>
@@ -164,7 +167,7 @@ export default function HowItWorksVT() {
           </View>
           <View style={styles.paddingTop}>
             <Text style={styles.textColor}>
-              <Text style={styles.bold}>Member 5: </Text>That’s amazing, thank
+              <Text style={styles.bold}>Client 5: </Text>That’s amazing, thank
               you.
             </Text>
           </View>
@@ -173,7 +176,7 @@ export default function HowItWorksVT() {
           </View>
           <View style={styles.paddingTop}>
             <Text style={styles.textColor}>
-              <Text style={styles.bold}>Member: </Text>It's not about me
+              <Text style={styles.bold}>Client: </Text>It's not about me
               fighting through this insanity of the medical system, this is
               fantastic. you.
             </Text>
@@ -190,11 +193,11 @@ export default function HowItWorksVT() {
           </View>
           <View style={styles.paddingTop}>
             <Text style={styles.textColor}>
-              <Text style={styles.bold}>Member 6: </Text>If you have any other
+              <Text style={styles.bold}>Client 6: </Text>If you have any other
               questions or concerns, please don't hesitate to call us back.
             </Text>
           </View>
-          <View style={[styles.paddingTop,styles.bottom]}>
+          <View style={[styles.paddingTop, styles.bottom]}>
             <Text style={styles.textColor}>
               <Text style={styles.bold}>Weight Loss On Demand Provider: </Text>
               Thanks for calling Weight Loss On Demand. Have a good day!
@@ -202,7 +205,6 @@ export default function HowItWorksVT() {
           </View>
         </View>
         {Platform.OS == 'ios' && <View style={styles.bottomIOS}></View>}
-
       </ScrollView>
     </SafeAreaView>
   );

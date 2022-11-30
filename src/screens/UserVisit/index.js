@@ -31,13 +31,17 @@ import moment from 'moment';
 import Error from '../../components/Error';
 import {useIsFocused} from '@react-navigation/native';
 import {useEffect} from 'react';
+import Loader from '../../components/Loader';
 
 export default function UserVisit({navigation, route}) {
   const [username, setUsername] = useState('');
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [appointMsg, setAppointMsg] = useState('');
+  const [loader, setLoader] = useState(false);
   const [amount, setAmount] = useState('');
   const [discount, setDiscount] = useState('');
+  const [oops, setOops] = useState(false);
+
   const toggleModal = () => {
     setIsModalVisible(!isModalVisible);
   };
@@ -132,6 +136,7 @@ export default function UserVisit({navigation, route}) {
     }
   };
   const confirmAndPay = () => {
+    setLoader(true);
     if (route?.params?.appointByTrainer == true && payment.cardNum) {
       console.log('appointByTrainer--------->>');
       let price =
@@ -157,6 +162,7 @@ export default function UserVisit({navigation, route}) {
         .then(result => {
           console.log(result);
           if (result.message == 'succeeded') {
+            setLoader(false);
             bookAppointmentByTrainer(price);
           }
         })
@@ -186,6 +192,7 @@ export default function UserVisit({navigation, route}) {
         .then(result => {
           // console.log(result);
           if (result.message == 'succeeded') {
+            setLoader(false);
             bookAppointmentByTime(price);
           }
         })
@@ -216,6 +223,7 @@ export default function UserVisit({navigation, route}) {
         .then(result => {
           console.log(result);
           if (result.message == 'succeeded') {
+            setLoader(false);
             console.log('done------------>>');
             setTimeout(() => {
               toggleModal();
@@ -292,9 +300,16 @@ export default function UserVisit({navigation, route}) {
         `$${amount}`,
       );
       console.log(response.data.message);
-      setTimeout(() => {
-        setAppointMsg(response.data.message);
-      }, 1000);
+      if (response.data.message !== 'Session not created successfully') {
+        setTimeout(() => {
+          setAppointMsg(response.data.message);
+        }, 1000);
+      } else {
+        setTimeout(() => {
+          setAppointMsg(response.data.message);
+        }, 1000);
+        setOops(true);
+      }
     } catch (error) {
       console.log('err-->', error);
     }
@@ -491,7 +506,7 @@ export default function UserVisit({navigation, route}) {
             </View>
             <View style={styles.texcon1}>
               <Text style={styles.text1}>
-                When you're ready, tap below,and we'll connect you with your
+                When you're ready, tap below and we'll connect you with your
                 consultant.
               </Text>
             </View>
@@ -549,11 +564,12 @@ export default function UserVisit({navigation, route}) {
         )}
         {appointMsg !== '' && (
           <Error
-            title="Congratulations!"
+            title={oops ? 'Oops!' : 'Congratulations!'}
             message={appointMsg}
             screen={'Home'}
           />
         )}
+        {loader && <Loader />}
       </ScrollView>
     </SafeAreaView>
   );

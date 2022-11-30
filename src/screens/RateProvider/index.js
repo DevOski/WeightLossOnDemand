@@ -18,12 +18,15 @@ import {Rating} from 'react-native-ratings';
 import {trainerRating} from '../../services/utilities/api/auth';
 import Error from '../../components/Error';
 import Modal from 'react-native-modal';
+import Loader from '../../components/Loader';
 
 export default function RateProvider({navigation, route}) {
   const [message, setMessage] = useState('');
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [loader, setLoader] = useState(false);
 
   const ratingCompleted = async rating => {
+    setLoader(true);
     try {
       let response = await trainerRating(
         rating,
@@ -33,8 +36,10 @@ export default function RateProvider({navigation, route}) {
       );
       setMessage(response.data.message);
       setIsModalVisible(true);
+      setLoader(true);
     } catch (error) {
       console.log(error);
+      setLoader(true);
     }
   };
   console.log(route?.params);
@@ -104,6 +109,8 @@ export default function RateProvider({navigation, route}) {
           </View>
         </Modal>
       )}
+        {loader && <Loader />}
+
     </SafeAreaView>
   );
 }

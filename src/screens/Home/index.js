@@ -27,6 +27,7 @@ import images from '../../services/utilities/images';
 import {storeUserData} from '../../store/actions';
 import {styles} from './style';
 import PushNotificationIOS from '@react-native-community/push-notification-ios';
+import PushNotification from 'react-native-push-notification';
 
 export default function Home({navigation}) {
   const [userName, setUserName] = useState('');
@@ -42,6 +43,7 @@ export default function Home({navigation}) {
   const [pastVisit, setPastVisit] = useState();
   const [visitDetails, setVisitDetails] = useState();
   const [loader, setLoader] = useState(false);
+  const [mounted, setMounted] = useState(false)
 
   const token = useSelector(state => state.token);
   const dispatch = useDispatch();
@@ -54,6 +56,7 @@ export default function Home({navigation}) {
     getRecentAppointment();
   }, [isVisible]);
 
+  
   const getUserDetails = async () => {
     setLoader(true);
     setTimeout(async () => {
@@ -145,8 +148,8 @@ export default function Home({navigation}) {
       LocalNotification();
     } else {
       PushNotificationIOS.presentLocalNotification({
-        alertTitle: 'Your session is getting started',
-        alertBody: 'Get ready for a training session.',
+        alertTitle: 'Your session is about started',
+        alertBody: 'Get ready for your session.',
       });
     }
 
@@ -180,6 +183,7 @@ export default function Home({navigation}) {
             onPress={
               () => navigation.navigate('Setting')
               // handleAPI
+              // LocalNotification
               // handleNotif
             }>
             <Image source={images.setting} style={styles.settingIcon} />
@@ -192,7 +196,6 @@ export default function Home({navigation}) {
           showsHorizontalScrollIndicator={false}
           style={styles.wrap}>
           {item?.map((item, index) => {
-            
             return (
               <View
                 key={index}
@@ -204,7 +207,13 @@ export default function Home({navigation}) {
                     key={index}
                     source={images.bg1}
                     style={[styles.bg, {opacity: 1}]}>
-                    <TouchableOpacity
+                      <View style={styles.videoTop}></View>
+                      <View  style={
+                          Platform.OS !== 'ios'
+                            ? styles.playBtn
+                            : styles.playBtnIOS
+                        }></View>
+                    {/* <TouchableOpacity
                       style={styles.videoTop}
                       onPress={() =>
                         navigation.navigate('VideoPlayer', {
@@ -227,7 +236,7 @@ export default function Home({navigation}) {
                           style={styles.playIcon}
                         />
                       </View>
-                    </TouchableOpacity>
+                    </TouchableOpacity> */}
                     <View style={styles.textView}>
                       <Text style={styles.text}>
                         What to expect during your initial session?
@@ -326,7 +335,8 @@ export default function Home({navigation}) {
                         We're more than just proud
                       </Text>
                       <Text style={styles.letUsText}>
-                        Let us assist you in finding the right consultant for you.
+                        Let us assist you in finding the right consultant for
+                        you.
                       </Text>
                     </View>
                     <View style={[styles.learnMoreView, styles.row2]}>
@@ -454,9 +464,9 @@ export default function Home({navigation}) {
                   </View>
                 )}
                 {index == 4 && (
-                   <View key={index} style={[styles.padding]}>
+                  <View key={index} style={[styles.padding]}>
                     <Text style={[styles.heading, styles.top]}>
-                      Recent Visit
+                      Recent Session
                     </Text>
 
                     <View style={[styles.row2, styles.paddingLeft]}>

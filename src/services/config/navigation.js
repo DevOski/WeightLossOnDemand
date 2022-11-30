@@ -184,9 +184,8 @@ export default function MainNavigator() {
             />
             {/* <Stack.Screen name="BottomNavs" component={MyTabs} /> */}
           </>
-        ) : ( 
+        ) : (
           <>
-
             <Stack.Screen
               name={trainerStatus ? 'BottomTrainer' : 'BottomNavs'}
               component={trainerStatus ? MyTrainerTabs : MyTabs}
@@ -404,7 +403,10 @@ export default function MainNavigator() {
             />
             <Stack.Screen name="videocallingscreen" component={Videocalling} />
 
-            <Stack.Screen name="trainervideocall" component={TrainerVideocalling} />
+            <Stack.Screen
+              name="trainervideocall"
+              component={TrainerVideocalling}
+            />
             <Stack.Screen name="ThankyouVisit" component={ThankyouVisit} />
             <Stack.Screen name="GenerateReciept" component={GenerateReciept} />
             <Stack.Screen name="PayPal" component={PayPal} />
@@ -478,7 +480,10 @@ function MyTabs() {
             <Image
               source={images.icon2}
               style={{
-                height: Platform.OS !== 'ios' ? sizes.screenHeight * 0.033 : sizes.screenHeight * 0.028, 
+                height:
+                  Platform.OS !== 'ios'
+                    ? sizes.screenHeight * 0.033
+                    : sizes.screenHeight * 0.028,
                 width: sizes.screenWidth * 0.06,
               }}
             />
@@ -491,7 +496,17 @@ function MyTabs() {
         options={{
           tabBarLabel: 'Consult',
           tabBarIcon: ({color}) => (
-            <MaterialCommunityIcons name="dumbbell" color={color} size={22} />
+            // <MaterialCommunityIcons name="dumbbell" color={color} size={22} />
+            <Image
+              source={images.weightScale}
+              style={{
+                height:
+                  Platform.OS !== 'ios'
+                    ? sizes.screenHeight * 0.03
+                    : sizes.screenHeight * 0.028,
+                width: sizes.screenWidth * 0.06,
+              }}
+            />
           ),
         }}
       />
@@ -535,7 +550,7 @@ function MyTrainerTabs() {
         name="TrainerAppointment"
         component={TrainerAppointment}
         options={{
-          tabBarLabel: 'Appointments',
+          tabBarLabel: 'Upcoming Sessions',
 
           tabBarIcon: ({color}) => (
             <Image
@@ -552,7 +567,7 @@ function MyTrainerTabs() {
         name="session"
         component={startSession}
         options={{
-          tabBarLabel: ' Session',
+          tabBarLabel: 'Current Session',
           tabBarIcon: ({color}) => (
             <MaterialCommunityIcons name="dumbbell" color={color} size={22} />
           ),
@@ -562,7 +577,7 @@ function MyTrainerTabs() {
         name="pastVisit"
         component={PastVisit}
         options={{
-          tabBarLabel: 'Past visits',
+          tabBarLabel: 'Past Sessions',
           tabBarIcon: ({color}) => (
             <FontAwesome name="heartbeat" color={color} size={22} />
           ),

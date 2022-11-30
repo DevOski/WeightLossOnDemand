@@ -151,4 +151,9 @@ export const styles = StyleSheet.create({
     width: sizes.screenWidth * 0.8,
   },
   bottom2: {paddingBottom: sizes.screenHeight * 0.15},
+  rateText: {
+    color: colors.black,
+    alignSelf: 'center',
+    top: sizes.screenHeight * 0.03,
+  },
 });

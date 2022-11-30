@@ -82,14 +82,21 @@ export const VisitScreen = ({navigation, route}) => {
                     <Text style={styles.fname}>{userName.charAt(0)}</Text>
                   </View>
                   <View>
-                    <Text style={styles.cardText}>
-                      {'   '}
-                      {userName} {middleName} {lastName}
-                    </Text>
+                    {middleName == '' ? (
+                      <Text style={styles.cardText}>
+                        {userName} {middleName} {lastName}
+                      </Text>
+                    ) : (
+                      <Text style={styles.cardText}>
+                        {'    '}
+                        {userName} {lastName}
+                      </Text>
+                    )}
                   </View>
                 </View>
               </TouchableOpacity>
             </View>
+            {/* style={styles.cardText} */}
             {/* <View style={styles.buttonchilddiv}>
               <TouchableOpacity
                 onPress={() =>

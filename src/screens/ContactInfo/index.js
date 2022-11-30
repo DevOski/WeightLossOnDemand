@@ -67,9 +67,15 @@ export default function ContactInfo({navigation}) {
           <View style={[styles.row, styles.card]}>
             <View style={styles.width}>
               <Text style={styles.head}>NAME</Text>
-              <Text style={styles.text}>
-                {firstName} {middleName} {lastName}
-              </Text>
+              {middleName == '' ? (
+                <Text style={styles.userName}>
+                  {firstName} {middleName} {lastName}
+                </Text>
+              ) : (
+                <Text style={styles.userName}>
+                  {firstName} {lastName}
+                </Text>
+              )}
             </View>
             <View>
               <Text style={styles.symbol}> ›</Text>

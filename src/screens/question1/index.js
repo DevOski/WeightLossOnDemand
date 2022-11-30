@@ -47,7 +47,6 @@ export default function Question({navigation, route}) {
 
   const dispatch = useDispatch();
 
-
   // const q1 = useSelector(state=>state.question1)
   // console.log(q1,'====>');
   useEffect(() => {
@@ -136,11 +135,25 @@ export default function Question({navigation, route}) {
               />
             </View>
           </View>
-
+          <View style={styles.paddingTop}>
+            <Text style={styles.text2}>
+              How many hours of sleep do you average per night?
+            </Text>
+            <View>
+              <TextInput
+                mode="contain"
+                // label={'New password'}
+                activeUnderlineColor={colors.secondary}
+                style={styles.field}
+                // onChangeText={text => setMedicationDos(text)}
+                // value={medicationDos}
+              />
+            </View>
+          </View>
           <View style={styles.gcon}>
             <Text style={styles.text2}>
-              How many hours of sleep do you average per night? _____ Is your
-              sleep restful?
+              Is your sleep restful?
+              {/* How many hours of sleep do you average per night?  */}
             </Text>
 
             <TouchableOpacity
@@ -189,6 +202,7 @@ export default function Question({navigation, route}) {
               How do you rate the stress in your life, 10 being the highest?
             </Text>
 
+            <Text style={styles.rateText}>{stressRate}</Text>
             <View style={[styles.row, styles.paddingTop]}>
               <View
                 style={Platform.OS !== 'ios' ? styles.left : styles.leftIOS}>
@@ -196,7 +210,8 @@ export default function Question({navigation, route}) {
               </View>
               <View>
                 <Slider
-                  onValueChange={val => setStressRate(Math.round(val))}
+                  onSlidingComplete={val => setStressRate(Math.round(val))}
+                  // onSlidingComplete={val => setStressRate(Math.round(val))}
                   style={styles.sliderWidth}
                   thumbTintColor={colors.secondary}
                   value={stressRate}
@@ -244,6 +259,7 @@ export default function Question({navigation, route}) {
               How do you rate your readiness to make lifestyle changes, 5 being
               most ready?{' '}
             </Text>
+            <Text style={styles.rateText}>{lifestyleRate}</Text>
 
             <View style={[styles.row, styles.paddingTop]}>
               <View
@@ -252,7 +268,7 @@ export default function Question({navigation, route}) {
               </View>
               <View>
                 <Slider
-                  onValueChange={val => setLifestyleRate(Math.round(val))}
+                  onSlidingComplete={val => setLifestyleRate(Math.round(val))}
                   style={styles.sliderWidth}
                   thumbTintColor={colors.secondary}
                   value={lifestyleRate}
@@ -273,6 +289,7 @@ export default function Question({navigation, route}) {
               How do you rate your confidence to make lifestyle changes, 5 being
               most confident?
             </Text>
+            <Text style={styles.rateText}>{confidenceRate}</Text>
 
             <View style={[styles.row, styles.paddingTop]}>
               <View
@@ -281,7 +298,7 @@ export default function Question({navigation, route}) {
               </View>
               <View>
                 <Slider
-                  onValueChange={val => setConfidenceRate(Math.round(val))}
+                  onSlidingComplete={val => setConfidenceRate(Math.round(val))}
                   style={styles.sliderWidth}
                   thumbTintColor={colors.secondary}
                   value={confidenceRate}
@@ -302,7 +319,7 @@ export default function Question({navigation, route}) {
               // disabled={selectanswer ? false : true}
               onPress={handleQuestion}>
               <View style={styles.buttonView}>
-                <Text style={styles.buttonText}>Skip</Text>
+                <Text style={styles.buttonText}>Submit</Text>
               </View>
             </TouchableOpacity>
           </View>
