@@ -179,6 +179,12 @@ export const styles = StyleSheet.create({
     fontSize: fontSize.h4,
     bottom: 1,
   },
+  symbol2:{
+    color: colors.secondary,
+    fontSize: fontSize.h4,
+    bottom: 1,
+
+  },
   providerText: {
     paddingTop: sizes.screenHeight * 0.015,
     paddingBottom: sizes.screenHeight * 0.02,
@@ -303,7 +309,9 @@ export const styles = StyleSheet.create({
   seeBtn: {
     top: sizes.screenHeight * 0.03,
   },
-
+  seeBtn2: {
+    // top: sizes.screenHeight * 0.03,
+  },
   videoTop: {
     // backgroundColor:'red',
     top: sizes.screenHeight * 0.3,

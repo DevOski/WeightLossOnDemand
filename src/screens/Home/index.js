@@ -452,14 +452,14 @@ export default function Home({navigation}) {
                         </Text>
                       </View>
                     </View>*/}
-                    <View style={styles.seeBtn}>
+                    <View style={styles.seeBtn2}>
                       <TouchableOpacity
                         onPress={() => navigation.navigate('meetOurproviders')}>
                         <View style={[styles.learnMoreBtn, styles.row2]}>
                           <Text style={styles.learnMoreText}>
                             Connect to all consultants
                           </Text>
-                          <Text style={styles.symbol}> ›</Text>
+                          <Text style={styles.symbol2}> ›</Text>
                         </View>
                       </TouchableOpacity>
                     </View>

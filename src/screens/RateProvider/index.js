@@ -19,6 +19,7 @@ import {trainerRating} from '../../services/utilities/api/auth';
 import Error from '../../components/Error';
 import Modal from 'react-native-modal';
 import Loader from '../../components/Loader';
+import {useSelector} from 'react-redux';
 
 export default function RateProvider({navigation, route}) {
   const [message, setMessage] = useState('');
@@ -28,7 +29,7 @@ export default function RateProvider({navigation, route}) {
   const ratingCompleted = async rating => {
     setLoader(true);
     try {
-      let response = await trainerRating(rating, route?.params?.tr_id);
+      let response = await trainerRating(rating, tr_id);
       setMessage(response.data.message);
       setIsModalVisible(true);
       setLoader(true);
@@ -37,7 +38,11 @@ export default function RateProvider({navigation, route}) {
       setLoader(false);
     }
   };
-  console.log(route?.params);
+  const tr_id = useSelector(state => state.tr_id);
+  const tr_name = useSelector(state => state.tr_name);
+  const tr_image = useSelector(state => state.tr_image);
+  const tr_amount = useSelector(state => state.tr_amount);
+  console.log(tr_id,tr_name);
   return (
     <SafeAreaView>
       <View style={styles.color}>
@@ -46,10 +51,10 @@ export default function RateProvider({navigation, route}) {
             <TouchableOpacity
               onPress={() =>
                 navigation.navigate('HowLikelyRecommend', {
-                  tr_id: route?.params?.tr_id,
-                  tr_name: route?.params?.tr_name,
-                  tr_image: route?.params?.tr_image,
-                  tr_amount: route?.params?.tr_amount,
+                  tr_id: tr_id,
+                  tr_name: tr_name,
+                  tr_image: tr_image,
+                  tr_amount: tr_amount,
                 })
               }>
               <Text style={styles.skipText}>Skip</Text>
@@ -59,11 +64,11 @@ export default function RateProvider({navigation, route}) {
         <Text style={styles.rateText}>Rate your session for this visit</Text>
         <Image
           source={{
-            uri: route?.params?.tr_image,
+            uri:tr_image,
           }}
           style={Platform.OS !== 'ios' ? styles.docImg : styles.docImgIOS}
         />
-        <Text style={styles.providerTitle}>{route?.params?.tr_name}</Text>
+        <Text style={styles.providerTitle}>{tr_name}</Text>
         <Rating
           type="custom"
           ratingColor={colors.secondary}

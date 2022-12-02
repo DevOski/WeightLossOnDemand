@@ -196,13 +196,13 @@ export default function Videocalling({navigation, route}) {
               <Text style={[styles.top]}>Join</Text>
             </View>
           </TouchableOpacity>
-          <TouchableOpacity
+          {/* <TouchableOpacity 
             style={styles.getHelpTop}
             onPress={() => navigation.navigate('ContactSupport')}>
             <View>
               <Text style={[styles.top, styles.getHelp]}>Get Help</Text>
             </View>
-          </TouchableOpacity>
+          </TouchableOpacity> */}
         </>
       )}
       {/* <Text onPress={leave} style={styles.button}>
@@ -215,16 +215,13 @@ export default function Videocalling({navigation, route}) {
       {isJoined ? (
         <React.Fragment key={0}>
           <RtcSurfaceView canvas={{uid: 0}} style={styles.videoView1} />
-          {/* <Text>Local user uid: {uid}</Text> */}
-          <View style={styles.noAvailableView}>
-            <Text style={styles.text}>Waiting for consultant to join</Text>
-          </View>
+         
           <View
-            style={{
+             style={{
               flexDirection: 'row',
-              justifyContent: 'space-around',
+              justifyContent: 'space-between',
               paddingRight: sizes.screenWidth * 0.19,
-              marginTop: sizes.screenHeight * 0.88,
+              marginTop: sizes.screenHeight * 0.9,
               height: sizes.screenHeight * 0.02,
               position: 'absolute',
               zIndex: 999,
@@ -272,30 +269,10 @@ export default function Videocalling({navigation, route}) {
                 // onPress={toogle}
               />
             </TouchableOpacity>
-            {/* <Entypo
-              name="sound-mute"
-              color={colors.secondary}
-              style={styles.button}
-              size={20}
-              onPress={mute}
-              // onPress={toogle}
-            /> */}
-            {/* <MaterialCommunityIcons
-              name="camera-flip"
-              color={colors.secondary}
-              style={styles.button}
-              size={20}
-              onPress={leave}
-              // onPress={toogle}
-            /> */}
+           
           </View>
 
-          {/* <Text
-                  // onPress={switchCamera}
-                  onPress={leave}
-                 style={styles.button}>Leave</Text> */}
-
-          {/* <Text>Remote user uid: {remoteUid}</Text> */}
+        
         </React.Fragment>
       ) : (
         <Text>{/* Waiting for a remote user to join */}</Text>

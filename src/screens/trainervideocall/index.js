@@ -178,9 +178,6 @@ export default function TrainerVideocalling({navigation, route}) {
 
   return (
     <SafeAreaView style={styles.main}>
-      {/* <Header /> */}
-      {/* <Text style={styles.head}>Agora Video Calling Quickstart</Text>   */}
-      {/* <View style={styles.btnContainer}> */}
       {isJoined ? null : (
         <TouchableOpacity onPress={join} style={styles.button1}>
           <View>
@@ -188,20 +185,11 @@ export default function TrainerVideocalling({navigation, route}) {
           </View>
         </TouchableOpacity>
       )}
-      {/* <Text onPress={leave} style={styles.button}>
-          Leave
-        </Text> */}
-      {/* </View>  */}
-      {/* <ScrollView
-            style={styles.scroll}
-            contentContainerStyle={styles.scrollContainer}>  */}
+
       {isJoined ? (
         <React.Fragment key={0}>
           <RtcSurfaceView canvas={{uid: 0}} style={styles.videoView1} />
-          {/* <Text>Local user uid: {uid}</Text> */}
-          <View style={styles.noAvailableView}>
-            <Text style={styles.text}>Waiting for user to join</Text>
-          </View>
+
           <View
             style={{
               flexDirection: 'row',
@@ -222,22 +210,6 @@ export default function TrainerVideocalling({navigation, route}) {
                 // onPress={toogle}
               />
             </TouchableOpacity>
-            {/* <Entypo
-              name="sound-mute"
-              color={colors.secondary}
-              style={styles.button}
-              size={20}
-              onPress={mute}
-              // onPress={toogle}
-            /> */}
-            {/* <MaterialCommunityIcons
-              name="camera-flip"
-              color={colors.secondary}
-              style={styles.button}
-              size={20}
-              onPress={leave}
-              // onPress={toogle}
-            /> */}
           </View>
         </React.Fragment>
       ) : (
@@ -271,30 +243,7 @@ export default function TrainerVideocalling({navigation, route}) {
                 // onPress={toogle}
               />
             </TouchableOpacity>
-            {/* <Entypo
-              name="sound-mute"
-              color={colors.secondary}
-              style={styles.button}
-              size={20}
-              onPress={mute}
-              // onPress={toogle}
-            /> */}
-            {/* <MaterialCommunityIcons
-              name="camera-flip"
-              color={colors.secondary}
-              style={styles.button}
-              size={20}
-              onPress={leave}
-              // onPress={toogle}
-            /> */}
           </View>
-
-          {/* <Text
-                  // onPress={switchCamera}
-                  onPress={leave}
-                 style={styles.button}>Leave</Text> */}
-
-          {/* <Text>Remote user uid: {remoteUid}</Text> */}
         </React.Fragment>
       ) : (
         <Text>{/* Waiting for a remote user to join */}</Text>
