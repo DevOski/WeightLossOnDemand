@@ -203,7 +203,7 @@ export const VisitScreen = ({navigation, route}) => {
               </View>
               <View style={styles.texcon1}>
                 <Text style={styles.text1}>
-                  {errorMessage}. You can book an appointment
+                  {errorMessage}. You can book a session
                 </Text>
               </View>
               <View>

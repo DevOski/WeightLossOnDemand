@@ -107,7 +107,7 @@ export const VisitDetail = ({navigation, route}) => {
             </Text>
           </View>
           <View style={styles.crd}>
-            <View style={styles.flex2}>
+            {/* <View style={styles.flex2}>
               <View style={styles.imgicon}>
                 <Image style={{width: '100%', height: '100%'}} source={book} />
               </View>
@@ -115,7 +115,7 @@ export const VisitDetail = ({navigation, route}) => {
                 onPress={() => navigation.navigate('GenerateReciept')}>
                 <Text style={styles.litext}>Get a receipt</Text>
               </TouchableOpacity>
-            </View>
+            </View> */}
             <View style={styles.flex2}>
               <View style={styles.imgicon}>
                 <Image

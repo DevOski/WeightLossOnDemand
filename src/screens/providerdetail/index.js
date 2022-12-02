@@ -54,7 +54,7 @@ export const ProviderDetail = ({navigation, route}) => {
       try {
         let response = await selectedTrainer(route?.params?.trainer?.tr_id);
         setTrainer(response.data.trainers);
-        console.log('--------slots-->>',response.data.slots);
+        console.log('--------slots-->>', response.data.slots);
         setSlot(response.data.slots);
         setLoader(false);
       } catch (error) {
@@ -93,39 +93,42 @@ export const ProviderDetail = ({navigation, route}) => {
           </View>
           <View style={styles.flex3}>
             {slot?.map((item, index) => {
-              console.log(item);
+              console.log('curr--->',currentDate);
+              console.log(item?.tr_date);
               return (
                 <View>
-                  {item?.tr_date >= currentDate && (
-                    <View style={styles.avialbox}>
-                      <TouchableOpacity
-                        onPress={() =>
-                          navigation.navigate('appointmentreqest', {
-                            slot: item,
-                            trainer: trainer,
-                          })
-                        }>
-                        <Text
-                          style={
-                            Platform.OS !== 'ios' ? styles.tex : styles.texIOS
+                  {
+                  item?.tr_date > currentDate ||
+                    (item?.tr_date === currentDate && (
+                      <View style={styles.avialbox}>
+                        <TouchableOpacity
+                          onPress={() =>
+                            navigation.navigate('appointmentreqest', {
+                              slot: item,
+                              trainer: trainer,
+                            })
                           }>
-                          {item?.tr_day}
-                        </Text>
-                        <Text
-                          style={
-                            Platform.OS !== 'ios' ? styles.tex : styles.texIOS
-                          }>
-                          {item?.tr_date}
-                        </Text>
-                        <Text
-                          style={
-                            Platform.OS !== 'ios' ? styles.tex : styles.texIOS
-                          }>
-                          {item.sl_time}
-                        </Text>
-                      </TouchableOpacity>
-                    </View>
-                  )}
+                          <Text
+                            style={
+                              Platform.OS !== 'ios' ? styles.tex : styles.texIOS
+                            }>
+                            {item?.tr_day}
+                          </Text>
+                          <Text
+                            style={
+                              Platform.OS !== 'ios' ? styles.tex : styles.texIOS
+                            }>
+                            {item?.tr_date}
+                          </Text>
+                          <Text
+                            style={
+                              Platform.OS !== 'ios' ? styles.tex : styles.texIOS
+                            }>
+                            {item.sl_time}
+                          </Text>
+                        </TouchableOpacity>
+                      </View>
+                    ))}
                 </View>
               );
             })}

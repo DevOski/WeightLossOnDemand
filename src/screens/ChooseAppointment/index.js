@@ -32,6 +32,7 @@ export default function ChooseAppointment({navigation, route}) {
   const [month, setMonth] = useState('');
   const [day, setDay] = useState('');
   const [date, setDate] = useState('');
+  const [noSlot, setNoSLot] = useState(false);
   const handleCalendar = () => {
     setCalendar(true);
     setList(false);
@@ -210,18 +211,42 @@ export default function ChooseAppointment({navigation, route}) {
               {timeSlot?.length ? (
                 timeSlot?.map((item, index) => {
                   return (
-                    <TouchableOpacity
-                      key={index}
-                      onPress={() =>
-                        navigation.navigate('appointmentreqest', {slot: item})
-                      }>
-                      <View style={[styles.row2, styles.card]}>
-                        <Text style={styles.cardText}>{item?.sl_time}</Text>
-                        <View>
-                          <Text style={styles.symbol}> ›</Text>
-                        </View>
-                      </View>
-                    </TouchableOpacity>
+                    <View>
+                      {
+                        item?.tr_date > currentDate ||
+                          (item?.tr_date === currentDate ? (
+                            <TouchableOpacity
+                              key={index}
+                              onPress={() =>
+                                navigation.navigate('appointmentreqest', {
+                                  slot: item,
+                                })
+                              }>
+                              <View style={[styles.row2, styles.card]}>
+                                <Text style={styles.cardText}>
+                                  {item?.sl_time}
+                                </Text>
+                                <View>
+                                  <Text style={styles.symbol}> ›</Text>
+                                </View>
+                              </View>
+                            </TouchableOpacity>
+                          ) : (
+                            index == 0 && (
+                              <View style={[styles.row2, styles.card]}>
+                                <Text style={styles.noSlotText}>
+                                  No slot available
+                                </Text>
+                              </View>
+                            )
+                          ))
+                        // <View style={[styles.row2, styles.card]}>
+                        //   <Text style={styles.noSlotText}>
+                        //     No slot available
+                        //   </Text>
+                        // </View>
+                      }
+                    </View>
                   );
                 })
               ) : (
@@ -232,6 +257,7 @@ export default function ChooseAppointment({navigation, route}) {
               <View></View>
             </View>
           )}
+          {noSlot && <Text>dddddd</Text>}
         </View>
       </ScrollView>
     </SafeAreaView>
