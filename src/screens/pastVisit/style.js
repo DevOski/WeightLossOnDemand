@@ -76,11 +76,11 @@ export const styles = StyleSheet.create({
   },
   date: {
     color: colors.disabledBg2,
-    textAlign: 'center',
+    paddingLeft: sizes.screenWidth * 0.08,
     width: sizes.screenWidth * 0.58,
     bottom: sizes.TinyMargin,
   },
-  paddingBottom:{
-    paddingBottom:sizes.doubleBaseMargin
-  }
+  paddingBottom: {
+    paddingBottom: sizes.doubleBaseMargin,
+  },
 });

@@ -140,7 +140,7 @@ export default function Videocalling({navigation, route}) {
     let response = await getTokenFromAPI(channelName);
     console.log(response);
     let token = response.data.rtcToken;
-    console.log('========???',token);
+    console.log('========???', token);
     if (isJoined) {
       return;
     }
@@ -216,6 +216,30 @@ export default function Videocalling({navigation, route}) {
         <React.Fragment key={0}>
           <RtcSurfaceView canvas={{uid: 0}} style={styles.videoView1} />
           {/* <Text>Local user uid: {uid}</Text> */}
+          <View style={styles.noAvailableView}>
+            <Text style={styles.text}>Waiting for consultant to join</Text>
+          </View>
+          <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'space-around',
+              paddingRight: sizes.screenWidth * 0.19,
+              marginTop: sizes.screenHeight * 0.88,
+              height: sizes.screenHeight * 0.02,
+              position: 'absolute',
+              zIndex: 999,
+            }}>
+            <TouchableOpacity onPress={leave} style={styles.button}>
+              <Ionicons
+                name="ios-call-outline"
+                color={colors.white}
+                style={styles.callIcon}
+                size={20}
+                onPress={leave}
+                // onPress={toogle}
+              />
+            </TouchableOpacity>
+          </View>
         </React.Fragment>
       ) : (
         <Text></Text>
@@ -280,47 +304,6 @@ export default function Videocalling({navigation, route}) {
         <React.Fragment key={0}>
           <RtcSurfaceView canvas={{uid: 0}} style={styles.videoView1} />
           {/* <Text>Local user uid: {uid}</Text> */}
-          <View style={styles.noAvailableView}>
-            <Text style={styles.text}>Waiting for consultant to join</Text>
-          </View>
-          <View
-            style={{
-              flexDirection: 'row',
-              justifyContent: 'space-around',
-              paddingRight: sizes.screenWidth * 0.19,
-              marginTop: sizes.screenHeight * 0.88,
-              height: sizes.screenHeight * 0.02,
-              position: 'absolute',
-              zIndex: 999,
-            }}>
-            <TouchableOpacity onPress={leave} style={styles.button}>
-              <Ionicons
-                name="ios-call-outline"
-                color={colors.white}
-                style={styles.callIcon}
-                size={20}
-                onPress={leave}
-                // onPress={toogle}
-              />
-            </TouchableOpacity>
-            {/* </View> */}
-            {/* <Entypo
-              name="sound-mute"
-              color={colors.secondary}
-              style={styles.button}
-              size={20}
-              onPress={mute}
-              // onPress={toogle}
-            /> */}
-            {/* <MaterialCommunityIcons
-              name="camera-flip"
-              color={colors.secondary}
-              style={styles.button}
-              size={20}
-              onPress={leave}
-              // onPress={toogle}
-            /> */}
-          </View>
         </React.Fragment>
       ) : (
         <Text></Text>

@@ -57,7 +57,7 @@ export default function TrainerAppointment({navigation}) {
   const getTrainerAppointments = async () => {
     try {
       let response = await getAppointmentTrainer(token);
-      // console.log(response.data.data.first_name);
+      console.log('-->>>>>>',response.data.data[0]);
       setAppointmentList(response.data.data);
     } catch (error) {
       console.log(error);
@@ -172,7 +172,7 @@ export default function TrainerAppointment({navigation}) {
           })
         ) : (
           <View>
-            <Text>No recent appointments</Text>
+            <Text style={styles.noRecent}>No recent appointments</Text>
           </View>
         )}
 

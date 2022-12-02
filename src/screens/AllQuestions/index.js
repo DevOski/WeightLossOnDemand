@@ -563,7 +563,7 @@ export const AllQuestions = ({navigation, route}) => {
               <Text style={styles.textttt}>Ans: {q49}</Text>
             </View>
           </View>
-          <TouchableOpacity
+          {/* <TouchableOpacity
             onPress={
               () =>
                 navigation.navigate('UserVisit', {
@@ -589,7 +589,7 @@ export const AllQuestions = ({navigation, route}) => {
             <View style={styles.buttonView}>
               <Text style={styles.buttonText}>Confirm</Text>
             </View>
-          </TouchableOpacity>
+          </TouchableOpacity> */}
         </View>
       </ScrollView>
     </SafeAreaView>

@@ -20,26 +20,30 @@ export default function startSession({navigation}) {
   const isVisible = useIsFocused();
 
   const token = useSelector(state => state.token);
+  console.log(token);
   useEffect(() => {
-    getChat();
+    getUserVisit();
   }, [isVisible]);
 
-  const getChat = async () => {
+  const getUserVisit = async () => {
     var myHeaders = new Headers();
-    myHeaders.append('Authorization', token);
+    myHeaders.append(
+      'Authorization',
+      token,
+    );
+
+    var formdata = new FormData();
 
     var requestOptions = {
-      method: 'GET',
+      method: 'POST',
       headers: myHeaders,
+      body: formdata,
       redirect: 'follow',
     };
 
-    fetch('http://alsyedmmtravel.com/api/chat_display', requestOptions)
-      .then(response => response.json())
-      .then(result => {
-        setMsgList(result.data);
-        console.log(result.data);
-      })
+    fetch('http://alsyedmmtravel.com/api/question_review', requestOptions)
+      .then(response => response.text())
+      .then(result => console.log(result))
       .catch(error => console.log('error', error));
   };
   return (
@@ -50,7 +54,7 @@ export default function startSession({navigation}) {
       <View style={styles.container}>
         {!currentSession && (
           <View>
-            <View style={{paddingBottom: sizes.TinyMargin}}>
+            {/* <View style={{paddingBottom: sizes.TinyMargin}}>
               <TouchableOpacity
                 onPress={() => navigation.navigate('trainervideocall')}
                 // disabled={email != '' && password != '' ? false : true}
@@ -65,8 +69,8 @@ export default function startSession({navigation}) {
                   View Client Details
                 </Text>
               </TouchableOpacity>
-            </View>
-            <View style={{paddingBottom: sizes.TinyMargin}}>
+            </View> */}
+            {/* <View style={{paddingBottom: sizes.TinyMargin}}>
               <TouchableOpacity
                 onPress={() => navigation.navigate('trainervideocall')}
                 // disabled={email != '' && password != '' ? false : true}
@@ -81,7 +85,7 @@ export default function startSession({navigation}) {
                   View Questionnaires
                 </Text>
               </TouchableOpacity>
-            </View>
+            </View> */}
             <TouchableOpacity
               onPress={() => navigation.navigate('trainervideocall')}
               // disabled={email != '' && password != '' ? false : true}

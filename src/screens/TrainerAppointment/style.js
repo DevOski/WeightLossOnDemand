@@ -342,4 +342,10 @@ export const styles = StyleSheet.create({
   paddingTop: {
     marginTop: sizes.screenHeight * 0.01,
   },
+  noRecent:{
+    paddingLeft:sizes.screenWidth * 0.05,
+    color:colors.secondary,
+    fontSize:fontSize.h6,
+
+  }
 });

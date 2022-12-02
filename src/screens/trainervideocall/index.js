@@ -29,6 +29,8 @@ import {
   getUser,
 } from '../../services/utilities/api/auth';
 import {removeData} from '../../store/actions';
+import Loader from '../../components/Loader';
+
 const appId = '270b512970864b0a93b14650e52e8f9c';
 // const channelName = 'test';
 // const token =
@@ -47,6 +49,8 @@ export default function TrainerVideocalling({navigation, route}) {
   // const [appId, setAppId] = useState('');
   const [token, setToken] = useState('');
   // const [token, setToken] = useState('');
+  const [loader, setLoader] = useState(false);
+
   var isMuted = false;
   const usertoken = useSelector(state => state.token);
   const showMessage = msg => {
@@ -128,6 +132,8 @@ export default function TrainerVideocalling({navigation, route}) {
 
   const join = async () => {
     // console.log('------->>>',token);
+    setLoader(true);
+
     let response = await getTokenFromAPI(channelName);
     let token = response.data.rtcToken;
 
@@ -143,6 +149,8 @@ export default function TrainerVideocalling({navigation, route}) {
       agoraEngineRef.current?.joinChannel(token, channelName, 0, {
         clientRoleType: ClientRoleType.ClientRoleAudience,
       });
+      setLoader(false);
+
       console.log('work---->>', token, channelName, 0);
     } catch (e) {
       console.log(e);
@@ -158,7 +166,7 @@ export default function TrainerVideocalling({navigation, route}) {
       setIsJoined(false);
       showMessage('You left the channel');
 
-      navigation.navigate('TrainerAppointment');
+      navigation.navigate('AddDescription');
     } catch (e) {
       console.log(e);
     }
@@ -299,6 +307,7 @@ export default function TrainerVideocalling({navigation, route}) {
       ) : (
         <Text></Text>
       )}
+      {loader && <Loader />}
     </SafeAreaView>
   );
 }

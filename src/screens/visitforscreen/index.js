@@ -111,6 +111,8 @@ export const VisitScreen = ({navigation, route}) => {
   const handleNext = () => {
     if (route?.params?.to === 'reasonVisit') {
       handleTrainerAvailability();
+      // navigation.navigate('reasonVisit');
+
     } else {
       navigation.navigate('HowToSchedule');
     }
