@@ -57,7 +57,8 @@ export default function HowLikelyRecommend({navigation, route}) {
               <Text style={styles.extremelyText2}>Extremely Likely</Text>
             </View>
             <View style={[styles.row]}>
-              <View style={Platform.OS !== 'ios' ? styles.left :styles.leftIOS }>
+              <View
+                style={Platform.OS !== 'ios' ? styles.left : styles.leftIOS}>
                 <Text style={styles.rating}>0</Text>
               </View>
               <View>
@@ -72,7 +73,8 @@ export default function HowLikelyRecommend({navigation, route}) {
                   maximumTrackTintColor={colors.primary}
                 />
               </View>
-              <View style={Platform.OS !== 'ios' ? styles.right : styles.rightIOS}>
+              <View
+                style={Platform.OS !== 'ios' ? styles.right : styles.rightIOS}>
                 <Text style={styles.rating}>10</Text>
               </View>
             </View>
@@ -88,8 +90,10 @@ export default function HowLikelyRecommend({navigation, route}) {
             <TouchableOpacity
               onPress={() =>
                 navigation.navigate('ThankyouVisit', {
-                  trianer: route?.params?.trainer,
-                  apt_id: route?.params?.apt_id,
+                  tr_id: route?.params?.tr_id,
+                  tr_name: route?.params?.tr_name,
+                  tr_image: route?.params?.tr_image,
+                  tr_amount: route?.params?.tr_amount,
                 })
               }>
               <Text
@@ -121,8 +125,10 @@ export default function HowLikelyRecommend({navigation, route}) {
                 setIsModalVisible(false);
 
                 navigation.navigate('ThankyouVisit', {
-                  trianer: route?.params?.trainer,
-                  apt_id: route?.params?.apt_id,
+                  tr_id: route?.params?.tr_id,
+                  tr_name: route?.params?.tr_name,
+                  tr_image: route?.params?.tr_image,
+                  tr_amount: route?.params?.tr_amount,
                 });
               }}>
               <View style={styles.buttonView}>
@@ -132,8 +138,7 @@ export default function HowLikelyRecommend({navigation, route}) {
           </View>
         </Modal>
       )}
-        {loader && <Loader />}
-
+      {loader && <Loader />}
     </SafeAreaView>
   );
 }

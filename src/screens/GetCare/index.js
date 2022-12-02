@@ -26,7 +26,10 @@ export default function GetCare({navigation}) {
         </View>
         <TouchableOpacity
           onPress={() =>
-            navigation.navigate('visitforscreen', {to: 'reasonVisit'})
+            navigation.navigate('visitforscreen', {
+              to: 'reasonVisit',
+              bookingStatus: false,
+            })
           }>
           {/* UserVisit */}
           <View style={[styles.row, styles.card]}>

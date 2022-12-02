@@ -43,7 +43,8 @@ export default function Home({navigation}) {
   const [pastVisit, setPastVisit] = useState();
   const [visitDetails, setVisitDetails] = useState();
   const [loader, setLoader] = useState(false);
-  const [mounted, setMounted] = useState(false)
+  const [mounted, setMounted] = useState(false);
+  const [notes, setNotes] = useState('');
 
   const token = useSelector(state => state.token);
   const dispatch = useDispatch();
@@ -56,7 +57,6 @@ export default function Home({navigation}) {
     getRecentAppointment();
   }, [isVisible]);
 
-  
   const getUserDetails = async () => {
     setLoader(true);
     setTimeout(async () => {
@@ -84,7 +84,7 @@ export default function Home({navigation}) {
       let response = await recentVisit(token);
       if (response?.data?.trainer?.length) {
         setPastVisit(response.data.trainer[0]);
-        console.log('-------------->>', response.data.trainer);
+        setNotes(response.data.visit.session_desc);
         setItem(['item1', 'item2', 'item3', 'item4', 'item5']);
         setVisitDetails(response.data);
       }
@@ -96,6 +96,7 @@ export default function Home({navigation}) {
     try {
       const time = new Date().getTime();
       let currentTime = ` ${moment(time).format('HH:MM:SS')}`;
+
       let date = new Date().toJSON();
       let currentDate = moment(date).format('YYYY-MM-DD');
       let currentFinalDate = currentDate + currentTime;
@@ -207,12 +208,13 @@ export default function Home({navigation}) {
                     key={index}
                     source={images.bg1}
                     style={[styles.bg, {opacity: 1}]}>
-                      <View style={styles.videoTop}></View>
-                      <View  style={
-                          Platform.OS !== 'ios'
-                            ? styles.playBtn
-                            : styles.playBtnIOS
-                        }></View>
+                    <View style={styles.videoTop}></View>
+                    <View
+                      style={
+                        Platform.OS !== 'ios'
+                          ? styles.playBtn
+                          : styles.playBtnIOS
+                      }></View>
                     {/* <TouchableOpacity
                       style={styles.videoTop}
                       onPress={() =>
@@ -489,14 +491,14 @@ export default function Home({navigation}) {
                       </View>
                     </View>
                     <View>
-                      <Text style={styles.he}>DESCRIPTION:</Text>
+                      <Text style={styles.he}>NOTES:</Text>
                     </View>
                     <View style={styles.het1}>
                       <Text
                         style={styles.het}
-                        numberOfLines={9}
+                        numberOfLines={7}
                         ellipsizeMode="tail">
-                        {pastVisit?.tr_desc}
+                        {notes}
                       </Text>
                     </View>
                     <View style={styles.seeBtn}>

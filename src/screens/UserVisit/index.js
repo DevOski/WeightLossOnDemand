@@ -136,6 +136,7 @@ export default function UserVisit({navigation, route}) {
     }
   };
   const confirmAndPay = () => {
+    console.log(route?.params);
     setLoader(true);
     if (route?.params?.appointByTrainer == true && payment.cardNum) {
       console.log('appointByTrainer--------->>');
@@ -143,7 +144,6 @@ export default function UserVisit({navigation, route}) {
         coupon == null
           ? amount * 100
           : (amount - (amount / 100) * discount) * 100;
-      // setAmount(price);
       var formdata = new FormData();
       formdata.append('number', payment.cardNum);
       formdata.append('expr_num', payment.expirationMonth);
@@ -172,7 +172,6 @@ export default function UserVisit({navigation, route}) {
         coupon == null
           ? amount * 100
           : (amount - (amount / 100) * discount) * 100;
-      // setAmount(price);
 
       var formdata = new FormData();
       formdata.append('number', payment.cardNum);
@@ -190,7 +189,6 @@ export default function UserVisit({navigation, route}) {
       fetch('http://alsyedmmtravel.com/api/pay', requestOptions)
         .then(response => response.json())
         .then(result => {
-          // console.log(result);
           if (result.message == 'succeeded') {
             setLoader(false);
             bookAppointmentByTime(price);
@@ -203,7 +201,6 @@ export default function UserVisit({navigation, route}) {
         coupon == null
           ? amount * 100
           : (amount - (amount / 100) * discount) * 100;
-      // setAmount(price);
 
       var formdata = new FormData();
       formdata.append('number', payment.cardNum);

@@ -57,6 +57,7 @@ export default function TrainerAppointment({navigation}) {
   const getTrainerAppointments = async () => {
     try {
       let response = await getAppointmentTrainer(token);
+      // console.log(response.data.data.first_name);
       setAppointmentList(response.data.data);
     } catch (error) {
       console.log(error);
@@ -147,14 +148,17 @@ export default function TrainerAppointment({navigation}) {
         </View>
         {appointmentList.length ? (
           appointmentList?.map((item, index) => {
-            console.log(item);
+            // console.log(item);
             return (
               <View>
                 {item.status == 'pending' && (
                   <TouchableOpacity
                     key={index}
-                    // onPress={() => navigation.navigate(item.screen)}
-                  >
+                    onPress={() =>
+                      navigation.navigate('userDetailTrainer', {
+                        ap_id: item.ap_id,
+                      })
+                    }>
                     <View style={[styles.row, styles.card]}>
                       <Text style={styles.cardText}>
                         {moment(item.apt_time).format('DD/MM/YY hh:mm: A')}

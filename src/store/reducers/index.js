@@ -56,6 +56,10 @@ const initialState = {
   question5: '',
   reason: '',
   trainerType: '',
+  tr_id: '',
+  tr_name: '',
+  tr_image: '',
+  tr_amount: '',
 };
 const reducer = (state = initialState, action) => {
   switch (action.type) {
@@ -150,6 +154,15 @@ const reducer = (state = initialState, action) => {
     case 'ADD_TRAINER_TYPE': {
       return {...state, trainerType: action.trainerType};
     }
+    case 'ADD_AVAILABLE_TRAINER': {
+      return {
+        ...state,
+        tr_id: action.tr_id,
+        tr_name: action.tr_name,
+        tr_image: action.tr_image,
+        tr_amount: action.tr_amount,
+      };
+    }
     case 'REMOVE_DATA': {
       return {
         ...state,
@@ -210,6 +223,10 @@ const reducer = (state = initialState, action) => {
         question5: null,
         reason: null,
         trainerType: null,
+        tr_id: null,
+        tr_name: null,
+        tr_image: null,
+        tr_amount: null,
       };
     }
 

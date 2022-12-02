@@ -49,7 +49,9 @@ export default function Medical({navigation}) {
           </TouchableOpacity> */}
           <View style={styles.padding}>
             <TouchableOpacity
-              onPress={() => navigation.navigate('visitforscreen')}>
+              onPress={() =>
+                navigation.navigate('visitforscreen', {bookingStatus: false})
+              }>
               <View style={[styles.row, styles.card2]}>
                 <Text style={styles.cardText2}>See a consultant now</Text>
                 <View>
@@ -99,8 +101,7 @@ export default function Medical({navigation}) {
             </TouchableOpacity> */}
 
             <TouchableOpacity
-            onPress={() => navigation.navigate('meetOurproviders')}
-            >
+              onPress={() => navigation.navigate('meetOurproviders')}>
               <View style={[styles.row, styles.card]}>
                 <FontAwesome5
                   name="user-alt"

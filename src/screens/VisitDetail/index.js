@@ -48,6 +48,7 @@ export const VisitDetail = ({navigation, route}) => {
   const getPastVisit = async () => {
     try {
       let response = await recentVisit(token);
+      console.log(response.data.visit);
       setVisit(response.data.visit);
       setTrainer(response.data.trainer[0]);
       setUser(response.data.user);
@@ -93,7 +94,7 @@ export const VisitDetail = ({navigation, route}) => {
               <View style={styles.img}>
                 <Image
                   style={Platform.OS !== 'ios' ? styles.trImg : styles.trImgIOS}
-                  source={{uri:trainer?.images}}
+                  source={{uri: trainer?.images}}
                 />
               </View>
             </View>
@@ -106,29 +107,6 @@ export const VisitDetail = ({navigation, route}) => {
             </Text>
           </View>
           <View style={styles.crd}>
-            {/* <View style={styles.flex2}>
-              <View style={styles.imgicon}>
-                <Image
-                  style={{width: '100%', height: '100%'}}
-                  source={calender}
-                />
-              </View>
-              <TouchableOpacity
-                onPress={() => navigation.navigate('ChooseFollowUp')}>
-                <Text style={styles.litext}>Schedule Follow-up</Text>
-              </TouchableOpacity>
-            </View> */}
-            {/* <View style={styles.flex2}>
-              <View style={styles.imgicon}>
-                <Image
-                  style={{width: '100%', height: '100%'}}
-                  source={favourite}
-                />
-              </View>
-              <TouchableOpacity>
-                <Text style={styles.litext}>Add Provider to Favourites</Text>
-              </TouchableOpacity>
-            </View> */}
             <View style={styles.flex2}>
               <View style={styles.imgicon}>
                 <Image style={{width: '100%', height: '100%'}} source={book} />
@@ -154,82 +132,17 @@ export const VisitDetail = ({navigation, route}) => {
                 <Text style={styles.litext}>Message Support</Text>
               </TouchableOpacity>
             </View>
-            {/* <View style={styles.flex2}>
-              <View style={styles.imgicon}>  
-                <Image style={{width: '100%', height: '100%'}} source={share} />
-              </View>
-              <TouchableOpacity
-                onPress={() => navigation.navigate('sharevist')}>
-                <Text style={[styles.litext, styles.padding]}>
-                  Share Visit width an External Physicans
-                </Text>
-              </TouchableOpacity>
-            </View> */}
           </View>
-          {/* <View style={styles.crd}>
-            <Text style={styles.subhead}>Trainee</Text>
-            <Text style={styles.providertex}>
-              {user?.first_name} {user?.middle_name} {user?.last_name}
-            </Text>
-          </View> */}
+
           <View style={styles.crd}>
             <Text style={styles.providertex}>Notes</Text>
             <Text style={[styles.subhead, styles.border]}>
-              {trainer?.tr_desc}
+              {visit?.session_desc}
             </Text>
-            {/* {show ? (
-              <Text style={[styles.subhead, styles.border]}>
-                your connection.our customer support team is available 24/7 to
-                get you reconnected.please email support@weightloseondeman.com
-                or call 1-800-997-6196 for assistance.if you are having a
-                medical emergency, please call 911 or proceed diretly to the
-                emergency room
-              </Text>
-            ) : null} */}
+          </View>
 
-            {/* <View style={styles.borderbottom}></View> */}
-            {/* <View>
-              {show ? (
-                <TouchableOpacity onPress={Toogle}>
-                  <Text style={styles.addanother}>READ LESS</Text>
-                </TouchableOpacity>
-              ) : (
-                <TouchableOpacity onPress={Toogle}>
-                  <Text style={styles.addanother}>READ MORE</Text>
-                </TouchableOpacity>
-              )}
-            </View> */}
-          </View>
-          {/* <View style={styles.crd}>
-            <Text style={styles.providertex}>Documents</Text>
-            <View style={styles.flex3}>
-              <Text style={styles.litext1}>
-                Receipt {moment(visit?.created_at).format('DD/MM/YYYY')}
-              </Text>
-              <Text style={styles.litext3}>{'>'}</Text>
-            </View>
-          </View> */}
-          {/* <View style={styles.crd}> */}
-            <View>
-              {/* <Text style={styles.subhead}>Visit intake</Text> */}
-              {/* <Text style={styles.subhead}>PURPOSE OF SESSION</Text>
-              <Text style={styles.subhead}>{visit?.reason}</Text>
-              <View style={styles.borderbottom}></View> */}
-              {/* <Text style={[styles.subhead, styles.mt]}>Time PERIOD</Text>
-              <Text style={[styles.subhead, styles.mt]}>3 days</Text> */}
-              {/* <View style={styles.borderbottom}></View> */}
-              {/* <Text style={[styles.subhead, styles.mt]}>SYMPTOMS</Text>
-              <Text style={[styles.subhead, styles.mt]}>
-                {visit?.response_1} {visit?.response_2} {visit?.response_3}
-                {visit?.response_4} {visit?.response_5}
-              </Text> */}
-            </View>
-          </View>
-          {/* <View style={styles.crd}>
-            <Text style={styles.subhead}>Visit Durations</Text>
-            <Text s tyle={styles.providertex}>0 min,25 sec</Text>
-          </View> */}
-        {/* </View> */}
+          <View></View>
+        </View>
       </ScrollView>
     </SafeAreaView>
   );

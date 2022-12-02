@@ -141,6 +141,15 @@ function trainerStack(trainerType) {
     trainerType: trainerType,
   };
 }
+function trainerAvailable(tr_id, tr_name, tr_image, tr_amount) {
+  return {
+    type: 'ADD_AVAILABLE_TRAINER',
+    tr_id: tr_id,
+    tr_name: tr_name,
+    tr_image: tr_image,
+    tr_amount: tr_amount,
+  };
+}
 
 export {
   storeData,
@@ -155,4 +164,5 @@ export {
   Question5,
   reasonVisit,
   trainerStack,
+  trainerAvailable,
 };

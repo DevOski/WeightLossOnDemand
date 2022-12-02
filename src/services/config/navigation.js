@@ -157,6 +157,8 @@ import TrainerAppointment from '../../screens/TrainerAppointment';
 import startSession from '../../screens/session';
 import PastVisit from '../../screens/pastVisit';
 import TrainerVideocalling from '../../screens/trainervideocall';
+import {userDetailTrainer} from '../../screens/userDetailTrainer';
+import {AllQuestions} from '../../screens/AllQuestions';
 const Stack = createNativeStackNavigator();
 
 const Tab = createMaterialBottomTabNavigator();
@@ -275,6 +277,11 @@ export default function MainNavigator() {
               component={ReviewHealthprofile}
             />
             <Stack.Screen name="selectTrainer" component={selectTrainer} />
+            <Stack.Screen
+              name="userDetailTrainer"
+              component={userDetailTrainer}
+            />
+            <Stack.Screen name="AllQuestions" component={AllQuestions} />
             {/* <Stack.Screen name="whichsurgeri" component={Whichsurgeries} /> */}
             {/* <Stack.Screen
   name="whichmedicalconditions"

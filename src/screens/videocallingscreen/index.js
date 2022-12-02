@@ -138,8 +138,9 @@ export default function Videocalling({navigation, route}) {
     // });
     console.log(channelName);
     let response = await getTokenFromAPI(channelName);
+    console.log(response);
     let token = response.data.rtcToken;
-    console.log(token);
+    console.log('========???',token);
     if (isJoined) {
       return;
     }
@@ -169,8 +170,10 @@ export default function Videocalling({navigation, route}) {
       showMessage('You left the channel');
 
       navigation.navigate('RateProvider', {
-        trainer: route?.params?.trainer,
-        apt_id: route?.params?.apt_id,
+        tr_id: route?.params?.tr_id,
+        tr_name: route?.params?.tr_name,
+        tr_image: route?.params?.tr_image,
+        tr_amount: route?.params?.tr_amount,
       });
     } catch (e) {
       console.log(e);

@@ -76,6 +76,12 @@ export default function ProviderReview({navigation, route}) {
   const q49 = useSelector(state => state.q49);
   const q50 = useSelector(state => state.q50);
   const userID = useSelector(state => state.user.user_id);
+  const tr_id = useSelector(state => state.tr_id);
+  const tr_name = useSelector(state => state.tr_name);
+  const tr_image = useSelector(state => state.tr_image);
+  const tr_amount = useSelector(state => state.tr_amount);
+  console.log(tr_id, tr_name, tr_image, tr_amount);
+
   useEffect(() => {
     sessionStart();
   }, []);
@@ -134,18 +140,22 @@ export default function ProviderReview({navigation, route}) {
         q48,
         q49,
         q50,
-        route?.params?.tr_id
-          ? route?.params?.tr_id
-          : route?.params?.trainer?.tr_id,
-        route?.params?.tr_name
-          ? route?.params?.tr_name
-          : route?.params?.trainer?.tr_name,
+        tr_id,
+        tr_name,
+
+        // route?.params?.tr_id
+        //   ? route?.params?.tr_id
+        //   : route?.params?.trainer?.tr_id,
+        // route?.params?.tr_name
+        //   ? route?.params?.tr_name
+        //   : route?.params?.trainer?.tr_name,
         route?.params?.reason ? route?.params?.reason : reason,
-        route?.params?.tr_amount
-          ? route?.params?.tr_amount
-          : route?.params?.trainer?.tr_amount,
+        tr_amount,
+        // route?.params?.tr_amount
+        //   ? route?.params?.tr_amount
+        //   : route?.params?.trainer?.tr_amount,
       );
-        console.log(response.data);
+      console.log(response.data);
       if (response.data.status == 200) {
         channelCreate();
         console.log(updatedTrainer);
@@ -157,12 +167,7 @@ export default function ProviderReview({navigation, route}) {
 
   const channelCreate = async () => {
     try {
-      let response = await createChannel(
-        route?.params?.trainer?.tr_id
-          ? route?.params?.trainer?.tr_id
-          : route?.params?.tr_id,
-        userID,
-      );
+      let response = await createChannel(tr_id, userID);
       console.log('----------->>>>>>', response.data.message);
       if (response.data.message == 'Channel created successfully') {
         // sessionStart();
@@ -173,10 +178,14 @@ export default function ProviderReview({navigation, route}) {
         };
         setTimeout(() => {
           navigation.navigate('videocallingscreen', {
-            trainer: route?.params?.trainer
-              ? route?.params?.trainer
-              : updatedTrainer,
-            apt_id: route?.params?.apt_id,
+            tr_id: route?.params?.tr_id,
+            tr_name: route?.params?.tr_name,
+            tr_image: route?.params?.tr_image,
+            tr_amount: route?.params?.tr_amount,
+            // trainer: route?.params?.trainer
+            //   ? route?.params?.trainer
+            //   : updatedTrainer,
+            // apt_id: route?.params?.apt_id,
           });
         }, 5000);
       }
@@ -212,20 +221,14 @@ export default function ProviderReview({navigation, route}) {
           <View style={styles.imageView}>
             <Image
               source={{
-                uri: route?.params?.tr_image
-                  ? route?.params?.tr_image
-                  : route?.params?.trainer?.images,
+                uri: tr_image,
               }}
               style={Platform.OS !== 'ios' ? styles.docImg : styles.docImgIOS}
             />
           </View>
         </View>
         <View style={[styles.padding, styles.info]}>
-          <Text style={styles.head}>
-            {route?.params?.tr_name
-              ? route?.params?.tr_name
-              : route?.params?.trainer?.tr_name}
-          </Text>
+          <Text style={styles.head}>{tr_name}</Text>
           <Text style={styles.text}>{route?.params?.trainer?.type}</Text>
         </View>
         <View style={[styles.padding, styles.info, styles.top]}>

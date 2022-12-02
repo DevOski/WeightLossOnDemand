@@ -301,7 +301,7 @@ export const styles = StyleSheet.create({
     fontWeight: '600',
   },
   seeBtn: {
-    // top: sizes.screenHeight * 0.48,
+    top: sizes.screenHeight * 0.03,
   },
 
   videoTop: {
