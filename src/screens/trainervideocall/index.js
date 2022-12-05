@@ -1,5 +1,6 @@
 import React, {useEffect, useRef, useState} from 'react';
 import {
+  BackHandler,
   Dimensions,
   SafeAreaView,
   ScrollView,
@@ -64,7 +65,10 @@ export default function TrainerVideocalling({navigation, route}) {
       ]);
     }
   };
-
+  useEffect(() => {
+    const backHandler = BackHandler.addEventListener('backPress', () => true);
+    return () => backHandler.remove();
+  }, []);
   const getToken = async () => {
     try {
       // let response = await getAgoraToken();
@@ -178,7 +182,6 @@ export default function TrainerVideocalling({navigation, route}) {
 
   return (
     <SafeAreaView style={styles.main}>
-   
       {isJoined ? null : (
         <TouchableOpacity onPress={join} style={styles.button1}>
           <View>
@@ -186,11 +189,11 @@ export default function TrainerVideocalling({navigation, route}) {
           </View>
         </TouchableOpacity>
       )}
-  
+
       {isJoined ? (
         <React.Fragment key={0}>
           <RtcSurfaceView canvas={{uid: 0}} style={styles.videoView1} />
-       
+
           <View
             style={{
               flexDirection: 'row',
@@ -211,7 +214,6 @@ export default function TrainerVideocalling({navigation, route}) {
                 // onPress={toogle}
               />
             </TouchableOpacity>
-            
           </View>
         </React.Fragment>
       ) : (
@@ -245,10 +247,7 @@ export default function TrainerVideocalling({navigation, route}) {
                 // onPress={toogle}
               />
             </TouchableOpacity>
-            
           </View>
-
-         
         </React.Fragment>
       ) : (
         <Text>{/* Waiting for a remote user to join */}</Text>
