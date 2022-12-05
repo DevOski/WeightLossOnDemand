@@ -254,7 +254,7 @@ export default function TrainerVideocalling({navigation, route}) {
       )}
       {isJoined ? (
         <React.Fragment key={0}>
-          <RtcSurfaceView canvas={{uid: 0}} style={styles.videoView1} />
+          <RtcSurfaceView canvas={{uid: 0}} style={Platform.OS !=="ios" ? styles.videoView1 :styles.videoView1IOS }  />
           {/* <Text>Local user uid: {uid}</Text> */}
         </React.Fragment>
       ) : (
@@ -321,6 +321,16 @@ const styles = StyleSheet.create({
     width: '100%',
     zIndex: -1,
     height: sizes.screenHeight,
+  },
+  videoView1IOS:
+  {
+    width: '50%',
+    height: sizes.screenHeight * 0.25,
+    position: 'absolute',
+    // marginTop: 8,
+    top: sizes.screenHeight * 0.57,
+    right: sizes.screenHeight * 0.03
+    // zIndex: -111,
   },
   videoView1: {
     width: '50%',
