@@ -81,11 +81,11 @@ export default function HowLikelyRecommend({navigation, route}) {
           </View>
         </View>
         <View style={styles.paddingTop}>
-          <View style={styles.disabledView}>
-            <TouchableOpacity onPress={handleRating}>
+          <TouchableOpacity onPress={handleRating}>
+            <View style={styles.disabledView}>
               <Text style={styles.buttonText}>Submit</Text>
-            </TouchableOpacity>
-          </View>
+            </View>
+          </TouchableOpacity>
           <View style={[styles.center, styles.paddingTop]}>
             <TouchableOpacity
               onPress={() =>

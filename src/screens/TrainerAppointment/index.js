@@ -37,6 +37,7 @@ export default function TrainerAppointment({navigation}) {
   const [loader, setLoader] = useState(false);
   const [trainerName, setTrainerName] = useState('');
   const [appointmentList, setAppointmentList] = useState([]);
+  const [currentDate, setCurrentDate] = useState('');
   const token = useSelector(state => state.token);
   const isVisible = useIsFocused();
 
@@ -45,6 +46,13 @@ export default function TrainerAppointment({navigation}) {
     getTrainerAppointments();
     getRecentAppointment();
   }, [isVisible]);
+
+  useEffect(() => {
+    let date = new Date().toJSON();
+    let current = moment(date).format('DD/MM/YYYY');
+    console.log('-00000000>>',current);
+    setCurrentDate(current);
+  }, []);
 
   const getTrainerInfo = async () => {
     try {
@@ -57,7 +65,7 @@ export default function TrainerAppointment({navigation}) {
   const getTrainerAppointments = async () => {
     try {
       let response = await getAppointmentTrainer(token);
-      console.log('-->>>>>>',response.data.data[0]);
+      console.log('-->>>>>>', response.data.data[0]);
       setAppointmentList(response.data.data);
     } catch (error) {
       console.log(error);
@@ -68,7 +76,27 @@ export default function TrainerAppointment({navigation}) {
     setIsModalVisible(!isModalVisible);
   };
   const handleSignOut = () => {
-    dispatch(removeData());
+    console.log(token);
+    var myHeaders = new Headers();
+    myHeaders.append('Authorization', token);
+
+    var formdata = new FormData();
+
+    var requestOptions = {
+      method: 'GET',
+      headers: myHeaders,
+      // body: formdata,
+      redirect: 'follow',
+    };
+
+    fetch('http://alsyedmmtravel.com/api/logout', requestOptions)
+      .then(response => response.json())
+      .then(result => {
+        if (result.staus == 200) {
+          dispatch(removeData());
+        }
+      })
+      .catch(error => alert('error', error));
   };
 
   const getRecentAppointment = async () => {
@@ -148,25 +176,26 @@ export default function TrainerAppointment({navigation}) {
         </View>
         {appointmentList.length ? (
           appointmentList?.map((item, index) => {
-            // console.log(item);
+            console.log(item.apt_time);
             return (
               <View>
-                {item.status == 'pending' && (
-                  <TouchableOpacity
-                    key={index}
-                    onPress={() =>
-                      navigation.navigate('userDetailTrainer', {
-                        ap_id: item.ap_id,
-                      })
-                    }>
-                    <View style={[styles.row, styles.card]}>
-                      <Text style={styles.cardText}>
-                        {moment(item.apt_time).format('DD/MM/YY hh:mm: A')}
-                      </Text>
-                      {/* <View>{/ <Text style={styles.symbol}> ›</Text> /}</View> */}
-                    </View>
-                  </TouchableOpacity>
-                )}
+                {(item.status == 'pending' && item?.apt_time > currentDate) ||
+                  (item?.apt_time === currentDate && (
+                    <TouchableOpacity
+                      key={index}
+                      onPress={() =>
+                        navigation.navigate('userDetailTrainer', {
+                          ap_id: item.ap_id,
+                        })
+                      }>
+                      <View style={[styles.row, styles.card]}>
+                        <Text style={styles.cardText}>
+                          {moment(item.apt_time).format('DD/MM/YY hh:mm: A')}
+                        </Text>
+                        {/* <View>{/ <Text style={styles.symbol}> ›</Text> /}</View> */}
+                      </View>
+                    </TouchableOpacity>
+                  ))}
               </View>
             );
           })

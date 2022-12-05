@@ -147,7 +147,7 @@ export default function TrainerVideocalling({navigation, route}) {
 
       agoraEngineRef.current?.startPreview();
       agoraEngineRef.current?.joinChannel(token, channelName, 0, {
-        clientRoleType: ClientRoleType.ClientRoleAudience,
+        clientRoleType: ClientRoleType.ClientRoleBroadcaster,
       });
       setLoader(false);
 
@@ -178,6 +178,7 @@ export default function TrainerVideocalling({navigation, route}) {
 
   return (
     <SafeAreaView style={styles.main}>
+   
       {isJoined ? null : (
         <TouchableOpacity onPress={join} style={styles.button1}>
           <View>
@@ -185,11 +186,11 @@ export default function TrainerVideocalling({navigation, route}) {
           </View>
         </TouchableOpacity>
       )}
-
+  
       {isJoined ? (
         <React.Fragment key={0}>
           <RtcSurfaceView canvas={{uid: 0}} style={styles.videoView1} />
-
+       
           <View
             style={{
               flexDirection: 'row',
@@ -210,6 +211,7 @@ export default function TrainerVideocalling({navigation, route}) {
                 // onPress={toogle}
               />
             </TouchableOpacity>
+            
           </View>
         </React.Fragment>
       ) : (
@@ -243,7 +245,10 @@ export default function TrainerVideocalling({navigation, route}) {
                 // onPress={toogle}
               />
             </TouchableOpacity>
+            
           </View>
+
+         
         </React.Fragment>
       ) : (
         <Text>{/* Waiting for a remote user to join */}</Text>

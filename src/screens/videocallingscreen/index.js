@@ -131,16 +131,10 @@ export default function Videocalling({navigation, route}) {
 
   const join = async () => {
     setLoader(true);
-    console.log('works--------->>>');
-    // navigation.navigate('RateProvider', {
-    //   trainer: route?.params?.trainer,
-    //   apt_id: route?.params?.apt_id,
-    // });
-    console.log(channelName);
+
     let response = await getTokenFromAPI(channelName);
-    console.log(response);
     let token = response.data.rtcToken;
-    console.log('========???', token);
+
     if (isJoined) {
       return;
     }
@@ -150,10 +144,13 @@ export default function Videocalling({navigation, route}) {
       );
 
       agoraEngineRef.current?.startPreview();
-      agoraEngineRef.current?.joinChannel(token, channelName, 0, {
-        clientRoleType: ClientRoleType.ClientRoleBroadcaster,
-      });
+      agoraEngineRef.current?.joinChannel(token, channelName, 0
+      //   , {
+      //   clientRoleType: ClientRoleType.ClientRoleAudience,
+      // }
+      );
       setLoader(false);
+
       console.log('work---->>', token, channelName, 0);
     } catch (e) {
       console.log(e);
@@ -196,7 +193,7 @@ export default function Videocalling({navigation, route}) {
               <Text style={[styles.top]}>Join</Text>
             </View>
           </TouchableOpacity>
-          {/* <TouchableOpacity 
+          {/* <TouchableOpacity
             style={styles.getHelpTop}
             onPress={() => navigation.navigate('ContactSupport')}>
             <View>

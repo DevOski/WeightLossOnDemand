@@ -191,7 +191,8 @@ export const userDetailTrainer = ({navigation, route}) => {
             response_50: result.data.response_50,
           };
           setQuestions(questions);
-          setAppointTime(result.data.apt_time);
+          console.log("works-------------->>>",result.data);
+          setAppointTime(result.data.updated_at);
           setUser(result.user);
           setLoader(false);
         })
@@ -219,7 +220,9 @@ export const userDetailTrainer = ({navigation, route}) => {
                 style={
                   Platform.OS !== 'ios' ? styles.hedtext : styles.hedtextIOS
                 }>
-                Session Time: {moment(appointTime).format('DD/MM/YY hh:mm: A')}
+                Session Time: 
+                
+                {moment(appointTime).format('DD/MM/YY hh:mm: A')}
               </Text>
             )}
           </View>

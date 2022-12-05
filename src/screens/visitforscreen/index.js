@@ -64,11 +64,11 @@ export const VisitScreen = ({navigation, route}) => {
       let currentDate = moment(date).format('DD/MM/YYYY');
       console.log(currentDate);
       let currentTime = moment(time).format('hh:mm');
-      console.log(currentTime);
+      console.log('----->>',currentTime);
       var formdata = new FormData();
       formdata.append('sl_date', currentDate);
-      formdata.append('sl_time', currentTime);
-      // formdata.append('sl_time', '05:05');
+      // formdata.append('sl_time', currentTime);
+      formdata.append('sl_time', '06:00');
 
       var requestOptions = {
         method: 'POST',
@@ -81,13 +81,13 @@ export const VisitScreen = ({navigation, route}) => {
         .then(result => {
           console.log(result);
           if (result.data) {
-            console.log(result.data[0].tr_id);
+            console.log(result.data.tr_id);
             dispatch(
               trainerAvailable(
-                result?.data[0].tr_id,
-                result?.data[0].tr_name,
-                result?.data[0].images,
-                result?.data[0].tr_amount,
+                result?.data.tr_id,
+                result?.data.tr_name,
+                result?.data.images,
+                result?.data.tr_amount,
               ),
             );
             navigation.navigate('reasonVisit');
@@ -106,7 +106,7 @@ export const VisitScreen = ({navigation, route}) => {
     // () => navigation.navigate('reasonVisit')
   };
   let data = useSelector(state => state.tr_id);
-  console.log(route?.params?.to);
+  // console.log(route?.params?.to);
 
   const handleNext = () => {
     if (route?.params?.to === 'reasonVisit') {
@@ -203,7 +203,7 @@ export const VisitScreen = ({navigation, route}) => {
               </View>
               <View style={styles.texcon1}>
                 <Text style={styles.text1}>
-                  {errorMessage}. You can book a session
+                  {errorMessage}
                 </Text>
               </View>
               <View>
