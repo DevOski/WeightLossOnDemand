@@ -50,7 +50,6 @@ export default function TrainerAppointment({navigation}) {
   useEffect(() => {
     let date = new Date().toJSON();
     let current = moment(date).format('DD/MM/YYYY');
-    console.log('-00000000>>',current);
     setCurrentDate(current);
   }, []);
 
@@ -179,23 +178,22 @@ export default function TrainerAppointment({navigation}) {
             console.log(item.apt_time);
             return (
               <View>
-                {(item.status == 'pending' && item?.apt_time > currentDate) ||
-                  (item?.apt_time === currentDate && (
-                    <TouchableOpacity
-                      key={index}
-                      onPress={() =>
-                        navigation.navigate('userDetailTrainer', {
-                          ap_id: item.ap_id,
-                        })
-                      }>
-                      <View style={[styles.row, styles.card]}>
-                        <Text style={styles.cardText}>
-                          {moment(item.apt_time).format('DD/MM/YY hh:mm: A')}
-                        </Text>
-                        {/* <View>{/ <Text style={styles.symbol}> ›</Text> /}</View> */}
-                      </View>
-                    </TouchableOpacity>
-                  ))}
+                {item.status == 'pending' && (
+                  <TouchableOpacity
+                    key={index}
+                    onPress={() =>
+                      navigation.navigate('userDetailTrainer', {
+                        ap_id: item.ap_id,
+                      })
+                    }>
+                    <View style={[styles.row, styles.card]}>
+                      <Text style={styles.cardText}>
+                        {moment(item.apt_time).format('DD/MM/YY hh:mm: A')}
+                      </Text>
+                      {/* <View>{/ <Text style={styles.symbol}> ›</Text> /}</View> */}
+                    </View>
+                  </TouchableOpacity>
+                )}
               </View>
             );
           })

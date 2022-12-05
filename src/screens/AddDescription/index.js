@@ -21,14 +21,13 @@ import Modal from 'react-native-modal';
 import {colors, fontFamily, fontSize, sizes} from '../../services';
 import {signIn} from '../../services/utilities/api/auth';
 import TouchID from 'react-native-touch-id';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {storeData, trainerStack} from '../../store/actions';
 import Header from '../../components/Header';
+import {useIsFocused} from '@react-navigation/native';
 
 const deviceHeight = Dimensions.get('window').height;
 const deviceWidth = Dimensions.get('window').width;
-
-
 
 export const AddDescription = ({navigation}) => {
   const [isEnabled, setIsEnabled] = useState(false);
@@ -40,6 +39,10 @@ export const AddDescription = ({navigation}) => {
   const [loader, setLoader] = useState(false);
   const [error, setError] = useState(false);
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [identity, setIdentity] = useState('');
+
+  const isVisible = useIsFocused();
+  const token = useSelector(state => state.token);
 
   // useEffect(()=>{
   //   //this will fire  at the beginning and on foto changing value
@@ -47,19 +50,39 @@ export const AddDescription = ({navigation}) => {
   //     navigation.navigate('BottomNavs')
   //   }
   //  },[sigindata])
+
+  useEffect(() => {
+    getUserVisit();
+  }, [isVisible]);
+
   const dispatch = useDispatch();
 
   const toggleModal = () => {
     setIsModalVisible(!isModalVisible);
   };
- 
+
+  const getUserVisit = async () => {
+    var myHeaders = new Headers();
+    myHeaders.append('Authorization', token);
+
+    var requestOptions = {
+      method: 'POST',
+      headers: myHeaders,
+      redirect: 'follow',
+    };
+
+    fetch('http://alsyedmmtravel.com/api/question_review', requestOptions)
+      .then(response => response.json())
+      .then(result => setIdentity(result.data.identity))
+      .catch(error => console.log('error', error));
+  };
 
   const handleDescription = () => {
     if (description !== '') {
       setLoader(true);
       console.log(description, '---->>');
       var formdata = new FormData();
-      formdata.append('identity', 'mgmbb');
+      formdata.append('identity', identity);
       formdata.append('desc', description);
 
       var requestOptions = {
@@ -163,7 +186,8 @@ export const AddDescription = ({navigation}) => {
       <TouchableOpacity
         disabled={description !== '' ? false : true}
         onPress={handleDescription}>
-        <View style={description !== '' ? styles.buttonView : styles.disabledView }>
+        <View
+          style={description !== '' ? styles.buttonView : styles.disabledView}>
           <Text style={styles.buttonText}>Submit</Text>
         </View>
       </TouchableOpacity>

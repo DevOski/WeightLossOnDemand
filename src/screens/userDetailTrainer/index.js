@@ -55,7 +55,7 @@ export const userDetailTrainer = ({navigation, route}) => {
     console.log(route?.params?.ap_id);
     setLoader(true);
 
-    if (route?.params?.ap_id) {
+    if (route?.params?.ap_id !== '') {
       var requestOptions = {
         method: 'POST',
         redirect: 'follow',
@@ -126,7 +126,7 @@ export const userDetailTrainer = ({navigation, route}) => {
           setLoader(false);
         })
         .catch(error => console.log('error', error));
-    } else if (route?.params?.visit_id) {
+    } else if (route?.params?.visit_id !== '') {
       var requestOptions = {
         method: 'GET',
         redirect: 'follow',
@@ -191,7 +191,7 @@ export const userDetailTrainer = ({navigation, route}) => {
             response_50: result.data.response_50,
           };
           setQuestions(questions);
-          console.log("works-------------->>>",result.data);
+          console.log('works-------------->>>', result.data);
           setAppointTime(result.data.updated_at);
           setUser(result.user);
           setLoader(false);
@@ -220,8 +220,7 @@ export const userDetailTrainer = ({navigation, route}) => {
                 style={
                   Platform.OS !== 'ios' ? styles.hedtext : styles.hedtextIOS
                 }>
-                Session Time: 
-                
+                Session Time:
                 {moment(appointTime).format('DD/MM/YY hh:mm: A')}
               </Text>
             )}

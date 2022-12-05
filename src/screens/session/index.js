@@ -17,6 +17,8 @@ import Header from '../../components/Header';
 export default function startSession({navigation}) {
   const [msgList, setMsgList] = useState([]);
   const [currentSession, setCurrentSession] = useState(false);
+  const [visitId, setVistId] = useState('');
+  const [appId, setAppId] = useState('');
   const isVisible = useIsFocused();
 
   const token = useSelector(state => state.token);
@@ -27,23 +29,23 @@ export default function startSession({navigation}) {
 
   const getUserVisit = async () => {
     var myHeaders = new Headers();
-    myHeaders.append(
-      'Authorization',
-      token,
-    );
-
-    var formdata = new FormData();
+    myHeaders.append('Authorization', token);
 
     var requestOptions = {
       method: 'POST',
       headers: myHeaders,
-      body: formdata,
       redirect: 'follow',
     };
 
     fetch('http://alsyedmmtravel.com/api/question_review', requestOptions)
-      .then(response => response.text())
-      .then(result => console.log(result))
+      .then(response => response.json())
+      .then(result => {
+        if (result.data.ap_id) {
+          setAppId(result.data.ap_id);
+        } else {
+          setVistId(result.data.visit_id);
+        }
+      })
       .catch(error => console.log('error', error));
   };
   return (
@@ -54,9 +56,14 @@ export default function startSession({navigation}) {
       <View style={styles.container}>
         {!currentSession && (
           <View>
-            {/* <View style={{paddingBottom: sizes.TinyMargin}}>
+            <View style={{paddingBottom: sizes.TinyMargin}}>
               <TouchableOpacity
-                onPress={() => navigation.navigate('trainervideocall')}
+                onPress={() =>
+                  navigation.navigate('userDetailTrainer', {
+                    ap_id: appId,
+                    visit_id: visitId,
+                  })
+                }
                 // disabled={email != '' && password != '' ? false : true}
                 style={styles.but}>
                 <Text
@@ -69,7 +76,7 @@ export default function startSession({navigation}) {
                   View Client Details
                 </Text>
               </TouchableOpacity>
-            </View> */}
+            </View>
             {/* <View style={{paddingBottom: sizes.TinyMargin}}>
               <TouchableOpacity
                 onPress={() => navigation.navigate('trainervideocall')}
