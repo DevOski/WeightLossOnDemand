@@ -67,8 +67,8 @@ export const VisitScreen = ({navigation, route}) => {
       console.log('----->>',currentTime);
       var formdata = new FormData();
       formdata.append('sl_date', currentDate);
-      // formdata.append('sl_time', currentTime);
-      formdata.append('sl_time', '06:00');
+      formdata.append('sl_time', currentTime);
+      // formdata.append('sl_time', '06:00');
 
       var requestOptions = {
         method: 'POST',

@@ -193,13 +193,13 @@ export default function Videocalling({navigation, route}) {
               <Text style={[styles.top]}>Join</Text>
             </View>
           </TouchableOpacity>
-          {/* <TouchableOpacity
+          <TouchableOpacity
             style={styles.getHelpTop}
             onPress={() => navigation.navigate('ContactSupport')}>
             <View>
               <Text style={[styles.top, styles.getHelp]}>Get Help</Text>
             </View>
-          </TouchableOpacity> */}
+          </TouchableOpacity>
         </>
       )}
       {/* <Text onPress={leave} style={styles.button}>

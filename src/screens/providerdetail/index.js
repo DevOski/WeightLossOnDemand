@@ -91,49 +91,55 @@ export const ProviderDetail = ({navigation, route}) => {
               </View>
             </View>
           </View>
-          <View style={styles.flex3}>
-            {slot?.map((item, index) => {
-              console.log('curr--->',currentDate);
-              console.log(item?.tr_date);
-              return (
-                <View>
-                  {
-                  item?.tr_date > currentDate ||
-                    (item?.tr_date === currentDate && (
-                      <View style={styles.avialbox}>
-                        <TouchableOpacity
-                          onPress={() =>
-                            navigation.navigate('appointmentreqest', {
-                              slot: item,
-                              trainer: trainer,
-                            })
-                          }>
-                          <Text
-                            style={
-                              Platform.OS !== 'ios' ? styles.tex : styles.texIOS
+          <ScrollView horizontal={true}>
+            <View style={styles.flex3}>
+              {slot?.map((item, index) => {
+                console.log('curr--->', currentDate);
+                console.log(item?.tr_date);
+                return (
+                  <View style={styles.paddingBottom}>
+                    {item?.tr_date > currentDate ||
+                      (item?.tr_date === currentDate && (
+                        <View style={styles.avialbox}>
+                          <TouchableOpacity
+                            onPress={() =>
+                              navigation.navigate('appointmentreqest', {
+                                slot: item,
+                                trainer: trainer,
+                              })
                             }>
-                            {item?.tr_day}
-                          </Text>
-                          <Text
-                            style={
-                              Platform.OS !== 'ios' ? styles.tex : styles.texIOS
-                            }>
-                            {item?.tr_date}
-                          </Text>
-                          <Text
-                            style={
-                              Platform.OS !== 'ios' ? styles.tex : styles.texIOS
-                            }>
-                            {item.sl_time}
-                          </Text>
-                        </TouchableOpacity>
-                      </View>
-                    ))}
-                </View>
-              );
-            })}
+                            <Text
+                              style={
+                                Platform.OS !== 'ios'
+                                  ? styles.tex
+                                  : styles.texIOS
+                              }>
+                              {item?.tr_day}
+                            </Text>
+                            <Text
+                              style={
+                                Platform.OS !== 'ios'
+                                  ? styles.tex
+                                  : styles.texIOS
+                              }>
+                              {item?.tr_date}
+                            </Text>
+                            <Text
+                              style={
+                                Platform.OS !== 'ios'
+                                  ? styles.tex
+                                  : styles.texIOS
+                              }>
+                              {item.sl_time}
+                            </Text>
+                          </TouchableOpacity>
+                        </View>
+                      ))}
+                  </View>
+                );
+              })}
 
-            {/* <View style={styles.avialbox}>
+              {/* <View style={styles.avialbox}>
               <TouchableOpacity
                 onPress={() => navigation.navigate('appointmentreqest')}>
                 <Text style={styles.tex}>Thus</Text>
@@ -141,7 +147,7 @@ export const ProviderDetail = ({navigation, route}) => {
                 <Text style={styles.tex}>10:30</Text>
               </TouchableOpacity>
             </View> */}
-            {/* <View style={styles.avialbox}>
+              {/* <View style={styles.avialbox}>
               <TouchableOpacity
                 onPress={() => navigation.navigate('appointmentreqest')}>
                 <Text style={styles.tex}>Thus</Text>
@@ -149,7 +155,8 @@ export const ProviderDetail = ({navigation, route}) => {
                 <Text style={styles.tex}>10:30</Text>
               </TouchableOpacity>
             </View> */}
-          </View>
+            </View>
+          </ScrollView>
 
           <View style={styles.crd}>
             <Text style={styles.providertex}>Consultant Description</Text>
@@ -372,12 +379,13 @@ const styles = StyleSheet.create({
     marginTop: sizes.screenHeight * 0.02,
   },
   avialbox: {
-    width: sizes.screenWidth * 0.25,
+    width: sizes.screenWidth * 0.35,
     height: sizes.screenHeight * 0.12,
     borderWidth: sizes.screenWidth * 0.002,
     justifyContent: 'center',
     alignItems: 'center',
     borderColor: colors.secondary,
+    padding: sizes.screenWidth * 0.05,
   },
   tex: {
     fontSize: fontSize.large,
@@ -424,5 +432,9 @@ const styles = StyleSheet.create({
     height: sizes.screenHeight * 0.21,
     borderRadius: sizes.screenWidth * 0.5,
     alignSelf: 'center',
+  },
+  paddingBottom: {
+    // paddingRight: sizes.TinyMargin,
+    marginRight: sizes.screenWidth * 0.03,
   },
 });
