@@ -165,8 +165,9 @@ export async function getTrainerList(type) {
   return await axios.get(`${baseURL}/trainersList/${type}`);
 }
 
-export async function selectedTrainer(id) {
-  return await axios.get(`${baseURL}/trainerDesc/${id}`);
+export async function selectedTrainer(id,time) {
+  console.log('----------------------------->>>>',time);
+  return await axios.get(`${baseURL}/trainerDesc/${id}/${time}`);
 }
 
 export async function visitReason() {
@@ -208,15 +209,16 @@ export async function recentVisit(token) {
     },
   });
 }
-export async function getSlotDate(id, date) {
+export async function getSlotDate(id, date, time) {
   return await axios.post(`${baseURL}/trCalenderSlots`, {
     id,
     date,
+    time,
   });
 }
 //
-export async function getSlotTime(id) {
-  return await axios.post(`${baseURL}/trTimeSlots/${id}`);
+export async function getSlotTime(id, time) {
+  return await axios.post(`${baseURL}/trTimeSlots/${id}/${time}`);
 }
 // getAllSlotDate
 export async function getAllSlotDate(date) {

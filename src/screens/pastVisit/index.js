@@ -37,7 +37,7 @@ export default function PastVisit({navigation}) {
     // setTimeout(async () => {
       try {
         let response = await trainerVist(token);
-        console.log('=====>>>',response.data.data[0]);
+        console.log('=====>>>',response.data.data.first_name);
         setVisitList(response.data.data);
         setLoader(false);
       } catch (error) {
@@ -54,7 +54,7 @@ export default function PastVisit({navigation}) {
         <Header title={'Past Session'} />
       </View>
       <ScrollView style={styles.color}>
-        {!error ? (
+        {visitList?.length ? (
           <View style={styles.marginTop}>
             <View style={[styles.left, styles.top]}>
               <Text style={styles.head}>My Past Sessions</Text>

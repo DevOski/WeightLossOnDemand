@@ -47,18 +47,19 @@ export const ProviderDetail = ({navigation, route}) => {
     let date = new Date().toJSON();
     let current = moment(date).format('DD/MM/YYYY');
     setCurrentDate(current);
-    const time = new Date().getTime();
-    let currentTime = ` ${moment(time).format('LT')}`;
-    console.log('--------ccurr', currentTime);
-    str = currentTime.replaceAll(' ', '');
-    setCurrentTime(str.toLowerCase());
   }, []);
 
   const getTrainer = () => {
     setLoader(true);
     setTimeout(async () => {
       try {
-        let response = await selectedTrainer(route?.params?.trainer?.tr_id);
+        const time = new Date().getTime();
+        let currentTime =`${moment(time).format('hh:mm')}`;
+
+        let response = await selectedTrainer(
+          route?.params?.trainer?.tr_id,
+          currentTime,
+        );
         setTrainer(response.data.trainers);
         console.log('--------slots-->>', response.data.slots);
         setSlot(response.data.slots);
@@ -98,59 +99,59 @@ export const ProviderDetail = ({navigation, route}) => {
             </View>
           </View>
           <ScrollView horizontal={true} style={styles.scrollWidth}>
-              {slot?.map((item, index) => {
-                console.log('curr--->', currentDTime);
-                console.log(item.sl_time);
-                return (
-                  <View style={styles.flex3}>
+            {slot?.map((item, index) => {
+              // console.log('curr--->', currentDTime);
+              // console.log(item.sl_time);
+              return (
+                <View style={styles.flex3}>
                   <View style={styles.paddingBottom}>
-                    {item?.tr_date > currentDate ||
-                      (item?.tr_date === currentDate && (
-                        // item?.sl_time  currentDTime &&
-                        // moment(item?.sl_time).isAfter(currentDTime) &&
+                    {/* {item?.tr_date > currentDate ||
+                      (item?.tr_date === currentDate && ( */}
+                        {/* // item?.sl_time  currentDTime &&
+                        // moment(item?.sl_time).isAfter(currentDTime) && */}
                         <ScrollView>
-                        <View style={styles.avialbox}>
-                          <TouchableOpacity
-                            onPress={() =>
-                              navigation.navigate('appointmentreqest', {
-                                slot: item,
-                                trainer: trainer,
-                              })
-                            }>
-                            <Text
-                              style={
-                                Platform.OS !== 'ios'
-                                  ? styles.tex
-                                  : styles.texIOSaxx
+                          <View style={styles.avialbox}>
+                            <TouchableOpacity
+                              onPress={() =>
+                                navigation.navigate('appointmentreqest', {
+                                  slot: item,
+                                  trainer: trainer,
+                                })
                               }>
-                              {item?.tr_day}
-                            </Text>
-                            <Text
-                              style={
-                                Platform.OS !== 'ios'
-                                  ? styles.tex
-                                  : styles.texIOS
-                              }>
-                              {item?.tr_date}
-                            </Text>
-                            <Text
-                              style={
-                                Platform.OS !== 'ios'
-                                  ? styles.tex
-                                  : styles.texIOS
+                              <Text
+                                style={
+                                  Platform.OS !== 'ios'
+                                    ? styles.tex
+                                    : styles.texIOSaxx
                                 }>
-                              {item.sl_time}
-                            </Text>
-                          </TouchableOpacity>
-                        </View>
+                                {item?.tr_day}
+                              </Text>
+                              <Text
+                                style={
+                                  Platform.OS !== 'ios'
+                                    ? styles.tex
+                                    : styles.texIOS
+                                }>
+                                {item?.tr_date}
+                              </Text>
+                              <Text
+                                style={
+                                  Platform.OS !== 'ios'
+                                    ? styles.tex
+                                    : styles.texIOS
+                                }>
+                                {item.sl_time}
+                              </Text>
+                            </TouchableOpacity>
+                          </View>
                         </ScrollView>
-                      ))}
-                      </View>
+                      {/* ))} */}
                   </View>
-                );
-              })}
+                </View>
+              );
+            })}
 
-              {/* <View style={styles.avialbox}>
+            {/* <View style={styles.avialbox}>
               <TouchableOpacity
                 onPress={() => navigation.navigate('appointmentreqest')}>
                 <Text style={styles.tex}>Thus</Text>
@@ -158,7 +159,7 @@ export const ProviderDetail = ({navigation, route}) => {
                 <Text style={styles.tex}>10:30</Text>
               </TouchableOpacity>
             </View> */}
-              {/* <View style={styles.avialbox}>
+            {/* <View style={styles.avialbox}>
               <TouchableOpacity
                 onPress={() => navigation.navigate('appointmentreqest')}>
                 <Text style={styles.tex}>Thus</Text>
@@ -396,7 +397,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderColor: colors.secondary,
     padding: sizes.screenWidth * 0.05,
-    marginRight:10
+    marginRight: 10,
   },
   tex: {
     fontSize: fontSize.large,
@@ -453,6 +454,5 @@ const styles = StyleSheet.create({
     // margin: sizes.screenWidth * 0.03,
     // padding:5
   },
-  scrollWidth:{
-  }
+  scrollWidth: {},
 });

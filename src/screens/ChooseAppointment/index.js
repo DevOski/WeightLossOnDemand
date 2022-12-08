@@ -33,6 +33,8 @@ export default function ChooseAppointment({navigation, route}) {
   const [day, setDay] = useState('');
   const [date, setDate] = useState('');
   const [noSlot, setNoSLot] = useState(false);
+  const [currentDTime, setCurrentTime] = useState('');
+
   const handleCalendar = () => {
     setCalendar(true);
     setList(false);
@@ -45,6 +47,10 @@ export default function ChooseAppointment({navigation, route}) {
   useEffect(() => {
     var utc = new Date().toJSON().slice(0, 10).replace(/-/g, '-');
     setCurrentDate(utc);
+    const time = new Date().getTime();
+    let currentTime = `${moment(time).format('hh:mm')}`;
+
+    setCurrentTime(currentTime);
   }, []);
 
   useEffect(() => {}, [list]);
@@ -73,8 +79,14 @@ export default function ChooseAppointment({navigation, route}) {
   };
 
   const getDateSlots = async date => {
+    console.log(currentDTime);
+
     try {
-      let response = await getSlotDate(route?.params?.trainer?.tr_id, date);
+      let response = await getSlotDate(
+        route?.params?.trainer?.tr_id,
+        date,
+        currentDTime,
+      );
       setDateSlot(response.data.data);
     } catch (error) {
       console.log(error);
@@ -83,7 +95,10 @@ export default function ChooseAppointment({navigation, route}) {
 
   const getTimeSlots = async () => {
     try {
-      let response = await getSlotTime(route?.params?.trainer?.tr_id);
+      let response = await getSlotTime(
+        route?.params?.trainer?.tr_id,
+        currentDTime,
+      );
       console.log(response.data.data);
       setTimeSlot(response.data.data);
     } catch (error) {
@@ -99,7 +114,9 @@ export default function ChooseAppointment({navigation, route}) {
     myHeaders.append('Content-Type', 'application/json');
     var raw = JSON.stringify({
       date: updatedDate,
+      time: currentDTime,
     });
+    console.log(raw);
     var requestOptions = {
       method: 'POST',
       headers: myHeaders,
@@ -118,11 +135,11 @@ export default function ChooseAppointment({navigation, route}) {
       redirect: 'follow',
     };
 
-    fetch('http://alsyedmmtravel.com/api/Slots', requestOptions)
+    fetch(`http://alsyedmmtravel.com/api/Slots/${currentDTime}`, requestOptions)
       .then(response => response.json())
 
       .then(result => {
-        console.log('--------->>>>',result.data);
+        console.log('--------->>>>', result.data);
         setTimeSlot(result.data);
       })
       .catch(error => console.log('error', error));
@@ -215,23 +232,21 @@ export default function ChooseAppointment({navigation, route}) {
                       {/* {
                         item?.tr_date > currentDate ||
                           (item?.tr_date === currentDate ? ( */}
-                            <TouchableOpacity
-                              key={index}
-                              onPress={() =>
-                                navigation.navigate('appointmentreqest', {
-                                  slot: item,
-                                })
-                              }>
-                              <View style={[styles.row2, styles.card]}>
-                                <Text style={styles.cardText}>
-                                  {item?.sl_time}
-                                </Text>
-                                <View>
-                                  <Text style={styles.symbol}> ›</Text>
-                                </View>
-                              </View>
-                            </TouchableOpacity>
-                          {/* ) : (
+                      <TouchableOpacity
+                        key={index}
+                        onPress={() =>
+                          navigation.navigate('appointmentreqest', {
+                            slot: item,
+                          })
+                        }>
+                        <View style={[styles.row2, styles.card]}>
+                          <Text style={styles.cardText}>{item?.sl_time}</Text>
+                          <View>
+                            <Text style={styles.symbol}> ›</Text>
+                          </View>
+                        </View>
+                      </TouchableOpacity>
+                      {/* ) : (
                             index == 0 && (
                               <View style={[styles.row2, styles.card]}>
                                 <Text style={styles.noSlotText}>
