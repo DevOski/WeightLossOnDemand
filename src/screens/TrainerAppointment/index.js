@@ -39,6 +39,7 @@ export default function TrainerAppointment({navigation}) {
   const [appointmentList, setAppointmentList] = useState([]);
   const [currentDate, setCurrentDate] = useState('');
   const token = useSelector(state => state.token);
+  console.log(token,"0000");
   const isVisible = useIsFocused();
 
   useEffect(() => {

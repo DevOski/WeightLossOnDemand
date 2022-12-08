@@ -81,6 +81,6 @@ export const styles = StyleSheet.create({
     bottom: sizes.TinyMargin,
   },
   paddingBottom: {
-    paddingBottom: sizes.doubleBaseMargin,
+    paddingBottom: sizes.screenHeight*0.1,
   },
 });

@@ -55,7 +55,7 @@ export const userDetailTrainer = ({navigation, route}) => {
     console.log(route?.params?.ap_id);
     setLoader(true);
 
-    if (route?.params?.ap_id !== '') {
+    if (route?.params?.ap_id) {
       var requestOptions = {
         method: 'POST',
         redirect: 'follow',
@@ -67,7 +67,7 @@ export const userDetailTrainer = ({navigation, route}) => {
       )
         .then(response => response.json())
         .then(result => {
-          console.log('-------------->>>', result.data.response_1);
+          // console.log('-------------->>>', result.data.response_1);
           let questions = {
             response_1: result.data.response_1,
             response_2: result.data.response_2,
@@ -125,13 +125,16 @@ export const userDetailTrainer = ({navigation, route}) => {
           setUser(result.user);
           setLoader(false);
         })
-        .catch(error => console.log('error', error));
-    } else if (route?.params?.visit_id !== '') {
+        .catch(error => {
+          console.log('error', error);
+          setLoader(false);
+        });
+    } else if (route?.params?.visit_id) {
       var requestOptions = {
         method: 'GET',
         redirect: 'follow',
       };
-
+      console.log("works--------------->>>");
       fetch(
         `http://alsyedmmtravel.com/api/visit_details/${route?.params?.visit_id}`,
         requestOptions,
@@ -196,7 +199,11 @@ export const userDetailTrainer = ({navigation, route}) => {
           setUser(result.user);
           setLoader(false);
         })
-        .catch(error => console.log('error', error));
+
+        .catch(error => {
+          console.log('error', error);
+          setLoader(false);
+        });
     }
   };
   return (

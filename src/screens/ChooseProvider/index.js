@@ -35,6 +35,7 @@ export default function ChooseProvider({route, navigation}) {
       console.log(error);
     }
   };
+  
   return (
     <SafeAreaView>
       <Header dark={true} filter={true} />

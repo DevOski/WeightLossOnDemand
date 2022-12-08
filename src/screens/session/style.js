@@ -17,4 +17,12 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     // position: 'absolute',
   },
+  disabledView: {
+    alignSelf: 'center',
+    backgroundColor: colors.disabledBg,
+    height: sizes.screenHeight * 0.06,
+    width: sizes.screenWidth * 0.92,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
 });

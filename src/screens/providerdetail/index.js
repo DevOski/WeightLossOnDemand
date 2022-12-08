@@ -97,53 +97,55 @@ export const ProviderDetail = ({navigation, route}) => {
               </View>
             </View>
           </View>
-          <ScrollView horizontal={true}>
-            <View style={styles.flex3}>
+          <ScrollView horizontal={true} style={styles.scrollWidth}>
               {slot?.map((item, index) => {
                 console.log('curr--->', currentDTime);
                 console.log(item.sl_time);
                 return (
+                  <View style={styles.flex3}>
                   <View style={styles.paddingBottom}>
                     {item?.tr_date > currentDate ||
-                      (item?.tr_date === currentDate &&
+                      (item?.tr_date === currentDate && (
                         // item?.sl_time  currentDTime &&
                         // moment(item?.sl_time).isAfter(currentDTime) &&
-                         (
-                          <View style={styles.avialbox}>
-                            <TouchableOpacity
-                              onPress={() =>
-                                navigation.navigate('appointmentreqest', {
-                                  slot: item,
-                                  trainer: trainer,
-                                })
+                        <ScrollView>
+                        <View style={styles.avialbox}>
+                          <TouchableOpacity
+                            onPress={() =>
+                              navigation.navigate('appointmentreqest', {
+                                slot: item,
+                                trainer: trainer,
+                              })
+                            }>
+                            <Text
+                              style={
+                                Platform.OS !== 'ios'
+                                  ? styles.tex
+                                  : styles.texIOSaxx
                               }>
-                              <Text
-                                style={
-                                  Platform.OS !== 'ios'
-                                    ? styles.tex
-                                    : styles.texIOS
+                              {item?.tr_day}
+                            </Text>
+                            <Text
+                              style={
+                                Platform.OS !== 'ios'
+                                  ? styles.tex
+                                  : styles.texIOS
+                              }>
+                              {item?.tr_date}
+                            </Text>
+                            <Text
+                              style={
+                                Platform.OS !== 'ios'
+                                  ? styles.tex
+                                  : styles.texIOS
                                 }>
-                                {item?.tr_day}
-                              </Text>
-                              <Text
-                                style={
-                                  Platform.OS !== 'ios'
-                                    ? styles.tex
-                                    : styles.texIOS
-                                }>
-                                {item?.tr_date}
-                              </Text>
-                              <Text
-                                style={
-                                  Platform.OS !== 'ios'
-                                    ? styles.tex
-                                    : styles.texIOS
-                                }>
-                                {item.sl_time}
-                              </Text>
-                            </TouchableOpacity>
-                          </View>
-                        ))}
+                              {item.sl_time}
+                            </Text>
+                          </TouchableOpacity>
+                        </View>
+                        </ScrollView>
+                      ))}
+                      </View>
                   </View>
                 );
               })}
@@ -164,7 +166,6 @@ export const ProviderDetail = ({navigation, route}) => {
                 <Text style={styles.tex}>10:30</Text>
               </TouchableOpacity>
             </View> */}
-            </View>
           </ScrollView>
 
           <View style={styles.crd}>
@@ -395,6 +396,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderColor: colors.secondary,
     padding: sizes.screenWidth * 0.05,
+    marginRight:10
   },
   tex: {
     fontSize: fontSize.large,
@@ -432,9 +434,13 @@ const styles = StyleSheet.create({
     fontWeight: '600',
   },
   trImg: {
-    width: '100%',
-    height: '100%',
+    // width: sizes.screenWidth,
+    // height: '100%',
+    // borderRadius: sizes.screenWidth * 0.5,
+    width: sizes.screenWidth * 0.41,
+    height: sizes.screenHeight * 0.21,
     borderRadius: sizes.screenWidth * 0.5,
+    alignSelf: 'center',
   },
   trImgIOS: {
     width: sizes.screenWidth * 0.45,
@@ -444,6 +450,9 @@ const styles = StyleSheet.create({
   },
   paddingBottom: {
     // paddingRight: sizes.TinyMargin,
-    marginRight: sizes.screenWidth * 0.03,
+    // margin: sizes.screenWidth * 0.03,
+    // padding:5
   },
+  scrollWidth:{
+  }
 });

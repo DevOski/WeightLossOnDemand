@@ -34,9 +34,10 @@ export default function PastVisit({navigation}) {
 
   const getPastVisit = async () => {
     setLoader(true);
-    setTimeout(async () => {
+    // setTimeout(async () => {
       try {
         let response = await trainerVist(token);
+        console.log('=====>>>',response.data.data[0]);
         setVisitList(response.data.data);
         setLoader(false);
       } catch (error) {
@@ -45,7 +46,7 @@ export default function PastVisit({navigation}) {
           setLoader(false);
         }
       }
-    }, 100);
+    // }, 100);
   };
   return (
     <SafeAreaView>
@@ -59,7 +60,7 @@ export default function PastVisit({navigation}) {
               <Text style={styles.head}>My Past Sessions</Text>
             </View>
             {visitList?.map((item, index) => {
-              console.log(item.visit_id);
+              // console.log(item.visit_id);
               return (
                 <TouchableOpacity
                   onPress={() =>
