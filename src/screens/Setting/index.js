@@ -321,7 +321,7 @@ export default function Setting({navigation}) {
         {Platform.OS == 'ios' && <View style={styles.bottomIOS}></View>}
         {isModalVisible && (
           <Modal style={styles.modalView} isVisible={isModalVisible}>
-            <TouchableOpacity onPress={toggleModal}>
+            {/* <TouchableOpacity onPress={toggleModal}>
               <View
                 style={{
                   position: 'relative',
@@ -335,7 +335,7 @@ export default function Setting({navigation}) {
                   onPress={toggleModal}
                 />
               </View>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
 
             <View style={styles.texcon}>
               <Text style={styles.text111}>Are you sure?</Text>

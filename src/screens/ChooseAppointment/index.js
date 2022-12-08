@@ -122,7 +122,7 @@ export default function ChooseAppointment({navigation, route}) {
       .then(response => response.json())
 
       .then(result => {
-        console.log(response.data.data);
+        console.log('--------->>>>',result.data);
         setTimeSlot(result.data);
       })
       .catch(error => console.log('error', error));
@@ -212,9 +212,9 @@ export default function ChooseAppointment({navigation, route}) {
                 timeSlot?.map((item, index) => {
                   return (
                     <View>
-                      {
+                      {/* {
                         item?.tr_date > currentDate ||
-                          (item?.tr_date === currentDate ? (
+                          (item?.tr_date === currentDate ? ( */}
                             <TouchableOpacity
                               key={index}
                               onPress={() =>
@@ -231,7 +231,7 @@ export default function ChooseAppointment({navigation, route}) {
                                 </View>
                               </View>
                             </TouchableOpacity>
-                          ) : (
+                          {/* ) : (
                             index == 0 && (
                               <View style={[styles.row2, styles.card]}>
                                 <Text style={styles.noSlotText}>
@@ -245,7 +245,7 @@ export default function ChooseAppointment({navigation, route}) {
                         //     No slot available
                         //   </Text>
                         // </View>
-                      }
+                      } */}
                     </View>
                   );
                 })

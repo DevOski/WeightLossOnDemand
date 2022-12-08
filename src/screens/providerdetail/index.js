@@ -31,6 +31,7 @@ export const ProviderDetail = ({navigation, route}) => {
   const [trainer, setTrainer] = useState();
   const [currentDate, setCurrentDate] = useState('');
   const [slot, setSlot] = useState([]);
+  const [currentDTime, setCurrentTime] = useState('');
   // const {tr_id} = route?.params?.trainer;
   const isVisible = useIsFocused();
 
@@ -46,6 +47,11 @@ export const ProviderDetail = ({navigation, route}) => {
     let date = new Date().toJSON();
     let current = moment(date).format('DD/MM/YYYY');
     setCurrentDate(current);
+    const time = new Date().getTime();
+    let currentTime = ` ${moment(time).format('LT')}`;
+    console.log('--------ccurr', currentTime);
+    str = currentTime.replaceAll(' ', '');
+    setCurrentTime(str.toLowerCase());
   }, []);
 
   const getTrainer = () => {
@@ -94,47 +100,50 @@ export const ProviderDetail = ({navigation, route}) => {
           <ScrollView horizontal={true}>
             <View style={styles.flex3}>
               {slot?.map((item, index) => {
-                console.log('curr--->', currentDate);
-                console.log(item?.tr_date);
+                console.log('curr--->', currentDTime);
+                console.log(item.sl_time);
                 return (
                   <View style={styles.paddingBottom}>
                     {item?.tr_date > currentDate ||
-                      (item?.tr_date === currentDate && (
-                        <View style={styles.avialbox}>
-                          <TouchableOpacity
-                            onPress={() =>
-                              navigation.navigate('appointmentreqest', {
-                                slot: item,
-                                trainer: trainer,
-                              })
-                            }>
-                            <Text
-                              style={
-                                Platform.OS !== 'ios'
-                                  ? styles.tex
-                                  : styles.texIOS
+                      (item?.tr_date === currentDate &&
+                        // item?.sl_time  currentDTime &&
+                        // moment(item?.sl_time).isAfter(currentDTime) &&
+                         (
+                          <View style={styles.avialbox}>
+                            <TouchableOpacity
+                              onPress={() =>
+                                navigation.navigate('appointmentreqest', {
+                                  slot: item,
+                                  trainer: trainer,
+                                })
                               }>
-                              {item?.tr_day}
-                            </Text>
-                            <Text
-                              style={
-                                Platform.OS !== 'ios'
-                                  ? styles.tex
-                                  : styles.texIOS
-                              }>
-                              {item?.tr_date}
-                            </Text>
-                            <Text
-                              style={
-                                Platform.OS !== 'ios'
-                                  ? styles.tex
-                                  : styles.texIOS
-                              }>
-                              {item.sl_time}
-                            </Text>
-                          </TouchableOpacity>
-                        </View>
-                      ))}
+                              <Text
+                                style={
+                                  Platform.OS !== 'ios'
+                                    ? styles.tex
+                                    : styles.texIOS
+                                }>
+                                {item?.tr_day}
+                              </Text>
+                              <Text
+                                style={
+                                  Platform.OS !== 'ios'
+                                    ? styles.tex
+                                    : styles.texIOS
+                                }>
+                                {item?.tr_date}
+                              </Text>
+                              <Text
+                                style={
+                                  Platform.OS !== 'ios'
+                                    ? styles.tex
+                                    : styles.texIOS
+                                }>
+                                {item.sl_time}
+                              </Text>
+                            </TouchableOpacity>
+                          </View>
+                        ))}
                   </View>
                 );
               })}

@@ -37,7 +37,7 @@ export default function HealthVisits({navigation}) {
     setTimeout(async () => {
       try {
         let response = await recentVisit(token);
-        console.log(response.data.message);
+        console.log(response.data);
         if (response.data.message) {
           setLoader(false);
           setError(true);

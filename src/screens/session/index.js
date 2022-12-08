@@ -19,6 +19,7 @@ export default function startSession({navigation}) {
   const [currentSession, setCurrentSession] = useState(false);
   const [visitId, setVistId] = useState('');
   const [appId, setAppId] = useState('');
+  const [error, setError] = useState('');
   const isVisible = useIsFocused();
 
   const token = useSelector(state => state.token);
@@ -40,13 +41,14 @@ export default function startSession({navigation}) {
     fetch('http://alsyedmmtravel.com/api/question_review', requestOptions)
       .then(response => response.json())
       .then(result => {
+        console.log('--->>', result);
         if (result.data.ap_id) {
           setAppId(result.data.ap_id);
         } else {
           setVistId(result.data.visit_id);
         }
       })
-      .catch(error => console.log('error', error));
+      .catch(error => setError(error));
   };
   return (
     <SafeAreaView>
@@ -57,25 +59,27 @@ export default function startSession({navigation}) {
         {!currentSession && (
           <View>
             <View style={{paddingBottom: sizes.TinyMargin}}>
-              <TouchableOpacity
-                onPress={() =>
-                  navigation.navigate('userDetailTrainer', {
-                    ap_id: appId,
-                    visit_id: visitId,
-                  })
-                }
-                // disabled={email != '' && password != '' ? false : true}
-                style={styles.but}>
-                <Text
-                  style={{
-                    color: '#fff',
-                    fontSize: fontSize.h6,
-                    fontFamily: fontFamily.appTextHeading,
-                    fontWeight: 'Bold',
-                  }}>
-                  View Client Details
-                </Text>
-              </TouchableOpacity>
+              {error !== '' && (
+                <TouchableOpacity
+                  onPress={() =>
+                    navigation.navigate('userDetailTrainer', {
+                      ap_id: appId,
+                      visit_id: visitId,
+                    })
+                  }
+                  // disabled={email != '' && password != '' ? false : true}
+                  style={styles.but}>
+                  <Text
+                    style={{
+                      color: '#fff',
+                      fontSize: fontSize.h6,
+                      fontFamily: fontFamily.appTextHeading,
+                      fontWeight: 'Bold',
+                    }}>
+                    View Client Details
+                  </Text>
+                </TouchableOpacity>
+              )}
             </View>
             {/* <View style={{paddingBottom: sizes.TinyMargin}}>
               <TouchableOpacity

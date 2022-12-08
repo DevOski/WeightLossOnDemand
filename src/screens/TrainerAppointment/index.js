@@ -134,7 +134,7 @@ export default function TrainerAppointment({navigation}) {
       <ScrollView style={styles.color}>
         {isModalVisible && (
           <Modal style={styles.modalView} isVisible={isModalVisible}>
-            <TouchableOpacity onPress={toggleModal}>
+            {/* <TouchableOpacity onPress={toggleModal}>
               <View
                 style={{
                   position: 'relative',
@@ -143,7 +143,7 @@ export default function TrainerAppointment({navigation}) {
                 }}>
                 <Entypo name="cross" color={colors.secondary} size={30} />
               </View>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
 
             <View style={styles.texcon}>
               <Text style={styles.text111}>Are you sure?</Text>

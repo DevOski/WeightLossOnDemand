@@ -363,6 +363,6 @@ const styles = StyleSheet.create({
     borderRadius: sizes.screenWidth * 0.5,
   },
   paddingBottom: {
-    paddingBottom: sizes.screenHeight * 0.09,
+    paddingBottom: sizes.screenHeight * 0.1,
   },
 });

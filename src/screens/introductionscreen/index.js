@@ -59,7 +59,7 @@ export default function IntroductionScreen({navigation}) {
             </Text>
           </View>
         </View>
-        {Platform.OS == 'ios' && <View style={styles.bottomIOS}></View>}
+        {Platform.OS == 'ios' ? <View style={styles.bottomIOS}></View> : <View style={styles.bottom}></View>}
       </ScrollView>
     </SafeAreaView>
   );
@@ -151,4 +151,8 @@ const styles = StyleSheet.create({
   bottomIOS: {
     paddingBottom: sizes.screenHeight * 0.1,
   },
+  bottom:{
+    paddingBottom: sizes.screenHeight * 0.07,
+
+  }
 });

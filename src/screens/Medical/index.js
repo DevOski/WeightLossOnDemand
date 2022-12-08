@@ -50,7 +50,10 @@ export default function Medical({navigation}) {
           <View style={styles.padding}>
             <TouchableOpacity
               onPress={() =>
-                navigation.navigate('visitforscreen', {bookingStatus: false})
+                navigation.navigate('visitforscreen', {
+                  bookingStatus: false,
+                  to: 'reasonVisit',
+                })
               }>
               <View style={[styles.row, styles.card2]}>
                 <Text style={styles.cardText2}>See a consultant now</Text>
