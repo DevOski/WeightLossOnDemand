@@ -54,7 +54,7 @@ export const ProviderDetail = ({navigation, route}) => {
     setTimeout(async () => {
       try {
         const time = new Date().getTime();
-        let currentTime =`${moment(time).format('hh:mm')}`;
+        let currentTime =`${moment(time).format('hh:mma')}`;
 
         let response = await selectedTrainer(
           route?.params?.trainer?.tr_id,

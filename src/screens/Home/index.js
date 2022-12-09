@@ -15,6 +15,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import GetCare from '../../components/GetCare';
 import {sizes} from '../../services';
 import {LocalNotification} from '../../services/LocalNotificationController';
+
 import {
   getAllTrainers,
   getUser,
@@ -28,6 +29,7 @@ import {storeUserData} from '../../store/actions';
 import {styles} from './style';
 import PushNotificationIOS from '@react-native-community/push-notification-ios';
 import PushNotification from 'react-native-push-notification';
+import messaging from '@react-native-firebase/messaging';
 
 export default function Home({navigation}) {
   const [userName, setUserName] = useState('');
@@ -45,18 +47,29 @@ export default function Home({navigation}) {
   const [loader, setLoader] = useState(false);
   const [mounted, setMounted] = useState(false);
   const [notes, setNotes] = useState('');
+  const [fcmToken, setFcmToken] = useState('');
 
   const token = useSelector(state => state.token);
+  // console.log(token);
   const dispatch = useDispatch();
   const isVisible = useIsFocused();
 
   useEffect(() => {
+    getFcmToken();
     getUserDetails();
     getTrainers();
     getPastVisit();
     getRecentAppointment();
   }, [isVisible]);
 
+  const getFcmToken = () => {
+    messaging()
+      .getToken()
+      .then(token => {
+        console.log(token);
+       setFcmToken(token);
+      });
+  };
   const getUserDetails = async () => {
     setLoader(true);
     setTimeout(async () => {

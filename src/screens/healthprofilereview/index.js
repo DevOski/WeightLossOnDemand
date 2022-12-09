@@ -89,11 +89,49 @@ export const ReviewHealthprofile = ({navigation, route}) => {
       <View>
         <Header dark={true} />
       </View>
+
       <ScrollView>
         <View style={styles.container1}>
+          <TouchableOpacity
+            onPress={() =>
+              navigation.navigate('basicInfoscreenssettings', {
+                to: 'healthprofilereview',
+              })
+            }>
+            <View
+              style={{
+                alignSelf: 'flex-end',
+                borderRadius: sizes.screenWidth * 0.02,
+                width: sizes.screenWidth * 0.4,
+                borderWidth: 1,
+                borderColor: colors.lightGray,
+                padding: sizes.screenWidth * 0.008,
+                marginBottom: sizes.screenHeight * 0.02,
+                shadowColor: '#000',
+                backgroundColor: colors.white,
+                shadowOffset: {
+                  width: 0,
+                  height: 2,
+                },
+                shadowOpacity: 0.25,
+                shadowRadius: 3.84,
+
+                elevation: 5,
+              }}>
+              <Text
+                style={{
+                  color: colors.secondary,
+                  fontSize: fontSize.h6,
+                  textAlign: 'center',
+                }}>
+                Update basic info
+              </Text>
+            </View>
+          </TouchableOpacity>
           <View>
             <Text style={styles.hedtext}>Please review your questions</Text>
           </View>
+
           <View style={styles.pa}>
             <View style={styles.box}>
               <View style={styles.borderrb}>
@@ -426,9 +464,7 @@ export const ReviewHealthprofile = ({navigation, route}) => {
           </View>
           <View style={styles.box}>
             <View style={styles.borderrb}>
-              <Text style={styles.textttt}>
-                35) Snack Time
-              </Text>
+              <Text style={styles.textttt}>35) Snack Time</Text>
             </View>
             <View style={styles.borderrb}>
               <Text style={styles.textttt}>Ans: {q35}</Text>
@@ -436,9 +472,7 @@ export const ReviewHealthprofile = ({navigation, route}) => {
           </View>
           <View style={styles.box}>
             <View style={styles.borderrb}>
-              <Text style={styles.textttt}>
-                36) Snack Where Eaten
-              </Text>
+              <Text style={styles.textttt}>36) Snack Where Eaten</Text>
             </View>
             <View style={styles.borderrb}>
               <Text style={styles.textttt}>Ans: {q36}</Text>

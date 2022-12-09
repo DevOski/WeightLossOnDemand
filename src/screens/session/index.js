@@ -98,10 +98,14 @@ export default function startSession({navigation}) {
               </TouchableOpacity>
             </View> */}
             <TouchableOpacity
-              disabled={visitId ? false : true}
+              // disabled={visitId ? false : true}
               onPress={() => navigation.navigate('trainervideocall')}
               // disabled={email != '' && password != '' ? false : true}
-              style={visitId ? styles.but : styles.disabledView}>
+              style={
+                // visitId ?
+                styles.but
+                // : styles.disabledView
+              }>
               <Text
                 style={{
                   color: '#fff',

@@ -48,8 +48,8 @@ export default function ChooseAppointment({navigation, route}) {
     var utc = new Date().toJSON().slice(0, 10).replace(/-/g, '-');
     setCurrentDate(utc);
     const time = new Date().getTime();
-    let currentTime = `${moment(time).format('hh:mm')}`;
-
+    let currentTime = `${moment(time).format('hh:mma')}`;
+    console.log(currentTime);
     setCurrentTime(currentTime);
   }, []);
 

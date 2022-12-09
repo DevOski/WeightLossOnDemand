@@ -25,6 +25,7 @@ import {getTrainer, getUser, signUp} from '../../services/utilities/api/auth';
 import {storeData, storeUserData} from '../../store/actions';
 import {useDispatch, useSelector} from 'react-redux';
 import Error from '../../components/Error';
+import Loader from '../../components/Loader';
 const BasicInfoScreenSettings = ({navigation, route}) => {
   // console.log(route,"-------->basicscreen");
 
@@ -69,6 +70,7 @@ const BasicInfoScreenSettings = ({navigation, route}) => {
   const [Suffix, setsetSuffix] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const [error, setError] = useState(false);
+  const [loader, setLoader] = useState(false);
 
   const [isModalVisible, setIsModalVisible] = useState(false);
   const token = useSelector(state => state.token);
@@ -94,11 +96,11 @@ const BasicInfoScreenSettings = ({navigation, route}) => {
   useEffect(() => {
     // const backHandler = BackHandler.addEventListener('backPress', () => true);
     // return () => backHandler.remove();
-    getUserDetails()
+    getUserDetails();
   }, []);
 
   const getUserDetails = async () => {
-    // setLoader(true);
+    setLoader(true);
     setTimeout(async () => {
       try {
         let response = await getUser(token);
@@ -117,18 +119,20 @@ const BasicInfoScreenSettings = ({navigation, route}) => {
         setPrefix(response.data.data.prefix);
         setLanguage(response.data.data.language);
         setgender(response.data.data.gender);
-        
+
         // setUserName(response.data.data.first_name);
         // dispatch(storeUserData(response.data.data));
-        // setLoader(false);
+        setLoader(false);
       } catch (error) {
         console.log(error);
-        // setLoader(false);
+        setLoader(false);
       }
     }, 100);
   };
 
   const Continue = async () => {
+    setLoader(true);
+
     // )  name,
     //     middle,
     //     lastname,
@@ -210,22 +214,29 @@ const BasicInfoScreenSettings = ({navigation, route}) => {
     };
 
     fetch('http://alsyedmmtravel.com/api/user_update', requestOptions)
-      .then(response =>  response.json())
+      .then(response => response.json())
       .then(result => {
         console.log(result);
         if (result.token) {
           // dispatch(storeData(result.token));
-        
+
+          setLoader(false);
           setError(false);
         } else {
           setErrorMessage(result.message);
+          setLoader(false);
+
           setTimeout(() => {
             setIsModalVisible(true);
           }, 500);
           setError(true);
         }
       })
-      .catch(error => console.log('error', error));
+
+      .catch(error => {
+        console.log('error', error);
+        setLoader(false);
+      });
 
     // var formdata = new FormData();
     // formdata.append('first_name', name);
@@ -849,7 +860,9 @@ const BasicInfoScreenSettings = ({navigation, route}) => {
               <TouchableOpacity
                 onPress={() => {
                   setIsModalVisible(false);
-                  navigation.navigate('Home')
+                  route?.params?.to
+                    ? navigation.navigate(route?.params?.to)
+                    : navigation.navigate('Home');
                 }}>
                 <View style={styles.buttonView}>
                   <Text style={styles.buttonText}>OK</Text>
@@ -859,6 +872,7 @@ const BasicInfoScreenSettings = ({navigation, route}) => {
           </Modal>
         )}
       </View>
+      {loader && <Loader />}
     </SafeAreaView>
   );
 };

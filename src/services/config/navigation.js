@@ -275,10 +275,7 @@ export default function MainNavigator() {
             <Stack.Screen name="addyourtemperature" component={AddTEmp} />
             <Stack.Screen name="yourhabits" component={YourHabits} />
             <Stack.Screen name="doyouneeddoctor" component={Doyouneeddoctor} />
-            <Stack.Screen
-              name="healthprofilereview"
-              component={ReviewHealthprofile}
-            />
+          
             <Stack.Screen name="selectTrainer" component={selectTrainer} />
             <Stack.Screen
               name="userDetailTrainer"

@@ -63,7 +63,7 @@ export const VisitScreen = ({navigation, route}) => {
       let date = new Date().toJSON();
       let currentDate = moment(date).format('DD/MM/YYYY');
       console.log(currentDate);
-      let currentTime = moment(time).format('hh:mm');
+      let currentTime = moment(time).format('hh:mma');
       console.log('----->>',currentTime);
       var formdata = new FormData();
       formdata.append('sl_date', currentDate);
@@ -79,7 +79,7 @@ export const VisitScreen = ({navigation, route}) => {
       fetch('http://alsyedmmtravel.com/api/finding_VTr', requestOptions)
         .then(response => response.json())
         .then(result => {
-          console.log(result);
+          console.log('-------->>',result);
           if (result.data) {
             console.log(result.data.tr_id);
             dispatch(
