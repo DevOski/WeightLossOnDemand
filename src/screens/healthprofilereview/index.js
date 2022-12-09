@@ -108,7 +108,7 @@ export const ReviewHealthprofile = ({navigation, route}) => {
                 padding: sizes.screenWidth * 0.008,
                 marginBottom: sizes.screenHeight * 0.02,
                 shadowColor: '#000',
-                backgroundColor: colors.white,
+                backgroundColor: colors.secondary,
                 shadowOffset: {
                   width: 0,
                   height: 2,
@@ -120,7 +120,7 @@ export const ReviewHealthprofile = ({navigation, route}) => {
               }}>
               <Text
                 style={{
-                  color: colors.secondary,
+                  color: colors.white,
                   fontSize: fontSize.h6,
                   textAlign: 'center',
                 }}>
