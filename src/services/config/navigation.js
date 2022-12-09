@@ -160,6 +160,7 @@ import TrainerVideocalling from '../../screens/trainervideocall';
 import {userDetailTrainer} from '../../screens/userDetailTrainer';
 import {AllQuestions} from '../../screens/AllQuestions';
 import { AddDescription } from '../../screens/AddDescription';
+import BasicInfoScreenSettings from '../../screens/basicInfoscreenssettings';
 const Stack = createNativeStackNavigator();
 
 const Tab = createMaterialBottomTabNavigator();
@@ -185,6 +186,7 @@ export default function MainNavigator() {
               name="EnterNewPassword"
               component={EnterNewPassword}
             />
+            <Stack.Screen name="Home" component={Home} />
             {/* <Stack.Screen name="BottomNavs" component={MyTabs} /> */}
           </>
         ) : (
@@ -193,8 +195,8 @@ export default function MainNavigator() {
               name={trainerStatus ? 'BottomTrainer' : 'BottomNavs'}
               component={trainerStatus ? MyTrainerTabs : MyTabs}
             />
-            {/* <Stack.Screen name="Home" component={Home} /> */}
 
+            <Stack.Screen name="basicInfoscreenssettings" component={BasicInfoScreenSettings} />
             <Stack.Screen name="Setting" component={Setting} />
             <Stack.Screen name="whichsurgeri" component={Whichsurgeries} />
             <Stack.Screen

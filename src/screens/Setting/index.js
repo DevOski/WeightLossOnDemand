@@ -186,6 +186,14 @@ export default function Setting({navigation}) {
           </TouchableOpacity>
         </View>
         <View style={styles.padding}>
+          <TouchableOpacity onPress={() => navigation.navigate('basicInfoscreenssettings')}>
+            <View style={styles.row}>
+              <Entypo name="info" color={colors.secondary} size={25} />
+              <Text style={styles.contactLeft}>Basic Info</Text>
+            </View>
+          </TouchableOpacity>
+        </View>
+        <View style={styles.padding}>
           <TouchableOpacity
             onPress={() =>
               navigation.navigate('ChangePassword', {

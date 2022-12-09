@@ -47,7 +47,12 @@ export default function App() {
                     bottom: sizes.screenHeight * 0.3,
                     left: sizes.screenWidth * 0.85,
                   }}>
-                  <Entypo name="cross" color={colors.secondary} size={30} />
+                  <Entypo
+                    name="cross"
+                    color={colors.secondary}
+                    size={30}
+                    onPress={toggleModal}
+                  />
                 </View>
               </TouchableOpacity>
               <View style={styles.texcon}>
@@ -67,7 +72,6 @@ export default function App() {
           ) : (
             <MainNavigator />
           )}
-          {/* <Error title={"Oops!"} message={"Invalid user identity or password."}/> */}
         </View>
       </PersistGate>
     </Provider>
