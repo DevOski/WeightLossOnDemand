@@ -37,7 +37,7 @@ export default function PastVisit({navigation}) {
     // setTimeout(async () => {
       try {
         let response = await trainerVist(token);
-        console.log('=====>>>',response.data.data.first_name);
+        console.log('=====>>>',response.user);
         setVisitList(response.data.data);
         setLoader(false);
       } catch (error) {
@@ -60,7 +60,7 @@ export default function PastVisit({navigation}) {
               <Text style={styles.head}>My Past Sessions</Text>
             </View>
             {visitList?.map((item, index) => {
-              // console.log(item.visit_id);
+              console.log(item);
               return (
                 <TouchableOpacity
                   onPress={() =>
@@ -72,7 +72,7 @@ export default function PastVisit({navigation}) {
                         source={{uri: item?.tr_images}}
                         style={styles.providerImg}
                       /> */}
-                      <Text style={styles.cardText}>{item?.tr_name}</Text>
+                      <Text style={styles.cardText}>{item?.user}</Text>
                       <View>{/* <Text style={styles.symbol}> ›</Text> */}</View>
                     </View>
                     <View>

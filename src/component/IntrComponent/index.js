@@ -67,7 +67,7 @@ const Componentsecond = () => {
   const navigation = useNavigation();
   return (
     <View style={styles.container}>
-      <View
+      {/* <View
         style={{
           flexDirection: 'row',
           alignItems: 'center',
@@ -95,13 +95,14 @@ const Componentsecond = () => {
             source={fatty}
           />
         </View>
+      </View> */}
+      <View style={styles.img}>
+        <Image style={{width: '100%', height: '100%'}} source={dit} />
+      </View>
+      <View style={styles.icon}>
+        <Image style={{width: '100%', height: '100%'}} source={icon} />
       </View>
 
-      <View style={styles.margintop}>
-        <View style={styles.screnintro2img}>
-          <Image style={{width: '100%', height: '100%'}} source={dit} />
-        </View>
-      </View>
       <View style={styles.payragraphcon}>
         <Text style={styles.payragraphcontext}>
           Complete health improvement in a digital environment. Your consultant
@@ -109,18 +110,6 @@ const Componentsecond = () => {
           results.
         </Text>
       </View>
-      {/* <View style={{paddingTop:sizes.screenHeight*0.05 }}>
-      <View style={styles.footer}>
-                 <TouchableOpacity onPress={()=>navigation.navigate("signinscreen")}>
-                   <Text style={styles.fontsiginandsignup}>Sign In</Text>
-                 </TouchableOpacity>
-                
- 
-                 <TouchableOpacity  onPress={()=>navigation.navigate("signupscreen")}>
-                   <Text style={styles.fontsiginandsignup}>Sign Up</Text>
-                 </TouchableOpacity>
-               </View>
-               </View> */}
     </View>
   );
 };
@@ -263,7 +252,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     // top: deviceHeight * 0.26,
     width: deviceWidth * 0.99,
-    height: deviceHeight * 0.30,
+    height: deviceHeight * 0.3,
   },
   but: {
     backgroundColor: colors.secondary,

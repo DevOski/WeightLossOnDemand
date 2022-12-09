@@ -41,6 +41,8 @@ export const styles = StyleSheet.create({
     // left: sizes.screenWidth * 0.03,
     fontFamily: fontFamily.appTextRegular,
     width: sizes.screenWidth * 0.65,
+    paddingBottom: sizes.TinyMargin,
+    // fontWeight: 'bold',
   },
   symbol: {
     color: colors.secondary,
@@ -81,6 +83,6 @@ export const styles = StyleSheet.create({
     bottom: sizes.TinyMargin,
   },
   paddingBottom: {
-    paddingBottom: sizes.screenHeight*0.1,
+    paddingBottom: sizes.screenHeight * 0.1,
   },
 });
