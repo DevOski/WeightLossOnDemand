@@ -55,21 +55,21 @@ export default function Home({navigation}) {
   const isVisible = useIsFocused();
 
   useEffect(() => {
-    getFcmToken();
+    // getFcmToken();
     getUserDetails();
     getTrainers();
     getPastVisit();
     getRecentAppointment();
   }, [isVisible]);
 
-  const getFcmToken = () => {
-    messaging()
-      .getToken()
-      .then(token => {
-        console.log(token);
-       setFcmToken(token);
-      });
-  };
+  // const getFcmToken = () => {
+  //   messaging()
+  //     .getToken()
+  //     .then(token => {
+  //       console.log('---->>>>',token);
+  //      setFcmToken(token);
+  //     });
+  // };
   const getUserDetails = async () => {
     setLoader(true);
     setTimeout(async () => {

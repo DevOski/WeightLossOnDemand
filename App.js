@@ -20,6 +20,14 @@ import store from './src/store';
 import {persistor} from './src/store';
 import {PersistGate} from 'redux-persist/integration/react';
 import {Provider} from 'react-redux';
+import {
+  notifcationListener,
+  requestUserPermission,
+} from './src/services/utilities/notificationService';
+import messaging from '@react-native-firebase/messaging';
+import {Alert} from 'react-native';
+import PushNotification from 'react-native-push-notification';
+
 export default function App() {
   const [isModalVisible, setIsModalVisible] = useState(false);
 
@@ -30,6 +38,49 @@ export default function App() {
       setIsModalVisible(!state.isConnected);
     });
   }, []);
+
+  useEffect(() => {
+    requestUserPermission();
+    notifcationListener();
+    const unsubscribe = messaging().onMessage(async remoteMessage => {
+      console.log(remoteMessage);
+      PushNotification.createChannel({
+        channelId: 'channel-id',
+        channelName: 'my_channel',
+        channelDescription: 'A channel for notification',
+        playSound: true,
+        soundName: 'default',
+        vibrate: true,
+        vibration: 1000,
+      });
+      PushNotification.localNotification({
+        channelId: 'channel-id',
+        channelName: 'my_channel',
+        message: remoteMessage.notification.body,
+        title: remoteMessage.notification.title,
+        bigPictureUrl: remoteMessage.notification.android.imageUrl,
+        smallIcon: remoteMessage.notification.android.imageUrl,
+        playSound: true,
+        soundName: 'default',
+      });
+    });
+
+    return unsubscribe;
+  }, []);
+
+  messaging().setBackgroundMessageHandler(async remoteMessage => {
+    console.log('Message handled in the background!', remoteMessage);
+    PushNotification.localNotification({
+      channelId: 'channel-id',
+      channelName: 'my_channel',
+      message: remoteMessage.notification.body,
+      title: remoteMessage.notification.title,
+      bigPictureUrl: remoteMessage.notification.android.imageUrl,
+      smallIcon: remoteMessage.notification.android.imageUrl,
+      playSound: true,
+      soundName: 'default',
+    });
+  });
 
   const toggleModal = () => {
     setIsModalVisible(!isModalVisible);
