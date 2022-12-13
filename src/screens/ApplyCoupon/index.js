@@ -38,10 +38,7 @@ export default function ApplyCoupon({route, navigation}) {
     setLoader(true);
     if (promoCode !== coupon) {
       var myHeaders = new Headers();
-      myHeaders.append(
-        'Authorization',
-        '$2y$10$KmDTenzlBmb2iVT.tv0nu.zmfkP5FGW.WWGAfPcXeQZqqkuf7/uCW',
-      );
+      myHeaders.append('Authorization', token);
       myHeaders.append('Content-Type', 'application/json');
 
       var raw = JSON.stringify({
@@ -71,7 +68,7 @@ export default function ApplyCoupon({route, navigation}) {
           .catch(error => console.log('error', error));
       }, 100);
     } else {
-      console.log("worksss");
+      console.log('worksss');
       setLoader(false);
       toggleModal();
       setTitle('Oops!');
