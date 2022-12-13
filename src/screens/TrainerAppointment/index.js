@@ -30,6 +30,7 @@ import {
 import images from '../../services/utilities/images';
 import {storeUserData} from '../../store/actions';
 import {styles} from './style';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function TrainerAppointment({navigation}) {
   const [userName, setUserName] = useState('');
@@ -39,13 +40,14 @@ export default function TrainerAppointment({navigation}) {
   const [appointmentList, setAppointmentList] = useState([]);
   const [currentDate, setCurrentDate] = useState('');
   const token = useSelector(state => state.token);
-  console.log(token,"0000");
+  console.log(token, '0000');
   const isVisible = useIsFocused();
 
   useEffect(() => {
     getTrainerInfo();
     getTrainerAppointments();
     getRecentAppointment();
+    getFcmToken();
   }, [isVisible]);
 
   useEffect(() => {
@@ -53,6 +55,30 @@ export default function TrainerAppointment({navigation}) {
     let current = moment(date).format('DD/MM/YYYY');
     setCurrentDate(current);
   }, []);
+
+  const getFcmToken = async () => {
+    let fcmToken = await AsyncStorage.getItem('fcmToken');
+    // console.log('----------------------------->>>>', fcmToken, '----->>');
+    var myHeaders = new Headers();
+    myHeaders.append('Authorization', token);
+    myHeaders.append('Content-Type', 'application/json');
+
+    var raw = JSON.stringify({
+      fcm: fcmToken,
+    });
+
+    var requestOptions = {
+      method: 'POST',
+      headers: myHeaders,
+      body: raw,
+      redirect: 'follow',
+    };
+
+    fetch('http://alsyedmmtravel.com/api/updateTrtoken', requestOptions)
+      .then(response => response.json())
+      .then(result => console.log(result))
+      .catch(error => console.log('error', error));
+  };
 
   const getTrainerInfo = async () => {
     try {

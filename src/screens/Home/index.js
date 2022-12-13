@@ -30,6 +30,7 @@ import {styles} from './style';
 import PushNotificationIOS from '@react-native-community/push-notification-ios';
 import PushNotification from 'react-native-push-notification';
 import messaging from '@react-native-firebase/messaging';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function Home({navigation}) {
   const [userName, setUserName] = useState('');
@@ -55,21 +56,37 @@ export default function Home({navigation}) {
   const isVisible = useIsFocused();
 
   useEffect(() => {
-    // getFcmToken();
+    getFcmToken();
     getUserDetails();
     getTrainers();
     getPastVisit();
     getRecentAppointment();
   }, [isVisible]);
 
-  // const getFcmToken = () => {
-  //   messaging()
-  //     .getToken()
-  //     .then(token => {
-  //       console.log('---->>>>',token);
-  //      setFcmToken(token);
-  //     });
-  // };
+  const getFcmToken = async () => {
+    let fcmToken = await AsyncStorage.getItem('fcmToken');
+    // console.log('----------------------------->>>>',fcmToken,'----->>');
+    var myHeaders = new Headers();
+
+    myHeaders.append('Authorization', token);
+    myHeaders.append('Content-Type', 'application/json');
+
+    var raw = JSON.stringify({
+      fcm: fcmToken,
+    });
+
+    var requestOptions = {
+      method: 'POST',
+      headers: myHeaders,
+      body: raw,
+      redirect: 'follow',
+    };
+
+    fetch('http://alsyedmmtravel.com/api/update_token', requestOptions)
+      .then(response => response.json())
+      .then(result => console.log(result))
+      .catch(error => console.log('error', error));
+  };
   const getUserDetails = async () => {
     setLoader(true);
     setTimeout(async () => {
@@ -114,12 +131,12 @@ export default function Home({navigation}) {
       let currentDate = moment(date).format('YYYY-MM-DD');
       let currentFinalDate = currentDate + currentTime;
       let response = await userAppointment(token);
-      console.log(response.data.data);
+      // console.log(response.data.data);
       if (
         response.data.data.tr_name !== 'random' &&
         currentFinalDate == response.data.data.apt_time
       ) {
-        console.log(response.data.data);
+        // console.log(response.data.data);
         navigation.navigate('ProviderReview', {
           tr_id: response.data.data.trainer_id,
           tr_name: response.data.data.tr_name,
@@ -130,7 +147,7 @@ export default function Home({navigation}) {
           q5: response.data.data.response_5,
           reason: response.data.data.reason,
           tr_amount: response.data.data.amount,
-          tr_image:response.data.image,
+          tr_image: response.data.image,
           apt_id: response.data.data.ap_id,
         });
       } else if (
@@ -210,7 +227,7 @@ export default function Home({navigation}) {
           showsHorizontalScrollIndicator={false}
           style={styles.wrap}>
           {item?.map((item, index) => {
-           console.log(item);
+            //  console.log(item);
             return (
               <View
                 key={index}
@@ -254,21 +271,20 @@ export default function Home({navigation}) {
                       </View>
                     </TouchableOpacity> */}
                     <View style={styles.secondarybg}>
-                    <View style={styles.textView}>
-                      <Text style={styles.text}>
-                        What to expect during your initial session?
-                      </Text>
-                    </View>
-                    <View style={[styles.semiTextView, styles.row2]}>
-                      <TouchableOpacity
-                        onPress={() => navigation.navigate('HowItWorks')}>
-                        <Text style={styles.semiText}>
-                          How It Works <Text style={styles.symbol}>›</Text>
+                      <View style={styles.textView}>
+                        <Text style={styles.text}>
+                          What to expect during your initial session?
                         </Text>
-                      </TouchableOpacity>
+                      </View>
+                      <View style={[styles.semiTextView, styles.row2]}>
+                        <TouchableOpacity
+                          onPress={() => navigation.navigate('HowItWorks')}>
+                          <Text style={styles.semiText}>
+                            How It Works <Text style={styles.symbol}>›</Text>
+                          </Text>
+                        </TouchableOpacity>
+                      </View>
                     </View>
-                    </View>
-                   
                   </ImageBackground>
                 )}
                 {index == 1 && (
@@ -348,28 +364,27 @@ export default function Home({navigation}) {
                     key={index}
                     source={images.bg2}
                     style={styles.bg}>
-                       <View style={styles.secondarybg2}>
-                        
-                    <View style={styles.paddingBottom}></View>
-                    <View style={styles.proudView}>
-                      <Text style={styles.text2}>
-                        We're more than just proud
-                      </Text>
-                      <Text style={styles.letUsText}>
-                        Let us assist you in finding the right consultant for
-                        you.
-                      </Text>
-                    </View>
-                    <View style={[styles.learnMoreView, styles.row2]}>
-                      <TouchableOpacity
-                        onPress={() => navigation.navigate('beyondscreen')}>
-                        <View style={styles.row2}>
-                          <Text style={styles.semiText}>Learn more</Text>
-                          <Text style={styles.symbol}> ›</Text>
-                        </View>
-                      </TouchableOpacity>
-                    </View>
+                    <View style={styles.secondarybg2}>
+                      <View style={styles.paddingBottom}></View>
+                      <View style={styles.proudView}>
+                        <Text style={styles.text2}>
+                          We're more than just proud
+                        </Text>
+                        <Text style={styles.letUsText}>
+                          Let us assist you in finding the right consultant for
+                          you.
+                        </Text>
+                      </View>
+                      <View style={[styles.learnMoreView, styles.row2]}>
+                        <TouchableOpacity
+                          onPress={() => navigation.navigate('beyondscreen')}>
+                          <View style={styles.row2}>
+                            <Text style={styles.semiText}>Learn more</Text>
+                            <Text style={styles.symbol}> ›</Text>
                           </View>
+                        </TouchableOpacity>
+                      </View>
+                    </View>
                   </ImageBackground>
                 )}
                 {index == 3 && (
@@ -378,14 +393,14 @@ export default function Home({navigation}) {
                       Meet our consultants
                     </Text>
                     {trainerList?.map((item, index) => {
-                      console.log(trainerList);
+                      // console.log(trainerList);
                       if (index < 6) {
                         return (
                           <View
                             key={index}
                             style={[styles.row2, styles.paddingLeft]}>
                             <Image
-                              source={{uri:item.images}}
+                              source={{uri: item.images}}
                               style={
                                 Platform.OS !== 'ios'
                                   ? styles.providerImg
@@ -494,7 +509,7 @@ export default function Home({navigation}) {
 
                     <View style={[styles.row2, styles.paddingLeft]}>
                       <Image
-                        source={{uri:pastVisit.images}}
+                        source={{uri: pastVisit.images}}
                         style={styles.providerImg}
                       />
                       <View>
