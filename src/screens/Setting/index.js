@@ -121,14 +121,15 @@ export default function Setting({navigation}) {
   return (
     <SafeAreaView>
       <View>
-        <Header title={'My Account'} />
+          
+        <Header title={'My Account'} signout={true} onPress={() => setIsModalVisible(true)} />
       </View>
       <ScrollView style={styles.color}>
         <View style={styles.userView}>
           <View style={styles.signOutBtn}>
-            <TouchableOpacity onPress={() => setIsModalVisible(true)}>
+            {/* <TouchableOpacity  onPress={() => setIsModalVisible(true)}>
               <Text style={styles.signOutText}>Sign Out</Text>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
           </View>
           {middleName == '' ? (
             <Text style={styles.userName}>

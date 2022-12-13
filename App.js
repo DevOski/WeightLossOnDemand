@@ -39,6 +39,27 @@ export default function App() {
     });
   }, []);
 
+  var myHeaders = new Headers();
+  myHeaders.append(
+    'Authorization',
+    '$2y$10$KmDTenzlBmb2iVT.tv0nu.zmfkP5FGW.WWGAfPcXeQZqqkuf7/uCW',
+  );
+
+  var formdata = new FormData();
+  formdata.append('tr_id', '1');
+
+  var requestOptions = {
+    method: 'POST',
+    headers: myHeaders,
+    body: formdata,
+    redirect: 'follow',
+  };
+
+  fetch('http://alsyedmmtravel.com/api/notification', requestOptions)
+    .then(response => response.json())
+    .then(result => console.log(result.body))
+    .catch(error => console.log('error', error));
+
   useEffect(() => {
     requestUserPermission();
     notifcationListener();
@@ -95,8 +116,8 @@ export default function App() {
                 <View
                   style={{
                     position: 'relative',
-                    bottom: sizes.screenHeight * 0.3,
-                    left: sizes.screenWidth * 0.85,
+                    bottom:sizes.screenHeight * 0.3,
+                    left:sizes.screenWidth * 0.85,
                   }}>
                   <Entypo
                     name="cross"

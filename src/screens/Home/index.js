@@ -130,7 +130,7 @@ export default function Home({navigation}) {
           q5: response.data.data.response_5,
           reason: response.data.data.reason,
           tr_amount: response.data.data.amount,
-          tr_image: response.data.image,
+          tr_image:response.data.image,
           apt_id: response.data.data.ap_id,
         });
       } else if (
@@ -210,6 +210,7 @@ export default function Home({navigation}) {
           showsHorizontalScrollIndicator={false}
           style={styles.wrap}>
           {item?.map((item, index) => {
+           console.log(item);
             return (
               <View
                 key={index}
@@ -252,6 +253,7 @@ export default function Home({navigation}) {
                         />
                       </View>
                     </TouchableOpacity> */}
+                    <View style={styles.secondarybg}>
                     <View style={styles.textView}>
                       <Text style={styles.text}>
                         What to expect during your initial session?
@@ -261,10 +263,12 @@ export default function Home({navigation}) {
                       <TouchableOpacity
                         onPress={() => navigation.navigate('HowItWorks')}>
                         <Text style={styles.semiText}>
-                          How It Works <Text style={styles.symbol}> ›</Text>
+                          How It Works <Text style={styles.symbol}>›</Text>
                         </Text>
                       </TouchableOpacity>
                     </View>
+                    </View>
+                   
                   </ImageBackground>
                 )}
                 {index == 1 && (
@@ -344,6 +348,8 @@ export default function Home({navigation}) {
                     key={index}
                     source={images.bg2}
                     style={styles.bg}>
+                       <View style={styles.secondarybg2}>
+                        
                     <View style={styles.paddingBottom}></View>
                     <View style={styles.proudView}>
                       <Text style={styles.text2}>
@@ -363,6 +369,7 @@ export default function Home({navigation}) {
                         </View>
                       </TouchableOpacity>
                     </View>
+                          </View>
                   </ImageBackground>
                 )}
                 {index == 3 && (
@@ -371,13 +378,14 @@ export default function Home({navigation}) {
                       Meet our consultants
                     </Text>
                     {trainerList?.map((item, index) => {
+                      console.log(trainerList);
                       if (index < 6) {
                         return (
                           <View
                             key={index}
                             style={[styles.row2, styles.paddingLeft]}>
                             <Image
-                              source={{uri: item.images}}
+                              source={{uri:item.images}}
                               style={
                                 Platform.OS !== 'ios'
                                   ? styles.providerImg
@@ -486,7 +494,7 @@ export default function Home({navigation}) {
 
                     <View style={[styles.row2, styles.paddingLeft]}>
                       <Image
-                        source={{uri: pastVisit.images}}
+                        source={{uri:pastVisit.images}}
                         style={styles.providerImg}
                       />
                       <View>

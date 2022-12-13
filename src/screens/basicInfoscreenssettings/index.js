@@ -26,6 +26,7 @@ import {storeData, storeUserData} from '../../store/actions';
 import {useDispatch, useSelector} from 'react-redux';
 import Error from '../../components/Error';
 import Loader from '../../components/Loader';
+import Header from '../../components/Header';
 const BasicInfoScreenSettings = ({navigation, route}) => {
   // console.log(route,"-------->basicscreen");
 
@@ -119,7 +120,7 @@ const BasicInfoScreenSettings = ({navigation, route}) => {
         setPrefix(response.data.data.prefix);
         setLanguage(response.data.data.language);
         setgender(response.data.data.gender);
-
+        setMiddle(response.data.data.middle)
         // setUserName(response.data.data.first_name);
         // dispatch(storeUserData(response.data.data));
         setLoader(false);
@@ -285,10 +286,11 @@ const BasicInfoScreenSettings = ({navigation, route}) => {
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView>
+        <Header title={'Update Basic Info'}/>
         <View style={styles.inercontainer}>
-          <View style={styles.basicinfocontainer}>
-            <Text style={styles.basicinfo}>Update Basic Info</Text>
-          </View>
+          {/* <View style={styles.basicinfocontainer}>
+            <Text style={styles.basicinfo}></Text>
+          </View> */}
           <View style={styles.spayrainfo}>
             <Text style={styles.basicinfophyra}>
               Please tell us some basic info to complete
@@ -296,7 +298,7 @@ const BasicInfoScreenSettings = ({navigation, route}) => {
             <Text style={styles.basicinfophyra}>your profile</Text>
           </View>
           <View>
-            {Fieldsshowhide ? (
+            {/* {Fieldsshowhide ? (
               <View style={styles.filedcon}>
                 <CustomTextFiel
                   label={'Prefix'}
@@ -304,7 +306,7 @@ const BasicInfoScreenSettings = ({navigation, route}) => {
                   setValue={setPrefix}
                 />
               </View>
-            ) : null}
+            ) : null} */}
 
             <View style={styles.filedcon}>
               <CustomTextFiel
@@ -313,7 +315,6 @@ const BasicInfoScreenSettings = ({navigation, route}) => {
                 setValue={setname}
               />
             </View>
-            {Fieldsshowhide ? (
               <View style={styles.filedcon}>
                 <CustomTextFiel
                   label={'Middle name'}
@@ -321,7 +322,8 @@ const BasicInfoScreenSettings = ({navigation, route}) => {
                   setValue={setMiddle}
                 />
               </View>
-            ) : null}
+            {/* {Fieldsshowhide ? (
+            ) : null} */}
             <View style={styles.filedcon}>
               <CustomTextFiel
                 label={'Last Name'}
@@ -329,7 +331,7 @@ const BasicInfoScreenSettings = ({navigation, route}) => {
                 setValue={setlastname}
               />
             </View>
-            {Fieldsshowhide ? (
+            {/* {Fieldsshowhide ? (
               <View style={styles.filedcon}>
                 <CustomTextFiel
                   label={'Suffix'}
@@ -337,10 +339,10 @@ const BasicInfoScreenSettings = ({navigation, route}) => {
                   setValue={setsetSuffix}
                 />
               </View>
-            ) : null}
+            ) : null} */}
 
-            <View style={styles.inonecon}>
-              <View style={styles.twoitem}>
+            {/* <View style={styles.inonecon}> */}
+            <View style={styles.filedcon}>
                 <CustomTextFiel
                   label={'Phone number'}
                   value={phonenumber}
@@ -348,7 +350,7 @@ const BasicInfoScreenSettings = ({navigation, route}) => {
                   type="numeric"
                 />
               </View>
-              <View style={styles.twoitem}>
+              {/* <View style={styles.twoitem}>
                 <TouchableOpacity onPress={toogle}>
                   <View
                     style={{
@@ -398,15 +400,15 @@ const BasicInfoScreenSettings = ({navigation, route}) => {
                     </Text>
                   </View>
                 ) : null}
-              </View>
-            </View>
-            <View style={styles.occupation}>
+              </View> */}
+            {/* </View> */}
+            {/* <View style={styles.occupation}>
               <CustomTextFiel
                 label={'Occupation'}
                 value={occupation}
                 setValue={setOccupation}
               />
-            </View>
+            </View> */}
             {/* <View style={[styles.inonecon, styles.top]}>
               <View style={styles.twoitem}>
                 <CustomTextFiel
@@ -425,7 +427,7 @@ const BasicInfoScreenSettings = ({navigation, route}) => {
                 />
               </View>
             </View> */}
-            <View style={[styles.inonecon, styles.top]}>
+            {/* <View style={[styles.inonecon, styles.top]}>
               <View style={styles.twoitem}>
                 <CustomTextFiel
                   label={'Working hours'}
@@ -447,17 +449,17 @@ const BasicInfoScreenSettings = ({navigation, route}) => {
                   />
                 </View>
               </View>
-            </View>
-            <View style={[styles.occupation, styles.bottom]}>
+            </View> */}
+            {/* <View style={[styles.occupation, styles.bottom]}>
               <CustomTextFiel
                 label={'Highest level of education'}
                 value={education}
                 setValue={setEducation}
               />
-            </View>
+            </View> */}
             <View style={styles.expndbuttoncontainer}>
-              <TouchableOpacity onPress={ShowFiled}>
-                {!Fieldsshowhide ? (
+              {/* <TouchableOpacity onPress={ShowFiled}> */}
+                {/* {!Fieldsshowhide ? (
                   <>
                     <Text style={styles.lstyle}>COLLAPSE</Text>
 
@@ -480,7 +482,7 @@ const BasicInfoScreenSettings = ({navigation, route}) => {
                       onPress={ShowFiled}
                     />
                   </>
-                )}
+                )} */}
                 {/* {!Fieldsshowhide ? (
                   <MaterialIcons
                     name="expand-less"
@@ -496,7 +498,7 @@ const BasicInfoScreenSettings = ({navigation, route}) => {
                     size={20}
                   />
                 )} */}
-              </TouchableOpacity>
+              {/* </TouchableOpacity> */}
             </View>
           </View>
           <View style={styles.genContainer}>
@@ -903,7 +905,7 @@ const styles = StyleSheet.create({
     paddingBottom: sizes.screenHeight * 0.03,
   },
   spayrainfo: {
-    // paddingBottom: sizes.screenHeight * 0.05,
+    paddingBottom: sizes.screenHeight * 0.02,
   },
   filedcon: {
     marginBottom: deviceHeight * 0.03,
@@ -1037,7 +1039,7 @@ const styles = StyleSheet.create({
     width: sizes.screenWidth,
     backgroundColor: '#0e0e0e',
     opacity: 0.9,
-    marginLeft: sizes.screenWidth * 0.01,
+    marginLeft: sizes.screenWidth,
     padding: 10,
     position: 'absolute',
     top: -20,

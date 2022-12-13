@@ -14,11 +14,14 @@ export const styles = StyleSheet.create({
   signOutBtn: {
     alignSelf: 'flex-end',
     right: sizes.baseMargin,
+    // top:sizes.screenHeight* 0.053,
+    // backgroundColor:colors.appBgColor2
   },
   signOutText: {
     color: colors.white,
     fontSize: fontSize.h6,
     fontFamily: fontFamily.appTextLight,
+    fontWeight:'bold'
   },
   userName: {
     color: colors.white,

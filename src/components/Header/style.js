@@ -36,11 +36,20 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
   },
+  rows:{
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent:'space-between'
+  },
   title: {
     color: colors.white,
     left: sizes.screenWidth * 0.05,
     fontSize: fontSize.h6,
     fontFamily: fontFamily.appTextLight,
+    fontWeight:'bold'
+  },
+  leftsi:{
+    left: sizes.screenWidth * 0.41,
   },
   titleIOS: {
     color: colors.white,

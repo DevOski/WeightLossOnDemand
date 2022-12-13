@@ -127,20 +127,32 @@ export const styles = StyleSheet.create({
   },
   textView: {
     padding: sizes.baseMargin,
+    top: sizes.screenHeight * 0.01,
+  },
+  secondarybg: {
+    borderTopStartRadius: sizes.screenWidth * 0.1,
+    borderTopRightRadius: sizes.screenWidth * 0.1,
+    backgroundColor: colors.secondary,
     top: sizes.screenHeight * 0.46,
   },
+  secondarybg2: {
+    borderTopStartRadius: sizes.screenWidth * 0.1,
+    borderTopRightRadius: sizes.screenWidth * 0.1,
+    backgroundColor: colors.secondary,
+    top: sizes.screenHeight * 0.58,
+  },
   proudView: {
-    padding: sizes.baseMargin,
-    top: sizes.screenHeight * 0.4,
+    padding: sizes.screenWidth * 0.05,
+    bottom: sizes.screenHeight * 0.11,
     paddingBottom: 0,
   },
   learnMoreView: {
-    top: sizes.screenHeight * 0.39,
-    padding: sizes.baseMargin,
+    bottom: sizes.screenHeight * 0.13,
+    padding: sizes.screenWidth * 0.05,
   },
   semiTextView: {
     padding: sizes.baseMargin,
-    top: sizes.screenHeight * 0.42,
+    bottom: sizes.screenHeight * 0.02,
   },
   text: {
     color: colors.white,
@@ -148,15 +160,15 @@ export const styles = StyleSheet.create({
     fontWeight: 'bold',
     width: sizes.screenWidth * 0.7,
     fontFamily: fontFamily.appTextHeading,
-    textShadowColor: colors.black,
+    // textShadowColor: colors.black,
     textShadowOffset: {width: 0.5, height: 0.5},
     textShadowRadius: 50,
     textTransform: 'uppercase',
   },
   text2: {
     color: colors.white,
-    fontSize: fontSize.h5,
-    fontWeight: '600',
+    fontSize: fontSize.h6,
+    fontWeight: 'bold',
     width: sizes.screenWidth * 0.6,
     fontFamily: fontFamily.appTextHeading,
   },
@@ -179,11 +191,10 @@ export const styles = StyleSheet.create({
     fontSize: fontSize.h4,
     bottom: 1,
   },
-  symbol2:{
+  symbol2: {
     color: colors.secondary,
     fontSize: fontSize.h4,
     bottom: 1,
-
   },
   providerText: {
     paddingTop: sizes.screenHeight * 0.015,
@@ -227,9 +238,9 @@ export const styles = StyleSheet.create({
   },
   letUsText: {
     color: colors.white,
-    fontSize: fontSize.h6,
+    fontSize: fontSize.regular,
     top: sizes.TinyMargin,
-    width: sizes.screenWidth * 0.6,
+    // width: sizes.screenWidth * 0.9,
     fontFamily: fontFamily.appTextLight,
   },
   providerImg: {

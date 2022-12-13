@@ -25,6 +25,7 @@ export default function Header({
   textCenter,
   next,
   status,
+  signout
 }) {
   const navigation = useNavigation();
   return (
@@ -49,6 +50,13 @@ export default function Header({
           <TouchableOpacity onPress={onPress}>
             <View style={[styles.row, styles.left]}>
               <Text style={styles.title}> </Text>
+            </View>
+          </TouchableOpacity>
+        )}
+         {signout && onPress && (
+          <TouchableOpacity onPress={onPress}>
+            <View style={[styles.rows, styles.leftsi]}>
+              <Text style={styles.title}>Sign Out</Text>
             </View>
           </TouchableOpacity>
         )}

@@ -33,25 +33,25 @@ export const SignUp = ({navigation}) => {
   const [email, setemail] = useState('');
   const [password, setpassword] = useState('');
   const [checked, setChecked] = React.useState(false);
-  const [date, setDate] = useState('');
+  // const [date, setDate] = useState('');
   const [open, setOpen] = useState(false);
   const [register, setregister] = useState();
   const [oneUppercase, setOneUpperCase] = useState(false);
   const [onelowercase, setOneLowerCase] = useState(false);
   const [oneNumeric, setOneNumeric] = useState(false);
-  const [currentDate, setCurrentDate] = useState('');
+  // const [currentDate, setCurrentDate] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const [error, setError] = useState(false);
 
-  useEffect(() => {
-    // var utc = new Date().toJSON().slice(0, 10).replace(/-/g, '/');
-    // let res = moment(utc).format('DD/MM/YYYY')
-    // console.log('---------------------------->',res);
-    // setCurrentDate(utc);
-    let date = new Date().toJSON();
-    let current = moment(date).format('DD/MM/YYYY');
-    setCurrentDate(current);
-  }, []);
+  // useEffect(() => {
+  //   // var utc = new Date().toJSON().slice(0, 10).replace(/-/g, '/');
+  //   // let res = moment(utc).format('DD/MM/YYYY')
+  //   // console.log('---------------------------->',res);
+  //   // setCurrentDate(utc);
+  //   let date = new Date().toJSON();
+  //   let current = moment(date).format('DD/MM/YYYY');
+  //   setCurrentDate(current);
+  // }, []);
 
   useEffect(() => {
     //this will fire  at the beginning and on foto changing value
@@ -82,7 +82,7 @@ export const SignUp = ({navigation}) => {
     //   checked,
     //   isEnabled,
     //   date,'----------->');
-    if (email && password && checked && date) {
+    if (email && password && checked) {
       // console.log(email,
       //   password,
       //   checked,
@@ -94,6 +94,7 @@ export const SignUp = ({navigation}) => {
       // } catch (error) {
       //   console.log(error);
       // }
+      console.log("|works");
       var formdata = new FormData();
       formdata.append('email', email.toLowerCase());
 
@@ -116,7 +117,7 @@ export const SignUp = ({navigation}) => {
               password,
               checked,
               isEnabled,
-              date,
+              
             });
           }
         })
@@ -171,7 +172,7 @@ export const SignUp = ({navigation}) => {
               }}
             /> */}
           </View>
-          <View style={styles.filedcon}>
+          {/* <View style={styles.filedcon}>
             {date ? (
               <TouchableOpacity
                 style={styles.datebutton}
@@ -194,29 +195,10 @@ export const SignUp = ({navigation}) => {
               // date={date ? date : currentDate}
               onConfirm={onConfirmSingle}
 
-              // validRange={{
-              //   startDate: new Date(2021, 1, 2),  // optional
-              //   endDate: new Date(), // optional
-              //   disabledDates: [new Date()] // optional
-              // }}
-              // onChange={} // same props as onConfirm but triggered without confirmed by user
-              // saveLabel="Save" // optional
-              // saveLabelDisabled={true} // optional, default is false
-              // uppercase={false} // optional, default is true
-              // label="Select date" // optional
-              // animationType="slide" // optional, default is 'slide' on ios/android and 'none' on web
-              // startYear={2000} // optional, default is 1800
-              // endYear={2100} // optional, default is 2200
-              // closeIcon="close" // optional, default is "close"
-              // editIcon="pencil" // optional, default is "pencil"
-              // calendarIcon="calendar" // optional, default is "calendar"
+              
             />
-            {/* <CustomTextFiel
-              label={'Date of birth'}
-              value={email}
-              setValue={setemail}
-            /> */}
-          </View>
+            
+          </View> */}
           <View style={styles.filedcon}>
             <CustomTextFiel
               label={'Password'}
@@ -308,26 +290,29 @@ export const SignUp = ({navigation}) => {
           </View>
           <View style={styles.filedconbutton}>
             <TouchableOpacity
-              disabled={
-                password?.length > 8 &&
-                password?.toUpperCase() &&
-                password?.match(/\d/) &&
-                email?.includes('@') &&
-                email?.includes('.') &&
-                date
-                  ? false
-                  : true
-              }
+              // disabled={
+              //   password?.length > 8 &&
+              //   password?.toUpperCase() &&
+              //   password?.match(/\d/) &&
+              //   email?.includes('@') &&
+              //   email?.includes('.')
+              //   //  &&
+              //   // date
+              //   //   ? false
+              //   //   : true
+              // }
               style={
-                password?.length > 8 &&
-                password?.toUpperCase() &&
-                password?.match(/\d/) &&
-                email?.includes('@') &&
-                email?.includes('.') &&
-                date &&
-                checked
-                  ? styles.but
-                  : styles.disabledView
+                styles.but
+                // password?.length > 8 &&
+                // password?.toUpperCase() &&
+                // password?.match(/\d/) &&
+                // email?.includes('@') &&
+                // email?.includes('.') 
+                // &&
+                // // date &&
+                // checked
+                //   ? styles.but
+                //   : styles.disabledView
               }
               onPress={Sinup}>
               <Text

@@ -16,18 +16,24 @@ import {
   BackHandler,
 } from 'react-native';
 import Modal from 'react-native-modal';
+import {DatePickerModal} from 'react-native-paper-dates';
 
 import {RadioButton} from 'react-native-paper';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {colors, fontFamily, fontSize, sizes} from '../../services';
 import {CustomTextFiel} from '../../component/textFiled';
 import {getTrainer, signUp} from '../../services/utilities/api/auth';
 import {storeData} from '../../store/actions';
 import {useDispatch} from 'react-redux';
 import Error from '../../components/Error';
+import moment from 'moment';
+import {width} from 'react-native-dimension';
+import Header from '../../components/Header';
 const BasicInfoScreen = ({navigation, route}) => {
   // console.log(route,"-------->basicscreen");
-
+  const [date, setDate] = useState('');
+  const [open, setOpen] = useState(false);
+  const [currentDate, setCurrentDate] = useState('');
   // const {email, password, checked, date, isEnabled} = route?.params;
   // const {password} = route.params;
   // const {checked} = route.params;
@@ -83,68 +89,41 @@ const BasicInfoScreen = ({navigation, route}) => {
   //     console.log(allinformation,'useeffectallinformation');
   //   }
   //  },[allinformation])
-
+  useEffect(() => {
+    
+    let date = new Date().toJSON();
+    let current = moment(date).format('DD/MM/YYYY');
+    setCurrentDate(current);
+  }, []);
+  const onConfirmSingle = date => {
+    console.log('------>>', date);
+    let test = JSON.stringify(date);
+    let d1 = JSON.parse(test);
+    let res = moment(d1.date).format('DD/MM/YYYY');
+    console.log('-------->>', res);
+    setDate(res);
+    setOpen(false);
+  };
   const toogle = () => {
     setshow(!show);
   };
   const ShowFiled = () => {
     setFieldsshowhide(!Fieldsshowhide);
   };
+  const onDismissSingle = () => {
+    setOpen(false);
+  };
 
   useEffect(() => {
-    const backHandler = BackHandler.addEventListener('backPress', () => true);
-    return () => backHandler.remove();
+    // const backHandler = BackHandler.addEventListener('backPress', () => true);
+    // return () => backHandler.remove();
   }, []);
   const Continue = async () => {
-    // )  name,
-    //     middle,
-    //     lastname,
-    //     email,
-    //     password,
-    //     gender,
-    //     Prefix,
-    //     Suffix,
-    //     phonenumber,
-    //     isEnabled,
-    // navigation.navigate('wellcomescreen')
+   
 
-    // try {
-    //   console.log('---->>>',
-    //     name,
-    //     middle,
-    //     lastname,
-    //     route?.params?.email,
-    //     route?.params?.password,
-    //     gender,
-    //     Prefix,
-    //     Suffix,
-    //     phonenumber,
-    //     slectnumber,
-    //     route?.params?.date,
-    //     1
-    //   );
-    //   let response = await signUp(
-    //     name,
-    //     middle,
-    //     lastname,
-    //     route?.params?.email,
-    //     route?.params?.password,
-    //     gender,
-    //     Prefix,
-    //     Suffix,
-    //     phonenumber,
-    //     slectnumber,
-    //     route?.params?.date,
-    //     1
-    //     // isEnabled ? 1 : 0,
-    //     // route?.params?.isEnabled ? 1 : 0,
-    //   );
-    //   console.log(response.data);
-    // } catch (error) {
-    //   console.log(error);
-    // }
+   
+    
 
-    // console.log('------->>>',occupation,workingHour,age,education,smokeStatus,maritalStatus);
     var formdata = new FormData();
     formdata.append('first_name', name);
     formdata.append('middle_name', middle);
@@ -156,7 +135,7 @@ const BasicInfoScreen = ({navigation, route}) => {
     formdata.append('suffix', Suffix);
     formdata.append('phone', phonenumber);
     formdata.append('phone_type', slectnumber);
-    formdata.append('dob', route?.params?.date);
+    formdata.append('dob', date);
     formdata.append('fingerprint', route?.params?.isEnabled == true ? 1 : 0);
     formdata.append('occupation', occupation);
     formdata.append('work_hours', workingHour);
@@ -192,6 +171,7 @@ const BasicInfoScreen = ({navigation, route}) => {
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView>
+      <Header />
         <View style={styles.inercontainer}>
           <View style={styles.basicinfocontainer}>
             <Text style={styles.basicinfo}> Basic Info</Text>
@@ -203,7 +183,8 @@ const BasicInfoScreen = ({navigation, route}) => {
             <Text style={styles.basicinfophyra}>your profile</Text>
           </View>
           <View>
-            {Fieldsshowhide ? (
+           
+            {/* {Fieldsshowhide ? (
               <View style={styles.filedcon}>
                 <CustomTextFiel
                   label={'Prefix'}
@@ -211,8 +192,53 @@ const BasicInfoScreen = ({navigation, route}) => {
                   setValue={setPrefix}
                 />
               </View>
-            ) : null}
+            ) : null} */}
+            <View style={[styles.filedcon,styles.Rowfle]}>
+              <CustomTextFiel
+                label={'Email'}
+                value={route?.params?.email}
+                editable={false}
+                // setValue={setemail}
+              />
+              
+               <TouchableOpacity
+              onPress={() => navigation.navigate('signupscreen')}>
+              <View
+                style={{
+                  alignSelf: 'flex-end',
+                  borderRadius: sizes.screenWidth * 0.02,
+                  // width: sizes.screenWidth * 0.4,
+                  borderWidth: 1,
+                  borderColor: colors.lightGray,
+                  padding: sizes.screenWidth * 0.008,
+                  position:'absolute',
+                  bottom:sizes.screenHeight* 0.02,
+                  right:sizes.screenWidth* 0.02,
+                  // marginBottom: sizes.screenHeight * 0.04,
+                  shadowColor: '#000',
+                  backgroundColor: colors.secondary,
+                  shadowOffset: {
+                    width: 0,
+                    height: 2,
+                  },
+                  shadowOpacity: 0.25,
+                  shadowRadius: 3.84,
 
+                  elevation: 5,
+                }}>
+                {/* <Text
+                  style={{
+                    color: colors.white,
+                    fontSize: fontSize.h6,
+                    textAlign: 'center',
+                  }}>
+                  Change Password
+                </Text> */}
+                <MaterialCommunityIcons color={colors.white} name='email-edit'/>
+              </View>
+            </TouchableOpacity>
+            
+            </View>
             <View style={styles.filedcon}>
               <CustomTextFiel
                 label={'First name'}
@@ -220,7 +246,7 @@ const BasicInfoScreen = ({navigation, route}) => {
                 setValue={setname}
               />
             </View>
-            {Fieldsshowhide ? (
+           
               <View style={styles.filedcon}>
                 <CustomTextFiel
                   label={'Middle name'}
@@ -228,7 +254,8 @@ const BasicInfoScreen = ({navigation, route}) => {
                   setValue={setMiddle}
                 />
               </View>
-            ) : null}
+            {/* {Fieldsshowhide ? (
+            ) : null} */}
             <View style={styles.filedcon}>
               <CustomTextFiel
                 label={'Last Name'}
@@ -236,7 +263,7 @@ const BasicInfoScreen = ({navigation, route}) => {
                 setValue={setlastname}
               />
             </View>
-            {Fieldsshowhide ? (
+            {/* {Fieldsshowhide ? (
               <View style={styles.filedcon}>
                 <CustomTextFiel
                   label={'Suffix'}
@@ -244,18 +271,42 @@ const BasicInfoScreen = ({navigation, route}) => {
                   setValue={setsetSuffix}
                 />
               </View>
-            ) : null}
+            ) : null} */}
+ <View style={styles.filedcon}>
+              {date ? (
+                <TouchableOpacity
+                  style={styles.datebutton}
+                  onPress={() => setOpen(!open)}>
+                  <Text style={styles.datebuttontext}>{date && date}</Text>
+                </TouchableOpacity>
+              ) : (
+                <TouchableOpacity
+                  style={styles.datebutton}
+                  onPress={() => setOpen(!open)}
+                  uppercase={false}>
+                  <Text style={styles.datebuttontext}> Date of birth</Text>
+                </TouchableOpacity>
+              )}
+              <DatePickerModal
+                locale="en"
+                mode="single"
+                visible={open}
+                onDismiss={onDismissSingle}
+                onConfirm={onConfirmSingle}
+                on="calendar"
+              />
+            </View>
 
-            <View style={styles.inonecon}>
-              <View style={styles.twoitem}>
+            
+            <View style={styles.filedcon}>
                 <CustomTextFiel
                   label={'Phone number'}
                   value={phonenumber}
                   setValue={setphonenumber}
                   type="numeric"
                 />
-              </View>
-              <View style={styles.twoitem}>
+             
+              {/* <View style={styles.twoitem}>
                 <TouchableOpacity onPress={toogle}>
                   <View
                     style={{
@@ -305,15 +356,15 @@ const BasicInfoScreen = ({navigation, route}) => {
                     </Text>
                   </View>
                 ) : null}
-              </View>
+              </View> */}
             </View>
-            <View style={styles.occupation}>
+            {/* <View style={styles.occupation}>
               <CustomTextFiel
                 label={'Occupation'}
                 value={occupation}
                 setValue={setOccupation}
               />
-            </View>
+            </View> */}
             {/* <View style={[styles.inonecon, styles.top]}>
               <View style={styles.twoitem}>
                 <CustomTextFiel
@@ -332,7 +383,7 @@ const BasicInfoScreen = ({navigation, route}) => {
                 />
               </View>
             </View> */}
-            <View style={[styles.inonecon, styles.top]}>
+            {/* <View style={[styles.inonecon, styles.top]}>
               <View style={styles.twoitem}>
                 <CustomTextFiel
                   label={'Working hours'}
@@ -354,17 +405,17 @@ const BasicInfoScreen = ({navigation, route}) => {
                   />
                 </View>
               </View>
-            </View>
-            <View style={[styles.occupation, styles.bottom]}>
+            </View> */}
+            {/* <View style={[styles.occupation, styles.bottom]}>
               <CustomTextFiel
                 label={'Highest level of education'}
                 value={education}
                 setValue={setEducation}
               />
-            </View>
+            </View> */}
             <View style={styles.expndbuttoncontainer}>
-              <TouchableOpacity onPress={ShowFiled}>
-                {!Fieldsshowhide ? (
+              {/* <TouchableOpacity onPress={ShowFiled}> */}
+                {/* {!Fieldsshowhide ? (
                   <>
                     <Text style={styles.lstyle}>COLLAPSE</Text>
 
@@ -387,7 +438,7 @@ const BasicInfoScreen = ({navigation, route}) => {
                       onPress={ShowFiled}
                     />
                   </>
-                )}
+                )} */}
                 {/* {!Fieldsshowhide ? (
                   <MaterialIcons
                     name="expand-less"
@@ -403,7 +454,7 @@ const BasicInfoScreen = ({navigation, route}) => {
                     size={20}
                   />
                 )} */}
-              </TouchableOpacity>
+              {/* </TouchableOpacity> */}
             </View>
           </View>
           <View style={styles.genContainer}>
@@ -788,6 +839,17 @@ const styles = StyleSheet.create({
     // height:sizes.screenHeight,
     backgroundColor: colors.white,
   },
+  changeemailbuttonView: {
+    backgroundColor: colors.secondary,
+    width: sizes.screenWidth * 0.29,
+    left: sizes.screenWidth * 0.63,
+    bottom: sizes.screenHeight * 0.05,
+  },
+  changetext: {
+    color: colors.white,
+    fontSize: fontSize.large,
+    alignSelf: 'center',
+  },
   inercontainer: {
     padding: sizes.screenWidth * 0.04,
   },
@@ -812,11 +874,38 @@ const styles = StyleSheet.create({
   filedcon: {
     marginBottom: deviceHeight * 0.03,
   },
+  datebuttontext: {
+    // color: colors.black,
+    fontSize: fontSize.large,
+    top: sizes.screenHeight * 0.02,
+    left: sizes.TinyMargin,
+    // alignSelf:'flex-start'
+
+    // position:'absolute'
+  },
+  datebutton: {
+    // backgroundColor:'red',
+    // justifyContent:'flex-start',
+    // marginRight:sizes.screenWidth*0.9,
+    // width:sizes.screenWidth*0.4,
+    // height:sizes.screenHeight*0.4,
+    color: 'black',
+    borderBottomWidth: 1,
+    borderBottomColor: colors.disabledBg,
+    paddingBottom: sizes.screenHeight * 0.05,
+    // position:'absolute'
+  },
   twoitem: {
     paddingRight: sizes.screenWidth * 0.03,
     paddingLeft: sizes.screenWidth * 0.03,
     marginBottom: deviceHeight * 0.03,
     width: sizes.screenWidth * 0.51,
+  },
+  twoitem1:{
+    paddingRight: sizes.screenWidth * 0.03,
+    paddingLeft: sizes.screenWidth * 0.03,
+    marginBottom: deviceHeight * 0.03,
+    width: sizes.screenWidth * 1,
   },
   inonecon: {
     flexDirection: 'row',
@@ -865,6 +954,7 @@ const styles = StyleSheet.create({
     lineHeight: sizes.screenHeight * 0.05,
     fontFamily: fontFamily.appTextMedium,
   },
+ 
   right: {
     left: sizes.screenWidth * 0.1,
   },
