@@ -41,7 +41,7 @@ export default function startSession({navigation}) {
     fetch('http://alsyedmmtravel.com/api/question_review', requestOptions)
       .then(response => response.json())
       .then(result => {
-        console.log('--->>', result);
+        console.log('--->>', result.data);
         if (result.data.ap_id) {
           setAppId(result.data.ap_id);
         } else {

@@ -105,7 +105,7 @@ export default function Question({navigation, route}) {
               />
             </View>
           </View>
-          <View style={styles.paddingTop}>
+          {/* <View style={styles.paddingTop}>
             <Text style={styles.text2}>List any allergies/intolerances</Text>
             <View>
               <TextInput
@@ -117,10 +117,10 @@ export default function Question({navigation, route}) {
                 value={allergies}
               />
             </View>
-          </View>
+          </View> */}
           <View style={styles.paddingTop}>
             <Text style={styles.text2}>
-              List All Medications, Vitamins, and Herbals and their dosage
+              List All Medications and their dosage
             </Text>
             <View>
               <TextInput
@@ -135,7 +135,7 @@ export default function Question({navigation, route}) {
               />
             </View>
           </View>
-          <View style={styles.paddingTop}>
+          {/* <View style={styles.paddingTop}>
             <Text style={styles.text2}>
               How many hours of sleep do you average per night?
             </Text>
@@ -149,11 +149,10 @@ export default function Question({navigation, route}) {
                 // value={medicationDos}
               />
             </View>
-          </View>
-          <View style={styles.gcon}>
+          </View> */}
+          {/* <View style={styles.gcon}>
             <Text style={styles.text2}>
               Is your sleep restful?
-              {/* How many hours of sleep do you average per night?  */}
             </Text>
 
             <TouchableOpacity
@@ -196,8 +195,8 @@ export default function Question({navigation, route}) {
                 />
               </View>
             </TouchableOpacity>
-          </View>
-          <View style={styles.paddingTop}>
+          </View> */}
+          {/* <View style={styles.paddingTop}>
             <Text style={styles.text2}>
               How do you rate the stress in your life, 10 being the highest?
             </Text>
@@ -226,8 +225,8 @@ export default function Question({navigation, route}) {
                 <Text style={styles.rating}>10</Text>
               </View>
             </View>
-          </View>
-          <View style={styles.paddingTop}>
+          </View> */}
+          {/* <View style={styles.paddingTop}>
             <Text style={styles.text2}>How do you cope with stress?</Text>
             <View>
               <TextInput
@@ -238,8 +237,8 @@ export default function Question({navigation, route}) {
                 value={copeStress}
               />
             </View>
-          </View>
-          <View style={styles.paddingTop}>
+          </View> */}
+          {/* <View style={styles.paddingTop}>
             <Text style={styles.text2}>
               List any cultural or religious practices related to your health or
               diet
@@ -253,8 +252,8 @@ export default function Question({navigation, route}) {
                 value={listCultural}
               />
             </View>
-          </View>
-          <View style={styles.paddingTop}>
+          </View> */}
+          {/* <View style={styles.paddingTop}>
             <Text style={styles.text2}>
               How do you rate your readiness to make lifestyle changes, 5 being
               most ready?{' '}
@@ -283,8 +282,8 @@ export default function Question({navigation, route}) {
                 <Text style={styles.rating}>5</Text>
               </View>
             </View>
-          </View>
-          <View style={styles.paddingTop}>
+          </View> */}
+          {/* <View style={styles.paddingTop}>
             <Text style={styles.text2}>
               How do you rate your confidence to make lifestyle changes, 5 being
               most confident?
@@ -313,7 +312,7 @@ export default function Question({navigation, route}) {
                 <Text style={styles.rating}>5</Text>
               </View>
             </View>
-          </View>
+          </View> */}
           <View style={styles.paddingTop}>
             <TouchableOpacity
               // disabled={selectanswer ? false : true}

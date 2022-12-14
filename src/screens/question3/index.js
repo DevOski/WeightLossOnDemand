@@ -82,7 +82,7 @@ export default function Questionthree({navigation, route}) {
       <ScrollView style={styles.color}>
         <View style={styles.padding}>
           <Text style={styles.text}>Physical Activity Information</Text>
-          <View style={styles.paddingTop}>
+          {/* <View style={styles.paddingTop}>
             <Text style={styles.text2}>
               What is the most physically active thing you do in a day?
             </Text>
@@ -96,7 +96,7 @@ export default function Questionthree({navigation, route}) {
                 value={activeThing}
               />
             </View>
-          </View>
+          </View> */}
           <View style={styles.paddingTop}>
             <Text style={styles.text2}>
               What, if any, regular exercises do you do?
@@ -112,7 +112,7 @@ export default function Questionthree({navigation, route}) {
               />
             </View>
           </View>
-          <View style={styles.paddingTop}>
+          {/* <View style={styles.paddingTop}>
             <Text style={styles.text2}>How many days a week?</Text>
             <View>
               <TextInput
@@ -123,9 +123,9 @@ export default function Questionthree({navigation, route}) {
                 value={days}
               />
             </View>
-          </View>
+          </View> */}
 
-          <View style={styles.paddingTop}>
+          {/* <View style={styles.paddingTop}>
             <Text style={styles.text2}>How many minutes per day?</Text>
             <View>
               <TextInput
@@ -136,9 +136,9 @@ export default function Questionthree({navigation, route}) {
                 value={minutes}
               />
             </View>
-          </View>
+          </View> */}
 
-          <View style={styles.paddingTop}>
+          {/* <View style={styles.paddingTop}>
             <Text style={styles.text2}>
               At what level of intensity (light, moderate, or high)?
             </Text>
@@ -180,7 +180,7 @@ export default function Questionthree({navigation, route}) {
                 value={phyLimitations}
               />
             </View>
-          </View>
+          </View> */}
           <View style={styles.paddingTop}>
             <TouchableOpacity
               onPress={handleNext}

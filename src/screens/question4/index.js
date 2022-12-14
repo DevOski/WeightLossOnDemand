@@ -119,7 +119,7 @@ export default function Questionfour({navigation, route}) {
       <ScrollView style={styles.color}>
         <View style={styles.padding}>
           <Text style={styles.text}>Nutrition Information</Text>
-          <View style={styles.paddingTop}>
+          {/* <View style={styles.paddingTop}>
             <Text style={styles.text2}>
               Fill in your typical day’s food/meal intake
             </Text>
@@ -295,8 +295,8 @@ export default function Questionfour({navigation, route}) {
               onChangeText={text => setSnackFood3(text)}
               value={snackFood3}
             />
-          </View>
-          <View style={styles.paddingTop}>
+          </View> */}
+          {/* <View style={styles.paddingTop}>
             <Text style={styles.text2}>
               How often do you eat out at restaurants/fast food?
             </Text>
@@ -335,7 +335,7 @@ export default function Questionfour({navigation, route}) {
                 value={groceryShopping}
               />
             </View>
-          </View>
+          </View> */}
           <View style={styles.paddingTop}>
             <Text style={styles.text2}>Who plans the meals at home?</Text>
             <View>
@@ -360,7 +360,7 @@ export default function Questionfour({navigation, route}) {
               />
             </View>
           </View>
-          <View style={styles.paddingTop}>
+          {/* <View style={styles.paddingTop}>
             <Text style={styles.text2}>
               What 1 or 2 things would you like to change with your diet?
             </Text>
@@ -374,7 +374,7 @@ export default function Questionfour({navigation, route}) {
                 value={dietChange}
               />
             </View>
-          </View>
+          </View> */}
           <View style={styles.paddingTop}>
             <TouchableOpacity onPress={handleNext}>
               <View style={styles.buttonView}>

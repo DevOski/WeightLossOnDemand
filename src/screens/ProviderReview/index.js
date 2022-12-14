@@ -17,7 +17,7 @@ import {colors, sizes} from '../../services';
 import Loader from 'react-native-three-dots-loader';
 import Spinner from 'react-native-spinkit';
 import {createChannel, startSession} from '../../services/utilities/api/auth';
-import {useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {useIsFocused} from '@react-navigation/native';
 
 export default function ProviderReview({navigation, route}) {
@@ -80,6 +80,7 @@ export default function ProviderReview({navigation, route}) {
   const tr_name = useSelector(state => state.tr_name);
   const tr_image = useSelector(state => state.tr_image);
   const tr_amount = useSelector(state => state.tr_amount);
+  const dispatch = useDispatch();
   console.log(tr_id, tr_name, tr_image, tr_amount);
 
   useEffect(() => {

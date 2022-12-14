@@ -165,7 +165,7 @@ export default function Questiontwo({navigation, route}) {
               />
             </View>
           </View>
-          <View style={styles.paddingTop}>
+          {/* <View style={styles.paddingTop}>
             <Text style={styles.text2}>
               What makes it hard for you to lose weight and keep it off?
             </Text>
@@ -179,8 +179,8 @@ export default function Questiontwo({navigation, route}) {
                 value={hardLose}
               />
             </View>
-          </View>
-          <View style={styles.paddingTop}>
+          </View> */}
+          {/* <View style={styles.paddingTop}>
             <Text style={styles.text2}>What has helped you lose weight?</Text>
             <View>
               <TextInput
@@ -192,7 +192,7 @@ export default function Questiontwo({navigation, route}) {
                 value={helpLose}
               />
             </View>
-          </View>
+          </View> */}
           <View style={styles.paddingTop}>
             <Text style={styles.text2}>
               How much weight would you like to lose?

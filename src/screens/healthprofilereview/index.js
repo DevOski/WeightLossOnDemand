@@ -144,7 +144,7 @@ export const ReviewHealthprofile = ({navigation, route}) => {
               </View>
             </View>
           </View>
-          <View style={styles.box}>
+          {/* <View style={styles.box}>
             <View style={styles.borderrb}>
               <Text style={styles.textttt}>
                 2) List any allergies/intolerances
@@ -153,17 +153,18 @@ export const ReviewHealthprofile = ({navigation, route}) => {
             <View style={styles.borderrb}>
               <Text style={styles.textttt}>Ans: {q2}</Text>
             </View>
-          </View>
+          </View> */}
           <View style={styles.box}>
             <View style={styles.borderrb}>
               <Text style={styles.textttt}>
-                3) List All Medications, Vitamins, and Herbals and their dosage
+                2) List All Medications and their dosage
               </Text>
             </View>
             <View style={styles.borderrb}>
               <Text style={styles.textttt}>Ans: {q3}</Text>
             </View>
           </View>
+          {/*
           <View style={styles.box}>
             <View style={styles.borderrb}>
               <Text style={styles.textttt}>
@@ -229,10 +230,10 @@ export const ReviewHealthprofile = ({navigation, route}) => {
             <View style={styles.borderrb}>
               <Text style={styles.textttt}>Ans: {q9}</Text>
             </View>
-          </View>
+          </View> */}
           <View style={styles.box}>
             <View style={styles.borderrb}>
-              <Text style={styles.textttt}>10) Current Weight</Text>
+              <Text style={styles.textttt}>3) Current Weight</Text>
             </View>
             <View style={styles.borderrb}>
               <Text style={styles.textttt}>Ans: {q10}</Text>
@@ -240,7 +241,7 @@ export const ReviewHealthprofile = ({navigation, route}) => {
           </View>
           <View style={styles.box}>
             <View style={styles.borderrb}>
-              <Text style={styles.textttt}>11) Height</Text>
+              <Text style={styles.textttt}>4) Height</Text>
             </View>
             <View style={styles.borderrb}>
               <Text style={styles.textttt}>Ans: {q11}</Text>
@@ -249,29 +250,18 @@ export const ReviewHealthprofile = ({navigation, route}) => {
           <View style={styles.box}>
             <View style={styles.borderrb}>
               <Text style={styles.textttt}>
-                12) What was your lowest and highest adult weight?
+                5) What was your lowest and highest adult weight?
               </Text>
             </View>
             <View style={styles.borderrb}>
-              <Text style={styles.textttt}>Ans: {q12}</Text>
+              <Text style={styles.textttt}>Ans: {q12},{q13}</Text>
             </View>
           </View>
           <View style={styles.box}>
             <View style={styles.borderrb}>
               <Text style={styles.textttt}>
-                13) Describe any weight changes (gain or loss) in the past 2
+                6) Describe any weight changes (gain or loss) in the past 2
                 years
-              </Text>
-            </View>
-            <View style={styles.borderrb}>
-              <Text style={styles.textttt}>Ans: {q13}</Text>
-            </View>
-          </View>
-          <View style={styles.box}>
-            <View style={styles.borderrb}>
-              <Text style={styles.textttt}>
-                14) Have you dieted in the past for weight loss? No Yes If yes,
-                please indicate what you have done
               </Text>
             </View>
             <View style={styles.borderrb}>
@@ -279,6 +269,17 @@ export const ReviewHealthprofile = ({navigation, route}) => {
             </View>
           </View>
           <View style={styles.box}>
+            <View style={styles.borderrb}>
+              <Text style={styles.textttt}>
+                7) Have you dieted in the past for weight loss? No Yes If yes,
+                please indicate what you have done
+              </Text>
+            </View>
+            <View style={styles.borderrb}>
+              <Text style={styles.textttt}>Ans: {q15}</Text>
+            </View>
+          </View>
+          {/* <View style={styles.box}>
             <View style={styles.borderrb}>
               <Text style={styles.textttt}>
                 15) What makes it hard for you to lose weight and keep it off?
@@ -297,28 +298,29 @@ export const ReviewHealthprofile = ({navigation, route}) => {
             <View style={styles.borderrb}>
               <Text style={styles.textttt}>Ans: {q16}</Text>
             </View>
-          </View>
+          </View>          */}
           <View style={styles.box}>
             <View style={styles.borderrb}>
               <Text style={styles.textttt}>
-                17) How much weight would you like to lose?
-              </Text>
-            </View>
-            <View style={styles.borderrb}>
-              <Text style={styles.textttt}>Ans: {q17}</Text>
-            </View>
-          </View>
-          <View style={styles.box}>
-            <View style={styles.borderrb}>
-              <Text style={styles.textttt}>
-                18) How will you benefit from this weight loss?
+                8) How much weight would you like to lose?
               </Text>
             </View>
             <View style={styles.borderrb}>
               <Text style={styles.textttt}>Ans: {q18}</Text>
             </View>
           </View>
+
           <View style={styles.box}>
+            <View style={styles.borderrb}>
+              <Text style={styles.textttt}>
+                9) How will you benefit from this weight loss?
+              </Text>
+            </View>
+            <View style={styles.borderrb}>
+              <Text style={styles.textttt}>Ans: {q19}</Text>
+            </View>
+          </View>
+          {/* <View style={styles.box}>
             <View style={styles.borderrb}>
               <Text style={styles.textttt}>
                 19) What is the most physically active thing you do in a day?
@@ -327,18 +329,18 @@ export const ReviewHealthprofile = ({navigation, route}) => {
             <View style={styles.borderrb}>
               <Text style={styles.textttt}>Ans: {q19}</Text>
             </View>
-          </View>
+          </View>  */}
           <View style={styles.box}>
             <View style={styles.borderrb}>
               <Text style={styles.textttt}>
-                20) What, if any, regular exercises do you do?
+                10) What, if any, regular exercises do you do?
               </Text>
             </View>
             <View style={styles.borderrb}>
-              <Text style={styles.textttt}>Ans: {q20}</Text>
+              <Text style={styles.textttt}>Ans: {q21}</Text>
             </View>
           </View>
-          <View style={styles.box}>
+          {/* <View style={styles.box}>
             <View style={styles.borderrb}>
               <Text style={styles.textttt}>21) How many days a week?</Text>
             </View>
@@ -383,8 +385,8 @@ export const ReviewHealthprofile = ({navigation, route}) => {
             <View style={styles.borderrb}>
               <Text style={styles.textttt}>Ans: {q25}</Text>
             </View>
-          </View>
-          <View style={styles.box}>
+          </View> */}
+          {/* <View style={styles.box}>
             <View style={styles.borderrb}>
               <Text style={styles.textttt}>26) Breakfast Time</Text>
             </View>
@@ -569,21 +571,11 @@ export const ReviewHealthprofile = ({navigation, route}) => {
             <View style={styles.borderrb}>
               <Text style={styles.textttt}>Ans: {q46}</Text>
             </View>
-          </View>
+          </View> */}
           <View style={styles.box}>
             <View style={styles.borderrb}>
               <Text style={styles.textttt}>
-                47) Who plans the meals at home?
-              </Text>
-            </View>
-            <View style={styles.borderrb}>
-              <Text style={styles.textttt}>Ans: {q47}</Text>
-            </View>
-          </View>
-          <View style={styles.box}>
-            <View style={styles.borderrb}>
-              <Text style={styles.textttt}>
-                48) Who prepares the meals at home?
+                11) Who plans the meals at home?
               </Text>
             </View>
             <View style={styles.borderrb}>
@@ -593,13 +585,23 @@ export const ReviewHealthprofile = ({navigation, route}) => {
           <View style={styles.box}>
             <View style={styles.borderrb}>
               <Text style={styles.textttt}>
-                49) What 1 or 2 things would you like to change with your diet?
+                12) Who prepares the meals at home?
               </Text>
             </View>
             <View style={styles.borderrb}>
               <Text style={styles.textttt}>Ans: {q49}</Text>
             </View>
           </View>
+          {/* <View style={styles.box}>
+            <View style={styles.borderrb}>
+              <Text style={styles.textttt}>
+                49) What 1 or 2 things would you like to change with your diet?
+              </Text>
+            </View>
+            <View style={styles.borderrb}>
+              <Text style={styles.textttt}>Ans: {q49}</Text>
+            </View>
+          </View> */}
           <TouchableOpacity
             onPress={
               () =>

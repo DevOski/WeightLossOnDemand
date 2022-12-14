@@ -19,7 +19,7 @@ import ChooseFollowUp from './src/screens/ChooseFollowUp';
 import store from './src/store';
 import {persistor} from './src/store';
 import {PersistGate} from 'redux-persist/integration/react';
-import {Provider} from 'react-redux';
+import {Provider, useSelector} from 'react-redux';
 import {
   notifcationListener,
   requestUserPermission,
@@ -62,7 +62,7 @@ export default function App() {
 
   useEffect(() => {
     requestUserPermission();
-    notifcationListener();
+    // notifcationListener();
     const unsubscribe = messaging().onMessage(async remoteMessage => {
       console.log(remoteMessage);
       PushNotification.createChannel({
@@ -85,8 +85,9 @@ export default function App() {
         soundName: 'default',
       });
     });
-
-    return unsubscribe;
+    return () => {
+      unsubscribe();
+    };
   }, []);
 
   messaging().setBackgroundMessageHandler(async remoteMessage => {
@@ -116,8 +117,8 @@ export default function App() {
                 <View
                   style={{
                     position: 'relative',
-                    bottom:sizes.screenHeight * 0.3,
-                    left:sizes.screenWidth * 0.85,
+                    bottom: sizes.screenHeight * 0.3,
+                    left: sizes.screenWidth * 0.85,
                   }}>
                   <Entypo
                     name="cross"
