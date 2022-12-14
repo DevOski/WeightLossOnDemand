@@ -59,8 +59,8 @@ export default function startSession({navigation}) {
         {!currentSession && (
           <View>
             <View style={{paddingBottom: sizes.TinyMargin}}>
-              {error !== '' && (
-                <TouchableOpacity
+              {/* {error !== '' && ( */}
+              {/* <TouchableOpacity
                   onPress={() =>
                     navigation.navigate('userDetailTrainer', {
                       ap_id: appId,
@@ -78,8 +78,8 @@ export default function startSession({navigation}) {
                     }}>
                     View Client Details
                   </Text>
-                </TouchableOpacity>
-              )}
+                </TouchableOpacity> */}
+              {/* )} */}
             </View>
             {/* <View style={{paddingBottom: sizes.TinyMargin}}>
               <TouchableOpacity

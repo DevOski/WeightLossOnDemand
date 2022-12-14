@@ -388,7 +388,9 @@ export default function UserVisit({navigation, route}) {
         <View style={styles.userView}>
           <View style={styles.padding2}>
             <Text style={styles.text}>First available consultant</Text>
-            <Text style={styles.heading}>Estimated wait: {'<'} 5 min</Text>
+            {!route?.params?.sessionStart && (
+              <Text style={styles.heading}>Estimated wait: {'<'} 5 min</Text>
+            )}
           </View>
         </View>
         <View style={styles.padding}>
