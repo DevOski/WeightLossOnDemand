@@ -44,6 +44,7 @@ export const userDetailTrainer = ({navigation, route}) => {
   useEffect(() => {
     getSession();
   }, [isVisible]);
+  console.log(route?.params);
 
   useEffect(() => {
     let date = new Date().toJSON();
@@ -304,11 +305,11 @@ export const userDetailTrainer = ({navigation, route}) => {
               {user?.date_of_birth}
             </Text>
           </View>
-          <View style={styles.crd}>
+          {/* <View style={styles.crd}>
             <Text style={styles.providertex}>Age</Text>
 
             <Text style={[styles.subhead, styles.border]}>{user?.age}</Text>
-          </View>
+          </View> */}
           <View style={styles.crd}>
             <Text style={styles.providertex}>Gender</Text>
 
@@ -328,27 +329,27 @@ export const userDetailTrainer = ({navigation, route}) => {
               {user?.marital_status}
             </Text>
           </View>
-          <View style={styles.crd}>
+          {/* <View style={styles.crd}>
             <Text style={styles.providertex}>Occupation</Text>
 
             <Text style={[styles.subhead, styles.border]}>
               {user?.occupation}
             </Text>
-          </View>
-          <View style={styles.crd}>
+          </View> */}
+          {/* <View style={styles.crd}>
             <Text style={styles.providertex}>Working Hour</Text>
 
             <Text style={[styles.subhead, styles.border]}>
               {user?.work_hours}
             </Text>
-          </View>
-          <View style={styles.crd}>
+          </View> */}
+          {/* <View style={styles.crd}>
             <Text style={styles.providertex}>Last Education</Text>
 
             <Text style={[styles.subhead, styles.border]}>
               {user?.last_education}
             </Text>
-          </View>
+          </View> */}
           <View style={styles.crd}>
             <Text style={styles.providertex}>Phone</Text>
 

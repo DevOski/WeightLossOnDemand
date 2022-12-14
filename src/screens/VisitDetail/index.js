@@ -189,7 +189,7 @@ const styles = StyleSheet.create({
   },
   flex2: {
     flexDirection: 'row',
-    marginBottom: sizes.screenHeight * 0.02,
+    // marginBottom: sizes.screenHeight * 0.02,
     alignItems: 'center',
   },
   litext: {

@@ -60,6 +60,7 @@ const initialState = {
   tr_name: '',
   tr_image: '',
   tr_amount: '',
+  detailStatus: true,
 };
 const reducer = (state = initialState, action) => {
   switch (action.type) {
@@ -163,6 +164,12 @@ const reducer = (state = initialState, action) => {
         tr_amount: action.tr_amount,
       };
     }
+    case 'ADD_CLIENT_DETAILS': {
+      return {
+        ...state,
+        detailStatus: action.detailStatus,
+      };
+    }
     case 'REMOVE_DATA': {
       return {
         ...state,
@@ -227,6 +234,7 @@ const reducer = (state = initialState, action) => {
         tr_name: null,
         tr_image: null,
         tr_amount: null,
+        detailStatus: false,
       };
     }
 

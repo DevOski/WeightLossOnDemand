@@ -271,7 +271,7 @@ export const ReviewHealthprofile = ({navigation, route}) => {
           <View style={styles.box}>
             <View style={styles.borderrb}>
               <Text style={styles.textttt}>
-                7) Have you dieted in the past for weight loss? No Yes If yes,
+                7) Have you dieted in the past for weight loss? (No Yes) If yes,
                 please indicate what you have done
               </Text>
             </View>

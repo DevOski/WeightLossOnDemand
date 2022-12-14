@@ -165,8 +165,8 @@ export async function getTrainerList(type) {
   return await axios.get(`${baseURL}/trainersList/${type}`);
 }
 
-export async function selectedTrainer(id,time) {
-  console.log('----------------------------->>>>',time);
+export async function selectedTrainer(id, time) {
+  console.log('----------------------------->>>>', time);
   return await axios.get(`${baseURL}/trainerDesc/${id}/${time}`);
 }
 
@@ -677,8 +677,8 @@ export async function getTrainer(token) {
     },
   });
 }
-export async function getAppointmentTrainer(token) {
-  return await axios.get(`${baseURL}/tr_appt`, {
+export async function getAppointmentTrainer(token, currentFinalDate) {
+  return await axios.get(`${baseURL}/tr_appt/${currentFinalDate}`, {
     headers: {
       Authorization: token,
     },

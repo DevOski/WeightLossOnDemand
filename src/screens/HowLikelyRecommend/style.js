@@ -106,7 +106,7 @@ export const styles = StyleSheet.create({
     width: sizes.screenWidth,
     backgroundColor: '#0e0e0e',
     opacity: 0.9,
-    marginLeft: sizes.screenWidth * 0.01,
+    marginLeft: sizes.screenWidth * 0.001,
     padding: 10,
     position: 'absolute',
     top: -20,

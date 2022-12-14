@@ -151,7 +151,7 @@ export default function Questiontwo({navigation, route}) {
           </View>
           <View style={styles.paddingTop}>
             <Text style={styles.text2}>
-              Have you dieted in the past for weight loss? No Yes If yes, please
+              Have you dieted in the past for weight loss? (No Yes) If yes, please
               indicate what you have done
             </Text>
             <View>

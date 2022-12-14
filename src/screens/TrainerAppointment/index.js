@@ -44,6 +44,7 @@ export default function TrainerAppointment({navigation}) {
   const isVisible = useIsFocused();
 
   useEffect(() => {
+    getUserVisit();
     getTrainerInfo();
     getTrainerAppointments();
     getRecentAppointment();
@@ -55,6 +56,18 @@ export default function TrainerAppointment({navigation}) {
     let current = moment(date).format('DD/MM/YYYY');
     setCurrentDate(current);
   }, []);
+
+  const getTime = () => {
+    const time = new Date().getTime();
+    let currentTime = ` ${moment(time).format('hh:mm:ssA')}`;
+    console.log(currentTime);
+    let date = new Date().toJSON();
+    let currentDate = moment(date).format('YYYY-MM-DD');
+    let currentFinalDate = currentDate + currentTime;
+    console.log(currentFinalDate, 'date-----------<><');
+  };
+
+
 
   const getFcmToken = async () => {
     let fcmToken = await AsyncStorage.getItem('fcmToken');
@@ -89,12 +102,20 @@ export default function TrainerAppointment({navigation}) {
     }
   };
   const getTrainerAppointments = async () => {
+    const time = new Date().getTime();
+    let currentTime = ` ${moment(time).format('hh:mm:ssA')}`;
+    console.log(currentTime);
+    let date = new Date().toJSON();
+    let currentDate = moment(date).format('YYYY-MM-DD');
+    let currentFinalDate = currentDate + currentTime;
     try {
-      let response = await getAppointmentTrainer(token);
-      console.log('-->>>>>>', response.data.data[0]);
+      console.log("works0000-->");
+      let response = await getAppointmentTrainer(token,currentFinalDate);
+      console.log(response,'res-------------------------------------->>>>');
+      console.log('appoint-->>>>>>', response.data);
       setAppointmentList(response.data.data);
     } catch (error) {
-      console.log(error);
+      console.log('---------->>>>>>ssee',error);
     }
   };
   const dispatch = useDispatch();
@@ -125,6 +146,43 @@ export default function TrainerAppointment({navigation}) {
       .catch(error => alert('error', error));
   };
 
+  const getUserVisit = async () => {
+    var myHeaders = new Headers();
+    myHeaders.append('Authorization', token);
+
+    var requestOptions = {
+      method: 'POST',
+      headers: myHeaders,
+      redirect: 'follow',
+    };
+
+    fetch('http://alsyedmmtravel.com/api/question_review', requestOptions)
+      .then(response => response.json())
+      .then(result => {
+        console.log('result---------->>>>', result.data.visit_id);
+        if (result.data.visit_id) {
+          console.log('works', result.data.visit_id);
+          // setVistId(result.data.visit_id);
+          // dispatch(viewClientDetails(true));
+          // setTimeout(() => {
+          //   navigation.navigate('session');
+          // }, 2000);
+
+          // setAppId('');
+        }
+        console.log('---eers----->>>', result.message);
+        if (result.data.ap_id) {
+          // setAppId(result.data.ap_id);
+          // dispatch(viewClientDetails(true));
+
+          // setVistId('');
+        } else {
+          // setVistId('');
+          // setAppId('');
+        }
+      })
+      .catch(error => console.log(error));
+  };
   const getRecentAppointment = async () => {
     try {
       const time = new Date().getTime();
@@ -200,9 +258,9 @@ export default function TrainerAppointment({navigation}) {
         <View>
           <Text style={styles.appointmentText}>Your upcoming sessions</Text>
         </View>
-        {appointmentList.length ? (
+        {appointmentList?.length ? (
           appointmentList?.map((item, index) => {
-            console.log(item.apt_time);
+            console.log('------->>>', item.apt_time);
             return (
               <View>
                 {item.status == 'pending' && (
@@ -226,7 +284,7 @@ export default function TrainerAppointment({navigation}) {
           })
         ) : (
           <View>
-            <Text style={styles.noRecent}>No recent appointments</Text>
+            <Text style={styles.noRecent}>No recent sessions found.</Text>
           </View>
         )}
 

@@ -176,7 +176,8 @@ export const ChildScreen = ({navigation, route}) => {
           width: sizes.screenWidth,
           height: sizes.screenHeight,
           backgroundColor: 'rgba(52, 52, 52, 0.8)',
-          marginLeft: sizes.screenWidth * 0.01,
+          marginLeft: sizes.screenWidth * 0.001,
+
           padding: sizes.screenWidth*0.02,
           position:'absolute',
           top:-sizes.baseMargin,

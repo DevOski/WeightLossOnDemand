@@ -39,32 +39,11 @@ export default function App() {
     });
   }, []);
 
-  var myHeaders = new Headers();
-  myHeaders.append(
-    'Authorization',
-    '$2y$10$KmDTenzlBmb2iVT.tv0nu.zmfkP5FGW.WWGAfPcXeQZqqkuf7/uCW',
-  );
-
-  var formdata = new FormData();
-  formdata.append('tr_id', '1');
-
-  var requestOptions = {
-    method: 'POST',
-    headers: myHeaders,
-    body: formdata,
-    redirect: 'follow',
-  };
-
-  fetch('http://alsyedmmtravel.com/api/notification', requestOptions)
-    .then(response => response.json())
-    .then(result => console.log(result.body))
-    .catch(error => console.log('error', error));
-
   useEffect(() => {
     requestUserPermission();
     // notifcationListener();
     const unsubscribe = messaging().onMessage(async remoteMessage => {
-      console.log(remoteMessage);
+      console.log(remoteMessage, 'works--------------->>>');
       PushNotification.createChannel({
         channelId: 'channel-id',
         channelName: 'my_channel',
@@ -158,7 +137,8 @@ const styles = StyleSheet.create({
     width: sizes.screenWidth,
     backgroundColor: '#0e0e0e',
     opacity: 0.9,
-    marginLeft: sizes.screenWidth * 0.01,
+    marginLeft: sizes.screenWidth * 0.001,
+
     padding: 10,
     position: 'absolute',
     top: -20,

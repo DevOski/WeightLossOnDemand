@@ -151,6 +151,13 @@ function trainerAvailable(tr_id, tr_name, tr_image, tr_amount) {
   };
 }
 
+function viewClientDetails(detailStatus) {
+  return {
+    type: 'ADD_CLIENT_DETAILS',
+    detailStatus: detailStatus,
+  };
+}
+
 export {
   storeData,
   storeUserData,
@@ -165,4 +172,5 @@ export {
   reasonVisit,
   trainerStack,
   trainerAvailable,
+  viewClientDetails,
 };

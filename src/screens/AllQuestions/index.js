@@ -79,8 +79,8 @@ export const AllQuestions = ({navigation, route}) => {
   }, []);
   const getallQuestions = async () => {
     try {
-      // let response = await getallQuestion();
-      // setQa(response.data.data);
+      let response = await getallQuestion();
+      setQa(response.data.data);
     } catch (error) {
       console.log(error);
     }
@@ -236,7 +236,7 @@ export const AllQuestions = ({navigation, route}) => {
           <View style={styles.box}>
             <View style={styles.borderrb}>
               <Text style={styles.textttt}>
-                7) Have you dieted in the past for weight loss? No Yes If yes,
+                7) Have you dieted in the past for weight loss? (No Yes) If yes,
                 please indicate what you have done
               </Text>
             </View>

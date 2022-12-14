@@ -22,7 +22,7 @@ import {colors, fontFamily, fontSize, sizes} from '../../services';
 import {signIn} from '../../services/utilities/api/auth';
 import TouchID from 'react-native-touch-id';
 import {useDispatch, useSelector} from 'react-redux';
-import {storeData, trainerStack} from '../../store/actions';
+import {storeData, trainerStack, viewClientDetails} from '../../store/actions';
 import Header from '../../components/Header';
 import {useIsFocused} from '@react-navigation/native';
 
@@ -99,6 +99,7 @@ export const AddDescription = ({navigation}) => {
           if (result.status == 200) {
             setIsModalVisible(true);
             setErrorMessage('Description added successfully');
+            dispatch(viewClientDetails(false));
           }
           setLoader(false);
         })
@@ -303,7 +304,8 @@ const styles = StyleSheet.create({
     width: sizes.screenWidth,
     backgroundColor: '#0e0e0e',
     opacity: 0.9,
-    marginLeft: sizes.screenWidth * 0.01,
+    marginLeft: sizes.screenWidth * 0.001,
+
     padding: 10,
     position: 'absolute',
     top: -20,

@@ -9,11 +9,12 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import {useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import images from '../../services/utilities/images';
 import {styles} from './style';
 import {colors, sizes, fontSize, fontFamily} from '../../services';
 import Header from '../../components/Header';
+import {viewClientDetails} from '../../store/actions';
 export default function startSession({navigation}) {
   const [msgList, setMsgList] = useState([]);
   const [currentSession, setCurrentSession] = useState(false);
@@ -23,6 +24,10 @@ export default function startSession({navigation}) {
   const isVisible = useIsFocused();
 
   const token = useSelector(state => state.token);
+  const detailStatus = useSelector(state => state.detailStatus);
+
+  const dispatch = useDispatch();
+  console.log('000=====>>>', detailStatus);
   console.log(token);
   useEffect(() => {
     getUserVisit();
@@ -41,47 +46,81 @@ export default function startSession({navigation}) {
     fetch('http://alsyedmmtravel.com/api/question_review', requestOptions)
       .then(response => response.json())
       .then(result => {
-        console.log('--->>', result.data);
+        console.log('result---------->>>>', result.data.visit_id);
+        if (result.data.visit_id) {
+          console.log('works', result.data.visit_id);
+          setVistId(result.data.visit_id);
+          dispatch(viewClientDetails(true));
+
+          // setAppId('');
+        }
+        console.log('---eers----->>>', result.message);
         if (result.data.ap_id) {
           setAppId(result.data.ap_id);
+          // dispatch(viewClientDetails(true));
+
+          // setVistId('');
         } else {
-          setVistId(result.data.visit_id);
+          // setVistId('');
+          setAppId('');
         }
       })
       .catch(error => setError(error));
   };
+  console.log('visit id------->>', visitId);
   return (
     <SafeAreaView>
       <View>
         <Header title={'Current Session'} />
       </View>
       <View style={styles.container}>
-        {!currentSession && (
-          <View>
-            <View style={{paddingBottom: sizes.TinyMargin}}>
-              {/* {error !== '' && ( */}
-              {/* <TouchableOpacity
-                  onPress={() =>
-                    navigation.navigate('userDetailTrainer', {
-                      ap_id: appId,
-                      visit_id: visitId,
-                    })
-                  }
-                  // disabled={email != '' && password != '' ? false : true}
-                  style={styles.but}>
-                  <Text
-                    style={{
-                      color: '#fff',
-                      fontSize: fontSize.h6,
-                      fontFamily: fontFamily.appTextHeading,
-                      fontWeight: 'Bold',
-                    }}>
-                    View Client Details
-                  </Text>
-                </TouchableOpacity> */}
-              {/* )} */}
-            </View>
-            {/* <View style={{paddingBottom: sizes.TinyMargin}}>
+        {/* {!currentSession && ( */}
+        <View>
+          <View style={{paddingBottom: sizes.TinyMargin}}>
+            {visitId !== '' && appId == '' && (
+              <TouchableOpacity
+                onPress={() =>
+                  navigation.navigate('userDetailTrainer', {
+                    // ap_id: appId,
+                    visit_id: visitId,
+                  })
+                }
+                // disabled={email != '' && password != '' ? false : true}
+                style={styles.but}>
+                <Text
+                  style={{
+                    color: '#fff',
+                    fontSize: fontSize.h6,
+                    fontFamily: fontFamily.appTextHeading,
+                    fontWeight: 'Bold',
+                  }}>
+                  View Client Details
+                </Text>
+              </TouchableOpacity>
+            )}
+            {appId !== '' && visitId == '' && detailStatus && (
+              <TouchableOpacity
+                onPress={() =>
+                  navigation.navigate('userDetailTrainer', {
+                    ap_id: appId,
+                    // visit_id: visitId,
+                  })
+                }
+                // disabled={email != '' && password != '' ? false : true}
+                style={styles.but}>
+                <Text
+                  style={{
+                    color: '#fff',
+                    fontSize: fontSize.h6,
+                    fontFamily: fontFamily.appTextHeading,
+                    fontWeight: 'Bold',
+                  }}>
+                  View Client Details
+                </Text>
+              </TouchableOpacity>
+            )}
+          </View>
+          {/* <View style={{paddingBottom: sizes.TinyMargin}}>
               <TouchableOpacity
                 onPress={() => navigation.navigate('trainervideocall')}
                 // disabled={email != '' && password != '' ? false : true}
@@ -97,27 +136,27 @@ export default function startSession({navigation}) {
                 </Text>
               </TouchableOpacity>
             </View> */}
-            <TouchableOpacity
-              // disabled={visitId ? false : true}
-              onPress={() => navigation.navigate('trainervideocall')}
-              // disabled={email != '' && password != '' ? false : true}
-              style={
-                // visitId ?
-                styles.but
-                // : styles.disabledView
-              }>
-              <Text
-                style={{
-                  color: '#fff',
-                  fontSize: fontSize.h6,
-                  fontFamily: fontFamily.appTextHeading,
-                  fontWeight: 'Bold',
-                }}>
-                Start Session
-              </Text>
-            </TouchableOpacity>
-          </View>
-        )}
+          <TouchableOpacity
+            // disabled={visitId ? false : true}
+            onPress={() => navigation.navigate('trainervideocall')}
+            // disabled={email != '' && password != '' ? false : true}
+            style={
+              // visitId ?
+              styles.but
+              // : styles.disabledView
+            }>
+            <Text
+              style={{
+                color: '#fff',
+                fontSize: fontSize.h6,
+                fontFamily: fontFamily.appTextHeading,
+                fontWeight: 'Bold',
+              }}>
+              Start Session
+            </Text>
+          </TouchableOpacity>
+        </View>
+        {/* )} */}
       </View>
     </SafeAreaView>
   );

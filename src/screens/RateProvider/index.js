@@ -61,7 +61,7 @@ export default function RateProvider({navigation, route}) {
             </TouchableOpacity>
           </View>
         </View>
-        <Text style={styles.rateText}>Rate your session for this visit</Text>
+        <Text style={styles.rateText}>Rate your session </Text>
         <Image
           source={{
             uri:tr_image,

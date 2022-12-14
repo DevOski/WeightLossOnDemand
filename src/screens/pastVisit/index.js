@@ -27,7 +27,7 @@ export default function PastVisit({navigation}) {
   const [loader, setLoader] = useState(false);
   const [visitList, setVisitList] = useState([]);
   const token = useSelector(state => state.token);
-
+  console.log(token);
   useEffect(() => {
     getPastVisit();
   }, [isVisible]);
@@ -37,7 +37,7 @@ export default function PastVisit({navigation}) {
     // setTimeout(async () => {
       try {
         let response = await trainerVist(token);
-        console.log('=====>>>',response.user);
+        console.log('=====>>>',response);
         setVisitList(response.data.data);
         setLoader(false);
       } catch (error) {
@@ -60,11 +60,11 @@ export default function PastVisit({navigation}) {
               <Text style={styles.head}>My Past Sessions</Text>
             </View>
             {visitList?.map((item, index) => {
-              console.log(item);
+              console.log(item.visit.visit_id,'------>>');
               return (
                 <TouchableOpacity
                   onPress={() =>
-                    navigation.navigate('userDetailTrainer', {visit_id: item.visit_id})
+                    navigation.navigate('userDetailTrainer', {visit_id: item.visit.visit_id})
                   }>
                   <View style={[styles.card]}>
                     <View style={styles.row}>
