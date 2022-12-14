@@ -80,6 +80,7 @@ export default function ChooseAppointment({navigation, route}) {
 
   const getDateSlots = async date => {
     console.log(currentDTime);
+
     try {
       let response = await getSlotDate(
         route?.params?.trainer?.tr_id,

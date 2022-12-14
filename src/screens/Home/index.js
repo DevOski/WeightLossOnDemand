@@ -56,6 +56,7 @@ export default function Home({navigation}) {
   const isVisible = useIsFocused();
 
   useEffect(() => {
+    // setLoader(false);
     getFcmToken();
     getUserDetails();
     getTrainers();

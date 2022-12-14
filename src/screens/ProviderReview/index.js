@@ -176,18 +176,30 @@ export default function ProviderReview({navigation, route}) {
           tr_id: route?.params?.tr_id,
           tr_image: route?.params?.tr_image,
         };
-        setTimeout(() => {
-          navigation.navigate('videocallingscreen', {
-            tr_id: route?.params?.tr_id,
-            tr_name: route?.params?.tr_name,
-            tr_image: route?.params?.tr_image,
-            tr_amount: route?.params?.tr_amount,
-            // trainer: route?.params?.trainer
-            //   ? route?.params?.trainer
-            //   : updatedTrainer,
-            // apt_id: route?.params?.apt_id,
-          });
-        }, 5000);
+        var myHeaders = new Headers();
+        myHeaders.append('Authorization', token);
+        var formdata = new FormData();
+        formdata.append('tr_id', tr_id);
+        var requestOptions = {
+          method: 'POST',
+          headers: myHeaders,
+          body: formdata,
+          redirect: 'follow',
+        };
+
+        fetch('http://alsyedmmtravel.com/api/notification', requestOptions)
+          .then(response => response.json())
+          .then(result => {
+            setTimeout(() => {
+              navigation.navigate('videocallingscreen', {
+                tr_id: route?.params?.tr_id,
+                tr_name: route?.params?.tr_name,
+                tr_image: route?.params?.tr_image,
+                tr_amount: route?.params?.tr_amount,
+              });
+            }, 5000);
+          })
+          .catch(error => console.log('error', error));
       }
     } catch (error) {
       console.log(error);

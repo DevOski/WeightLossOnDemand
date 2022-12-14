@@ -36,6 +36,7 @@ export default function Meetourproviders({navigation}) {
     setTimeout(async () => {
       try {
         let response = await getTrainerType();
+        console.log('---?',response.data.data);
         setTrainerType(response.data.data);
         setLoader(false);
       } catch (error) {
@@ -92,6 +93,7 @@ export default function Meetourproviders({navigation}) {
               </View>
             </TouchableOpacity> */}
             {trainerType?.map((item, index) => {
+              console.log(item)
               return (
                 <TouchableOpacity
                   key={index}

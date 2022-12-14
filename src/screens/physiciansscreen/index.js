@@ -28,7 +28,6 @@ export default function Physicans({navigation, route}) {
   const [trainerList, setTrainerList] = useState([]);
   const {t_name} = route?.params?.trainer;
   const isVisible = useIsFocused();
-
   useEffect(() => {
     getList();
   }, [isVisible]);
@@ -38,6 +37,7 @@ export default function Physicans({navigation, route}) {
     setTimeout(async () => {
       try {
         let response = await getTrainerList(t_name);
+        console.log(response.data.data);
         setTrainerList(response.data.data);
         setLoader(false);
       } catch (error) {
