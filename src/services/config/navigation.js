@@ -159,7 +159,7 @@ import PastVisit from '../../screens/pastVisit';
 import TrainerVideocalling from '../../screens/trainervideocall';
 import {userDetailTrainer} from '../../screens/userDetailTrainer';
 import {AllQuestions} from '../../screens/AllQuestions';
-import { AddDescription } from '../../screens/AddDescription';
+import {AddDescription} from '../../screens/AddDescription';
 import BasicInfoScreenSettings from '../../screens/basicInfoscreenssettings';
 const Stack = createNativeStackNavigator();
 
@@ -196,7 +196,10 @@ export default function MainNavigator() {
               component={trainerStatus ? MyTrainerTabs : MyTabs}
             />
 
-            <Stack.Screen name="basicInfoscreenssettings" component={BasicInfoScreenSettings} />
+            <Stack.Screen
+              name="basicInfoscreenssettings"
+              component={BasicInfoScreenSettings}
+            />
             <Stack.Screen name="Setting" component={Setting} />
             <Stack.Screen name="whichsurgeri" component={Whichsurgeries} />
             <Stack.Screen
@@ -286,7 +289,7 @@ export default function MainNavigator() {
             />
             <Stack.Screen name="AllQuestions" component={AllQuestions} />
             <Stack.Screen name="AddDescription" component={AddDescription} />
-            
+
             {/* <Stack.Screen name="whichsurgeri" component={Whichsurgeries} /> */}
             {/* <Stack.Screen
   name="whichmedicalconditions"
@@ -581,7 +584,16 @@ function MyTrainerTabs() {
         options={{
           tabBarLabel: 'Current Session',
           tabBarIcon: ({color}) => (
-            <MaterialCommunityIcons name="dumbbell" color={color} size={22} />
+            <Image
+              source={images.weightScale}
+              style={{
+                height:
+                  Platform.OS !== 'ios'
+                    ? sizes.screenHeight * 0.03
+                    : sizes.screenHeight * 0.028,
+                width: sizes.screenWidth * 0.06,
+              }}
+            />
           ),
         }}
       />

@@ -278,7 +278,7 @@ export default function TrainerAppointment({navigation}) {
             );
           })
         ) : (
-          <View>
+          <View style={styles.noRecentView}>
             <Text style={styles.noRecent}>No sessions found.</Text>
           </View>
         )}

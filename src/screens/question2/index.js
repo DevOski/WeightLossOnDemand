@@ -168,34 +168,7 @@ export default function Questiontwo({navigation, route}) {
                 />
               </View>
             </View>
-            {/* <View style={styles.paddingTop}>
-            <Text style={styles.text2}>
-              What makes it hard for you to lose weight and keep it off?
-            </Text>
-            <View>
-              <TextInput
-                mode="contain"
-                activeUnderlineColor={colors.secondary}
-                style={styles.field}
-                multiline={true}
-                onChangeText={text => setHardLose(text)}
-                value={hardLose}
-              />
-            </View>
-          </View> */}
-            {/* <View style={styles.paddingTop}>
-            <Text style={styles.text2}>What has helped you lose weight?</Text>
-            <View>
-              <TextInput
-                mode="contain"
-                activeUnderlineColor={colors.secondary}
-                style={styles.field}
-                multiline={true}
-                onChangeText={text => setHelpLose(text)}
-                value={helpLose}
-              />
-            </View>
-          </View> */}
+           
             <View style={styles.paddingTop}>
               <Text style={styles.text2}>
                 How much weight would you like to lose?

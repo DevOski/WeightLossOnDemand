@@ -82,21 +82,7 @@ export default function Questionthree({navigation, route}) {
       <ScrollView style={styles.color}>
         <View style={styles.padding}>
           <Text style={styles.text}>Physical Activity Information</Text>
-          {/* <View style={styles.paddingTop}>
-            <Text style={styles.text2}>
-              What is the most physically active thing you do in a day?
-            </Text>
-            <View>
-              <TextInput
-                mode="contain"
-                activeUnderlineColor={colors.secondary}
-                style={styles.field}
-                multiline={true}
-                onChangeText={text => setActiveThing(text)}
-                value={activeThing}
-              />
-            </View>
-          </View> */}
+          
           <View style={styles.paddingTop}>
             <Text style={styles.text2}>
               What, if any, regular exercises do you do?
@@ -112,79 +98,10 @@ export default function Questionthree({navigation, route}) {
               />
             </View>
           </View>
-          {/* <View style={styles.paddingTop}>
-            <Text style={styles.text2}>How many days a week?</Text>
-            <View>
-              <TextInput
-                mode="contain"
-                activeUnderlineColor={colors.secondary}
-                style={styles.field}
-                onChangeText={text => setDays(text)}
-                value={days}
-              />
-            </View>
-          </View> */}
-
-          {/* <View style={styles.paddingTop}>
-            <Text style={styles.text2}>How many minutes per day?</Text>
-            <View>
-              <TextInput
-                mode="contain"
-                activeUnderlineColor={colors.secondary}
-                style={styles.field}
-                onChangeText={text => setMinutes(text)}
-                value={minutes}
-              />
-            </View>
-          </View> */}
-
-          {/* <View style={styles.paddingTop}>
-            <Text style={styles.text2}>
-              At what level of intensity (light, moderate, or high)?
-            </Text>
-            <View>
-              <TextInput
-                mode="contain"
-                activeUnderlineColor={colors.secondary}
-                style={styles.field}
-                onChangeText={text => setIntensityLevel(text)}
-                value={intensityLevel}
-              />
-            </View>
-          </View>
-          <View style={styles.paddingTop}>
-            <Text style={styles.text2}>
-              What time(s) of day can you fit exercise into your schedule?
-            </Text>
-            <View>
-              <TextInput
-                mode="contain"
-                activeUnderlineColor={colors.secondary}
-                style={styles.field}
-                onChangeText={text => setFitTime(text)}
-                value={fitTime}
-              />
-            </View>
-          </View>
-          <View style={styles.paddingTop}>
-            <Text style={styles.text2}>
-              List any physical limitations to exercising
-            </Text>
-            <View>
-              <TextInput
-                mode="contain"
-                activeUnderlineColor={colors.secondary}
-                style={styles.field}
-                multiline={true}
-                onChangeText={text => setPhyLimitations(text)}
-                value={phyLimitations}
-              />
-            </View>
-          </View> */}
+        
           <View style={styles.paddingTop}>
             <TouchableOpacity
               onPress={handleNext}
-              // disabled={selectanswer3 ? false : true}
             >
               <View style={styles.buttonView}>
                 <Text style={styles.buttonText}>Submit</Text>

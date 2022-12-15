@@ -13,8 +13,10 @@ export const styles = StyleSheet.create({
   text: {
     color: colors.primary,
     fontFamily: fontFamily.appTextLight,
-    fontSize: fontSize.h5,
+    fontSize: fontSize.h6,
     fontWeight: 'bold',
+    textTransform: 'uppercase',
+    textAlign: 'center',
   },
   text2: {
     color: colors.black,
@@ -155,5 +157,11 @@ export const styles = StyleSheet.create({
     color: colors.black,
     alignSelf: 'center',
     top: sizes.screenHeight * 0.03,
+  },
+  field2: {
+    backgroundColor: colors.lightGray,
+    fontSize: fontSize.large,
+    fontFamily: fontFamily.appTextRegular,
+    width: sizes.screenWidth * 0.4,
   },
 });

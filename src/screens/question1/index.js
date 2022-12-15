@@ -8,6 +8,7 @@ import {
   Text,
   TouchableOpacity,
   View,
+  KeyboardAvoidingView
 } from 'react-native';
 import Header from '../../components/Header';
 import images from '../../services/utilities/images';
@@ -20,7 +21,7 @@ import {openInbox} from 'react-native-email-link';
 import {CustomTextFiel} from '../../component/textFiled';
 import {getQuestion} from '../../services/utilities/api/auth';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import {Question1} from '../../store/actions';
+import {Question1, Question2, Question3, Question4} from '../../store/actions';
 import {useDispatch, useSelector} from 'react-redux';
 import Slider from '@react-native-community/slider';
 
@@ -44,11 +45,50 @@ export default function Question({navigation, route}) {
   const [listCultural, setListCultural] = useState('');
   const [lifestyleRate, setLifestyleRate] = useState(0);
   const [confidenceRate, setConfidenceRate] = useState(0);
+  const [weight, setWeight] = useState('');
+  const [height, setHeight] = useState('');
+  const [lowestWeight, setLowestWeight] = useState('');
+  const [highestWeight, sethighestWeight] = useState('');
+  const [weightChanges, setWeightChanges] = useState('');
+  const [dietedPast, setDietedPast] = useState('');
+  const [hardLose, setHardLose] = useState('');
+  const [helpLose, setHelpLose] = useState('');
+  const [howMuch, setHowMuch] = useState('');
+  const [benefit, setBenefit] = useState('');
+  const [activeThing, setActiveThing] = useState('');
+  const [regularExercise, setRegularExercise] = useState('');
+  const [days, setDays] = useState('');
+  const [minutes, setMinutes] = useState('');
+  const [intensityLevel, setIntensityLevel] = useState('');
+  const [fitTime, setFitTime] = useState('');
+  const [phyLimitations, setPhyLimitations] = useState('');
+  const [breakfastTime, setBreakfastTime] = useState('');
+  const [breakfastEaten, setBreakfastEaten] = useState('');
+  const [breakfastFood, setBreakfastFood] = useState('');
+  const [snackTime, setSnackTime] = useState('');
+  const [snackEaten, setSnackEaten] = useState('');
+  const [snackFood, setSnackFood] = useState('');
+  const [lunchTime, setLunchTime] = useState('');
+  const [lunchEaten, setLunchEaten] = useState('');
+  const [lunchFood, setLunchFood] = useState('');
+  const [snackTime2, setSnackTime2] = useState('');
+  const [snackEaten2, setSnackEaten2] = useState('');
+  const [snackFood2, setSnackFood2] = useState('');
+  const [dinnerTime, setDinnerTime] = useState('');
+  const [dinnerEaten, setDinnerEaten] = useState('');
+  const [dinnerFood, setDinnerFood] = useState('');
+  const [snackTime3, setSnackTime3] = useState('');
+  const [snackEaten3, setSnackEaten3] = useState('');
+  const [snackFood3, setSnackFood3] = useState('');
+  const [fastFood, setFastFood] = useState('');
+  const [whichGrocery, setWhichGrocery] = useState('');
+  const [groceryShopping, setGroceryShopping] = useState('');
+  const [whoPlans, setWhoPlans] = useState('');
+  const [whoPrepare, setWhoPrepare] = useState('');
+  const [dietChange, setDietChange] = useState('');
 
   const dispatch = useDispatch();
 
-  // const q1 = useSelector(state=>state.question1)
-  // console.log(q1,'====>');
   useEffect(() => {
     getQuestions();
   }, []);
@@ -79,15 +119,80 @@ export default function Question({navigation, route}) {
         confidenceRate,
       ),
     );
-    navigation.navigate('question2', {
+    handleq2();
+    handleq3();
+    handleq4();
+  };
+
+  const handleq2 = () => {
+    dispatch(
+      Question2(
+        weight,
+        height,
+        lowestWeight,
+        highestWeight,
+        weightChanges,
+        dietedPast,
+        hardLose,
+        helpLose,
+        howMuch,
+        benefit,
+      ),
+    );
+  };
+  const handleq3 = () => {
+    dispatch(
+      Question3(
+        activeThing,
+        regularExercise,
+        days,
+        minutes,
+        intensityLevel,
+        fitTime,
+        phyLimitations,
+      ),
+    );
+  };
+  const handleq4 = () => {
+    dispatch(
+      Question4(
+        breakfastTime,
+        breakfastEaten,
+        breakfastFood,
+        snackTime,
+        snackEaten,
+        snackFood,
+        lunchTime,
+        lunchEaten,
+        lunchFood,
+        snackTime2,
+        snackEaten2,
+        snackFood2,
+        dinnerTime,
+        dinnerEaten,
+        dinnerFood,
+        snackTime3,
+        snackEaten3,
+        snackFood3,
+        fastFood,
+        whichGrocery,
+        groceryShopping,
+        whoPlans,
+        whoPrepare,
+        dietChange,
+      ),
+    );
+
+    navigation.navigate('healthprofilereview', {
       slot: route?.params?.slot,
       trainer: route?.params?.trainer,
     });
   };
-
   return (
     <SafeAreaView>
       <Header title={'Questionnaires '} />
+      <KeyboardAvoidingView behavior="height">
+
       <ScrollView style={styles.color}>
         <View style={styles.padding}>
           <Text style={styles.text}>General Health Information</Text>
@@ -105,19 +210,7 @@ export default function Question({navigation, route}) {
               />
             </View>
           </View>
-          {/* <View style={styles.paddingTop}>
-            <Text style={styles.text2}>List any allergies/intolerances</Text>
-            <View>
-              <TextInput
-                mode="contain"
-                // label={'New password'}
-                activeUnderlineColor={colors.secondary}
-                style={styles.field}
-                onChangeText={text => setAllergies(text)}
-                value={allergies}
-              />
-            </View>
-          </View> */}
+
           <View style={styles.paddingTop}>
             <Text style={styles.text2}>
               List All Medications and their dosage
@@ -125,7 +218,6 @@ export default function Question({navigation, route}) {
             <View>
               <TextInput
                 mode="contain"
-                // label={'New password'}
                 activeUnderlineColor={colors.secondary}
                 style={styles.field}
                 multiline={true}
@@ -135,197 +227,176 @@ export default function Question({navigation, route}) {
               />
             </View>
           </View>
-          {/* <View style={styles.paddingTop}>
-            <Text style={styles.text2}>
-              How many hours of sleep do you average per night?
-            </Text>
-            <View>
-              <TextInput
-                mode="contain"
-                // label={'New password'}
-                activeUnderlineColor={colors.secondary}
-                style={styles.field}
-                // onChangeText={text => setMedicationDos(text)}
-                // value={medicationDos}
-              />
-            </View>
-          </View> */}
-          {/* <View style={styles.gcon}>
-            <Text style={styles.text2}>
-              Is your sleep restful?
-            </Text>
-
-            <TouchableOpacity
-              onPress={() => {
-                setRestFulYes(!restFulYes);
-                setRestFul('Yes');
-                setRestFulNo(false);
-              }}>
-              <View style={styles.ro}>
-                <Text style={styles.lstyle}>Yes</Text>
-                <RadioButton
-                  onPress={() => {
-                    setRestFulYes(!restFulYes);
-                    setRestFul('Yes');
-                    setRestFulNo(false);
-                  }}
-                  status={restFulYes ? 'checked' : 'unchecked'}
-                  color={'#be1d2d'}
-                  uncheckColor={colors.secondary}
-                />
-              </View>
-            </TouchableOpacity>
-            <TouchableOpacity
-              onPress={() => {
-                setRestFulNo(!restFulNo);
-                setRestFul('No');
-                setRestFulYes(false);
-              }}>
-              <View style={styles.ro}>
-                <Text style={styles.lstyle}>No</Text>
-                <RadioButton
-                  onPress={() => {
-                    setRestFulNo(!restFulNo);
-                    setRestFul('No');
-                    setRestFulYes(false);
-                  }}
-                  status={restFulNo ? 'checked' : 'unchecked'}
-                  color={'#be1d2d'}
-                  uncheckColor={colors.secondary}
-                />
-              </View>
-            </TouchableOpacity>
-          </View> */}
-          {/* <View style={styles.paddingTop}>
-            <Text style={styles.text2}>
-              How do you rate the stress in your life, 10 being the highest?
-            </Text>
-
-            <Text style={styles.rateText}>{stressRate}</Text>
-            <View style={[styles.row, styles.paddingTop]}>
-              <View
-                style={Platform.OS !== 'ios' ? styles.left : styles.leftIOS}>
-                <Text style={styles.rating}>0</Text>
-              </View>
-              <View>
-                <Slider
-                  onSlidingComplete={val => setStressRate(Math.round(val))}
-                  // onSlidingComplete={val => setStressRate(Math.round(val))}
-                  style={styles.sliderWidth}
-                  thumbTintColor={colors.secondary}
-                  value={stressRate}
-                  minimumValue={0}
-                  maximumValue={10}
-                  minimumTrackTintColor={colors.secondary}
-                  maximumTrackTintColor={colors.primary}
-                />
-              </View>
-              <View
-                style={Platform.OS !== 'ios' ? styles.right : styles.rightIOS}>
-                <Text style={styles.rating}>10</Text>
-              </View>
-            </View>
-          </View> */}
-          {/* <View style={styles.paddingTop}>
-            <Text style={styles.text2}>How do you cope with stress?</Text>
-            <View>
-              <TextInput
-                mode="contain"
-                activeUnderlineColor={colors.secondary}
-                style={styles.field}
-                onChangeText={text => setCopeStress(text)}
-                value={copeStress}
-              />
-            </View>
-          </View> */}
-          {/* <View style={styles.paddingTop}>
-            <Text style={styles.text2}>
-              List any cultural or religious practices related to your health or
-              diet
-            </Text>
-            <View>
-              <TextInput
-                mode="contain"
-                activeUnderlineColor={colors.secondary}
-                style={styles.field}
-                onChangeText={text => setListCultural(text)}
-                value={listCultural}
-              />
-            </View>
-          </View> */}
-          {/* <View style={styles.paddingTop}>
-            <Text style={styles.text2}>
-              How do you rate your readiness to make lifestyle changes, 5 being
-              most ready?{' '}
-            </Text>
-            <Text style={styles.rateText}>{lifestyleRate}</Text>
-
-            <View style={[styles.row, styles.paddingTop]}>
-              <View
-                style={Platform.OS !== 'ios' ? styles.left : styles.leftIOS}>
-                <Text style={styles.rating}>0</Text>
-              </View>
-              <View>
-                <Slider
-                  onSlidingComplete={val => setLifestyleRate(Math.round(val))}
-                  style={styles.sliderWidth}
-                  thumbTintColor={colors.secondary}
-                  value={lifestyleRate}
-                  minimumValue={0}
-                  maximumValue={5}
-                  minimumTrackTintColor={colors.secondary}
-                  maximumTrackTintColor={colors.primary}
-                />
-              </View>
-              <View
-                style={Platform.OS !== 'ios' ? styles.right : styles.rightIOS}>
-                <Text style={styles.rating}>5</Text>
-              </View>
-            </View>
-          </View> */}
-          {/* <View style={styles.paddingTop}>
-            <Text style={styles.text2}>
-              How do you rate your confidence to make lifestyle changes, 5 being
-              most confident?
-            </Text>
-            <Text style={styles.rateText}>{confidenceRate}</Text>
-
-            <View style={[styles.row, styles.paddingTop]}>
-              <View
-                style={Platform.OS !== 'ios' ? styles.left : styles.leftIOS}>
-                <Text style={styles.rating}>0</Text>
-              </View>
-              <View>
-                <Slider
-                  onSlidingComplete={val => setConfidenceRate(Math.round(val))}
-                  style={styles.sliderWidth}
-                  thumbTintColor={colors.secondary}
-                  value={confidenceRate}
-                  minimumValue={0}
-                  maximumValue={5}
-                  minimumTrackTintColor={colors.secondary}
-                  maximumTrackTintColor={colors.primary}
-                />
-              </View>
-              <View
-                style={Platform.OS !== 'ios' ? styles.right : styles.rightIOS}>
-                <Text style={styles.rating}>5</Text>
-              </View>
-            </View>
-          </View> */}
+        </View>
+        <View style={styles.padding}>
+          <Text style={styles.text}>Weight Information</Text>
           <View style={styles.paddingTop}>
-            <TouchableOpacity
-              // disabled={selectanswer ? false : true}
-              onPress={handleQuestion}>
+            <Text style={styles.text2}>Current Weight</Text>
+            <View>
+              <TextInput
+                mode="contain"
+                activeUnderlineColor={colors.secondary}
+                style={styles.field}
+                onChangeText={text => setWeight(text)}
+                value={weight}
+              />
+            </View>
+          </View>
+          <View style={styles.paddingTop}>
+            <Text style={styles.text2}>Height</Text>
+            <View>
+              <TextInput
+                mode="contain"
+                activeUnderlineColor={colors.secondary}
+                style={styles.field}
+                onChangeText={text => setHeight(text)}
+                value={height}
+              />
+            </View>
+          </View>
+          <View style={styles.paddingTop}>
+            <Text style={styles.text2}>
+              What was your lowest and highest adult weight?
+            </Text>
+            <View style={styles.row}>
+              <TextInput
+                mode="contain"
+                label={'lb'}
+                activeUnderlineColor={colors.secondary}
+                style={styles.field2}
+                onChangeText={text => setLowestWeight(text)}
+                value={lowestWeight}
+              />
+              <TextInput
+                mode="contain"
+                label={'lb'}
+                activeUnderlineColor={colors.secondary}
+                style={styles.field2}
+                onChangeText={text => sethighestWeight(text)}
+                value={highestWeight}
+              />
+            </View>
+          </View>
+          <View style={styles.paddingTop}>
+            <Text style={styles.text2}>
+              Describe any weight changes (gain or loss) in the past 2 years
+            </Text>
+            <View>
+              <TextInput
+                mode="contain"
+                activeUnderlineColor={colors.secondary}
+                style={styles.field}
+                multiline={true}
+                onChangeText={text => setWeightChanges(text)}
+                value={weightChanges}
+              />
+            </View>
+          </View>
+          <View style={styles.paddingTop}>
+            <Text style={styles.text2}>
+              Have you dieted in the past for weight loss? (No Yes) If yes,
+              please indicate what you have done
+            </Text>
+            <View>
+              <TextInput
+                mode="contain"
+                activeUnderlineColor={colors.secondary}
+                style={styles.field}
+                multiline={true}
+                onChangeText={text => setDietedPast(text)}
+                value={dietedPast}
+              />
+            </View>
+          </View>
+
+          <View style={styles.paddingTop}>
+            <Text style={styles.text2}>
+              How much weight would you like to lose?
+            </Text>
+            <View>
+              <TextInput
+                mode="contain"
+                activeUnderlineColor={colors.secondary}
+                style={styles.field}
+                multiline={true}
+                onChangeText={text => setHowMuch(text)}
+                value={howMuch}
+              />
+            </View>
+          </View>
+          <View style={styles.paddingTop}>
+            <Text style={styles.text2}>
+              How will you benefit from this weight loss?
+            </Text>
+            <View>
+              <TextInput
+                mode="contain"
+                activeUnderlineColor={colors.secondary}
+                style={styles.field}
+                multiline={true}
+                onChangeText={text => setBenefit(text)}
+                value={benefit}
+              />
+            </View>
+          </View>
+          <View style={styles.paddingTop}>
+            <Text style={styles.text}>Physical Activity Information</Text>
+
+            <View style={styles.paddingTop}>
+              <Text style={styles.text2}>
+                What, if any, regular exercises do you do?
+              </Text>
+              <View>
+                <TextInput
+                  mode="contain"
+                  activeUnderlineColor={colors.secondary}
+                  style={styles.field}
+                  multiline={true}
+                  onChangeText={text => setRegularExercise(text)}
+                  value={regularExercise}
+                />
+              </View>
+            </View>
+          </View>
+          <View style={styles.paddingTop}>
+            <Text style={styles.text}>Nutrition Information</Text>
+
+            <View style={styles.paddingTop}>
+              <Text style={styles.text2}>Who plans the meals at home?</Text>
+              <View>
+                <TextInput
+                  mode="contain"
+                  activeUnderlineColor={colors.secondary}
+                  style={styles.field}
+                  onChangeText={text => setWhoPlans(text)}
+                  value={whoPlans}
+                />
+              </View>
+            </View>
+            <View style={styles.paddingTop}>
+              <Text style={styles.text2}>Who prepares the meals at home?</Text>
+              <View>
+                <TextInput
+                  mode="contain"
+                  activeUnderlineColor={colors.secondary}
+                  style={styles.field}
+                  onChangeText={text => setWhoPrepare(text)}
+                  value={whoPrepare}
+                />
+              </View>
+            </View>
+          </View>
+          <View style={styles.paddingTop}>
+            <TouchableOpacity onPress={handleQuestion}>
               <View style={styles.buttonView}>
                 <Text style={styles.buttonText}>Submit</Text>
               </View>
             </TouchableOpacity>
           </View>
         </View>
-
         <View style={styles.bottom2}></View>
       </ScrollView>
+      </KeyboardAvoidingView>
     </SafeAreaView>
   );
 }
