@@ -139,7 +139,7 @@ export default function ChooseAppointment({navigation, route}) {
       .then(response => response.json())
 
       .then(result => {
-        console.log('--------->>>>', result.data);
+        console.log('--------->>>>', result);
         setTimeSlot(result.data);
       })
       .catch(error => console.log('error', error));
