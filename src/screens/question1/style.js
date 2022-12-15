@@ -13,16 +13,17 @@ export const styles = StyleSheet.create({
   text: {
     color: colors.primary,
     fontFamily: fontFamily.appTextLight,
-    fontSize: fontSize.h6,
-    fontWeight: 'bold',
+    fontSize: fontSize.h5,
+    fontWeight: '900',
     textTransform: 'uppercase',
     textAlign: 'center',
+    paddingTop: sizes.screenHeight * 0.03,
   },
   text2: {
     color: colors.black,
     fontFamily: fontFamily.appTextLight,
     fontSize: fontSize.h6,
-    fontWeight: 'bold',
+    fontWeight: '800',
     left: sizes.screenWidth * 0.02,
   },
   field: {

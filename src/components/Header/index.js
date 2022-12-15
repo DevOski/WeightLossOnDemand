@@ -111,7 +111,7 @@ export default function Header({
              }
             
              >
-             Total Questions:13
+             Total Questions: 13
            </Text>
          </View>
         )}

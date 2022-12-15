@@ -92,28 +92,9 @@ export const AllQuestions = ({navigation, route}) => {
       </View>
       <ScrollView>
         <View style={styles.container1}>
-          <TouchableOpacity
-            onPress={() =>
-              navigation.navigate('basicInfoscreenssettings', {
-                to: 'healthprofilereview',
-              })
-            }>
-            <View style={{flexDirection: 'row'}}>
-              <Text
-                style={{
-                  color: colors.black,
-                  fontWeight: 'bold',
-                  fontSize: fontSize.medium,
-                }}>
-                Please review your basic info as it will be shared with your
-                conusltant.
-              </Text>
-              <View>
-                <Feather name="edit" color={colors.black} style={styles.icon} />
-              </View>
-            </View>
-          </TouchableOpacity>
-
+          <View>
+            <Text style={styles.hedtext}>Client questions</Text>
+          </View>
           <View style={styles.pa}>
             <View style={styles.box}>
               <View style={styles.borderrb}>
@@ -192,7 +173,7 @@ export const AllQuestions = ({navigation, route}) => {
           <View style={styles.box}>
             <View style={styles.borderrb}>
               <Text style={styles.textttt}>
-                8) Have you dieted in the past for weight loss? (No Yes) If yes,
+                8) Have you dieted in the past for weight loss? (No/Yes) If yes,
                 please indicate what you have done
               </Text>
             </View>
@@ -254,26 +235,6 @@ export const AllQuestions = ({navigation, route}) => {
               <Text style={styles.textttt}>Ans: {q49}</Text>
             </View>
           </View>
-
-          <TouchableOpacity
-            onPress={() =>
-              navigation.navigate('UserVisit', {
-                slot: route?.params?.slot,
-                trainer: route?.params?.trainer,
-                appointByTrainer:
-                  route?.params?.trainer && route?.params?.slot ? true : false,
-                appointByTime:
-                  !route?.params?.trainer && route?.params?.slot ? true : false,
-                sessionStart:
-                  !route?.params?.trainer && !route?.params?.slot
-                    ? true
-                    : false,
-              })
-            }>
-            <View style={styles.buttonView}>
-              <Text style={styles.buttonText}>Confirm</Text>
-            </View>
-          </TouchableOpacity>
         </View>
       </ScrollView>
     </SafeAreaView>

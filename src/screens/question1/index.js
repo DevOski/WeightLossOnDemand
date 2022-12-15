@@ -320,7 +320,7 @@ export default function Question({navigation, route}) {
             </View>
             <View style={styles.paddingTop}>
               <Text style={styles.text2}>
-                8) Have you dieted in the past for weight loss? (No Yes) If yes,
+                8) Have you dieted in the past for weight loss? (No/Yes) If yes,
                 please indicate what you have done
               </Text>
               <View>
