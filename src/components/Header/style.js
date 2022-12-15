@@ -119,6 +119,9 @@ export const styles = StyleSheet.create({
   leftDone2: {
     left: sizes.screenWidth * 0.07,
   },
+  thretee: {
+    left: sizes.screenWidth * 0.23,
+  },
   filterLeft: {
     left: sizes.screenWidth * 0.22,
   },

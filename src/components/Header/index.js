@@ -26,6 +26,7 @@ export default function Header({
   next,
   status,
   signout,
+  thirteen
 }) {
   const navigation = useNavigation();
   return (
@@ -102,6 +103,19 @@ export default function Header({
             </TouchableOpacity>
           </View>
         )}
+         {thirteen && (
+           <View style={[styles.row, styles.thretee]}>
+           <Text
+             style={
+               Platform.OS !== 'ios' ? styles.title2 : styles.title2IOS
+             }
+            
+             >
+             Total Questions:13
+           </Text>
+         </View>
+        )}
+        
         {skip && dark && !status && (
           <View style={[styles.skipView, styles.leftDone]}>
             <TouchableOpacity

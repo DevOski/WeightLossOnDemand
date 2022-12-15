@@ -190,7 +190,7 @@ export default function Question({navigation, route}) {
   };
   return (
     <SafeAreaView>
-      <Header title={'Questionnaires '} />
+      <Header title={'Questionnaires '} thirteen={true} />
       <KeyboardAvoidingView behavior="height">
 
       <ScrollView style={styles.color}>
@@ -264,7 +264,7 @@ export default function Question({navigation, route}) {
                 label={'ft'}
                 activeUnderlineColor={colors.secondary}
                 style={styles.field2}
-                onChangeText={text => setLowestWeight(text)}
+                // onChangeText={text => setLowestWeight(text)}
                 value={lowestWeight}
               />
               <TextInput
@@ -272,7 +272,7 @@ export default function Question({navigation, route}) {
                 label={'in'}
                 activeUnderlineColor={colors.secondary}
                 style={styles.field2}
-                onChangeText={text => sethighestWeight(text)}
+                // onChangeText={text => sethighestWeight(text)}
                 value={highestWeight}
               />
             </View>
