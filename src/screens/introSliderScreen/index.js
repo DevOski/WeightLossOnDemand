@@ -166,10 +166,10 @@ const styles = StyleSheet.create({
   wrapDot: {
     flexDirection: 'row',
     alignSelf: 'center',
-    // alignItems: 'center',
+    alignItems: 'center',
     // position:'absolute',
-    top: sizes.screenHeight * 0.0,
-    // left:sizes.screenWidth*0.05
+    bottom: sizes.screenHeight * 0.06,
+    left:sizes.screenWidth*0.05
   },
   wrap: {
     width: sizes.screenWidth * 0.1,
