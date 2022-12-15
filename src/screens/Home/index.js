@@ -369,18 +369,19 @@ export default function Home({navigation}) {
                       <View style={styles.paddingBottom}></View>
                       <View style={styles.proudView}>
                         <Text style={styles.text2}>
-                          We're more than just proud
+                        Support from Everywhere
+
                         </Text>
                         <Text style={styles.letUsText}>
-                          Let us assist you in finding the right consultant for
-                          you.
+                        Connect to our user friendly website
+
                         </Text>
                       </View>
                       <View style={[styles.learnMoreView, styles.row2]}>
                         <TouchableOpacity
                           onPress={() => navigation.navigate('beyondscreen')}>
                           <View style={styles.row2}>
-                            <Text style={styles.semiText}>Learn more</Text>
+                            <Text style={styles.semiText}>WEIGHTLOSSONDEMAND.COM</Text>
                             <Text style={styles.symbol}> ›</Text>
                           </View>
                         </TouchableOpacity>

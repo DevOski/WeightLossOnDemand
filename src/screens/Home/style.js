@@ -147,7 +147,7 @@ export const styles = StyleSheet.create({
     paddingBottom: 0,
   },
   learnMoreView: {
-    bottom: sizes.screenHeight * 0.12,
+    bottom: sizes.screenHeight * 0.13,
     padding: sizes.screenWidth * 0.05,
   },
   semiTextView: {
@@ -191,10 +191,10 @@ export const styles = StyleSheet.create({
     fontSize: fontSize.h4,
     bottom: 2,
   },
-  symbol3:{
+  symbol3: {
     color: colors.white,
     fontSize: fontSize.h4,
-    bottom:1
+    bottom: 1,
   },
   symbol2: {
     color: colors.secondary,
@@ -243,7 +243,7 @@ export const styles = StyleSheet.create({
   },
   letUsText: {
     color: colors.white,
-    fontSize: fontSize.smallM,
+    fontSize: fontSize.regular,
     top: sizes.TinyMargin,
     // width: sizes.screenWidth * 0.9,
     fontFamily: fontFamily.appTextLight,
