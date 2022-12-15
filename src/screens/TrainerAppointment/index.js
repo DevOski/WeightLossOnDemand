@@ -258,7 +258,7 @@ export default function TrainerAppointment({navigation}) {
         <View>
           <Text style={styles.appointmentText}>Your upcoming sessions</Text>
         </View>
-        {/* {appointmentList?.length ? (
+        {appointmentList?.length ? (
           appointmentList?.map((item, index) => {
             return (
               <View>
@@ -284,7 +284,7 @@ export default function TrainerAppointment({navigation}) {
           <View>
             <Text style={styles.noRecent}>No recent sessions found.</Text>
           </View>
-        )} */}
+        )}
 
         <View style={styles.paddingBottom2}></View>
       </ScrollView>
