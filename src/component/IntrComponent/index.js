@@ -164,6 +164,9 @@ const ComponentFour = () => {
           <View style={styles.kidd}>
             <Image style={{width: '100%', height: '100%'}} source={lasslid} />
           </View>
+          <View style={styles.icon2}>
+            <Image style={{width: '100%', height: '100%'}} source={icon} />
+          </View>
           {/* <View
             style={{
               position: 'absolute',
@@ -201,6 +204,13 @@ const styles = StyleSheet.create({
     width: deviceWidth * 0.12,
     height: deviceHeight * 0.06,
     marginTop: deviceHeight * -0.03,
+  },
+  icon2: {
+    width: deviceWidth * 0.12,
+    height: deviceHeight * 0.06,
+    top: sizes.screenHeight * 0.27,
+    alignSelf:'center'
+    // marginTop: deviceHeight * -0.03,
   },
   container: {
     width: deviceWidth,

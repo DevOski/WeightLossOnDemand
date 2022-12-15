@@ -110,7 +110,7 @@ const Intro = ({navigation}) => {
             <TouchableOpacity
               onPress={() => navigation.navigate('signupscreen')}>
               <Text style={[styles.fontsiginandsignup, styles.top]}>
-                Sign Up
+                Free Sign Up
               </Text>
             </TouchableOpacity>
           </View>
@@ -160,22 +160,25 @@ const styles = StyleSheet.create({
     color: colors.secondary,
     opacity: 0.6,
     fontSize: fontSize.h2,
+    width: sizes.screenWidth * 0.1,
+
   },
   wrapDot: {
     flexDirection: 'row',
-    // alignSelf: 'center',
-    alignItems: 'center',
+    alignSelf: 'center',
+    // alignItems: 'center',
     // position:'absolute',
     top: sizes.screenHeight * 0.0,
-    // backgroundColor:'red'
+    // left:sizes.screenWidth*0.05
   },
   wrap: {
-    width: sizes.screenWidth * 0.96,
+    width: sizes.screenWidth * 0.1,
   },
   dotActive: {
     // marginLeft:18,
     color: colors.secondary,
     fontSize: fontSize.h2,
+    width: sizes.screenWidth * 0.1,
   },
   top: {
     // top: sizes.screenHeight * -0.01,
