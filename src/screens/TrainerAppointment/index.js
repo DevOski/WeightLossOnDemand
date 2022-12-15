@@ -67,8 +67,6 @@ export default function TrainerAppointment({navigation}) {
     console.log(currentFinalDate, 'date-----------<><');
   };
 
-
-
   const getFcmToken = async () => {
     let fcmToken = await AsyncStorage.getItem('fcmToken');
     // console.log('----------------------------->>>>', fcmToken, '----->>');
@@ -109,13 +107,13 @@ export default function TrainerAppointment({navigation}) {
     let currentDate = moment(date).format('YYYY-MM-DD');
     let currentFinalDate = currentDate + currentTime;
     try {
-      console.log("works0000-->");
-      let response = await getAppointmentTrainer(token,currentFinalDate);
-      console.log(response,'res-------------------------------------->>>>');
+      console.log('works0000-->');
+      let response = await getAppointmentTrainer(token, currentFinalDate);
+      console.log(response, 'res-------------------------------------->>>>');
       console.log('appoint-->>>>>>', response.data);
       setAppointmentList(response.data.data);
     } catch (error) {
-      console.log('---------->>>>>>ssee',error);
+      console.log('---------->>>>>>ssee', error);
     }
   };
   const dispatch = useDispatch();
@@ -174,7 +172,6 @@ export default function TrainerAppointment({navigation}) {
         if (result.data.ap_id) {
           // setAppId(result.data.ap_id);
           // dispatch(viewClientDetails(true));
-
           // setVistId('');
         } else {
           // setVistId('');
@@ -282,7 +279,7 @@ export default function TrainerAppointment({navigation}) {
           })
         ) : (
           <View>
-            <Text style={styles.noRecent}>No recent sessions found.</Text>
+            <Text style={styles.noRecent}>No sessions found.</Text>
           </View>
         )}
 

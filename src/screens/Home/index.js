@@ -281,7 +281,7 @@ export default function Home({navigation}) {
                         <TouchableOpacity
                           onPress={() => navigation.navigate('HowItWorks')}>
                           <Text style={styles.semiText}>
-                            How It Works <Text style={styles.symbol}>›</Text>
+                            How It Works <Text style={styles.symbol3}>›</Text>
                           </Text>
                         </TouchableOpacity>
                       </View>

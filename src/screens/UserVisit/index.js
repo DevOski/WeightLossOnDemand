@@ -227,6 +227,8 @@ export default function UserVisit({navigation, route}) {
             }, 500);
           } else {
             alert(result.message);
+            setLoader(false);
+
           }
         })
         .catch(error => console.log('error', error));

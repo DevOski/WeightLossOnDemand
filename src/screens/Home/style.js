@@ -147,7 +147,7 @@ export const styles = StyleSheet.create({
     paddingBottom: 0,
   },
   learnMoreView: {
-    bottom: sizes.screenHeight * 0.13,
+    bottom: sizes.screenHeight * 0.12,
     padding: sizes.screenWidth * 0.05,
   },
   semiTextView: {
@@ -161,8 +161,8 @@ export const styles = StyleSheet.create({
     width: sizes.screenWidth * 0.7,
     fontFamily: fontFamily.appTextHeading,
     // textShadowColor: colors.black,
-    textShadowOffset: {width: 0.5, height: 0.5},
-    textShadowRadius: 50,
+    // textShadowOffset: {width: 0.5, height: 0.5},
+    // textShadowRadius: 50,
     textTransform: 'uppercase',
   },
   text2: {
@@ -189,7 +189,12 @@ export const styles = StyleSheet.create({
   symbol: {
     color: colors.white,
     fontSize: fontSize.h4,
-    bottom: 1,
+    bottom: 2,
+  },
+  symbol3:{
+    color: colors.white,
+    fontSize: fontSize.h4,
+    bottom:1
   },
   symbol2: {
     color: colors.secondary,
@@ -238,7 +243,7 @@ export const styles = StyleSheet.create({
   },
   letUsText: {
     color: colors.white,
-    fontSize: fontSize.regular,
+    fontSize: fontSize.smallM,
     top: sizes.TinyMargin,
     // width: sizes.screenWidth * 0.9,
     fontFamily: fontFamily.appTextLight,
