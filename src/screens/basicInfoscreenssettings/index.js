@@ -187,7 +187,7 @@ const BasicInfoScreenSettings = ({navigation, route}) => {
     var myHeaders = new Headers();
     myHeaders.append(
       'Authorization',
-      '$2y$10$KmDTenzlBmb2iVT.tv0nu.zmfkP5FGW.WWGAfPcXeQZqqkuf7/uCW',
+      token,
     );
 
     var formdata = new FormData();
@@ -873,8 +873,8 @@ const BasicInfoScreenSettings = ({navigation, route}) => {
             </View>
           </Modal>
         )}
-      </View>
       {loader && <Loader />}
+      </View>
     </SafeAreaView>
   );
 };

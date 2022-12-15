@@ -258,9 +258,8 @@ export default function TrainerAppointment({navigation}) {
         <View>
           <Text style={styles.appointmentText}>Your upcoming sessions</Text>
         </View>
-        {appointmentList?.length ? (
+        {/* {appointmentList?.length ? (
           appointmentList?.map((item, index) => {
-            console.log('------->>>', item.apt_time);
             return (
               <View>
                 {item.status == 'pending' && (
@@ -275,7 +274,6 @@ export default function TrainerAppointment({navigation}) {
                       <Text style={styles.cardText}>
                         {moment(item.apt_time).format('DD/MM/YY hh:mm: A')}
                       </Text>
-                      {/* <View>{/ <Text style={styles.symbol}> ›</Text> /}</View> */}
                     </View>
                   </TouchableOpacity>
                 )}
@@ -286,7 +284,7 @@ export default function TrainerAppointment({navigation}) {
           <View>
             <Text style={styles.noRecent}>No recent sessions found.</Text>
           </View>
-        )}
+        )} */}
 
         <View style={styles.paddingBottom2}></View>
       </ScrollView>

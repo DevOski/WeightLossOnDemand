@@ -54,10 +54,13 @@ export default function HealthVisits({navigation}) {
       }
     }, 100);
   };
+  const onPress = () => {
+    navigation.navigate('Home');
+  };
   return (
     <SafeAreaView>
       <View>
-        <Header title={'Recent Sessions'} />
+        <Header title={'Recent Sessions'} done={true} onPress={onPress} />
       </View>
       <ScrollView style={styles.color}>
         {/* {!error ? ( */}

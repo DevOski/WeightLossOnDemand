@@ -294,6 +294,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.secondary,
     borderRadius: sizes.screenWidth * 0.5,
     // paddingTop: sizes.screenWidth * 0.01,
+    // bottom:sizes.screenHeight * 0.05,
     // margin: 5,
     // position: 'relative',
     // top:10,

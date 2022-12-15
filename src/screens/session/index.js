@@ -78,6 +78,7 @@ export default function startSession({navigation}) {
         <View>
           <View style={{paddingBottom: sizes.TinyMargin}}>
             {visitId !== '' && appId == '' && (
+              <>
               <TouchableOpacity
                 onPress={() =>
                   navigation.navigate('userDetailTrainer', {
@@ -97,6 +98,27 @@ export default function startSession({navigation}) {
                   View Client Details
                 </Text>
               </TouchableOpacity>
+              <View style={{marginTop:sizes.screenHeight * 0.01}}>
+
+              <TouchableOpacity
+              onPress={() => navigation.navigate('trainervideocall')}
+              style={
+                styles.but
+              }>
+              <Text
+                style={{
+                  color: '#fff',
+                  fontSize: fontSize.h6,
+                  fontFamily: fontFamily.appTextHeading,
+                  fontWeight: 'Bold',
+                }}>
+                Start Session
+              </Text>
+            </TouchableOpacity>
+            </View>
+
+            </>
+
             )}
             {appId !== '' && visitId == '' && detailStatus && (
               <TouchableOpacity
@@ -136,25 +158,7 @@ export default function startSession({navigation}) {
                 </Text>
               </TouchableOpacity>
             </View> */}
-          <TouchableOpacity
-            // disabled={visitId ? false : true}
-            onPress={() => navigation.navigate('trainervideocall')}
-            // disabled={email != '' && password != '' ? false : true}
-            style={
-              // visitId ?
-              styles.but
-              // : styles.disabledView
-            }>
-            <Text
-              style={{
-                color: '#fff',
-                fontSize: fontSize.h6,
-                fontFamily: fontFamily.appTextHeading,
-                fontWeight: 'Bold',
-              }}>
-              Start Session
-            </Text>
-          </TouchableOpacity>
+          
         </View>
         {/* )} */}
       </View>

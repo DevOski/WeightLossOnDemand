@@ -36,19 +36,19 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
   },
-  rows:{
+  rows: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent:'space-between'
+    justifyContent: 'space-between',
   },
   title: {
     color: colors.white,
     left: sizes.screenWidth * 0.05,
     fontSize: fontSize.h6,
     fontFamily: fontFamily.appTextLight,
-    fontWeight:'bold'
+    fontWeight: 'bold',
   },
-  leftsi:{
+  leftsi: {
     left: sizes.screenWidth * 0.41,
   },
   titleIOS: {
@@ -115,6 +115,9 @@ export const styles = StyleSheet.create({
   },
   leftDone: {
     left: sizes.screenWidth * 0.19,
+  },
+  leftDone2: {
+    left: sizes.screenWidth * 0.07,
   },
   filterLeft: {
     left: sizes.screenWidth * 0.22,

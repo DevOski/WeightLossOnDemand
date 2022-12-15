@@ -53,6 +53,7 @@ export default function Header({
             </View>
           </TouchableOpacity>
         )}
+        
         {signout && onPress && (
           <TouchableOpacity
             style={[styles.rows, styles.leftsi]}
@@ -62,7 +63,7 @@ export default function Header({
             </View>
           </TouchableOpacity>
         )}
-        {done && (
+        {done && title !=="Recent Sessions" &&(
           <View style={styles.skipView}>
             <TouchableOpacity onPress={() => navigation.goBack()}>
               <View style={[styles.row, styles.leftDone]}>
@@ -71,6 +72,21 @@ export default function Header({
                     Platform.OS !== 'ios' ? styles.title2 : styles.title2IOS
                   }
                   onPress={() => navigation.goBack()}>
+                  Done
+                </Text>
+              </View>
+            </TouchableOpacity>
+          </View>
+        )}
+         {done && title =="Recent Sessions" &&(
+          <View style={styles.skipView}>
+            <TouchableOpacity onPress={() => navigation.goBack()}>
+              <View style={[styles.row, styles.leftDone2]}>
+                <Text
+                  style={
+                    Platform.OS !== 'ios' ? styles.title2 : styles.title2IOS
+                  }
+                  onPress={onPress}>
                   Done
                 </Text>
               </View>

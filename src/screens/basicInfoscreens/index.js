@@ -19,7 +19,7 @@ import Modal from 'react-native-modal';
 import {DatePickerModal} from 'react-native-paper-dates';
 
 import {RadioButton} from 'react-native-paper';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import AntDesign from 'react-native-vector-icons/AntDesign';
 import {colors, fontFamily, fontSize, sizes} from '../../services';
 import {CustomTextFiel} from '../../component/textFiled';
 import {getTrainer, signUp} from '../../services/utilities/api/auth';
@@ -171,11 +171,11 @@ const BasicInfoScreen = ({navigation, route}) => {
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView>
-      <Header />
+      <Header title={'Update Basic Info'} />
         <View style={styles.inercontainer}>
-          <View style={styles.basicinfocontainer}>
+          {/* <View style={styles.basicinfocontainer}>
             <Text style={styles.basicinfo}> Basic Info</Text>
-          </View>
+          </View> */}
           <View style={styles.spayrainfo}>
             <Text style={styles.basicinfophyra}>
               Please tell us some basic info to complete
@@ -201,51 +201,18 @@ const BasicInfoScreen = ({navigation, route}) => {
                 // setValue={setemail}
               />
               
-               <TouchableOpacity
-              onPress={() => navigation.navigate('signupscreen')}>
-              <View
-                style={{
-                  alignSelf: 'flex-end',
-                  borderRadius: sizes.screenWidth * 0.02,
-                  // width: sizes.screenWidth * 0.4,
-                  borderWidth: 1,
-                  borderColor: colors.lightGray,
-                  padding: sizes.screenWidth * 0.008,
-                  position:'absolute',
-                  bottom:sizes.screenHeight* 0.02,
-                  right:sizes.screenWidth* 0.02,
-                  // marginBottom: sizes.screenHeight * 0.04,
-                  shadowColor: '#000',
-                  backgroundColor: colors.secondary,
-                  shadowOffset: {
-                    width: 0,
-                    height: 2,
-                  },
-                  shadowOpacity: 0.25,
-                  shadowRadius: 3.84,
-
-                  elevation: 5,
-                }}>
-                {/* <Text
-                  style={{
-                    color: colors.white,
-                    fontSize: fontSize.h6,
-                    textAlign: 'center',
-                  }}>
-                  Change Password
-                </Text> */}
-                <MaterialCommunityIcons color={colors.white} name='email-edit'/>
-              </View>
-            </TouchableOpacity>
+              <TouchableOpacity onPress={() => navigation.navigate('signupscreen')} style={{flexDirection: 'row',left:sizes.screenWidth* 0.65,bottom:sizes.screenHeight* 0.04}}>
+                <AntDesign
+                  name="edit"
+                  color={colors.black}
+                  size={18}
+                  style={styles.icon}
+                />
+                <Text style={styles.addPaymentText}>Edit Email</Text>
+              </TouchableOpacity>
             
             </View>
-            <View style={styles.filedcon}>
-              <CustomTextFiel
-                label={'First name'}
-                value={name}
-                setValue={setname}
-              />
-            </View>
+            
            
               <View style={styles.filedcon}>
                 <CustomTextFiel
@@ -912,10 +879,10 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
   },
   icon: {
-    position: 'absolute',
-    left: sizes.screenWidth * 0.36,
-    top: sizes.screenHeight * 0.03,
-    fontSize: fontSize.h2,
+    // position: 'absolute',
+    // left: sizes.screenWidth * 0.36,
+    // top: sizes.screenHeight * 0.03,
+    // fontSize: fontSize.h2,
     // flexDirection:'row'
   },
   iconexp: {
@@ -942,6 +909,14 @@ const styles = StyleSheet.create({
     top: sizes.screenHeight * 0.01,
     fontSize: fontSize.h2,
   },
+  icon: {
+    // left: sizes.screenWidth * 0.02,
+  },
+ addPaymentText: {
+    color: colors.disabledBg2,
+    fontFamily: fontFamily.appTextLight,
+    left: sizes.screenWidth * 0.015,
+  },
   pap: {
     width: sizes.screenWidth * 0.3,
     heigh: sizes.screenHeight * 0.9,
@@ -954,6 +929,7 @@ const styles = StyleSheet.create({
     lineHeight: sizes.screenHeight * 0.05,
     fontFamily: fontFamily.appTextMedium,
   },
+ 
  
   right: {
     left: sizes.screenWidth * 0.1,

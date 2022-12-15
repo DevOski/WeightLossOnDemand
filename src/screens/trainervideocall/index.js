@@ -357,6 +357,6 @@ const styles = StyleSheet.create({
     fontSize: fontSize.medium,
   },
   callIcon: {
-    top: sizes.screenHeight * 0.018,
+    top: sizes.screenHeight * 0.025,
   },
 });

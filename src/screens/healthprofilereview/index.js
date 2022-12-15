@@ -87,7 +87,7 @@ export const ReviewHealthprofile = ({navigation, route}) => {
   return (
     <SafeAreaView style={styles.container}>
       <View>
-        <Header dark={true} />
+        <Header dark={true} title={"Please review your questions"} />
       </View>
 
       <ScrollView>
@@ -128,9 +128,9 @@ export const ReviewHealthprofile = ({navigation, route}) => {
               </Text>
             </View>
           </TouchableOpacity>
-          <View>
+          {/* <View>
             <Text style={styles.hedtext}>Please review your questions</Text>
-          </View>
+          </View> */}
 
           <View style={styles.pa}>
             <View style={styles.box}>
