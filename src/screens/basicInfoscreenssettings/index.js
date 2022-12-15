@@ -52,7 +52,6 @@ const BasicInfoScreenSettings = ({navigation, route}) => {
   const [divorced, setDivorced] = useState(false);
   const [widowed, setWidowed] = useState(false);
   const [maritalStatus, setMaritalStatus] = useState('');
-
   const [name, setname] = useState('');
   const [lastname, setlastname] = useState('');
   const [phonenumber, setphonenumber] = useState('');
@@ -118,9 +117,68 @@ const BasicInfoScreenSettings = ({navigation, route}) => {
         setSmokeStatus(response.data.data.smoking_status);
         setsetSuffix(response.data.data.suffix);
         setPrefix(response.data.data.prefix);
-        setLanguage(response.data.data.language);
         setgender(response.data.data.gender);
-        setMiddle(response.data.data.middle)
+        setMiddle(response.data.data.middle);
+        if (response.data.data.language == 'English') {
+          setCheckedEnglish(true);
+          setCheckedSpanish(false);
+          setCheckedLanguageOther(false);
+        } else if (response.data.data.language == 'Spanish') {
+          setCheckedSpanish(true);
+          setCheckedEnglish(false);
+          setCheckedLanguageOther(false);
+        } else if (response.data.data.language == 'Other') {
+          setCheckedLanguageOther(true);
+          setCheckedSpanish(false);
+          setCheckedEnglish(false);
+        }
+        if (response.data.data.gender == 'Male') {
+          setCheckedMale(true);
+          setCheckedFemale(false);
+          setCheckedOther(false);
+        } else if (response.data.data.gender == 'Female') {
+          setCheckedMale(false);
+          setCheckedFemale(true);
+          setCheckedOther(false);
+        } else if (response.data.data.gender == 'Other') {
+          setCheckedMale(false);
+          setCheckedFemale(false);
+          setCheckedOther(true);
+        }
+        if (response.data.data.marital_status == 'Single') {
+          setSingle(true);
+          setMarried(false);
+          setDivorced(false);
+          setWidowed(false);
+        } else if (response.data.data.marital_status == 'Married') {
+          setSingle(false);
+          setMarried(true);
+          setDivorced(false);
+          setWidowed(false);
+        } else if (response.data.data.marital_status == 'Divorced') {
+          setSingle(false);
+          setMarried(false);
+          setDivorced(true);
+          setWidowed(false);
+        } else if (response.data.data.marital_status == 'Widowed') {
+          setSingle(false);
+          setMarried(false);
+          setDivorced(false);
+          setWidowed(true);
+        }
+        if (response.data.data.smoking_status == 'Never') {
+          setNeverSmoke(true);
+          setFormerSmoke(false);
+          setCurrentSmoke(false);
+        } else if (response.data.data.smoking_status == 'Former') {
+          setNeverSmoke(false);
+          setFormerSmoke(true);
+          setCurrentSmoke(false);
+        } else if (response.data.data.smoking_status == 'Current') {
+          setNeverSmoke(false);
+          setFormerSmoke(false);
+          setCurrentSmoke(true);
+        }
         // setUserName(response.data.data.first_name);
         // dispatch(storeUserData(response.data.data));
         setLoader(false);
@@ -134,110 +192,58 @@ const BasicInfoScreenSettings = ({navigation, route}) => {
   const Continue = async () => {
     setLoader(true);
 
-    // )  name,
-    //     middle,
-    //     lastname,
-    //     email,
-    //     password,
-    //     gender,
-    //     Prefix,
-    //     Suffix,
-    //     phonenumber,
-    //     isEnabled,
-    // navigation.navigate('Home')
+    setTimeout(() => {
+      var myHeaders = new Headers();
+      myHeaders.append('Authorization', token);
 
-    // try {
-    //   console.log('---->>>',
-    //     name,
-    //     middle,
-    //     lastname,
-    //     route?.params?.email,
-    //     route?.params?.password,
-    //     gender,
-    //     Prefix,
-    //     Suffix,
-    //     phonenumber,
-    //     slectnumber,
-    //     route?.params?.date,
-    //     1
-    //   );
-    //   let response = await signUp(
-    //     name,
-    //     middle,
-    //     lastname,
-    //     route?.params?.email,
-    //     route?.params?.password,
-    //     gender,
-    //     Prefix,
-    //     Suffix,
-    //     phonenumber,
-    //     slectnumber,
-    //     route?.params?.date,
-    //     1
-    //     // isEnabled ? 1 : 0,
-    //     // route?.params?.isEnabled ? 1 : 0,
-    //   );
-    //   console.log(response.data);
-    // } catch (error) {
-    //   console.log(error);
-    // }
+      var formdata = new FormData();
+      formdata.append('first_name', name);
+      formdata.append('middle_name', middle);
+      formdata.append('last_name', lastname);
+      formdata.append('gender', gender);
+      formdata.append('age', age);
+      formdata.append('prefix', Prefix);
+      formdata.append('suffix', Suffix);
+      formdata.append('phone', phonenumber);
+      formdata.append('phone_type', slectnumber);
+      formdata.append('marital_status', maritalStatus);
+      formdata.append('occupation', occupation);
+      formdata.append('work_hours', workingHour);
+      formdata.append('last_education', education);
+      formdata.append('language', language);
+      formdata.append('smoking_status', smokeStatus);
 
-    // console.log('------->>>',occupation,workingHour,age,education,smokeStatus,maritalStatus);
+      var requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: formdata,
+        redirect: 'follow',
+      };
 
-    var myHeaders = new Headers();
-    myHeaders.append(
-      'Authorization',
-      token,
-    );
+      fetch('http://alsyedmmtravel.com/api/user_update', requestOptions)
+        .then(response => response.json())
+        .then(result => {
+          console.log(result);
+          if (result.message == 'User Updated Successfully') {
+            console.log('works----------->>>>');
+            // dispatch(storeData(result.token));
+            setLoader(false);
+            setErrorMessage(result.message);
+            // setLoader(false);
+            setTimeout(() => {
+              setIsModalVisible(true);
+            }, 500);
+          }
+          // else {
 
-    var formdata = new FormData();
-    formdata.append('first_name', name);
-    formdata.append('middle_name', middle);
-    formdata.append('last_name', lastname);
-    formdata.append('gender', gender);
-    formdata.append('age', age);
-    formdata.append('prefix', Prefix);
-    formdata.append('suffix', Suffix);
-    formdata.append('phone', phonenumber);
-    formdata.append('phone_type', slectnumber);
-    formdata.append('marital_status', maritalStatus);
-    formdata.append('occupation', occupation);
-    formdata.append('work_hours', workingHour);
-    formdata.append('last_education', education);
-    formdata.append('language', language);
-    formdata.append('smoking_status', smokeStatus);
+          // }
+        })
 
-    var requestOptions = {
-      method: 'POST',
-      headers: myHeaders,
-      body: formdata,
-      redirect: 'follow',
-    };
-
-    fetch('http://alsyedmmtravel.com/api/user_update', requestOptions)
-      .then(response => response.json())
-      .then(result => {
-        console.log(result);
-        if (result.token) {
-          // dispatch(storeData(result.token));
-
+        .catch(error => {
+          console.log('error', error);
           setLoader(false);
-          setError(false);
-        } else {
-          setErrorMessage(result.message);
-          setLoader(false);
-
-          setTimeout(() => {
-            setIsModalVisible(true);
-          }, 500);
-          setError(true);
-        }
-      })
-
-      .catch(error => {
-        console.log('error', error);
-        setLoader(false);
-      });
+        });
+    }, 500);
 
     // var formdata = new FormData();
     // formdata.append('first_name', name);
@@ -286,7 +292,7 @@ const BasicInfoScreenSettings = ({navigation, route}) => {
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView>
-        <Header title={'Update Basic Info'}/>
+        <Header title={'Update Basic Info'} />
         <View style={styles.inercontainer}>
           {/* <View style={styles.basicinfocontainer}>
             <Text style={styles.basicinfo}></Text>
@@ -315,13 +321,13 @@ const BasicInfoScreenSettings = ({navigation, route}) => {
                 setValue={setname}
               />
             </View>
-              <View style={styles.filedcon}>
-                <CustomTextFiel
-                  label={'Middle name'}
-                  value={middle}
-                  setValue={setMiddle}
-                />
-              </View>
+            <View style={styles.filedcon}>
+              <CustomTextFiel
+                label={'Middle name'}
+                value={middle}
+                setValue={setMiddle}
+              />
+            </View>
             {/* {Fieldsshowhide ? (
             ) : null} */}
             <View style={styles.filedcon}>
@@ -343,14 +349,14 @@ const BasicInfoScreenSettings = ({navigation, route}) => {
 
             {/* <View style={styles.inonecon}> */}
             <View style={styles.filedcon}>
-                <CustomTextFiel
-                  label={'Phone number'}
-                  value={phonenumber}
-                  setValue={setphonenumber}
-                  type="numeric"
-                />
-              </View>
-              {/* <View style={styles.twoitem}>
+              <CustomTextFiel
+                label={'Phone number'}
+                value={phonenumber}
+                setValue={setphonenumber}
+                type="numeric"
+              />
+            </View>
+            {/* <View style={styles.twoitem}>
                 <TouchableOpacity onPress={toogle}>
                   <View
                     style={{
@@ -459,7 +465,7 @@ const BasicInfoScreenSettings = ({navigation, route}) => {
             </View> */}
             <View style={styles.expndbuttoncontainer}>
               {/* <TouchableOpacity onPress={ShowFiled}> */}
-                {/* {!Fieldsshowhide ? (
+              {/* {!Fieldsshowhide ? (
                   <>
                     <Text style={styles.lstyle}>COLLAPSE</Text>
 
@@ -483,7 +489,7 @@ const BasicInfoScreenSettings = ({navigation, route}) => {
                     />
                   </>
                 )} */}
-                {/* {!Fieldsshowhide ? (
+              {/* {!Fieldsshowhide ? (
                   <MaterialIcons
                     name="expand-less"
                     color={colors.secondary}
@@ -849,11 +855,10 @@ const BasicInfoScreenSettings = ({navigation, route}) => {
         </View>
         {/* {error && <Error title={'Oops!'} message={errorMessage} screen={"signupscreen"}/>} */}
       </ScrollView>
-      <View style={styles.color2}>
+      {/* <View style={styles.color2}>
         {isModalVisible && (
           <Modal style={styles.modalView} isVisible={isModalVisible}>
             <View style={styles.texcon}>
-              {/* <Text style={styles.text111}>{'Oops!'}</Text> */}
             </View>
             <View style={styles.texcon1}>
               <Text style={styles.text1}>{errorMessage}</Text>
@@ -873,7 +878,31 @@ const BasicInfoScreenSettings = ({navigation, route}) => {
             </View>
           </Modal>
         )}
+      </View> */}
+      {/* {error && <Error message={errorMessage} screen={'Home'} />} */}
       {loader && <Loader />}
+      <View style={styles.color2}>
+        {isModalVisible && (
+          <Modal style={styles.modalView} isVisible={isModalVisible}>
+            <View style={styles.texcon}>
+              {/* <Text style={styles.text111}>Oops!</Text> */}
+            </View>
+            <View style={styles.texcon1}>
+              <Text style={styles.text1}>{errorMessage}</Text>
+            </View>
+            <View>
+              <TouchableOpacity
+                onPress={() => {
+                  setIsModalVisible(false);
+                  navigation.navigate("Home")
+                }}>
+                <View style={styles.buttonView}>
+                  <Text style={styles.buttonText}>OK</Text>
+                </View>
+              </TouchableOpacity>
+            </View>
+          </Modal>
+        )}
       </View>
     </SafeAreaView>
   );
@@ -1039,7 +1068,7 @@ const styles = StyleSheet.create({
     width: sizes.screenWidth,
     backgroundColor: '#0e0e0e',
     opacity: 0.9,
-    marginLeft: sizes.screenWidth,
+    marginLeft: sizes.screenWidth * 0.001,
     padding: 10,
     position: 'absolute',
     top: -20,

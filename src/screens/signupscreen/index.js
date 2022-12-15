@@ -26,6 +26,7 @@ import moment from 'moment';
 import {TextInput} from 'react-native-paper';
 import {checkEmail} from '../../services/utilities/api/auth';
 import Modal from 'react-native-modal';
+import Loader from '../../components/Loader';
 
 export const SignUp = ({navigation}) => {
   const [isEnabled, setIsEnabled] = useState(false);
@@ -42,6 +43,7 @@ export const SignUp = ({navigation}) => {
   // const [currentDate, setCurrentDate] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const [error, setError] = useState(false);
+  const [loader, setLoader] = useState(false);
 
   // useEffect(() => {
   //   // var utc = new Date().toJSON().slice(0, 10).replace(/-/g, '/');
@@ -83,6 +85,7 @@ export const SignUp = ({navigation}) => {
     //   isEnabled,
     //   date,'----------->');
     if (email && password && checked) {
+      setLoader(true);
       // console.log(email,
       //   password,
       //   checked,
@@ -94,34 +97,41 @@ export const SignUp = ({navigation}) => {
       // } catch (error) {
       //   console.log(error);
       // }
-      console.log("|works");
-      var formdata = new FormData();
-      formdata.append('email', email.toLowerCase());
+      setTimeout(() => {
+        console.log('|works');
+        var formdata = new FormData();
+        formdata.append('email', email.toLowerCase());
 
-      var requestOptions = {
-        method: 'POST',
-        body: formdata,
-        redirect: 'follow',
-      };
+        var requestOptions = {
+          method: 'POST',
+          body: formdata,
+          redirect: 'follow',
+        };
 
-      fetch('http://alsyedmmtravel.com/api/check_email', requestOptions)
-        .then(response => response.json())
-        .then(result => {
-          console.log(result);
-          if (result.message == 'Email already exists ') {
-            setError(true);
-            setErrorMessage(result.message);
-          } else {
-            navigation.navigate('basicInfoscreens', {
-              email,
-              password,
-              checked,
-              isEnabled,
-              
-            });
-          }
-        })
-        .catch(error => console.log('error', error));
+        fetch('http://alsyedmmtravel.com/api/check_email', requestOptions)
+          .then(response => response.json())
+          .then(result => {
+            console.log(result);
+            if (result.message == 'Email already exists ') {
+              setError(true);
+              setErrorMessage(result.message);
+              setLoader(false);
+            } else {
+              setLoader(false);
+              navigation.navigate('basicInfoscreens', {
+                email,
+                password,
+                checked,
+                isEnabled,
+              });
+            }
+          })
+
+          .catch(error => {
+            console.log('error', error);
+            setLoader(false);
+          });
+      }, 500);
 
       // navigation.navigate('basicInfoscreens', {
       //   email,
@@ -302,17 +312,16 @@ export const SignUp = ({navigation}) => {
               //   //   : true
               // }
               style={
-                styles.but
-                // password?.length > 8 &&
-                // password?.toUpperCase() &&
-                // password?.match(/\d/) &&
-                // email?.includes('@') &&
-                // email?.includes('.') 
-                // &&
-                // // date &&
-                // checked
-                //   ? styles.but
-                //   : styles.disabledView
+                // styles.but
+                password?.length > 8 &&
+                password?.toUpperCase() &&
+                password?.match(/\d/) &&
+                email?.includes('@') &&
+                email?.includes('.') &&
+                // date &&
+                checked
+                  ? styles.but
+                  : styles.disabledView
               }
               onPress={Sinup}>
               <Text
@@ -350,6 +359,7 @@ export const SignUp = ({navigation}) => {
           )}
         </View>
       </View>
+      {loader && <Loader />}
     </SafeAreaView>
   );
 };
