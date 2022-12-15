@@ -198,7 +198,7 @@ export default function Question({navigation, route}) {
           <Text style={styles.text}>General Health Information</Text>
           <View style={styles.paddingTop}>
             <Text style={styles.text2}>
-              List any health problems and physical limitations
+            1) List any health problems and physical limitations
             </Text>
             <View>
               <TextInput
@@ -213,7 +213,7 @@ export default function Question({navigation, route}) {
 
           <View style={styles.paddingTop}>
             <Text style={styles.text2}>
-              List All Medications and their dosage
+            2) List All Medications and their dosage
             </Text>
             <View>
               <TextInput
@@ -231,7 +231,7 @@ export default function Question({navigation, route}) {
         <View style={styles.padding}>
           <Text style={styles.text}>Weight Information</Text>
           <View style={styles.paddingTop}>
-            <Text style={styles.text2}>Current Weight</Text>
+            <Text style={styles.text2}>3) Current Weight</Text>
             <View>
               <TextInput
                 mode="contain"
@@ -243,7 +243,7 @@ export default function Question({navigation, route}) {
             </View>
           </View>
           <View style={styles.paddingTop}>
-            <Text style={styles.text2}>Height</Text>
+            <Text style={styles.text2}>4) Height</Text>
             <View>
               <TextInput
                 mode="contain"
@@ -256,12 +256,12 @@ export default function Question({navigation, route}) {
           </View>
           <View style={styles.paddingTop}>
             <Text style={styles.text2}>
-              What was your lowest and highest adult weight?
+              5) What was your lowest adult weight?
             </Text>
             <View style={styles.row}>
               <TextInput
                 mode="contain"
-                label={'lb'}
+                label={'ft'}
                 activeUnderlineColor={colors.secondary}
                 style={styles.field2}
                 onChangeText={text => setLowestWeight(text)}
@@ -269,7 +269,7 @@ export default function Question({navigation, route}) {
               />
               <TextInput
                 mode="contain"
-                label={'lb'}
+                label={'in'}
                 activeUnderlineColor={colors.secondary}
                 style={styles.field2}
                 onChangeText={text => sethighestWeight(text)}
@@ -279,7 +279,30 @@ export default function Question({navigation, route}) {
           </View>
           <View style={styles.paddingTop}>
             <Text style={styles.text2}>
-              Describe any weight changes (gain or loss) in the past 2 years
+              6) What was your highest adult weight?
+            </Text>
+            <View style={styles.row}>
+              <TextInput
+                mode="contain"
+                label={'ft'}
+                activeUnderlineColor={colors.secondary}
+                style={styles.field2}
+                onChangeText={text => setLowestWeight(text)}
+                value={lowestWeight}
+              />
+              <TextInput
+                mode="contain"
+                label={'in'}
+                activeUnderlineColor={colors.secondary}
+                style={styles.field2}
+                onChangeText={text => sethighestWeight(text)}
+                value={highestWeight}
+              />
+            </View>
+          </View>
+          <View style={styles.paddingTop}>
+            <Text style={styles.text2}>
+              7) Describe any weight changes (gain or loss) in the past 2 years
             </Text>
             <View>
               <TextInput
@@ -294,7 +317,7 @@ export default function Question({navigation, route}) {
           </View>
           <View style={styles.paddingTop}>
             <Text style={styles.text2}>
-              Have you dieted in the past for weight loss? (No Yes) If yes,
+             8) Have you dieted in the past for weight loss? (No Yes) If yes,
               please indicate what you have done
             </Text>
             <View>
@@ -311,7 +334,7 @@ export default function Question({navigation, route}) {
 
           <View style={styles.paddingTop}>
             <Text style={styles.text2}>
-              How much weight would you like to lose?
+            9) How much weight would you like to lose?
             </Text>
             <View>
               <TextInput
@@ -326,7 +349,7 @@ export default function Question({navigation, route}) {
           </View>
           <View style={styles.paddingTop}>
             <Text style={styles.text2}>
-              How will you benefit from this weight loss?
+             10) How will you benefit from this weight loss?
             </Text>
             <View>
               <TextInput
@@ -344,7 +367,7 @@ export default function Question({navigation, route}) {
 
             <View style={styles.paddingTop}>
               <Text style={styles.text2}>
-                What, if any, regular exercises do you do?
+              11) What, if any, regular exercises do you do?
               </Text>
               <View>
                 <TextInput
@@ -362,7 +385,7 @@ export default function Question({navigation, route}) {
             <Text style={styles.text}>Nutrition Information</Text>
 
             <View style={styles.paddingTop}>
-              <Text style={styles.text2}>Who plans the meals at home?</Text>
+              <Text style={styles.text2}>12) Who plans the meals at home?</Text>
               <View>
                 <TextInput
                   mode="contain"
@@ -374,7 +397,7 @@ export default function Question({navigation, route}) {
               </View>
             </View>
             <View style={styles.paddingTop}>
-              <Text style={styles.text2}>Who prepares the meals at home?</Text>
+              <Text style={styles.text2}>13) Who prepares the meals at home?</Text>
               <View>
                 <TextInput
                   mode="contain"
