@@ -92,9 +92,28 @@ export const AllQuestions = ({navigation, route}) => {
       </View>
       <ScrollView>
         <View style={styles.container1}>
-          <View>
-            <Text style={styles.hedtext}>Client questions</Text>
-          </View>
+          <TouchableOpacity
+            onPress={() =>
+              navigation.navigate('basicInfoscreenssettings', {
+                to: 'healthprofilereview',
+              })
+            }>
+            <View style={{flexDirection: 'row'}}>
+              <Text
+                style={{
+                  color: colors.black,
+                  fontWeight: 'bold',
+                  fontSize: fontSize.medium,
+                }}>
+                Please review your basic info as it will be shared with your
+                conusltant.
+              </Text>
+              <View>
+                <Feather name="edit" color={colors.black} style={styles.icon} />
+              </View>
+            </View>
+          </TouchableOpacity>
+
           <View style={styles.pa}>
             <View style={styles.box}>
               <View style={styles.borderrb}>
@@ -107,16 +126,7 @@ export const AllQuestions = ({navigation, route}) => {
               </View>
             </View>
           </View>
-          {/* <View style={styles.box}>
-            <View style={styles.borderrb}>
-              <Text style={styles.textttt}>
-                2) List any allergies/intolerances
-              </Text>
-            </View>
-            <View style={styles.borderrb}>
-              <Text style={styles.textttt}>Ans: {q2}</Text>
-            </View>
-          </View> */}
+
           <View style={styles.box}>
             <View style={styles.borderrb}>
               <Text style={styles.textttt}>
@@ -127,73 +137,7 @@ export const AllQuestions = ({navigation, route}) => {
               <Text style={styles.textttt}>Ans: {q3}</Text>
             </View>
           </View>
-          {/*
-          <View style={styles.box}>
-            <View style={styles.borderrb}>
-              <Text style={styles.textttt}>
-                4) How many hours of sleep do you average per night? _____ Is
-                your sleep restful?
-              </Text>
-            </View>
-            <View style={styles.borderrb}>
-              <Text style={styles.textttt}>Ans: {q4}</Text>
-            </View>
-          </View>
-          <View style={styles.box}>
-            <View style={styles.borderrb}>
-              <Text style={styles.textttt}>
-                5) How do you rate the stress in your life, 10 being the
-                highest?
-              </Text>
-            </View>
-            <View style={styles.borderrb}>
-              <Text style={styles.textttt}>Ans: {q5}</Text>
-            </View>
-          </View>
-          <View style={styles.box}>
-            <View style={styles.borderrb}>
-              <Text style={styles.textttt}>
-                6) How do you cope with stress?
-              </Text>
-            </View>
-            <View style={styles.borderrb}>
-              <Text style={styles.textttt}>Ans: {q6}</Text>
-            </View>
-          </View>
-          <View style={styles.box}>
-            <View style={styles.borderrb}>
-              <Text style={styles.textttt}>
-                7) List any cultural or religious practices related to your
-                health or diet
-              </Text>
-            </View>
-            <View style={styles.borderrb}>
-              <Text style={styles.textttt}>Ans: {q7}</Text>
-            </View>
-          </View>
-          <View style={styles.box}>
-            <View style={styles.borderrb}>
-              <Text style={styles.textttt}>
-                8) How do you rate your readiness to make lifestyle changes, 5
-                being most ready?
-              </Text>
-            </View>
-            <View style={styles.borderrb}>
-              <Text style={styles.textttt}>Ans: {q8}</Text>
-            </View>
-          </View>
 
-          <View style={styles.box}>
-            <View style={styles.borderrb}>
-              <Text style={styles.textttt}>
-                9) How do you rate your confidence to make lifestyle changes, 5
-                being most confident?
-              </Text>
-            </View>
-            <View style={styles.borderrb}>
-              <Text style={styles.textttt}>Ans: {q9}</Text>
-            </View>
-          </View> */}
           <View style={styles.box}>
             <View style={styles.borderrb}>
               <Text style={styles.textttt}>3) Current Weight</Text>
@@ -213,19 +157,31 @@ export const AllQuestions = ({navigation, route}) => {
           <View style={styles.box}>
             <View style={styles.borderrb}>
               <Text style={styles.textttt}>
-                5) What was your lowest and highest adult weight?
+                5) What was your lowest adult weight?
               </Text>
             </View>
             <View style={styles.borderrb}>
               <Text style={styles.textttt}>
-                Ans: {q12},{q13}
+                Ans: {q12} ft , {q13} in
               </Text>
             </View>
           </View>
           <View style={styles.box}>
             <View style={styles.borderrb}>
               <Text style={styles.textttt}>
-                6) Describe any weight changes (gain or loss) in the past 2
+                6) What was your highest adult weight?
+              </Text>
+            </View>
+            <View style={styles.borderrb}>
+              <Text style={styles.textttt}>
+                Ans: {q4}ft , {q5}in
+              </Text>
+            </View>
+          </View>
+          <View style={styles.box}>
+            <View style={styles.borderrb}>
+              <Text style={styles.textttt}>
+                7) Describe any weight changes (gain or loss) in the past 2
                 years
               </Text>
             </View>
@@ -236,7 +192,7 @@ export const AllQuestions = ({navigation, route}) => {
           <View style={styles.box}>
             <View style={styles.borderrb}>
               <Text style={styles.textttt}>
-                7) Have you dieted in the past for weight loss? (No Yes) If yes,
+                8) Have you dieted in the past for weight loss? (No Yes) If yes,
                 please indicate what you have done
               </Text>
             </View>
@@ -244,30 +200,11 @@ export const AllQuestions = ({navigation, route}) => {
               <Text style={styles.textttt}>Ans: {q15}</Text>
             </View>
           </View>
-          {/* <View style={styles.box}>
-            <View style={styles.borderrb}>
-              <Text style={styles.textttt}>
-                15) What makes it hard for you to lose weight and keep it off?
-              </Text>
-            </View>
-            <View style={styles.borderrb}>
-              <Text style={styles.textttt}>Ans: {q15}</Text>
-            </View>
-          </View>
+
           <View style={styles.box}>
             <View style={styles.borderrb}>
               <Text style={styles.textttt}>
-                16) What has helped you lose weight?
-              </Text>
-            </View>
-            <View style={styles.borderrb}>
-              <Text style={styles.textttt}>Ans: {q16}</Text>
-            </View>
-          </View>          */}
-          <View style={styles.box}>
-            <View style={styles.borderrb}>
-              <Text style={styles.textttt}>
-                8) How much weight would you like to lose?
+                9) How much weight would you like to lose?
               </Text>
             </View>
             <View style={styles.borderrb}>
@@ -278,269 +215,29 @@ export const AllQuestions = ({navigation, route}) => {
           <View style={styles.box}>
             <View style={styles.borderrb}>
               <Text style={styles.textttt}>
-                9) How will you benefit from this weight loss?
+                10) How will you benefit from this weight loss?
               </Text>
             </View>
             <View style={styles.borderrb}>
               <Text style={styles.textttt}>Ans: {q19}</Text>
             </View>
           </View>
-          {/* <View style={styles.box}>
-            <View style={styles.borderrb}>
-              <Text style={styles.textttt}>
-                19) What is the most physically active thing you do in a day?
-              </Text>
-            </View>
-            <View style={styles.borderrb}>
-              <Text style={styles.textttt}>Ans: {q19}</Text>
-            </View>
-          </View>  */}
+
           <View style={styles.box}>
             <View style={styles.borderrb}>
               <Text style={styles.textttt}>
-                10) What, if any, regular exercises do you do?
+                11) What, if any, regular exercises do you do?
               </Text>
             </View>
             <View style={styles.borderrb}>
               <Text style={styles.textttt}>Ans: {q21}</Text>
             </View>
           </View>
-          {/* <View style={styles.box}>
-            <View style={styles.borderrb}>
-              <Text style={styles.textttt}>21) How many days a week?</Text>
-            </View>
-            <View style={styles.borderrb}>
-              <Text style={styles.textttt}>Ans: {q21}</Text>
-            </View>
-          </View>
-          <View style={styles.box}>
-            <View style={styles.borderrb}>
-              <Text style={styles.textttt}>22) How many minutes per day?</Text>
-            </View>
-            <View style={styles.borderrb}>
-              <Text style={styles.textttt}>Ans: {q22}</Text>
-            </View>
-          </View>
+
           <View style={styles.box}>
             <View style={styles.borderrb}>
               <Text style={styles.textttt}>
-                23) At what level of intensity (light, moderate, or high)?
-              </Text>
-            </View>
-            <View style={styles.borderrb}>
-              <Text style={styles.textttt}>Ans: {q23}</Text>
-            </View>
-          </View>
-          <View style={styles.box}>
-            <View style={styles.borderrb}>
-              <Text style={styles.textttt}>
-                24) What time(s) of day can you fit exercise into your schedule?
-              </Text>
-            </View>
-            <View style={styles.borderrb}>
-              <Text style={styles.textttt}>Ans: {q24}</Text>
-            </View>
-          </View>
-          <View style={styles.box}>
-            <View style={styles.borderrb}>
-              <Text style={styles.textttt}>
-                25) List any physical limitations to exercising
-              </Text>
-            </View>
-            <View style={styles.borderrb}>
-              <Text style={styles.textttt}>Ans: {q25}</Text>
-            </View>
-          </View> */}
-          {/* <View style={styles.box}>
-            <View style={styles.borderrb}>
-              <Text style={styles.textttt}>26) Breakfast Time</Text>
-            </View>
-            <View style={styles.borderrb}>
-              <Text style={styles.textttt}>Ans: {q26}</Text>
-            </View>
-          </View>
-          <View style={styles.box}>
-            <View style={styles.borderrb}>
-              <Text style={styles.textttt}>27) Breakfast Where Eaten</Text>
-            </View>
-            <View style={styles.borderrb}>
-              <Text style={styles.textttt}>Ans: {q27}</Text>
-            </View>
-          </View>
-          <View style={styles.box}>
-            <View style={styles.borderrb}>
-              <Text style={styles.textttt}>
-                28) Breakfast Foods and Beverages Eaten
-              </Text>
-            </View>
-            <View style={styles.borderrb}>
-              <Text style={styles.textttt}>Ans: {q28}</Text>
-            </View>
-          </View>
-          <View style={styles.box}>
-            <View style={styles.borderrb}>
-              <Text style={styles.textttt}>29) Snack Time</Text>
-            </View>
-            <View style={styles.borderrb}>
-              <Text style={styles.textttt}>Ans: {q29}</Text>
-            </View>
-          </View>
-          <View style={styles.box}>
-            <View style={styles.borderrb}>
-              <Text style={styles.textttt}>30) Snack Where Eaten</Text>
-            </View>
-            <View style={styles.borderrb}>
-              <Text style={styles.textttt}>Ans: {q30}</Text>
-            </View>
-          </View>
-          <View style={styles.box}>
-            <View style={styles.borderrb}>
-              <Text style={styles.textttt}>
-                31) Snack Foods and Beverages Eaten
-              </Text>
-            </View>
-            <View style={styles.borderrb}>
-              <Text style={styles.textttt}>Ans: {q31}</Text>
-            </View>
-          </View>
-          <View style={styles.box}>
-            <View style={styles.borderrb}>
-              <Text style={styles.textttt}>32) Lunch Time</Text>
-            </View>
-            <View style={styles.borderrb}>
-              <Text style={styles.textttt}>Ans: {q32}</Text>
-            </View>
-          </View>
-          <View style={styles.box}>
-            <View style={styles.borderrb}>
-              <Text style={styles.textttt}>33) Lunch Where Eaten</Text>
-            </View>
-            <View style={styles.borderrb}>
-              <Text style={styles.textttt}>Ans: {q33}</Text>
-            </View>
-          </View>
-          <View style={styles.box}>
-            <View style={styles.borderrb}>
-              <Text style={styles.textttt}>
-                34) Lunch Foods and Beverages Eaten
-              </Text>
-            </View>
-            <View style={styles.borderrb}>
-              <Text style={styles.textttt}>Ans: {q34}</Text>
-            </View>
-          </View>
-          <View style={styles.box}>
-            <View style={styles.borderrb}>
-              <Text style={styles.textttt}>35) Snack Time</Text>
-            </View>
-            <View style={styles.borderrb}>
-              <Text style={styles.textttt}>Ans: {q35}</Text>
-            </View>
-          </View>
-          <View style={styles.box}>
-            <View style={styles.borderrb}>
-              <Text style={styles.textttt}>36) Snack Where Eaten</Text>
-            </View>
-            <View style={styles.borderrb}>
-              <Text style={styles.textttt}>Ans: {q36}</Text>
-            </View>
-          </View>
-          <View style={styles.box}>
-            <View style={styles.borderrb}>
-              <Text style={styles.textttt}>
-                37) Snack Foods and Beverages Eaten
-              </Text>
-            </View>
-            <View style={styles.borderrb}>
-              <Text style={styles.textttt}>Ans: {q37}</Text>
-            </View>
-          </View>
-          <View style={styles.box}>
-            <View style={styles.borderrb}>
-              <Text style={styles.textttt}>38) Dinner Time</Text>
-            </View>
-            <View style={styles.borderrb}>
-              <Text style={styles.textttt}>Ans: {q38}</Text>
-            </View>
-          </View>
-          <View style={styles.box}>
-            <View style={styles.borderrb}>
-              <Text style={styles.textttt}>39) Dinner Where Eaten</Text>
-            </View>
-            <View style={styles.borderrb}>
-              <Text style={styles.textttt}>Ans: {q39}</Text>
-            </View>
-          </View>
-          <View style={styles.box}>
-            <View style={styles.borderrb}>
-              <Text style={styles.textttt}>
-                40) Dinner Foods and Beverages Eaten
-              </Text>
-            </View>
-            <View style={styles.borderrb}>
-              <Text style={styles.textttt}>Ans: {q40}</Text>
-            </View>
-          </View>
-          <View style={styles.box}>
-            <View style={styles.borderrb}>
-              <Text style={styles.textttt}>41) Snack Time</Text>
-            </View>
-            <View style={styles.borderrb}>
-              <Text style={styles.textttt}>Ans: {q41}</Text>
-            </View>
-          </View>
-          <View style={styles.box}>
-            <View style={styles.borderrb}>
-              <Text style={styles.textttt}>42) Snack Where Eaten</Text>
-            </View>
-            <View style={styles.borderrb}>
-              <Text style={styles.textttt}>Ans: {q42}</Text>
-            </View>
-          </View>
-          <View style={styles.box}>
-            <View style={styles.borderrb}>
-              <Text style={styles.textttt}>
-                43) Snack Foods and Beverages Eaten
-              </Text>
-            </View>
-            <View style={styles.borderrb}>
-              <Text style={styles.textttt}>Ans: {q43}</Text>
-            </View>
-          </View>
-          <View style={styles.box}>
-            <View style={styles.borderrb}>
-              <Text style={styles.textttt}>
-                44) How often do you eat out at restaurants/fast food?
-              </Text>
-            </View>
-            <View style={styles.borderrb}>
-              <Text style={styles.textttt}>Ans: {q44}</Text>
-            </View>
-          </View>
-          <View style={styles.box}>
-            <View style={styles.borderrb}>
-              <Text style={styles.textttt}>
-                45) Which grocery stores do your foods come from?
-              </Text>
-            </View>
-            <View style={styles.borderrb}>
-              <Text style={styles.textttt}>Ans: {q45}</Text>
-            </View>
-          </View>
-          <View style={styles.box}>
-            <View style={styles.borderrb}>
-              <Text style={styles.textttt}>
-                46) Who does the grocery shopping?
-              </Text>
-            </View>
-            <View style={styles.borderrb}>
-              <Text style={styles.textttt}>Ans: {q46}</Text>
-            </View>
-          </View> */}
-          <View style={styles.box}>
-            <View style={styles.borderrb}>
-              <Text style={styles.textttt}>
-                11) Who plans the meals at home?
+                12) Who plans the meals at home?
               </Text>
             </View>
             <View style={styles.borderrb}>
@@ -550,40 +247,33 @@ export const AllQuestions = ({navigation, route}) => {
           <View style={styles.box}>
             <View style={styles.borderrb}>
               <Text style={styles.textttt}>
-                12) Who prepares the meals at home?
+                13) Who prepares the meals at home?
               </Text>
             </View>
             <View style={styles.borderrb}>
               <Text style={styles.textttt}>Ans: {q49}</Text>
             </View>
           </View>
-          {/* <TouchableOpacity
-            onPress={
-              () =>
-                navigation.navigate('UserVisit', {
-                  slot: route?.params?.slot,
-                  trainer: route?.params?.trainer,
-                  appointByTrainer:
-                    route?.params?.trainer && route?.params?.slot
-                      ? true
-                      : false,
-                  appointByTime:
-                    !route?.params?.trainer && route?.params?.slot
-                      ? true
-                      : false,
-                  sessionStart:
-                    !route?.params?.trainer && !route?.params?.slot
-                      ? true
-                      : false,
-                })
-              // route?.params?.pharmacy
-              //   ? navigation.navigate('pharmacymaplocation')
-              //   : navigation.navigate('doyouneeddoctor')
+
+          <TouchableOpacity
+            onPress={() =>
+              navigation.navigate('UserVisit', {
+                slot: route?.params?.slot,
+                trainer: route?.params?.trainer,
+                appointByTrainer:
+                  route?.params?.trainer && route?.params?.slot ? true : false,
+                appointByTime:
+                  !route?.params?.trainer && route?.params?.slot ? true : false,
+                sessionStart:
+                  !route?.params?.trainer && !route?.params?.slot
+                    ? true
+                    : false,
+              })
             }>
             <View style={styles.buttonView}>
               <Text style={styles.buttonText}>Confirm</Text>
             </View>
-          </TouchableOpacity> */}
+          </TouchableOpacity>
         </View>
       </ScrollView>
     </SafeAreaView>

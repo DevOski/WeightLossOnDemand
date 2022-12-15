@@ -110,11 +110,7 @@ export const ReviewHealthprofile = ({navigation, route}) => {
                 conusltant.
               </Text>
               <View>
-                <Feather
-                  name="edit"
-                  color={colors.black}
-                  style={styles.icon}
-                />
+                <Feather name="edit" color={colors.black} style={styles.icon} />
               </View>
             </View>
           </TouchableOpacity>
@@ -162,19 +158,31 @@ export const ReviewHealthprofile = ({navigation, route}) => {
           <View style={styles.box}>
             <View style={styles.borderrb}>
               <Text style={styles.textttt}>
-                5) What was your lowest and highest adult weight?
+                5) What was your lowest adult weight?
               </Text>
             </View>
             <View style={styles.borderrb}>
               <Text style={styles.textttt}>
-                Ans: {q12},{q13}
+                Ans: {q12} ft , {q13} in
               </Text>
             </View>
           </View>
           <View style={styles.box}>
             <View style={styles.borderrb}>
               <Text style={styles.textttt}>
-                6) Describe any weight changes (gain or loss) in the past 2
+                6) What was your highest adult weight?
+              </Text>
+            </View>
+            <View style={styles.borderrb}>
+              <Text style={styles.textttt}>
+                Ans: {q4}ft , {q5}in
+              </Text>
+            </View>
+          </View>
+          <View style={styles.box}>
+            <View style={styles.borderrb}>
+              <Text style={styles.textttt}>
+                7) Describe any weight changes (gain or loss) in the past 2
                 years
               </Text>
             </View>
@@ -185,7 +193,7 @@ export const ReviewHealthprofile = ({navigation, route}) => {
           <View style={styles.box}>
             <View style={styles.borderrb}>
               <Text style={styles.textttt}>
-                7) Have you dieted in the past for weight loss? (No Yes) If yes,
+                8) Have you dieted in the past for weight loss? (No Yes) If yes,
                 please indicate what you have done
               </Text>
             </View>
@@ -197,7 +205,7 @@ export const ReviewHealthprofile = ({navigation, route}) => {
           <View style={styles.box}>
             <View style={styles.borderrb}>
               <Text style={styles.textttt}>
-                8) How much weight would you like to lose?
+                9) How much weight would you like to lose?
               </Text>
             </View>
             <View style={styles.borderrb}>
@@ -208,7 +216,7 @@ export const ReviewHealthprofile = ({navigation, route}) => {
           <View style={styles.box}>
             <View style={styles.borderrb}>
               <Text style={styles.textttt}>
-                9) How will you benefit from this weight loss?
+                10) How will you benefit from this weight loss?
               </Text>
             </View>
             <View style={styles.borderrb}>
@@ -219,7 +227,7 @@ export const ReviewHealthprofile = ({navigation, route}) => {
           <View style={styles.box}>
             <View style={styles.borderrb}>
               <Text style={styles.textttt}>
-                10) What, if any, regular exercises do you do?
+                11) What, if any, regular exercises do you do?
               </Text>
             </View>
             <View style={styles.borderrb}>
@@ -230,7 +238,7 @@ export const ReviewHealthprofile = ({navigation, route}) => {
           <View style={styles.box}>
             <View style={styles.borderrb}>
               <Text style={styles.textttt}>
-                11) Who plans the meals at home?
+                12) Who plans the meals at home?
               </Text>
             </View>
             <View style={styles.borderrb}>
@@ -240,7 +248,7 @@ export const ReviewHealthprofile = ({navigation, route}) => {
           <View style={styles.box}>
             <View style={styles.borderrb}>
               <Text style={styles.textttt}>
-                12) Who prepares the meals at home?
+                13) Who prepares the meals at home?
               </Text>
             </View>
             <View style={styles.borderrb}>

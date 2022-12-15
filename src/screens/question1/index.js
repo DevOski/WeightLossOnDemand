@@ -8,7 +8,7 @@ import {
   Text,
   TouchableOpacity,
   View,
-  KeyboardAvoidingView
+  KeyboardAvoidingView,
 } from 'react-native';
 import Header from '../../components/Header';
 import images from '../../services/utilities/images';
@@ -49,6 +49,9 @@ export default function Question({navigation, route}) {
   const [height, setHeight] = useState('');
   const [lowestWeight, setLowestWeight] = useState('');
   const [highestWeight, sethighestWeight] = useState('');
+  const [lowestWeight1, setLowestWeight1] = useState('');
+  const [highestWeight1, sethighestWeight1] = useState('');
+
   const [weightChanges, setWeightChanges] = useState('');
   const [dietedPast, setDietedPast] = useState('');
   const [hardLose, setHardLose] = useState('');
@@ -111,8 +114,8 @@ export default function Question({navigation, route}) {
         healthProblem,
         allergies,
         medicationDos,
-        restFul,
-        stressRate,
+        lowestWeight1,
+        highestWeight1,
         copeStress,
         listCultural,
         lifestyleRate,
@@ -192,182 +195,27 @@ export default function Question({navigation, route}) {
     <SafeAreaView>
       <Header title={'Questionnaires '} thirteen={true} />
       <KeyboardAvoidingView behavior="height">
-
-      <ScrollView style={styles.color}>
-        <View style={styles.padding}>
-          <Text style={styles.text}>General Health Information</Text>
-          <View style={styles.paddingTop}>
-            <Text style={styles.text2}>
-            1) List any health problems and physical limitations
-            </Text>
-            <View>
-              <TextInput
-                mode="contain"
-                activeUnderlineColor={colors.secondary}
-                style={styles.field}
-                onChangeText={text => setHealthProblem(text)}
-                value={healthProblem}
-              />
+        <ScrollView style={styles.color}>
+          <View style={styles.padding}>
+            <Text style={styles.text}>General Health Information</Text>
+            <View style={styles.paddingTop}>
+              <Text style={styles.text2}>
+                1) List any health problems and physical limitations
+              </Text>
+              <View>
+                <TextInput
+                  mode="contain"
+                  activeUnderlineColor={colors.secondary}
+                  style={styles.field}
+                  onChangeText={text => setHealthProblem(text)}
+                  value={healthProblem}
+                />
+              </View>
             </View>
-          </View>
-
-          <View style={styles.paddingTop}>
-            <Text style={styles.text2}>
-            2) List All Medications and their dosage
-            </Text>
-            <View>
-              <TextInput
-                mode="contain"
-                activeUnderlineColor={colors.secondary}
-                style={styles.field}
-                multiline={true}
-                numberOfLines={4}
-                onChangeText={text => setMedicationDos(text)}
-                value={medicationDos}
-              />
-            </View>
-          </View>
-        </View>
-        <View style={styles.padding}>
-          <Text style={styles.text}>Weight Information</Text>
-          <View style={styles.paddingTop}>
-            <Text style={styles.text2}>3) Current Weight</Text>
-            <View>
-              <TextInput
-                mode="contain"
-                activeUnderlineColor={colors.secondary}
-                style={styles.field}
-                onChangeText={text => setWeight(text)}
-                value={weight}
-              />
-            </View>
-          </View>
-          <View style={styles.paddingTop}>
-            <Text style={styles.text2}>4) Height</Text>
-            <View>
-              <TextInput
-                mode="contain"
-                activeUnderlineColor={colors.secondary}
-                style={styles.field}
-                onChangeText={text => setHeight(text)}
-                value={height}
-              />
-            </View>
-          </View>
-          <View style={styles.paddingTop}>
-            <Text style={styles.text2}>
-              5) What was your lowest adult weight?
-            </Text>
-            <View style={styles.row}>
-              <TextInput
-                mode="contain"
-                label={'ft'}
-                activeUnderlineColor={colors.secondary}
-                style={styles.field2}
-                // onChangeText={text => setLowestWeight(text)}
-                value={lowestWeight}
-              />
-              <TextInput
-                mode="contain"
-                label={'in'}
-                activeUnderlineColor={colors.secondary}
-                style={styles.field2}
-                // onChangeText={text => sethighestWeight(text)}
-                value={highestWeight}
-              />
-            </View>
-          </View>
-          <View style={styles.paddingTop}>
-            <Text style={styles.text2}>
-              6) What was your highest adult weight?
-            </Text>
-            <View style={styles.row}>
-              <TextInput
-                mode="contain"
-                label={'ft'}
-                activeUnderlineColor={colors.secondary}
-                style={styles.field2}
-                onChangeText={text => setLowestWeight(text)}
-                value={lowestWeight}
-              />
-              <TextInput
-                mode="contain"
-                label={'in'}
-                activeUnderlineColor={colors.secondary}
-                style={styles.field2}
-                onChangeText={text => sethighestWeight(text)}
-                value={highestWeight}
-              />
-            </View>
-          </View>
-          <View style={styles.paddingTop}>
-            <Text style={styles.text2}>
-              7) Describe any weight changes (gain or loss) in the past 2 years
-            </Text>
-            <View>
-              <TextInput
-                mode="contain"
-                activeUnderlineColor={colors.secondary}
-                style={styles.field}
-                multiline={true}
-                onChangeText={text => setWeightChanges(text)}
-                value={weightChanges}
-              />
-            </View>
-          </View>
-          <View style={styles.paddingTop}>
-            <Text style={styles.text2}>
-             8) Have you dieted in the past for weight loss? (No Yes) If yes,
-              please indicate what you have done
-            </Text>
-            <View>
-              <TextInput
-                mode="contain"
-                activeUnderlineColor={colors.secondary}
-                style={styles.field}
-                multiline={true}
-                onChangeText={text => setDietedPast(text)}
-                value={dietedPast}
-              />
-            </View>
-          </View>
-
-          <View style={styles.paddingTop}>
-            <Text style={styles.text2}>
-            9) How much weight would you like to lose?
-            </Text>
-            <View>
-              <TextInput
-                mode="contain"
-                activeUnderlineColor={colors.secondary}
-                style={styles.field}
-                multiline={true}
-                onChangeText={text => setHowMuch(text)}
-                value={howMuch}
-              />
-            </View>
-          </View>
-          <View style={styles.paddingTop}>
-            <Text style={styles.text2}>
-             10) How will you benefit from this weight loss?
-            </Text>
-            <View>
-              <TextInput
-                mode="contain"
-                activeUnderlineColor={colors.secondary}
-                style={styles.field}
-                multiline={true}
-                onChangeText={text => setBenefit(text)}
-                value={benefit}
-              />
-            </View>
-          </View>
-          <View style={styles.paddingTop}>
-            <Text style={styles.text}>Physical Activity Information</Text>
 
             <View style={styles.paddingTop}>
               <Text style={styles.text2}>
-              11) What, if any, regular exercises do you do?
+                2) List All Medications and their dosage
               </Text>
               <View>
                 <TextInput
@@ -375,50 +223,209 @@ export default function Question({navigation, route}) {
                   activeUnderlineColor={colors.secondary}
                   style={styles.field}
                   multiline={true}
-                  onChangeText={text => setRegularExercise(text)}
-                  value={regularExercise}
+                  numberOfLines={4}
+                  onChangeText={text => setMedicationDos(text)}
+                  value={medicationDos}
                 />
               </View>
             </View>
           </View>
-          <View style={styles.paddingTop}>
-            <Text style={styles.text}>Nutrition Information</Text>
+          <View style={styles.padding}>
+            <Text style={styles.text}>Weight Information</Text>
+            <View style={styles.paddingTop}>
+              <Text style={styles.text2}>3) Current Weight</Text>
+              <View>
+                <TextInput
+                  mode="contain"
+                  activeUnderlineColor={colors.secondary}
+                  style={styles.field}
+                  onChangeText={text => setWeight(text)}
+                  value={weight}
+                />
+              </View>
+            </View>
+            <View style={styles.paddingTop}>
+              <Text style={styles.text2}>4) Height</Text>
+              <View>
+                <TextInput
+                  mode="contain"
+                  activeUnderlineColor={colors.secondary}
+                  style={styles.field}
+                  onChangeText={text => setHeight(text)}
+                  value={height}
+                />
+              </View>
+            </View>
+            <View style={styles.paddingTop}>
+              <Text style={styles.text2}>
+                5) What was your lowest adult weight?
+              </Text>
+              <View style={styles.row}>
+                <TextInput
+                  mode="contain"
+                  label={'ft'}
+                  activeUnderlineColor={colors.secondary}
+                  style={styles.field2}
+                  onChangeText={text => setLowestWeight(text)}
+                  value={lowestWeight}
+                />
+                <TextInput
+                  mode="contain"
+                  label={'in'}
+                  activeUnderlineColor={colors.secondary}
+                  style={styles.field2}
+                  onChangeText={text => sethighestWeight(text)}
+                  value={highestWeight}
+                />
+              </View>
+            </View>
+            <View style={styles.paddingTop}>
+              <Text style={styles.text2}>
+                6) What was your highest adult weight?
+              </Text>
+              <View style={styles.row}>
+                <TextInput
+                  mode="contain"
+                  label={'ft'}
+                  activeUnderlineColor={colors.secondary}
+                  style={styles.field2}
+                  onChangeText={text => setLowestWeight1(text)}
+                  value={lowestWeight1}
+                />
+                <TextInput
+                  mode="contain"
+                  label={'in'}
+                  activeUnderlineColor={colors.secondary}
+                  style={styles.field2}
+                  onChangeText={text => sethighestWeight1(text)}
+                  value={highestWeight1}
+                />
+              </View>
+            </View>
+            <View style={styles.paddingTop}>
+              <Text style={styles.text2}>
+                7) Describe any weight changes (gain or loss) in the past 2
+                years
+              </Text>
+              <View>
+                <TextInput
+                  mode="contain"
+                  activeUnderlineColor={colors.secondary}
+                  style={styles.field}
+                  multiline={true}
+                  onChangeText={text => setWeightChanges(text)}
+                  value={weightChanges}
+                />
+              </View>
+            </View>
+            <View style={styles.paddingTop}>
+              <Text style={styles.text2}>
+                8) Have you dieted in the past for weight loss? (No Yes) If yes,
+                please indicate what you have done
+              </Text>
+              <View>
+                <TextInput
+                  mode="contain"
+                  activeUnderlineColor={colors.secondary}
+                  style={styles.field}
+                  multiline={true}
+                  onChangeText={text => setDietedPast(text)}
+                  value={dietedPast}
+                />
+              </View>
+            </View>
 
             <View style={styles.paddingTop}>
-              <Text style={styles.text2}>12) Who plans the meals at home?</Text>
+              <Text style={styles.text2}>
+                9) How much weight would you like to lose?
+              </Text>
               <View>
                 <TextInput
                   mode="contain"
                   activeUnderlineColor={colors.secondary}
                   style={styles.field}
-                  onChangeText={text => setWhoPlans(text)}
-                  value={whoPlans}
+                  multiline={true}
+                  onChangeText={text => setHowMuch(text)}
+                  value={howMuch}
                 />
               </View>
             </View>
             <View style={styles.paddingTop}>
-              <Text style={styles.text2}>13) Who prepares the meals at home?</Text>
+              <Text style={styles.text2}>
+                10) How will you benefit from this weight loss?
+              </Text>
               <View>
                 <TextInput
                   mode="contain"
                   activeUnderlineColor={colors.secondary}
                   style={styles.field}
-                  onChangeText={text => setWhoPrepare(text)}
-                  value={whoPrepare}
+                  multiline={true}
+                  onChangeText={text => setBenefit(text)}
+                  value={benefit}
                 />
               </View>
             </View>
-          </View>
-          <View style={styles.paddingTop}>
-            <TouchableOpacity onPress={handleQuestion}>
-              <View style={styles.buttonView}>
-                <Text style={styles.buttonText}>Submit</Text>
+            <View style={styles.paddingTop}>
+              <Text style={styles.text}>Physical Activity Information</Text>
+
+              <View style={styles.paddingTop}>
+                <Text style={styles.text2}>
+                  11) What, if any, regular exercises do you do?
+                </Text>
+                <View>
+                  <TextInput
+                    mode="contain"
+                    activeUnderlineColor={colors.secondary}
+                    style={styles.field}
+                    multiline={true}
+                    onChangeText={text => setRegularExercise(text)}
+                    value={regularExercise}
+                  />
+                </View>
               </View>
-            </TouchableOpacity>
+            </View>
+            <View style={styles.paddingTop}>
+              <Text style={styles.text}>Nutrition Information</Text>
+
+              <View style={styles.paddingTop}>
+                <Text style={styles.text2}>
+                  12) Who plans the meals at home?
+                </Text>
+                <View>
+                  <TextInput
+                    mode="contain"
+                    activeUnderlineColor={colors.secondary}
+                    style={styles.field}
+                    onChangeText={text => setWhoPlans(text)}
+                    value={whoPlans}
+                  />
+                </View>
+              </View>
+              <View style={styles.paddingTop}>
+                <Text style={styles.text2}>
+                  13) Who prepares the meals at home?
+                </Text>
+                <View>
+                  <TextInput
+                    mode="contain"
+                    activeUnderlineColor={colors.secondary}
+                    style={styles.field}
+                    onChangeText={text => setWhoPrepare(text)}
+                    value={whoPrepare}
+                  />
+                </View>
+              </View>
+            </View>
+            <View style={styles.paddingTop}>
+              <TouchableOpacity onPress={handleQuestion}>
+                <View style={styles.buttonView}>
+                  <Text style={styles.buttonText}>Submit</Text>
+                </View>
+              </TouchableOpacity>
+            </View>
           </View>
-        </View>
-        <View style={styles.bottom2}></View>
-      </ScrollView>
+          <View style={styles.bottom2}></View>
+        </ScrollView>
       </KeyboardAvoidingView>
     </SafeAreaView>
   );
