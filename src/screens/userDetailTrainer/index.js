@@ -33,6 +33,8 @@ export const userDetailTrainer = ({navigation, route}) => {
   const [slot, setSlot] = useState([]);
   const [user, setUser] = useState('');
   const [appointTime, setAppointTime] = useState('');
+  const [description, setDescription] = useState('');
+
   const [questions, setQuestions] = useState('');
   // const {tr_id} = route?.params?.trainer;
   const isVisible = useIsFocused();
@@ -135,7 +137,7 @@ export const userDetailTrainer = ({navigation, route}) => {
         method: 'GET',
         redirect: 'follow',
       };
-      console.log("works--------------->>>");
+      console.log('works--------------->>>');
       fetch(
         `http://alsyedmmtravel.com/api/visit_details/${route?.params?.visit_id}`,
         requestOptions,
@@ -195,7 +197,8 @@ export const userDetailTrainer = ({navigation, route}) => {
             response_50: result.data.response_50,
           };
           setQuestions(questions);
-          console.log('works-------------->>>', result.data);
+          console.log('works-------------->>>', result.data.session_desc);
+          setDescription(result.data.session_desc);
           setAppointTime(result.data.updated_at);
           setUser(result.user);
           setLoader(false);
@@ -359,6 +362,11 @@ export const userDetailTrainer = ({navigation, route}) => {
             <Text style={styles.providertex}>City</Text>
 
             <Text style={[styles.subhead, styles.border]}>{user?.city}</Text>
+          </View>
+          <View style={styles.crd}>
+            <Text style={styles.providertex}>Notes</Text>
+
+            <Text style={[styles.subhead, styles.border]}>{description}</Text>
           </View>
         </View>
       </ScrollView>
