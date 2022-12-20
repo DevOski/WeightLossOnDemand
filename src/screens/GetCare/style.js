@@ -66,6 +66,11 @@ export const styles = StyleSheet.create({
     width: sizes.screenWidth * 0.12,
     left: sizes.screenWidth * 0.02,
   },
+  iconIOS:{
+    height: sizes.screenHeight * 0.048,
+    width: sizes.screenWidth * 0.14,
+    left: sizes.screenWidth * 0.02,
+  },
   icon2: {
     height: sizes.screenHeight * 0.05,
     width: sizes.screenWidth * 0.1,

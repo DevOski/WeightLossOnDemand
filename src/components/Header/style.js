@@ -51,6 +51,9 @@ export const styles = StyleSheet.create({
   leftsi: {
     left: sizes.screenWidth * 0.41,
   },
+  leftsiIOS: {
+    left: sizes.screenWidth * 0.35,
+  },
   titleIOS: {
     color: colors.white,
     fontSize: fontSize.medium,
@@ -84,7 +87,7 @@ export const styles = StyleSheet.create({
     color: colors.white,
     fontSize: fontSize.medium,
     fontFamily: fontFamily.appTextMedium,
-    right: sizes.screenWidth * 0.08,
+    right: sizes.screenWidth * 0.15,
   },
   filter: {
     color: colors.secondary,
