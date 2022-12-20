@@ -49,8 +49,7 @@ export default function TermsOfService() {
               While the integration with Ground Rounds is in progress, all of
               the terms, agreements, statements of rights, consent forms, and
               policies referenced and linked herein as they related to the use
-              of the Included Health, Weight Loss on Demand, Ground Rounds, and
-              Included health Communities affiliated websites and any of the
+              of the Included Health, Weight Loss on Demand,  affiliated websites and any of the
               related Included Health products and services is described below
               (collectively, "Services: unless otherwise specified).
             </Text>

@@ -61,7 +61,7 @@ export default function MemberEducationProgram({navigation}) {
             </Text>
           </ScrollView>
         </View>
-        <View style={styles.buttonTop}>
+        {/* <View style={styles.buttonTop}>
           <TouchableOpacity
             onPress={() => navigation.navigate('TermsAndConditions')}>
             <View style={[styles.buttonView]}>
@@ -74,7 +74,7 @@ export default function MemberEducationProgram({navigation}) {
               <Text style={styles.buttonText}> I Decline</Text>
             </View>
           </TouchableOpacity>
-        </View>
+        </View> */}
       </ScrollView>
     </SafeAreaView>
   );

@@ -56,7 +56,7 @@ export default function HealthInfoAgreement({navigation}) {
             </Text>
           </ScrollView>
         </View>
-        <View style={Platform.OS !== 'ios' ?  styles.buttonTop: styles.buttonTopIOS}>
+        {/* <View style={Platform.OS !== 'ios' ?  styles.buttonTop: styles.buttonTopIOS}>
           <TouchableOpacity
             onPress={() => navigation.navigate('TermsAndConditions')}>
             <View style={[styles.buttonView]}>
@@ -69,7 +69,7 @@ export default function HealthInfoAgreement({navigation}) {
               <Text style={styles.buttonText}> I Decline</Text>
             </View>
           </TouchableOpacity>
-        </View>
+        </View> */}
 
       </ScrollView>
     </SafeAreaView>

@@ -321,13 +321,13 @@ const BasicInfoScreenSettings = ({navigation, route}) => {
                 setValue={setname}
               />
             </View>
-            <View style={styles.filedcon}>
+            {/* <View style={styles.filedcon}>
               <CustomTextFiel
                 label={'Middle name'}
                 value={middle}
                 setValue={setMiddle}
               />
-            </View>
+            </View> */}
             {/* {Fieldsshowhide ? (
             ) : null} */}
             <View style={styles.filedcon}>

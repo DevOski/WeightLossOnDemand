@@ -17,9 +17,9 @@ import {colors} from '../../services';
 export default function PrivacyPolicy() {
   return (
     <SafeAreaView>
-       <View>
-          <Header dark={true} />
-        </View>
+      <View>
+        <Header dark={true} />
+      </View>
       <ScrollView style={styles.color}>
         <View style={[styles.paddingLeft, styles.paddingBottom]}>
           <Text style={styles.addPaymentText}>
@@ -32,9 +32,8 @@ export default function PrivacyPolicy() {
           </View>
           <View style={styles.paddingTop}>
             <Text style={[styles.bold, styles.textColor]}>
-              We are pleased to announce that Grand Rounds, Inc., Weight Loss on
-              Demand, Inc. and Included Health Communities are now part of
-              Included Health, Inc.
+              We are pleased to announce., Weight Loss on Demand,. are now part
+              of Included Health, Inc.
             </Text>
           </View>
           <View style={styles.paddingTop}>
@@ -46,15 +45,13 @@ export default function PrivacyPolicy() {
           </View>
           <View style={styles.paddingTop}>
             <Text style={styles.textColor}>
-              The use of the Included Health, Weight Loss on Demand. Grand
-              Rounds, and Included Health Communities affiliated websites, and
+              The use of the Included Health, Weight Loss on Demand.affiliated websites, and
               any of the related Included Health products and services linked to
               this document or described below ("Services") unless otherwise
               specified), is subject to all of the terms, agreements, statements
               of rights, consent forms, and policies referenced and linked{' '}
               <Text style={styles.link}>here</Text>, which applied prior to the
-              integration to the Grand Rounds, Weight Loss on Demand, and
-              Included Health Communities applications and platforms.
+              integration to the applications and platforms.
             </Text>
           </View>
 
@@ -687,10 +684,10 @@ export default function PrivacyPolicy() {
             Included Health, Inc.
           </Text>
           <Text style={[styles.textColor, styles.left, styles.top]}>
-          14208 S. Crater Lake Court, suite 300
+            14208 S. Crater Lake Court, suite 300
           </Text>
           <Text style={[styles.textColor, styles.left, styles.top3]}>
-          The Woodlands, 77384
+            The Woodlands, 77384
           </Text>
           <View style={[styles.row, styles.top]}>
             <Entypo name="dot-single" color={colors.primary} size={25} />

@@ -191,9 +191,10 @@ export default function Question({navigation, route}) {
       trainer: route?.params?.trainer,
     });
   };
+  
   return (
     <SafeAreaView>
-      <Header title={'Questionnaires '} thirteen={true} />
+      <Header title={'Weightloss Form '}  />
       <KeyboardAvoidingView behavior="height">
         <ScrollView style={styles.color}>
           <View style={styles.padding}>
@@ -246,20 +247,6 @@ export default function Question({navigation, route}) {
             </View>
             <View style={styles.paddingTop}>
               <Text style={styles.text2}>4) Height</Text>
-              <View>
-                <TextInput
-                  mode="contain"
-                  activeUnderlineColor={colors.secondary}
-                  style={styles.field}
-                  onChangeText={text => setHeight(text)}
-                  value={height}
-                />
-              </View>
-            </View>
-            <View style={styles.paddingTop}>
-              <Text style={styles.text2}>
-                5) What was your lowest adult weight?
-              </Text>
               <View style={styles.row}>
                 <TextInput
                   mode="contain"
@@ -278,29 +265,46 @@ export default function Question({navigation, route}) {
                   value={highestWeight}
                 />
               </View>
+              {/* <View>
+                <TextInput
+                  mode="contain"
+                  activeUnderlineColor={colors.secondary}
+                  style={styles.field}
+                  onChangeText={text => setHeight(text)}
+                  value={height}
+                />
+              </View> */}
+            </View>
+            <View style={styles.paddingTop}>
+              <Text style={styles.text2}>
+                5) What was your lowest adult weight?
+              </Text>
+               <View>
+                <TextInput
+                  mode="contain"
+                  label={'lbs'}
+                  activeUnderlineColor={colors.secondary}
+                  style={styles.field}
+                  onChangeText={text => setLowestWeight(text)}
+                  value={height}
+                />
+              </View>
             </View>
             <View style={styles.paddingTop}>
               <Text style={styles.text2}>
                 6) What was your highest adult weight?
               </Text>
-              <View style={styles.row}>
+              <View>
                 <TextInput
                   mode="contain"
-                  label={'ft'}
+                  label={'lbs'}
                   activeUnderlineColor={colors.secondary}
-                  style={styles.field2}
+                  style={styles.field}
                   onChangeText={text => setLowestWeight1(text)}
-                  value={lowestWeight1}
-                />
-                <TextInput
-                  mode="contain"
-                  label={'in'}
-                  activeUnderlineColor={colors.secondary}
-                  style={styles.field2}
-                  onChangeText={text => sethighestWeight1(text)}
-                  value={highestWeight1}
+                  value={height}
                 />
               </View>
+             
             </View>
             <View style={styles.paddingTop}>
               <Text style={styles.text2}>

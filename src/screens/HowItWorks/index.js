@@ -38,7 +38,7 @@ export default function HowItWorks({navigation}) {
           </ImageBackground>
         ) : (
           <WebView
-            source={{uri: 'https://www.youtube.com/embed/JLnycPtolfw'}}
+            source={{uri:'https://www.youtube.com/embed/JLnycPtolfw'}}
             style={styles.videoView}
           />
         )}

@@ -25,14 +25,31 @@ export const BeyondScreen = ({navigation}) => {
           onPress={() => navigation.navigate('')}
         />
       </View>
-      <WebView source={{uri: 'https://weightlossondemand.com/'}} />
+
+      <WebView
+        source={{uri: 'https://weightlossondemand.com/'}}
+        // style = {{flex:1}}
+        originWhitelist={['*']}
+        useRef="webViewGelreNieuws"
+        automaticallyAdjustContentInsets={false}
+        javaScriptEnabled={true}
+        domStorageEnabled={true}
+        startInLoadingState={true}
+        useWebKit={true}
+        viewportContent={
+          'width=device-width, user-scalable=no, initial-scale=1.0'
+        }
+        androidHardwareAccelerationDisabled={false}
+        androidLayerType={'hardware'}
+        mixedContentMode="compatibility"
+      />
     </SafeAreaView>
   );
 };
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.white,
+    backgroundColor: 'transparent',
   },
   map: {
     width: sizes.screenWidth,
