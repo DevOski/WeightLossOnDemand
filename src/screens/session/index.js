@@ -93,7 +93,7 @@ export default function startSession({navigation}) {
                     color: '#fff',
                     fontSize: fontSize.h6,
                     fontFamily: fontFamily.appTextHeading,
-                    fontWeight: 'Bold',
+                    fontWeight: 'bold',
                   }}>
                   View Client Details
                 </Text>
@@ -110,7 +110,7 @@ export default function startSession({navigation}) {
                   color: '#fff',
                   fontSize: fontSize.h6,
                   fontFamily: fontFamily.appTextHeading,
-                  fontWeight: 'Bold',
+                  fontWeight: 'bold',
                 }}>
                 Start Session
               </Text>
@@ -135,7 +135,7 @@ export default function startSession({navigation}) {
                     color: '#fff',
                     fontSize: fontSize.h6,
                     fontFamily: fontFamily.appTextHeading,
-                    fontWeight: 'Bold',
+                    fontWeight: 'bold',
                   }}>
                   View Client Details
                 </Text>
