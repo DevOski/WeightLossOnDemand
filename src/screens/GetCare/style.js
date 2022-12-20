@@ -76,6 +76,11 @@ export const styles = StyleSheet.create({
     width: sizes.screenWidth * 0.1,
     left: sizes.screenWidth * 0.02,
   },
+  icon2IOS:{
+    height: sizes.screenHeight * 0.05,
+    width: sizes.screenWidth * 0.12,
+    left: sizes.screenWidth * 0.02,
+  },
   providerText: {
     color: colors.disabledBg2,
     fontFamily: fontFamily.appTextLight,

@@ -34,7 +34,7 @@ export default function GetCare({navigation}) {
           }>
           {/* UserVisit */}
           <View style={[styles.row, styles.card]}>
-            <Image style={styles.icon2} source={images.weightloss2} />
+            <Image style={Platform.OS !=="ios" ? styles.icon2 : styles.icon2IOS} source={images.weightloss2} />
             <View>
               <Text style={styles.cardText}>See first available</Text>
               <Text style={styles.text}>Certified Consultants</Text>
