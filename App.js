@@ -42,7 +42,9 @@ export default function App() {
   useEffect(() => {
     requestUserPermission();
     // notifcationListener();
+    console.log('works-------->>>>>>>>');
     const unsubscribe = messaging().onMessage(async remoteMessage => {
+      console.log("sss");
       console.log(remoteMessage, 'works--------------->>>');
       PushNotification.createChannel({
         channelId: 'channel-id',
@@ -70,6 +72,7 @@ export default function App() {
   }, []);
 
   messaging().setBackgroundMessageHandler(async remoteMessage => {
+    console.log("workss------>>");
     console.log('Message handled in the background!', remoteMessage);
     PushNotification.localNotification({
       channelId: 'channel-id',

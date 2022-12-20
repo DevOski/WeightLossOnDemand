@@ -9,6 +9,7 @@ import {
   TouchableOpacity,
   View,
   StyleSheet,
+  Platform,
 } from 'react-native';
 import Header from '../../components/Header';
 import images from '../../services/utilities/images';
@@ -110,7 +111,11 @@ export const ReviewHealthprofile = ({navigation, route}) => {
                 conusltant.
               </Text>
               <View>
-                <Feather name="edit" color={colors.black} style={styles.icon} />
+                <Feather
+                  name="edit"
+                  color={colors.black}
+                  style={Platform.OS !== 'ios' ? styles.icon : styles.iconIOS}
+                />
               </View>
             </View>
           </TouchableOpacity>
@@ -356,6 +361,11 @@ const styles = StyleSheet.create({
     fontSize: fontSize.h6,
     right: sizes.screenWidth * 0.47,
     top: sizes.screenHeight * 0.025,
+  },
+  iconIOS: {
+    fontSize: fontSize.h6,
+    right: sizes.screenWidth * 0.24,
+    top: sizes.screenHeight * 0.023,
   },
   te: {
     top: sizes.screenHeight * 0.02,

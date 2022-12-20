@@ -2,6 +2,7 @@ import React, {useRef, useState} from 'react';
 import {
   Image,
   ImageBackground,
+  Platform,
   SafeAreaView,
   ScrollView,
   Switch,
@@ -52,7 +53,7 @@ export default function GetCare({navigation}) {
             // navigation.navigate('HowToSchedule')
           }>
           <View style={[styles.row, styles.card]}>
-            <Image style={styles.icon} source={images.weightloss} />
+            <Image style={Platform.OS !=='ios' ?  styles.icon : styles.iconIOS} source={images.weightloss} />
 
             <View>
               <Text style={styles.cardText}>Book a session</Text>

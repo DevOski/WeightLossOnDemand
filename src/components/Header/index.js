@@ -2,6 +2,7 @@ import React, {useRef, useState} from 'react';
 import {
   Image,
   ImageBackground,
+  Platform,
   SafeAreaView,
   ScrollView,
   Text,
@@ -57,7 +58,7 @@ export default function Header({
         
         {signout && onPress && (
           <TouchableOpacity
-            style={[styles.rows, styles.leftsi]}
+            style={[styles.rows, Platform.OS !=='ios'?  styles.leftsi : styles.leftsiIOS]}
             onPress={onPress}>
             <View>
               <Text style={styles.title}>Sign Out</Text>
