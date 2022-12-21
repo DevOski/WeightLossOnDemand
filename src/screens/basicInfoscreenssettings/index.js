@@ -555,7 +555,7 @@ const BasicInfoScreenSettings = ({navigation, route}) => {
                 />
               </View>
             </TouchableOpacity>
-            <TouchableOpacity
+            {/* <TouchableOpacity
               onPress={() => {
                 setCheckedLanguageOther(!CheckedLanguageOther);
                 setLanguage('');
@@ -576,7 +576,7 @@ const BasicInfoScreenSettings = ({navigation, route}) => {
                   uncheckColor={colors.secondary}
                 />
               </View>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
           </View>
           {CheckedLanguageOther && (
             <CustomTextFiel

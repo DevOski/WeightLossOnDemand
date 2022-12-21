@@ -31,7 +31,7 @@ export const styles = StyleSheet.create({
     textDecorationLine: 'underline',
   },
   height: {
-    height: sizes.screenHeight * 0.72,
+    height: sizes.screenHeight * 0.90,
   },
   buttonView: {
     backgroundColor: colors.secondary,

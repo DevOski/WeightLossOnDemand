@@ -30,13 +30,13 @@ export default function TermsOfService() {
               Effective Date: <Text style={styles.regular}>April 15, 2022</Text>
             </Text>
           </View>
-          <View style={styles.paddingTop}>
+          {/* <View style={styles.paddingTop}>
             <Text style={[styles.bold, styles.textColor]}>
-              We are pleased to announce that Ground Rounds, Inc., Weight Loss
-              on Demand, Inc. and Included Health Communities are now part of
+              We are pleased to announce that Weight Loss
+              on Demand Inc. is now part of
               Included Health, Inc.   
             </Text>
-          </View>
+          </View> */}
           <View style={styles.paddingTop}>
             <Text style={[styles.bold, styles.textColor]}>
               We are working to harmonize our policies and procedures so that
@@ -46,11 +46,11 @@ export default function TermsOfService() {
           </View>
           <View style={styles.paddingTop}>
             <Text style={styles.textColor}>
-              While the integration with Ground Rounds is in progress, all of
+              While the integration is in progress, all of
               the terms, agreements, statements of rights, consent forms, and
               policies referenced and linked herein as they related to the use
-              of the Included Health, Weight Loss on Demand,  affiliated websites and any of the
-              related Included Health products and services is described below
+              of the Weight Loss on Demand, affiliated websites and any of the
+              related products and services is described below
               (collectively, "Services: unless otherwise specified).
             </Text>
           </View>

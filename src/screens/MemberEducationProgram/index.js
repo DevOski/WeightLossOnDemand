@@ -46,7 +46,7 @@ export default function MemberEducationProgram({navigation}) {
             <Text style={[styles.textColor, styles.paddingTop]}>
               No information provided to us will be released to any outside
               parties. By contacting
-              <Text style={styles.link}>support@weightlossondemand.com,</Text>.
+              <Text style={styles.link}> support@weightlossondemand.com,</Text>.
               you can revoke this consent at any moment and get a copy of it.
               Nonetheless, any steps we have already taken with your
               authorization in place will remain in effect even if you revoke
@@ -56,8 +56,7 @@ export default function MemberEducationProgram({navigation}) {
               right to benefits. Weight Loss on Demand may get paid for its
               work, depending on how the Member Education Program works. In our
               Notice of Privacy Practices, you can find out more about how we
-              protect your privacy at Weight Loss on Demand. Clicking the "I
-              Accept" button below acts as your electronic signature.
+              protect your privacy at Weight Loss on Demand.
             </Text>
           </ScrollView>
         </View>

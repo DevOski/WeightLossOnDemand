@@ -203,7 +203,7 @@ export default function MemberAgreement() {
           </View>
           <View style={styles.paddingTop}>
             <Text style={styles.textColor}>
-              Included Health or its affiliates may contact you by short message
+              Affiliates may contact you by short message
               service ("SMS") text message from time to time regarding your
               account or the Services to provide appointment reminders, service
               announcements, privacy notices, administrative messages and other
@@ -218,41 +218,36 @@ export default function MemberAgreement() {
               us or our affiliates, you: (i) consent to receive SMS
               Communications from or on behalf of us or any of its affiliates at
               the telephone number you provide; and (il) acknowledge and agree
-              that your information may be processed in accordance with, and you
-              are to be bound by, Included Health's
+              that your information may be processed in accordance with you.
               <Text style={styles.link}> Privacy Policy,</Text> and Weight Loss
               On Demand's <Text style={styles.link}>Privacy Policy.</Text>
             </Text>
           </View>
           <View style={styles.paddingTop}>
             <Text style={styles.textColor}>
-              You can stop receiving SMS Communications from Included Health at
+              You can stop receiving SMS Communications at
               any time by texting "STOp" to the number from which you receive
               the SMS Communications. Alternatively, if you are registered, you
               may click <Text style={styles.link}>here</Text> to contact support
               or submit a message through the "chat" experience once logged-in.
-              You may also call Included Health's general support toll free line
-              at (855) 431-5533. If you send the message "STOP" to Included
-              Health, Included Health will send you a reply message to confirm
+              You may also call general support toll free line
+              at (855) 431-5533. If you send the message "STOP" to you will send you a reply message to confirm
               that you have been unsubscribed from SMS Communications. After
-              this, you will no longer receive SMS Communications from Included
-              Health. You agree that if you request to opt out from future SMS
-              Communications, Included Health may send you a one-time opt-out
+              this, you will no longer receive SMS Communications. You agree that if you request to opt out from future SMS
+              Communications may send you a one-time opt-out
               confirmation SMS text message. After this, YOu will no longer
-              receive SMS Communications from Included Health.
+              receive SMS Communications.
             </Text>
           </View>
           <View style={styles.paddingRight}>
             <Text style={styles.textColor}>
-              For support: See above for instructions on calling Included Health
-              or text HELP in response to an SMS on your device. If you send
-              Included Health a SMS text message, Included Health will reply
+              For support: See above for instructions on calling text HELP in response to an SMS on your device. If you send
+             a SMS text message, we will reply
               with instructions on how to receive SMS Communications as well as
-              how to unsubscribe from SMS Communications; if you call Included
-              Health's toll-free number, Included Health will provide this
+              how to unsubscribe from SMS Communications; if you call our toll-free number, we will provide this
               information over the phone. The number of SMS text messages We
               send as Communications will depend on the frequency of your use of
-              the Services. Included Health's SMS Communications program may not
+              the Services. SMS Communications program may not
               be available on all wireless carriers. Standard carrier message
               and data rates apply.
             </Text>
@@ -262,7 +257,7 @@ export default function MemberAgreement() {
           </View>
           <View style={styles.paddingTop}>
             <Text style={styles.textColor}>
-              You agree that we or Included Health on our behalf may send to you
+              You agree that on our behalf may send to you
               additional communications through electronic means including, but
               not limited to, (1) by email, using the address that you provided
               to us during registration, (2) push notifications on your tablet
@@ -367,7 +362,7 @@ export default function MemberAgreement() {
             </Text>
           </View>
           <Text style={[styles.textColor, styles.left, styles.top2]}>
-            Included Health, Inc.
+            WeightLoss On Demand
           </Text>
           <Text style={[styles.textColor, styles.left, styles.top]}>
             14208 S. Crater Lake Court,

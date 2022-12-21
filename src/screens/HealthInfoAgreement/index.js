@@ -39,7 +39,7 @@ export default function HealthInfoAgreement({navigation}) {
             <Text style={styles.textColor}>
               You can be sure that no one will be able to see your private
               fitness records without your permission or unless the law says
-              they have to. By clicking "I Accept," you agree that Weight Loss
+              they have to. You agree that Weight Loss
               On Demand and the fitness professionals you talk to through the
               site can share information about your genetic testing, substance
               abuse, mental health, communicable or infectious diseases, and
@@ -49,8 +49,8 @@ export default function HealthInfoAgreement({navigation}) {
 
             <Text style={[styles.textColor, styles.paddingTop]}>
               You can send an email to
-              <Text style={styles.bold}> support@weightlossondemand.com</Text>.
-              to request a copy of this consent form or to withdraw your consent
+              <Text style={styles.bold}> support@weightlossondemand.com </Text>
+              To request a copy of this consent form or to withdraw your consent
               at any time. A year from the date of signature, this agreement
               will remain in full force and effect
             </Text>

@@ -34,19 +34,16 @@ export default function NoticeOfPrivacy() {
           </View>
           <View style={styles.paddingTop}>
             <Text style={[styles.bold, styles.textColor]}>
-              We are pleased to announce that Grand Rounds, Inc., Weight Loss on
-              Demand, Inc. and Included Health Communities are now part of
-              Included Health, Inc.THIS NOTICE DESCRIBES HOW MEDICAL INFORMATION
-              ABOUT YOU MAY BE USED AND DISCLOSED AND HOW YOU CAN GET ACCESS TO
-              THIS INFORMATION. PLEASE REVIEW IT CAREFULLY.
+              THIS NOTICE DESCRIBES HOW MEDICAL INFORMATION ABOUT YOU MAY BE
+              USED AND DISCLOSED AND HOW YOU CAN GET ACCESS TO THIS INFORMATION.
+              PLEASE REVIEW IT CAREFULLY.
             </Text>
           </View>
           <View style={styles.paddingTop}>
             <Text style={[styles.textColor]}>
-              Included Health, Inc. (“{' '}
-              <Text style={[styles.bold]}>Included Health</Text>”) operates the
+              WeightLoss On Demand (“{' '}
+              <Text style={[styles.bold]}>weightloss On Demand</Text>”) operates the
               websites located at{' '}
-              <Text style={[styles.link]}>includedhealth.com</Text> and
               <Text style={[styles.link]}> weightlossondemand.com</Text>, and
               other websites, products, services, and mobile applications with
               links to this Notice of Privacy Practices, including without
@@ -64,7 +61,7 @@ export default function NoticeOfPrivacy() {
           </View>
           <View style={styles.paddingTop}>
             <Text style={[styles.textColor]}>
-              Included Health offers online telehealth services enabling our
+              Weightloss On Demand offers online telehealth services enabling our
               Members to report their health history and engage independent
               healthcare professionals (“
               <Text style={[styles.bold]}>Healthcare Professionals</Text>”) to
@@ -235,14 +232,14 @@ export default function NoticeOfPrivacy() {
           </View>
           <View style={[styles.row]}>
             <Entypo name="dot-single" color={colors.primary} size={25} />
-            <Text style={[styles.textColor, styles.right]}>
+            {/* <Text style={[styles.textColor, styles.right]}>
               When using the Sites or Services, your information will be shared
               with Included Health for the purposes stated in the Included
               Health <Text style={[styles.link]}>Privacy Policy</Text> and
               Weight Loss On Demand{' '}
               <Text style={[styles.link]}>Privacy Policy</Text>, where
               applicable and legally permissible.
-            </Text>
+            </Text> */}
           </View>
           <View style={[styles.row]}>
             <Entypo name="dot-single" color={colors.primary} size={25} />
@@ -622,13 +619,13 @@ export default function NoticeOfPrivacy() {
             </Text>
           </View>
           <Text style={[styles.textColor, styles.left, styles.top2]}>
-            Included Health, Inc.
+            Weightloss On Demand
           </Text>
           <Text style={[styles.textColor, styles.left, styles.top]}>
-          14208 S. Crater Lake Court, suite 300
+            14208 S. Crater Lake Court, suite 300
           </Text>
           <Text style={[styles.textColor, styles.left, styles.top3]}>
-          The Woodlands, 77384
+            The Woodlands, 77384
           </Text>
         </View>
         <View style={[styles.row, styles.top]}>

@@ -23,19 +23,19 @@ export default function PrivacyPolicy() {
       <ScrollView style={styles.color}>
         <View style={[styles.paddingLeft, styles.paddingBottom]}>
           <Text style={styles.addPaymentText}>
-            Weight Loss On Demand by {'      '}Included Health Privacy Policy
+            Weight Loss On Demand by {'      '}Privacy Policy
           </Text>
           <View style={styles.paddingTop}>
             <Text style={[styles.bold, styles.textColor]}>
-              Effective Date: <Text style={styles.regular}>April 15, 2022</Text>
+              Effective Date: <Text style={styles.regular}>January 02, 2023</Text>
             </Text>
           </View>
-          <View style={styles.paddingTop}>
+          {/* <View style={styles.paddingTop}>
             <Text style={[styles.bold, styles.textColor]}>
-              We are pleased to announce., Weight Loss on Demand,. are now part
+              We are pleased to announce Weight Loss on Demand,. are now part
               of Included Health, Inc.
             </Text>
-          </View>
+          </View> */}
           <View style={styles.paddingTop}>
             <Text style={[styles.bold, styles.textColor]}>
               We are in the process of integrating our terms and services to
@@ -45,7 +45,7 @@ export default function PrivacyPolicy() {
           </View>
           <View style={styles.paddingTop}>
             <Text style={styles.textColor}>
-              The use of the Included Health, Weight Loss on Demand.affiliated websites, and
+              The use of the Weight Loss on Demand affiliated websites, and
               any of the related Included Health products and services linked to
               this document or described below ("Services") unless otherwise
               specified), is subject to all of the terms, agreements, statements
@@ -72,7 +72,7 @@ export default function PrivacyPolicy() {
           </View>
           <View style={[styles.paddingBottom, styles.paddingTop]}></View>
           <Text style={styles.addPaymentText}>
-            Weight Loss On Demand by {'      '}Included Health Privacy Policy
+            Weight Loss On Demand by {'      '}Privacy Policy
           </Text>
           <View style={[styles.top]}>
             <Text style={styles.subHeading}>
@@ -82,12 +82,12 @@ export default function PrivacyPolicy() {
           <View style={styles.paddingTop}>
             <Text style={styles.textColor}>
               Included Health, Inc. ("
-              <Text style={styles.bold}>Included Health</Text>" "
+              <Text style={styles.bold}>WeightLoss On Demand</Text>" "
               <Text style={styles.bold}>Company</Text>", "
               <Text style={styles.bold}>we</Text>", "
               <Text style={styles.bold}>us</Text>", or "
               <Text style={styles.bold}>our</Text>") operates the websites
-              located at <Text style={styles.link}>includedhealth.com</Text> and{' '}
+              located at <Text style={styles.link}>weightlossondemand.com</Text> and{' '}
               <Text style={styles.link}>weightlossondemand.com</Text>, and other
               websites, products, services, and mobile applications with links
               to this Privacy Policy, including without limitation the Weight
@@ -681,7 +681,7 @@ export default function PrivacyPolicy() {
             </Text>
           </View>
           <Text style={[styles.textColor, styles.left, styles.top2]}>
-            Included Health, Inc.
+            WeightLoss On Demand
           </Text>
           <Text style={[styles.textColor, styles.left, styles.top]}>
             14208 S. Crater Lake Court, suite 300

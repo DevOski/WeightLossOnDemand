@@ -214,13 +214,13 @@ const BasicInfoScreen = ({navigation, route}) => {
             </View>
             
            
-              {/* <View style={styles.filedcon}>
+              <View style={styles.filedcon}>
                 <CustomTextFiel
-                  label={'Middle name'}
-                  value={middle}
-                  setValue={setMiddle}
+                  label={'First name'}
+                  value={name}
+                  setValue={setname}
                 />
-              </View> */}
+              </View>
             {/* {Fieldsshowhide ? (
             ) : null} */}
             <View style={styles.filedcon}>
@@ -472,7 +472,7 @@ const BasicInfoScreen = ({navigation, route}) => {
                 />
               </View>
             </TouchableOpacity>
-            <TouchableOpacity
+            {/* <TouchableOpacity
               onPress={() => {
                 setCheckedLanguageOther(!CheckedLanguageOther);
                 setLanguage('');
@@ -493,7 +493,7 @@ const BasicInfoScreen = ({navigation, route}) => {
                   uncheckColor={colors.secondary}
                 />
               </View>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
           </View>
           {CheckedLanguageOther && (
             <CustomTextFiel
