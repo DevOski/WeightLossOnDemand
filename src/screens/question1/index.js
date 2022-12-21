@@ -194,7 +194,7 @@ export default function Question({navigation, route}) {
   
   return (
     <SafeAreaView>
-      <Header title={'Weightloss Form '}  />
+      <Header title={'Weight Loss Form '}  />
       <KeyboardAvoidingView behavior="height">
         <ScrollView style={styles.color}>
           <View style={styles.padding}>
@@ -282,11 +282,11 @@ export default function Question({navigation, route}) {
                <View>
                 <TextInput
                   mode="contain"
-                  label={'lbs'}
+                  
                   activeUnderlineColor={colors.secondary}
                   style={styles.field}
-                  onChangeText={text => setLowestWeight(text)}
-                  value={height}
+                  onChangeText={text => setLowestWeight1(text)}
+                  value={lowestWeight1}
                 />
               </View>
             </View>
@@ -300,8 +300,8 @@ export default function Question({navigation, route}) {
                   label={'lbs'}
                   activeUnderlineColor={colors.secondary}
                   style={styles.field}
-                  onChangeText={text => setLowestWeight1(text)}
-                  value={height}
+                  onChangeText={text => sethighestWeight1(text)}
+                  value={highestWeight1}
                 />
               </View>
              

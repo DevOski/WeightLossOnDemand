@@ -134,6 +134,7 @@ export default function Videocalling({navigation, route}) {
 
     let response = await getTokenFromAPI(channelName);
     let token = response.data.rtcToken;
+    console.log(token,'0000>tokenvideo');
 
     if (isJoined) {
       return;

@@ -82,6 +82,7 @@ export const ReviewHealthprofile = ({navigation, route}) => {
     try {
       let response = await getallQuestion();
       setQa(response.data.data);
+
     } catch (error) {
       console.log(error);
     }
@@ -100,7 +101,7 @@ export const ReviewHealthprofile = ({navigation, route}) => {
                 to: 'healthprofilereview',
               })
             }>
-            <View style={{flexDirection: 'row'}}>
+            <View style={{flexDirection:'row'}}>
               <Text
                 style={{
                   color: colors.black,
@@ -109,14 +110,20 @@ export const ReviewHealthprofile = ({navigation, route}) => {
                 }}>
                 Please review your basic info as it will be shared with your
                 conusltant.
-              </Text>
-              <View>
                 <Feather
                   name="edit"
                   color={colors.black}
                   style={Platform.OS !== 'ios' ? styles.icon : styles.iconIOS}
                 />
-              </View>
+              
+              </Text>
+              {/* <View>
+                <Feather
+                  name="edit"
+                  color={colors.black}
+                  style={Platform.OS !== 'ios' ? styles.icon : styles.iconIOS}
+                />
+              </View> */}
             </View>
           </TouchableOpacity>
 
@@ -157,7 +164,10 @@ export const ReviewHealthprofile = ({navigation, route}) => {
               <Text style={styles.textttt}>4) Height</Text>
             </View>
             <View style={styles.borderrb}>
-              <Text style={styles.textttt}>Ans: {q11}</Text>
+              <Text style={styles.textttt}>
+              Ans: {q12} ft , {q13} in
+                {/* Ans: {q11} */}
+                </Text>
             </View>
           </View>
           <View style={styles.box}>
@@ -168,7 +178,7 @@ export const ReviewHealthprofile = ({navigation, route}) => {
             </View>
             <View style={styles.borderrb}>
               <Text style={styles.textttt}>
-                Ans: {q12} ft , {q13} in
+                Ans: {q4}
               </Text>
             </View>
           </View>
@@ -180,7 +190,7 @@ export const ReviewHealthprofile = ({navigation, route}) => {
             </View>
             <View style={styles.borderrb}>
               <Text style={styles.textttt}>
-                Ans: {q4}ft , {q5}in
+                Ans:  {q5}
               </Text>
             </View>
           </View>
@@ -359,8 +369,9 @@ const styles = StyleSheet.create({
 
   icon: {
     fontSize: fontSize.h6,
-    right: sizes.screenWidth * 0.47,
-    top: sizes.screenHeight * 0.025,
+    // right: sizes.screenWidth * 0.35,
+    // alignSelf:'center',
+    // top: sizes.screenHeight * 0.025,
   },
   iconIOS: {
     fontSize: fontSize.h6,
