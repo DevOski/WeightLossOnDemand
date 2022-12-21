@@ -220,7 +220,7 @@ const BasicInfoScreenSettings = ({navigation, route}) => {
         redirect: 'follow',
       };
 
-      fetch('http://alsyedmmtravel.com/api/user_update', requestOptions)
+      fetch('https://dashboard.weightlossondemand.com/backend/api/user_update', requestOptions)
         .then(response => response.json())
         .then(result => {
           console.log(result);
@@ -272,7 +272,7 @@ const BasicInfoScreenSettings = ({navigation, route}) => {
     //   redirect: 'follow',
     // };
 
-    // fetch('http://alsyedmmtravel.com/api/signup', requestOptions)
+    // fetch('/signup', requestOptions)
     //   .then(response => response.json())
     //   .then(result => {
     //     console.log(result);

@@ -157,7 +157,7 @@ export default function UserVisit({navigation, route}) {
         redirect: 'follow',
       };
 
-      fetch('http://alsyedmmtravel.com/api/pay', requestOptions)
+      fetch('https://dashboard.weightlossondemand.com/backend/api/pay', requestOptions)
         .then(response => response.json())
         .then(result => {
           console.log(result);
@@ -186,7 +186,7 @@ export default function UserVisit({navigation, route}) {
         redirect: 'follow',
       };
 
-      fetch('http://alsyedmmtravel.com/api/pay', requestOptions)
+      fetch('https://dashboard.weightlossondemand.com/backend/api/pay', requestOptions)
         .then(response => response.json())
         .then(result => {
           if (result.message == 'succeeded') {
@@ -215,7 +215,7 @@ export default function UserVisit({navigation, route}) {
         redirect: 'follow',
       };
 
-      fetch('http://alsyedmmtravel.com/api/pay', requestOptions)
+      fetch('https://dashboard.weightlossondemand.com/backend/api/pay', requestOptions)
         .then(response => response.json())
         .then(result => {
           console.log(result);

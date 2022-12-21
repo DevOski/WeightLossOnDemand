@@ -188,7 +188,7 @@ export default function ProviderReview({navigation, route}) {
           redirect: 'follow',
         };
 
-        fetch('http://alsyedmmtravel.com/api/notification', requestOptions)
+        fetch('https://dashboard.weightlossondemand.com/backend/api/notification', requestOptions)
           .then(response => response.json())
           .then(result => {
             setTimeout(() => {

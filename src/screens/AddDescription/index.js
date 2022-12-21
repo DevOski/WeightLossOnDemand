@@ -71,7 +71,7 @@ export const AddDescription = ({navigation}) => {
       redirect: 'follow',
     };
 
-    fetch('http://alsyedmmtravel.com/api/question_review', requestOptions)
+    fetch('https://dashboard.weightlossondemand.com/backend/api/question_review', requestOptions)
       .then(response => response.json())
       .then(result => setIdentity(result.data.identity))
       .catch(error => console.log('error', error));
@@ -91,7 +91,7 @@ export const AddDescription = ({navigation}) => {
         redirect: 'follow',
       };
 
-      fetch('http://alsyedmmtravel.com/api/session_desc', requestOptions)
+      fetch('https://dashboard.weightlossondemand.com/backend/api/session_desc', requestOptions)
         .then(response => response.json())
         .then(result => {
           console.log(result);

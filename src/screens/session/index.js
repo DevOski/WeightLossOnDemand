@@ -43,7 +43,7 @@ export default function startSession({navigation}) {
       redirect: 'follow',
     };
 
-    fetch('http://alsyedmmtravel.com/api/question_review', requestOptions)
+    fetch('https://dashboard.weightlossondemand.com/backend/api/question_review', requestOptions)
       .then(response => response.json())
       .then(result => {
         console.log('result---------->>>>', result.data.visit_id);

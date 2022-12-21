@@ -83,7 +83,7 @@ export default function Home({navigation}) {
       redirect: 'follow',
     };
 
-    fetch('http://alsyedmmtravel.com/api/update_token', requestOptions)
+    fetch('https://dashboard.weightlossondemand.com/backend/api/update_token', requestOptions)
       .then(response => response.json())
       .then(result => console.log(result))
       .catch(error => console.log('error', error));
@@ -195,7 +195,7 @@ export default function Home({navigation}) {
       redirect: 'follow',
     };
 
-    fetch('http://alsyedmmtravel.com/api/receipt', requestOptions)
+    fetch('https://dashboard.weightlossondemand.com/backend/api/receipt', requestOptions)
       .then(response => response.text())
       .then(result => console.log(result))
       .catch(error => console.log('error', error));

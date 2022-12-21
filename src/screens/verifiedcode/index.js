@@ -48,7 +48,7 @@ export default function Verificationscreen({navigation, route}) {
         redirect: 'follow',
       };
 
-      fetch('http://alsyedmmtravel.com/api/check_code', requestOptions)
+      fetch('https://dashboard.weightlossondemand.com/backend/api/check_code', requestOptions)
         .then(response => response.json())
         .then(result => {
           if (result.message.includes('Invalid')) {

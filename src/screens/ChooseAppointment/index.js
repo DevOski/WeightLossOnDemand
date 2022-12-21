@@ -123,7 +123,7 @@ export default function ChooseAppointment({navigation, route}) {
       body: raw,
       redirect: 'follow',
     };
-    fetch('http://alsyedmmtravel.com/api/all_trCalenderSlots', requestOptions)
+    fetch('https://dashboard.weightlossondemand.com/backend/api/all_trCalenderSlots', requestOptions)
       .then(response => response.json())
       .then(result => setDateSlot(result.data))
       .catch(error => console.log('error', error));
@@ -135,7 +135,7 @@ export default function ChooseAppointment({navigation, route}) {
       redirect: 'follow',
     };
 
-    fetch(`http://alsyedmmtravel.com/api/Slots/${currentDTime}`, requestOptions)
+    fetch(`https://dashboard.weightlossondemand.com/backend/api/Slots/${currentDTime}`, requestOptions)
       .then(response => response.json())
 
       .then(result => {

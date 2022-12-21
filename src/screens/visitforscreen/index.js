@@ -76,7 +76,7 @@ export const VisitScreen = ({navigation, route}) => {
         redirect: 'follow',
       };
 
-      fetch('http://alsyedmmtravel.com/api/finding_VTr', requestOptions)
+      fetch('https://dashboard.weightlossondemand.com/backend/api/finding_VTr', requestOptions)
         .then(response => response.json())
         .then(result => {
           console.log('-------->>',result);
