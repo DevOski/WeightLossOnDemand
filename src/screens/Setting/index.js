@@ -73,7 +73,7 @@ export default function Setting({navigation}) {
       redirect: 'follow',
     };
 
-    fetch('http://alsyedmmtravel.com/api/update_fingrprnt', requestOptions)
+    fetch('https://dashboard.weightlossondemand.com/backend/api/update_fingrprnt', requestOptions)
       .then(response => response.json())
       .then(result => console.log(result))
       .catch(error => console.log('error', error));

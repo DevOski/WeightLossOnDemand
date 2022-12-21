@@ -64,8 +64,8 @@ export const userDetailTrainer = ({navigation, route}) => {
         redirect: 'follow',
       };
       fetch(
-        `http://alsyedmmtravel.com/api/apt_details/${route?.params?.ap_id}`,
-        // `http://alsyedmmtravel.com/api/apt_details/1`,
+        `https://dashboard.weightlossondemand.com/backend/api/apt_details/${route?.params?.ap_id}`,
+        // `https://dashboard.weightlossondemand.com/backend/api/apt_details/1`,
         requestOptions,
       )
         .then(response => response.json())
@@ -139,7 +139,7 @@ export const userDetailTrainer = ({navigation, route}) => {
       };
       console.log('works--------------->>>');
       fetch(
-        `http://alsyedmmtravel.com/api/visit_details/${route?.params?.visit_id}`,
+        `https://dashboard.weightlossondemand.com/backend/api/visit_details/${route?.params?.visit_id}`,
         requestOptions,
       )
         .then(response => response.json())

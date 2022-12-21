@@ -85,7 +85,7 @@ export default function TrainerAppointment({navigation}) {
       redirect: 'follow',
     };
 
-    fetch('http://alsyedmmtravel.com/api/updateTrtoken', requestOptions)
+    fetch('https://dashboard.weightlossondemand.com/backend/api/updateTrtoken', requestOptions)
       .then(response => response.json())
       .then(result => console.log(result))
       .catch(error => console.log('error', error));
@@ -134,7 +134,7 @@ export default function TrainerAppointment({navigation}) {
       redirect: 'follow',
     };
 
-    fetch('http://alsyedmmtravel.com/api/logout', requestOptions)
+    fetch('https://dashboard.weightlossondemand.com/backend/api/logout', requestOptions)
       .then(response => response.json())
       .then(result => {
         if (result.staus == 200) {
@@ -154,7 +154,7 @@ export default function TrainerAppointment({navigation}) {
       redirect: 'follow',
     };
 
-    fetch('http://alsyedmmtravel.com/api/question_review', requestOptions)
+    fetch('https://dashboard.weightlossondemand.com/backend/api/question_review', requestOptions)
       .then(response => response.json())
       .then(result => {
         console.log('result---------->>>>', result.data.visit_id);

@@ -23,7 +23,7 @@ export default function GenerateReciept() {
   const [detailReceipt, setDetailReceipt] = useState(false);
   const [test, setTest] = useState('');
   const [loader, setLoader] = useState(true);
-  const source = {uri: 'http://alsyedmmtravel.com/api/receipt'};
+  const source = {uri: 'https://dashboard.weightlossondemand.com/backend/api/receipt'};
 
   const generateReciept = () => {
     var requestOptions = {

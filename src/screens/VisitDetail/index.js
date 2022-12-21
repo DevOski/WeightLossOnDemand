@@ -67,7 +67,7 @@ export const VisitDetail = ({navigation, route}) => {
       redirect: 'follow',
     };
 
-    fetch('http://alsyedmmtravel.com/api/chat_display', requestOptions)
+    fetch('https://dashboard.weightlossondemand.com/backend/api/chat_display', requestOptions)
       .then(response => response.json())
       .then(result => {
         setMsgList(result.data);
