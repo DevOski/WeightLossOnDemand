@@ -165,7 +165,7 @@ export const ReviewHealthprofile = ({navigation, route}) => {
             </View>
             <View style={styles.borderrb}>
               <Text style={styles.textttt}>
-              Ans: {q12} ft , {q13} in
+              Ans: {q12} ft,{q13} in
                 {/* Ans: {q11} */}
                 </Text>
             </View>

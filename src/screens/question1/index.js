@@ -238,6 +238,7 @@ export default function Question({navigation, route}) {
               <View>
                 <TextInput
                   mode="contain"
+                  label={'lbs'}
                   activeUnderlineColor={colors.secondary}
                   style={styles.field}
                   onChangeText={text => setWeight(text)}
@@ -282,7 +283,7 @@ export default function Question({navigation, route}) {
                <View>
                 <TextInput
                   mode="contain"
-                  
+                  label={'lbs'}
                   activeUnderlineColor={colors.secondary}
                   style={styles.field}
                   onChangeText={text => setLowestWeight1(text)}
@@ -346,6 +347,7 @@ export default function Question({navigation, route}) {
               <View>
                 <TextInput
                   mode="contain"
+                  label={'lbs'}
                   activeUnderlineColor={colors.secondary}
                   style={styles.field}
                   multiline={true}

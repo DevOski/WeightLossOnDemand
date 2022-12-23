@@ -104,6 +104,7 @@ const BasicInfoScreenSettings = ({navigation, route}) => {
     setTimeout(async () => {
       try {
         let response = await getUser(token);
+        console.log(response);
         setname(response.data.data.first_name);
         setlastname(response.data.data.last_name);
         setphonenumber(response.data.data.phone);
@@ -119,6 +120,7 @@ const BasicInfoScreenSettings = ({navigation, route}) => {
         setPrefix(response.data.data.prefix);
         setgender(response.data.data.gender);
         setMiddle(response.data.data.middle);
+        
         if (response.data.data.language == 'English') {
           setCheckedEnglish(true);
           setCheckedSpanish(false);
@@ -126,12 +128,13 @@ const BasicInfoScreenSettings = ({navigation, route}) => {
         } else if (response.data.data.language == 'Spanish') {
           setCheckedSpanish(true);
           setCheckedEnglish(false);
-          setCheckedLanguageOther(false);
-        } else if (response.data.data.language == 'Other') {
-          setCheckedLanguageOther(true);
-          setCheckedSpanish(false);
-          setCheckedEnglish(false);
         }
+          // setCheckedLanguageOther(false);
+        // } else if (response.data.data.language == 'Other') {
+        //   setCheckedLanguageOther(true);
+        //   setCheckedSpanish(false);
+        //   setCheckedEnglish(false);
+        // }
         if (response.data.data.gender == 'Male') {
           setCheckedMale(true);
           setCheckedFemale(false);
@@ -513,10 +516,10 @@ const BasicInfoScreenSettings = ({navigation, route}) => {
           <View style={styles.gcon}>
             <TouchableOpacity
               onPress={() => {
-                setCheckedEnglish(!CheckedEnglish);
-                setLanguage('English');
-                setCheckedSpanish(false);
-                setCheckedLanguageOther(false);
+                // setCheckedEnglish(!CheckedEnglish);
+                // setLanguage('English');
+                // setCheckedSpanish(false);
+                // setCheckedLanguageOther(false);
               }}>
               <View style={styles.ro}>
                 <Text style={styles.lstyle}>English</Text>
@@ -535,10 +538,10 @@ const BasicInfoScreenSettings = ({navigation, route}) => {
             </TouchableOpacity>
             <TouchableOpacity
               onPress={() => {
-                setCheckedSpanish(!CheckedSpanish);
-                setLanguage('Spanish');
-                setCheckedEnglish(false);
-                setCheckedLanguageOther(false);
+                // setCheckedSpanish(!CheckedSpanish);
+                // setLanguage('Spanish');
+                // setCheckedEnglish(false);
+                // setCheckedLanguageOther(false);
               }}>
               <View style={styles.ro}>
                 <Text style={styles.lstyle}>Spanish</Text>
@@ -547,7 +550,7 @@ const BasicInfoScreenSettings = ({navigation, route}) => {
                     setCheckedSpanish(!CheckedSpanish);
                     setLanguage('Spanish');
                     setCheckedEnglish(false);
-                    setCheckedLanguageOther(false);
+                    // setCheckedLanguageOther(false);
                   }}
                   status={CheckedSpanish ? 'checked' : 'unchecked'}
                   color={'#be1d2d'}
@@ -894,7 +897,8 @@ const BasicInfoScreenSettings = ({navigation, route}) => {
               <TouchableOpacity
                 onPress={() => {
                   setIsModalVisible(false);
-                  navigation.navigate("Home")
+                  navigation.goBack()
+                  // navigation.navigate("Home")
                 }}>
                 <View style={styles.buttonView}>
                   <Text style={styles.buttonText}>OK</Text>

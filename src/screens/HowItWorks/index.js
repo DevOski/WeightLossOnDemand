@@ -33,7 +33,7 @@ export default function HowItWorks({navigation}) {
             </TouchableOpacity> */}
             <View style={styles.playBtn}></View>
             <View style={styles.textView}>
-              <Text style={styles.heading}>How It Works</Text>
+              {/* <Text style={styles.heading}>How It Works</Text> */}
             </View>
           </ImageBackground>
         ) : (
