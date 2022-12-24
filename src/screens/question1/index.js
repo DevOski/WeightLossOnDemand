@@ -208,6 +208,8 @@ export default function Question({navigation, route}) {
                   mode="contain"
                   activeUnderlineColor={colors.secondary}
                   style={styles.field}
+                  multiline={true}
+
                   onChangeText={text => setHealthProblem(text)}
                   value={healthProblem}
                 />
@@ -224,7 +226,7 @@ export default function Question({navigation, route}) {
                   activeUnderlineColor={colors.secondary}
                   style={styles.field}
                   multiline={true}
-                  numberOfLines={4}
+                  // numberOfLines={4}
                   onChangeText={text => setMedicationDos(text)}
                   value={medicationDos}
                 />
