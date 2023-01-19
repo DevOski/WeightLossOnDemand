@@ -48,7 +48,18 @@ export const styles = StyleSheet.create({
     fontFamily: fontFamily.appTextHeading,
     fontWeight: '600',
   },
-  paddingTop:{
-    paddingTop:sizes.screenHeight * 0.02
-  }
+  paddingTop: {
+    paddingTop: sizes.screenHeight * 0.02,
+  },
+  container: {
+    // flex: 1,
+    // justifyContent: 'flex-start',
+    // alignItems: 'center',
+    // marginTop: 25,
+},
+pdf: {
+    flex:1,
+    width:Dimensions.get('window').width,
+    height:Dimensions.get('window').height,
+}
 });

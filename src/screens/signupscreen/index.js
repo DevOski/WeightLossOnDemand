@@ -23,15 +23,35 @@ import {colors, fontFamily, fontSize, sizes} from '../../services';
 const deviceHeight = Dimensions.get('window').height;
 const deviceWidth = Dimensions.get('window').width;
 import moment from 'moment';
+import {TextInput} from 'react-native-paper';
+import {checkEmail} from '../../services/utilities/api/auth';
+import Modal from 'react-native-modal';
+
 export const SignUp = ({navigation}) => {
   const [isEnabled, setIsEnabled] = useState(false);
   const toggleSwitch = () => setIsEnabled(previousState => !previousState);
-  const [email, setemail] = useState();
-  const [password, setpassword] = useState();
+  const [email, setemail] = useState('');
+  const [password, setpassword] = useState('');
   const [checked, setChecked] = React.useState(false);
   const [date, setDate] = useState('');
   const [open, setOpen] = useState(false);
   const [register, setregister] = useState();
+  const [oneUppercase, setOneUpperCase] = useState(false);
+  const [onelowercase, setOneLowerCase] = useState(false);
+  const [oneNumeric, setOneNumeric] = useState(false);
+  const [currentDate, setCurrentDate] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+  const [error, setError] = useState(false);
+
+  useEffect(() => {
+    // var utc = new Date().toJSON().slice(0, 10).replace(/-/g, '/');
+    // let res = moment(utc).format('DD/MM/YYYY')
+    // console.log('---------------------------->',res);
+    // setCurrentDate(utc);
+    let date = new Date().toJSON();
+    let current = moment(date).format('DD/MM/YYYY');
+    setCurrentDate(current);
+  }, []);
 
   useEffect(() => {
     //this will fire  at the beginning and on foto changing value
@@ -49,37 +69,76 @@ export const SignUp = ({navigation}) => {
     let test = JSON.stringify(date);
     let d1 = JSON.parse(test);
     let res = moment(d1.date).format('DD/MM/YYYY');
-    console.log(res);
+    console.log('-------->>', res);
     setDate(res);
     // setDate(date);
     setOpen(false);
     // res=""
-   
   };
 
-  const Sinup =  () => {
+  const Sinup = async () => {
     // console.log(email,
     //   password,
     //   checked,
     //   isEnabled,
     //   date,'----------->');
-
     if (email && password && checked && date) {
       // console.log(email,
       //   password,
       //   checked,
       //   isEnabled,
       //   date,'----------->');
-      navigation.navigate('basicInfoscreens', {
-        email,
-        password,
-        checked,
-        // isEnabled,
-        date,
-      });
-      // setregister()
+      // try {
+      //   let response =await checkEmail(email)
+      //   console.log(response.data);
+      // } catch (error) {
+      //   console.log(error);
+      // }
+      var formdata = new FormData();
+      formdata.append('email', email.toLowerCase());
+
+      var requestOptions = {
+        method: 'POST',
+        body: formdata,
+        redirect: 'follow',
+      };
+
+      fetch('http://alsyedmmtravel.com/api/check_email', requestOptions)
+        .then(response => response.json())
+        .then(result => {
+          console.log(result);
+          if (result.message == 'Email already exists ') {
+            setError(true);
+            setErrorMessage(result.message);
+          } else {
+            navigation.navigate('basicInfoscreens', {
+              email,
+              password,
+              checked,
+              isEnabled,
+              date,
+            });
+          }
+        })
+        .catch(error => console.log('error', error));
+
+      // navigation.navigate('basicInfoscreens', {
+      //   email,
+      //   password,
+      //   checked,
+      //   isEnabled,
+      //   date,
+      // });
     }
   };
+  useEffect(() => {
+    if (password !== '') {
+      let upper = password.toLowerCase() !== password;
+      setOneUpperCase(upper);
+      let lower = password.toUpperCase() !== password;
+      setOneLowerCase(lower);
+    }
+  }, [password]);
   return (
     <SafeAreaView style={styles.bg}>
       <View style={styles.container}>
@@ -97,12 +156,26 @@ export const SignUp = ({navigation}) => {
         <View style={styles.filedContainer}>
           <View style={styles.filedcon}>
             <CustomTextFiel label={'Email'} value={email} setValue={setemail} />
+            {/* <TextInput
+              mode="contain"
+              //   style={styles.input}
+              label={'Email'}
+              value={email}
+              onChangeText={text => handleEmail(text)}
+              autoCapitalize={'none'}
+              activeUnderlineColor={colors.secondary}
+              style={{
+                backgroundColor: '#fafafa',
+                fontSize: fontSize.large,
+                fontFamily: fontFamily.appTextRegular,
+              }}
+            /> */}
           </View>
           <View style={styles.filedcon}>
             {date ? (
-              <TouchableOpacity style={styles.datebutton}
-              onPress={() => setOpen(!open)}
-              >
+              <TouchableOpacity
+                style={styles.datebutton}
+                onPress={() => setOpen(!open)}>
                 <Text style={styles.datebuttontext}>{date && date}</Text>
               </TouchableOpacity>
             ) : (
@@ -110,7 +183,7 @@ export const SignUp = ({navigation}) => {
                 style={styles.datebutton}
                 onPress={() => setOpen(!open)}
                 uppercase={false}>
-                <Text style={styles.datebuttontext}>Date of birth</Text>
+                <Text style={styles.datebuttontext}> Date of birth</Text>
               </TouchableOpacity>
             )}
             <DatePickerModal
@@ -118,7 +191,7 @@ export const SignUp = ({navigation}) => {
               mode="single"
               visible={open}
               onDismiss={onDismissSingle}
-              date={date}
+              // date={date ? date : currentDate}
               onConfirm={onConfirmSingle}
 
               // validRange={{
@@ -158,7 +231,7 @@ export const SignUp = ({navigation}) => {
               <AntDesign
                 name="checkcircle"
                 color={
-                  password?.length > 8 ? colors.secondary : colors.disabledBg
+                  password?.length >= 8 ? colors.secondary : colors.disabledBg
                 }
                 size={20}
               />
@@ -170,7 +243,14 @@ export const SignUp = ({navigation}) => {
               <AntDesign
                 name="checkcircle"
                 color={
-                  password?.toUpperCase() && password !=password?.match(/\d/)  ? colors.secondary : colors.disabledBg
+                  // password?.toUpperCase() &&
+                  // // password?.toUpperCase() &&
+                  // password == password?.match(/\d/)
+                  // ?
+                  oneUppercase && onelowercase
+                    ? // password?.toLowerCase()
+                      colors.secondary
+                    : colors.disabledBg
                 }
                 size={20}
               />
@@ -184,15 +264,19 @@ export const SignUp = ({navigation}) => {
               <AntDesign
                 name="checkcircle"
                 color={
-                  password?.match(/\d/) && password != password?.toUpperCase() ? colors.secondary : colors.disabledBg
+                  // password?.match(/\d/.test)
+                  // ? //
+                  password?.match(/\d/) && password != password?.toUpperCase()
+                    ? colors.secondary
+                    : colors.disabledBg
                 }
                 size={20}
               />
               <Text style={styles.fontcheck}>One number minimum</Text>
             </View>
           </View>
-          <View style={styles.filedcontext}>
-            <Text style={styles.text}>Enable Fingerprint for Login</Text>
+          {/* <View style={styles.filedcontext}>
+            <Text style={styles.text}>Enable fingerprint for login</Text>
             <View>
               <Switch
                 trackColor={{false: '#767577', true: 'red'}}
@@ -202,7 +286,7 @@ export const SignUp = ({navigation}) => {
                 value={isEnabled}
               />
             </View>
-          </View>
+          </View> */}
           <View style={styles.filedcontext1}>
             <Checkbox
               status={checked ? 'checked' : 'unchecked'}
@@ -217,8 +301,8 @@ export const SignUp = ({navigation}) => {
                 I agree to the Weight Loss On Demands
               </Text>
               <TouchableOpacity
-                onPress={() => navigation.navigate('membershiptermscreens')}>
-                <Text style={styles.text1}>Membership Terms</Text>
+                onPress={() => navigation.navigate('MemberAgreement')}>
+                <Text style={styles.membershipText}>Membership Terms</Text>
               </TouchableOpacity>
             </View>
           </View>
@@ -228,7 +312,8 @@ export const SignUp = ({navigation}) => {
                 password?.length > 8 &&
                 password?.toUpperCase() &&
                 password?.match(/\d/) &&
-                email &&
+                email?.includes('@') &&
+                email?.includes('.') &&
                 date
                   ? false
                   : true
@@ -237,8 +322,10 @@ export const SignUp = ({navigation}) => {
                 password?.length > 8 &&
                 password?.toUpperCase() &&
                 password?.match(/\d/) &&
-                email &&
-                date
+                email?.includes('@') &&
+                email?.includes('.') &&
+                date &&
+                checked
                   ? styles.but
                   : styles.disabledView
               }
@@ -254,6 +341,28 @@ export const SignUp = ({navigation}) => {
               </Text>
             </TouchableOpacity>
           </View>
+        </View>
+        <View style={styles.color2}>
+          {error && (
+            <Modal style={styles.modalView} isVisible={error}>
+              <View style={styles.texcon}>
+                <Text style={styles.text111}>Oops!</Text>
+              </View>
+              <View style={styles.texcon1}>
+                <Text style={styles.text1}>{errorMessage}</Text>
+              </View>
+              <View>
+                <TouchableOpacity
+                  onPress={() => {
+                    setError(false);
+                  }}>
+                  <View style={styles.buttonView}>
+                    <Text style={styles.buttonText}>OK</Text>
+                  </View>
+                </TouchableOpacity>
+              </View>
+            </Modal>
+          )}
         </View>
       </View>
     </SafeAreaView>
@@ -336,7 +445,7 @@ const styles = StyleSheet.create({
     color: '#000',
     fontFamily: fontFamily.appTextRegular,
   },
-  text1: {
+  membershipText: {
     fontSize: fontSize.medium,
     color: '#be1d2d',
     fontFamily: fontFamily.appTextRegular,
@@ -368,8 +477,54 @@ const styles = StyleSheet.create({
     color: colors.black,
     fontSize: fontSize.large,
     top: sizes.screenHeight * 0.02,
+    left: sizes.TinyMargin,
     // alignSelf:'flex-start'
 
     // position:'absolute'
+  },
+  color2: {
+    backgroundColor: '#fafafa',
+    height: sizes.screenHeight,
+  },
+  modalView: {
+    width: sizes.screenWidth,
+    backgroundColor: '#0e0e0e',
+    opacity: 0.9,
+    marginLeft: sizes.screenWidth * 0.01,
+    padding: 10,
+    position: 'absolute',
+    top: -20,
+    height: sizes.screenHeight,
+  },
+  texcon: {
+    paddingBottom: sizes.screenHeight * 0.1,
+  },
+  texcon1: {
+    bottom: sizes.screenHeight * 0.08,
+  },
+  text111: {
+    fontSize: fontSize.h4,
+    color: colors.white,
+    fontWeight: 'bold',
+    fontFamily: fontFamily.appTextHeading,
+    paddingLeft: sizes.screenWidth * 0.035,
+  },
+  text1: {
+    fontSize: fontSize.large,
+    color: colors.white,
+    fontFamily: fontFamily.appTextLight,
+    paddingLeft: sizes.screenWidth * 0.035,
+  },
+  buttonText: {
+    color: colors.white,
+    fontSize: fontSize.h6,
+  },
+  buttonView: {
+    backgroundColor: colors.secondary,
+    height: sizes.screenHeight * 0.06,
+    width: sizes.screenWidth * 0.89,
+    alignItems: 'center',
+    alignSelf: 'center',
+    justifyContent: 'center',
   },
 });

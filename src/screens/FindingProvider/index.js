@@ -31,53 +31,59 @@ export default function FindingProvider({navigation, route}) {
   }, [isVisible]);
 
   const findingAProvider = async () => {
-    try {
-      let response = await findingProvider();
-      console.log(response.data.data);
-      setTrainer(response.data.data);
-      setTimeout(async () => {
-        // console.log(trainer);
-        // navigation.navigate('videocallingscreen');
-        console.log(route?.params?.apt_id);
-        console.log(response.data.data[0].tr_id);
-        console.log(response.data.data[0].tr_name);
-        if (route?.params?.apt_id) {
-          try {
-            let res = await updateAppointmentTrainer(
-              route?.params?.apt_id,
-              response.data.data[0].tr_id,
-              response.data.data[0].tr_name,
-            );
-            if (res.data.status == 200) {
-              navigation.navigate('ProviderReview', {
-                trainer: response.data.data[0],
-              });
-            }
-          } catch (error) {
-            console.log(error);
-          }
-        } else {
-          navigation.navigate('ProviderReview', {
-            trainer: response.data.data[0],
-          });
-        }
-      }, 5000);
-    } catch (error) {
-      console.log(error);
-    }
+    navigation.navigate(
+      'ProviderReview',
+      // , {
+      // trainer: response.data.data[0],
+      // }
+    );
+    // try {
+    //   let response = await findingProvider();
+    //   console.log(response.data.data);
+    //   setTrainer(response.data.data);
+    //   setTimeout(async () => {
+    //     // console.log(trainer);
+    //     // navigation.navigate('videocallingscreen');
+    //     console.log(route?.params?.apt_id);
+    //     console.log(response.data.data[0].tr_id);
+    //     console.log(response.data.data[0].tr_name);
+    //     if (route?.params?.apt_id) {
+    //       try {
+    //         let res = await updateAppointmentTrainer(
+    //           route?.params?.apt_id,
+    //           response.data.data[0].tr_id,
+    //           response.data.data[0].tr_name,
+    //         );
+    //         if (res.data.status == 200) {
+    //           navigation.navigate('ProviderReview', {
+    //             trainer: response.data.data[0],
+    //           });
+    //         }
+    //       } catch (error) {
+    //         console.log(error);
+    //       }
+    //     } else {
+    //       navigation.navigate('ProviderReview', {
+    //         trainer: response.data.data[0],
+    //       });
+    //     }
+    //   }, 5000);
+    // } catch (error) {
+    //   console.log(error);
+    // }
   };
   return (
     <SafeAreaView>
       <View style={styles.color}>
         <View style={styles.userView}>
           <View style={[styles.padding]}>
-            <TouchableOpacity onPress={() => navigation.goBack()}>
+            {/* <TouchableOpacity onPress={() => navigation.goBack()}>
               <View>
                 <Text style={styles.cancel}>Cancel</Text>
               </View>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
             <View style={styles.paddingTop}>
-              <Text style={styles.findingText}>Finding a Provider...</Text>
+              <Text style={styles.findingText}>Finding a consultant...</Text>
               <View style={styles.paddingTop}>
                 <Spinner
                   style={styles.spinner}

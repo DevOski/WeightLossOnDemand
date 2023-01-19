@@ -40,7 +40,11 @@ export default function ContactInfo({navigation}) {
         setFirstName(response.data.data.first_name);
         setMiddleName(response.data.data.middle_name);
         setLastName(response.data.data.last_name);
-        setAddress(response.data.data.address);
+        setAddress(
+          response.data.data.address == 'none'
+            ? ''
+            : response.data.data.address,
+        );
         setPhone(response.data.data.phone);
         setEmail(response.data.data.email);
         setLoader(false);
@@ -63,9 +67,15 @@ export default function ContactInfo({navigation}) {
           <View style={[styles.row, styles.card]}>
             <View style={styles.width}>
               <Text style={styles.head}>NAME</Text>
-              <Text style={styles.text}>
-                {firstName} {middleName} {lastName}
-              </Text>
+              {middleName == '' ? (
+                <Text style={styles.userName}>
+                  {firstName} {middleName} {lastName}
+                </Text>
+              ) : (
+                <Text style={styles.userName}>
+                  {firstName} {lastName}
+                </Text>
+              )}
             </View>
             <View>
               <Text style={styles.symbol}> ›</Text>

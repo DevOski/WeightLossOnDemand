@@ -1,4 +1,4 @@
-import React, {useRef, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {
   Image,
   ImageBackground,
@@ -16,8 +16,37 @@ import {styles} from './style';
 import {colors} from '../../services';
 import Octicons from 'react-native-vector-icons/Octicons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import { useIsFocused } from '@react-navigation/native';
+import { useSelector } from 'react-redux';
 
 export default function ContactSupport({navigation}) {
+  const [msgList, setMsgList] = useState([]);
+
+  const isVisible = useIsFocused();
+
+  const token = useSelector(state => state.token);
+  useEffect(() => {
+    getChat();
+  }, [isVisible]);
+
+  const getChat = async () => {
+    var myHeaders = new Headers();
+    myHeaders.append('Authorization', token);
+
+    var requestOptions = {
+      method: 'GET',
+      headers: myHeaders,
+      redirect: 'follow',
+    };
+
+    fetch('http://alsyedmmtravel.com/api/chat_display', requestOptions)
+      .then(response => response.json())
+      .then(result => {
+        setMsgList(result.data);
+        console.log(result.data);
+      })
+      .catch(error => console.log('error', error));
+  };
   return (
     <SafeAreaView>
       <ScrollView style={styles.color}>
@@ -39,7 +68,7 @@ export default function ContactSupport({navigation}) {
             </View>
           </View>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate('MessageSupport')}>
+        <TouchableOpacity onPress={() => {msgList?.length ? navigation.navigate('chatscreen'): navigation.navigate('MessageSupport')}}>
           <View style={[styles.row, styles.card]}>
             <MaterialCommunityIcons
               name="message-text-outline"
@@ -67,7 +96,6 @@ export default function ContactSupport({navigation}) {
             <View>
               <Text style={styles.cardText}>{'   '}Call Support 24/7</Text>
               <Text style={styles.faqText}>{'   '}(281)3250066</Text>
-              <Text style={styles.faqText}>{'   '}TTY: 711</Text>
             </View>
             <View>
               <Text style={styles.symbol}> ›</Text>

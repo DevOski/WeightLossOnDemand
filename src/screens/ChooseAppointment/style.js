@@ -106,5 +106,11 @@ export const styles = StyleSheet.create({
     paddingRight: sizes.screenWidth * 0.02,
   },
   height: {height: sizes.screenHeight * 0.29},
-  
+  noSlotText: {
+    paddingLeft: sizes.screenWidth * 0.05,
+    fontSize: fontSize.medium,
+    color: colors.secondary,
+    fontWeight: 'bold',
+    padding: sizes.screenHeight * 0.02,
+  },
 });

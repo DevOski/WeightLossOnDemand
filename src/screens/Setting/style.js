@@ -48,6 +48,12 @@ export const styles = StyleSheet.create({
     color: colors.black,
     fontFamily: fontFamily.appTextRegular,
   },
+  fingerprintTextIOS: {
+    right: sizes.screenWidth * 0.04,
+    fontSize: fontSize.medium,
+    color: colors.black,
+    fontFamily: fontFamily.appTextRegular,
+  },
   top: {
     top: sizes.TinyMargin,
   },
@@ -137,5 +143,14 @@ export const styles = StyleSheet.create({
     position: 'absolute',
     top: -20,
     height: sizes.screenHeight,
+  },
+  bottomIOS: {
+    paddingBottom: sizes.screenHeight * 0.05,
+  },
+  contactLeft: {
+    left: sizes.screenWidth * 0.05,
+    fontSize: fontSize.medium,
+    color: colors.black,
+    fontFamily: fontFamily.appTextRegular,
   },
 });

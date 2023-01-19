@@ -50,28 +50,29 @@ export default function PastVisit({navigation}) {
   return (
     <SafeAreaView>
       <View>
-        <Header title={'Past Visit'} />
+        <Header title={'Past Session'} />
       </View>
       <ScrollView style={styles.color}>
         {!error ? (
           <View style={styles.marginTop}>
             <View style={[styles.left, styles.top]}>
-              <Text style={styles.head}>MY Past Session</Text>
+              <Text style={styles.head}>My Past Sessions</Text>
             </View>
             {visitList?.map((item, index) => {
+              console.log(item.visit_id);
               return (
                 <TouchableOpacity
-                  onPress={() => navigation.navigate('VisitDetail')}>
+                  onPress={() =>
+                    navigation.navigate('userDetailTrainer', {visit_id: item.visit_id})
+                  }>
                   <View style={[styles.card]}>
                     <View style={styles.row}>
-                      <Image
-                        source={images.provider1}
+                      {/* <Image
+                        source={{uri: item?.tr_images}}
                         style={styles.providerImg}
-                      />
+                      /> */}
                       <Text style={styles.cardText}>{item?.tr_name}</Text>
-                      <View>
-                        {/* <Text style={styles.symbol}> ›</Text> */}
-                      </View>
+                      <View>{/* <Text style={styles.symbol}> ›</Text> */}</View>
                     </View>
                     <View>
                       <Text style={styles.date}>
@@ -85,13 +86,14 @@ export default function PastVisit({navigation}) {
                 </TouchableOpacity>
               );
             })}
-          <View style={styles.paddingBottom}></View>
+            <View style={styles.paddingBottom}></View>
           </View>
         ) : (
           <View style={styles.contentView}>
             <Text style={styles.text}>You haven't had any visits yet.</Text>
           </View>
         )}
+        <View style={styles.paddingBottom}></View>
         {loader && <Loader />}
       </ScrollView>
     </SafeAreaView>

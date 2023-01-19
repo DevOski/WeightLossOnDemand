@@ -23,11 +23,13 @@ import share from '../../assets/assets/share.png';
 import {useIsFocused} from '@react-navigation/native';
 import {selectedTrainer} from '../../services/utilities/api/auth';
 import Loader from '../../components/Loader';
+import moment from 'moment';
 
 export const ProviderDetail = ({navigation, route}) => {
   const [show, setshow] = useState(false);
   const [loader, setLoader] = useState(false);
   const [trainer, setTrainer] = useState();
+  const [currentDate, setCurrentDate] = useState('');
   const [slot, setSlot] = useState([]);
   // const {tr_id} = route?.params?.trainer;
   const isVisible = useIsFocused();
@@ -40,12 +42,19 @@ export const ProviderDetail = ({navigation, route}) => {
     getTrainer();
   }, [isVisible]);
 
+  useEffect(() => {
+    let date = new Date().toJSON();
+    let current = moment(date).format('DD/MM/YYYY');
+    setCurrentDate(current);
+  }, []);
+
   const getTrainer = () => {
     setLoader(true);
     setTimeout(async () => {
       try {
         let response = await selectedTrainer(route?.params?.trainer?.tr_id);
         setTrainer(response.data.trainers);
+        console.log(response.data.slots);
         setSlot(response.data.slots);
         setLoader(false);
       } catch (error) {
@@ -62,7 +71,12 @@ export const ProviderDetail = ({navigation, route}) => {
       <ScrollView>
         <View style={styles.container1}>
           <View style={{justifyContent: 'center', alignItems: 'center'}}>
-            <Text style={styles.hedtext}>{trainer?.tr_name}</Text>
+            <Text
+              style={
+                Platform.OS !== 'ios' ? styles.hedtext : styles.hedtextIOS
+              }>
+              {trainer?.tr_name}
+            </Text>
           </View>
           <View style={styles.flex}>
             <View>
@@ -71,31 +85,47 @@ export const ProviderDetail = ({navigation, route}) => {
             <View>
               <View style={styles.img}>
                 <Image
-                  style={{
-                    width: '100%',
-                    height: '100%',
-                    borderRadius: sizes.screenWidth * 0.5,
-                  }}
-                  source={ladyy}
+                  style={Platform.OS !== 'ios' ? styles.trImg : styles.trImgIOS}
+                  source={{uri: route?.params?.trainer?.images}}
                 />
               </View>
             </View>
           </View>
           <View style={styles.flex3}>
             {slot?.map((item, index) => {
+              console.log(item);
               return (
-                <View style={styles.avialbox}>
-                  <TouchableOpacity
-                    onPress={() =>
-                      navigation.navigate('appointmentreqest', {
-                        slot: item,
-                        trainer: trainer,
-                      })
-                    }>
-                    <Text style={styles.tex}>{item?.tr_day}</Text>
-                    <Text style={styles.tex}>{item?.tr_date}</Text>
-                    <Text style={styles.tex}>{item.sl_time}</Text>
-                  </TouchableOpacity>
+                <View>
+                  {item?.tr_date >= currentDate && (
+                    <View style={styles.avialbox}>
+                      <TouchableOpacity
+                        onPress={() =>
+                          navigation.navigate('appointmentreqest', {
+                            slot: item,
+                            trainer: trainer,
+                          })
+                        }>
+                        <Text
+                          style={
+                            Platform.OS !== 'ios' ? styles.tex : styles.texIOS
+                          }>
+                          {item?.tr_day}
+                        </Text>
+                        <Text
+                          style={
+                            Platform.OS !== 'ios' ? styles.tex : styles.texIOS
+                          }>
+                          {item?.tr_date}
+                        </Text>
+                        <Text
+                          style={
+                            Platform.OS !== 'ios' ? styles.tex : styles.texIOS
+                          }>
+                          {item.sl_time}
+                        </Text>
+                      </TouchableOpacity>
+                    </View>
+                  )}
                 </View>
               );
             })}
@@ -119,7 +149,7 @@ export const ProviderDetail = ({navigation, route}) => {
           </View>
 
           <View style={styles.crd}>
-            <Text style={styles.providertex}>Patient</Text>
+            <Text style={styles.providertex}>Consultant Description</Text>
             <Text style={[styles.subhead, styles.border]}>
               {trainer?.tr_desc}
             </Text>
@@ -144,7 +174,7 @@ export const ProviderDetail = ({navigation, route}) => {
               </View>
             ) : null} */}
 
-            <View style={styles.borderbottom}></View>
+            {/* <View style={styles.borderbottom}></View> */}
             {/* <View>
               {show ? (
                 <TouchableOpacity onPress={Toogle}>
@@ -158,16 +188,31 @@ export const ProviderDetail = ({navigation, route}) => {
             </View> */}
           </View>
           <View style={styles.crd}>
-            <Text style={styles.subhead}>Focus Areas</Text>
+            <Text
+              style={
+                Platform.OS !== 'ios' ? styles.subhead : styles.subheadIOS
+              }>
+              Consultant type
+            </Text>
             <Text style={styles.providertex}>{trainer?.focus_area}</Text>
           </View>
           <View style={styles.crd}>
-            <Text style={styles.subhead}>Language</Text>
+            <Text
+              style={
+                Platform.OS !== 'ios' ? styles.subhead : styles.subheadIOS
+              }>
+              Language
+            </Text>
             <Text style={styles.providertex}>{trainer?.languages}</Text>
           </View>
 
           <View style={styles.crd}>
-            <Text style={styles.subhead}>QUALIFICATIONS</Text>
+            <Text
+              style={
+                Platform.OS !== 'ios' ? styles.subhead : styles.subheadIOS
+              }>
+              Qualifications
+            </Text>
             <Text style={styles.providertex}>{trainer?.qualifications}</Text>
           </View>
         </View>
@@ -201,6 +246,12 @@ const styles = StyleSheet.create({
     color: colors.black,
     fontWeight: 'bold',
   },
+  hedtextIOS: {
+    marginBottom: sizes.screenHeight * 0.0,
+    fontSize: fontSize.h5,
+    color: colors.black,
+    fontWeight: 'bold',
+  },
   hedtext1: {
     fontSize: fontSize.large,
     color: colors.black,
@@ -227,7 +278,13 @@ const styles = StyleSheet.create({
   },
   subhead: {
     fontSize: fontSize.large,
-    color: colors.appBgColor2,
+    color: colors.black,
+    fontWeight: 'bold',
+    fontFamily: fontFamily.appTextLight,
+  },
+  subheadIOS: {
+    fontSize: fontSize.large,
+    color: colors.black,
     fontWeight: 'bold',
     fontFamily: fontFamily.appTextLight,
   },
@@ -325,6 +382,12 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center',
   },
+  texIOS: {
+    fontSize: fontSize.medium,
+    color: colors.secondary,
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
   buttnView: {
     marginLeft: sizes.screenWidth * 0.06,
     // marginTop: sizes.screenHeight * 0.03,
@@ -347,5 +410,16 @@ const styles = StyleSheet.create({
     fontSize: fontSize.h6,
     fontFamily: fontFamily.appTextHeading,
     fontWeight: '600',
+  },
+  trImg: {
+    width: '100%',
+    height: '100%',
+    borderRadius: sizes.screenWidth * 0.5,
+  },
+  trImgIOS: {
+    width: sizes.screenWidth * 0.45,
+    height: sizes.screenHeight * 0.21,
+    borderRadius: sizes.screenWidth * 0.5,
+    alignSelf: 'center',
   },
 });

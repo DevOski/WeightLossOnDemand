@@ -19,7 +19,7 @@ import Header from '../../components/Header';
 export default function WhatDoWeTreat({navigation}) {
   return (
     <SafeAreaView>
-      <Header title={'What Do We Treat'} />
+      <Header title={'What Do We Train'} />
       <ScrollView style={styles.color}>
         <View style={styles.padding}>
           <TouchableOpacity onPress={() => navigation.navigate('Allergies')}>

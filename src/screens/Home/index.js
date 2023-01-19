@@ -4,6 +4,7 @@ import React, {useEffect, useRef, useState} from 'react';
 import {
   Image,
   ImageBackground,
+  Platform,
   SafeAreaView,
   ScrollView,
   Text,
@@ -25,7 +26,8 @@ import {
 import images from '../../services/utilities/images';
 import {storeUserData} from '../../store/actions';
 import {styles} from './style';
-import bg1 from '../../assets/bg1.jpeg'
+import PushNotificationIOS from '@react-native-community/push-notification-ios';
+import PushNotification from 'react-native-push-notification';
 
 export default function Home({navigation}) {
   const [userName, setUserName] = useState('');
@@ -41,6 +43,8 @@ export default function Home({navigation}) {
   const [pastVisit, setPastVisit] = useState();
   const [visitDetails, setVisitDetails] = useState();
   const [loader, setLoader] = useState(false);
+  const [mounted, setMounted] = useState(false);
+  const [notes, setNotes] = useState('');
 
   const token = useSelector(state => state.token);
   const dispatch = useDispatch();
@@ -78,9 +82,12 @@ export default function Home({navigation}) {
   const getPastVisit = async () => {
     try {
       let response = await recentVisit(token);
-      setPastVisit(response.data.trainer[0]);
-      setItem(['item1', 'item2', 'item3', 'item4', 'item5']);
-      setVisitDetails(response.data);
+      if (response?.data?.trainer?.length) {
+        setPastVisit(response.data.trainer[0]);
+        setNotes(response.data.visit.session_desc);
+        setItem(['item1', 'item2', 'item3', 'item4', 'item5']);
+        setVisitDetails(response.data);
+      }
     } catch (error) {
       console.log(error);
     }
@@ -89,6 +96,7 @@ export default function Home({navigation}) {
     try {
       const time = new Date().getTime();
       let currentTime = ` ${moment(time).format('HH:MM:SS')}`;
+
       let date = new Date().toJSON();
       let currentDate = moment(date).format('YYYY-MM-DD');
       let currentFinalDate = currentDate + currentTime;
@@ -98,7 +106,6 @@ export default function Home({navigation}) {
         response.data.data.tr_name !== 'random' &&
         currentFinalDate == response.data.data.apt_time
       ) {
-        handleNotif();
         console.log(response.data.data);
         navigation.navigate('ProviderReview', {
           tr_id: response.data.data.trainer_id,
@@ -138,9 +145,18 @@ export default function Home({navigation}) {
     }
   };
   const handleNotif = () => {
-    LocalNotification();
-    let date = new Date(Date.now() + 10 * 1000);
-    console.log(date);
+    if (Platform.OS !== 'ios') {
+      LocalNotification();
+    } else {
+      PushNotificationIOS.presentLocalNotification({
+        alertTitle: 'Your session is about started',
+        alertBody: 'Get ready for your session.',
+      });
+    }
+
+    // let date = new Date(Date.now() + 10 * 1000);
+    // console.log(date);
+    // alert()
   };
   const handleAPI = () => {
     var requestOptions = {
@@ -153,6 +169,7 @@ export default function Home({navigation}) {
       .then(result => console.log(result))
       .catch(error => console.log('error', error));
   };
+
   return (
     <SafeAreaView>
       <ScrollView style={styles.color}>
@@ -167,6 +184,8 @@ export default function Home({navigation}) {
             onPress={
               () => navigation.navigate('Setting')
               // handleAPI
+              // LocalNotification
+              // handleNotif
             }>
             <Image source={images.setting} style={styles.settingIcon} />
           </TouchableOpacity>
@@ -179,28 +198,50 @@ export default function Home({navigation}) {
           style={styles.wrap}>
           {item?.map((item, index) => {
             return (
-              <View key={index} style={styles.cardView}>
+              <View
+                key={index}
+                style={
+                  Platform.OS !== 'ios' ? styles.cardView : styles.cardViewIOS
+                }>
                 {index == 0 && (
                   <ImageBackground
                     key={index}
                     source={images.bg1}
-                    style={styles.bg}>
-                    <TouchableOpacity
+                    style={[styles.bg, {opacity: 1}]}>
+                    <View style={styles.videoTop}></View>
+                    <View
+                      style={
+                        Platform.OS !== 'ios'
+                          ? styles.playBtn
+                          : styles.playBtnIOS
+                      }></View>
+                    {/* <TouchableOpacity
+                      style={styles.videoTop}
                       onPress={() =>
                         navigation.navigate('VideoPlayer', {
                           uri: 'https://www.youtube.com/embed/JLnycPtolfw',
                         })
                       }>
-                      <View style={styles.playBtn}>
+                      <View
+                        style={
+                          Platform.OS !== 'ios'
+                            ? styles.playBtn
+                            : styles.playBtnIOS
+                        }
+                        onPress={() => {
+                          navigation.navigate('VideoPlayer', {
+                            uri: 'https://www.youtube.com/embed/JLnycPtolfw',
+                          });
+                        }}>
                         <Image
                           source={images.playIcon}
                           style={styles.playIcon}
                         />
                       </View>
-                    </TouchableOpacity>
+                    </TouchableOpacity> */}
                     <View style={styles.textView}>
                       <Text style={styles.text}>
-                        What to expect during your initial visit?
+                        What to expect during your initial session?
                       </Text>
                     </View>
                     <View style={[styles.semiTextView, styles.row2]}>
@@ -215,38 +256,26 @@ export default function Home({navigation}) {
                 )}
                 {index == 1 && (
                   <View key={index} style={styles.padding}>
-                    <Text style={[styles.heading, styles.top]}>Trainer</Text>
+                    <Text style={[styles.heading, styles.top]}>Consultant</Text>
                     <Text style={styles.providerText}>
-                      Our professional trainers can handle a wide range of
-                      problems, such as:
+                      Our professional consultants can handle a wide range of
+                      weight loss goals. The program has four phases:
                     </Text>
                     <View style={styles.row2}>
                       <Text style={styles.addIcon}>●</Text>
-                      <Text style={styles.addText}>
-                        Physical fitness trainer
-                      </Text>
+                      <Text style={styles.addText}>Introduction</Text>
                     </View>
                     <View style={styles.row2}>
                       <Text style={styles.addIcon}>●</Text>
-                      <Text style={styles.addText}>Personal gym trainers</Text>
+                      <Text style={styles.addText}>Weight loss</Text>
                     </View>
                     <View style={styles.row2}>
                       <Text style={styles.addIcon}>●</Text>
-                      <Text style={styles.addText}>
-                        Lifestyle personal trainers
-                      </Text>
+                      <Text style={styles.addText}>Pre-maintenance</Text>
                     </View>
                     <View style={styles.row2}>
                       <Text style={styles.addIcon}>●</Text>
-                      <Text style={styles.addText}>Yoga trainers</Text>
-                    </View>
-                    <View style={styles.row2}>
-                      <Text style={styles.addIcon}>●</Text>
-                      <Text style={styles.addText}>Aerobic and dance</Text>
-                    </View>
-                    <View style={styles.row2}>
-                      <Text style={styles.addIcon}>●</Text>
-                      <Text style={styles.addText}>Zoomba</Text>
+                      <Text style={styles.addText}>Maintenance</Text>
                     </View>
 
                     <View style={styles.btnTop}>
@@ -308,33 +337,39 @@ export default function Home({navigation}) {
                         We're more than just proud
                       </Text>
                       <Text style={styles.letUsText}>
-                        Let us assist you in finding the right trainer for you.
+                        Let us assist you in finding the right consultant for
+                        you.
                       </Text>
                     </View>
-                    <TouchableOpacity
-                      onPress={() => navigation.navigate('beyondscreen')}>
-                      <View style={[styles.learnMoreView, styles.row2]}>
-                        <Text style={styles.semiText}>Learn more</Text>
-                        <Text style={styles.symbol}> ›</Text>
-                      </View>
-                    </TouchableOpacity>
+                    <View style={[styles.learnMoreView, styles.row2]}>
+                      <TouchableOpacity
+                        onPress={() => navigation.navigate('beyondscreen')}>
+                        <View style={styles.row2}>
+                          <Text style={styles.semiText}>Learn more</Text>
+                          <Text style={styles.symbol}> ›</Text>
+                        </View>
+                      </TouchableOpacity>
+                    </View>
                   </ImageBackground>
                 )}
                 {index == 3 && (
                   <View key={index} style={[styles.padding]}>
                     <Text style={[styles.heading, styles.top]}>
-                      Meet Our Professionals
+                      Meet our consultants
                     </Text>
                     {trainerList?.map((item, index) => {
-                      console.log(item.images);
                       if (index < 6) {
                         return (
                           <View
                             key={index}
                             style={[styles.row2, styles.paddingLeft]}>
                             <Image
-                              source={{uri:item.images}}
-                              style={styles.providerImg}
+                              source={{uri: item.images}}
+                              style={
+                                Platform.OS !== 'ios'
+                                  ? styles.providerImg
+                                  : styles.providerImgIOS
+                              }
                             />
                             <View>
                               <Text style={styles.providerHead}>
@@ -422,7 +457,7 @@ export default function Home({navigation}) {
                         onPress={() => navigation.navigate('meetOurproviders')}>
                         <View style={[styles.learnMoreBtn, styles.row2]}>
                           <Text style={styles.learnMoreText}>
-                            Connect to all trainers
+                            Connect to all consultants
                           </Text>
                           <Text style={styles.symbol}> ›</Text>
                         </View>
@@ -433,12 +468,12 @@ export default function Home({navigation}) {
                 {index == 4 && (
                   <View key={index} style={[styles.padding]}>
                     <Text style={[styles.heading, styles.top]}>
-                      Recent Visit
+                      Recent Session
                     </Text>
 
                     <View style={[styles.row2, styles.paddingLeft]}>
                       <Image
-                        source={images.provider1}
+                        source={{uri: pastVisit.images}}
                         style={styles.providerImg}
                       />
                       <View>
@@ -456,14 +491,14 @@ export default function Home({navigation}) {
                       </View>
                     </View>
                     <View>
-                      <Text style={styles.he}>DESCRIPTION:</Text>
+                      <Text style={styles.he}>NOTES:</Text>
                     </View>
                     <View style={styles.het1}>
                       <Text
                         style={styles.het}
-                        numberOfLines={9}
+                        numberOfLines={7}
                         ellipsizeMode="tail">
-                        {pastVisit?.tr_desc}
+                        {notes}
                       </Text>
                     </View>
                     <View style={styles.seeBtn}>

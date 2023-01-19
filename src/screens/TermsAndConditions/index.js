@@ -22,7 +22,7 @@ export default function TermsAndConditions({navigation}) {
           <Header dark={true} />
         </View>
         <View style={[styles.paddingLeft, styles.paddingBottom]}>
-          <Text style={styles.addPaymentText}>Terms And Conditions</Text>
+          <Text style={styles.addPaymentText}>Terms & Conditions</Text>
         </View>
         <TouchableOpacity onPress={() => navigation.navigate('TermsOfService')}>
           <View style={[styles.row, styles.card]}>

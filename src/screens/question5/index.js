@@ -37,7 +37,7 @@ export default function Questionthree({navigation, route}) {
   const [Cardio, setCardio] = useState();
 
   const dispatch = useDispatch();
-  
+
   // console.log(route.params,"q3screen");
   useEffect(() => {
     getQuestions();
@@ -67,41 +67,62 @@ export default function Questionthree({navigation, route}) {
         <View style={styles.padding}>
           <Text style={styles.text}>{Qa}</Text>
           <View style={styles.width}>
-            <View style={styles.ro}>
-              <Text style={styles.lstyle}>Strength</Text>
-              <RadioButton
-                status={StrengthTraining ? 'checked' : 'unchecked'}
-                onPress={() => {
-                  setStrengthTraining(!StrengthTraining);
-                  setCardio(false);
-                  setselectanswer5('Strength Training');
-                }}
-                color={'#be1d2d'}
-                uncheckColor={colors.secondary}
-              />
-            </View>
-            <View style={styles.ro}>
-              <Text style={styles.lstyle}>Cardio</Text>
-              <RadioButton
-                status={Cardio ? 'checked' : 'unchecked'}
-                onPress={() => {
-                  setCardio(!Cardio);
-                  setStrengthTraining(false);
-                  setselectanswer5('Cardio');
-                  // setgender('Female');
-                  // setCheckedMale(false);
-                  // setCheckedOther(false);
-                }}
-                color={'#be1d2d'}
-                uncheckColor={colors.secondary}
-              />
-            </View>
+            <TouchableOpacity
+              onPress={() => {
+                setStrengthTraining(!StrengthTraining);
+                setCardio(false);
+                setselectanswer5('Strength Training');
+              }}>
+              <View style={styles.ro}>
+                <Text style={styles.lstyle}>Strength</Text>
+                <RadioButton
+                  onPress={() => {
+                    setStrengthTraining(!StrengthTraining);
+                    setCardio(false);
+                    setselectanswer5('Strength Training');
+                  }}
+                  status={StrengthTraining ? 'checked' : 'unchecked'}
+                  color={'#be1d2d'}
+                  uncheckColor={colors.secondary}
+                />
+              </View>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              onPress={() => {
+                setCardio(!Cardio);
+                setStrengthTraining(false);
+                setselectanswer5('Cardio');
+                // setgender('Female');
+                // setCheckedMale(false);
+                // setCheckedOther(false);
+              }}>
+              <View style={styles.ro}>
+                <Text style={styles.lstyle}>Cardio</Text>
+                <RadioButton
+                  onPress={() => {
+                    setCardio(!Cardio);
+                    setStrengthTraining(false);
+                    setselectanswer5('Cardio');
+                    // setgender('Female');
+                    // setCheckedMale(false);
+                    // setCheckedOther(false);
+                  }}
+                  status={Cardio ? 'checked' : 'unchecked'}
+                  color={'#be1d2d'}
+                  uncheckColor={colors.secondary}
+                />
+              </View>
+            </TouchableOpacity>
           </View>
 
           <View style={styles.paddingTop}>
-          <TouchableOpacity onPress={handleEmail}  disabled={selectanswer5?false:true}>
-              <View style={selectanswer5 ?styles.buttonView:styles.disabledView}>
-                <Text style={styles.buttonText}>Next</Text>
+            <TouchableOpacity
+              onPress={handleEmail}
+              disabled={selectanswer5 ? false : true}>
+              <View
+                style={selectanswer5 ? styles.buttonView : styles.disabledView}>
+                <Text style={styles.buttonText}>Submit</Text>
               </View>
             </TouchableOpacity>
           </View>

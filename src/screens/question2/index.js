@@ -32,6 +32,17 @@ export default function Questiontwo({navigation, route}) {
   const [Evening, setEvening] = useState();
   const [Night, setNight] = useState();
   const [selectanswer1, setselectanswer1] = useState();
+  const [weight, setWeight] = useState('');
+  const [height, setHeight] = useState('');
+  const [lowestWeight, setLowestWeight] = useState('');
+  const [highestWeight, sethighestWeight] = useState('');
+  const [weightChanges, setWeightChanges] = useState('');
+  const [dietedPast, setDietedPast] = useState('');
+  const [hardLose, setHardLose] = useState('');
+  const [helpLose, setHelpLose] = useState('');
+  const [howMuch, setHowMuch] = useState('');
+  const [benefit, setBenefit] = useState('');
+
   const dispatch = useDispatch();
   useEffect(() => {
     getQuestions();
@@ -40,106 +51,190 @@ export default function Questiontwo({navigation, route}) {
   const getQuestions = async () => {
     try {
       let response = await getQuestion(2);
-      setQa(response.data.data[0].question);
+      // setQa(response.data.data[0].question);
     } catch (error) {
       console.log(error);
     }
   };
   // console.log(question,"question");
   // console.log('question2', {question1: question});
- ;
   // const q2=useSelector(state =>state.question2)
   // console.log(q2,'====>q2');
-  const handleEmail = () => {
-    dispatch(Question2(selectanswer1));
+  const handleNext = () => {
+    dispatch(
+      Question2(
+        weight,
+        height,
+        lowestWeight,
+        highestWeight,
+        weightChanges,
+        dietedPast,
+        hardLose,
+        helpLose,
+        howMuch,
+        benefit,
+      ),
+    );
     navigation.navigate('question3', {
       slot: route?.params?.slot,
       trainer: route?.params?.trainer,
     });
   };
-
+  
   return (
     <SafeAreaView>
       <Header title={'Questionnaires '} />
       <ScrollView style={styles.color}>
         <View style={styles.padding}>
-          <Text style={styles.text}>{Qa}</Text>
-          <View style={styles.width}>
-            <View style={styles.ro}>
-              <Text style={styles.lstyle}>Morning</Text>
-              <RadioButton
-                status={Morning ? 'checked' : 'unchecked'}
-                onPress={() => {
-                  setMorning(!Morning);
-                  setAfternoon(false);
-                  setEvening(false);
-                  setNight(false);
-                  setselectanswer1('Morning');
-                  // setgender('Female');
-                  // setCheckedMale(false);
-                  // setCheckedOther(false);
-                }}
-                color={'#be1d2d'}
-                uncheckColor={colors.secondary}
-              />
-            </View>
-            <View style={styles.ro}>
-              <Text style={styles.lstyle}>Afternoon</Text>
-              <RadioButton
-                status={Afternoon ? 'checked' : 'unchecked'}
-                onPress={() => {
-                  setAfternoon(!Afternoon);
-                  setMorning(false);
-                  setselectanswer1('Afternoon');
-                  setEvening(false);
-                  setNight(false);
-                }}
-                color={'#be1d2d'}
-                uncheckColor={colors.secondary}
-              />
-            </View>
-            <View style={styles.ro}>
-              <Text style={styles.lstyle}>Evening</Text>
-              <RadioButton
-                status={Evening ? 'checked' : 'unchecked'}
-                onPress={() => {
-                  setEvening(!Evening);
-                  setAfternoon(false);
-                  setMorning(false);
-                  setselectanswer1('Evening');
-
-                  setNight(false);
-                }}
-                color={'#be1d2d'}
-                uncheckColor={colors.secondary}
-              />
-            </View>
-            <View style={styles.ro}>
-              <Text style={styles.lstyle}>Night</Text>
-              <RadioButton
-                status={Night ? 'checked' : 'unchecked'}
-                onPress={() => {
-                  setNight(!Night);
-                  setAfternoon(false);
-                  setMorning(false);
-                  setselectanswer1('Night');
-
-                  setEvening(false);
-                }}
-                color={'#be1d2d'}
-                uncheckColor={colors.secondary}
+          <Text style={styles.text}>Weight Information</Text>
+          <View style={styles.paddingTop}>
+            <Text style={styles.text2}>Current Weight</Text>
+            <View>
+              <TextInput
+                mode="contain"
+                activeUnderlineColor={colors.secondary}
+                style={styles.field}
+                onChangeText={text => setWeight(text)}
+                value={weight}
               />
             </View>
           </View>
-
           <View style={styles.paddingTop}>
-            <TouchableOpacity onPress={handleEmail}  disabled={selectanswer1?false:true}>
-              <View style={selectanswer1?styles.buttonView:styles.disabledView}>
-                <Text style={styles.buttonText}>Next</Text>
+            <Text style={styles.text2}>Height</Text>
+            <View>
+              <TextInput
+                mode="contain"
+                activeUnderlineColor={colors.secondary}
+                style={styles.field}
+                onChangeText={text => setHeight(text)}
+                value={height}
+              />
+            </View>
+          </View>
+          <View style={styles.paddingTop}>
+            <Text style={styles.text2}>
+              What was your lowest and highest adult weight?
+            </Text>
+            <View style={styles.row}>
+              <TextInput
+                mode="contain"
+                label={'lb'}
+                activeUnderlineColor={colors.secondary}
+                style={styles.field2}
+                onChangeText={text => setLowestWeight(text)}
+                value={lowestWeight}
+              />
+              <TextInput
+                mode="contain"
+                label={'lb'}
+                activeUnderlineColor={colors.secondary}
+                style={styles.field2}
+                onChangeText={text => sethighestWeight(text)}
+                value={highestWeight}
+              />
+            </View>
+          </View>
+          <View style={styles.paddingTop}>
+            <Text style={styles.text2}>
+              Describe any weight changes (gain or loss) in the past 2 years
+            </Text>
+            <View>
+              <TextInput
+                mode="contain"
+                activeUnderlineColor={colors.secondary}
+                style={styles.field}
+                multiline={true}
+                onChangeText={text => setWeightChanges(text)}
+                value={weightChanges}
+              />
+            </View>
+          </View>
+          <View style={styles.paddingTop}>
+            <Text style={styles.text2}>
+              Have you dieted in the past for weight loss? No Yes If yes, please
+              indicate what you have done
+            </Text>
+            <View>
+              <TextInput
+                mode="contain"
+                activeUnderlineColor={colors.secondary}
+                style={styles.field}
+                multiline={true}
+                onChangeText={text => setDietedPast(text)}
+                value={dietedPast}
+              />
+            </View>
+          </View>
+          <View style={styles.paddingTop}>
+            <Text style={styles.text2}>
+              What makes it hard for you to lose weight and keep it off?
+            </Text>
+            <View>
+              <TextInput
+                mode="contain"
+                activeUnderlineColor={colors.secondary}
+                style={styles.field}
+                multiline={true}
+                onChangeText={text => setHardLose(text)}
+                value={hardLose}
+              />
+            </View>
+          </View>
+          <View style={styles.paddingTop}>
+            <Text style={styles.text2}>What has helped you lose weight?</Text>
+            <View>
+              <TextInput
+                mode="contain"
+                activeUnderlineColor={colors.secondary}
+                style={styles.field}
+                multiline={true}
+                onChangeText={text => setHelpLose(text)}
+                value={helpLose}
+              />
+            </View>
+          </View>
+          <View style={styles.paddingTop}>
+            <Text style={styles.text2}>
+              How much weight would you like to lose?
+            </Text>
+            <View>
+              <TextInput
+                mode="contain"
+                activeUnderlineColor={colors.secondary}
+                style={styles.field}
+                multiline={true}
+                onChangeText={text => setHowMuch(text)}
+                value={howMuch}
+              />
+            </View>
+          </View>
+          <View style={styles.paddingTop}>
+            <Text style={styles.text2}>
+              How will you benefit from this weight loss?
+            </Text>
+            <View>
+              <TextInput
+                mode="contain"
+                activeUnderlineColor={colors.secondary}
+                style={styles.field}
+                multiline={true}
+                onChangeText={text => setBenefit(text)}
+                value={benefit}
+              />
+            </View>
+          </View>
+          <View style={styles.paddingTop}>
+            <TouchableOpacity
+              onPress={handleNext}
+              // disabled={selectanswer1 ? false : true}
+            >
+              <View style={styles.buttonView}>
+                <Text style={styles.buttonText}>Submit</Text>
               </View>
             </TouchableOpacity>
           </View>
         </View>
+        <View style={styles.bottom2}></View>
       </ScrollView>
     </SafeAreaView>
   );

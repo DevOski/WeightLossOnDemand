@@ -56,7 +56,13 @@ export default function Header({
           <View style={styles.skipView}>
             <TouchableOpacity onPress={() => navigation.goBack()}>
               <View style={[styles.row, styles.leftDone]}>
-                <Text style={styles.title2}>Done</Text>
+                <Text
+                  style={
+                    Platform.OS !== 'ios' ? styles.title2 : styles.title2IOS
+                  }
+                  onPress={() => navigation.goBack()}>
+                  Done
+                </Text>
               </View>
             </TouchableOpacity>
           </View>
@@ -65,7 +71,7 @@ export default function Header({
           <View style={styles.filterView}>
             <TouchableOpacity onPress={() => navigation.navigate('Filter')}>
               <View style={[styles.row, styles.filterLeft]}>
-                <Text style={styles.filter}>{'   '}Filter </Text>
+                <Text style={styles.filter}>Filter </Text>
               </View>
             </TouchableOpacity>
           </View>
@@ -89,19 +95,38 @@ export default function Header({
           </View>
         )}
         {skip && !status && (
-          <View style={[styles.skipView, styles.leftDone]}>
-            <TouchableOpacity onPress={() => navigation.goBack()}>
+          <TouchableOpacity onPress={() => navigation.goBack()}>
+            <View style={[styles.skipView, styles.leftDone]}>
               <View style={[styles.row]}>
-                <Text style={styles.title}>Skip </Text>
+                {title == 'Our Website' ? (
+                  <Text
+                    style={
+                      Platform.OS !== 'ios'
+                        ? styles.titleExit
+                        : styles.titleIOS2
+                    }
+                    onPress={() => navigation.goBack()}>
+                    Exit{' '}
+                  </Text>
+                ) : (
+                  <Text
+                    style={
+                      Platform.OS !== 'ios' ? styles.title : styles.titleIOS
+                    }
+                    onPress={() => navigation.goBack()}>
+                    Skip{' '}
+                  </Text>
+                )}
                 <MaterialIcons
                   name="keyboard-arrow-right"
                   color={colors.white}
                   size={20}
-                  style={styles.skipIcon}
+                  style={[styles.skipIcon, styles.leftIOS]}
+                  onPress={() => navigation.goBack()}
                 />
               </View>
-            </TouchableOpacity>
-          </View>
+            </View>
+          </TouchableOpacity>
         )}
         {skip && status && (
           <View style={[styles.skipView, styles.leftDone]}>

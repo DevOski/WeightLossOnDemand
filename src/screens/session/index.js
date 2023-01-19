@@ -12,10 +12,11 @@ import {
 import {useSelector} from 'react-redux';
 import images from '../../services/utilities/images';
 import {styles} from './style';
-import {colors, sizes,fontSize,fontFamily} from '../../services';
+import {colors, sizes, fontSize, fontFamily} from '../../services';
+import Header from '../../components/Header';
 export default function startSession({navigation}) {
   const [msgList, setMsgList] = useState([]);
-
+  const [currentSession, setCurrentSession] = useState(false);
   const isVisible = useIsFocused();
 
   const token = useSelector(state => state.token);
@@ -42,22 +43,62 @@ export default function startSession({navigation}) {
       .catch(error => console.log('error', error));
   };
   return (
-    <SafeAreaView style={styles.container}>
-      <TouchableOpacity
-      onPress={()=>navigation.navigate('trainervideocall')}
-        // disabled={email != '' && password != '' ? false : true}
-        style={styles.but}
-        >
-        <Text
-          style={{
-            color: '#fff',
-            fontSize: fontSize.h6,
-            fontFamily: fontFamily.appTextHeading,
-            fontWeight: 'Bold',
-          }}>
-         Start Session
-        </Text>
-      </TouchableOpacity>
+    <SafeAreaView>
+      <View>
+        <Header title={'Current Session'} />
+      </View>
+      <View style={styles.container}>
+        {!currentSession && (
+          <View>
+            <View style={{paddingBottom: sizes.TinyMargin}}>
+              <TouchableOpacity
+                onPress={() => navigation.navigate('trainervideocall')}
+                // disabled={email != '' && password != '' ? false : true}
+                style={styles.but}>
+                <Text
+                  style={{
+                    color: '#fff',
+                    fontSize: fontSize.h6,
+                    fontFamily: fontFamily.appTextHeading,
+                    fontWeight: 'Bold',
+                  }}>
+                  View Client Details
+                </Text>
+              </TouchableOpacity>
+            </View>
+            <View style={{paddingBottom: sizes.TinyMargin}}>
+              <TouchableOpacity
+                onPress={() => navigation.navigate('trainervideocall')}
+                // disabled={email != '' && password != '' ? false : true}
+                style={styles.but}>
+                <Text
+                  style={{
+                    color: '#fff',
+                    fontSize: fontSize.h6,
+                    fontFamily: fontFamily.appTextHeading,
+                    fontWeight: 'Bold',
+                  }}>
+                  View Questionnaires
+                </Text>
+              </TouchableOpacity>
+            </View>
+            <TouchableOpacity
+              onPress={() => navigation.navigate('trainervideocall')}
+              // disabled={email != '' && password != '' ? false : true}
+              style={styles.but}>
+              <Text
+                style={{
+                  color: '#fff',
+                  fontSize: fontSize.h6,
+                  fontFamily: fontFamily.appTextHeading,
+                  fontWeight: 'Bold',
+                }}>
+                Start Session
+              </Text>
+            </TouchableOpacity>
+          </View>
+        )}
+      </View>
     </SafeAreaView>
   );
 }

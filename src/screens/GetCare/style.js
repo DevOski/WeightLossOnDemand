@@ -62,13 +62,13 @@ export const styles = StyleSheet.create({
     fontWeight: '700',
   },
   icon: {
-    height: sizes.screenHeight * 0.06,
-    width: sizes.screenWidth * 0.11,
+    height: sizes.screenHeight * 0.048,
+    width: sizes.screenWidth * 0.12,
     left: sizes.screenWidth * 0.02,
   },
-  icon2:{
+  icon2: {
     height: sizes.screenHeight * 0.05,
-    width: sizes.screenWidth * 0.08,
+    width: sizes.screenWidth * 0.1,
     left: sizes.screenWidth * 0.02,
   },
   providerText: {

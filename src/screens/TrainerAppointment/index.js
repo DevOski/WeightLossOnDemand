@@ -57,6 +57,7 @@ export default function TrainerAppointment({navigation}) {
   const getTrainerAppointments = async () => {
     try {
       let response = await getAppointmentTrainer(token);
+      // console.log(response.data.data.first_name);
       setAppointmentList(response.data.data);
     } catch (error) {
       console.log(error);
@@ -88,7 +89,7 @@ export default function TrainerAppointment({navigation}) {
   };
   return (
     <SafeAreaView>
-      <ScrollView style={styles.color}>
+      <View style={styles.paddingTop}>
         <View style={[styles.row, styles.padding]}>
           <Image source={images.icon2} style={styles.icon} />
           <View>
@@ -102,7 +103,8 @@ export default function TrainerAppointment({navigation}) {
             </TouchableOpacity>
           </View>
         </View>
-
+      </View>
+      <ScrollView style={styles.color}>
         {isModalVisible && (
           <Modal style={styles.modalView} isVisible={isModalVisible}>
             <TouchableOpacity onPress={toggleModal}>
@@ -142,32 +144,43 @@ export default function TrainerAppointment({navigation}) {
         )}
         {loader && <Loader />}
         <View>
-          <Text style={styles.appointmentText}>Your recent appointment</Text>
+          <Text style={styles.appointmentText}>Your upcoming sessions</Text>
         </View>
-        {appointmentList?.map((item, index) => {
-          console.log(item);
-          return (
-            <View>
-              {item.status == 'pending' ? (
-                <TouchableOpacity
-                  key={index}
-                  // onPress={() => navigation.navigate(item.screen)}
-                >
-                  <View style={[styles.row, styles.card]}>
-                    <Text style={styles.cardText}>
-                      {moment(item.apt_time).format('DD/MM/YY hh:mm: A')}
-                    </Text>
-                    {/* <View>{/ <Text style={styles.symbol}> ›</Text> /}</View> */}
-                  </View>
-                </TouchableOpacity>
-              ) : (
-                <Text>No recent appointments</Text>
-              )}
-            </View>
-          );
-        })}
+        {appointmentList.length ? (
+          appointmentList?.map((item, index) => {
+            // console.log(item);
+            return (
+              <View>
+                {item.status == 'pending' && (
+                  <TouchableOpacity
+                    key={index}
+                    onPress={() =>
+                      navigation.navigate('userDetailTrainer', {
+                        ap_id: item.ap_id,
+                      })
+                    }>
+                    <View style={[styles.row, styles.card]}>
+                      <Text style={styles.cardText}>
+                        {moment(item.apt_time).format('DD/MM/YY hh:mm: A')}
+                      </Text>
+                      {/* <View>{/ <Text style={styles.symbol}> ›</Text> /}</View> */}
+                    </View>
+                  </TouchableOpacity>
+                )}
+              </View>
+            );
+          })
+        ) : (
+          <View>
+            <Text>No recent appointments</Text>
+          </View>
+        )}
+
         <View style={styles.paddingBottom2}></View>
       </ScrollView>
     </SafeAreaView>
   );
 }
+// : (
+//   <Text>No recent appointments</Text>
+// )

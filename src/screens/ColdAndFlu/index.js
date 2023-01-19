@@ -164,6 +164,8 @@ export default function ColdAndFlu() {
             </View>
           </View> */}
         </View>
+        {Platform.OS == 'ios' && <View style={styles.bottomIOS}></View>}
+
       </ScrollView>
     </SafeAreaView>
   );

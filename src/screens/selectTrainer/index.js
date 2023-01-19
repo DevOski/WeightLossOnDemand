@@ -60,7 +60,7 @@ export default function selectTrainer({navigation}) {
       <Header dark={true} />
       <ScrollView style={styles.color}>
         <View style={styles.padding}>
-          <Text style={styles.addPaymentText}>Select Trainer</Text>
+          <Text style={styles.addPaymentText}>Select Consultant</Text>
         </View>
         {trainer?.map((item, index) => {
           return (

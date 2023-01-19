@@ -19,7 +19,7 @@ import ladyy from '../../assets/assets/ladyy.jpg';
 import {useIsFocused} from '@react-navigation/native';
 import {getAllTrainers} from '../../services/utilities/api/auth';
 
-export default function ChooseProvider({route,navigation}) {
+export default function ChooseProvider({route, navigation}) {
   const [trainer, setTrainer] = useState([]);
   const isVisible = useIsFocused();
 
@@ -41,7 +41,12 @@ export default function ChooseProvider({route,navigation}) {
 
       <ScrollView style={styles.color}>
         <View style={styles.padding}>
-          <Text style={styles.subHeading}>Choose Trainer </Text>
+          <Text
+            style={
+              Platform.OS !== 'ios' ? styles.subHeading : styles.subHeadingIOS
+            }>
+            Choose consultant{' '}
+          </Text>
         </View>
         {trainer?.map((item, index) => {
           return (
@@ -55,12 +60,8 @@ export default function ChooseProvider({route,navigation}) {
                   <View style={styles.rowinner}>
                     <View style={styles.img}>
                       <Image
-                        style={{
-                          width: '100%',
-                          height: '100%',
-                          borderRadius: sizes.screenWidth * 0.5,
-                        }}
-                        source={ladyy}
+                        style={Platform.OS !== 'ios' ? styles.trImg :styles.trImgIOS }
+                        source={{uri:item?.images}}
                       />
                     </View>
                     <View>
@@ -69,15 +70,15 @@ export default function ChooseProvider({route,navigation}) {
                     </View>
                   </View>
                   <Text
-                    style={styles.cardText}
+                    style={Platform.OS !== 'ios' ? styles.cardText : styles.cardTextIOS}
                     numberOfLines={3}
                     ellipsizeMode="tail">
                     {item.tr_desc}
                   </Text>
                 </View>
-                <View>
-                  <Text style={styles.symbol}> ›</Text>
-                </View>
+                {/* <View>
+                  <Text style={Platform.OS !== 'ios' ? styles.symbol : styles.symbolIOS}> ›</Text>
+                </View> */}
               </View>
             </TouchableOpacity>
           );

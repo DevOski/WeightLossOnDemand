@@ -73,6 +73,7 @@ export const styles = StyleSheet.create({
     height: sizes.screenHeight * 0.05,
     width: sizes.screenWidth * 0.1,
     top: sizes.screenHeight * 0.01,
+    borderRadius: sizes.screenWidth * 0.5,
   },
   date: {
     color: colors.disabledBg2,

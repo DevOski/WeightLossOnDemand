@@ -2,6 +2,7 @@ import React, {useEffect, useRef, useState} from 'react';
 import {
   Image,
   ImageBackground,
+  Platform,
   SafeAreaView,
   ScrollView,
   Switch,
@@ -17,23 +18,23 @@ import {Rating} from 'react-native-ratings';
 import {trainerRating} from '../../services/utilities/api/auth';
 import Error from '../../components/Error';
 import Modal from 'react-native-modal';
+import Loader from '../../components/Loader';
 
 export default function RateProvider({navigation, route}) {
   const [message, setMessage] = useState('');
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [loader, setLoader] = useState(false);
 
   const ratingCompleted = async rating => {
+    setLoader(true);
     try {
-      let response = await trainerRating(
-        rating,
-        route?.params?.trainer?.tr_id
-          ? route?.params?.trainer?.tr_id
-          : route?.params?.tr_id,
-      );
+      let response = await trainerRating(rating, route?.params?.tr_id);
       setMessage(response.data.message);
       setIsModalVisible(true);
+      setLoader(true);
     } catch (error) {
       console.log(error);
+      setLoader(false);
     }
   };
   console.log(route?.params);
@@ -45,26 +46,24 @@ export default function RateProvider({navigation, route}) {
             <TouchableOpacity
               onPress={() =>
                 navigation.navigate('HowLikelyRecommend', {
-                  trianer: route?.params?.trainer,
-                  apt_id: route?.params?.apt_id,
+                  tr_id: route?.params?.tr_id,
+                  tr_name: route?.params?.tr_name,
+                  tr_image: route?.params?.tr_image,
+                  tr_amount: route?.params?.tr_amount,
                 })
               }>
               <Text style={styles.skipText}>Skip</Text>
             </TouchableOpacity>
           </View>
         </View>
-        <Text style={styles.rateText}>Rate your provider for this visit</Text>
+        <Text style={styles.rateText}>Rate your session for this visit</Text>
         <Image
           source={{
-            uri: route?.params?.trainer?.tr_image
-              ? route?.params?.trainer?.tr_image
-              : route?.params?.trainer?.images,
+            uri: route?.params?.tr_image,
           }}
-          style={styles.docImg}
+          style={Platform.OS !== 'ios' ? styles.docImg : styles.docImgIOS}
         />
-        <Text style={styles.providerTitle}>
-          {route?.params?.trainer?.tr_name}
-        </Text>
+        <Text style={styles.providerTitle}>{route?.params?.tr_name}</Text>
         <Rating
           type="custom"
           ratingColor={colors.secondary}
@@ -90,9 +89,12 @@ export default function RateProvider({navigation, route}) {
           <View>
             <TouchableOpacity
               onPress={() => {
+                setIsModalVisible(false);
                 navigation.navigate('HowLikelyRecommend', {
-                  trianer: route?.params?.trainer,
-                  apt_id: route?.params?.apt_id,
+                  tr_id: route?.params?.tr_id,
+                  tr_name: route?.params?.tr_name,
+                  tr_image: route?.params?.tr_image,
+                  tr_amount: route?.params?.tr_amount,
                 });
               }}>
               <View style={styles.buttonView}>
@@ -102,6 +104,7 @@ export default function RateProvider({navigation, route}) {
           </View>
         </Modal>
       )}
+      {loader && <Loader />}
     </SafeAreaView>
   );
 }

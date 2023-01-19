@@ -49,8 +49,18 @@ import msg from '../../../assets/msg.png';
 import ema from '../../../assets/ema.jpeg';
 import fac from '../../../assets/fac.jpeg';
 import rx from '../../../assets/rx.png';
+import allTrainer from '../../../assets/allTrainer.png';
+import visitVideo from '../../../assets/visitVideo.png';
+import weightScale from '../../../assets/weightScale.png';
+import weightloss from '../../../assets/weightloss.png';
+import weightloss2 from '../../../assets/weightloss2.png';
 
 const images = {
+  allTrainer,
+  weightScale,
+  weightloss,
+  weightloss2,
+  visitVideo,
   rx,
   msg,
   ema,

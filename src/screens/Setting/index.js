@@ -2,6 +2,7 @@ import React, {useEffect, useRef, useState} from 'react';
 import {
   Image,
   ImageBackground,
+  Platform,
   SafeAreaView,
   ScrollView,
   Switch,
@@ -47,15 +48,35 @@ export default function Setting({navigation}) {
   const toggleSwitch = async () => {
     setIsEnabled(previousState => !previousState);
     console.log(isEnabled);
-    try {
-      if (isEnabled) {
-        console.log('1');
-        let response = await updateFingerprint(token, 1);
-        console.log(response.data);
-      }
-    } catch (error) {
-      console.log(error);
-    }
+    // try {
+    // if (isEnabled) {
+    //   console.log(isEnabled);
+    //   let response = await updateFingerprint(
+    //     token,
+    //     isEnabled == true ? 0 : 1,
+    //   );
+    //   console.log(response.data);
+    // }
+    // } catch (error) {
+    //   console.log(error);
+    // }
+    var myHeaders = new Headers();
+    myHeaders.append('Authorization', token);
+
+    var formdata = new FormData();
+    formdata.append('fingerprint', isEnabled == true ? 0 : 1);
+
+    var requestOptions = {
+      method: 'POST',
+      headers: myHeaders,
+      body: formdata,
+      redirect: 'follow',
+    };
+
+    fetch('http://alsyedmmtravel.com/api/update_fingrprnt', requestOptions)
+      .then(response => response.json())
+      .then(result => console.log(result))
+      .catch(error => console.log('error', error));
   };
   const toggleModal = () => {
     setIsModalVisible(!isModalVisible);
@@ -109,9 +130,15 @@ export default function Setting({navigation}) {
               <Text style={styles.signOutText}>Sign Out</Text>
             </TouchableOpacity>
           </View>
-          <Text style={styles.userName}>
-            {firstName} {middleName} {lastName}
-          </Text>
+          {middleName == '' ? (
+            <Text style={styles.userName}>
+              {firstName} {middleName} {lastName}
+            </Text>
+          ) : (
+            <Text style={styles.userName}>
+              {firstName} {lastName}
+            </Text>
+          )}
           <Text style={[styles.signOutText, styles.left]}>{email}</Text>
         </View>
         <View style={styles.padding}>
@@ -154,7 +181,7 @@ export default function Setting({navigation}) {
           <TouchableOpacity onPress={() => navigation.navigate('ContactInfo')}>
             <View style={styles.row}>
               <FontAwesome name="vcard-o" color={colors.secondary} size={25} />
-              <Text style={styles.btnText}>Contact Information</Text>
+              <Text style={styles.contactLeft}>Contact Information</Text>
             </View>
           </TouchableOpacity>
         </View>
@@ -206,11 +233,16 @@ export default function Setting({navigation}) {
             </View>
           </TouchableOpacity>
         </View> */}
-        <View style={styles.padding}>
+        {/* <View style={styles.padding}>
           <View style={[styles.row, styles.justifyCenter]}>
             <Ionicons name="finger-print" color={colors.secondary} size={25} />
-            <Text style={styles.fingerprintText}>
-              Enable Fingerprint for login
+            <Text
+              style={
+                Platform.OS !== 'ios'
+                  ? styles.fingerprintText
+                  : styles.fingerprintTextIOS
+              }>
+              Enable fingerprint for login
             </Text>
             <View style={{alignSelf: 'flex-end'}}>
               <Switch
@@ -222,7 +254,7 @@ export default function Setting({navigation}) {
               />
             </View>
           </View>
-        </View>
+        </View> */}
         {/* <View style={[styles.left, styles.top]}>
           <Text style={styles.head}>CARE COORDINATION</Text>
         </View> */}
@@ -267,7 +299,7 @@ export default function Setting({navigation}) {
             <View style={styles.row}>
               <Image source={images.feedback} style={styles.medicalIcon} />
 
-              <Text style={styles.btnText}>Send Feedback</Text>
+              <Text style={styles.btnText}> Send Feedback</Text>
             </View>
           </TouchableOpacity>
         </View>
@@ -279,13 +311,14 @@ export default function Setting({navigation}) {
             onPress={() => navigation.navigate('TermsAndConditions')}>
             <View style={styles.row}>
               <Image source={images.terms} style={styles.medicalIcon} />
-              <Text style={styles.btnText}>Terms and Conditions</Text>
+              <Text style={styles.btnText}> Terms & Conditions</Text>
             </View>
           </TouchableOpacity>
         </View>
         <View style={[styles.right, styles.top, styles.bottom]}>
           <Text style={styles.version}>VERSION 1.0.0</Text>
         </View>
+        {Platform.OS == 'ios' && <View style={styles.bottomIOS}></View>}
         {isModalVisible && (
           <Modal style={styles.modalView} isVisible={isModalVisible}>
             <TouchableOpacity onPress={toggleModal}>
@@ -295,7 +328,12 @@ export default function Setting({navigation}) {
                   bottom: sizes.screenHeight * 0.25,
                   left: sizes.screenWidth * 0.85,
                 }}>
-                <Entypo name="cross" color={colors.secondary} size={30} />
+                <Entypo
+                  name="cross"
+                  color={colors.secondary}
+                  size={30}
+                  onPress={toggleModal}
+                />
               </View>
             </TouchableOpacity>
 

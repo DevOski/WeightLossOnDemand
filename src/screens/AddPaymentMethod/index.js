@@ -1,4 +1,4 @@
-import React, {useRef, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {
   Image,
   ImageBackground,
@@ -24,16 +24,31 @@ export default function AddPaymentMethod({route, navigation}) {
 
   const dispatch = useDispatch();
   const payment = useSelector(state => state.payment);
-  console.log(payment);
   const saveCreditCard = () => {
     if (cardNum && expirationMonth && expirationYear && cvv) {
       let paymentData = {cardNum, expirationMonth, expirationYear, cvv};
       dispatch(storePayment(paymentData));
       navigation.navigate(route?.params?.to, {
-        appointByTrainer: route?.params?.appointByTrainer,
+        // appointByTrainer: route?.params?.appointByTrainer,
+        sessionStart: route?.params?.sessionStart ? true : false,
+        appointByTrainer: route?.params?.appointByTrainer ? true : false,
+        appointByTime: route?.params?.appointByTime ? true : false,
+        trainer: route?.params?.trainer,
+        slot: route?.params?.slot,
       });
     }
   };
+
+  useEffect(() => {
+    console.log('---->>>', payment);
+    if (payment) {
+      setCardNum(payment.cardNum);
+      setExpirationMonth(payment.expirationMonth);
+      setExpirationYear(payment.expirationYear);
+      setCvv(payment.cvv);
+    }
+  }, []);
+
   return (
     <SafeAreaView>
       <ScrollView style={styles.color}>
@@ -52,6 +67,7 @@ export default function AddPaymentMethod({route, navigation}) {
             onChangeText={text => setCardNum(text)}
             value={cardNum}
             keyboardType="numeric"
+            maxLength={16}
           />
         </View>
         <View style={styles.row}>
@@ -64,6 +80,7 @@ export default function AddPaymentMethod({route, navigation}) {
               onChangeText={text => setExpirationMonth(text)}
               value={expirationMonth}
               keyboardType={'numeric'}
+              maxLength={2}
             />
           </View>
           <View style={styles.stateView}>
@@ -75,6 +92,7 @@ export default function AddPaymentMethod({route, navigation}) {
               onChangeText={text => setCvv(text)}
               value={cvv}
               keyboardType={'numeric'}
+              maxLength={4}
             />
           </View>
         </View>
@@ -89,6 +107,7 @@ export default function AddPaymentMethod({route, navigation}) {
               onChangeText={text => setExpirationYear(text)}
               value={expirationYear}
               keyboardType={'numeric'}
+              maxLength={2}
             />
           </View>
         </View>
@@ -96,7 +115,7 @@ export default function AddPaymentMethod({route, navigation}) {
         <View style={styles.top}>
           <TouchableOpacity onPress={saveCreditCard}>
             <View style={styles.buttonView}>
-              <Text style={styles.buttonText}>Save Credit Card</Text>
+              <Text style={styles.buttonText}>Save Card</Text>
             </View>
           </TouchableOpacity>
         </View>

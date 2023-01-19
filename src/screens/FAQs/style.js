@@ -13,7 +13,7 @@ export const styles = StyleSheet.create({
   bold: {fontWeight: 'bold', color: colors.black},
   text: {
     color: colors.black,
-    fontSize: fontSize.large,
+    fontSize: fontSize.medium,
     fontFamily: fontFamily.appTextRegular,
     paddingTop:sizes.screenHeight*0.02
   },
@@ -34,7 +34,7 @@ export const styles = StyleSheet.create({
   },
   heading: {
     color: colors.black,
-    fontSize: fontSize.h5,
+    fontSize: fontSize.h6,
     fontFamily: fontFamily.appTextHeading,
     // textAlign: 'center',
     fontWeight: '600',
@@ -115,5 +115,8 @@ export const styles = StyleSheet.create({
   },
   condensed:{
     fontFamily:fontFamily.appTextCondensed,
-  }
+  },
+  bottomIOS: {
+    paddingBottom: sizes.screenHeight * 0.15,
+  },
 });

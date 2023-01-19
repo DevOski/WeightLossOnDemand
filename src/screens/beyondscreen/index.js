@@ -20,12 +20,14 @@ export const BeyondScreen = ({navigation}) => {
     <SafeAreaView style={styles.container}>
       <View>
         <Header
-          title={'We are proud beyond p...'}
+          title={'Our Website'}
           skip={true}
           onPress={() => navigation.navigate('')}
         />
       </View>
-      <WebView source={{uri: 'https://weightlossondemand.com/'}} />
+      <WebView source={{uri: 'https://weightlossondemand.com/'}}
+       useWebKit={true}
+      />
     </SafeAreaView>
   );
 };

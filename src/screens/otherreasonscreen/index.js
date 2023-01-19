@@ -27,13 +27,13 @@ export const OtherReason = ({navigation,route}) => {
       </View>
 
       <View style={styles.headcontainer}>
-        <Text style={styles.hedtext}>What is the reason for your visit ?</Text>
+        <Text style={styles.hedtext}>What is the reason for your session?</Text>
       </View>
       <View style={styles.getextcontainer}>
         <View style={styles.filedcon}>
           <CustomTextFiel
             label={'I would like to focus on '}
-            value={text}
+            value={aaa}
             setValue={settext}
           />
           <Text style={{textAlign:'right',fontSize:fontSize.large,color:colors.secondary,top:sizes.screenHeight*0.01}}>{text.length ? text.length : 0}/400</Text>

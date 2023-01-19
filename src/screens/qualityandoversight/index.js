@@ -26,8 +26,8 @@ export default function QualityOversight({navigation}) {
       <Header title={'Quality & Oversight'} />
       <ScrollView style={styles.color}>
         <View style={styles.videoView}>
-          <Text style={styles.heading}>Quality &</Text>
-          <Text style={styles.heading}>Oversight </Text>
+          <Text  style={Platform.OS !== 'ios' ? styles.heading : styles.headingIOS}>Quality &</Text>
+          <Text  style={Platform.OS !== 'ios' ? styles.heading : styles.headingIOS}>Oversight </Text>
         </View>
 
         <View style={styles.padding}>
@@ -65,6 +65,8 @@ export default function QualityOversight({navigation}) {
             </Text>
           </View>
         </View>
+        {Platform.OS == 'ios' && <View style={styles.bottomIOS}></View>}
+
       </ScrollView>
     </SafeAreaView>
   );
@@ -98,6 +100,10 @@ const styles = StyleSheet.create({
   },
   heading: {
     fontSize: fontSize.h4,
+    color: colors.white,
+  },
+  headingIOS:{
+    fontSize: fontSize.h5,
     color: colors.white,
   },
   padding: {
@@ -154,5 +160,8 @@ const styles = StyleSheet.create({
   },
   bOTtomPAD: {
     paddingBottom: sizes.screenHeight * 0.05,
+  },
+  bottomIOS: {
+    paddingBottom: sizes.screenHeight * 0.05
   },
 });

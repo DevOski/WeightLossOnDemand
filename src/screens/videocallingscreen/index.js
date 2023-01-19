@@ -1,5 +1,6 @@
 import React, {useEffect, useRef, useState} from 'react';
 import {
+  BackHandler,
   Dimensions,
   SafeAreaView,
   ScrollView,
@@ -22,11 +23,19 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import Entypo from 'react-native-vector-icons/Entypo';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {useDispatch, useSelector} from 'react-redux';
-import {getAgoraToken, getTrainer, getUser} from '../../services/utilities/api/auth';
+import Loader from '../../components/Loader';
+
+import {
+  getAgoraToken,
+  getTokenFromAPI,
+  getTrainer,
+  getUser,
+} from '../../services/utilities/api/auth';
 import {removeData} from '../../store/actions';
-const appId = appId;
-const channelName = channelName;
-const token ='007eJxTYHiTLRQ7gX/LxIgqxc2/NVfOa13mu/ixikejxPRVjOY67Z8VGIzMDZJMDY0szQ0szEySDBItjZMMTcxMDVJNjVIt0iyT26YWJzcEMjKs7ZnOyMgAgSA+O0NIanFJZl46AwMATOkfbg==';
+const appId = '270b512970864b0a93b14650e52e8f9c';
+// const channelName = 'Testing';
+// const token =
+//   '007eJxTYOioeh3qfnH1vazDP8qSw1x4Vzu1XD/4v7SZp+vyWctle7gVGIzMDZJMDY0szQ0szEySDBItjZMMTcxMDVJNjVIt0iyTFTbVJzcEMjLs/D+FgREKQXx2hpDU4pLMvHQGBgAtvCIz';
 const uid = 0;
 export default function Videocalling({navigation, route}) {
   const agoraEngineRef = useRef(); // Agora engine instance
@@ -34,7 +43,9 @@ export default function Videocalling({navigation, route}) {
   const [remoteUid, setRemoteUid] = useState(0); // Uid of the remote user
   const [message, setMessage] = useState(''); //
   const [channelName, setChannelName] = useState('');
-  const [appId, setAppId] = useState('');
+  const [loader, setLoader] = useState(false);
+
+  // const [appId, setAppId] = useState('');
   // const [token, setToken] = useState('');
   // const [token, setToken] = useState('');
   var isMuted = false;
@@ -54,11 +65,10 @@ export default function Videocalling({navigation, route}) {
   const getToken = async () => {
     try {
       let response = await getAgoraToken();
-      setAgoraToken(response.data.token);
-      console.log(response.data);
-      setAppId(response.data.appId);
-      setToken(response.data.token);
-      setChannelName(response.data.channelName);
+      // setAgoraToken(response.data.token);
+      // setAppId(response.data.appId);
+      // setToken(response.data.token);
+      // setChannelName(response.data.channelName);
     } catch (error) {
       console.log(error);
     }
@@ -72,11 +82,17 @@ export default function Videocalling({navigation, route}) {
     setupVideoSDKEngine();
     getUserDetails();
   }, []);
+  useEffect(() => {
+    const backHandler = BackHandler.addEventListener('backPress', () => true);
+    return () => backHandler.remove();
+  }, []);
 
   const getUserDetails = async () => {
     try {
-      let response = await getTrainer(usertoken);
+      let response = await getUser(usertoken);
+      console.log('chane--->', response.data.data.channel);
       // setChannelName(response.data.data.channel);
+      setChannelName(response.data.data.channel);
       // console.log(response.data.data.channel);
       // setUserName(response.data.data.first_name);
       // dispatch(storeUserData(response.data.data));
@@ -114,6 +130,17 @@ export default function Videocalling({navigation, route}) {
   };
 
   const join = async () => {
+    setLoader(true);
+    console.log('works--------->>>');
+    // navigation.navigate('RateProvider', {
+    //   trainer: route?.params?.trainer,
+    //   apt_id: route?.params?.apt_id,
+    // });
+    console.log(channelName);
+    let response = await getTokenFromAPI(channelName);
+    console.log(response);
+    let token = response.data.rtcToken;
+    console.log('========???',token);
     if (isJoined) {
       return;
     }
@@ -128,6 +155,7 @@ console.log(token,'====');
         clientRoleType: ClientRoleType.ClientRoleBroadcaster,
        
       });
+      setLoader(false);
       console.log('work---->>', token, channelName, 0);
     } catch (e) {
       console.log(e);
@@ -143,7 +171,12 @@ console.log(token,'====');
       setIsJoined(false);
       showMessage('You left the channel');
 
-      navigation.navigate('TrainerAppointment');
+      navigation.navigate('RateProvider', {
+        tr_id: route?.params?.tr_id,
+        tr_name: route?.params?.tr_name,
+        tr_image: route?.params?.tr_image,
+        tr_amount: route?.params?.tr_amount,
+      });
     } catch (e) {
       console.log(e);
     }
@@ -159,11 +192,20 @@ console.log(token,'====');
       {/* <Text style={styles.head}>Agora Video Calling Quickstart</Text>   */}
       {/* <View style={styles.btnContainer}> */}
       {isJoined ? null : (
-        <TouchableOpacity onPress={join}>
-          <View style={styles.button1}>
-            <Text style={[styles.top]}>Join</Text>
-          </View>
-        </TouchableOpacity>
+        <>
+          <TouchableOpacity onPress={join} style={styles.button1}>
+            <View>
+              <Text style={[styles.top]}>Join</Text>
+            </View>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.getHelpTop}
+            onPress={() => navigation.navigate('ContactSupport')}>
+            <View>
+              <Text style={[styles.top, styles.getHelp]}>Get Help</Text>
+            </View>
+          </TouchableOpacity>
+        </>
       )}
       {/* <Text onPress={leave} style={styles.button}>
           Leave
@@ -198,30 +240,32 @@ console.log(token,'====');
               position: 'absolute',
               zIndex: 999,
             }}>
-            <Ionicons
-              name="ios-call-outline"
-              color={colors.secondary}
-              style={styles.button}
-              size={20}
-              onPress={leave}
-              // onPress={toogle}
-            />
-            <Entypo
+            <TouchableOpacity onPress={leave} style={styles.button}>
+              <Ionicons
+                name="ios-call-outline"
+                color={colors.white}
+                style={styles.callIcon}
+                size={20}
+                onPress={leave}
+                // onPress={toogle}
+              />
+            </TouchableOpacity>
+            {/* <Entypo
               name="sound-mute"
               color={colors.secondary}
               style={styles.button}
               size={20}
               onPress={mute}
               // onPress={toogle}
-            />
-            <MaterialCommunityIcons
+            /> */}
+            {/* <MaterialCommunityIcons
               name="camera-flip"
               color={colors.secondary}
               style={styles.button}
               size={20}
               onPress={leave}
               // onPress={toogle}
-            />
+            /> */}
           </View>
 
           {/* <Text
@@ -238,22 +282,63 @@ console.log(token,'====');
         <React.Fragment key={0}>
           <RtcSurfaceView canvas={{uid: 0}} style={styles.videoView1} />
           {/* <Text>Local user uid: {uid}</Text> */}
+          <View style={styles.noAvailableView}>
+            <Text style={styles.text}>Waiting for consultant to join</Text>
+          </View>
+          <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'space-around',
+              paddingRight: sizes.screenWidth * 0.19,
+              marginTop: sizes.screenHeight * 0.88,
+              height: sizes.screenHeight * 0.02,
+              position: 'absolute',
+              zIndex: 999,
+            }}>
+            <TouchableOpacity onPress={leave} style={styles.button}>
+              <Ionicons
+                name="ios-call-outline"
+                color={colors.white}
+                style={styles.callIcon}
+                size={20}
+                onPress={leave}
+                // onPress={toogle}
+              />
+            </TouchableOpacity>
+            {/* </View> */}
+            {/* <Entypo
+              name="sound-mute"
+              color={colors.secondary}
+              style={styles.button}
+              size={20}
+              onPress={mute}
+              // onPress={toogle}
+            /> */}
+            {/* <MaterialCommunityIcons
+              name="camera-flip"
+              color={colors.secondary}
+              style={styles.button}
+              size={20}
+              onPress={leave}
+              // onPress={toogle}
+            /> */}
+          </View>
         </React.Fragment>
       ) : (
         <Text></Text>
       )}
+      {loader && <Loader />}
     </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   button: {
-    width: sizes.screenWidth * 0.2,
-    height: sizes.screenHeight * 0.04,
-
+    width: sizes.screenWidth * 0.15,
+    height: sizes.screenHeight * 0.073,
     backgroundColor: colors.secondary,
-    borderRadius: sizes.screenWidth * 0.7,
-    paddingTop: sizes.screenWidth * 0.01,
+    borderRadius: sizes.screenWidth * 0.5,
+    // paddingTop: sizes.screenWidth * 0.01,
     // margin: 5,
     // position: 'relative',
     // top:10,
@@ -263,8 +348,9 @@ const styles = StyleSheet.create({
     // alignItems: 'center',
     color: '#ffffff',
     textAlign: 'center',
+    alignItems: 'center',
     // alignSelf:'center',
-    marginLeft: sizes.screenWidth * 0.09,
+    marginLeft: sizes.screenWidth * 0.4,
   },
   button1: {
     width: sizes.screenWidth * 0.3,
@@ -297,6 +383,9 @@ const styles = StyleSheet.create({
     color: '#ffffff',
     alignSelf: 'center',
   },
+  getHelp: {
+    color: colors.secondary,
+  },
   scrollContainer: {alignItems: 'center'},
   videoView: {
     width: '100%',
@@ -318,4 +407,19 @@ const styles = StyleSheet.create({
   },
   head: {fontSize: 20},
   info: {backgroundColor: '#ffffe0', color: '#0000ff'},
+  text: {
+    color: colors.black,
+    fontSize: fontSize.medium,
+  },
+  noAvailableView: {
+    // left:sizes.screenWidth * 0.3
+    alignSelf: 'center',
+    top: sizes.screenHeight * 0.4,
+  },
+  getHelpTop: {
+    top: sizes.screenHeight * 0.4,
+  },
+  callIcon: {
+    top: sizes.screenHeight * 0.018,
+  },
 });

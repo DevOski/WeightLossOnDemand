@@ -9,7 +9,7 @@ import {
   Text,
   TouchableOpacity,
   View,
-  KeyboardAvoidingView
+  KeyboardAvoidingView,
 } from 'react-native';
 import Header from '../../components/Header';
 import images from '../../services/utilities/images';
@@ -171,7 +171,7 @@ export default function Chat({navigation, route}) {
           );
         })}
       </ScrollView>
-      <View style={styles.padding2} >
+      <View style={styles.padding2}>
         <View style={styles.width}>
           <CustomTextFiel
             value={message}
@@ -190,6 +190,5 @@ export default function Chat({navigation, route}) {
       </View>
       {loader && <Loader />}
     </SafeAreaView>
-    
   );
 }

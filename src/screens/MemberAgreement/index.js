@@ -22,31 +22,19 @@ export default function MemberAgreement() {
       <ScrollView style={styles.color}>
         <View style={[styles.paddingLeft, styles.paddingBottom]}>
           <Text style={styles.addPaymentText}>
-            Weight Loss On Demand Professionals Member Services Agreement
+            Weight Loss On Demand Services Agreement
           </Text>
           <View style={styles.paddingTop}>
             <Text style={[styles.bold, styles.textColor]}>
-              Effective Date: <Text style={styles.regular}>April 15, 2022</Text>
+              Effective Date: <Text style={styles.regular}>December 01, 2022</Text>
             </Text>
           </View>
           <View style={[styles.paddingTop, styles.top3]}>
             <Text style={[styles.bold, styles.textColor]}>
-              By using the Weight Loss On Demand by Included Health website,
+              By using the Weight Loss On Demand
               mobile application, or any of the products and services that link
               to this page (the "Services"), you agree to abide by and consent
-              to its terms, and affirm all authorizations made below. Further,
-              you certify that if you are using the Services as a personal
-              representative of the Member, you have legal authority to provide
-              consent for the treatment of the Member.
-            </Text>
-          </View>
-          <View style={[styles.paddingTop, styles.top3]}>
-            <Text style={[styles.bold, styles.textColor]}>
-              By using the Services and where applicable, you further certify
-              that you have legal authority to act as quardian or personal
-              representative of all children registered under your Account and
-              you consent to the treatment of all minors registered under your
-              Account, including the prescribing of medication.
+              to its terms, and affirm all authorizations made below.
             </Text>
           </View>
           <View style={[styles.top]}>
@@ -54,79 +42,48 @@ export default function MemberAgreement() {
           </View>
           <View style={styles.paddingTop2}>
             <Text style={styles.textColor}>
-              When you become a patient of Weight Loss On Demand Professionals
+              When you become a member of Weight Loss On Demand
               (a "<Text style={styles.bold}>Member</Text>"), you can use our
-              mobile and web applications ("
-              <Text style={styles.bold}>Included Health App</Text>") accessible
-              from your smartphone, desktop, or tablet computer that connects
-              you to our engaged healthcare professionals("
-              <Text style={styles.bold}>Healthcare Professionals</Text>") and
-              support team. Through the Included Health App, we provide
+              mobile and web applications accessible
+              from your smartphone and desktop computer that connects
+              you to our professional consultants("
+              <Text style={styles.bold}>Professional Consultant</Text>") and
+              support team. Through the Included Consultancy App, we provide
               personalized content and interactive resources for you, simple
-              tools for scheduling appointments and billing, serves as your hub
+              tools for scheduling sessions and billing, serves as your hub
               of information, and connects you to our support team.
             </Text>
           </View>
           <View style={styles.paddingTop}>
             <Text style={styles.textColor}>
-              The Healthcare Professionals practice within a aroup of
-              independently owned professional practices collectively known as "{' '}
+              The Professional Consultants practice within a group of
+              independently owned professional consultants collectively known as "{' '}
               <Text style={styles.bold}>
-                Weight Loss On Demand Professionals
+                Weight Loss On Demand Professional Consultant
               </Text>
               " ("<Text style={styles.bold}>us"</Text> "
               <Text style={styles.bold}>we"</Text> "
               <Text style={styles.bold}>our</Text>"). Weight Loss On Demand
-              Professionals is associated with but operates independently of
-              Included Health, Inc. ("Included Health"). Included Health does
+              Professional Consultants is associated with but operates independently of
+              Weight Loss On Demand. Included consultants does
               not exercise control or direction over the means, methods or
-              manner by which Weight Loss On Demand Professionals or the
-              Healthcare Professionals' exercise professional judgment in the
-              provision of clinical services provided. The Healthcare Providers
-              provide services based on their sole professional judgment. Please
-              refer to the Weight Loss On Demand Professionals{' '}
-              <Text style={styles.link}>Notice of Privacy Practices</Text> to
-              learn more about these groups and how they're organized.
+              manner by which Weight Loss On Demand Professional Consultants. The professional 
+              consultants provide services based on their sole professional judgment.
             </Text>
           </View>
           <View style={[styles.paddingRight]}>
             <Text style={styles.textColor}>
-              We provide healthcare services using interactive audio, video, and
-              messaging technologies through the Included Health App including
-              urgent care, therapy, psychiatry, and depending on benefits
-              covered by your health plan, primary care services, through the
-              Included Health Application. As part of providing you these
-              services, Healthcare Professionals may order labs, imaging and
-              other diagnostic tests conducted at locations outside Weight Loss
-              On Demand Professionals such as clinical laboratories and testing
-              centers, which may incur additional cost to you or your health
-              plan. They may also rely on information you share or records you
-              provide from your other healthcare providers.
+              We provide Consultancy services by using interactive audio, video, and
+              messaging technologies through the Included Consultant App including
+              care, suggestions, advice, and depending on benefits
+              covered by your desired goals, primary care services, through the
+              Included Consultant Application.
             </Text>
           </View>
           <View style={[styles.paddingTop]}>
             <Text style={styles.textColor}>
-              Weight Loss On Demand Professionals also provide non-clinical
-              wellness related services through the use of life skills Coaches.
-              Coaches do not provide professional or clinical services but may
-              exchange information with or provide support to Healthcare
-              Professionals. You will have an opportunity to develop ongoing
-              care relationships with our Healthcare Professionals, however,
-              your initial encounter may begin as a consultation (e.g., to
-              determine the most appropriate treatment setting for you to
-              receive care) and will not necessarily give rise to an ongoing
-              treatment relationship. For example, a Healthcare Professional may
-              determine that our clinical services are not appropriate for some,
-              or all of your treatment needs and may elect not to provide
-              certain clinical services to you through the Included Health App.
-            </Text>
-          </View>
-          <View style={[styles.paddingTop]}>
-            <Text style={styles.textColor}>
-              If you need to receive follow-up care, assistance in the event of
-              an adverse reaction to the treatment, or in the event of an
-              inability to communicate as a result of a technological or
-              equipment failure, please contact us at 1-800-997-6196.{' '}
+              If you need to receive follow-up sessions, assistance in the event of
+              an adverse reaction to the advise, please contact us at 281-325-0066.{' '}
               <Text style={styles.bold}>
                 If you believe you are experiencing a medical emergency, you
                 should dial 9-1-1 and/or go to the nearest urgent care center or
@@ -138,26 +95,17 @@ export default function MemberAgreement() {
               your other healthcare providers as recommended.
             </Text>
           </View>
-          <View style={[styles.paddingRight]}>
-            <Text style={styles.textColor}>
-              With respect to psychotherapy, you are entitled to receive
-              information from your Healthcare Professional about the methods of
-              therapy, the techniques used, the duration of your therapy (if
-              known), and the fee structure. You can seek a second opinion from
-              another therapist or terminate therapy at any time.
-            </Text>
-          </View>
           <View style={[styles.paddingTop]}>
             <Text style={styles.textColor}>
-              Your Healthcare Professional reserves the right to deny care for
+              Your professional consultant reserves the right to deny consultancy for
               potential misuse of the services or for any other reason if, in
-              the professional judgment of your Healthcare Professional, the
-              provision of the Services is not medically or ethically
-              appropriate. If you repeatedly miss scheduled appointments, we are
+              the professional judgment of your professional consultant, the
+              provision of the Services is not ethically
+              appropriate. If you repeatedly miss scheduled sessions, we are
               unable to contact you for a period of time, or you fail to pay for
-              appointments with us, you understand that you may be terminated
-              from our practice and no longer have access to our Healthcare
-              Professionals.
+              sessions with us, you understand that you may be terminated
+              from our practice and no longer have access to our
+              Professional Consultants.
             </Text>
           </View>
           <View style={[styles.top]}>
@@ -167,8 +115,8 @@ export default function MemberAgreement() {
           </View>
           <View style={[styles.paddingTop]}>
             <Text style={styles.textColor}>
-              Among the benefits of our services are improved access to
-              healthcare and convenience. However, as with any health service,
+              Among the benefits of our services and improved access to
+              consultancy and convenience. However, as with any consultant service,
               there are potential risks associated with the use of technology.
             </Text>
           </View>
@@ -181,7 +129,7 @@ export default function MemberAgreement() {
             <Entypo name="dot-single" color={colors.primary} size={25} />
             <Text style={[styles.textColor, styles.right]}>
               In rare cases, information transmitted may be insufficient for
-              healthcare decision making.
+              professional decision making.
             </Text>
           </View>
           <View style={[styles.row]}>
@@ -197,17 +145,10 @@ export default function MemberAgreement() {
           <View style={[styles.row]}>
             <Entypo name="dot-single" color={colors.primary} size={25} />
             <Text style={[styles.textColor, styles.right]}>
-              In rare cases a lack of access to all of your health records may
-              result in adverse drug interactions or other errors.
-            </Text>
-          </View>
-          <View style={[styles.row]}>
-            <Entypo name="dot-single" color={colors.primary} size={25} />
-            <Text style={[styles.textColor, styles.right]}>
               Although we incorporate strong security protocols to protect the
-              confidentiality of your health information, in rare instances
+              confidentiality of your personal information, in rare instances
               security protocols can fail, causing a breach of confidentiality
-              and privacy of personal medical records.
+              and privacy of personal information.
             </Text>
           </View>
           <View style={[styles.top]}>

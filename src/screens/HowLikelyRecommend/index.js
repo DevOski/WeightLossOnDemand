@@ -2,6 +2,7 @@ import React, {useEffect, useRef, useState} from 'react';
 import {
   Image,
   ImageBackground,
+  Platform,
   SafeAreaView,
   ScrollView,
   Switch,
@@ -17,15 +18,15 @@ import Slider from '@react-native-community/slider';
 import {appRating} from '../../services/utilities/api/auth';
 import Error from '../../components/Error';
 import Modal from 'react-native-modal';
+import Loader from '../../components/Loader';
 
-export default function HowLikelyRecommend({navigation, route}) {
+export default function HowLikelyRecommend({navigation,route}) {
   const [rate, setRate] = useState(5);
   const [loader, setLoader] = useState(false);
   const [message, setMessage] = useState('');
   const [isModalVisible, setIsModalVisible] = useState(false);
 
   const handleRating = () => {
-    //
     setLoader(true);
     setTimeout(async () => {
       try {
@@ -56,12 +57,13 @@ export default function HowLikelyRecommend({navigation, route}) {
               <Text style={styles.extremelyText2}>Extremely Likely</Text>
             </View>
             <View style={[styles.row]}>
-              <View style={styles.left}>
+              <View
+                style={Platform.OS !== 'ios' ? styles.left : styles.leftIOS}>
                 <Text style={styles.rating}>0</Text>
               </View>
               <View>
                 <Slider
-                  onValueChange={val => setRate(Math.round(val))}
+                  onSlidingComplete={val => setRate(Math.round(val))}
                   style={styles.sliderWidth}
                   thumbTintColor={colors.secondary}
                   value={rate}
@@ -71,7 +73,8 @@ export default function HowLikelyRecommend({navigation, route}) {
                   maximumTrackTintColor={colors.primary}
                 />
               </View>
-              <View style={styles.right}>
+              <View
+                style={Platform.OS !== 'ios' ? styles.right : styles.rightIOS}>
                 <Text style={styles.rating}>10</Text>
               </View>
             </View>
@@ -87,11 +90,16 @@ export default function HowLikelyRecommend({navigation, route}) {
             <TouchableOpacity
               onPress={() =>
                 navigation.navigate('ThankyouVisit', {
-                  trianer: route?.params?.trainer,
-                  apt_id: route?.params?.apt_id,
+                  tr_id: route?.params?.tr_id,
+                  tr_name: route?.params?.tr_name,
+                  tr_image: route?.params?.tr_image,
+                  tr_amount: route?.params?.tr_amount,
                 })
               }>
-              <Text style={styles.skip}>Skip</Text>
+              <Text
+                style={Platform.OS !== 'ios' ? styles.skip : styles.skipIOS}>
+                Skip
+              </Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -114,9 +122,13 @@ export default function HowLikelyRecommend({navigation, route}) {
           <View>
             <TouchableOpacity
               onPress={() => {
+                setIsModalVisible(false);
+
                 navigation.navigate('ThankyouVisit', {
-                  trianer: route?.params?.trainer,
-                  apt_id: route?.params?.apt_id,
+                  tr_id: route?.params?.tr_id,
+                  tr_name: route?.params?.tr_name,
+                  tr_image: route?.params?.tr_image,
+                  tr_amount: route?.params?.tr_amount,
                 });
               }}>
               <View style={styles.buttonView}>
@@ -126,6 +138,7 @@ export default function HowLikelyRecommend({navigation, route}) {
           </View>
         </Modal>
       )}
+      {loader && <Loader />}
     </SafeAreaView>
   );
 }

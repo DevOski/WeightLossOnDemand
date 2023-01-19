@@ -42,4 +42,7 @@ export const styles = StyleSheet.create({
     alignItems: 'flex-start',
     // justifyContent: 'space-around',
   },
+  bottomIOS: {
+    paddingBottom: sizes.screenHeight * 0.06,
+  },
 });

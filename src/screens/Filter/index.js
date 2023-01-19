@@ -170,7 +170,7 @@ export default function Filter({navigation, route}) {
               </TouchableOpacity>
             </View>
             <View style={styles.paddingTop}>
-              <Text style={styles.text}>TRAINER TYPE</Text>
+              <Text style={styles.text}>CONSULTANT TYPE</Text>
             </View>
             <View style={styles.paddingTop}>
               <TouchableOpacity

@@ -157,6 +157,8 @@ import TrainerAppointment from '../../screens/TrainerAppointment';
 import startSession from '../../screens/session';
 import PastVisit from '../../screens/pastVisit';
 import TrainerVideocalling from '../../screens/trainervideocall';
+import {userDetailTrainer} from '../../screens/userDetailTrainer';
+import {AllQuestions} from '../../screens/AllQuestions';
 const Stack = createNativeStackNavigator();
 
 const Tab = createMaterialBottomTabNavigator();
@@ -175,15 +177,17 @@ export default function MainNavigator() {
             <Stack.Screen name="verifiedcode" component={Verificationscreen} />
             <Stack.Screen name="basicInfoscreens" component={BasicInfoScreen} />
             <Stack.Screen name="wellcomescreen" component={Wellcome} />
+            <Stack.Screen name="MemberAgreement" component={MemberAgreement} />
+            <Stack.Screen name="TermsOfService" component={TermsOfService} />
+
             <Stack.Screen
               name="EnterNewPassword"
               component={EnterNewPassword}
             />
             {/* <Stack.Screen name="BottomNavs" component={MyTabs} /> */}
           </>
-        ) : ( 
+        ) : (
           <>
-
             <Stack.Screen
               name={trainerStatus ? 'BottomTrainer' : 'BottomNavs'}
               component={trainerStatus ? MyTrainerTabs : MyTabs}
@@ -273,6 +277,11 @@ export default function MainNavigator() {
               component={ReviewHealthprofile}
             />
             <Stack.Screen name="selectTrainer" component={selectTrainer} />
+            <Stack.Screen
+              name="userDetailTrainer"
+              component={userDetailTrainer}
+            />
+            <Stack.Screen name="AllQuestions" component={AllQuestions} />
             {/* <Stack.Screen name="whichsurgeri" component={Whichsurgeries} /> */}
             {/* <Stack.Screen
   name="whichmedicalconditions"
@@ -401,7 +410,10 @@ export default function MainNavigator() {
             />
             <Stack.Screen name="videocallingscreen" component={Videocalling} />
 
-            <Stack.Screen name="trainervideocall" component={TrainerVideocalling} />
+            <Stack.Screen
+              name="trainervideocall"
+              component={TrainerVideocalling}
+            />
             <Stack.Screen name="ThankyouVisit" component={ThankyouVisit} />
             <Stack.Screen name="GenerateReciept" component={GenerateReciept} />
             <Stack.Screen name="PayPal" component={PayPal} />
@@ -475,7 +487,10 @@ function MyTabs() {
             <Image
               source={images.icon2}
               style={{
-                height: sizes.screenHeight * 0.033,
+                height:
+                  Platform.OS !== 'ios'
+                    ? sizes.screenHeight * 0.033
+                    : sizes.screenHeight * 0.028,
                 width: sizes.screenWidth * 0.06,
               }}
             />
@@ -486,9 +501,19 @@ function MyTabs() {
         name="GetCare"
         component={GetCare}
         options={{
-          tabBarLabel: 'Get Train',
+          tabBarLabel: 'Consult',
           tabBarIcon: ({color}) => (
-            <MaterialCommunityIcons name="dumbbell" color={color} size={22} />
+            // <MaterialCommunityIcons name="dumbbell" color={color} size={22} />
+            <Image
+              source={images.weightScale}
+              style={{
+                height:
+                  Platform.OS !== 'ios'
+                    ? sizes.screenHeight * 0.03
+                    : sizes.screenHeight * 0.028,
+                width: sizes.screenWidth * 0.06,
+              }}
+            />
           ),
         }}
       />
@@ -496,7 +521,7 @@ function MyTabs() {
         name="MyHealth"
         component={MyHealth}
         options={{
-          tabBarLabel: 'My Health',
+          tabBarLabel: 'Profile',
           tabBarIcon: ({color}) => (
             <FontAwesome name="heartbeat" color={color} size={22} />
           ),
@@ -532,7 +557,7 @@ function MyTrainerTabs() {
         name="TrainerAppointment"
         component={TrainerAppointment}
         options={{
-          tabBarLabel: 'Appointments',
+          tabBarLabel: 'Upcoming Sessions',
 
           tabBarIcon: ({color}) => (
             <Image
@@ -549,7 +574,7 @@ function MyTrainerTabs() {
         name="session"
         component={startSession}
         options={{
-          tabBarLabel: ' Session',
+          tabBarLabel: 'Current Session',
           tabBarIcon: ({color}) => (
             <MaterialCommunityIcons name="dumbbell" color={color} size={22} />
           ),
@@ -559,7 +584,7 @@ function MyTrainerTabs() {
         name="pastVisit"
         component={PastVisit}
         options={{
-          tabBarLabel: 'Past visits',
+          tabBarLabel: 'Past Sessions',
           tabBarIcon: ({color}) => (
             <FontAwesome name="heartbeat" color={color} size={22} />
           ),

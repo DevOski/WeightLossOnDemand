@@ -49,7 +49,7 @@ export const styles = StyleSheet.create({
   card: {
     backgroundColor: colors.white,
     padding: sizes.screenHeight * 0.01,
-    marginBottom: sizes.screenHeight *0.002,
+    marginBottom: sizes.screenHeight * 0.005,
     alignSelf: 'center',
     width: sizes.screenWidth * 0.9,
     borderWidth: 1,
@@ -61,7 +61,7 @@ export const styles = StyleSheet.create({
     },
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
-    elevation: 1
+    elevation: 1,
   },
   cardText: {
     color: colors.primary,

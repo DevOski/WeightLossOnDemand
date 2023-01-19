@@ -11,6 +11,7 @@ import {
   Dimensions,
   TouchableOpacity,
   Button,
+  Platform,
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import intro1 from '../../assets/assets/intro1.png';
@@ -24,9 +25,6 @@ import dit from '../../assets/assets/dit.png';
 import bac from '../../assets/assets/bac.png';
 import lef from '../../assets/assets/lef.png';
 import fatty from '../../assets/assets/fatty.png';
-
-
-
 
 import {colors, fontFamily, fontSize, sizes} from '../../services';
 const deviceHeight = Dimensions.get('window').height;
@@ -43,9 +41,12 @@ const Component = () => {
         <Image style={{width: '100%', height: '100%'}} source={icon} />
       </View>
       <View style={styles.payragraphcon}>
+        <Text style={[styles.payragraphcontext, styles.bold]}>
+          Weight Loss on Demand
+        </Text>
         <Text style={styles.payragraphcontext}>
-          Weight Loss on Demand It is simple to schedule on-demand appointments
-          with top-rated gym specialists with Weight Loss on Demand.
+          It is simple to schedule on-demand consultancy with a weight loss
+          specialists.
         </Text>
       </View>
       {/* <View style={styles.footer}>
@@ -74,19 +75,23 @@ const Componentsecond = () => {
         }}>
         <View style={styles.three1}>
           <Image
-            style={{width: '100%', height: '100%', borderRadius: 100}}
+            style={
+              Platform.OS !== 'ios' ? styles.three3img : styles.three3imgIOS
+            }
             source={lef}
           />
         </View>
         <View style={styles.three}>
           <Image
-            style={{width: '100%', height: '100%', borderRadius: 200}}
+            style={Platform.OS !== 'ios' ? styles.imgRound : styles.imgRoundIOS}
             source={bac}
           />
         </View>
         <View style={styles.three3}>
           <Image
-            style={{width: '100%', height: '100%', borderRadius: 100}}
+            style={
+              Platform.OS !== 'ios' ? styles.three3img : styles.three3imgIOS
+            }
             source={fatty}
           />
         </View>
@@ -99,9 +104,9 @@ const Componentsecond = () => {
       </View>
       <View style={styles.payragraphcon}>
         <Text style={styles.payragraphcontext}>
-          Complete Health Improvement in a Digital Environment Your personal
-          trainer will provide you with different sets of exercises from which
-          to choose.
+          Complete health improvement in a digital environment. Your consultant
+          will provide you with different sets of goals to achieve desired
+          results.
         </Text>
       </View>
       {/* <View style={{paddingTop:sizes.screenHeight*0.05 }}>
@@ -161,8 +166,8 @@ const ComponentFour = () => {
         </View>
         <View style={styles.forslidtext}>
           <Text style={styles.payragraphcontext}>
-            Your provider will send prescriptions to the pharmacy of your
-            choice.
+            Your consultant will review your health profile and help you to
+            achieve your goals.
           </Text>
         </View>
 
@@ -170,10 +175,10 @@ const ComponentFour = () => {
           <View style={styles.kidd}>
             <Image style={{width: '100%', height: '100%'}} source={lasslid} />
           </View>
-          <View
+          {/* <View
             style={{
               position: 'absolute',
-              top: deviceHeight * 0.48,
+              top: deviceHeight * 0.53,
               // zIndex:999999,
               left: deviceWidth * 0.03,
             }}>
@@ -190,7 +195,7 @@ const ComponentFour = () => {
                 Sign Up
               </Text>
             </TouchableOpacity>
-          </View>
+          </View> */}
         </View>
       </View>
     </>
@@ -231,7 +236,7 @@ const styles = StyleSheet.create({
   },
   three: {
     width: deviceWidth * 0.33,
-    height: deviceHeight * 0.18,
+    height: deviceHeight * 0.16,
   },
   three1: {
     width: deviceWidth * 0.15,
@@ -256,9 +261,9 @@ const styles = StyleSheet.create({
   },
   kidd: {
     position: 'absolute',
-    top: deviceHeight * 0.26,
+    // top: deviceHeight * 0.26,
     width: deviceWidth * 0.99,
-    height: deviceHeight * 0.32,
+    height: deviceHeight * 0.30,
   },
   but: {
     backgroundColor: colors.secondary,
@@ -292,5 +297,18 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingLeft: deviceWidth * 0.09,
     paddingRight: deviceHeight * 0.05,
+  },
+  imgRound: {width: '100%', height: '100%', borderRadius: 200},
+  imgRoundIOS: {
+    width: sizes.screenWidth * 0.35,
+    height: sizes.screenHeight * 0.17,
+    borderRadius: 200,
+    left: sizes.screenWidth * 0.02,
+  },
+  three3img: {width: '100%', height: '100%', borderRadius: 100},
+  three3imgIOS: {
+    width: sizes.screenWidth * 0.2,
+    height: sizes.screenHeight * 0.09,
+    borderRadius: 100,
   },
 });

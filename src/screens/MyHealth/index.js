@@ -46,7 +46,7 @@ export default function MyHealth({navigation}) {
     <SafeAreaView>
       <ScrollView style={styles.color}>
         <View style={[styles.row, styles.padding]}>
-          <Text style={styles.heading}> My Health</Text>
+          <Text style={styles.heading}> My Profile</Text>
           <TouchableOpacity onPress={() => navigation.navigate('Setting')}>
             <Image source={images.setting} style={styles.settingIcon} />
           </TouchableOpacity>
@@ -54,7 +54,7 @@ export default function MyHealth({navigation}) {
         <View style={styles.padding}>
         <TouchableOpacity onPress={() => navigation.navigate('HealthVisits')}>
             <View style={[styles.row, styles.card]}>
-              <Text style={styles.cardText}>Recent Visit</Text>
+              <Text style={styles.cardText}>Recent Sessions</Text>
               <View>
                 <Text style={styles.symbol}> ›</Text>
               </View>
@@ -77,7 +77,7 @@ export default function MyHealth({navigation}) {
             </View>
           </TouchableOpacity> */}
           <TouchableOpacity
-            onPress={() => {msgList.length ? navigation.navigate('chatscreen'): navigation.navigate('MessageSupport')}}>
+            onPress={() => {msgList?.length ? navigation.navigate('chatscreen'): navigation.navigate('MessageSupport')}}>
             <View style={[styles.row, styles.card]}>
               <Text style={styles.cardText}>Messages</Text>
               <View>

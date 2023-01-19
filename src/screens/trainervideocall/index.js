@@ -24,14 +24,19 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import {useDispatch, useSelector} from 'react-redux';
 import {
   getAgoraToken,
+  getTokenFromAPI,
   getTrainer,
   getUser,
 } from '../../services/utilities/api/auth';
 import {removeData} from '../../store/actions';
 const appId = '270b512970864b0a93b14650e52e8f9c';
-const channelName = 'Testing';
-const token =
-'007eJxTYMg6eGTO3uXadrkmV7+1nhLQe/JyrXQ+o/qBXz3fk5mtWvQVGIzMDZJMDY0szQ0szEySDBItjZMMTcxMDVJNjVIt0iyTr5jkJTcEMjKwM9cyMzJAIJjPEJJaXJKZl87AAACbuB8/';
+// const channelName = 'test';
+// const token =
+// '006270b512970864b0a93b14650e52e8f9cIAA+WbGpxgdooMm2IXWSmNLFVRH3j4seKVTJqA1SbiejGKW1esgh39v0EADmIv7oQR2CYwEAAQDR2YBj'
+// '007eJxTYOioeh3qfnH1vazDP8qSw1x4Vzu1XD/4v7SZp+vyWctle7gVGIzMDZJMDY0szQ0szEySDBItjZMMTcxMDVJNjVIt0iyTFTbVJzcEMjLs/D+FgREKQXx2hpDU4pLMvHQGBgAtvCIz';
+// '006270b512970864b0a93b14650e52e8f9cIAApbyfztP/HdOw4amq+vEc6cmW4bVJvvpNlVjZQSYO4lJpjTich39v0EADmIv7orhGCYwEAAQA+zoBj';
+// '006270b512970864b0a93b14650e52e8f9cIADMb33N1QkWA55SJ6cyF1BURhsdyT+DZ9WlSVE86rNFrwx+f9gh39v0EADmIv7oARaCYwEAAQCR0oBj';
+// '006270b512970864b0a93b14650e52e8f9cIABCN+Bwjo2V7kh98fc/Q4comFMd7j+p7MRHmTfoVETvNKW1esgh39v0EADmIv7ocBaCYwEAAQAA04Bj';
 const uid = 0;
 export default function TrainerVideocalling({navigation, route}) {
   const agoraEngineRef = useRef(); // Agora engine instance
@@ -39,7 +44,7 @@ export default function TrainerVideocalling({navigation, route}) {
   const [remoteUid, setRemoteUid] = useState(0); // Uid of the remote user
   const [message, setMessage] = useState(''); //
   const [channelName, setChannelName] = useState('');
-  const [appId, setAppId] = useState('');
+  // const [appId, setAppId] = useState('');
   const [token, setToken] = useState('');
   // const [token, setToken] = useState('');
   var isMuted = false;
@@ -58,11 +63,14 @@ export default function TrainerVideocalling({navigation, route}) {
 
   const getToken = async () => {
     try {
-      let response = await getAgoraToken();
+      // let response = await getAgoraToken();
       // setAgoraToken(response.data.token);
-      setAppId(response.data.appId);
-      setToken(response.data.token);
-      setChannelName(response.data.channelName);
+      // setAppId(response.data.appId);
+      // setToken(response.data.token);
+      // setChannelName(response.data.channelName);
+      let response = await getTokenFromAPI();
+      // console.log(response.data.rtcToken);
+      // setToken(response.data.rtcToken);
     } catch (error) {
       console.log(error);
     }
@@ -80,7 +88,8 @@ export default function TrainerVideocalling({navigation, route}) {
   const getUserDetails = async () => {
     try {
       let response = await getTrainer(usertoken);
-      // setChannelName(response.data.data.channel);
+      // console.log('--->>>>>>>>'response.data.data.channel);
+      setChannelName(response.data.data.channel);
       // console.log(response.data.data.channel);
       // setUserName(response.data.data.first_name);
       // dispatch(storeUserData(response.data.data));
@@ -118,6 +127,10 @@ export default function TrainerVideocalling({navigation, route}) {
   };
 
   const join = async () => {
+    // console.log('------->>>',token);
+    let response = await getTokenFromAPI(channelName);
+    let token = response.data.rtcToken;
+
     if (isJoined) {
       return;
     }
@@ -128,7 +141,7 @@ export default function TrainerVideocalling({navigation, route}) {
 
       agoraEngineRef.current?.startPreview();
       agoraEngineRef.current?.joinChannel(token, channelName, 0, {
-        clientRoleType: ClientRoleType.ClientRoleBroadcaster,
+        clientRoleType: ClientRoleType.ClientRoleAudience,
       });
       console.log('work---->>', token, channelName, 0);
     } catch (e) {
@@ -161,8 +174,8 @@ export default function TrainerVideocalling({navigation, route}) {
       {/* <Text style={styles.head}>Agora Video Calling Quickstart</Text>   */}
       {/* <View style={styles.btnContainer}> */}
       {isJoined ? null : (
-        <TouchableOpacity onPress={join}>
-          <View style={styles.button1}>
+        <TouchableOpacity onPress={join} style={styles.button1}>
+          <View>
             <Text style={[styles.top]}>Join</Text>
           </View>
         </TouchableOpacity>
@@ -178,6 +191,46 @@ export default function TrainerVideocalling({navigation, route}) {
         <React.Fragment key={0}>
           <RtcSurfaceView canvas={{uid: 0}} style={styles.videoView1} />
           {/* <Text>Local user uid: {uid}</Text> */}
+          <View style={styles.noAvailableView}>
+            <Text style={styles.text}>Waiting for user to join</Text>
+          </View>
+          <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              paddingRight: sizes.screenWidth * 0.19,
+              marginTop: sizes.screenHeight * 0.9,
+              height: sizes.screenHeight * 0.02,
+              position: 'absolute',
+              zIndex: 999,
+            }}>
+            <TouchableOpacity onPress={leave} style={styles.button}>
+              <Ionicons
+                name="ios-call-outline"
+                color={colors.white}
+                style={styles.callIcon}
+                size={20}
+                onPress={leave}
+                // onPress={toogle}
+              />
+            </TouchableOpacity>
+            {/* <Entypo
+              name="sound-mute"
+              color={colors.secondary}
+              style={styles.button}
+              size={20}
+              onPress={mute}
+              // onPress={toogle}
+            /> */}
+            {/* <MaterialCommunityIcons
+              name="camera-flip"
+              color={colors.secondary}
+              style={styles.button}
+              size={20}
+              onPress={leave}
+              // onPress={toogle}
+            /> */}
+          </View>
         </React.Fragment>
       ) : (
         <Text></Text>
@@ -200,30 +253,32 @@ export default function TrainerVideocalling({navigation, route}) {
               position: 'absolute',
               zIndex: 999,
             }}>
-            <Ionicons
-              name="ios-call-outline"
-              color={colors.secondary}
-              style={styles.button}
-              size={20}
-              onPress={leave}
-              // onPress={toogle}
-            />
-            <Entypo
+            <TouchableOpacity onPress={leave} style={styles.button}>
+              <Ionicons
+                name="ios-call-outline"
+                color={colors.white}
+                style={styles.callIcon}
+                size={20}
+                onPress={leave}
+                // onPress={toogle}
+              />
+            </TouchableOpacity>
+            {/* <Entypo
               name="sound-mute"
               color={colors.secondary}
               style={styles.button}
               size={20}
               onPress={mute}
               // onPress={toogle}
-            />
-            <MaterialCommunityIcons
+            /> */}
+            {/* <MaterialCommunityIcons
               name="camera-flip"
               color={colors.secondary}
               style={styles.button}
               size={20}
               onPress={leave}
               // onPress={toogle}
-            />
+            /> */}
           </View>
 
           {/* <Text
@@ -250,12 +305,11 @@ export default function TrainerVideocalling({navigation, route}) {
 
 const styles = StyleSheet.create({
   button: {
-    width: sizes.screenWidth * 0.2,
-    height: sizes.screenHeight * 0.04,
-
+    width: sizes.screenWidth * 0.15,
+    height: sizes.screenHeight * 0.073,
     backgroundColor: colors.secondary,
-    borderRadius: sizes.screenWidth * 0.7,
-    paddingTop: sizes.screenWidth * 0.01,
+    borderRadius: sizes.screenWidth * 0.5,
+    // paddingTop: sizes.screenWidth * 0.01,
     // margin: 5,
     // position: 'relative',
     // top:10,
@@ -265,8 +319,9 @@ const styles = StyleSheet.create({
     // alignItems: 'center',
     color: '#ffffff',
     textAlign: 'center',
+    alignItems: 'center',
     // alignSelf:'center',
-    marginLeft: sizes.screenWidth * 0.09,
+    marginLeft: sizes.screenWidth * 0.4,
   },
   button1: {
     width: sizes.screenWidth * 0.3,
@@ -320,4 +375,16 @@ const styles = StyleSheet.create({
   },
   head: {fontSize: 20},
   info: {backgroundColor: '#ffffe0', color: '#0000ff'},
+  noAvailableView: {
+    // left:sizes.screenWidth * 0.3
+    alignSelf: 'center',
+    top: sizes.screenHeight * 0.4,
+  },
+  text: {
+    color: colors.black,
+    fontSize: fontSize.medium,
+  },
+  callIcon: {
+    top: sizes.screenHeight * 0.018,
+  },
 });

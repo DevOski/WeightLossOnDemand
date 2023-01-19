@@ -16,22 +16,27 @@ import {
 } from 'react-native';
 import Entypo from 'react-native-vector-icons/Entypo';
 import {colors, fontFamily, fontSize, sizes} from '../../services';
+import moment from 'moment';
 
 import Header from '../../components/Header';
 import Modal from 'react-native-modal';
 import {getUser} from '../../services/utilities/api/auth';
 import {useIsFocused} from '@react-navigation/native';
-import {useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
+import {trainerAvailable} from '../../store/actions';
 
 export const VisitScreen = ({navigation, route}) => {
   const [isModalVisible, setModalVisible] = useState(false);
   const [userName, setUserName] = useState('');
   const [middleName, setMiddleName] = useState('');
   const [lastName, setLastName] = useState('');
+  const [availableTrainer, setAvailableTrainer] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
 
   const token = useSelector(state => state.token);
   const isVisible = useIsFocused();
 
+  const dispatch = useDispatch();
   const toggleModal = () => {
     setModalVisible(!isModalVisible);
   };
@@ -51,6 +56,68 @@ export const VisitScreen = ({navigation, route}) => {
       console.log(error);
     }
   };
+  const handleTrainerAvailability = () => {
+    if (route?.params?.bookingStatus == false) {
+      const time = new Date().getTime();
+
+      let date = new Date().toJSON();
+      let currentDate = moment(date).format('DD/MM/YYYY');
+      console.log(currentDate);
+      let currentTime = moment(time).format('hh:mm');
+      console.log(currentTime);
+      var formdata = new FormData();
+      formdata.append('sl_date', currentDate);
+      formdata.append('sl_time', currentTime);
+      // formdata.append('sl_time', '05:05');
+
+      var requestOptions = {
+        method: 'POST',
+        body: formdata,
+        redirect: 'follow',
+      };
+
+      fetch('http://alsyedmmtravel.com/api/finding_VTr', requestOptions)
+        .then(response => response.json())
+        .then(result => {
+          console.log(result);
+          if (result.data) {
+            console.log(result.data[0].tr_id);
+            dispatch(
+              trainerAvailable(
+                result?.data[0].tr_id,
+                result?.data[0].tr_name,
+                result?.data[0].images,
+                result?.data[0].tr_amount,
+              ),
+            );
+            navigation.navigate('reasonVisit');
+            // setAvailableTrainer(result.data)
+          } else {
+            // alert(result.message, 'okkk');
+            setModalVisible(true);
+            setErrorMessage(result.message);
+          }
+        })
+        .catch(error => console.log('error', error));
+    } else {
+      navigation.navigate('reasonVisit');
+    }
+
+    // () => navigation.navigate('reasonVisit')
+  };
+  let data = useSelector(state => state.tr_id);
+  console.log(route?.params?.to);
+
+  const handleNext = () => {
+    if (route?.params?.to === 'reasonVisit') {
+      handleTrainerAvailability();
+    } else {
+      navigation.navigate('HowToSchedule');
+    }
+
+    // ? handleTrainerAvailability
+    // : navigation.navigate('HowToSchedule');
+  };
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView>
@@ -59,32 +126,39 @@ export const VisitScreen = ({navigation, route}) => {
         </View>
         <View style={styles.container2}>
           <View>
-            <Text style={styles.visitfortext}>Who is this visit for?</Text>
+            <Text style={styles.visitfortext}>Who is this session for?</Text>
           </View>
 
           <View style={styles.buttondiv}>
             <View style={styles.buttonchilddiv}>
               <TouchableOpacity
-                onPress={() =>
-                  route?.params?.to
-                    ? navigation.navigate(route?.params?.to, {
-                        GoogelFit: route?.params?.GoogelFit,
-                      })
-                    : navigation.navigate('correctinfoscreen')
-                }>
+                // onPress={handleTrainerAvailability}
+                onPress={handleNext}>
                 <View style={[styles.row, styles.card]}>
-                  <View style={styles.namefirt}>
+                  <View
+                    style={
+                      Platform.OS !== 'ios'
+                        ? styles.namefirt
+                        : styles.namefirtIOS
+                    }>
                     <Text style={styles.fname}>{userName.charAt(0)}</Text>
                   </View>
                   <View>
-                    <Text style={styles.cardText}>
-                      {'   '}
-                      {userName} {middleName} {lastName}
-                    </Text>
+                    {middleName == '' ? (
+                      <Text style={styles.cardText}>
+                        {userName} {middleName} {lastName}
+                      </Text>
+                    ) : (
+                      <Text style={styles.cardText}>
+                        {'    '}
+                        {userName} {lastName}
+                      </Text>
+                    )}
                   </View>
                 </View>
               </TouchableOpacity>
             </View>
+            {/* style={styles.cardText} */}
             {/* <View style={styles.buttonchilddiv}>
               <TouchableOpacity
                 onPress={() =>
@@ -116,59 +190,32 @@ export const VisitScreen = ({navigation, route}) => {
                   </View>
                 </View>
               </TouchableOpacity>
-            </View>
-            <Modal
-              style={{
-                width: sizes.screenWidth,
-                height: sizes.screenHeight,
-                backgroundColor: 'rgba(52, 52, 52, 0.8)',
-                marginLeft: sizes.screenWidth * 0.01,
-                padding: sizes.screenWidth*0.02,
-                position:'absolute',
-                top:-sizes.baseMargin,
-              }}
-              isVisible={isModalVisible}>
-              <TouchableOpacity onPress={toggleModal}>
-                <View
-                  style={{
-                    position: 'relative',
-                    bottom: sizes.screenHeight * 0.25,
-                    left: sizes.screenWidth * 0.85,
-                  }}>
-                  <Entypo name="cross" color={colors.secondary} size={30} />
-                </View>
-              </TouchableOpacity>
-
+            </View> */}
+          </View>
+        </View>
+        <View style={styles.color}>
+          {isModalVisible && (
+            <Modal style={styles.modalView} isVisible={isModalVisible}>
               <View style={styles.texcon}>
-                <Text style={styles.text111}>
-                  Trying to set up a visit for Someone else ?
-                </Text>
+                <Text style={styles.text111}>Oops!</Text>
               </View>
               <View style={styles.texcon1}>
                 <Text style={styles.text1}>
-                  If the patient is over 18,they need to create their own
-                  account.if they are a dependent under your health plan,they
-                  can add your insurance to thier account
+                  {errorMessage}. You can book an appointment
                 </Text>
               </View>
-
-              <View style={styles.buttnView}>
+              <View>
                 <TouchableOpacity
-                  onPress={() => navigation.navigate('signupscreen')}>
+                  onPress={() => {
+                    setModalVisible(false);
+                  }}>
                   <View style={styles.buttonView}>
-                    <Text style={styles.buttonText}>Create new account</Text>
+                    <Text style={styles.buttonText}>OK</Text>
                   </View>
                 </TouchableOpacity>
               </View>
-              <View style={styles.buttnView}>
-                <TouchableOpacity onPress={toggleModal}>
-                  <View style={styles.buttonView1}>
-                    <Text style={styles.buttonText}>Go Back</Text>
-                  </View>
-                </TouchableOpacity>
-              </View>
-            </Modal> */}
-          </View>
+            </Modal>
+          )}
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -178,6 +225,20 @@ export const VisitScreen = ({navigation, route}) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  color: {
+    backgroundColor: '#fafafa',
+    // height: sizes.screenHeight,
+  },
+  modalView: {
+    width: sizes.screenWidth,
+    backgroundColor: '#0e0e0e',
+    opacity: 0.9,
+    marginLeft: sizes.screenWidth * 0.01,
+    padding: 10,
+    position: 'absolute',
+    top: -20,
+    height: sizes.screenHeight,
   },
   container2: {
     paddingLeft: sizes.screenWidth * 0.05,
@@ -236,6 +297,14 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     width: sizes.screenWidth * 0.11,
+    height: sizes.screenHeight * 0.06,
+    backgroundColor: colors.secondary,
+    borderRadius: sizes.screenWidth * 0.5,
+  },
+  namefirtIOS: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: sizes.screenWidth * 0.13,
     height: sizes.screenHeight * 0.06,
     backgroundColor: colors.secondary,
     borderRadius: sizes.screenWidth * 0.5,

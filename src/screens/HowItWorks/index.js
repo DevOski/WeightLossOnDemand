@@ -26,11 +26,12 @@ export default function HowItWorks({navigation}) {
       <ScrollView style={styles.color}>
         {!showVideo ? (
           <ImageBackground source={images.mother} style={styles.image}>
-            <TouchableOpacity onPress={() => setShowVideo(true)}>
+            {/* <TouchableOpacity onPress={() => setShowVideo(true)}>
               <View style={styles.playBtn}>
                 <Image source={images.playIcon} style={styles.playIcon} />
               </View>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
+            <View style={styles.playBtn}></View>
             <View style={styles.textView}>
               <Text style={styles.heading}>How It Works</Text>
             </View>
@@ -43,15 +44,15 @@ export default function HowItWorks({navigation}) {
         )}
 
         <View style={styles.padding}>
-          <TouchableOpacity onPress={() => navigation.navigate('HowItWorksVT')}>
+          {/* <TouchableOpacity onPress={() => navigation.navigate('HowItWorksVT')}>
             <View style={[styles.top]}>
               <Text style={styles.subHeading}>See transcript for video</Text>
             </View>
-          </TouchableOpacity>
+          </TouchableOpacity> */}
           <View style={styles.padding}>
             <TouchableOpacity onPress={() => navigation.navigate('VideoVisit')}>
               <View style={[styles.row, styles.card]}>
-                <Text style={styles.cardText}>What is a Video Visit?</Text>
+                <Text style={styles.cardText}>What is a video session?</Text>
                 <View>
                   <Text style={styles.symbol}> ›</Text>
                 </View>
@@ -59,7 +60,7 @@ export default function HowItWorks({navigation}) {
             </TouchableOpacity>
             <TouchableOpacity onPress={() => navigation.navigate('TipsVisit')}>
               <View style={[styles.row, styles.card]}>
-                <Text style={styles.cardText}>Tips for a Successful Visit</Text>
+                <Text style={styles.cardText}>Tips for a successful session</Text>
                 <View>
                   <Text style={styles.symbol}> ›</Text>
                 </View>
@@ -74,14 +75,14 @@ export default function HowItWorks({navigation}) {
                 </View>
               </View>
             </TouchableOpacity> */}
-            <TouchableOpacity onPress={() => navigation.navigate('MyPricing')}>
+            {/* <TouchableOpacity onPress={() => navigation.navigate('MyPricing')}>
               <View style={[styles.row, styles.card]}>
                 <Text style={styles.cardText}>My Pricing</Text>
                 <View>
                   <Text style={styles.symbol}> ›</Text>
                 </View>
               </View>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
             <TouchableOpacity onPress={() => navigation.navigate('FAQs')}>
               <View style={[styles.row, styles.card]}>
                 <Text style={styles.cardText}>FAQs</Text>

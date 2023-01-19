@@ -24,15 +24,15 @@ export default function Medical({navigation}) {
   const [showVideo, setShowVideo] = useState(false);
   return (
     <SafeAreaView>
-      <Header title={'Trainer'} />
+      <Header title={'Consultant'} />
       <ScrollView style={styles.color}>
         {!showVideo ? (
           <ImageBackground source={images.medical} style={styles.image}>
-            <TouchableOpacity onPress={() => setShowVideo(true)}>
+            {/* <TouchableOpacity onPress={() => setShowVideo(true)}>
               <View style={styles.playBtn}>
                 <Image source={images.playIcon} style={styles.playIcon} />
               </View>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
           </ImageBackground>
         ) : (
           <WebView
@@ -42,16 +42,18 @@ export default function Medical({navigation}) {
         )}
 
         <View style={styles.padding}>
-          <TouchableOpacity onPress={() => navigation.navigate('HowItWorksVT')}>
+          {/* <TouchableOpacity onPress={() => navigation.navigate('HowItWorksVT')}>
             <View style={[styles.top]}>
               <Text style={styles.subHeading}>See transcript for video</Text>
             </View>
-          </TouchableOpacity>
+          </TouchableOpacity> */}
           <View style={styles.padding}>
             <TouchableOpacity
-              onPress={() => navigation.navigate('visitforscreen')}>
+              onPress={() =>
+                navigation.navigate('visitforscreen', {bookingStatus: false})
+              }>
               <View style={[styles.row, styles.card2]}>
-                <Text style={styles.cardText2}>See a trainer Now</Text>
+                <Text style={styles.cardText2}>See a consultant now</Text>
                 <View>
                   <Text style={styles.symbol2}> ›</Text>
                 </View>
@@ -66,7 +68,7 @@ export default function Medical({navigation}) {
                   size={25}
                   style={styles.iconLeft}
                 />
-                <Text style={styles.cardText}>Schedule an Appointment</Text>
+                <Text style={styles.cardText}>Schedule a session</Text>
                 <View>
                   <Text style={styles.symbol}> ›</Text>
                 </View>
@@ -80,13 +82,14 @@ export default function Medical({navigation}) {
                   size={20}
                   style={styles.iconLeft}
                 />
-                <Text style={styles.cardText}>What is a Video Visit?</Text>
+                <Text style={styles.cardText}>What is a video session?</Text>
                 <View>
                   <Text style={styles.symbol}> ›</Text>
                 </View>
               </View>
             </TouchableOpacity>
-            <TouchableOpacity
+            {/* As discussed with Jeff this was hidden at the last moment */}
+            {/* <TouchableOpacity
               onPress={() => navigation.navigate('WhatDoWeTreat')}>
               <View style={[styles.row, styles.card]}>
                 <Image source={images.icon} style={styles.icon} />
@@ -95,10 +98,10 @@ export default function Medical({navigation}) {
                   <Text style={styles.symbol}> ›</Text>
                 </View>
               </View>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
+
             <TouchableOpacity
-            onPress={() => navigation.navigate('meetOurproviders')}
-            >
+              onPress={() => navigation.navigate('meetOurproviders')}>
               <View style={[styles.row, styles.card]}>
                 <FontAwesome5
                   name="user-alt"
@@ -106,7 +109,7 @@ export default function Medical({navigation}) {
                   size={20}
                   style={styles.iconLeft}
                 />
-                <Text style={styles.cardText}>Meet Our Trainers</Text>
+                <Text style={styles.cardText}>Meet our consultants</Text>
                 <View>
                   <Text style={styles.symbol}> ›</Text>
                 </View>

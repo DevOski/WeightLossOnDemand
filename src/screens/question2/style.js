@@ -13,17 +13,31 @@ export const styles = StyleSheet.create({
   text: {
     color: colors.primary,
     fontFamily: fontFamily.appTextLight,
-    fontSize:fontSize.h4
+    fontSize: fontSize.h5,
+    fontWeight: 'bold',
+  },
+  text2: {
+    color: colors.black,
+    fontFamily: fontFamily.appTextLight,
+    fontSize: fontSize.h6,
+    fontWeight: 'bold',
+    left: sizes.screenWidth * 0.02,
   },
   field: {
     backgroundColor: colors.lightGray,
     fontSize: fontSize.large,
     fontFamily: fontFamily.appTextRegular,
   },
+  field2: {
+    backgroundColor: colors.lightGray,
+    fontSize: fontSize.large,
+    fontFamily: fontFamily.appTextRegular,
+    width: sizes.screenWidth * 0.4,
+  },
   width: {
     width: sizes.screenWidth * 0.9,
     alignSelf: 'center',
-    paddingTop:sizes.screenHeight*0.04
+    paddingTop: sizes.screenHeight * 0.04,
   },
   paddingTop: {
     paddingTop: sizes.screenHeight * 0.04,
@@ -71,19 +85,19 @@ export const styles = StyleSheet.create({
     fontFamily: fontFamily.appTextLight,
     paddingLeft: sizes.screenWidth * 0.035,
   },
- 
+
   link: {
     color: colors.modalLink,
     textDecorationLine: 'underline',
     fontFamily: fontFamily.appTextMedium,
   },
- 
-  codeFieldRoot: {marginTop:sizes.screenHeight*0.05},
+
+  codeFieldRoot: {marginTop: sizes.screenHeight * 0.05},
   cell: {
-    width: sizes.screenWidth*0.08,
-    height: sizes.screenHeight*0.06,
-    fontSize:fontSize.large,
-    borderBottomWidth:1,
+    width: sizes.screenWidth * 0.08,
+    height: sizes.screenHeight * 0.06,
+    fontSize: fontSize.large,
+    borderBottomWidth: 1,
     borderColor: '#00000030',
     textAlign: 'center',
   },
@@ -111,4 +125,11 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  row: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+  },
+  bottom2: {paddingBottom: sizes.screenHeight * 0.15},
+
 });

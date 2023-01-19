@@ -21,7 +21,7 @@ import Loader from '../../components/Loader';
 export default function HealthVisits({navigation}) {
   const [trainer, setTrainer] = useState();
   const [user, setUser] = useState();
-  const [visit, setVisit] = useState();
+  const [visit, setVisit] = useState('');
   const [error, setError] = useState(false);
   const isVisible = useIsFocused();
   const [loader, setLoader] = useState(false);
@@ -37,6 +37,11 @@ export default function HealthVisits({navigation}) {
     setTimeout(async () => {
       try {
         let response = await recentVisit(token);
+        console.log(response.data.message);
+        if (response.data.message) {
+          setLoader(false);
+          setError(true);
+        }
         setVisit(response.data.visit);
         setTrainer(response.data.trainer[0]);
         setUser(response.data.user);
@@ -52,19 +57,23 @@ export default function HealthVisits({navigation}) {
   return (
     <SafeAreaView>
       <View>
-        <Header title={'Recent Visit'} />
+        <Header title={'Recent Sessions'} />
       </View>
       <ScrollView style={styles.color}>
-        {!error ? (
+        {/* {!error ? ( */}
+        {visit ? (
           <View style={styles.marginTop}>
             <View style={[styles.left, styles.top]}>
-              <Text style={styles.head}>MY RECENT VISIT</Text>
+              <Text style={styles.head}>MY RECENT SESSIONS</Text>
             </View>
             <TouchableOpacity
               onPress={() => navigation.navigate('VisitDetail')}>
               <View style={[styles.card]}>
                 <View style={styles.row}>
-                  <Image source={images.provider1} style={styles.providerImg} />
+                  <Image
+                    source={{uri: trainer?.images}}
+                    style={styles.providerImg}
+                  />
                   <Text style={styles.cardText}>{trainer?.tr_name}</Text>
                   <View>
                     <Text style={styles.symbol}> ›</Text>
@@ -83,9 +92,13 @@ export default function HealthVisits({navigation}) {
           </View>
         ) : (
           <View style={styles.contentView}>
-            <Text style={styles.text}>You haven't had any visits yet.</Text>
+            <Text style={styles.text}>You haven't had any sessions yet.</Text>
           </View>
         )}
+
+        {/* ) : ( */}
+
+        {/* )} */}
         {loader && <Loader />}
       </ScrollView>
     </SafeAreaView>

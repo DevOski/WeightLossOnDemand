@@ -83,6 +83,7 @@ export default function ChooseAppointment({navigation, route}) {
   const getTimeSlots = async () => {
     try {
       let response = await getSlotTime(route?.params?.trainer?.tr_id);
+      console.log(response.data.data);
       setTimeSlot(response.data.data);
     } catch (error) {
       console.log(error);
@@ -118,13 +119,17 @@ export default function ChooseAppointment({navigation, route}) {
 
     fetch('http://alsyedmmtravel.com/api/Slots', requestOptions)
       .then(response => response.json())
-      .then(result => setTimeSlot(result.data))
+
+      .then(result => {
+        console.log(response.data.data);
+        setTimeSlot(result.data);
+      })
       .catch(error => console.log('error', error));
   };
   return (
     <SafeAreaView>
       <View>
-        <Header title={'Choose Appointment'} />
+        <Header title={'Choose Session'} />
       </View>
       <ScrollView style={styles.color}>
         <View style={styles.padding}>
@@ -172,44 +177,59 @@ export default function ChooseAppointment({navigation, route}) {
               )}
 
               <View style={styles.height}>
-                <ScrollView style={[styles.card]}>
-                  {dateSlot?.map((item, index) => {
-                    return (
-                      <TouchableOpacity
-                        key={index}
-                        onPress={() =>
-                          navigation.navigate('appointmentreqest', {slot: item})
-                        }>
-                        <View style={[styles.row2, styles.card]}>
-                          <Text style={styles.cardText}>{item?.sl_time}</Text>
-                          <View>
-                            <Text style={styles.symbol}> ›</Text>
+                {dateSlot?.length ? (
+                  <ScrollView style={[styles.card]}>
+                    {dateSlot?.map((item, index) => {
+                      return (
+                        <TouchableOpacity
+                          key={index}
+                          onPress={() =>
+                            navigation.navigate('appointmentreqest', {
+                              slot: item,
+                            })
+                          }>
+                          <View style={[styles.row2, styles.card]}>
+                            <Text style={styles.cardText}>{item?.sl_time}</Text>
+                            <View>
+                              <Text style={styles.symbol}> ›</Text>
+                            </View>
                           </View>
-                        </View>
-                      </TouchableOpacity>
-                    );
-                  })}
-                </ScrollView>
+                        </TouchableOpacity>
+                      );
+                    })}
+                  </ScrollView>
+                ) : (
+                  <View style={[styles.row2, styles.card]}>
+                    <Text style={styles.noSlotText}>No slot available</Text>
+                  </View>
+                )}
               </View>
             </View>
           ) : (
             <View>
-              {timeSlot?.map((item, index) => {
-                return (
-                  <TouchableOpacity
-                    key={index}
-                    onPress={() =>
-                      navigation.navigate('appointmentreqest', {slot: item})
-                    }>
-                    <View style={[styles.row2, styles.card]}>
-                      <Text style={styles.cardText}>{item?.sl_time}</Text>
-                      <View>
-                        <Text style={styles.symbol}> ›</Text>
+              {timeSlot?.length ? (
+                timeSlot?.map((item, index) => {
+                  return (
+                    <TouchableOpacity
+                      key={index}
+                      onPress={() =>
+                        navigation.navigate('appointmentreqest', {slot: item})
+                      }>
+                      <View style={[styles.row2, styles.card]}>
+                        <Text style={styles.cardText}>{item?.sl_time}</Text>
+                        <View>
+                          <Text style={styles.symbol}> ›</Text>
+                        </View>
                       </View>
-                    </View>
-                  </TouchableOpacity>
-                );
-              })}
+                    </TouchableOpacity>
+                  );
+                })
+              ) : (
+                <View style={[styles.row2, styles.card]}>
+                  <Text style={styles.noSlotText}>No slot available</Text>
+                </View>
+              )}
+              <View></View>
             </View>
           )}
         </View>

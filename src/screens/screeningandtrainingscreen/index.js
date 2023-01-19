@@ -26,9 +26,12 @@ export default function ScreeningTraining({navigation}) {
       <Header title={'Screening & Training'} />
       <ScrollView style={styles.color}>
         <View style={styles.videoView}>
-          <Text style={styles.heading}>How We select,</Text>
-          <Text style={styles.heading}>Screen & Train Our </Text>
-          <Text style={styles.heading}>Providers </Text>
+          <Text
+            style={Platform.OS !== 'ios' ? styles.heading : styles.headingIOS}>
+            How We select,
+          </Text>
+          <Text style={Platform.OS !== 'ios' ? styles.heading : styles.headingIOS}>Screen & Train Our </Text>
+          <Text style={Platform.OS !== 'ios' ? styles.heading : styles.headingIOS}>Providers </Text>
         </View>
 
         <View style={styles.padding}>
@@ -47,17 +50,19 @@ export default function ScreeningTraining({navigation}) {
               As a company, we take great pride in the excellence of our
               provider network. The most important things we do at Weight Loss
               by Demand are select, test, and train our board-certified
-              trainers. Our procedure is as follows:
+              trainers. 
             </Text>
           </View>
           <View>
-            <TouchableOpacity>
+            {/* <TouchableOpacity>
               <Text style={styles.subHeading}>Providers</Text>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
             {/* <TouchableOpacity>
               <Text style={styles.subHeading}>psychlogist & Psychiatrists</Text>
             </TouchableOpacity> */}
           </View>
+        {Platform.OS == 'ios' && <View style={styles.bottomIOS}></View>}
+
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -92,6 +97,10 @@ const styles = StyleSheet.create({
   },
   heading: {
     fontSize: fontSize.h4,
+    color: colors.white,
+  },
+  headingIOS:{
+    fontSize: fontSize.h5,
     color: colors.white,
   },
   padding: {
@@ -147,5 +156,8 @@ const styles = StyleSheet.create({
   },
   bOTtomPAD: {
     paddingBottom: sizes.screenHeight * 0.03,
+  },
+  bottomIOS: {
+    paddingBottom: sizes.screenHeight * 0.1,
   },
 });
